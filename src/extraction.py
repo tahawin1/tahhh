@@ -17,6 +17,7 @@ from __future__ import annotations
 import datetime
 import os
 import re
+import time
 import unicodedata
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -176,17 +177,26 @@ Réponds uniquement avec l'objet JSON demandé."""
     session = requests.Session()
     session.trust_env = False  # Ollama est local
     try:
-        r = session.post(
-            f"{OLLAMA_BASE_URL}/api/generate",
-            json={
-                "model": OLLAMA_MODEL,
-                "prompt": prompt,
-                "stream": False,
-                "format": _schema(champs),
-                "options": {"temperature": 0, "num_ctx": 8192, "num_predict": 1200},
-            },
-            timeout=OLLAMA_TIMEOUT,
-        )
+        # Une erreur 500 passagère d'Ollama est relancée une fois (voir generate.py).
+        for tentative in (1, 2):
+            r = session.post(
+                f"{OLLAMA_BASE_URL}/api/generate",
+                json={
+                    "model": OLLAMA_MODEL,
+                    "prompt": prompt,
+                    "stream": False,
+                    "format": _schema(champs),
+                    "options": {"temperature": 0, "num_ctx": 8192, "num_predict": 1200},
+                },
+                timeout=OLLAMA_TIMEOUT,
+            )
+            if r.status_code < 500 or tentative == 2:
+                break
+            time.sleep(5)
+        if r.status_code >= 500:
+            raise ExtractionImpossible(
+                f"Mistral a échoué deux fois (erreur {r.status_code} d'Ollama) — relancer la lecture."
+            )
         r.raise_for_status()
     except requests.exceptions.ConnectionError as e:
         raise ExtractionImpossible(f"Ollama n'est pas démarré sur {OLLAMA_BASE_URL}.") from e

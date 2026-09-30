@@ -350,6 +350,7 @@ Si le proxy **inspecte le HTTPS** (certificat d'entreprise), prévenez Taha : il
 | `✗ Ollama injoignable depuis le conteneur de l'API` | pare-feu entre Docker et l'hôte | `sudo ufw allow from 172.16.0.0/12 to any port 11434 proto tcp`, puis relancer le script |
 | `✗ Ollama ne répond pas` | service arrêté | `sudo journalctl -u ollama -n 50` puis `sudo systemctl restart ollama` |
 | « Lancer la rédaction » échoue avec *timed out waiting for llama-server* | chargement de Mistral trop lent (CPU, disque lent) | vérifier que `/etc/systemd/system/ollama.service.d/conformite.conf` contient `OLLAMA_LOAD_TIMEOUT=20m`, puis lancer `sudo systemctl daemon-reload && sudo systemctl restart ollama` |
+| Pièce en erreur « Mistral a échoué deux fois (erreur 500 d'Ollama) » | génération interrompue par Ollama (déjà relancée automatiquement une fois) | cliquer sur « Relancer la rédaction » ; si cela se répète : `sudo journalctl -u ollama -n 100` et `free -h` (mémoire), puis envoyer à Taha |
 | Rédaction très lente (> 10 min) | CPU seul et serveur chargé | normal sur CPU ; vérifier `ollama ps` (colonne PROCESSOR) ; un GPU règle le problème |
 | Mistral ne démarre pas, *out of memory* | mémoire insuffisante | fermer d'autres services ou ajouter de la mémoire (16 Go minimum) |
 | `pull access denied` / `toomanyrequests` | limite de téléchargement de Docker Hub | attendre 1 h et relancer le script, ou `docker login` avec un compte Docker gratuit |

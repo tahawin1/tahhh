@@ -189,6 +189,10 @@ supporte déjà.
     « mandataire au Maroc » — pièces actuelles des règles à revoir ;
   - lecture par l'agent sur les vrais certificats : ISO 7/7 vérifiés,
     certificat CE scanné 6 vérifiés + 1 prudent + classe absente (exact).
+- Test de la pile serveur : une rédaction a reçu une erreur 500 d'Ollama après
+  3 min de génération (cause non identifiée, non reproduite à la relance) ;
+  rédaction et lecture relancent désormais une fois automatiquement sur 5xx
+  (`tests/test_relance_ollama.py`).
 - Au premier démarrage à froid, charger Mistral peut dépasser 5 min sur un
   disque lent : `OLLAMA_LOAD_TIMEOUT=20m` (réglé par installer_serveur.sh).
 - Sur CPU seul, Mistral 7B rédige ~5 tokens/s : `/dossiers/generer` prend

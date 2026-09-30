@@ -15,6 +15,7 @@ import argparse
 import datetime
 import os
 import re
+import time
 import unicodedata
 from pathlib import Path
 
@@ -153,16 +154,27 @@ Consignes strictes :
 - Rédige en français, dans le registre administratif marocain (formule d'appel « Monsieur le Ministre, », formule de politesse administrative, aucune formule familière), sans commentaire avant ou après le document."""
 
         try:
-            reponse = self._session_ollama.post(
-                OLLAMA_URL,
-                json={
-                    "model": OLLAMA_MODEL,
-                    "prompt": prompt,
-                    "stream": False,
-                    "options": {"num_predict": OLLAMA_NUM_PREDICT},
-                },
-                timeout=OLLAMA_TIMEOUT,
-            )
+            # Une erreur 500 passagère d'Ollama (génération interrompue) est
+            # relancée une fois ; à la seconde, la pièce passe en erreur.
+            for tentative in (1, 2):
+                reponse = self._session_ollama.post(
+                    OLLAMA_URL,
+                    json={
+                        "model": OLLAMA_MODEL,
+                        "prompt": prompt,
+                        "stream": False,
+                        "options": {"num_predict": OLLAMA_NUM_PREDICT},
+                    },
+                    timeout=OLLAMA_TIMEOUT,
+                )
+                if reponse.status_code < 500 or tentative == 2:
+                    break
+                time.sleep(5)
+            if reponse.status_code >= 500:
+                raise GenerationImpossible(
+                    f"Mistral a échoué deux fois (erreur {reponse.status_code} d'Ollama) — "
+                    "voir `journalctl -u ollama`, puis relancer la rédaction."
+                )
             reponse.raise_for_status()
             return reponse.json()["response"], sources
         except requests.exceptions.ConnectionError as e:
