@@ -1,0 +1,7 @@
+# Propre à l'image « interface » (remplace le .dockerignore racine, qui exclut frontend/)
+*
+!frontend
+!deploiement/interface
+frontend/node_modules
+frontend/dist
+frontend/e2e

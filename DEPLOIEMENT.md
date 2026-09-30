@@ -1,5 +1,10 @@
 # Déploiement — serveur de l'entreprise + tunnel + Vercel
 
+> **Pour l'administrateur du serveur : suivre [INSTALLATION_SERVEUR.md](INSTALLATION_SERVEUR.md)**
+> (un script installe tout : Docker, Ollama + Mistral, base, API et tableau de
+> bord servi par nginx sur `http://IP-du-serveur`, sans tunnel ni Vercel).
+> Ce document-ci décrit en plus l'accès depuis l'extérieur (ngrok + Vercel).
+
 ```
  Navigateur (n'importe où)
         │  https://<projet>.vercel.app         ← frontend React (Vercel, statique)

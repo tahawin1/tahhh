@@ -130,6 +130,11 @@ supporte déjà.
       (les certificats et pièces de tiers ne sont jamais générés)
 - [x] Suivi des dossiers (PostgreSQL), rédaction en tâche de fond,
       validation / rejet nominatifs, journal d'audit — testés
+- [x] Installation serveur en une commande (`scripts/installer_serveur.sh`,
+      fiche `INSTALLATION_SERVEUR.md`) : tableau de bord servi par nginx
+      (`deploiement/interface/`, API relayée sous `/api`) — image construite et
+      parcours E2E réussi à travers nginx ; sauvegarde `scripts/sauvegarder.sh`
+      testée (restauration comprise). Pas encore exécutée sur le vrai serveur.
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué

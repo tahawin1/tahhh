@@ -43,6 +43,19 @@ services:
       - ./output:/app/output  # projets DOCX générés, conservés hors du conteneur
     restart: unless-stopped
 
+  # Tableau de bord servi sur le réseau de l'entreprise : http://IP-du-serveur
+  # (démarré avec : docker compose --profile api --profile interface up -d)
+  interface:
+    profiles: [interface]
+    build:
+      context: .
+      dockerfile: deploiement/interface/Dockerfile
+    container_name: conformite-interface
+    depends_on: [api]
+    ports:
+      - "${INTERFACE_PORT:-80}:80"  # ouvert au réseau interne ; l'API reste derrière nginx
+    restart: unless-stopped
+
   # Tunnel ngrok vers l'API — démarré avec : docker compose --profile api --profile ngrok up -d
   # NGROK_AUTHTOKEN et NGROK_URL (domaine statique gratuit, ex. xxx.ngrok-free.app)
   # à définir dans le fichier .env du serveur. Voir DEPLOIEMENT.md.
