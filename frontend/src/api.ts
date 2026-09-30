@@ -37,6 +37,8 @@ export interface ChampLu {
 }
 
 export interface Extraction {
+  /** 'transcription_ia' : document scanné transcrit par l'IA (pas de couche texte) */
+  source_texte?: 'natif' | 'ocr' | 'transcription_ia'
   champs: ChampLu[]
   resume: Record<Verification, number>
   caracteres_lus: number
@@ -66,6 +68,10 @@ export interface Piece {
   extraction_statut: 'en_file' | 'en_cours' | 'terminee' | 'erreur' | null
   extraction: Extraction | null
   extraction_erreur: string | null
+  /** Texte que l'agent est en train d'écrire (tâche en cours), si l'hébergement le diffuse */
+  progression?: string | null
+  /** Ce que fait l'agent en ce moment, ex. « Claude lit le document » */
+  activite?: string | null
 }
 
 export interface Compteurs {
@@ -187,7 +193,9 @@ async function telechargerFichier(chemin: string, nom: string) {
   if (!API_URL) throw new ErreurApi(0, 'VITE_API_URL non configurée')
   const r = await fetch(`${API_URL}${chemin}`, { headers: enTetes() })
   if (!r.ok) throw new ErreurApi(r.status, messageErreur(await r.json().catch(() => null), r.status))
-  const url = URL.createObjectURL(await r.blob())
+  const contenu = await r.blob()
+  if (window.conformiteEnregistrer) return window.conformiteEnregistrer(nom, contenu)
+  const url = URL.createObjectURL(contenu)
   const a = document.createElement('a')
   a.href = url
   a.download = nom

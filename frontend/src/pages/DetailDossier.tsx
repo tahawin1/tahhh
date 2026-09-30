@@ -184,6 +184,13 @@ function CartePiece({
         {piece.legalisation_requise && <span className="drapeau">Légalisation / apostille requise</span>}
       </div>
 
+      {piece.activite && (
+        <div className="agent-en-direct" aria-live="polite">
+          <div className="agent-titre"><span className="pulsation" aria-hidden /> {piece.activite}</div>
+          {piece.progression && <pre className="agent-flux">{piece.progression}</pre>}
+        </div>
+      )}
+
       {piece.erreur && <p className="message erreur">{piece.erreur}</p>}
       {piece.valide_par && (
         <p className="secondaire">

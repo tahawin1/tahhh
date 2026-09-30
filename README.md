@@ -133,7 +133,12 @@ cd frontend && cp .env.example .env.local && npm install && npm run dev
 Voir `frontend/README.md`, et **`DEPLOIEMENT.md`** pour le serveur de
 l'entreprise, le tunnel ngrok (ou Cloudflare) et Vercel.
 
-### 9. Démonstration hors ligne
+### 9. Édition claude.ai (sans serveur)
+Le même tableau de bord, publié sur claude.ai, avec base de données,
+stockage des documents et agent (Claude) intégrés : voir
+`claude_ai/README.md`.
+
+### 10. Démonstration hors ligne
 `demo/construire.py` assemble le frontend de production et un instantané
 des données réelles du backend (`demo/instantane.json`) en une page
 autonome, consultable sans serveur (validations et rejets simulés dans

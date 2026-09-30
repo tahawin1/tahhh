@@ -136,6 +136,9 @@ supporte déjà.
 - [x] Agent — étape 1 : lecture des documents reçus du fournisseur (OCR +
       extraction des champs déclarés dans les YAML, chaque valeur confrontée
       au texte réel) — testée sur des spécimens fictifs, texte et scan
+- [x] Édition claude.ai (`claude_ai/`) : même tableau de bord, sans serveur,
+      l'agent y est Claude (et non Mistral) — voir claude_ai/README.md ;
+      confidentialité des documents fournisseurs à valider par la direction
 - [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
       reçus (expiration, produit, classe, émetteur) — règles en YAML
 - [ ] Agent — étape 3 : projets remplis avec les données extraites

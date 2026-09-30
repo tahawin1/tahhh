@@ -38,6 +38,13 @@ export default function App() {
   const [sante, setSante] = useState<Sante | null>(null)
   const [santeErreur, setSanteErreur] = useState<string | null>(null)
 
+  // Hébergement qui connaît déjà l'utilisateur (édition claude.ai) : pas d'écran de connexion
+  useEffect(() => {
+    if (session || !window.conformiteSession) return
+    window.conformiteSession.then((s) => { if (s) ouvrirSession(s) }, () => {})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   useEffect(() => {
     const surChangement = () => setRoute(lireRoute())
     window.addEventListener('hashchange', surChangement)

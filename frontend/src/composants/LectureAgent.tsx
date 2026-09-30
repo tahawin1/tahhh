@@ -61,7 +61,9 @@ export default function LectureAgent({
         <p className="secondaire">Aucun document reçu pour l'instant.</p>
       )}
 
-      {enCours && <p className="message encours">Lecture du document par l'agent en cours (OCR puis extraction, quelques minutes)…</p>}
+      {enCours && !piece.activite && (
+        <p className="message encours">Lecture du document par l'agent en cours (OCR puis extraction, quelques minutes)…</p>
+      )}
       {piece.extraction_statut === 'erreur' && <p className="message erreur">Lecture impossible : {piece.extraction_erreur}</p>}
       {erreur && <p className="message erreur">{erreur}</p>}
 
@@ -74,6 +76,12 @@ export default function LectureAgent({
             )}
             {e.resume.absent > 0 && <>, {e.resume.absent} absent(s)</>}.
           </p>
+          {e.source_texte === 'transcription_ia' && (
+            <p className="message attention">
+              Document scanné : les citations ont été contrôlées contre la transcription faite par l'IA elle-même,
+              pas contre une couche texte. Vérifier les valeurs sur l'original.
+            </p>
+          )}
           <dl className="champs-lus">
             {e.champs.map((c) => {
               const v = VERDICT[c.verification]

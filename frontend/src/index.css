@@ -200,6 +200,14 @@ button.lien { border: 0; background: none; padding: 0; color: var(--accent); fon
 .valeur { font-weight: 600; overflow-wrap: break-word; }
 .citation { color: var(--secondaire); font-size: 0.8rem; font-style: italic; overflow-wrap: break-word; }
 
+.agent-en-direct { border: 1px solid var(--encours); background: var(--encours-fond); border-radius: 6px; padding: 0.6rem 0.75rem; display: grid; gap: 0.4rem; }
+.agent-titre { display: flex; align-items: center; gap: 0.5rem; color: var(--encours); font-weight: 600; font-size: 0.88rem; }
+.pulsation { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--encours); animation: pulser 1.2s ease-in-out infinite; flex: none; }
+@keyframes pulser { 50% { opacity: 0.25; } }
+@media (prefers-reduced-motion: reduce) { .pulsation { animation: none; } }
+.agent-flux { margin: 0; max-height: 260px; overflow-y: auto; white-space: pre-wrap; overflow-wrap: break-word;
+  font: 0.8rem/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--texte); }
+
 @media (max-width: 760px) {
   .deux-colonnes, .ligne { grid-template-columns: 1fr; }
   .pieces { grid-template-columns: 1fr; }

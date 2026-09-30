@@ -1,0 +1,3381 @@
+{
+ "genere_le": "2026-09-30T16:49:10.947636+00:00",
+ "regles_version": "820964dbfe3d",
+ "jours_depot": [
+  "mercredi",
+  "jeudi"
+ ],
+ "pays": {
+  "maroc": {
+   "autorite": "Direction du Médicament et de la Pharmacie (DMP)",
+   "classification": [
+    "I",
+    "IIA",
+    "IIB",
+    "III"
+   ]
+  },
+  "chine": {
+   "autorite": "National Medical Products Administration (NMPA)",
+   "classification": [
+    "I",
+    "II",
+    "III"
+   ]
+  },
+  "inde": {
+   "autorite": "Central Drugs Standard Control Organization (CDSCO)",
+   "classification": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "union_europeenne": {
+   "autorite": "Organismes notifiés (évaluation de conformité) + autorités compétentes nationales",
+   "classification": [
+    "I",
+    "IIa",
+    "IIb",
+    "III"
+   ]
+  }
+ },
+ "requis": {
+  "chine|I": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "piece_specifique_chine",
+    "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+    "nature": "a_fournir",
+    "fourni_par": "la NMPA (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.chine",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "chine|IIA": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_chine",
+    "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+    "nature": "a_fournir",
+    "fourni_par": "la NMPA (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.chine",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "chine|IIB": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_chine",
+    "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+    "nature": "a_fournir",
+    "fourni_par": "la NMPA (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.chine",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "chine|III": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_chine",
+    "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+    "nature": "a_fournir",
+    "fourni_par": "la NMPA (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.chine",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "inde|I": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "piece_specifique_inde",
+    "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+    "nature": "a_fournir",
+    "fourni_par": "la CDSCO (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.inde",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "inde|IIA": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_inde",
+    "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+    "nature": "a_fournir",
+    "fourni_par": "la CDSCO (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.inde",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "inde|IIB": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_inde",
+    "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+    "nature": "a_fournir",
+    "fourni_par": "la CDSCO (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.inde",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "inde|III": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_inde",
+    "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+    "nature": "a_fournir",
+    "fourni_par": "la CDSCO (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.inde",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "union_europeenne|I": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "piece_specifique_union_europeenne",
+    "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme notifié (via le fabricant)",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "piece_specifique_selon_origine.union_europeenne",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_organisme_notifie",
+      "libelle": "N° de l'organisme notifié",
+      "description": "numéro d'identification à 4 chiffres de l'organisme notifié"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le certificat"
+     }
+    ]
+   }
+  ],
+  "union_europeenne|IIA": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_union_europeenne",
+    "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme notifié (via le fabricant)",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "piece_specifique_selon_origine.union_europeenne",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_organisme_notifie",
+      "libelle": "N° de l'organisme notifié",
+      "description": "numéro d'identification à 4 chiffres de l'organisme notifié"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le certificat"
+     }
+    ]
+   }
+  ],
+  "union_europeenne|IIB": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_union_europeenne",
+    "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme notifié (via le fabricant)",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "piece_specifique_selon_origine.union_europeenne",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_organisme_notifie",
+      "libelle": "N° de l'organisme notifié",
+      "description": "numéro d'identification à 4 chiffres de l'organisme notifié"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le certificat"
+     }
+    ]
+   }
+  ],
+  "union_europeenne|III": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_union_europeenne",
+    "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme notifié (via le fabricant)",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "piece_specifique_selon_origine.union_europeenne",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_organisme_notifie",
+      "libelle": "N° de l'organisme notifié",
+      "description": "numéro d'identification à 4 chiffres de l'organisme notifié"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le certificat"
+     }
+    ]
+   }
+  ],
+  "autre|I": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "piece_specifique_autre",
+    "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+    "nature": "a_fournir",
+    "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.autre",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "autre|IIA": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_autre",
+    "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+    "nature": "a_fournir",
+    "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.autre",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "autre|IIB": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_autre",
+    "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+    "nature": "a_fournir",
+    "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.autre",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ],
+  "autre|III": [
+   {
+    "id": "demande_signee",
+    "nom": "Demande signée adressée au ministre de la Santé",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre de demande d'enregistrement du dispositif médical, adressée au ministre de la Santé (Direction du Médicament et de la Pharmacie) par le représentant légal de l'établissement demandeur : objet, désignation du dispositif, classe, fabricant et pays d'origine, liste des pièces jointes, formule de politesse, date, signature et cachet.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "fiche_signaletique",
+    "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Fiche signalétique du dispositif, sous forme de rubriques à remplir : désignation, nom commercial, classe, références et présentations, fabricant (nom, adresse, pays), établissement demandeur, mandataire, usage prévu, conditions de conservation ; mention des exemplaires, date, signature et cachet du représentant légal.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "dossier_technique",
+    "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Sommaire structuré du dossier technique (trame) : description et principe de fonctionnement, composition et matériaux, procédé de fabrication, contrôles qualité et spécifications, stérilisation le cas échéant, étiquetage et notice, évaluation des risques. Chaque section indique les documents du fabricant à y joindre.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "bulletin_analyse",
+    "nom": "Bulletin d'analyse signé par le fabricant",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "fabricant",
+      "libelle": "Fabricant",
+      "description": "fabricant qui a réalisé l'analyse"
+     },
+     {
+      "type": "texte",
+      "nom": "produit",
+      "libelle": "Produit analysé",
+      "description": "désignation du dispositif analysé"
+     },
+     {
+      "type": "texte",
+      "nom": "numero_lot",
+      "libelle": "Numéro de lot",
+      "description": "numéro de lot ou de série analysé"
+     },
+     {
+      "type": "date",
+      "nom": "date_analyse",
+      "libelle": "Date d'analyse",
+      "description": "date de l'analyse ou du bulletin"
+     },
+     {
+      "type": "texte",
+      "nom": "conclusion",
+      "libelle": "Conclusion",
+      "description": "conclusion de l'analyse (conforme, non conforme…)"
+     },
+     {
+      "type": "texte",
+      "nom": "signataire",
+      "libelle": "Signataire",
+      "description": "nom et fonction de la personne qui a signé le bulletin"
+     }
+    ]
+   },
+   {
+    "id": "echantillon_etiquetage",
+    "nom": "Échantillon modèle, emballage et étiquetage conforme",
+    "nature": "a_fournir",
+    "fourni_par": "le fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": []
+   },
+   {
+    "id": "mandataire_maroc",
+    "nom": "Mandataire du fabricant établi au Maroc",
+    "nature": "a_rediger",
+    "fourni_par": null,
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": "Lettre par laquelle le fabricant désigne son mandataire établi au Maroc pour le dispositif concerné : identité du fabricant et du mandataire, étendue du mandat, engagement du mandataire, date, signature et cachet du fabricant.",
+    "champs_a_extraire": []
+   },
+   {
+    "id": "iso_13485",
+    "nom": "Certificat ISO 13485 (système de management de la qualité)",
+    "nature": "a_fournir",
+    "fourni_par": "l'organisme de certification du fabricant",
+    "traduction_requise": false,
+    "legalisation_requise": false,
+    "origine_regle": "socle_commun",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "norme",
+      "libelle": "Référentiel",
+      "description": "norme certifiée, avec son année (ex. ISO 13485:2016)"
+     }
+    ]
+   },
+   {
+    "id": "piece_specifique_autre",
+    "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+    "nature": "a_fournir",
+    "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+    "traduction_requise": true,
+    "legalisation_requise": true,
+    "origine_regle": "piece_specifique_selon_origine.autre",
+    "consigne_redaction": null,
+    "champs_a_extraire": [
+     {
+      "type": "texte",
+      "nom": "numero",
+      "libelle": "Numéro du certificat",
+      "description": "numéro, référence ou identifiant du certificat ou de l'autorisation"
+     },
+     {
+      "type": "texte",
+      "nom": "emetteur",
+      "libelle": "Émis par",
+      "description": "autorité ou organisme qui a délivré le document"
+     },
+     {
+      "type": "texte",
+      "nom": "titulaire",
+      "libelle": "Titulaire (fabricant)",
+      "description": "entreprise titulaire du certificat, en général le fabricant"
+     },
+     {
+      "type": "texte",
+      "nom": "produit_couvert",
+      "libelle": "Produits couverts",
+      "description": "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+     },
+     {
+      "type": "date",
+      "nom": "date_emission",
+      "libelle": "Date d'émission",
+      "description": "date de délivrance ou d'émission du document"
+     },
+     {
+      "type": "date",
+      "nom": "date_expiration",
+      "libelle": "Valable jusqu'au",
+      "description": "date de fin de validité ou d'expiration du document"
+     },
+     {
+      "type": "texte",
+      "nom": "classe_indiquee",
+      "libelle": "Classe indiquée",
+      "description": "classe du dispositif indiquée sur le document"
+     }
+    ]
+   }
+  ]
+ },
+ "extraits": {
+  "demande_signee": [
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 6,
+    "score": 0.7615,
+    "texte": "* une copie de l’ancien certificat d'enregistrement ; * une déclaration sur l’honneur de l'établissement titulaire de l'enregistrement attestant que le produit n’a subi aucun changement. Dans le cas contraire, les changements doivent être précisés et justifiés ; * et, en sus, pour les dispositifs médicaux importés ou importés semi-finis, une attestation de l’établissement de fabrication ou de son mandataire démontrant le lien entre ce dernier et l'établissement demandeur. b) Pièces techniques : * une revue de matériovigilance des 5 dernières années, délivrée par l'établissement de fabrication ; + le projet d’étiquetage et, le cas échéant, le projet de notice d'utilisation, signés et cachetés par le représentant légal de l'établissement demandeur conformément aux exigences essentielles de q"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 7,
+    "score": 0.7467,
+    "texte": "de fabrication ; + l'établissement de fabrication dans le cas des produits importés ou importés semi-finis ; * la durée de validité du produit ou des conditions de conservation ; : j * le conditionnement primaire et/ou secondaire’ du produit ; * les mentions obligatoires concernant l'étiquetage et la notice ; + la composition du kit ou du système de dispositifs médicaux dans lé cas d’élimination d’un de leurs éléments ; + les indications d’utilisation ; + le code de l'«organisme notifié » pour les dispositifs médicaux commercialisés en Europe (Code CE pour les dispositifs marqués CE) ; + l'ajout ou la suppression de référence ; + la série de l'équipement médical ; + l’extension du dosage ou de la présentation du dispositif médical ; + toute modification mineure au niveau de la composition "
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 5,
+    "score": 0.744,
+    "texte": "i) les instructions sur la manipulation permettant d’exploiter toutes les fonctionnalités offertes par l'équipement ; ii) les recommandations de bonne utilisation ; iii) les procédures de nettoyage, de désinfection et de stérilisation ainsi que les produits recommandés durant ces procédures ; iv) le cas échéant, les procédures à prendre par l'exploitant pour assurer d’une part la sécurité du patient et de l’utilisateur et d’autre part la protection de l'équipement et de l’environnement ; v) Les paramètres mesurables par l'équipement. — une documentation technique contenant au moins les informations suivantes : i) la description et la fréquence de toutes les opérations nécessaires de maintenance préventive ; ii) si nécessaire, la liste des pièces de rechange et consommables à remplacer dans"
+   }
+  ],
+  "fiche_signaletique": [
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 3,
+    "score": 0.7111,
+    "texte": "d'enregistrement ; * une fiche signalétique établie en trois exemplaires, datée, signée et cachetée par le représentant légal de l'établissement, avec une version électronique ; * une attestation de l’établissement de fabrication ou de son mandataire démontrant le lien entre celui-ci et l'établissement demandeur. N° 6396 — 3 hija 1436 (17-9-2015) BULLETIN OFFICIEL 3483 - Pour les dispositifs médicaux appartenant aux classes de risque II À, II B et III et les sous-classes Is et Im de la classe I : + le certificat de marquage CE, ou l'attestation « FDA », ou l'autorisation de mise en vente (CV L) ou équivalent délivrée par les autorités compétentes au niveau du pays d’origine. Lorsque le marquage est apposé sur l'échantillon, il y a lieu de produire les attestations correspondantes. - Pour l"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 26,
+    "score": 0.7058,
+    "texte": "dispositifs médicaux doivent être munis de systèmes appropriés permettant d'éviter, autant que possible, le dégagement accidentel à des niveaux dangereux d'énergie provenant d’une source d'énergie et/ou des substances. 12.9. La fonction des commandes et des indicateurs doit être clairement indiquéé sur les dispositifs médicaux. Lorsqu'un dispositif médical porte des instructions nécessaires à son fonctionnement ou indique des paramètres de fonctionnement ou de réglage à l’aide d’un système de visualisation, ces informations doivent pouvoir être comprises par l’utilisateur et, le cas échéant, par le patient. 13. Informations fournies par le fabricant : 13.1. Chaque dispositif médical doit être accompagné des informations nécessaires pour pouvoir être utilisé en toute sécurité et permettre d"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 7,
+    "score": 0.7044,
+    "texte": "de fabrication ; + l'établissement de fabrication dans le cas des produits importés ou importés semi-finis ; * la durée de validité du produit ou des conditions de conservation ; : j * le conditionnement primaire et/ou secondaire’ du produit ; * les mentions obligatoires concernant l'étiquetage et la notice ; + la composition du kit ou du système de dispositifs médicaux dans lé cas d’élimination d’un de leurs éléments ; + les indications d’utilisation ; + le code de l'«organisme notifié » pour les dispositifs médicaux commercialisés en Europe (Code CE pour les dispositifs marqués CE) ; + l'ajout ou la suppression de référence ; + la série de l'équipement médical ; + l’extension du dosage ou de la présentation du dispositif médical ; + toute modification mineure au niveau de la composition "
+   }
+  ],
+  "dossier_technique": [
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 4,
+    "score": 0.6769,
+    "texte": "Pièces techniques : * une documentation technique comportant une check- list démontrant la conformité du dispositif médical aux exigences essentielles de qualité, de sécurité et de performance précitées et indiquant celles qui ne sont pas applicables au dispositif médical concerné ainsi que les normes correspondantes et la référence aux documents internes utilisés ; * une déclaration de l’établissement concerné attestant la conformité du dispositif médical aux exigences essentielles de qualité, de sécurité et de performance en vigueur ; * le projet d’étiquetage et, le cas échéant, le projet de la notice d’utilisation, signés et cachetés par le représentant légal de l'établissement ; * un échantillon modèle-vente ou le prototype du ou des dispositifs médicaux ne constituant pas un équipemen"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 22,
+    "score": 0.6699,
+    "texte": "est utilisée séparément, est susceptible d’être considérée comme un médicament et qui peut agir sur le corps humain par une action accessoire à celle du dispositif médical, la sécurité, la qualité et l’utilité de cette substance doivent être vérifiées, en tenant compte de la destination du dispositif médical, par analogie avec les méthodes appropriées. 7.5. Les dispositifs médicaux doivent être conçus et fabriqués de manière à réduire à un minimum les risques découlant des substances dégagées par le dispositif médical. 7.6. Les dispositifs médicaux doivent être conçus et fabriqués de manière à minimiser autant que possible les risques dus à la pénétration non intentionnelle de substances dans le dispositif médical, en tenant compte du dispositif médical et de la nature du milieu dans leque"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 26,
+    "score": 0.6494,
+    "texte": "dispositifs médicaux doivent être munis de systèmes appropriés permettant d'éviter, autant que possible, le dégagement accidentel à des niveaux dangereux d'énergie provenant d’une source d'énergie et/ou des substances. 12.9. La fonction des commandes et des indicateurs doit être clairement indiquéé sur les dispositifs médicaux. Lorsqu'un dispositif médical porte des instructions nécessaires à son fonctionnement ou indique des paramètres de fonctionnement ou de réglage à l’aide d’un système de visualisation, ces informations doivent pouvoir être comprises par l’utilisateur et, le cas échéant, par le patient. 13. Informations fournies par le fabricant : 13.1. Chaque dispositif médical doit être accompagné des informations nécessaires pour pouvoir être utilisé en toute sécurité et permettre d"
+   }
+  ],
+  "mandataire_maroc": [
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 1,
+    "score": 0.6067,
+    "texte": "(4 août 2015). EL HOUSSAINE LOUARDI. 3480 BULLETIN OFFICIEL N° 6396 — 3 hija 1436 (17-9-2015) ANNEXE MODELE DE DECLARATION D'UN ETABLISSEMENT DE FABRICATION, D'IMPORTATION, D’EXPORTATION, DE DISTRIBUTION OÙ DE MAINTENANCE DES DISPOSITIFS MEDICAUX 1- IDENTIFICATION DE L’'ETABLISSEMENT OBJET DE LA DECLARATION Nom et raison sociale de l'établissement Adresse du siège social : Adresse du ou des sites de l'établissement : Nom et qualité du représentant légal de l’établissement déclarant : .… Numéro de téléphone : … Numéro de Fax : AUX C ARRETE 2- IDENTIFICATION DES ACTIVITES DE L'ETABLISSEMENT OBJET DE LA DECLARATION (Réponses multiples possibles) (Fabrication Importation en) Exportation CC pistribution CO Maintenance C2 DA stériles C2 DM Non stériles 3- IDENTIFICATION DES RESSOURCES DE L’ETABL"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 13,
+    "score": 0.6066,
+    "texte": "AU MINISTERE DE LA SANTE Suite à l'avis de la commission nationak consultative des dispositifs médicaux réunie le … Le (les) dispositif(s) médical (s) dont les caractéristiques sont indiquées à la partie I ci-dessus est (sont) enregistré(s) au ministère de la santé sous ke n°... /DMP en date du... conformément aux dispositions de la loi n°84-12 et des textes pris pour son application. Ce certificat est valabk jusqu’au Signature et cachet du Ministre de la Santé ou de son déégataire *k * * N° 6396 — 3 hija 1436 (17-9-2015) BULLETIN OFFICIEL 3493 Ann I VISA DE PUBLICITE PARTIE I : RESERVEE AU DEMANDEUR Statut du (des) dispositif médical (s) : Dispositif médical seul Fabriqué localement Kit de DM Importé | Système de DM Importé semi-fini C1 OCO0ODUU Famille ou gamme de DM Informations concern"
+   },
+   {
+    "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+    "pays": "maroc",
+    "date_version": "2015-08-04",
+    "fichier": "maroc_arretes_2853-2856.pdf",
+    "chunk_index": 14,
+    "score": 0.602,
+    "texte": "médical suivant : Désignation : Nom de marque / Nom commercial: Présentation : Numéro de Référence : Quantité : Ce dispositif médical doit être utilisé sous la responsabilité du médecin prescripteur. La présente autorisation est valable pour une seule importation. Signature et cachet du ministre de la santé ou de son dékégataire N° 6396 — 3 hija 1436 (17-9-2015) BULLETIN OFFICIEL 3495 AUTORISATION SPECIFIQUE D'UN DISPOSITIF MEDICAL EXPERIMENTAL IMPORTE OU FABRIQUE LOCALEMENT, DESTINE A LA RECHERCHE BIOMEDICALE PARTIE I : RESERVEE AU DEMANDEUR Statut du (des) dispositif(s) médical (s) : Fabriqué bcalkement [] Importé ol Informations concernant k dispositif médical (s) : Désignation du dispositif : Nom de marque /Nom commercial : Présentation (s) : Numéro(s) de(s) référence(s) : Quantité : P"
+   }
+  ]
+ }
+}
