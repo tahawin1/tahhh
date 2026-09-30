@@ -26,7 +26,7 @@ from __future__ import annotations
 import datetime
 import os
 
-from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String, Text, create_engine
+from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String, Text, create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker
 
 DATABASE_URL = os.environ.get(
@@ -93,6 +93,15 @@ class Document(Base):
     valide_par: Mapped[str | None] = mapped_column(String(120), nullable=True)
     valide_le: Mapped[datetime.datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     commentaire: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # Document reçu du fournisseur (pièces a_fournir) et lecture par l'agent
+    champs_a_extraire: Mapped[list | None] = mapped_column(JSON, nullable=True)  # figés depuis les règles
+    fichier_recu: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    nom_fichier_recu: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    recu_le: Mapped[datetime.datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    extraction_statut: Mapped[str | None] = mapped_column(String(20), nullable=True)  # en_file|en_cours|terminee|erreur
+    extraction: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    extraction_erreur: Mapped[str | None] = mapped_column(Text, nullable=True)
+    texte_recu: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     dossier: Mapped[Dossier] = relationship(back_populates="documents")
 
@@ -118,9 +127,19 @@ SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
 
 
 def initialiser_base(moteur=None) -> None:
-    """Crée les tables manquantes (pas de migration : à passer sous Alembic
-    avant la mise en production si le schéma évolue)."""
-    Base.metadata.create_all(moteur or engine)
+    """Crée les tables manquantes, puis ajoute les colonnes apparues depuis
+    (migration minimale, toujours par ajout de colonnes facultatives, jamais
+    de suppression). À remplacer par Alembic avant la mise en production."""
+    moteur = moteur or engine
+    Base.metadata.create_all(moteur)
+    inspecteur = inspect(moteur)
+    with moteur.begin() as conn:
+        for table in Base.metadata.sorted_tables:
+            existantes = {c["name"] for c in inspecteur.get_columns(table.name)}
+            for colonne in table.columns:
+                if colonne.name not in existantes:
+                    type_sql = colonne.type.compile(dialect=moteur.dialect)
+                    conn.execute(text(f'ALTER TABLE {table.name} ADD COLUMN "{colonne.name}" {type_sql}'))
 
 
 def journaliser(session, dossier_id: int, acteur: str, action: str, detail: str | None = None, document_id: int | None = None):

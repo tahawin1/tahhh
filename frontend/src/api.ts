@@ -24,6 +24,25 @@ export interface Source {
   score?: number
 }
 
+export type Verification = 'verifie' | 'citation_introuvable' | 'valeur_hors_citation' | 'absent'
+
+export interface ChampLu {
+  nom: string
+  libelle: string
+  type: 'texte' | 'date'
+  valeur: string | null
+  valeur_normalisee: string | null
+  citation: string | null
+  verification: Verification
+}
+
+export interface Extraction {
+  champs: ChampLu[]
+  resume: Record<Verification, number>
+  caracteres_lus: number
+  modele: string
+}
+
 export interface Piece {
   id: number
   code: string
@@ -41,6 +60,12 @@ export interface Piece {
   valide_par: string | null
   valide_le: string | null
   commentaire: string | null
+  lisible_par_agent: boolean
+  nom_fichier_recu: string | null
+  recu_le: string | null
+  extraction_statut: 'en_file' | 'en_cours' | 'terminee' | 'erreur' | null
+  extraction: Extraction | null
+  extraction_erreur: string | null
 }
 
 export interface Compteurs {
@@ -158,6 +183,18 @@ async function requete<T>(chemin: string, options: RequestInit = {}): Promise<T>
 const post = <T>(chemin: string, donnees: unknown) =>
   requete<T>(chemin, { method: 'POST', headers: enTetes(true), body: JSON.stringify(donnees) })
 
+async function telechargerFichier(chemin: string, nom: string) {
+  if (!API_URL) throw new ErreurApi(0, 'VITE_API_URL non configurée')
+  const r = await fetch(`${API_URL}${chemin}`, { headers: enTetes() })
+  if (!r.ok) throw new ErreurApi(r.status, messageErreur(await r.json().catch(() => null), r.status))
+  const url = URL.createObjectURL(await r.blob())
+  const a = document.createElement('a')
+  a.href = url
+  a.download = nom
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
 export const api = {
   sante: () => requete<Sante>('/health', { headers: enTetes() }),
   pays: () => requete<Record<string, { autorite: string; classification: string[] }>>('/pays', { headers: enTetes() }),
@@ -174,18 +211,22 @@ export const api = {
     post<DossierDetail>(`/dossiers/${id}/documents/${piece}/valider`, { validateur, commentaire }),
   rejeter: (id: number, piece: number, validateur: string, commentaire: string) =>
     post<DossierDetail>(`/dossiers/${id}/documents/${piece}/rejeter`, { validateur, commentaire }),
+  deposerRecu: (id: number, piece: number, fichier: File, acteur: string) => {
+    const donnees = new FormData()
+    donnees.append('fichier', fichier)
+    donnees.append('acteur', acteur)
+    // pas de Content-Type : le navigateur fixe lui-même la frontière multipart
+    return requete<DossierDetail>(`/dossiers/${id}/documents/${piece}/document-recu`, {
+      method: 'POST', headers: enTetes(), body: donnees,
+    })
+  },
+  relire: (id: number, piece: number, acteur: string) =>
+    post<DossierDetail>(`/dossiers/${id}/documents/${piece}/relire`, { acteur }),
   apercuProjet: (id: number, piece: number) =>
     requete<ApercuProjet>(`/dossiers/${id}/documents/${piece}/apercu`, { headers: enTetes() }),
   // Téléchargement via fetch (et non un simple lien) pour pouvoir envoyer la clé d'API
-  telecharger: async (id: number, piece: Piece) => {
-    if (!API_URL) throw new ErreurApi(0, 'VITE_API_URL non configurée')
-    const r = await fetch(`${API_URL}/dossiers/${id}/documents/${piece.id}/fichier`, { headers: enTetes() })
-    if (!r.ok) throw new ErreurApi(r.status, messageErreur(await r.json().catch(() => null), r.status))
-    const url = URL.createObjectURL(await r.blob())
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `dossier${id}_${piece.code}.docx`
-    a.click()
-    URL.revokeObjectURL(url)
-  },
+  telecharger: (id: number, piece: Piece) =>
+    telechargerFichier(`/dossiers/${id}/documents/${piece.id}/fichier`, `dossier${id}_${piece.code}.docx`),
+  telechargerRecu: (id: number, piece: Piece) =>
+    telechargerFichier(`/dossiers/${id}/documents/${piece.id}/document-recu`, piece.nom_fichier_recu ?? `${piece.code}.pdf`),
 }

@@ -36,7 +36,7 @@ from pathlib import Path
 from typing import Literal
 
 import requests
-from fastapi import Depends, FastAPI, HTTPException, Request
+from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
@@ -169,6 +169,12 @@ class DocumentOut(BaseModel):
     valide_par: str | None
     valide_le: datetime.datetime | None
     commentaire: str | None
+    lisible_par_agent: bool
+    nom_fichier_recu: str | None
+    recu_le: datetime.datetime | None
+    extraction_statut: str | None
+    extraction: dict | None
+    extraction_erreur: str | None
 
 
 class EvenementOut(BaseModel):
@@ -260,8 +266,10 @@ def _detail(dossier: Dossier) -> dict:
         **_resume(dossier),
         "documents": [
             {
-                **{k: getattr(d, k) for k in DocumentOut.model_fields if k != "fichier_disponible"},
+                **{k: getattr(d, k) for k in DocumentOut.model_fields
+                   if k not in ("fichier_disponible", "lisible_par_agent")},
                 "fichier_disponible": bool(d.fichier) and Path(d.fichier).exists(),
+                "lisible_par_agent": d.nature == "a_fournir" and bool(_champs_de(d)),
             }
             for d in dossier.documents
         ],
@@ -272,6 +280,16 @@ def _detail(dossier: Dossier) -> dict:
         ],
         "prochain_creneau_depot": str(prochain_creneau_depot()) if statut == "pret_pour_depot_manuel" else None,
     }
+
+
+def _champs_de(doc: Document) -> list[dict]:
+    """Champs à extraire figés à la création du dossier. Pour un dossier créé
+    avant l'existence de cette fonction, ils sont repris des règles actuelles."""
+    if doc.champs_a_extraire is None and doc.nature == "a_fournir":
+        dossier = doc.dossier
+        actuels = {d.id: d for d in documents_requis_maroc(dossier.pays_origine, classe=dossier.classe)}
+        doc.champs_a_extraire = actuels[doc.code].champs_a_extraire if doc.code in actuels else []
+    return doc.champs_a_extraire or []
 
 
 def _charger_dossier(session, dossier_id: int) -> Dossier:
@@ -413,6 +431,7 @@ def creer_dossier(requete: DossierCreation):
                     nature=d.nature,
                     fourni_par=d.fourni_par,
                     consigne_redaction=d.consigne_redaction,
+                    champs_a_extraire=d.champs_a_extraire,
                     traduction_requise=d.traduction_requise,
                     legalisation_requise=d.legalisation_requise,
                     origine_regle=d.origine_regle,
@@ -518,6 +537,84 @@ def rejeter_piece(dossier_id: int, document_id: int, decision: Decision):
                     f"{doc.nom} — {decision.commentaire}", document_id=doc.id)
         session.commit()
         return _detail(_charger_dossier(session, dossier_id))
+
+
+TAILLE_MAX_RECU = 20 * 1024 * 1024
+
+
+@app.post("/dossiers/{dossier_id}/documents/{document_id}/document-recu", response_model=DossierDetail, status_code=202)
+async def deposer_document_recu(
+    dossier_id: int, document_id: int, fichier: UploadFile = File(...), acteur: str = Form(..., min_length=2, max_length=120),
+):
+    """Dépose le document reçu du fournisseur pour une pièce à fournir ;
+    l'agent le lit en tâche de fond (texte ou OCR, puis extraction contrôlée)."""
+    import extraction
+
+    extension = Path(fichier.filename or "").suffix.lower()
+    if extension not in extraction.EXTENSIONS_ACCEPTEES:
+        raise HTTPException(status_code=415, detail="Format non pris en charge : déposer un PDF, PNG ou JPG.")
+    contenu = await fichier.read(TAILLE_MAX_RECU + 1)
+    if len(contenu) > TAILLE_MAX_RECU:
+        raise HTTPException(status_code=413, detail="Fichier trop volumineux (20 Mo maximum).")
+    if not contenu:
+        raise HTTPException(status_code=422, detail="Fichier vide.")
+
+    with db.SessionLocal() as session:
+        doc = _charger_document(session, dossier_id, document_id)
+        if doc.nature != "a_fournir":
+            raise HTTPException(status_code=409, detail="Seules les pièces à fournir reçoivent un document du fournisseur.")
+        if not _champs_de(doc):
+            raise HTTPException(status_code=409, detail=f"'{doc.nom}' n'a pas de champs à lire déclarés dans les règles.")
+        if doc.statut == "valide":
+            raise HTTPException(status_code=409, detail="Pièce déjà validée : la rejeter avant de déposer un nouveau document.")
+        if doc.extraction_statut in ("en_file", "en_cours"):
+            raise HTTPException(status_code=409, detail="Une lecture est déjà en cours pour cette pièce.")
+
+        horodatage = maintenant().strftime("%Y%m%d-%H%M%S")
+        chemin = Path(doc.dossier.dossier_sortie) / "recus" / f"{doc.code}_{horodatage}{extension}"
+        chemin.parent.mkdir(parents=True, exist_ok=True)
+        chemin.write_bytes(contenu)
+        doc.fichier_recu = str(chemin)
+        doc.nom_fichier_recu = Path(fichier.filename or f"document{extension}").name[:300]
+        doc.recu_le = maintenant()
+        doc.extraction_statut = "en_file"
+        doc.extraction = None
+        doc.extraction_erreur = None
+        doc.texte_recu = None
+        journaliser(session, dossier_id, acteur, "document_recu_depose", f"{doc.nom} — {doc.nom_fichier_recu}", document_id=doc.id)
+        session.commit()
+        taches.soumettre_extraction(doc.id)
+        session.expire_all()
+        return _detail(_charger_dossier(session, dossier_id))
+
+
+@app.post("/dossiers/{dossier_id}/documents/{document_id}/relire", response_model=DossierDetail, status_code=202)
+def relire_document_recu(dossier_id: int, document_id: int, requete: Acteur):
+    """Relance la lecture du document déjà déposé (ex. après une erreur)."""
+    with db.SessionLocal() as session:
+        doc = _charger_document(session, dossier_id, document_id)
+        if not doc.fichier_recu:
+            raise HTTPException(status_code=409, detail="Aucun document reçu déposé pour cette pièce.")
+        if doc.extraction_statut in ("en_file", "en_cours"):
+            raise HTTPException(status_code=409, detail="Une lecture est déjà en cours pour cette pièce.")
+        doc.extraction_statut = "en_file"
+        doc.extraction_erreur = None
+        journaliser(session, dossier_id, requete.acteur, "lecture_demandee", doc.nom, document_id=doc.id)
+        session.commit()
+        taches.soumettre_extraction(doc.id)
+        session.expire_all()
+        return _detail(_charger_dossier(session, dossier_id))
+
+
+@app.get("/dossiers/{dossier_id}/documents/{document_id}/document-recu")
+def telecharger_document_recu(dossier_id: int, document_id: int):
+    """Télécharge le document original reçu du fournisseur."""
+    with db.SessionLocal() as session:
+        doc = _charger_document(session, dossier_id, document_id)
+        chemin = Path(doc.fichier_recu).resolve() if doc.fichier_recu else None
+        if chemin is None or not chemin.is_relative_to(OUTPUT_DIR) or not chemin.exists():
+            raise HTTPException(status_code=404, detail="Aucun document reçu pour cette pièce.")
+        return FileResponse(chemin, filename=doc.nom_fichier_recu or chemin.name)
 
 
 @app.get("/dossiers/{dossier_id}/documents/{document_id}/apercu")

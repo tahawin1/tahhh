@@ -87,6 +87,47 @@ def executer_generation(document_id: int) -> None:
         session.commit()
 
 
+def soumettre_extraction(document_id: int) -> None:
+    """Ajoute la lecture d'un document reçu à la file (remplacé dans les tests)."""
+    _executeur.submit(executer_extraction, document_id)
+
+
+def executer_extraction(document_id: int) -> None:
+    """Lit le document reçu d'une pièce à fournir et en extrait les champs
+    déclarés dans les règles, chaque valeur étant confrontée au texte réel."""
+    import extraction
+
+    with db.SessionLocal() as session:
+        doc = session.get(Document, document_id)
+        if doc is None or doc.extraction_statut != "en_file" or not doc.fichier_recu:
+            return
+        doc.extraction_statut = "en_cours"
+        doc.extraction_erreur = None
+        session.commit()
+        try:
+            resultat = extraction.extraire(Path(doc.fichier_recu), doc.champs_a_extraire or [], doc.nom)
+        except extraction.ExtractionImpossible as e:
+            doc.extraction_statut = "erreur"
+            doc.extraction_erreur = str(e)
+            journaliser(session, doc.dossier_id, "système", "lecture_echec", f"{doc.nom} — {e}", document_id=doc.id)
+        except Exception as e:  # jamais silencieux
+            doc.extraction_statut = "erreur"
+            doc.extraction_erreur = f"Erreur inattendue : {type(e).__name__}: {e}"
+            journaliser(session, doc.dossier_id, "système", "lecture_echec", doc.extraction_erreur, document_id=doc.id)
+        else:
+            doc.texte_recu = resultat.pop("texte")
+            doc.extraction = resultat
+            doc.extraction_statut = "terminee"
+            r = resultat["resume"]
+            journaliser(
+                session, doc.dossier_id, "système", "lecture_terminee",
+                f"{doc.nom} — {r['verifie']} champ(s) vérifié(s), "
+                f"{r['citation_introuvable'] + r['valeur_hors_citation']} non vérifié(s), {r['absent']} absent(s)",
+                document_id=doc.id,
+            )
+        session.commit()
+
+
 def reprendre_apres_redemarrage() -> int:
     """Au démarrage de l'API, les générations interrompues (arrêt du serveur)
     sont marquées en erreur plutôt que laissées « en cours » indéfiniment."""
@@ -96,5 +137,10 @@ def reprendre_apres_redemarrage() -> int:
             doc.statut = "erreur"
             doc.erreur = "Génération interrompue par un redémarrage du serveur — relancer."
             journaliser(session, doc.dossier_id, "système", "generation_echec", doc.erreur, document_id=doc.id)
+        lectures = session.query(Document).filter(Document.extraction_statut.in_(("en_file", "en_cours"))).all()
+        for doc in lectures:
+            doc.extraction_statut = "erreur"
+            doc.extraction_erreur = "Lecture interrompue par un redémarrage du serveur — relancer."
+            journaliser(session, doc.dossier_id, "système", "lecture_echec", doc.extraction_erreur, document_id=doc.id)
         session.commit()
-        return len(interrompus)
+        return len(interrompus) + len(lectures)

@@ -133,6 +133,15 @@ supporte déjà.
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué
+- [x] Agent — étape 1 : lecture des documents reçus du fournisseur (OCR +
+      extraction des champs déclarés dans les YAML, chaque valeur confrontée
+      au texte réel) — testée sur des spécimens fictifs, texte et scan
+- [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
+      reçus (expiration, produit, classe, émetteur) — règles en YAML
+- [ ] Agent — étape 3 : projets remplis avec les données extraites
+- [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
+      préparées (jamais envoyées sans validation)
+- [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
 - [ ] Authentification réelle (Keycloak) — aujourd'hui : clé d'API partagée
       + nom saisi par l'utilisateur (non vérifié)
 

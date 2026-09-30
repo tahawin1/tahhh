@@ -32,6 +32,10 @@ export const ACTIONS: Record<string, string> = {
   generation_echec: 'Échec de rédaction',
   piece_validee: 'Pièce validée',
   piece_rejetee: 'Pièce rejetée',
+  document_recu_depose: 'Document reçu déposé',
+  lecture_demandee: 'Lecture relancée',
+  lecture_terminee: "Document lu par l'agent",
+  lecture_echec: 'Échec de lecture',
 }
 
 export function dateHeure(iso: string | null): string {

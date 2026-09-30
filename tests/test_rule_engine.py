@@ -67,6 +67,17 @@ class TestNatureDesPieces(unittest.TestCase):
                 self.assertEqual(docs[code].nature, "a_rediger", code)
                 self.assertTrue(docs[code].consigne_redaction, f"{code} : consigne de rédaction manquante")
 
+    def test_champs_a_lire_dans_les_documents_recus(self):
+        for pays in ["chine", "inde", "union_europeenne", "autre"]:
+            docs = {d.id: d for d in documents_requis_maroc(pays, classe="IIB")}
+            for code in (f"piece_specifique_{pays}", "iso_13485", "bulletin_analyse"):
+                noms = [c["nom"] for c in docs[code].champs_a_extraire]
+                self.assertTrue(noms, f"{code} ({pays}) : aucun champ à lire")
+                self.assertEqual(len(noms), len(set(noms)))
+            self.assertEqual(docs["echantillon_etiquetage"].champs_a_extraire, [])  # pièce physique
+            certificat = {c["nom"]: c for c in docs[f"piece_specifique_{pays}"].champs_a_extraire}
+            self.assertEqual(certificat["date_expiration"]["type"], "date")
+
     def test_nature_absente_refusee(self):
         import rule_engine
 

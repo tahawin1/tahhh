@@ -15,6 +15,33 @@ classification: [I, IIA, IIB, III]
 #               il est réclamé au fournisseur, puis vérifié par un humain.
 # fourni_par : pour les pièces a_fournir, qui émet le document.
 
+# Champs que l'agent extrait des documents reçus du fournisseur (pièces
+# a_fournir). Seul ce fichier décide quels champs sont lus ; l'IA ne fait
+# que les retrouver dans le document, avec la citation qui les justifie.
+# type: texte | date   (les dates sont normalisées en AAAA-MM-JJ)
+modeles_champs:
+  certificat: &champs_certificat
+    - nom: numero
+      libelle: "Numéro du certificat"
+      description: "numéro, référence ou identifiant du certificat ou de l'autorisation"
+    - nom: emetteur
+      libelle: "Émis par"
+      description: "autorité ou organisme qui a délivré le document"
+    - nom: titulaire
+      libelle: "Titulaire (fabricant)"
+      description: "entreprise titulaire du certificat, en général le fabricant"
+    - nom: produit_couvert
+      libelle: "Produits couverts"
+      description: "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+    - nom: date_emission
+      libelle: "Date d'émission"
+      description: "date de délivrance ou d'émission du document"
+      type: date
+    - nom: date_expiration
+      libelle: "Valable jusqu'au"
+      description: "date de fin de validité ou d'expiration du document"
+      type: date
+
 socle_commun:
   - id: demande_signee
     nom: "Demande signée adressée au ministre de la Santé"
@@ -47,6 +74,26 @@ socle_commun:
     nom: "Bulletin d'analyse signé par le fabricant"
     nature: a_fournir
     fourni_par: "le fabricant"
+    champs_a_extraire:
+      - nom: fabricant
+        libelle: "Fabricant"
+        description: "fabricant qui a réalisé l'analyse"
+      - nom: produit
+        libelle: "Produit analysé"
+        description: "désignation du dispositif analysé"
+      - nom: numero_lot
+        libelle: "Numéro de lot"
+        description: "numéro de lot ou de série analysé"
+      - nom: date_analyse
+        libelle: "Date d'analyse"
+        description: "date de l'analyse ou du bulletin"
+        type: date
+      - nom: conclusion
+        libelle: "Conclusion"
+        description: "conclusion de l'analyse (conforme, non conforme…)"
+      - nom: signataire
+        libelle: "Signataire"
+        description: "nom et fonction de la personne qui a signé le bulletin"
   - id: echantillon_etiquetage
     nom: "Échantillon modèle, emballage et étiquetage conforme"
     nature: a_fournir  # pièce physique
@@ -63,6 +110,11 @@ socle_commun:
     nom: "Certificat ISO 13485 (système de management de la qualité)"
     nature: a_fournir
     fourni_par: "l'organisme de certification du fabricant"
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: norme
+        libelle: "Référentiel"
+        description: "norme certifiée, avec son année (ex. ISO 13485:2016)"
     condition: "classes IIA, IIB, III"
     classes_concernees: [IIA, IIB, III]
 
@@ -71,24 +123,39 @@ piece_specifique_selon_origine:
     document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)"
     nature: a_fournir
     fourni_par: "la NMPA (via le fabricant)"
+    champs_a_extraire: &champs_autorisation
+      - *champs_certificat
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe du dispositif indiquée sur le document"
     traduction_requise: true
     legalisation_requise: true
   inde:
     document: "Autorisation de mise en vente délivrée par la CDSCO"
     nature: a_fournir
     fourni_par: "la CDSCO (via le fabricant)"
+    champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
   union_europeenne:
     document: "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)"
     nature: a_fournir
     fourni_par: "l'organisme notifié (via le fabricant)"
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: numero_organisme_notifie
+        libelle: "N° de l'organisme notifié"
+        description: "numéro d'identification à 4 chiffres de l'organisme notifié"
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe du dispositif indiquée sur le certificat"
     traduction_requise: false
     legalisation_requise: false
   autre:
     document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485"
     nature: a_fournir
     fourni_par: "l'autorité de tutelle du pays d'origine (via le fabricant)"
+    champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
 

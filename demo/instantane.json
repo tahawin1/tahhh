@@ -1,5 +1,5 @@
 {
- "pris_le": "2026-09-30T16:19:41.081980+00:00",
+ "pris_le": "2026-09-30T16:40:27.382850+00:00",
  "health": {
   "statut": "ok",
   "services": {
@@ -85,7 +85,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 26,
@@ -103,7 +109,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 27,
@@ -121,7 +133,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 28,
@@ -139,7 +157,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 29,
@@ -157,7 +181,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 30,
@@ -175,7 +205,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 31,
@@ -193,7 +229,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 32,
@@ -211,7 +253,13 @@
      "genere_le": null,
      "valide_par": "Testeur E2E",
      "valide_le": "2026-09-30T16:17:35.715310Z",
-     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E"
+     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E",
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     }
    ],
    "evenements": [
@@ -270,7 +318,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 18,
@@ -288,7 +342,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 19,
@@ -306,7 +366,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 20,
@@ -324,7 +390,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 21,
@@ -342,7 +414,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 22,
@@ -360,7 +438,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 23,
@@ -378,7 +462,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 24,
@@ -396,7 +486,13 @@
      "genere_le": null,
      "valide_par": "Testeur E2E",
      "valide_le": "2026-09-30T16:10:36.180810Z",
-     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E"
+     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E",
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     }
    ],
    "evenements": [
@@ -455,7 +551,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 10,
@@ -473,7 +575,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 11,
@@ -491,7 +599,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 12,
@@ -509,7 +623,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 13,
@@ -527,7 +647,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 14,
@@ -545,7 +671,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 15,
@@ -563,7 +695,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 16,
@@ -581,7 +719,13 @@
      "genere_le": null,
      "valide_par": "Testeur E2E",
      "valide_le": "2026-09-30T16:04:28.331253Z",
-     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E"
+     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E",
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     }
    ],
    "evenements": [
@@ -665,7 +809,13 @@
      "genere_le": "2026-09-30T16:09:53.064350Z",
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 2,
@@ -683,7 +833,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 3,
@@ -701,7 +857,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 4,
@@ -719,7 +881,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 5,
@@ -737,7 +905,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 6,
@@ -755,7 +929,13 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
     },
     {
      "id": 7,
@@ -773,7 +953,87 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": "specimen_iso13485_scanne.pdf",
+     "recu_le": "2026-09-30T16:36:19.755364Z",
+     "extraction_statut": "terminee",
+     "extraction": {
+      "champs": [
+       {
+        "nom": "numero",
+        "libelle": "Numéro du certificat",
+        "type": "texte",
+        "valeur": "SCB-MD-2024-0457",
+        "valeur_normalisee": "SCB-MD-2024-0457",
+        "citation": "Certificate No. SCB-MD-2024-0457",
+        "verification": "verifie"
+       },
+       {
+        "nom": "emetteur",
+        "libelle": "Émis par",
+        "type": "texte",
+        "valeur": "SPECIMEN CERTIFICATION BODY GmbH",
+        "valeur_normalisee": "SPECIMEN CERTIFICATION BODY GmbH",
+        "citation": "SPECIMEN CERTIFICATION BODY GmbH",
+        "verification": "verifie"
+       },
+       {
+        "nom": "titulaire",
+        "libelle": "Titulaire (fabricant)",
+        "type": "texte",
+        "valeur": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "valeur_normalisee": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "citation": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "verification": "verifie"
+       },
+       {
+        "nom": "produit_couvert",
+        "libelle": "Produits couverts",
+        "type": "texte",
+        "valeur": "Design and manufacture of hip joint prostheses (femoral stems, acetabular cups, femoral heads)",
+        "valeur_normalisee": "Design and manufacture of hip joint prostheses (femoral stems, acetabular cups, femoral heads)",
+        "citation": "Design and manufacture of hip joint prostheses (femoral stems, acetabular cups, femoral heads)",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_emission",
+        "libelle": "Date d'émission",
+        "type": "date",
+        "valeur": "12 March 2024",
+        "valeur_normalisee": "2024-03-12",
+        "citation": "Date of issue: 12 March 2024",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_expiration",
+        "libelle": "Valable jusqu'au",
+        "type": "date",
+        "valeur": "11 March 2027",
+        "valeur_normalisee": "2027-03-11",
+        "citation": "Valid until 11 March 2027",
+        "verification": "verifie"
+       },
+       {
+        "nom": "norme",
+        "libelle": "Référentiel",
+        "type": "texte",
+        "valeur": "ISO 13485:2016",
+        "valeur_normalisee": "ISO 13485:2016",
+        "citation": "ISO 13485:2016",
+        "verification": "verifie"
+       }
+      ],
+      "resume": {
+       "verifie": 7,
+       "citation_introuvable": 0,
+       "valeur_hors_citation": 0,
+       "absent": 0
+      },
+      "caracteres_lus": 706,
+      "modele": "mistral"
+     },
+     "extraction_erreur": null
     },
     {
      "id": 8,
@@ -791,10 +1051,118 @@
      "genere_le": null,
      "valide_par": null,
      "valide_le": null,
-     "commentaire": null
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": "specimen_nmpa_traduction.pdf",
+     "recu_le": "2026-09-30T16:36:20.089522Z",
+     "extraction_statut": "terminee",
+     "extraction": {
+      "champs": [
+       {
+        "nom": "numero",
+        "libelle": "Numéro du certificat",
+        "type": "texte",
+        "valeur": "Guo Xie Zhu Zhun 20213130457",
+        "valeur_normalisee": "Guo Xie Zhu Zhun 20213130457",
+        "citation": "Numéro d'enregistrement : Guo Xie Zhun 20213130457",
+        "verification": "valeur_hors_citation"
+       },
+       {
+        "nom": "emetteur",
+        "libelle": "Émis par",
+        "type": "texte",
+        "valeur": "Administration nationale des produits médicaux (NMPA)",
+        "valeur_normalisee": "Administration nationale des produits médicaux (NMPA)",
+        "citation": "Administration nationale des produits médicaux (NMPA)",
+        "verification": "verifie"
+       },
+       {
+        "nom": "titulaire",
+        "libelle": "Titulaire (fabricant)",
+        "type": "texte",
+        "valeur": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "valeur_normalisee": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "citation": "Titulaire de l'enregistrement : Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "verification": "verifie"
+       },
+       {
+        "nom": "produit_couvert",
+        "libelle": "Produits couverts",
+        "type": "texte",
+        "valeur": "Prothèse totale de hanche non cimentée",
+        "valeur_normalisee": "Prothèse totale de hanche non cimentée",
+        "citation": "Nom du produit : Prothèse totale de hanche non cimentée",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_emission",
+        "libelle": "Date d'émission",
+        "type": "date",
+        "valeur": "15/06/2021",
+        "valeur_normalisee": "2021-06-15",
+        "citation": "Date d'approbation : 15/06/2021",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_expiration",
+        "libelle": "Valable jusqu'au",
+        "type": "date",
+        "valeur": "14/06/2026",
+        "valeur_normalisee": "2026-06-14",
+        "citation": "Date d'expiration : 14/06/2026",
+        "verification": "verifie"
+       },
+       {
+        "nom": "classe_indiquee",
+        "libelle": "Classe indiquée",
+        "type": "texte",
+        "valeur": "Classe III",
+        "valeur_normalisee": "Classe III",
+        "citation": "Classe de gestion : Classe III",
+        "verification": "verifie"
+       }
+      ],
+      "resume": {
+       "verifie": 6,
+       "citation_introuvable": 0,
+       "valeur_hors_citation": 1,
+       "absent": 0
+      },
+      "caracteres_lus": 786,
+      "modele": "mistral"
+     },
+     "extraction_erreur": null
     }
    ],
    "evenements": [
+    {
+     "horodatage": "2026-09-30T16:39:21.417216Z",
+     "acteur": "système",
+     "action": "lecture_terminee",
+     "detail": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) — 6 champ(s) vérifié(s), 1 non vérifié(s), 0 absent(s)",
+     "document_id": 8
+    },
+    {
+     "horodatage": "2026-09-30T16:37:47.373935Z",
+     "acteur": "système",
+     "action": "lecture_terminee",
+     "detail": "Certificat ISO 13485 (système de management de la qualité) — 7 champ(s) vérifié(s), 0 non vérifié(s), 0 absent(s)",
+     "document_id": 7
+    },
+    {
+     "horodatage": "2026-09-30T16:36:20.090792Z",
+     "acteur": "Salma (test)",
+     "action": "document_recu_depose",
+     "detail": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) — specimen_nmpa_traduction.pdf",
+     "document_id": 8
+    },
+    {
+     "horodatage": "2026-09-30T16:36:19.757302Z",
+     "acteur": "Salma (test)",
+     "action": "document_recu_depose",
+     "detail": "Certificat ISO 13485 (système de management de la qualité) — specimen_iso13485_scanne.pdf",
+     "document_id": 7
+    },
     {
      "horodatage": "2026-09-30T16:09:53.065677Z",
      "acteur": "système",

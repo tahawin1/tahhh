@@ -186,6 +186,20 @@ button.lien { border: 0; background: none; padding: 0; color: var(--accent); fon
 .journal li { display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--bordure); }
 .journal li:last-child { border-bottom: 0; }
 
+.lecture { display: grid; gap: 0.5rem; border-top: 1px dashed var(--bordure); padding-top: 0.6rem; }
+.lecture p { margin: 0; }
+.resume-lecture { font-size: 0.88rem; }
+.texte-erreur { color: var(--erreur); font-weight: 600; }
+.champs-lus { margin: 0; display: grid; border: 1px solid var(--bordure); border-radius: 6px; background: var(--fond); }
+.champ-lu { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--bordure); min-width: 0; }
+.champ-lu:last-child { border-bottom: 0; }
+.champ-lu dt { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+  font-size: 0.8rem; font-weight: 600; color: var(--secondaire); }
+.champ-lu dt .pastille { font-size: 0.72rem; }
+.champ-lu dd { margin: 0.2rem 0 0; font-size: 0.88rem; }
+.valeur { font-weight: 600; overflow-wrap: break-word; }
+.citation { color: var(--secondaire); font-size: 0.8rem; font-style: italic; overflow-wrap: break-word; }
+
 @media (max-width: 760px) {
   .deux-colonnes, .ligne { grid-template-columns: 1fr; }
   .pieces { grid-template-columns: 1fr; }

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { api, type ApercuProjet, type DossierDetail, type Piece } from '../api'
 import { ACTIONS, PAYS, STATUT_DOSSIER, STATUT_PIECE, dateHeure, dateLongue } from '../libelles'
 import Progression from '../composants/Progression'
+import LectureAgent from '../composants/LectureAgent'
 import type { Session } from './Connexion'
 
 export default function DetailDossier({ id, session }: { id: number; session: Session }) {
@@ -16,8 +17,9 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
 
   useEffect(() => { charger() }, [charger])
 
-  // Suivi de la rédaction en tâche de fond : rafraîchissement tant qu'une pièce est en cours
+  // Suivi des tâches de fond (rédaction, lecture de documents) : rafraîchissement tant qu'une tâche tourne
   const enCours = dossier?.statut === 'generation_en_cours'
+    || !!dossier?.documents.some((d) => d.extraction_statut === 'en_file' || d.extraction_statut === 'en_cours')
   useEffect(() => {
     if (!enCours) return
     const t = window.setInterval(charger, 5000)
@@ -207,6 +209,10 @@ function CartePiece({
       )}
 
       {erreurFichier && <p className="message erreur">{erreurFichier}</p>}
+
+      {piece.lisible_par_agent && (
+        <LectureAgent piece={piece} dossierId={dossierId} acteur={session.nom} occupe={occupe} executer={executer} />
+      )}
 
       {projet && (
         <div className="projet" aria-label={`Projet : ${piece.nom}`}>

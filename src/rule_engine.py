@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import datetime
 import hashlib
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
@@ -31,6 +31,7 @@ class DocumentRequis:
     nature: str = "a_fournir"  # voir NATURES — toujours lu depuis le YAML
     fourni_par: str | None = None  # émetteur, pour les pièces a_fournir
     consigne_redaction: str | None = None  # ce que Mistral doit rédiger (pièces a_rediger)
+    champs_a_extraire: list[dict] = field(default_factory=list)  # lus dans le document reçu (pièces a_fournir)
 
     @property
     def a_rediger(self) -> bool:
@@ -60,6 +61,27 @@ def _nature(regle: dict, ref: str) -> str:
     return nature
 
 
+TYPES_CHAMPS = ("texte", "date")
+
+
+def _champs(regle: dict, ref: str) -> list[dict]:
+    """Champs à extraire d'une pièce reçue, tels que déclarés dans le YAML.
+    Les modèles réutilisés par ancre YAML (liste dans la liste) sont aplatis."""
+    champs: list[dict] = []
+    for element in regle.get("champs_a_extraire") or []:
+        champs.extend(element if isinstance(element, list) else [element])
+    noms = set()
+    for c in champs:
+        if not c.get("nom") or not c.get("libelle") or not c.get("description"):
+            raise ValueError(f"Règle '{ref}' : champ à extraire incomplet (nom, libelle, description) : {c}")
+        if c.get("type", "texte") not in TYPES_CHAMPS:
+            raise ValueError(f"Règle '{ref}' : type de champ invalide {c.get('type')!r}, attendu {TYPES_CHAMPS}")
+        if c["nom"] in noms:
+            raise ValueError(f"Règle '{ref}' : champ '{c['nom']}' déclaré deux fois")
+        noms.add(c["nom"])
+    return [{"type": "texte", **c} for c in champs]
+
+
 def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None) -> list[DocumentRequis]:
     """
     Cas A du projet : dossier destiné au Maroc, produit venant d'un pays
@@ -84,6 +106,7 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
                 nature=_nature(doc, f"socle_commun.{doc['id']}"),
                 fourni_par=doc.get("fourni_par"),
                 consigne_redaction=doc.get("consigne_redaction"),
+                champs_a_extraire=_champs(doc, f"socle_commun.{doc['id']}"),
             )
         )
 
@@ -100,6 +123,7 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
             origine_regle=f"piece_specifique_selon_origine.{pays_origine_produit}",
             nature=_nature(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
             fourni_par=piece.get("fourni_par"),
+            champs_a_extraire=_champs(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
         )
     )
     return documents

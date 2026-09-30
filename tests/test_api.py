@@ -21,6 +21,7 @@ from fastapi.testclient import TestClient  # noqa: E402
 
 import api  # noqa: E402
 import db  # noqa: E402
+import extraction  # noqa: E402
 import generate  # noqa: E402
 import taches  # noqa: E402
 
@@ -42,6 +43,17 @@ def faux_generer_document(_generateur, doc, produit, pays_origine, dossier_sorti
     return {"fichier": str(chemin), "sources": [{"texte_source": "Arrêtés 2853-2856", "date_version": "2015-08-04"}]}
 
 
+def faux_extraire(chemin, champs, piece):
+    """Remplace OCR + Mistral : renvoie un résultat au format réel."""
+    if chemin.read_bytes().startswith(b"illisible"):
+        raise extraction.ExtractionImpossible("Aucun texte lisible dans le document.")
+    resultats = [{"nom": c["nom"], "libelle": c["libelle"], "type": c["type"], "valeur": "X",
+                  "valeur_normalisee": "X", "citation": "X", "verification": extraction.VERIFIE} for c in champs]
+    return {"champs": resultats, "resume": {extraction.VERIFIE: len(champs), extraction.CITATION_INTROUVABLE: 0,
+            extraction.VALEUR_HORS_CITATION: 0, extraction.ABSENT: 0}, "caracteres_lus": 10, "texte": "texte lu",
+            "modele": "faux"}
+
+
 class TestApi(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -50,6 +62,8 @@ class TestApi(unittest.TestCase):
         generate.generer_document = faux_generer_document
         taches._obtenir_generateur = lambda: None
         taches.soumettre = taches.executer_generation  # exécution immédiate
+        taches.soumettre_extraction = taches.executer_extraction
+        extraction.extraire = faux_extraire
         cls.client = TestClient(api.app)
         cls.client.__enter__()  # déclenche le lifespan (création des tables)
 
@@ -174,9 +188,48 @@ class TestApi(unittest.TestCase):
         nmpa = self.piece(d, "piece_specifique_chine")
         self.assertEqual(self.client.get(f"/dossiers/{d['id']}/documents/{nmpa['id']}/apercu").status_code, 404)
 
+    def deposer(self, d, code, contenu=b"%PDF-1.4 certificat", nom="certificat.pdf"):
+        piece = self.piece(d, code)
+        return self.client.post(f"/dossiers/{d['id']}/documents/{piece['id']}/document-recu",
+                                data={"acteur": "Testeur"}, files={"fichier": (nom, contenu, "application/pdf")})
+
+    def test_lecture_du_document_recu(self):
+        d = self.creer()
+        self.assertTrue(self.piece(d, "iso_13485")["lisible_par_agent"])
+        r = self.deposer(d, "iso_13485")
+        self.assertEqual(r.status_code, 202, r.text)
+        iso = self.piece(r.json(), "iso_13485")
+        self.assertEqual(iso["extraction_statut"], "terminee")
+        self.assertEqual([c["nom"] for c in iso["extraction"]["champs"]],
+                         ["numero", "emetteur", "titulaire", "produit_couvert", "date_emission", "date_expiration", "norme"])
+        self.assertNotIn("texte", iso["extraction"])  # le texte intégral n'est pas renvoyé au navigateur
+        self.assertEqual(iso["statut"], "a_obtenir")  # lire n'est pas valider : la décision reste humaine
+        actions = [e["action"] for e in r.json()["evenements"]]
+        self.assertIn("document_recu_depose", actions)
+        self.assertIn("lecture_terminee", actions)
+        orig = self.client.get(f"/dossiers/{d['id']}/documents/{iso['id']}/document-recu")
+        self.assertEqual(orig.content, b"%PDF-1.4 certificat")
+
+    def test_lecture_en_echec_visible(self):
+        d = self.creer()
+        iso = self.piece(self.deposer(d, "iso_13485", contenu=b"illisible").json(), "iso_13485")
+        self.assertEqual(iso["extraction_statut"], "erreur")
+        self.assertIn("Aucun texte lisible", iso["extraction_erreur"])
+
+    def test_depot_refuse(self):
+        d = self.creer()
+        self.assertEqual(self.deposer(d, "demande_signee").status_code, 409)  # pièce à rédiger
+        self.assertEqual(self.deposer(d, "echantillon_etiquetage").status_code, 409)  # pièce physique, rien à lire
+        self.assertEqual(self.deposer(d, "iso_13485", nom="virus.exe").status_code, 415)
+        iso = self.piece(d, "iso_13485")
+        self.client.post(f"/dossiers/{d['id']}/documents/{iso['id']}/valider",
+                         json={"validateur": "Relecteur", "commentaire": "Reçu"})
+        self.assertEqual(self.deposer(d, "iso_13485").status_code, 409)  # déjà validée
+
     def test_aucune_route_de_depot(self):
         chemins = [getattr(r, "path", "") for r in api.app.routes]
-        for mot in ("depot", "deposer", "soumission", "envoi"):
+        # « document-recu » = pièce reçue DU fournisseur ; aucune route n'envoie un dossier à l'autorité
+        for mot in ("depot", "deposer", "soumission", "envoi", "soumettre", "transmettre"):
             self.assertFalse(any(mot in c for c in chemins), f"route suspecte contenant '{mot}' : {chemins}")
 
     def test_cle_api(self):

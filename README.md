@@ -113,6 +113,17 @@ moteur de règles) :
   (échantillon) — **jamais rédigée par le système** : réclamée au
   fournisseur, puis marquée « reçue et vérifiée » par une personne nommée.
 
+**Lecture des documents reçus par l'agent** (pièces à fournir) : on dépose
+le PDF ou la photo reçu du fournisseur
+(`POST /dossiers/{id}/documents/{piece}/document-recu`) ; l'agent le lit
+(texte natif ou OCR), Mistral retrouve les champs déclarés dans les règles
+YAML (`champs_a_extraire` : numéro, émetteur, titulaire, produits, dates,
+classe…) en recopiant la phrase qui les justifie, et le code vérifie que
+cette citation existe vraiment dans le document. Un champ dont la citation
+est introuvable, ou dont la valeur n'est pas dans la citation, est marqué
+« non vérifié ». La lecture ne valide rien : la décision reste humaine.
+Documents de test fictifs : `tests/fixtures/` (`generer_specimens.py`).
+
 Clé d'API : définir `API_KEY` pour l'exiger (en-tête `X-API-Key`).
 
 ### 8. Tableau de bord (frontend)
@@ -148,6 +159,7 @@ agent-conformite-dm/
 │   ├── ingest.py          # Extraction + OCR + indexation dans Qdrant (RAG)
 │   ├── generate.py        # RAG + Mistral + génération DOCX
 │   ├── db.py              # PostgreSQL : dossiers, pièces, journal d'audit
+│   ├── extraction.py      # Lecture des documents reçus (OCR + Mistral + contrôle des citations)
 │   ├── taches.py          # File de rédaction en tâche de fond
 │   └── api.py             # Backend FastAPI
 ├── frontend/              # Tableau de bord React (Vite) — déployable sur Vercel

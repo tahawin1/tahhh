@@ -119,7 +119,7 @@
       dossiers.set(d.id, recalculer(d))
       return reponse(d, 201)
     }
-    let m = chemin.match(/^\/dossiers\/(\d+)(?:\/documents\/(\d+))?(?:\/(\w+))?$/)
+    let m = chemin.match(/^\/dossiers\/(\d+)(?:\/documents\/(\d+))?(?:\/([\w-]+))?$/)
     if (!m) return erreur(404, 'Not Found')
     const d = dossiers.get(Number(m[1]))
     if (!d) return erreur(404, `Dossier ${m[1]} introuvable.`)
@@ -133,6 +133,12 @@
     if (action === 'apercu') {
       const a = instantane.apercus[`${d.id}/${piece.id}`]
       return a ? reponse(a) : erreur(404, 'Aucun projet rédigé pour cette pièce.')
+    }
+    if ((action === 'document-recu' && methode === 'POST') || action === 'relire') {
+      return erreur(503, "Démonstration : la lecture d'un document par l'agent (OCR + Mistral) s'exécute sur le serveur de l'entreprise, qui n'est pas connecté à cette page.")
+    }
+    if (action === 'document-recu') {
+      return erreur(404, 'Démonstration : le document original reste sur le serveur ; les champs lus sont affichés ci-dessous.')
     }
     if (action === 'fichier') {
       return erreur(404, 'Démonstration : téléchargement indisponible ici. Utiliser « Lire le projet ».')

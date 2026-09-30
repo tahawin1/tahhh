@@ -11,6 +11,7 @@ pydantic>=2.6
 sqlalchemy>=2.0
 psycopg[binary]>=3.1
 httpx>=0.27
+python-multipart>=0.0.9
 # Optionnel : embeddings via sentence-transformers au lieu d'Ollama
 # (EMBEDDING_BACKEND=sentence-transformers) — installe PyTorch (plusieurs Go).
 #   pip install -r requirements-sentence-transformers.txt
