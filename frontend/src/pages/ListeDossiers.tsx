@@ -114,7 +114,7 @@ export default function Accueil({ session, sante }: { session: Session; sante: S
         </section>
 
         <section className="panneau creneau">
-          <h2><Icone nom="calendrier" /> Prochain dépôt à la DMP</h2>
+          <h2><Icone nom="calendrier" /> Prochain dépôt à l'AMMPS</h2>
           {creneau ? (
             <>
               <p className="creneau-jour">{dateCourte(creneau)}</p>
@@ -123,7 +123,7 @@ export default function Accueil({ session, sante }: { session: Session; sante: S
                 {prets.length > 0 && ` ${prets.length} dossier(s) prêt(s) à déposer.`}</p>
             </>
           ) : (
-            <p className="aide">Mercredi ou jeudi (règle DMP).</p>
+            <p className="aide">Mercredi ou jeudi (règle de dépôt).</p>
           )}
         </section>
       </div>
@@ -137,7 +137,7 @@ export default function Accueil({ session, sante }: { session: Session; sante: S
           <div className="carte-vide">
             <span className="icone-rond accent grand"><Icone nom="dossiers" taille={26} /></span>
             <h3>Aucun dossier pour l'instant</h3>
-            <p>Indiquez le produit, le pays d'origine et la classe : les pièces exigées par la DMP s'affichent aussitôt.</p>
+            <p>Indiquez le produit, le pays d'origine et la classe : les pièces exigées par l'AMMPS s'affichent aussitôt.</p>
             <a className="bouton principal" href="#/nouveau"><Icone nom="plus" /> Créer le premier dossier</a>
           </div>
         )}

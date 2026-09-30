@@ -25,7 +25,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import FieldCondition, Filter, MatchValue
 
 from embeddings import OLLAMA_BASE_URL, Embedder
-from rule_engine import DocumentRequis, documents_requis_maroc, prochain_creneau_depot
+from rule_engine import DocumentRequis, charger_regles, documents_requis_maroc, prochain_creneau_depot
 
 COLLECTION = "dossiers_reference"
 OLLAMA_URL = f"{OLLAMA_BASE_URL}/api/generate"
@@ -35,6 +35,26 @@ OLLAMA_TIMEOUT = int(os.environ.get("OLLAMA_TIMEOUT", "900"))
 # Longueur maximale de chaque document généré (tokens) ; -1 = sans limite.
 OLLAMA_NUM_PREDICT = int(os.environ.get("OLLAMA_NUM_PREDICT", "700"))
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
+PROFIL_ENTREPRISE = Path(__file__).resolve().parent.parent / "config" / "entreprise.yaml"
+LIBELLES_PROFIL = {
+    "raison_sociale": "Raison sociale", "ville": "Ville (lieu des courriers)", "adresse": "Adresse",
+    "telephone": "Téléphone", "representant_legal": "Représentant légal", "ice": "ICE",
+    "identifiant_fiscal": "IF", "registre_commerce": "RC", "patente": "Patente", "banque_rib": "Banque / RIB",
+}
+
+
+def profil_entreprise() -> dict:
+    """Coordonnées de l'établissement demandeur (config/entreprise.yaml, sur le
+    serveur uniquement) : reprises telles quelles, jamais inventées."""
+    if not PROFIL_ENTREPRISE.exists():
+        return {}
+    import yaml
+    with open(PROFIL_ENTREPRISE, encoding="utf-8") as f:
+        return {k: str(v).strip() for k, v in (yaml.safe_load(f) or {}).items() if k in LIBELLES_PROFIL and v}
+
+
+# Destinataire des demandes, lu dans les règles (AMMPS depuis la v2) — jamais décidé par le LLM
+DESTINATAIRE = charger_regles("maroc").get("destinataire_demande", "[À COMPLÉTER : destinataire]")
 
 # Pays dont les textes sont indexés dans Qdrant (voir scripts/indexer_tout.sh)
 PAYS_INDEXES = {"maroc", "chine", "inde", "union_europeenne"}
@@ -43,6 +63,35 @@ MENTION_VALIDATION = (
     "PROJET GÉNÉRÉ AUTOMATIQUEMENT — EN ATTENTE DE VALIDATION HUMAINE. "
     "Ne pas déposer avant relecture et validation explicite."
 )
+
+
+PREAMBULE = re.compile(r"^\s*(voici|voil[aà]|ci-dessous|ci-apr[eè]s)\b.*:\s*$", re.I)
+
+
+def _mots_significatifs(ligne: str) -> set[str]:
+    from extraction import normaliser
+    return {m for m in re.findall(r"\w+", normaliser(ligne)) if len(m) > 2}
+
+
+def recadrer_sur_modele(texte: str, modele: str) -> tuple[str, int]:
+    """Garde-fou déterministe (le prompt seul ne suffit pas avec Mistral 7B) :
+    retire une phrase d'introduction (« Voici la lettre… : ») et tout ce qui
+    suit la dernière ligne du modèle (listes inventées après la signature ou
+    le pied de page). Retourne (texte recadré, nombre de lignes retirées à la fin)."""
+    lignes = texte.strip().splitlines()
+    while lignes and (not lignes[0].strip() or PREAMBULE.match(lignes[0])):
+        lignes.pop(0)
+    fins_modele = [l for l in modele.strip().splitlines() if len(_mots_significatifs(l)) >= 3][-2:]
+    reperes = [_mots_significatifs(l) for l in fins_modele]
+    dernier = None
+    for i, ligne in enumerate(lignes):
+        mots = _mots_significatifs(ligne)
+        if mots and any(len(mots & r) >= max(3, 0.6 * len(r)) for r in reperes):
+            dernier = i
+    if dernier is None:
+        return "\n".join(lignes).strip(), 0
+    retirees = [l for l in lignes[dernier + 1:] if l.strip()]
+    return "\n".join(lignes[: dernier + 1]).strip(), len(retirees)
 
 
 class GenerationImpossible(RuntimeError):
@@ -70,6 +119,11 @@ class GenerateurDocuments:
             with_payload=True,
         ).points
         return [{**r.payload, "score": r.score} for r in resultats]
+
+    def modele_pour(self, document: DocumentRequis, pays_origine: str, produit: str) -> dict | None:
+        """Pièce équivalente d'un dossier accepté, ou None (rédaction sans modèle)."""
+        from modeles import modele_pour
+        return modele_pour(document.id, pays_origine, produit, self.client, self.embedder)
 
     def references_pour_document(self, document: DocumentRequis, pays_destination: str, pays_origine: str) -> list[dict]:
         """
@@ -107,7 +161,10 @@ class GenerateurDocuments:
                 "elle n'est jamais rédigée par le système."
             )
 
-        references = self.references_pour_document(document, pays_destination, pays_origine)
+        # Avec un modèle accepté, c'est lui qui fixe la forme : les extraits de textes
+        # (souvent d'autres procédures) ne sont pas donnés, pour ne rien y recopier.
+        modele = self.modele_pour(document, pays_origine, produit)
+        references = [] if modele else self.references_pour_document(document, pays_destination, pays_origine)
         contexte = "\n\n".join(
             f"<<< EXTRAIT {i} — {r['texte_source']} (version du {r['date_version']})\n{r['texte'][:800]}\n>>>"
             for i, r in enumerate(references, 1)
@@ -123,6 +180,35 @@ class GenerateurDocuments:
             }
             for r in references
         ]
+
+        # Modèle : la même pièce dans un dossier réellement accepté (voir modeles.py)
+        if modele:
+            sources.insert(0, {
+                "texte_source": f"Modèle : pièce {modele['numero']} du dossier accepté « {modele['produit']} »",
+                "pays": modele["pays_origine"],
+                "date_version": modele["indexe_le"],
+                "fichier": modele["fichier"],
+                "chunk_index": 0,
+                "score": round(modele["score"], 4),
+            })
+            bloc_modele = f"""
+MODÈLE À SUIVRE — la même pièce, dans un dossier réellement accepté par l'administration pour un AUTRE dispositif (« {modele['produit']} ») :
+<<< MODÈLE
+{modele['texte']}
+>>>
+Comment utiliser le modèle :
+- Reprends sa structure, son ordre, son destinataire et ses formules. N'ajoute AUCUNE rubrique, liste ou paragraphe absent du modèle.
+- Les coordonnées de l'établissement demandeur sont celles du profil ci-dessus (identiques à celles du modèle).
+- Remplace TOUT ce qui décrit l'ancien dispositif « {modele['produit']} » (désignation, noms commerciaux, références, présentation, indications, intérêt médical, domaine thérapeutique, composition, fabricant, classe, codes, dates) par les données du nouveau dossier ; une donnée inconnue du nouveau dossier devient [À COMPLÉTER]. Ne laisse aucune donnée propre à l'ancien dispositif, et n'en déduis aucune pour le nouveau.
+"""
+        else:
+            bloc_modele = ""
+
+        profil = profil_entreprise()
+        bloc_profil = (
+            "Établissement demandeur (coordonnées à reprendre exactement) :\n"
+            + "\n".join(f"  - {LIBELLES_PROFIL[k]} : {v}" for k, v in profil.items()) + "\n"
+        ) if profil else "Établissement demandeur : [À COMPLÉTER] (profil config/entreprise.yaml absent)\n"
 
         consigne = document.consigne_redaction or document.nom
         # La liste des pièces vient du moteur de règles, jamais du LLM
@@ -142,16 +228,17 @@ Informations connues sur le dossier (à reprendre telles quelles) :
 - Fabricant / fournisseur : {fournisseur or "[À COMPLÉTER]"}
 - Pays d'origine du fournisseur : {pays_origine}
 - Pays de destination du dossier : {pays_destination}
-{liste_pieces}
-Extraits de textes réglementaires officiels, fournis UNIQUEMENT comme référence (pour les exigences et le vocabulaire) :
-{contexte}
+{bloc_profil}{liste_pieces}{bloc_modele}
+{"" if modele else "Extraits de textes réglementaires officiels, fournis UNIQUEMENT comme référence (pour les exigences et le vocabulaire) :" + chr(10) + contexte}
 
 Consignes strictes :
 - Rédige le document demandé lui-même, prêt à être complété et signé. Ne recopie PAS les extraits, ne reproduis pas d'en-têtes du Bulletin officiel, ne cite pas les extraits dans le document.
 - N'invente aucune information factuelle (nom, adresse, numéro, date, référence) : écris [À COMPLÉTER] à la place.
+- Intérêt médical, indications, références, composition : uniquement ce que fournit le nouveau dossier, sinon [À COMPLÉTER] — ne les déduis jamais du nom du dispositif.
 - N'aborde que ce document, sans parler d'autres procédures (publicité, inspection, sanctions…).
 - Si le document énumère les pièces du dossier, reprends EXACTEMENT la liste fixée ci-dessus, sans en ajouter ni en retirer.
-- Rédige en français, dans le registre administratif marocain (formule d'appel « Monsieur le Ministre, », formule de politesse administrative, aucune formule familière), sans commentaire avant ou après le document."""
+- Destinataire des demandes : {DESTINATAIRE} (jamais le ministre ni la DMP).
+- Rédige en français, dans le registre administratif marocain (formule de politesse administrative, aucune formule familière), sans commentaire avant ou après le document."""
 
         try:
             # Une erreur 500 passagère d'Ollama (génération interrompue) est
@@ -163,7 +250,10 @@ Consignes strictes :
                         "model": OLLAMA_MODEL,
                         "prompt": prompt,
                         "stream": False,
-                        "options": {"num_predict": OLLAMA_NUM_PREDICT},
+                        # contexte élargi : le modèle + les extraits dépassent les 4096 jetons par défaut ;
+                        # un long modèle (fiche signalétique) demande une réponse plus longue
+                        "options": {"num_ctx": 8192,
+                                    "num_predict": max(OLLAMA_NUM_PREDICT, len(modele["texte"]) // 3) if modele else OLLAMA_NUM_PREDICT},
                     },
                     timeout=OLLAMA_TIMEOUT,
                 )
@@ -176,7 +266,12 @@ Consignes strictes :
                     "voir `journalctl -u ollama`, puis relancer la rédaction."
                 )
             reponse.raise_for_status()
-            return reponse.json()["response"], sources
+            texte = reponse.json()["response"]
+            if modele:
+                texte, retirees = recadrer_sur_modele(texte, modele["texte"])
+                if retirees:
+                    sources[0]["recadrage"] = f"{retirees} ligne(s) ajoutée(s) par Mistral après la fin du modèle, retirée(s)"
+            return texte, sources
         except requests.exceptions.ConnectionError as e:
             raise GenerationImpossible(
                 f"Ollama n'est pas démarré sur {OLLAMA_URL} — lancer `ollama serve` puis `ollama pull {OLLAMA_MODEL}`."

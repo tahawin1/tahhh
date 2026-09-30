@@ -89,7 +89,7 @@ class TestApi(unittest.TestCase):
 
     def test_creation_fige_la_decision_du_moteur_de_regles(self):
         d = self.creer()
-        self.assertEqual(d["compteurs"]["total"], 8)
+        self.assertEqual(d["compteurs"]["total"], 12)  # règles v2, Chine IIb : 10 pièces du socle + ISO + NMPA
         natures = {x["code"]: (x["nature"], x["statut"]) for x in d["documents"]}
         self.assertEqual(natures["demande_signee"], ("a_rediger", "a_generer"))
         self.assertEqual(natures["piece_specifique_chine"], ("a_fournir", "a_obtenir"))
@@ -102,12 +102,26 @@ class TestApi(unittest.TestCase):
         d = self.creer(pays="union_europeenne", classe="I")
         self.assertNotIn("iso_13485", [x["code"] for x in d["documents"]])
 
+    def test_numero_remarque_et_source_exposes(self):
+        d = self.creer(pays="union_europeenne", classe="IIB")
+        ce = self.piece(d, "piece_specifique_union_europeenne")
+        self.assertEqual(ce["numero"], 4)
+        self.assertIn("2023/607", ce["remarque"])
+        self.assertIn("2855-15", self.piece(d, "demande_signee")["source"])
+        self.assertEqual([x["numero"] for x in d["documents"]][:3], [1, 2, 3])  # ordre du dossier déposé
+
+    def test_sous_classes_is_im_acceptees(self):
+        d = self.creer(pays="union_europeenne", classe="IS")
+        codes = [x["code"] for x in d["documents"]]
+        self.assertIn("piece_specifique_union_europeenne", codes)
+        self.assertNotIn("iso_13485", codes)
+
     def test_generation_ne_redige_que_les_pieces_a_rediger(self):
         d = self.creer()
         r = self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
         self.assertEqual(r.status_code, 202, r.text)
         self.assertEqual(sorted(APPELS_GENERATION),
-                         sorted(["demande_signee", "fiche_signaletique", "dossier_technique", "mandataire_maroc"]))
+                         sorted(["demande_signee", "fiche_signaletique", "certificat_enregistrement_annexe2"]))
         d = self.client.get(f"/dossiers/{d['id']}").json()
         for x in d["documents"]:
             attendu = "a_valider" if x["nature"] == "a_rediger" else "a_obtenir"
@@ -184,7 +198,7 @@ class TestApi(unittest.TestCase):
         demande = self.piece(d, "demande_signee")
         r = self.client.get(f"/dossiers/{d['id']}/documents/{demande['id']}/apercu")
         self.assertEqual(r.status_code, 200, r.text)
-        self.assertIn("Projet : Demande signée", r.json()["paragraphes"][0]["texte"])
+        self.assertIn("Projet : Lettre de demande", r.json()["paragraphes"][0]["texte"])
         nmpa = self.piece(d, "piece_specifique_chine")
         self.assertEqual(self.client.get(f"/dossiers/{d['id']}/documents/{nmpa['id']}/apercu").status_code, 404)
 
@@ -219,7 +233,7 @@ class TestApi(unittest.TestCase):
     def test_depot_refuse(self):
         d = self.creer()
         self.assertEqual(self.deposer(d, "demande_signee").status_code, 409)  # pièce à rédiger
-        self.assertEqual(self.deposer(d, "echantillon_etiquetage").status_code, 409)  # pièce physique, rien à lire
+        self.assertEqual(self.deposer(d, "echantillon").status_code, 409)  # pièce physique, rien à lire
         self.assertEqual(self.deposer(d, "iso_13485", nom="virus.exe").status_code, 415)
         iso = self.piece(d, "iso_13485")
         self.client.post(f"/dossiers/{d['id']}/documents/{iso['id']}/valider",

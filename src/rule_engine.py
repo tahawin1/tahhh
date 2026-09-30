@@ -32,6 +32,9 @@ class DocumentRequis:
     fourni_par: str | None = None  # émetteur, pour les pièces a_fournir
     consigne_redaction: str | None = None  # ce que Mistral doit rédiger (pièces a_rediger)
     champs_a_extraire: list[dict] = field(default_factory=list)  # lus dans le document reçu (pièces a_fournir)
+    numero: int | None = None  # place de la pièce dans le dossier déposé
+    remarque: str | None = None  # précision réglementaire à montrer à la validation
+    source: str | None = None  # texte (article) ou pratique qui fonde l'exigence
 
     @property
     def a_rediger(self) -> bool:
@@ -82,6 +85,11 @@ def _champs(regle: dict, ref: str) -> list[dict]:
     return [{"type": "texte", **c} for c in champs]
 
 
+def _classe_concernee(regle: dict, classe: str | None) -> bool:
+    classes = regle.get("classes_concernees")
+    return not (classes and classe and classe not in classes)
+
+
 def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None) -> list[DocumentRequis]:
     """
     Cas A du projet : dossier destiné au Maroc, produit venant d'un pays
@@ -95,8 +103,7 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
         # `condition` n'est qu'un libellé : un test de sous-chaîne dessus
         # faisait passer la classe "I" dans "classes IIA, IIB, III").
         # Classe inconnue -> document conservé (choix prudent).
-        classes = doc.get("classes_concernees")
-        if classes and classe and classe not in classes:
+        if not _classe_concernee(doc, classe):
             continue  # ex: ISO 13485 seulement pour IIA/IIB/III
         documents.append(
             DocumentRequis(
@@ -107,6 +114,9 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
                 fourni_par=doc.get("fourni_par"),
                 consigne_redaction=doc.get("consigne_redaction"),
                 champs_a_extraire=_champs(doc, f"socle_commun.{doc['id']}"),
+                numero=doc.get("numero"),
+                remarque=doc.get("remarque"),
+                source=doc.get("source"),
             )
         )
 
@@ -114,18 +124,25 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
     if piece is None:
         piece = regles["piece_specifique_selon_origine"]["autre"]
 
-    documents.append(
-        DocumentRequis(
-            id=f"piece_specifique_{pays_origine_produit}",
-            nom=piece["document"],
-            traduction_requise=piece.get("traduction_requise", False),
-            legalisation_requise=piece.get("legalisation_requise", False),
-            origine_regle=f"piece_specifique_selon_origine.{pays_origine_produit}",
-            nature=_nature(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
-            fourni_par=piece.get("fourni_par"),
-            champs_a_extraire=_champs(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
+    # ex: certificat CE / équivalent exigé pour IS, IM, IIA, IIB, III (pas pour la classe I simple)
+    if _classe_concernee(piece, classe):
+        documents.append(
+            DocumentRequis(
+                id=f"piece_specifique_{pays_origine_produit}",
+                nom=piece["document"],
+                traduction_requise=piece.get("traduction_requise", False),
+                legalisation_requise=piece.get("legalisation_requise", False),
+                origine_regle=f"piece_specifique_selon_origine.{pays_origine_produit}",
+                nature=_nature(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
+                fourni_par=piece.get("fourni_par"),
+                champs_a_extraire=_champs(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
+                numero=piece.get("numero"),
+                remarque=piece.get("remarque"),
+                source=piece.get("source"),
+            )
         )
-    )
+    # ordre du dossier déposé ; pièces sans numéro à la fin, dans l'ordre du YAML
+    documents.sort(key=lambda d: d.numero if d.numero is not None else 10_000)
     return documents
 
 

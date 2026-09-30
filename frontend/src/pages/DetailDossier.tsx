@@ -90,7 +90,7 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
           <p className="surtitre">Prochaine action</p>
           <strong>{suite.titre}</strong>
           {suite.ton === 'ok' && dossier.prochain_creneau_depot ? (
-            <p>Dépôt physique à effectuer <strong>manuellement</strong> à la DMP — prochain créneau : <strong>{dateLongue(dossier.prochain_creneau_depot)}</strong>.</p>
+            <p>Dépôt physique à effectuer <strong>manuellement</strong> à l'AMMPS — prochain créneau : <strong>{dateLongue(dossier.prochain_creneau_depot)}</strong>.</p>
           ) : suite.detail && <p>{suite.detail}</p>}
         </div>
       </div>
@@ -196,7 +196,7 @@ function CartePiece({
     <article className={`piece ton-${st.ton}`}>
       <header>
         <span className={`icone-piece ${st.ton}`}><Icone nom={piece.statut === 'valide' ? 'valide' : redigee ? 'document' : 'deposer'} taille={18} /></span>
-        <h3>{piece.nom}</h3>
+        <h3>{piece.numero != null && <span className="numero-piece">Pièce {piece.numero}</span>}{piece.nom}</h3>
         <span className={`pastille ${st.ton}`}>{st.libelle}</span>
       </header>
 
@@ -204,7 +204,9 @@ function CartePiece({
         {!redigee && <span>Émise par {piece.fourni_par}</span>}
         {piece.traduction_requise && <span className="drapeau">Traduction assermentée requise</span>}
         {piece.legalisation_requise && <span className="drapeau">Légalisation / apostille requise</span>}
+        {piece.source && <span title="Fondement de l'exigence">{piece.source}</span>}
       </div>
+      {piece.remarque && <p className="remarque-piece"><Icone nom="alerte" taille={16} /> {piece.remarque}</p>}
 
       {piece.activite && (
         <div className="agent-en-direct" aria-live="polite">

@@ -47,6 +47,16 @@ if grep -qi conforme <<<"$REPONSE"; then ok "Mistral rédige ($(( $(date +%s) - 
 verifier "API → Mistral depuis le conteneur (host.docker.internal)" docker exec conformite-api python3 -c \
   "import urllib.request; urllib.request.urlopen('http://host.docker.internal:11434/api/version', timeout=10)"
 
+echo "-- Modèles de rédaction et profil de l'entreprise"
+if [ -f config/entreprise.yaml ] && ! grep -q "NOM DE L'ÉTABLISSEMENT" config/entreprise.yaml; then
+  ok "profil de l'entreprise rempli (config/entreprise.yaml)"
+else
+  alerte "profil de l'entreprise absent ou non rempli : les courriers auront [À COMPLÉTER] à la place des coordonnées (fiche §5 bis)"
+fi
+MODELES_IDX=$(curl -s http://127.0.0.1:6333/collections/modeles_dossiers | grep -o '"points_count":[0-9]*' | tr -dc '0-9')
+if [ "${MODELES_IDX:-0}" -gt 0 ]; then ok "modèles de rédaction indexés : $MODELES_IDX pièce(s) de dossiers acceptés"
+else alerte "aucun modèle de rédaction : ajouter les dossiers acceptés (fiche §5 bis) puis sudo bash scripts/indexer_modeles.sh"; fi
+
 echo "-- Lecture des documents scannés (OCR)"
 LANGUES=$(docker exec conformite-api tesseract --list-langs 2>/dev/null | tr '\n' ' ')
 for l in fra eng ara; do verifier "Tesseract : langue $l" grep -qw $l <<<"$LANGUES"; done

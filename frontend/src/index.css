@@ -308,7 +308,7 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .tuile:hover, .segment:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--bordure)); }
 .tuile.choisie, .segment.choisi { border-color: var(--accent); background: var(--accent-doux); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
 .tuile:has(input:focus-visible), .segment:has(input:focus-visible) { outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
-.segments { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem; }
+.segments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
 .segment { display: grid; justify-items: center; text-align: center; padding: 0.75rem 0.4rem; gap: 0.1rem; }
 .segment strong { font: 700 1.15rem/1.1 var(--titre); }
 .apercu { position: sticky; top: 1.5rem; }
@@ -372,6 +372,9 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .piece header h3 { flex: 1; min-width: 0; font-size: 0.98rem; }
 .icone-piece { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 9px; flex: none; }
 .drapeaux { display: flex; flex-wrap: wrap; gap: 0.35rem; font-size: 0.8rem; color: var(--secondaire); }
+.numero-piece { display: block; font: 600 0.72rem/1.2 var(--corps); letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.15rem; }
+.remarque-piece { display: flex; gap: 0.5rem; align-items: flex-start; margin: 0.5rem 0 0; padding: 0.6rem 0.75rem; border-radius: 10px; background: var(--attention-fond); color: var(--texte); font-size: 0.85rem; line-height: 1.45; }
+.remarque-piece svg { color: var(--attention); flex: none; margin-top: 2px; }
 .drapeau { color: var(--attention); background: var(--attention-fond); padding: 0.12rem 0.5rem; border-radius: 6px; font-weight: 600; }
 .sources ul { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.84rem; color: var(--secondaire); }
 .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.2rem; }

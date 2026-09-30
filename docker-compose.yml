@@ -41,6 +41,8 @@ services:
       - "127.0.0.1:8000:8000"  # exposé à l'extérieur uniquement via le tunnel
     volumes:
       - ./output:/app/output  # projets DOCX générés, conservés hors du conteneur
+      - ./config:/app/config:ro  # profil de l'entreprise (config/entreprise.yaml, jamais versionné)
+      - ./data/dossiers_valides:/app/data/dossiers_valides:ro  # dossiers acceptés = modèles de rédaction
     restart: unless-stopped
 
   # Tableau de bord servi sur le réseau de l'entreprise : http://IP-du-serveur

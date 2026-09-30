@@ -40,10 +40,10 @@ export default function Connexion({ sante, surConnexion }: { sante: Sante | null
           <span className="logo" aria-hidden><Icone nom="bouclier" taille={26} /></span>
           <span className="marque-texte"><strong>Conformité DM</strong><small>Dossiers d'enregistrement · Maroc</small></span>
         </div>
-        <h1>Vos dossiers DMP, préparés par un agent. Validés par vous.</h1>
+        <h1>Vos dossiers AMMPS, préparés par un agent. Validés par vous.</h1>
         <ul className="atouts">
           <li><span className="icone-rond"><Icone nom="bouclier" /></span><span><strong>Les bonnes pièces, à coup sûr</strong>
-            <small>La liste vient des règles officielles (Loi 84-12, arrêtés DMP), jamais d'une supposition de l'IA.</small></span></li>
+            <small>La liste vient des règles officielles (Loi 84-12, arrêté 2855-15), jamais d'une supposition de l'IA.</small></span></li>
           <li><span className="icone-rond"><Icone nom="ia" /></span><span><strong>L'agent lit et rédige</strong>
             <small>Certificats du fournisseur lus et contrôlés, courriers et fiches rédigés, en direct.</small></span></li>
           <li><span className="icone-rond"><Icone nom="valide" /></span><span><strong>Vous gardez la main</strong>

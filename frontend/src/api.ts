@@ -59,6 +59,12 @@ export interface Piece {
   traduction_requise: boolean
   legalisation_requise: boolean
   origine_regle: string
+  /** place de la pièce dans le dossier déposé (règles v2) */
+  numero?: number | null
+  /** précision réglementaire, ex. lettre de confirmation 2023/607 */
+  remarque?: string | null
+  /** article ou pratique qui fonde l'exigence */
+  source?: string | null
   statut: StatutPiece
   fichier_disponible: boolean
   sources: Source[] | null
@@ -126,6 +132,9 @@ export interface ApercuPiece {
   traduction_requise: boolean
   legalisation_requise: boolean
   origine_regle: string
+  numero?: number | null
+  remarque?: string | null
+  source?: string | null
 }
 
 export interface Apercu {

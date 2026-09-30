@@ -164,6 +164,38 @@ Laissez le terminal ouvert jusqu'au bout. Si la connexion SSH risque de couper, 
 
 ---
 
+## 5 bis. Profil de l'entreprise et dossiers acceptés (les modèles de Mistral)
+
+Mistral rédige chaque pièce **sur le modèle de la même pièce d'un dossier déjà accepté par l'AMMPS** : même structure, même destinataire, mêmes formules. Il n'y remplace que les données du nouveau dispositif. Les coordonnées de l'entreprise viennent d'un profil. Ces fichiers **restent sur le serveur** : ils ne vont ni sur GitHub ni chez Claude.
+
+**1. Le profil de l'entreprise** : le script a créé `config/entreprise.yaml`. Remplissez-le une fois (raison sociale, ville, adresse, téléphone, représentant légal, ICE, IF, RC, patente, RIB si souhaité) :
+
+```bash
+sudo nano /opt/conformite/config/entreprise.yaml
+```
+
+**2. Les dossiers acceptés** : copiez chaque dossier accepté dans `data/dossiers_valides/<pays d'origine>/<produit>/`, en gardant les noms de fichiers qui commencent par le **numéro de la pièce**. Les pays d'origine possibles sont `chine`, `inde`, `union_europeenne` et `autre`.
+
+```
+/opt/conformite/data/dossiers_valides/
+└── union_europeenne/
+    └── Ciment osseux/
+        ├── 1-1-Lettre de Demande.pdf          ← modèle de la lettre (pièce 1)
+        ├── 2-2-fiche signalétique.pdf          ← modèle de la fiche signalétique (pièce 2)
+        ├── 16-16-Certificat d'enregistrement.pdf ← modèle du certificat annexe II (pièce 16)
+        └── … (les autres pièces peuvent rester, elles sont ignorées)
+```
+
+Puis, **après chaque ajout** :
+
+```bash
+cd /opt/conformite && sudo bash scripts/indexer_modeles.sh
+```
+
+Le script affiche une ligne ✓ par modèle retenu : pièces 1, 2 et 16. Les certificats CE, ISO et autres documents de tiers ne sont jamais des modèles. Un fichier illisible est signalé ✗ et ignoré, sans bloquer les autres. Plus il y a de dossiers acceptés par pays d'origine, plus Mistral trouve un modèle proche.
+
+---
+
 ## 6. Étape 4 — Vérifications (à faire toutes)
 
 **Une commande fait toutes les vérifications automatiques** (≈10 min sur CPU, ne modifie rien) :
@@ -195,7 +227,7 @@ Toutes ces commandes se lancent depuis `/opt/conformite`.
 | 4 | `ollama list` | `mistral:latest` et `bge-m3:latest` |
 | 5 | `curl -s http://127.0.0.1:6333/collections/dossiers_reference \| grep -o '"points_count":[0-9]*'` | `"points_count":596` |
 | 6 | `curl -s http://127.0.0.1:11434/api/generate -d '{"model":"mistral","prompt":"Réponds en un mot : bonjour","stream":false}' \| head -c 300` | une réponse en français (le premier appel peut prendre 1 à 2 minutes : chargement du modèle) |
-| 7 | Depuis un **poste de travail**, ouvrir `http://IP-du-serveur` | la page de connexion « Vos dossiers DMP, préparés par un agent. Validés par vous. » |
+| 7 | Depuis un **poste de travail**, ouvrir `http://IP-du-serveur` | la page de connexion « Vos dossiers AMMPS, préparés par un agent. Validés par vous. » |
 | 8 | Se connecter (nom + clé d'API, voir §7) | le bandeau affiche **« Serveur en ligne »** |
 | 9 | Créer un dossier d'essai et cliquer sur « Lancer la rédaction » pour une pièce | au bout de 3 à 5 min sur CPU, un projet de document apparaît, à relire |
 

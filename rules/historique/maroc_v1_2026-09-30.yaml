@@ -1,0 +1,173 @@
+# ARCHIVE — version 1 des règles Maroc, remplacée le 2026-10-01 par rules/maroc.yaml (v2).
+# Conservée pour la traçabilité des dossiers constitués avec elle (empreinte_regles). Non lue par le moteur.
+# Règles réglementaires — Maroc (pays de destination)
+# Sources : Loi 84-12, Décret 2-14-607 (22 kaada 1435), Arrêtés 2853/2854/2855/2856-15
+# Autorité : Direction du Médicament et de la Pharmacie (DMP) / ministère de la Santé
+# Date de dernière vérification : 2026-09-30 (ajout du champ `nature`)
+
+pays: maroc
+autorite: "Direction du Médicament et de la Pharmacie (DMP)"
+classification: [I, IIA, IIB, III]
+
+# nature (obligatoire pour chaque pièce) :
+#   a_rediger : document produit par l'entreprise — projet rédigé par
+#               Mistral (RAG), puis relu et validé par un humain.
+#   a_fournir : document émis par un tiers (autorité, organisme certifié,
+#               fabricant) ou pièce physique — JAMAIS généré par le système :
+#               il est réclamé au fournisseur, puis vérifié par un humain.
+# fourni_par : pour les pièces a_fournir, qui émet le document.
+
+# Champs que l'agent extrait des documents reçus du fournisseur (pièces
+# a_fournir). Seul ce fichier décide quels champs sont lus ; l'IA ne fait
+# que les retrouver dans le document, avec la citation qui les justifie.
+# type: texte | date   (les dates sont normalisées en AAAA-MM-JJ)
+modeles_champs:
+  certificat: &champs_certificat
+    - nom: numero
+      libelle: "Numéro du certificat"
+      description: "numéro, référence ou identifiant du certificat ou de l'autorisation"
+    - nom: emetteur
+      libelle: "Émis par"
+      description: "autorité ou organisme qui a délivré le document"
+    - nom: titulaire
+      libelle: "Titulaire (fabricant)"
+      description: "entreprise titulaire du certificat, en général le fabricant"
+    - nom: produit_couvert
+      libelle: "Produits couverts"
+      description: "dispositif(s) médical(aux) ou gamme de produits couverts par le document"
+    - nom: date_emission
+      libelle: "Date d'émission"
+      description: "date de délivrance ou d'émission du document"
+      type: date
+    - nom: date_expiration
+      libelle: "Valable jusqu'au"
+      description: "date de fin de validité ou d'expiration du document"
+      type: date
+
+socle_commun:
+  - id: demande_signee
+    nom: "Demande signée adressée au ministre de la Santé"
+    nature: a_rediger
+    consigne_redaction: >-
+      Lettre de demande d'enregistrement du dispositif médical, adressée au
+      ministre de la Santé (Direction du Médicament et de la Pharmacie) par le
+      représentant légal de l'établissement demandeur : objet, désignation du
+      dispositif, classe, fabricant et pays d'origine, liste des pièces jointes,
+      formule de politesse, date, signature et cachet.
+  - id: fiche_signaletique
+    nom: "Fiche signalétique du dispositif (exemplaires requis)"
+    nature: a_rediger
+    consigne_redaction: >-
+      Fiche signalétique du dispositif, sous forme de rubriques à remplir :
+      désignation, nom commercial, classe, références et présentations,
+      fabricant (nom, adresse, pays), établissement demandeur, mandataire,
+      usage prévu, conditions de conservation ; mention des exemplaires,
+      date, signature et cachet du représentant légal.
+  - id: dossier_technique
+    nom: "Dossier technique (description, composition, fabrication, contrôles)"
+    nature: a_rediger  # trame compilée par l'entreprise, à compléter avec les données du fabricant
+    consigne_redaction: >-
+      Sommaire structuré du dossier technique (trame) : description et
+      principe de fonctionnement, composition et matériaux, procédé de
+      fabrication, contrôles qualité et spécifications, stérilisation le cas
+      échéant, étiquetage et notice, évaluation des risques. Chaque section
+      indique les documents du fabricant à y joindre.
+  - id: bulletin_analyse
+    nom: "Bulletin d'analyse signé par le fabricant"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    champs_a_extraire:
+      - nom: fabricant
+        libelle: "Fabricant"
+        description: "fabricant qui a réalisé l'analyse"
+      - nom: produit
+        libelle: "Produit analysé"
+        description: "désignation du dispositif analysé"
+      - nom: numero_lot
+        libelle: "Numéro de lot"
+        description: "numéro de lot ou de série analysé"
+      - nom: date_analyse
+        libelle: "Date d'analyse"
+        description: "date de l'analyse ou du bulletin"
+        type: date
+      - nom: conclusion
+        libelle: "Conclusion"
+        description: "conclusion de l'analyse (conforme, non conforme…)"
+      - nom: signataire
+        libelle: "Signataire"
+        description: "nom et fonction de la personne qui a signé le bulletin"
+  - id: echantillon_etiquetage
+    nom: "Échantillon modèle, emballage et étiquetage conforme"
+    nature: a_fournir  # pièce physique
+    fourni_par: "le fabricant"
+  - id: mandataire_maroc
+    nom: "Mandataire du fabricant établi au Maroc"
+    nature: a_rediger  # lettre de désignation, à faire signer par le fabricant
+    consigne_redaction: >-
+      Lettre par laquelle le fabricant désigne son mandataire établi au Maroc
+      pour le dispositif concerné : identité du fabricant et du mandataire,
+      étendue du mandat, engagement du mandataire, date, signature et cachet
+      du fabricant.
+  - id: iso_13485
+    nom: "Certificat ISO 13485 (système de management de la qualité)"
+    nature: a_fournir
+    fourni_par: "l'organisme de certification du fabricant"
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: norme
+        libelle: "Référentiel"
+        description: "norme certifiée, avec son année (ex. ISO 13485:2016)"
+    condition: "classes IIA, IIB, III"
+    classes_concernees: [IIA, IIB, III]
+
+piece_specifique_selon_origine:
+  chine:
+    document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)"
+    nature: a_fournir
+    fourni_par: "la NMPA (via le fabricant)"
+    champs_a_extraire: &champs_autorisation
+      - *champs_certificat
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe du dispositif indiquée sur le document"
+    traduction_requise: true
+    legalisation_requise: true
+  inde:
+    document: "Autorisation de mise en vente délivrée par la CDSCO"
+    nature: a_fournir
+    fourni_par: "la CDSCO (via le fabricant)"
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+  union_europeenne:
+    document: "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)"
+    nature: a_fournir
+    fourni_par: "l'organisme notifié (via le fabricant)"
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: numero_organisme_notifie
+        libelle: "N° de l'organisme notifié"
+        description: "numéro d'identification à 4 chiffres de l'organisme notifié"
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe du dispositif indiquée sur le certificat"
+    traduction_requise: false
+    legalisation_requise: false
+  autre:
+    document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485"
+    nature: a_fournir
+    fourni_par: "l'autorité de tutelle du pays d'origine (via le fabricant)"
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+
+contraintes_operationnelles:
+  jours_depot_physique: [mercredi, jeudi]
+  validite_enregistrement_ans: 5
+  renouvelable: true
+  langue_etiquetage: [francais, arabe]
+  langue_toleree_usage_professionnel_importe: [anglais]
+
+notes:
+  - "Le Maroc accepte les certificats étrangers comme pièce justificative — système plus souple que l'UE."
+  - "Un mandataire local est obligatoire quel que soit le pays d'origine du produit."

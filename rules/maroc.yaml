@@ -1,24 +1,45 @@
 # Règles réglementaires — Maroc (pays de destination)
-# Sources : Loi 84-12, Décret 2-14-607 (22 kaada 1435), Arrêtés 2853/2854/2855/2856-15
-# Autorité : Direction du Médicament et de la Pharmacie (DMP) / ministère de la Santé
-# Date de dernière vérification : 2026-09-30 (ajout du champ `nature`)
+# Sources : Loi 84-12, Décret 2-14-607, Arrêté 2855-15 art. 2 (1) « dispositif
+# médical importé » — pièces administratives et techniques.
+# Pratique vérifiée sur un dossier réel accepté (UE, classe IIb, 2026) :
+# destinataire AMMPS, pièces numérotées, formulaire de l'annexe II pré-rempli.
+#
+# VERSION 2 — 2026-10-01. Remplace la version 1 (rules/historique/) :
+#   - autorité : AMMPS (Directeur général), qui a repris l'enregistrement des DM
+#   - retirés (non exigés par l'art. 2 (1) pour un DM importé, absents du dossier
+#     accepté) : bulletin d'analyse, dossier technique, mandataire au Maroc
+#   - ajoutés (art. 2 (1)) : quittance des droits, attestation du fabricant,
+#     déclaration de conformité, étiquetage, notice ; et, d'après le dossier
+#     accepté : catalogue, certificat d'enregistrement (annexe II) pré-rempli
+#   - certificat CE / équivalent : classes IIA, IIB, III et sous-classes IS, IM
+#   - numéro de chaque pièce dans le dossier déposé (`numero`)
 
 pays: maroc
-autorite: "Direction du Médicament et de la Pharmacie (DMP)"
-classification: [I, IIA, IIB, III]
+version: 2
+date_version: "2026-10-01"
+autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
+destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
+# IS : classe I stérile ; IM : classe I avec fonction de mesurage (arrêté 2855-15)
+classification: [I, IS, IM, IIA, IIB, III]
 
 # nature (obligatoire pour chaque pièce) :
 #   a_rediger : document produit par l'entreprise — projet rédigé par
-#               Mistral (RAG), puis relu et validé par un humain.
+#               Mistral (modèles de dossiers acceptés + textes), puis relu et
+#               validé par un humain.
 #   a_fournir : document émis par un tiers (autorité, organisme certifié,
-#               fabricant) ou pièce physique — JAMAIS généré par le système :
-#               il est réclamé au fournisseur, puis vérifié par un humain.
+#               fabricant), paiement ou pièce physique — JAMAIS généré par le
+#               système : il est réclamé, puis vérifié par un humain.
 # fourni_par : pour les pièces a_fournir, qui émet le document.
+# numero     : place de la pièce dans le dossier déposé (dossier accepté :
+#              1 à 9, 14, 16 ; 10 à 13 et 15 sans objet pour un DM importé
+#              ordinaire). Absent : pièce exigée par le texte mais hors de la
+#              numérotation observée.
+# classes_concernees : si présent, la pièce n'est exigée que pour ces classes
+#              (classe inconnue : pièce conservée par prudence).
 
-# Champs que l'agent extrait des documents reçus du fournisseur (pièces
-# a_fournir). Seul ce fichier décide quels champs sont lus ; l'IA ne fait
-# que les retrouver dans le document, avec la citation qui les justifie.
-# type: texte | date   (les dates sont normalisées en AAAA-MM-JJ)
+# Champs que l'agent extrait des documents reçus (pièces a_fournir). Seul ce
+# fichier décide quels champs sont lus ; l'IA ne fait que les retrouver dans le
+# document, avec la citation qui les justifie. type: texte | date
 modeles_champs:
   certificat: &champs_certificat
     - nom: numero
@@ -41,85 +62,137 @@ modeles_champs:
       libelle: "Valable jusqu'au"
       description: "date de fin de validité ou d'expiration du document"
       type: date
+  document_fabricant: &champs_document_fabricant
+    - nom: fabricant
+      libelle: "Fabricant"
+      description: "nom et adresse de l'établissement de fabrication qui émet le document"
+    - nom: produits
+      libelle: "Produits concernés"
+      description: "dispositif(s), noms commerciaux ou références concernés"
+    - nom: date_document
+      libelle: "Date du document"
+      description: "date à laquelle le document a été établi ou signé"
+      type: date
+    - nom: signataire
+      libelle: "Signataire"
+      description: "nom et fonction de la personne qui a signé le document"
 
 socle_commun:
   - id: demande_signee
-    nom: "Demande signée adressée au ministre de la Santé"
+    numero: 1
+    nom: "Lettre de demande d'enregistrement adressée au Directeur général de l'AMMPS"
     nature: a_rediger
+    source: "Arrêté 2855-15, art. 2 (1) a) — 3 exemplaires, signée et cachetée"
     consigne_redaction: >-
-      Lettre de demande d'enregistrement du dispositif médical, adressée au
-      ministre de la Santé (Direction du Médicament et de la Pharmacie) par le
-      représentant légal de l'établissement demandeur : objet, désignation du
-      dispositif, classe, fabricant et pays d'origine, liste des pièces jointes,
-      formule de politesse, date, signature et cachet.
+      Lettre de demande d'octroi d'un certificat d'enregistrement, sur papier à
+      en-tête de l'établissement demandeur, adressée au Directeur général de
+      l'AMMPS : lieu et date, objet, désignation scientifique du dispositif,
+      nom commercial, intérêt médical, formule de politesse, cachet et
+      signature du représentant légal.
   - id: fiche_signaletique
-    nom: "Fiche signalétique du dispositif (exemplaires requis)"
+    numero: 2
+    nom: "Fiche signalétique (modèle officiel, 3 exemplaires + version électronique)"
     nature: a_rediger
+    source: "Arrêté 2855-15, art. 2 (1) a) — datée, signée et cachetée"
     consigne_redaction: >-
-      Fiche signalétique du dispositif, sous forme de rubriques à remplir :
-      désignation, nom commercial, classe, références et présentations,
-      fabricant (nom, adresse, pays), établissement demandeur, mandataire,
-      usage prévu, conditions de conservation ; mention des exemplaires,
-      date, signature et cachet du représentant légal.
-  - id: dossier_technique
-    nom: "Dossier technique (description, composition, fabrication, contrôles)"
-    nature: a_rediger  # trame compilée par l'entreprise, à compléter avec les données du fabricant
-    consigne_redaction: >-
-      Sommaire structuré du dossier technique (trame) : description et
-      principe de fonctionnement, composition et matériaux, procédé de
-      fabrication, contrôles qualité et spécifications, stérilisation le cas
-      échéant, étiquetage et notice, évaluation des risques. Chaque section
-      indique les documents du fabricant à y joindre.
-  - id: bulletin_analyse
-    nom: "Bulletin d'analyse signé par le fabricant"
+      Fiche signalétique au modèle officiel, rubrique par rubrique : 1. objet
+      de la demande ; 2. statut du dispositif (seul, kit, système, famille ;
+      importé) ; 3. identification (classe et sous-classe, stérile et méthode,
+      type, catégorie, codes GMDN/EMDN, désignation, nom de marque et noms
+      commerciaux, références, présentation, indications, domaine
+      thérapeutique, durée de validité, conservation) ; 4. composition
+      (médicament, composant sanguin, origine animale, nano-éléments,
+      radionucléide, rayonnements, latex, phtalates : oui/non et nature) ;
+      informations administratives (fabricant, établissement demandeur) ;
+      date, cachet et signature.
+  - id: attestation_fabricant
+    numero: 3
+    nom: "Attestation du fabricant (lien avec l'établissement demandeur)"
     nature: a_fournir
-    fourni_par: "le fabricant"
+    fourni_par: "le fabricant ou son mandataire"
+    source: "Arrêté 2855-15, art. 2 (1) a)"
     champs_a_extraire:
-      - nom: fabricant
-        libelle: "Fabricant"
-        description: "fabricant qui a réalisé l'analyse"
-      - nom: produit
-        libelle: "Produit analysé"
-        description: "désignation du dispositif analysé"
-      - nom: numero_lot
-        libelle: "Numéro de lot"
-        description: "numéro de lot ou de série analysé"
-      - nom: date_analyse
-        libelle: "Date d'analyse"
-        description: "date de l'analyse ou du bulletin"
+      - *champs_document_fabricant
+      - nom: beneficiaire
+        libelle: "Établissement autorisé"
+        description: "établissement marocain désigné (distributeur, importateur) dans l'attestation"
+      - nom: date_fin
+        libelle: "Valable jusqu'au"
+        description: "date de fin de validité de l'autorisation, si elle est indiquée"
         type: date
-      - nom: conclusion
-        libelle: "Conclusion"
-        description: "conclusion de l'analyse (conforme, non conforme…)"
-      - nom: signataire
-        libelle: "Signataire"
-        description: "nom et fonction de la personne qui a signé le bulletin"
-  - id: echantillon_etiquetage
-    nom: "Échantillon modèle, emballage et étiquetage conforme"
-    nature: a_fournir  # pièce physique
-    fourni_par: "le fabricant"
-  - id: mandataire_maroc
-    nom: "Mandataire du fabricant établi au Maroc"
-    nature: a_rediger  # lettre de désignation, à faire signer par le fabricant
-    consigne_redaction: >-
-      Lettre par laquelle le fabricant désigne son mandataire établi au Maroc
-      pour le dispositif concerné : identité du fabricant et du mandataire,
-      étendue du mandat, engagement du mandataire, date, signature et cachet
-      du fabricant.
   - id: iso_13485
+    numero: 5
     nom: "Certificat ISO 13485 (système de management de la qualité)"
     nature: a_fournir
     fourni_par: "l'organisme de certification du fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) a) — classes IIA, IIB, III"
     champs_a_extraire:
       - *champs_certificat
       - nom: norme
         libelle: "Référentiel"
         description: "norme certifiée, avec son année (ex. ISO 13485:2016)"
-    condition: "classes IIA, IIB, III"
     classes_concernees: [IIA, IIB, III]
+  - id: declaration_conformite
+    numero: 6
+    nom: "Déclaration de conformité du fabricant (exigences essentielles)"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b)"
+    champs_a_extraire:
+      - *champs_document_fabricant
+      - nom: classe_indiquee
+        libelle: "Classe indiquée"
+        description: "classe de risque du dispositif indiquée dans la déclaration"
+      - nom: referentiel
+        libelle: "Référentiel"
+        description: "texte de référence déclaré (directive 93/42/CEE, règlement (UE) 2017/745…)"
+  - id: etiquetage
+    numero: 7
+    nom: "Projet d'étiquetage (signé et cacheté par le représentant légal)"
+    nature: a_fournir
+    fourni_par: "le fabricant (étiquettes), signées par l'établissement demandeur"
+    source: "Arrêté 2855-15, art. 2 (1) b)"
+  - id: notice
+    numero: 8
+    nom: "Notice d'utilisation, partie en français (signée et cachetée)"
+    nature: a_fournir
+    fourni_par: "le fabricant (notice), signée par l'établissement demandeur"
+    source: "Arrêté 2855-15, art. 2 (1) b) — le cas échéant"
+  - id: echantillon
+    numero: 9
+    nom: "Échantillon modèle-vente ou photos du dispositif"
+    nature: a_fournir  # pièce physique ou photos
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b) — sauf équipement médical"
+  - id: catalogue
+    numero: 14
+    nom: "Catalogue du fabricant (références du dispositif)"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Pratique : dossier accepté (pièce 14)"
+  - id: certificat_enregistrement_annexe2
+    numero: 16
+    nom: "Certificat d'enregistrement au modèle de l'annexe II, partie I pré-remplie"
+    nature: a_rediger
+    source: "Arrêté 2855-15, annexe II — partie I réservée au demandeur (dossier accepté : pièce 16)"
+    consigne_redaction: >-
+      Partie I (réservée au demandeur) du certificat d'enregistrement :
+      statut du dispositif (seul, kit, système, famille ; importé),
+      désignation, nom de marque et noms commerciaux, présentation,
+      références, classe de risque, numéro de l'organisme notifié (code CE),
+      catégorie, nom et adresse de l'établissement marocain, nom et adresse
+      du fabricant, sous-traitant (NA sinon) ; annexe : tableau nom de
+      marque / noms commerciaux / références. Ne jamais remplir la partie 2
+      (réservée à l'administration).
+  - id: quittance_droits
+    nom: "Copie de la quittance des droits d'enregistrement"
+    nature: a_fournir  # paiement effectué par l'établissement demandeur
+    fourni_par: "l'établissement demandeur (paiement des droits)"
+    source: "Arrêté 2855-15, art. 2 (1) a) — absente de la numérotation du dossier accepté : à confirmer"
 
 piece_specifique_selon_origine:
   chine:
+    numero: 4
     document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)"
     nature: a_fournir
     fourni_par: "la NMPA (via le fabricant)"
@@ -130,17 +203,26 @@ piece_specifique_selon_origine:
         description: "classe du dispositif indiquée sur le document"
     traduction_requise: true
     legalisation_requise: true
+    classes_concernees: &classes_certificat [IS, IM, IIA, IIB, III]
   inde:
+    numero: 4
     document: "Autorisation de mise en vente délivrée par la CDSCO"
     nature: a_fournir
     fourni_par: "la CDSCO (via le fabricant)"
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
+    classes_concernees: *classes_certificat
   union_europeenne:
-    document: "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)"
+    numero: 4
+    document: "Certificat de marquage CE délivré par un organisme notifié (+ lettre de confirmation si certificat MDD expiré)"
     nature: a_fournir
     fourni_par: "l'organisme notifié (via le fabricant)"
+    remarque: >-
+      Un certificat CE délivré au titre de la directive 93/42/CEE et expiré
+      sur le papier reste valable s'il est accompagné de la lettre de
+      confirmation de l'organisme notifié prévue par le règlement (UE)
+      2023/607 : joindre les deux (dossier accepté : pièce 4).
     champs_a_extraire:
       - *champs_certificat
       - nom: numero_organisme_notifie
@@ -151,21 +233,26 @@ piece_specifique_selon_origine:
         description: "classe du dispositif indiquée sur le certificat"
     traduction_requise: false
     legalisation_requise: false
+    classes_concernees: *classes_certificat
   autre:
-    document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485"
+    numero: 4
+    document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine (ou attestation FDA, ou équivalent)"
     nature: a_fournir
     fourni_par: "l'autorité de tutelle du pays d'origine (via le fabricant)"
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
+    classes_concernees: *classes_certificat
 
 contraintes_operationnelles:
   jours_depot_physique: [mercredi, jeudi]
   validite_enregistrement_ans: 5
   renouvelable: true
+  exemplaires_demande_et_fiche: 3
   langue_etiquetage: [francais, arabe]
   langue_toleree_usage_professionnel_importe: [anglais]
 
 notes:
   - "Le Maroc accepte les certificats étrangers comme pièce justificative — système plus souple que l'UE."
-  - "Un mandataire local est obligatoire quel que soit le pays d'origine du produit."
+  - "Toutes les pièces administratives et la déclaration de conformité sont datées, signées et cachetées par le représentant légal de l'établissement marocain (arrêté 2855-15, art. 3)."
+  - "Pièces 10 à 13 et 15 de la numérotation : sans objet pour un DM importé ordinaire (confirmé par l'utilisateur, 2026-10-01)."

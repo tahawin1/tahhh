@@ -133,6 +133,16 @@ else
   ok "Indexé : $POINTS extraits (596 attendus)"
 fi
 
+titre "7. Modèles de rédaction (dossiers acceptés) et profil de l'entreprise"
+if [ ! -f config/entreprise.yaml ]; then
+  cp config/entreprise.exemple.yaml config/entreprise.yaml && chmod 600 config/entreprise.yaml
+  alerte "config/entreprise.yaml créé à partir de l'exemple : À REMPLIR (raison sociale, adresse, ICE…), voir la fiche §5 bis."
+else
+  ok "Profil de l'entreprise présent (config/entreprise.yaml)"
+fi
+mkdir -p data/dossiers_valides
+bash scripts/indexer_modeles.sh
+
 # ------------------------------------------------------------------ résumé
 titre "Terminé"
 IP_SERVEUR=$(hostname -I 2>/dev/null | awk '{print $1}')

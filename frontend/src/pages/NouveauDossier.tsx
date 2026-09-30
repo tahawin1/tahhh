@@ -6,6 +6,8 @@ import type { Session } from './Connexion'
 
 const CLASSES = [
   { id: 'I', aide: 'Risque faible' },
+  { id: 'IS', aide: 'Classe I stérile' },
+  { id: 'IM', aide: 'Classe I avec mesurage' },
   { id: 'IIA', aide: 'Risque modéré' },
   { id: 'IIB', aide: 'Risque élevé' },
   { id: 'III', aide: 'Risque très élevé' },
@@ -65,7 +67,7 @@ export default function NouveauDossier({ session }: { session: Session }) {
       <header className="page-entete">
         <p className="surtitre">Nouveau dossier</p>
         <h1>Quel dispositif voulez-vous enregistrer ?</h1>
-        <p className="hero-sous">Trois informations suffisent : les règles de la DMP donnent aussitôt la liste des pièces.</p>
+        <p className="hero-sous">Trois informations suffisent : les règles officielles donnent aussitôt la liste des pièces.</p>
       </header>
 
       <div className="nouveau-grille">
@@ -122,7 +124,7 @@ export default function NouveauDossier({ session }: { session: Session }) {
 
         <aside className="panneau apercu" aria-live="polite">
           <h2>Pièces exigées</h2>
-          <p className="aide">Décidé par les règles de la DMP selon le pays et la classe, jamais par l'IA.</p>
+          <p className="aide">Décidé par les règles officielles selon le pays et la classe, jamais par l'IA.</p>
           {!apercu && !erreur && <p className="aide">Chargement…</p>}
           {apercu && (
             <>

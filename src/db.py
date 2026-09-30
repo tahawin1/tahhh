@@ -84,6 +84,9 @@ class Document(Base):
     traduction_requise: Mapped[bool] = mapped_column(Boolean, default=False)
     legalisation_requise: Mapped[bool] = mapped_column(Boolean, default=False)
     origine_regle: Mapped[str] = mapped_column(String(200))
+    numero: Mapped[int | None] = mapped_column(Integer, nullable=True)  # place dans le dossier déposé
+    remarque: Mapped[str | None] = mapped_column(Text, nullable=True)
+    source_regle: Mapped[str | None] = mapped_column(String(300), nullable=True)  # article qui fonde l'exigence
     # Suivi
     statut: Mapped[str] = mapped_column(String(20))
     fichier: Mapped[str | None] = mapped_column(String(500), nullable=True)

@@ -19,3 +19,6 @@ data/processed/*
 
 # Dossiers réels de l'entreprise (confidentiels) : jamais versionnés
 data/dossiers_valides/
+
+# Profil réel de l'entreprise (sur le serveur uniquement)
+config/entreprise.yaml

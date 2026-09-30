@@ -108,7 +108,7 @@ app.add_middleware(
 )
 
 PaysOrigine = Literal["chine", "inde", "union_europeenne", "autre"]
-Classe = Literal["I", "IIA", "IIB", "III"]
+Classe = Literal["I", "IS", "IM", "IIA", "IIB", "III"]  # IS : stérile ; IM : mesurage
 
 
 # ---------------------------------------------------------------- schémas
@@ -122,6 +122,9 @@ class DocumentRequisOut(BaseModel):
     traduction_requise: bool
     legalisation_requise: bool
     origine_regle: str
+    numero: int | None = None
+    remarque: str | None = None
+    source: str | None = None
 
 
 class DossierRequete(BaseModel):
@@ -161,6 +164,9 @@ class DocumentOut(BaseModel):
     traduction_requise: bool
     legalisation_requise: bool
     origine_regle: str
+    numero: int | None
+    remarque: str | None
+    source: str | None
     statut: str
     fichier_disponible: bool
     sources: list | None
@@ -267,7 +273,8 @@ def _detail(dossier: Dossier) -> dict:
         "documents": [
             {
                 **{k: getattr(d, k) for k in DocumentOut.model_fields
-                   if k not in ("fichier_disponible", "lisible_par_agent")},
+                   if k not in ("fichier_disponible", "lisible_par_agent", "source")},
+                "source": d.source_regle,
                 "fichier_disponible": bool(d.fichier) and Path(d.fichier).exists(),
                 "lisible_par_agent": d.nature == "a_fournir" and bool(_champs_de(d)),
             }
@@ -367,6 +374,9 @@ def documents_requis(requete: DossierRequete):
                 traduction_requise=d.traduction_requise,
                 legalisation_requise=d.legalisation_requise,
                 origine_regle=d.origine_regle,
+                numero=d.numero,
+                remarque=d.remarque,
+                source=d.source,
             )
             for d in documents
         ],
@@ -436,6 +446,9 @@ def creer_dossier(requete: DossierCreation):
                     traduction_requise=d.traduction_requise,
                     legalisation_requise=d.legalisation_requise,
                     origine_regle=d.origine_regle,
+                    numero=d.numero,
+                    remarque=d.remarque,
+                    source_regle=d.source,
                     statut="a_generer" if d.a_rediger else "a_obtenir",
                 )
             )

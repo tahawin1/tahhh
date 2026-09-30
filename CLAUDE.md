@@ -71,7 +71,7 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 
 | Pays | Texte de référence | Autorité | Fichier YAML |
 |---|---|---|---|
-| Maroc (destination) | Loi 84-12, Décret 2-14-607, Arrêtés 2853-2856 | DMP (Direction du Médicament et de la Pharmacie) | `rules/maroc.yaml` |
+| Maroc (destination) | Loi 84-12, Décret 2-14-607, Arrêtés 2853-2856 (enregistrement : 2855-15 art. 2) | AMMPS (ex-DMP) — demande adressée à son Directeur général | `rules/maroc.yaml` (v2 ; v1 dans `rules/historique/`) |
 | Chine (origine possible) | Règlement du Conseil d'État n°739 (2021) | NMPA | `rules/chine.yaml` |
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
@@ -151,6 +151,23 @@ supporte déjà.
 - [x] Édition claude.ai (`claude_ai/`) : même tableau de bord, sans serveur,
       l'agent y est Claude (et non Mistral) — voir claude_ai/README.md ;
       confidentialité des documents fournisseurs à valider par la direction
+- [x] Règles Maroc v2 (2026-10-01) alignées sur l'arrêté 2855-15 art. 2 (1)
+      « DM importé » et sur le dossier réel accepté : AMMPS, pièces numérotées
+      (`numero`), fondement de chaque pièce (`source`), certificat CE/équivalent
+      pour IS/IM/IIA/IIB/III, remarque 2023/607 ; retirés : bulletin d'analyse,
+      dossier technique, mandataire ; ajoutés : attestation fabricant,
+      déclaration de conformité, étiquetage, notice, catalogue, annexe II,
+      quittance (hors numérotation, à confirmer). v1 archivée.
+- [x] Modèles de rédaction (`src/modeles.py`, `scripts/indexer_modeles.sh`) :
+      les pièces à rédiger des dossiers acceptés (`data/dossiers_valides/`,
+      jamais versionné) sont indexées (collection `modeles_dossiers`) ; le
+      fichier est rattaché à la pièce par son numéro et le `numero` des règles
+      (code, pas IA). Mistral rédige sur le modèle le plus proche ; sans
+      extraits de textes quand un modèle existe ; profil de l'entreprise
+      (`config/entreprise.yaml`, jamais versionné) ; garde-fou déterministe
+      `recadrer_sur_modele` (préambule et ajouts après la fin du modèle retirés).
+      Essai réel : la lettre (pièce 1) d'un nouveau dossier UE est conforme au
+      modèle accepté, via la pile serveur complète.
 - [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
       reçus (expiration, produit, classe, émetteur) — règles en YAML
 - [ ] Agent — étape 3 : projets remplis avec les données extraites
@@ -194,6 +211,13 @@ supporte déjà.
   3 min de génération (cause non identifiée, non reproduite à la relance) ;
   rédaction et lecture relancent désormais une fois automatiquement sur 5xx
   (`tests/test_relance_ollama.py`).
+- Modèles : pour la **lettre**, Mistral + modèle + recadrage donnent un résultat
+  conforme. Pour les **formulaires** (fiche signalétique, annexe II), la
+  rédaction libre par Mistral ne suit pas la mise en page (essai du
+  2026-10-01) : ils doivent être remplis par le code, champ par champ, à
+  partir des modèles et des données extraites (agent — étape 3).
+- Mistral 7B ajoute souvent une introduction (« Voici… ») et des listes
+  inventées après la signature : le prompt ne suffit pas, d'où le recadrage.
 - Au premier démarrage à froid, charger Mistral peut dépasser 5 min sur un
   disque lent : `OLLAMA_LOAD_TIMEOUT=20m` (réglé par installer_serveur.sh).
 - Sur CPU seul, Mistral 7B rédige ~5 tokens/s : `/dossiers/generer` prend

@@ -38,6 +38,10 @@ echo "== 3. Reconstruction et redémarrage"
 docker compose "${PROFILS[@]}" up -d --build
 docker image prune -f >/dev/null
 
+echo "== 3 bis. Modèles de rédaction"
+for i in $(seq 1 30); do curl -s http://127.0.0.1:8000/health | grep -q '"statut":"ok"' && break; sleep 2; done
+bash scripts/indexer_modeles.sh || echo "  ! indexation des modèles en échec (voir ci-dessus)"
+
 echo "== 4. Contrôle"
 for i in $(seq 1 60); do curl -s http://127.0.0.1:8000/health | grep -q '"statut":"ok"' && break; sleep 2; done
 SANTE=$(curl -s http://127.0.0.1:8000/health || echo "API injoignable")

@@ -169,7 +169,7 @@ export default function App() {
         </main>
         <footer className="pied">
           <Icone nom="bouclier" taille={16} />
-          Aucun dossier n'est déposé par ce système : le dépôt auprès de la DMP reste une démarche
+          Aucun dossier n'est déposé par ce système : le dépôt auprès de l'AMMPS reste une démarche
           manuelle, après validation humaine de chaque pièce.
         </footer>
       </div>

@@ -1,0 +1,17 @@
+# Profil de l'établissement demandeur (l'entreprise qui dépose les dossiers).
+# Copier ce fichier en config/entreprise.yaml SUR LE SERVEUR et le remplir :
+#   sudo cp config/entreprise.exemple.yaml config/entreprise.yaml && sudo nano config/entreprise.yaml
+# config/entreprise.yaml n'est jamais versionné (.gitignore) ; il est repris tel
+# quel dans l'en-tête et le pied des pièces rédigées (lettre, fiche, annexe II).
+# Laisser une valeur vide si elle ne doit pas apparaître.
+
+raison_sociale: "NOM DE L'ÉTABLISSEMENT"
+ville: "Ville"                        # lieu indiqué avant la date des lettres
+adresse: "Adresse complète"
+telephone: ""
+representant_legal: "Nom du représentant légal"
+ice: ""
+identifiant_fiscal: ""
+registre_commerce: ""
+patente: ""
+banque_rib: ""                        # tel qu'il figure en pied de page des courriers, si souhaité
