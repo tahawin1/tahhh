@@ -6,10 +6,10 @@
         │
         │  appels API (fetch) vers VITE_API_URL
         ▼
- https://api.<votre-domaine>                   ← Cloudflare Tunnel (sortant, aucun port ouvert)
+ https://<nom>.ngrok-free.app                  ← tunnel ngrok (sortant, aucun port ouvert)
         │
  ┌──────┴──────────── serveur de l'entreprise ────────────────────────┐
- │  cloudflared ──► 127.0.0.1:8000  API FastAPI (docker, profil api)   │
+ │  ngrok ───────► api:8000  API FastAPI (docker, profil api)         │
  │                    ├── PostgreSQL  (dossiers, validations, journal) │
  │                    ├── Qdrant      (textes réglementaires indexés)  │
  │                    └── Ollama      (Mistral + bge-m3, sur l'hôte)   │
@@ -56,19 +56,40 @@ Les ports de PostgreSQL, Qdrant et de l'API ne sont liés qu'à
 `127.0.0.1` : rien n'est exposé sur le réseau, l'accès extérieur passe
 uniquement par le tunnel.
 
-## 2. Tunnel : Cloudflare Tunnel (recommandé)
+## 2. Tunnel ngrok (choix retenu pour l'instant)
 
-Pourquoi Cloudflare plutôt que ngrok :
-- **adresse fixe** (`api.votre-domaine`) : `VITE_API_URL` est saisie une
-  fois pour toutes sur Vercel ;
+1. Créer un compte gratuit sur https://dashboard.ngrok.com, récupérer
+   l'**authtoken** (*Your Authtoken*) et réserver le **domaine statique
+   gratuit** (*Domains*, ex. `conformite-xxxx.ngrok-free.app`) : l'adresse
+   ne changera plus, `VITE_API_URL` est saisie une seule fois sur Vercel.
+2. Ajouter au fichier `.env` du serveur :
+   ```bash
+   NGROK_AUTHTOKEN=<authtoken>
+   NGROK_URL=conformite-xxxx.ngrok-free.app
+   ```
+3. Démarrer l'API **et** le tunnel :
+   ```bash
+   docker compose --profile api --profile ngrok up -d --build
+   curl https://conformite-xxxx.ngrok-free.app/health
+   ```
+
+Le frontend envoie l'en-tête `ngrok-skip-browser-warning` à chaque appel :
+la page d'avertissement de l'offre gratuite ne bloque donc pas le tableau
+de bord. Limites de l'offre gratuite : quota mensuel de requêtes et de
+bande passante — largement suffisant pour suivre et partager l'avancement,
+pas pour une exploitation en production.
+
+## 2 bis. Alternative à terme : Cloudflare Tunnel
+
+Pourquoi y passer à terme (plutôt que ngrok) :
+- adresse sur **votre propre domaine** (`api.votre-domaine`) ;
 - **Cloudflare Access** (gratuit jusqu'à 50 utilisateurs) : on peut exiger
   une connexion (e-mail de l'entreprise) avant même d'atteindre l'API ;
 - pas de quota de requêtes ni de page d'avertissement ;
 - connexion **sortante** depuis le serveur : aucun port à ouvrir au pare-feu.
 
 Condition : un nom de domaine géré par Cloudflare (DNS). Sans domaine,
-ngrok (`ngrok http 8000 --url <domaine-statique-gratuit>.ngrok-free.app`)
-dépanne, mais sa page d'avertissement gêne les appels du navigateur.
+ngrok (section 2) reste la solution.
 
 ```bash
 # Sur le serveur
@@ -88,28 +109,28 @@ curl https://api.<votre-domaine>/health
 ```
 
 La génération est asynchrone (l'API répond en quelques millisecondes et
-rédige en tâche de fond) : la limite de 100 s de Cloudflare par requête
-n'est donc pas un problème.
+rédige en tâche de fond) : les limites de durée de requête des tunnels
+(100 s chez Cloudflare) ne sont donc pas un problème.
 
 ## 3. Frontend sur Vercel
 
 Dans Vercel → *Add New Project* → importer ce dépôt GitHub :
 - **Root Directory** : `frontend`
 - **Framework** : Vite (détecté ; `frontend/vercel.json`)
-- **Environment Variables** : `VITE_API_URL = https://api.<votre-domaine>`
+- **Environment Variables** : `VITE_API_URL = https://conformite-xxxx.ngrok-free.app`
 
 Ou en ligne de commande (avec un jeton `VERCEL_TOKEN`) :
 
 ```bash
 cd frontend
 npx vercel link --yes
-npx vercel env add VITE_API_URL production    # saisir https://api.<votre-domaine>
+npx vercel env add VITE_API_URL production    # saisir https://conformite-xxxx.ngrok-free.app
 npx vercel deploy --prod
 ```
 
 `VITE_API_URL` est lue **au moment du build** : après l'avoir modifiée,
 redéployer. Puis mettre l'URL Vercel obtenue dans `CORS_ORIGINS` (`.env`
-du serveur) et `docker compose --profile api up -d`.
+du serveur) et `docker compose --profile api --profile ngrok up -d`.
 
 La clé d'API n'est jamais mise dans Vercel : chaque utilisateur la saisit
 à la connexion au tableau de bord.

@@ -99,6 +99,12 @@ export interface Apercu {
   prochain_creneau_depot: string
 }
 
+export interface ApercuProjet {
+  piece: string
+  genere_le: string | null
+  paragraphes: { genre: 'titre' | 'puce' | 'texte'; texte: string }[]
+}
+
 export interface Sante {
   statut: string
   services: Record<string, boolean>
@@ -119,7 +125,9 @@ export function definirCleApi(cle: string) {
 }
 
 function enTetes(json = false): HeadersInit {
-  const h: Record<string, string> = {}
+  // Tunnel ngrok (offre gratuite) : sans cet en-tête, ngrok renvoie sa page
+  // d'avertissement HTML au lieu de la réponse de l'API. Sans effet ailleurs.
+  const h: Record<string, string> = { 'ngrok-skip-browser-warning': 'true' }
   if (json) h['Content-Type'] = 'application/json'
   if (cleApi) h['X-API-Key'] = cleApi
   return h
@@ -151,7 +159,7 @@ const post = <T>(chemin: string, donnees: unknown) =>
   requete<T>(chemin, { method: 'POST', headers: enTetes(true), body: JSON.stringify(donnees) })
 
 export const api = {
-  sante: () => requete<Sante>('/health'),
+  sante: () => requete<Sante>('/health', { headers: enTetes() }),
   pays: () => requete<Record<string, { autorite: string; classification: string[] }>>('/pays', { headers: enTetes() }),
   apercu: (pays_origine: string, produit: string, classe: string | null) =>
     post<Apercu>('/dossiers/documents-requis', { pays_origine, produit, classe }),
@@ -166,6 +174,8 @@ export const api = {
     post<DossierDetail>(`/dossiers/${id}/documents/${piece}/valider`, { validateur, commentaire }),
   rejeter: (id: number, piece: number, validateur: string, commentaire: string) =>
     post<DossierDetail>(`/dossiers/${id}/documents/${piece}/rejeter`, { validateur, commentaire }),
+  apercuProjet: (id: number, piece: number) =>
+    requete<ApercuProjet>(`/dossiers/${id}/documents/${piece}/apercu`, { headers: enTetes() }),
   // Téléchargement via fetch (et non un simple lien) pour pouvoir envoyer la clé d'API
   telecharger: async (id: number, piece: Piece) => {
     if (!API_URL) throw new ErreurApi(0, 'VITE_API_URL non configurée')

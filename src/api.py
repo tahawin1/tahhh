@@ -520,6 +520,27 @@ def rejeter_piece(dossier_id: int, document_id: int, decision: Decision):
         return _detail(_charger_dossier(session, dossier_id))
 
 
+@app.get("/dossiers/{dossier_id}/documents/{document_id}/apercu")
+def apercu_piece(dossier_id: int, document_id: int):
+    """Texte du projet DOCX, paragraphe par paragraphe, pour le relire dans le
+    tableau de bord sans le télécharger."""
+    from docx import Document as Docx
+
+    with db.SessionLocal() as session:
+        doc = _charger_document(session, dossier_id, document_id)
+        chemin = Path(doc.fichier).resolve() if doc.fichier else None
+        if chemin is None or not chemin.is_relative_to(OUTPUT_DIR) or not chemin.exists():
+            raise HTTPException(status_code=404, detail="Aucun projet rédigé pour cette pièce.")
+        paragraphes = []
+        for p in Docx(chemin).paragraphs:
+            if not p.text.strip():
+                continue
+            style = p.style.name if p.style is not None else ""
+            genre = "titre" if style.startswith("Heading") else "puce" if "List" in style else "texte"
+            paragraphes.append({"genre": genre, "texte": p.text})
+        return {"piece": doc.nom, "genere_le": doc.genere_le, "paragraphes": paragraphes}
+
+
 @app.get("/dossiers/{dossier_id}/documents/{document_id}/fichier")
 def telecharger_piece(dossier_id: int, document_id: int):
     """Télécharge le projet DOCX d'une pièce rédigée, pour relecture."""

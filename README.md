@@ -120,7 +120,16 @@ Clé d'API : définir `API_KEY` pour l'exiger (en-tête `X-API-Key`).
 cd frontend && cp .env.example .env.local && npm install && npm run dev
 ```
 Voir `frontend/README.md`, et **`DEPLOIEMENT.md`** pour le serveur de
-l'entreprise, le tunnel Cloudflare et Vercel.
+l'entreprise, le tunnel ngrok (ou Cloudflare) et Vercel.
+
+### 9. Démonstration hors ligne
+`demo/construire.py` assemble le frontend de production et un instantané
+des données réelles du backend (`demo/instantane.json`) en une page
+autonome, consultable sans serveur (validations et rejets simulés dans
+l'onglet, rédaction désactivée) :
+```bash
+.venv/bin/python demo/construire.py demo.html --dossiers 1,2
+```
 
 ## Structure du projet
 

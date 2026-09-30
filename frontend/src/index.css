@@ -20,7 +20,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --fond: #12161c;
     --carte: #1b2129;
     --texte: #e6e9ee;
@@ -40,6 +40,27 @@
     --neutre-fond: #262d37;
     color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --fond: #12161c;
+  --carte: #1b2129;
+  --texte: #e6e9ee;
+  --secondaire: #9aa4b2;
+  --bordure: #2e3641;
+  --accent: #5aa7dc;
+  --accent-texte: #0b1520;
+  --ok: #6fd39a;
+  --ok-fond: #173323;
+  --attention: #f0c265;
+  --attention-fond: #3a2e14;
+  --erreur: #f28b82;
+  --erreur-fond: #3d1c1a;
+  --encours: #8ab4f8;
+  --encours-fond: #1b2a42;
+  --neutre: #b4bcc8;
+  --neutre-fond: #262d37;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -153,6 +174,13 @@ button.lien { border: 0; background: none; padding: 0; color: var(--accent); fon
 .sources ul { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.85rem; color: var(--secondaire); }
 .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
 .decision label { margin-bottom: 0.5rem; }
+.projet {
+  background: var(--fond); border: 1px solid var(--bordure); border-radius: 6px; padding: 0.75rem 1rem;
+  max-height: 420px; overflow-y: auto; font-size: 0.9rem; display: grid; gap: 0.45rem;
+}
+.projet h4 { margin: 0.4rem 0 0; font-size: 0.95rem; }
+.projet p { margin: 0; max-width: 70ch; }
+.projet .puce { padding-left: 1rem; color: var(--secondaire); }
 
 .journal { list-style: none; padding: 0; margin: 0; background: var(--carte); border: 1px solid var(--bordure); border-radius: 10px; }
 .journal li { display: flex; flex-wrap: wrap; gap: 0.25rem 0.9rem; padding: 0.6rem 0.9rem; border-bottom: 1px solid var(--bordure); }

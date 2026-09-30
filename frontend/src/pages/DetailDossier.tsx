@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { api, type DossierDetail, type Piece } from '../api'
+import { api, type ApercuProjet, type DossierDetail, type Piece } from '../api'
 import { ACTIONS, PAYS, STATUT_DOSSIER, STATUT_PIECE, dateHeure, dateLongue } from '../libelles'
 import Progression from '../composants/Progression'
 import type { Session } from './Connexion'
@@ -140,6 +140,16 @@ function CartePiece({
   const [commentaire, setCommentaire] = useState('')
   const [sourcesOuvertes, setSourcesOuvertes] = useState(false)
   const [erreurFichier, setErreurFichier] = useState<string | null>(null)
+  const [projet, setProjet] = useState<ApercuProjet | null>(null)
+
+  async function basculerProjet() {
+    if (projet) return setProjet(null)
+    try {
+      setProjet(await api.apercuProjet(dossierId, piece.id))
+    } catch (e) {
+      setErreurFichier((e as Error).message)
+    }
+  }
   const st = STATUT_PIECE[piece.statut]
   const redigee = piece.nature === 'a_rediger'
 
@@ -198,6 +208,16 @@ function CartePiece({
 
       {erreurFichier && <p className="message erreur">{erreurFichier}</p>}
 
+      {projet && (
+        <div className="projet" aria-label={`Projet : ${piece.nom}`}>
+          {projet.paragraphes.map((p, i) =>
+            p.genre === 'titre' ? <h4 key={i}>{p.texte}</h4>
+              : p.genre === 'puce' ? <p key={i} className="puce">{p.texte}</p>
+              : <p key={i}>{p.texte}</p>,
+          )}
+        </div>
+      )}
+
       {decision ? (
         <div className="decision">
           <label>
@@ -222,9 +242,12 @@ function CartePiece({
       ) : (
         <div className="actions">
           {piece.fichier_disponible && (
-            <button onClick={() => api.telecharger(dossierId, piece).catch((e: Error) => setErreurFichier(e.message))}>
-              Télécharger le projet (.docx)
-            </button>
+            <>
+              <button onClick={basculerProjet}>{projet ? 'Masquer le projet' : 'Lire le projet'}</button>
+              <button onClick={() => api.telecharger(dossierId, piece).catch((e: Error) => setErreurFichier(e.message))}>
+                Télécharger (.docx)
+              </button>
+            </>
           )}
           {peutValider && (
             <button className="principal" disabled={occupe} onClick={() => setDecision('valider')}>

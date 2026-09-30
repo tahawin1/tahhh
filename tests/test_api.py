@@ -164,6 +164,16 @@ class TestApi(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertTrue(r.content.startswith(b"PK"))  # un .docx est une archive zip
 
+    def test_apercu_du_projet(self):
+        d = self.creer()
+        self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
+        demande = self.piece(d, "demande_signee")
+        r = self.client.get(f"/dossiers/{d['id']}/documents/{demande['id']}/apercu")
+        self.assertEqual(r.status_code, 200, r.text)
+        self.assertIn("Projet : Demande signée", r.json()["paragraphes"][0]["texte"])
+        nmpa = self.piece(d, "piece_specifique_chine")
+        self.assertEqual(self.client.get(f"/dossiers/{d['id']}/documents/{nmpa['id']}/apercu").status_code, 404)
+
     def test_aucune_route_de_depot(self):
         chemins = [getattr(r, "path", "") for r in api.app.routes]
         for mot in ("depot", "deposer", "soumission", "envoi"):

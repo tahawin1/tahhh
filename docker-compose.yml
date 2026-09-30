@@ -43,6 +43,21 @@ services:
       - ./output:/app/output  # projets DOCX générés, conservés hors du conteneur
     restart: unless-stopped
 
+  # Tunnel ngrok vers l'API — démarré avec : docker compose --profile api --profile ngrok up -d
+  # NGROK_AUTHTOKEN et NGROK_URL (domaine statique gratuit, ex. xxx.ngrok-free.app)
+  # à définir dans le fichier .env du serveur. Voir DEPLOIEMENT.md.
+  ngrok:
+    profiles: [ngrok]
+    image: ngrok/ngrok:latest
+    container_name: conformite-ngrok
+    depends_on: [api]
+    environment:
+      NGROK_AUTHTOKEN: ${NGROK_AUTHTOKEN:-}
+    command: ["http", "api:8000", "--url", "${NGROK_URL:-}", "--log", "stdout"]
+    ports:
+      - "127.0.0.1:4040:4040"  # interface d'inspection ngrok, locale uniquement
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   qdrant_data:
