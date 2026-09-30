@@ -16,3 +16,6 @@ data/processed/*
 
 # Secrets du serveur (POSTGRES_PASSWORD, API_KEY…)
 .env
+
+# Dossiers réels de l'entreprise (confidentiels) : jamais versionnés
+data/dossiers_valides/

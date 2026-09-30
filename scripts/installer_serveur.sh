@@ -62,6 +62,8 @@ mkdir -p /etc/systemd/system/ollama.service.d
 cat > /etc/systemd/system/ollama.service.d/conformite.conf <<'EOF'
 [Service]
 Environment="OLLAMA_HOST=0.0.0.0:11434"
+Environment="OLLAMA_LOAD_TIMEOUT=20m"
+Environment="OLLAMA_KEEP_ALIVE=2h"
 EOF
 systemctl daemon-reload && systemctl enable ollama >/dev/null 2>&1 && systemctl restart ollama
 for i in $(seq 1 30); do curl -s -o /dev/null http://127.0.0.1:11434/api/version && break; sleep 1; done

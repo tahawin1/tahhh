@@ -159,6 +159,25 @@ supporte déjà.
 - Même avec la liste des pièces imposée et les données du dossier fournies,
   Mistral peut inventer un détail (ex. une adresse) : la relecture humaine
   de chaque projet n'est pas une formalité.
+- **Enseignements du premier dossier réel accepté** (UE, classe IIb, ciment
+  osseux — pièces dans `data/dossiers_valides/`, jamais versionné) :
+  - la demande est adressée au **Directeur général de l'AMMPS** (Agence
+    marocaine des médicaments et des produits de santé), plus au ministre
+    ni à la DMP : autorité à mettre à jour dans les règles ;
+  - les pièces sont déposées **numérotées** (1 lettre, 2 fiche signalétique,
+    3 autorisation du fabricant, 4 certificat CE + lettre de confirmation,
+    5 ISO 13485, 6 déclaration de conformité, 7 étiquettes, 8 notice (partie
+    française), 9 photos, 14 catalogue, 16 certificat d'enregistrement au
+    modèle de l'annexe II pré-rempli par le demandeur) ;
+  - **certificat CE (directive 93/42) expiré sur le papier mais valide** grâce
+    à la lettre de confirmation de l'organisme notifié au titre du Règlement
+    (UE) 2023/607 : un contrôle d'expiration naïf rejetterait à tort ;
+  - absents de ce dossier : « bulletin d'analyse », « dossier technique »,
+    « mandataire au Maroc » — pièces actuelles des règles à revoir ;
+  - lecture par l'agent sur les vrais certificats : ISO 7/7 vérifiés,
+    certificat CE scanné 6 vérifiés + 1 prudent + classe absente (exact).
+- Au premier démarrage à froid, charger Mistral peut dépasser 5 min sur un
+  disque lent : `OLLAMA_LOAD_TIMEOUT=20m` (réglé par installer_serveur.sh).
 - Sur CPU seul, Mistral 7B rédige ~5 tokens/s : `/dossiers/generer` prend
   plusieurs minutes par document. Un GPU (ou vLLM) est nécessaire en production.
 
