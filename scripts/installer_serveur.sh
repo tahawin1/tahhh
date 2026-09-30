@@ -145,3 +145,6 @@ else
   echo "  Pas de tunnel : relancer avec NGROK_AUTHTOKEN et NGROK_URL pour un accès depuis Vercel."
 fi
 echo "  Se connecter au tableau de bord avec la clé API_KEY (sudo grep API_KEY .env)."
+echo
+echo "  Étape suivante : vérification complète (≈10 min, ne modifie rien) :"
+echo "    sudo bash scripts/verifier_installation.sh"

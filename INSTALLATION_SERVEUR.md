@@ -166,6 +166,25 @@ Laissez le terminal ouvert jusqu'au bout. Si la connexion SSH risque de couper, 
 
 ## 6. Étape 4 — Vérifications (à faire toutes)
 
+**Une commande fait toutes les vérifications automatiques** (≈10 min sur CPU, ne modifie rien) :
+
+```bash
+cd /opt/conformite && sudo bash scripts/verifier_installation.sh
+```
+
+Elle contrôle :
+- les 4 conteneurs et Ollama ;
+- la santé de l'API et la clé d'accès (sans clé : refusé ; avec la clé : accepté) ;
+- le tableau de bord ;
+- Mistral (vraie rédaction) et bge-m3 ;
+- l'index (596 extraits) ;
+- l'OCR (Tesseract fr/en/ar) ;
+- les ports fermés, la protection de `.env`, la sauvegarde programmée, le disque et le GPU.
+
+La dernière ligne doit être **« RÉSULTAT : installation complète et fonctionnelle »**. Les lignes `!` sont des conseils ; les lignes `✗` sont à corriger (voir §11), ou envoyez le rapport à Taha.
+
+Ensuite, faites vous-même les contrôles « humains » 7 à 9 du tableau ci-dessous (navigateur, connexion, rédaction d'essai). Le détail des contrôles 1 à 6 est donné pour information.
+
 Toutes ces commandes se lancent depuis `/opt/conformite`.
 
 | # | Commande | Résultat attendu |

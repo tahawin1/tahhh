@@ -136,7 +136,8 @@ supporte déjà.
       parcours E2E réussi à travers nginx ; sauvegarde `scripts/sauvegarder.sh`
       testée (restauration comprise) ; mise à jour en une commande
       `scripts/mettre_a_jour.sh` (sauvegarde, pull GitHub ou fichier .bundle,
-      rebuild, rapport sans secret). Pile complète testée comme sur le serveur
+      rebuild, rapport sans secret) ; contrôle complet en une commande
+      `scripts/verifier_installation.sh` (services, clé, Mistral, index, OCR, ports). Pile complète testée comme sur le serveur
       (API en conteneur + nginx + clé obligatoire + Ollama sur l'hôte) : E2E,
       indexation depuis le conteneur, rédaction Mistral. Non testable ici :
       la couche apt (Tesseract) de l'image API, deb.debian.org étant bloqué
