@@ -211,8 +211,8 @@ def main():
     parser.add_argument("--date-version", required=True, help="Date de la version du texte, format AAAA-MM-JJ")
     parser.add_argument("--texte-source", help="Nom lisible du texte (ex: 'Loi 84-12')")
     parser.add_argument("--langues-ocr", default="fra", help="Langues Tesseract si le PDF est scanné (ex: fra, eng, fra+ara)")
-    parser.add_argument("--host", default="localhost")
-    parser.add_argument("--port", type=int, default=6333)
+    parser.add_argument("--host", default=os.environ.get("QDRANT_HOST", "localhost"))
+    parser.add_argument("--port", type=int, default=int(os.environ.get("QDRANT_PORT", "6333")))
     args = parser.parse_args()
 
     chemin = Path(args.source)

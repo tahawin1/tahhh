@@ -5,9 +5,10 @@ services:
     environment:
       POSTGRES_DB: conformite_dm
       POSTGRES_USER: conformite
-      POSTGRES_PASSWORD: changer_ce_mot_de_passe
+      # Définir POSTGRES_PASSWORD dans un fichier .env (jamais versionné) sur le serveur
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changer_ce_mot_de_passe}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"  # accessible uniquement depuis la machine elle-même
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -15,10 +16,32 @@ services:
     image: qdrant/qdrant:latest
     container_name: conformite-qdrant
     ports:
-      - "6333:6333"
-      - "6334:6334"
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
     volumes:
       - qdrant_data:/qdrant/storage
+
+  # Backend FastAPI — démarré seulement avec : docker compose --profile api up -d
+  # (en développement, on le lance plutôt avec uvicorn, voir README.md)
+  api:
+    profiles: [api]
+    build: .
+    container_name: conformite-api
+    depends_on: [postgres, qdrant]
+    environment:
+      DATABASE_URL: postgresql+psycopg://conformite:${POSTGRES_PASSWORD:-changer_ce_mot_de_passe}@postgres:5432/conformite_dm
+      QDRANT_HOST: qdrant
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      API_KEY: ${API_KEY:-}  # à définir dans le fichier .env du serveur
+      EXIGER_API_KEY: "1"  # l'API refuse de démarrer sans API_KEY
+      CORS_ORIGINS: ${CORS_ORIGINS:-*}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"  # joindre Ollama qui tourne sur l'hôte
+    ports:
+      - "127.0.0.1:8000:8000"  # exposé à l'extérieur uniquement via le tunnel
+    volumes:
+      - ./output:/app/output  # projets DOCX générés, conservés hors du conteneur
+    restart: unless-stopped
 
 volumes:
   postgres_data:
@@ -26,4 +49,6 @@ volumes:
 
 # Ollama n'est volontairement pas conteneurisé ici : à installer directement
 # sur la machine hôte (ou le serveur GPU dédié) pour un accès direct au GPU.
-# Voir README.md.
+# Il doit écouter sur une adresse joignable depuis Docker :
+#   OLLAMA_HOST=0.0.0.0:11434 ollama serve   (et bloquer le port 11434 au pare-feu)
+# Voir DEPLOIEMENT.md.

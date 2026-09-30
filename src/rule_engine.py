@@ -8,12 +8,17 @@ Le LLM n'intervient qu'ensuite pour rédiger le contenu de chaque document.
 from __future__ import annotations
 
 import datetime
+import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
 import yaml
 
 RULES_DIR = Path(__file__).resolve().parent.parent / "rules"
+
+# a_rediger : projet rédigé par le système (RAG + Mistral), validé par un humain
+# a_fournir : émis par un tiers ou pièce physique — jamais généré, seulement réclamé et vérifié
+NATURES = ("a_rediger", "a_fournir")
 
 
 @dataclass
@@ -23,6 +28,13 @@ class DocumentRequis:
     traduction_requise: bool = False
     legalisation_requise: bool = False
     origine_regle: str = ""  # pour la traçabilité : quelle règle a produit cette exigence
+    nature: str = "a_fournir"  # voir NATURES — toujours lu depuis le YAML
+    fourni_par: str | None = None  # émetteur, pour les pièces a_fournir
+    consigne_redaction: str | None = None  # ce que Mistral doit rédiger (pièces a_rediger)
+
+    @property
+    def a_rediger(self) -> bool:
+        return self.nature == "a_rediger"
 
 
 def charger_regles(pays: str) -> dict:
@@ -32,6 +44,20 @@ def charger_regles(pays: str) -> dict:
         raise ValueError(f"Aucune règle trouvée pour le pays '{pays}' ({chemin} manquant)")
     with open(chemin, encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def empreinte_regles(pays: str) -> str:
+    """Empreinte (sha256 tronqué) du fichier YAML : enregistrée avec chaque
+    dossier pour savoir sous quelle version des règles il a été constitué."""
+    return hashlib.sha256((RULES_DIR / f"{pays}.yaml").read_bytes()).hexdigest()[:12]
+
+
+def _nature(regle: dict, ref: str) -> str:
+    """La nature doit être déclarée explicitement dans le YAML — jamais devinée."""
+    nature = regle.get("nature")
+    if nature not in NATURES:
+        raise ValueError(f"Règle '{ref}' : champ `nature` absent ou invalide ({nature!r}), attendu {NATURES}")
+    return nature
 
 
 def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None) -> list[DocumentRequis]:
@@ -50,7 +76,16 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
         classes = doc.get("classes_concernees")
         if classes and classe and classe not in classes:
             continue  # ex: ISO 13485 seulement pour IIA/IIB/III
-        documents.append(DocumentRequis(id=doc["id"], nom=doc["nom"], origine_regle="socle_commun"))
+        documents.append(
+            DocumentRequis(
+                id=doc["id"],
+                nom=doc["nom"],
+                origine_regle="socle_commun",
+                nature=_nature(doc, f"socle_commun.{doc['id']}"),
+                fourni_par=doc.get("fourni_par"),
+                consigne_redaction=doc.get("consigne_redaction"),
+            )
+        )
 
     piece = regles["piece_specifique_selon_origine"].get(pays_origine_produit)
     if piece is None:
@@ -63,6 +98,8 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
             traduction_requise=piece.get("traduction_requise", False),
             legalisation_requise=piece.get("legalisation_requise", False),
             origine_regle=f"piece_specifique_selon_origine.{pays_origine_produit}",
+            nature=_nature(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
+            fourni_par=piece.get("fourni_par"),
         )
     )
     return documents
@@ -112,6 +149,7 @@ if __name__ == "__main__":
             if doc.legalisation_requise:
                 flags.append("légalisation requise")
             suffix = f" [{', '.join(flags)}]" if flags else ""
-            print(f"  - {doc.nom}{suffix}")
+            nature = "à rédiger" if doc.a_rediger else f"à fournir par {doc.fourni_par}"
+            print(f"  - {doc.nom} ({nature}){suffix}")
 
     print(f"\nProchain créneau de dépôt (Maroc) : {prochain_creneau_depot()}")

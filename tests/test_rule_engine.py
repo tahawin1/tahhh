@@ -56,6 +56,33 @@ class TestDocumentsRequisMaroc(unittest.TestCase):
         self.assertTrue(piece.traduction_requise)
 
 
+class TestNatureDesPieces(unittest.TestCase):
+    def test_certificats_et_pieces_tierces_jamais_a_rediger(self):
+        for pays in ["chine", "inde", "union_europeenne", "autre"]:
+            docs = {d.id: d for d in documents_requis_maroc(pays, classe="IIB")}
+            for code in (f"piece_specifique_{pays}", "iso_13485", "bulletin_analyse", "echantillon_etiquetage"):
+                self.assertEqual(docs[code].nature, "a_fournir", f"{code} ({pays})")
+                self.assertTrue(docs[code].fourni_par, f"{code} : émetteur manquant")
+            for code in ("demande_signee", "fiche_signaletique", "dossier_technique", "mandataire_maroc"):
+                self.assertEqual(docs[code].nature, "a_rediger", code)
+                self.assertTrue(docs[code].consigne_redaction, f"{code} : consigne de rédaction manquante")
+
+    def test_nature_absente_refusee(self):
+        import rule_engine
+
+        original = rule_engine.charger_regles
+        def regles_sans_nature(pays):
+            regles = original(pays)
+            del regles["socle_commun"][0]["nature"]
+            return regles
+        rule_engine.charger_regles = regles_sans_nature
+        try:
+            with self.assertRaisesRegex(ValueError, "nature"):
+                documents_requis_maroc("chine", classe="IIB")
+        finally:
+            rule_engine.charger_regles = original
+
+
 class TestCreneauDepot(unittest.TestCase):
     def test_mercredi_ou_jeudi_uniquement(self):
         lundi = datetime.date(2026, 9, 28)

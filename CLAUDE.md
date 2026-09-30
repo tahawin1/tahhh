@@ -126,7 +126,15 @@ supporte déjà.
 - [ ] Test end-to-end sur un dossier réel connu (le pipeline tourne de bout
       en bout ; reste à le valider sur un dossier réel déjà déposé)
 - [ ] Données réelles : dossiers déjà réalisés + base fournisseurs (PostgreSQL)
-- [ ] Interface de validation humaine (React) — phase suivante
+- [x] Distinction pièces `a_rediger` / `a_fournir` dans les règles YAML
+      (les certificats et pièces de tiers ne sont jamais générés)
+- [x] Suivi des dossiers (PostgreSQL), rédaction en tâche de fond,
+      validation / rejet nominatifs, journal d'audit — testés
+- [x] Interface de validation (React, `frontend/`) — testée dans Chromium
+      contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
+      mais pas encore effectué
+- [ ] Authentification réelle (Keycloak) — aujourd'hui : clé d'API partagée
+      + nom saisi par l'utilisateur (non vérifié)
 
 ### Points d'attention découverts en exécutant le pipeline
 - Les embeddings (bge-m3) passent par Ollama par défaut (`src/embeddings.py`) ;
@@ -136,6 +144,9 @@ supporte déjà.
   était exigé pour la classe I).
 - `data/raw_pdfs/ue_mdr_annexe.txt` contient en réalité les Medical Devices
   Rules 2017 indiennes consolidées — indexé sous `pays=inde`.
+- Même avec la liste des pièces imposée et les données du dossier fournies,
+  Mistral peut inventer un détail (ex. une adresse) : la relecture humaine
+  de chaque projet n'est pas une formalité.
 - Sur CPU seul, Mistral 7B rédige ~5 tokens/s : `/dossiers/generer` prend
   plusieurs minutes par document. Un GPU (ou vLLM) est nécessaire en production.
 

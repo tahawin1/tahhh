@@ -13,3 +13,6 @@ data/processed/*
 
 # Poids de modèles (téléchargés séparément, jamais versionnés)
 *.gguf
+
+# Secrets du serveur (POSTGRES_PASSWORD, API_KEY…)
+.env

@@ -41,7 +41,7 @@ Variables utiles pour la génération (voir `src/generate.py`) :
 ### 4. Vérifier le moteur de règles (ne nécessite aucune infra)
 ```bash
 .venv/bin/python src/rule_engine.py
-.venv/bin/python -m unittest discover -s tests   # tests du moteur de règles
+.venv/bin/python -m unittest discover -s tests   # tests du moteur de règles et de l'API
 ```
 Affiche, pour chaque pays d'origine (Chine/Inde/UE/autre), la liste des
 documents requis pour un dossier marocain — logique 100% déterministe,
@@ -92,11 +92,35 @@ le rédiger — à vérifier lors de la validation.
 ```bash
 .venv/bin/uvicorn src.api:app --reload --port 8000
 ```
-- `GET /health` — état de l'API, de Qdrant et d'Ollama
+Documentation interactive : http://localhost:8000/docs
+
+- `GET /health` — état de l'API, de PostgreSQL, de Qdrant et d'Ollama
 - `GET /pays` — autorité et classification par pays
-- `POST /dossiers/documents-requis` — liste des pièces (moteur de règles seul, instantané)
-- `POST /dossiers/generer` — génération complète RAG + Mistral + DOCX
-  (long sur CPU : plusieurs minutes par document)
+- `POST /dossiers/documents-requis` — aperçu des pièces (moteur de règles seul, instantané, n'enregistre rien)
+- `GET /dossiers`, `POST /dossiers`, `GET /dossiers/{id}` — suivi des dossiers (PostgreSQL)
+- `POST /dossiers/{id}/generer` — met en file la rédaction des pièces *à rédiger* (réponse immédiate, rédaction en tâche de fond)
+- `POST /dossiers/{id}/documents/{piece}/generer | valider | rejeter` — actions sur une pièce (validateur nommé, motif obligatoire pour un rejet)
+- `GET /dossiers/{id}/documents/{piece}/fichier` — projet DOCX
+- `POST /dossiers/generer` — ancien mode synchrone, sans suivi (conservé pour la ligne de commande)
+
+**Deux natures de pièces** (champ `nature` des règles YAML, décidé par le
+moteur de règles) :
+- `a_rediger` : produite par l'entreprise (demande, fiche signalétique,
+  trame du dossier technique, lettre de désignation du mandataire) —
+  rédigée par Mistral, puis relue et validée ;
+- `a_fournir` : émise par un tiers (certificat NMPA / CDSCO / CE,
+  ISO 13485, bulletin d'analyse du fabricant) ou pièce physique
+  (échantillon) — **jamais rédigée par le système** : réclamée au
+  fournisseur, puis marquée « reçue et vérifiée » par une personne nommée.
+
+Clé d'API : définir `API_KEY` pour l'exiger (en-tête `X-API-Key`).
+
+### 8. Tableau de bord (frontend)
+```bash
+cd frontend && cp .env.example .env.local && npm install && npm run dev
+```
+Voir `frontend/README.md`, et **`DEPLOIEMENT.md`** pour le serveur de
+l'entreprise, le tunnel Cloudflare et Vercel.
 
 ## Structure du projet
 
@@ -114,8 +138,13 @@ agent-conformite-dm/
 │   ├── embeddings.py      # Embeddings bge-m3 (Ollama ou sentence-transformers)
 │   ├── ingest.py          # Extraction + OCR + indexation dans Qdrant (RAG)
 │   ├── generate.py        # RAG + Mistral + génération DOCX
+│   ├── db.py              # PostgreSQL : dossiers, pièces, journal d'audit
+│   ├── taches.py          # File de rédaction en tâche de fond
 │   └── api.py             # Backend FastAPI
-├── tests/                 # Tests du moteur de règles (unittest)
+├── frontend/              # Tableau de bord React (Vite) — déployable sur Vercel
+├── tests/                 # Tests du moteur de règles et de l'API (unittest)
+├── Dockerfile             # Image du backend (serveur de l'entreprise)
+├── DEPLOIEMENT.md         # Serveur + tunnel Cloudflare + Vercel
 ├── scripts/
 │   └── indexer_tout.sh    # Indexe tous les textes en une commande
 ├── output/                # Documents générés (dossiers de sortie)

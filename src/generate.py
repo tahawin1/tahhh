@@ -44,9 +44,16 @@ MENTION_VALIDATION = (
 )
 
 
+class GenerationImpossible(RuntimeError):
+    """La génération d'un document n'a pas pu aboutir (ou n'est pas permise)."""
+
+
 class GenerateurDocuments:
-    def __init__(self, host: str = "localhost", port: int = 6333):
-        self.client = QdrantClient(host=host, port=port)
+    def __init__(self, host: str | None = None, port: int | None = None):
+        self.client = QdrantClient(
+            host=host or os.environ.get("QDRANT_HOST", "localhost"),
+            port=port or int(os.environ.get("QDRANT_PORT", "6333")),
+        )
         self.embedder = Embedder()
         self._session_ollama = requests.Session()
         self._session_ollama.trust_env = False  # Ollama tourne en local, pas de proxy
@@ -70,21 +77,40 @@ class GenerateurDocuments:
         spécifique à l'origine (certificat NMPA / CDSCO / CE), ceux du pays
         d'origine qui délivre ce certificat.
         """
-        references = self.rechercher_references(pays_destination, document.nom, k=3)
+        requete = f"{document.nom}. {document.consigne_redaction or ''}".strip()
+        references = self.rechercher_references(pays_destination, requete, k=3)
         if document.origine_regle.startswith("piece_specifique") and pays_origine in PAYS_INDEXES:
             references += self.rechercher_references(pays_origine, document.nom, k=2)
         return references
 
-    def generer_contenu(self, document: DocumentRequis, pays_destination: str, produit: str, pays_origine: str) -> tuple[str, list[dict]]:
+    def generer_contenu(
+        self,
+        document: DocumentRequis,
+        pays_destination: str,
+        produit: str,
+        pays_origine: str,
+        classe: str | None = None,
+        fournisseur: str | None = None,
+        pieces_du_dossier: list[str] | None = None,
+    ) -> tuple[str, list[dict]]:
         """Appelle Mistral (via Ollama) pour rédiger le contenu d'un document,
         en s'appuyant sur les extraits réglementaires retrouvés par RAG.
         Retourne (contenu, références utilisées) — les références sont
-        remontées à la validation humaine pour vérification."""
+        remontées à la validation humaine pour vérification.
+
+        Lève GenerationImpossible si le document n'est pas à rédiger ou si
+        Mistral ne répond pas : jamais de document de remplacement."""
+        if not document.a_rediger:
+            raise GenerationImpossible(
+                f"'{document.nom}' est une pièce à fournir par {document.fourni_par} : "
+                "elle n'est jamais rédigée par le système."
+            )
+
         references = self.references_pour_document(document, pays_destination, pays_origine)
-        contexte = "\n---\n".join(
-            f"[Source: {r['texte_source']} (version du {r['date_version']})]\n{r['texte'][:800]}"
-            for r in references
-        ) or "(aucune référence trouvée dans la base — signaler ce point à la validation humaine)"
+        contexte = "\n\n".join(
+            f"<<< EXTRAIT {i} — {r['texte_source']} (version du {r['date_version']})\n{r['texte'][:800]}\n>>>"
+            for i, r in enumerate(references, 1)
+        ) or "(aucun extrait trouvé dans la base — le signaler à la validation humaine)"
         sources = [
             {
                 "texte_source": r["texte_source"],
@@ -97,22 +123,34 @@ class GenerateurDocuments:
             for r in references
         ]
 
+        consigne = document.consigne_redaction or document.nom
+        # La liste des pièces vient du moteur de règles, jamais du LLM
+        liste_pieces = (
+            "Pièces composant le dossier (liste fixée par le moteur de règles — ne rien ajouter ni retirer) :\n"
+            + "\n".join(f"  {i}. {nom}" for i, nom in enumerate(pieces_du_dossier, 1))
+            + "\n"
+        ) if pieces_du_dossier else ""
         prompt = f"""Tu es un assistant spécialisé en constitution de dossiers réglementaires pour dispositifs médicaux au Maroc.
 
-Voici des extraits de textes réglementaires officiels, à utiliser comme référence :
-{contexte}
+DOCUMENT À RÉDIGER : {document.nom}
+Ce que ce document doit contenir : {consigne}
 
-Génère maintenant le contenu du document suivant :
-- Type de document : {document.nom}
+Informations connues sur le dossier (à reprendre telles quelles) :
 - Dispositif médical : {produit}
+- Classe du dispositif (classification marocaine) : {classe or "[À COMPLÉTER]"}
+- Fabricant / fournisseur : {fournisseur or "[À COMPLÉTER]"}
 - Pays d'origine du fournisseur : {pays_origine}
 - Pays de destination du dossier : {pays_destination}
+{liste_pieces}
+Extraits de textes réglementaires officiels, fournis UNIQUEMENT comme référence (pour les exigences et le vocabulaire) :
+{contexte}
 
 Consignes strictes :
-- Respecte exactement la structure attendue par la réglementation citée dans les extraits.
-- N'invente aucune information factuelle qui ne serait pas cohérente avec les extraits fournis.
-- Si une information manque (numéro de certificat, date, etc.), indique clairement [À COMPLÉTER] plutôt que d'inventer une valeur.
-- Rédige en français, dans un style administratif sobre."""
+- Rédige le document demandé lui-même, prêt à être complété et signé. Ne recopie PAS les extraits, ne reproduis pas d'en-têtes du Bulletin officiel, ne cite pas les extraits dans le document.
+- N'invente aucune information factuelle (nom, adresse, numéro, date, référence) : écris [À COMPLÉTER] à la place.
+- N'aborde que ce document, sans parler d'autres procédures (publicité, inspection, sanctions…).
+- Si le document énumère les pièces du dossier, reprends EXACTEMENT la liste fixée ci-dessus, sans en ajouter ni en retirer.
+- Rédige en français, dans le registre administratif marocain (formule d'appel « Monsieur le Ministre, », formule de politesse administrative, aucune formule familière), sans commentaire avant ou après le document."""
 
         try:
             reponse = self._session_ollama.post(
@@ -127,18 +165,14 @@ Consignes strictes :
             )
             reponse.raise_for_status()
             return reponse.json()["response"], sources
-        except requests.exceptions.ConnectionError:
-            return (
-                "[GÉNÉRATION INDISPONIBLE — Ollama n'est pas démarré sur "
-                f"{OLLAMA_URL}. Lancer `ollama serve` puis `ollama pull mistral`.]\n\n"
-                f"Contexte qui aurait été utilisé :\n{contexte}"
-            ), sources
-        except requests.exceptions.Timeout:
-            return (
-                f"[GÉNÉRATION INTERROMPUE — Mistral n'a pas répondu en {OLLAMA_TIMEOUT}s. "
-                "Augmenter OLLAMA_TIMEOUT ou utiliser une machine avec GPU.]\n\n"
-                f"Contexte qui aurait été utilisé :\n{contexte}"
-            ), sources
+        except requests.exceptions.ConnectionError as e:
+            raise GenerationImpossible(
+                f"Ollama n'est pas démarré sur {OLLAMA_URL} — lancer `ollama serve` puis `ollama pull {OLLAMA_MODEL}`."
+            ) from e
+        except requests.exceptions.Timeout as e:
+            raise GenerationImpossible(
+                f"Mistral n'a pas répondu en {OLLAMA_TIMEOUT}s — augmenter OLLAMA_TIMEOUT ou utiliser un GPU."
+            ) from e
 
     def creer_fichier_docx(
         self,
@@ -172,33 +206,70 @@ Consignes strictes :
         return chemin_sortie
 
 
+def nouveau_dossier_sortie(pays_origine: str, produit: str) -> Path:
+    """Un dossier de sortie par dossier : deux dossiers ne s'écrasent jamais."""
+    horodatage = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    return OUTPUT_DIR / f"{horodatage}_{pays_origine}_{_slug(produit)}"
+
+
+def generer_document(
+    generateur: GenerateurDocuments,
+    doc: DocumentRequis,
+    produit: str,
+    pays_origine: str,
+    dossier_sortie: Path,
+    classe: str | None = None,
+    fournisseur: str | None = None,
+    pieces_du_dossier: list[str] | None = None,
+) -> dict:
+    """Rédige UN document à rédiger (RAG + Mistral) et l'enregistre en DOCX.
+    Lève GenerationImpossible pour une pièce à fournir ou si Mistral échoue."""
+    contenu, sources = generateur.generer_contenu(
+        doc, pays_destination="maroc", produit=produit, pays_origine=pays_origine,
+        classe=classe, fournisseur=fournisseur, pieces_du_dossier=pieces_du_dossier,
+    )
+    chemin = generateur.creer_fichier_docx(
+        doc.nom, contenu, dossier_sortie / f"{doc.id}.docx".replace(" ", "_"), document=doc, sources=sources
+    )
+    return {"fichier": str(chemin), "sources": sources}
+
+
 def traiter_dossier(pays_origine: str, produit: str, classe: str | None = None) -> dict:
     """
     Fonction principale : orchestre rule_engine (décision) + RAG + Mistral
     (rédaction) + mise en forme DOCX. Retourne un résumé du dossier généré,
     prêt pour la validation humaine — jamais pour un dépôt automatique.
+
+    Seules les pièces `a_rediger` sont rédigées ; les pièces `a_fournir`
+    sont listées comme à obtenir auprès de leur émetteur.
     """
     documents = documents_requis_maroc(pays_origine, classe=classe)
     generateur = GenerateurDocuments()
+    dossier_sortie = nouveau_dossier_sortie(pays_origine, produit)
 
-    # Un dossier de sortie par génération : deux dossiers ne s'écrasent jamais
-    horodatage = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    dossier_sortie = OUTPUT_DIR / f"{horodatage}_{pays_origine}_{_slug(produit)}"
-
-    fichiers = []
+    resultats = []
     for doc in documents:
-        contenu, sources = generateur.generer_contenu(doc, pays_destination="maroc", produit=produit, pays_origine=pays_origine)
-        nom_fichier = f"{doc.id}.docx".replace(" ", "_")
-        chemin = generateur.creer_fichier_docx(doc.nom, contenu, dossier_sortie / nom_fichier, document=doc, sources=sources)
-        fichiers.append({
+        entree = {
             "id": doc.id,
             "document": doc.nom,
-            "fichier": str(chemin),
+            "nature": doc.nature,
+            "fourni_par": doc.fourni_par,
             "traduction_requise": doc.traduction_requise,
             "legalisation_requise": doc.legalisation_requise,
             "origine_regle": doc.origine_regle,
-            "sources": sources,
-        })
+            "fichier": None,
+            "sources": [],
+            "erreur": None,
+        }
+        if doc.a_rediger:
+            try:
+                entree.update(generer_document(
+                    generateur, doc, produit, pays_origine, dossier_sortie,
+                    classe=classe, pieces_du_dossier=[d.nom for d in documents],
+                ))
+            except GenerationImpossible as e:
+                entree["erreur"] = str(e)
+        resultats.append(entree)
 
     return {
         "produit": produit,
@@ -206,8 +277,8 @@ def traiter_dossier(pays_origine: str, produit: str, classe: str | None = None) 
         "pays_destination": "maroc",
         "classe": classe,
         "dossier_sortie": str(dossier_sortie),
-        "nombre_documents": len(fichiers),
-        "documents": fichiers,
+        "nombre_documents": len(resultats),
+        "documents": resultats,
         "prochain_creneau_depot": str(prochain_creneau_depot()),
         "statut": "EN ATTENTE DE VALIDATION HUMAINE — aucun dépôt automatique",
     }
@@ -237,7 +308,13 @@ def main():
         if d["legalisation_requise"]:
             flags.append("légalisation requise")
         suffix = f" [{', '.join(flags)}]" if flags else ""
-        print(f"  - {d['document']}{suffix}\n    -> {d['fichier']}")
+        if d["nature"] == "a_fournir":
+            cible = f"à obtenir auprès de {d['fourni_par']}"
+        elif d["erreur"]:
+            cible = f"ÉCHEC : {d['erreur']}"
+        else:
+            cible = d["fichier"]
+        print(f"  - {d['document']}{suffix}\n    -> {cible}")
     print(f"\nProchain créneau de dépôt : {resultat['prochain_creneau_depot']}")
     print(f"Statut : {resultat['statut']}")
 
