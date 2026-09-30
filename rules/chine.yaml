@@ -1,0 +1,39 @@
+# Règles réglementaires — Chine (pays d'origine possible du fournisseur)
+# Source : Règlement du Conseil d'État n°739 (2021) — Regulations on the
+# Supervision and Administration of Medical Devices
+# Autorité : NMPA (National Medical Products Administration)
+# Date de dernière vérification : 2026-09-30
+#
+# Usage principal dans ce projet : produire la pièce justificative
+# "autorisation de mise en vente NMPA" exigée par le Maroc pour un
+# fournisseur chinois (voir rules/maroc.yaml). Ce fichier sert aussi si
+# l'entreprise vend un jour directement sur le marché chinois (cas B).
+
+pays: chine
+autorite: "National Medical Products Administration (NMPA)"
+classification: [I, II, III]
+
+enregistrement_par_classe:
+  I:
+    procedure: "filing (déclaration) provincial"
+  II:
+    procedure: "enregistrement provincial"
+  III:
+    procedure: "enregistrement au niveau national (NMPA)"
+
+equivalence_etrangere:
+  requise_si: "classe II ou III, fabricant situé hors de Chine"
+  document: "autorisation de mise en vente délivrée par l'autorité du pays d'origine du fabricant"
+  exception: "dispositif innovant non encore commercialisé dans un autre pays — pas d'équivalence disponible"
+
+representant_local_requis: true
+representant_local_nom: "agent domestique désigné (China Agent)"
+
+contraintes_operationnelles:
+  validite_enregistrement_ans: 5
+  renouvelable: true
+  langue_etiquetage: [chinois]
+
+notes:
+  - "La Chine accepte une équivalence étrangère pour les classes II/III, sauf dispositif jamais commercialisé ailleurs."
+  - "Utilisé dans ce projet surtout comme SOURCE d'un certificat NMPA à fournir au dossier marocain."

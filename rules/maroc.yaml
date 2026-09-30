@@ -1,0 +1,55 @@
+# Règles réglementaires — Maroc (pays de destination)
+# Sources : Loi 84-12, Décret 2-14-607 (22 kaada 1435), Arrêtés 2853/2854/2855/2856-15
+# Autorité : Direction du Médicament et de la Pharmacie (DMP) / ministère de la Santé
+# Date de dernière vérification : 2026-09-30
+
+pays: maroc
+autorite: "Direction du Médicament et de la Pharmacie (DMP)"
+classification: [I, IIA, IIB, III]
+
+socle_commun:
+  - id: demande_signee
+    nom: "Demande signée adressée au ministre de la Santé"
+  - id: fiche_signaletique
+    nom: "Fiche signalétique du dispositif (exemplaires requis)"
+  - id: dossier_technique
+    nom: "Dossier technique (description, composition, fabrication, contrôles)"
+  - id: bulletin_analyse
+    nom: "Bulletin d'analyse signé par le fabricant"
+  - id: echantillon_etiquetage
+    nom: "Échantillon modèle, emballage et étiquetage conforme"
+  - id: mandataire_maroc
+    nom: "Mandataire du fabricant établi au Maroc"
+  - id: iso_13485
+    nom: "Certificat ISO 13485 (système de management de la qualité)"
+    condition: "classes IIA, IIB, III"
+    classes_concernees: [IIA, IIB, III]
+
+piece_specifique_selon_origine:
+  chine:
+    document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)"
+    traduction_requise: true
+    legalisation_requise: true
+  inde:
+    document: "Autorisation de mise en vente délivrée par la CDSCO"
+    traduction_requise: true
+    legalisation_requise: true
+  union_europeenne:
+    document: "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)"
+    traduction_requise: false
+    legalisation_requise: false
+  autre:
+    document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485"
+    traduction_requise: true
+    legalisation_requise: true
+
+contraintes_operationnelles:
+  jours_depot_physique: [mercredi, jeudi]
+  validite_enregistrement_ans: 5
+  renouvelable: true
+  langue_etiquetage: [francais, arabe]
+  langue_toleree_usage_professionnel_importe: [anglais]
+
+notes:
+  - "Le Maroc accepte les certificats étrangers comme pièce justificative — système plus souple que l'UE."
+  - "Un mandataire local est obligatoire quel que soit le pays d'origine du produit."

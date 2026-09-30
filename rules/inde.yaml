@@ -1,0 +1,39 @@
+# Règles réglementaires — Inde (pays d'origine possible du fournisseur)
+# Source : Medical Devices Rules, 2017 + amendements (S.O. 648(E) 2020,
+# G.S.R. 918(E) 2021 - Rule 46 UDI, G.S.R. 777(E) 2022 - exemption classe A)
+# Autorité : CDSCO (Central Drugs Standard Control Organization)
+# Date de dernière vérification : 2026-09-30
+#
+# Usage principal dans ce projet : produire la pièce justificative
+# "autorisation de mise en vente CDSCO" exigée par le Maroc pour un
+# fournisseur indien (voir rules/maroc.yaml).
+
+pays: inde
+autorite: "Central Drugs Standard Control Organization (CDSCO)"
+classification: [A, B, C, D]
+
+essai_clinique_local:
+  dispense_si: "Free Sale Certificate (FSC) délivré par un pays de la liste reconnue"
+  liste_pays_reconnus: [australie, canada, japon, union_europeenne, royaume_uni, usa]
+  obligatoire_si: "classe C ou D ET pays d'origine hors liste reconnue"
+  note_importante: "La Chine ne figure PAS dans la liste des pays reconnus par l'Inde."
+
+exemptions:
+  classe_a_non_sterile_non_mesurante:
+    reference: "G.S.R. 777(E) du 14/10/2022"
+    effet: "exemption du régime de licence pour dispositifs classe A non stériles et non mesurants"
+
+identification_unique:
+  regle: "Rule 46 (UDI - Unique Device Identification)"
+  reference: "G.S.R. 918(E) du 31/12/2021"
+
+representant_local_requis: true
+representant_local_nom: "authorised agent"
+
+contraintes_operationnelles:
+  validite_enregistrement: "perpétuelle (redevance de maintien tous les 5 ans)"
+  langue_etiquetage: [anglais]
+
+notes:
+  - "L'Inde dispense d'essai clinique local si le fournisseur a déjà un Free Sale Certificate d'un pays reconnu."
+  - "Utilisé dans ce projet surtout comme SOURCE d'un certificat CDSCO à fournir au dossier marocain."

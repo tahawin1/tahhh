@@ -1,0 +1,39 @@
+# Règles réglementaires — Union européenne (pays d'origine possible du fournisseur)
+# Source : Règlement (UE) 2017/745 (MDR - Medical Device Regulation)
+# Autorité : organismes notifiés + autorités compétentes nationales
+# Date de dernière vérification : 2026-09-30
+#
+# Usage principal dans ce projet : produire/vérifier la pièce justificative
+# "certificat de marquage CE" exigée par le Maroc pour un fournisseur
+# européen (voir rules/maroc.yaml).
+
+pays: union_europeenne
+autorite: "Organismes notifiés (évaluation de conformité) + autorités compétentes nationales"
+classification: [I, IIa, IIb, III]
+
+evaluation_conformite:
+  classe_I: "auto-déclaration du fabricant (sauf dispositifs stériles/mesurants : organisme notifié)"
+  classe_IIa_IIb_III: "évaluation obligatoire par un organisme notifié"
+
+equivalence_etrangere:
+  acceptee: false
+  note_importante: >
+    L'UE n'accepte AUCUNE équivalence étrangère. Un certificat NMPA (Chine)
+    ou CDSCO (Inde) ne dispense jamais d'une évaluation de conformité
+    européenne complète, quel que soit le pays d'origine du fabricant.
+
+essai_clinique:
+  reference: "Article 61 MDR"
+  obligatoire: true
+  dispense_possible_si: "équivalence démontrée à un dispositif déjà légalement commercialisé"
+
+representant_local_requis: true
+representant_local_nom: "mandataire (Article 11 MDR)"
+
+contraintes_operationnelles:
+  validite_certificat_ans_max: 5
+  langue_etiquetage: "langue(s) officielle(s) de l'État membre de commercialisation"
+
+notes:
+  - "Seul système des quatre qui n'accepte aucune équivalence étrangère."
+  - "Utilisé dans ce projet surtout comme SOURCE d'un certificat CE à fournir au dossier marocain."

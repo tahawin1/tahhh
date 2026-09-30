@@ -1,0 +1,15 @@
+# Environnement Python
+.venv/
+__pycache__/
+*.pyc
+
+# Documents générés (contiennent des données de dossiers réels)
+output/*
+!output/.gitkeep
+
+# Textes intermédiaires
+data/processed/*
+!data/processed/.gitkeep
+
+# Poids de modèles (téléchargés séparément, jamais versionnés)
+*.gguf
