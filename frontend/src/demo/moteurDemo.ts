@@ -1,19 +1,21 @@
-// Démonstration hors ligne du tableau de bord.
+/* Adaptateur de démonstration : données JSON non typées, volontairement. */
+// Mode démonstration du tableau de bord (VITE_API_URL=demo), pour le
+// montrer sans backend, par exemple sur Vercel.
 //
-// Le frontend publié est EXACTEMENT celui de frontend/ (build de production),
-// avec VITE_API_URL=https://demo.invalid. Ce script intercepte les appels
-// vers cette adresse et y répond à partir d'un instantané des données
-// réelles du backend (demo/instantane.json), en appliquant les mêmes règles
-// que src/api.py pour la validation et le rejet. Les actions restent dans
-// la mémoire de l'onglet : rien n'est enregistré, un rechargement remet
-// l'instantané. La rédaction par Mistral n'est pas disponible (elle
-// nécessite le serveur de l'entreprise).
-(function () {
-  const BASE = 'https://demo.invalid'
-  const instantane = JSON.parse(document.getElementById('instantane').textContent)
-  const dossiers = new Map(instantane.dossiers.map((d) => [d.id, d]))
+// Intercepte les appels vers l'adresse de démonstration et y répond à partir
+// d'un instantané des données réelles du backend (instantane.json : dossiers,
+// projet rédigé par Mistral, documents lus par l'agent), en appliquant les
+// mêmes règles que src/api.py pour la validation et le rejet. Les actions
+// restent dans la mémoire de l'onglet ; la rédaction et la lecture par
+// l'agent nécessitent le vrai serveur et sont signalées comme indisponibles.
+import instantaneBrut from './instantane.json'
+
+export function installerDemo(base: string) {
+  const BASE = base
+  const instantane: any = structuredClone(instantaneBrut)
+  const dossiers = new Map<number, any>(instantane.dossiers.map((d: any) => [d.id, d]))
   let prochainId = Math.max(0, ...dossiers.keys()) + 1
-  let prochainePiece = Math.max(0, ...instantane.dossiers.flatMap((d) => d.documents.map((x) => x.id))) + 1
+  let prochainePiece = Math.max(0, ...instantane.dossiers.flatMap((d: any) => d.documents.map((x: any) => x.id))) + 1
 
   // Connexion préremplie : le visiteur arrive directement sur la liste
   try {
@@ -23,15 +25,15 @@
   } catch { /* stockage indisponible : l'écran de connexion s'affiche */ }
 
   const maintenant = () => new Date().toISOString()
-  const reponse = (corps, status = 200) =>
+  const reponse = (corps: unknown, status = 200) =>
     new Response(JSON.stringify(corps), { status, headers: { 'Content-Type': 'application/json' } })
-  const erreur = (status, detail) => reponse({ detail }, status)
+  const erreur = (status: number, detail: string) => reponse({ detail }, status)
 
-  function compteurs(docs) {
-    const c = { total: docs.length, valides: 0, a_valider: 0, a_obtenir: 0, a_generer: 0, en_cours: 0, erreurs: 0, rejetes: 0 }
-    const cle = { valide: 'valides', a_valider: 'a_valider', a_obtenir: 'a_obtenir', a_generer: 'a_generer',
+  function compteurs(docs: any[]) {
+    const c: any = { total: docs.length, valides: 0, a_valider: 0, a_obtenir: 0, a_generer: 0, en_cours: 0, erreurs: 0, rejetes: 0 }
+    const cle: any = { valide: 'valides', a_valider: 'a_valider', a_obtenir: 'a_obtenir', a_generer: 'a_generer',
       en_file: 'en_cours', en_generation: 'en_cours', erreur: 'erreurs', rejete: 'rejetes' }
-    docs.forEach((d) => { c[cle[d.statut]] += 1 })
+    docs.forEach((d: any) => { c[cle[d.statut]] += 1 })
     return c
   }
 
@@ -45,25 +47,28 @@
     }
   }
 
-  function recalculer(d) {
+  function recalculer(d: any) {
     d.compteurs = compteurs(d.documents)
-    d.statut = d.documents.length && d.documents.every((x) => x.statut === 'valide')
+    d.statut = d.documents.length && d.documents.every((x: any) => x.statut === 'valide')
       ? 'pret_pour_depot_manuel'
-      : d.documents.some((x) => ['en_file', 'en_generation'].includes(x.statut)) ? 'generation_en_cours' : 'en_preparation'
+      : d.documents.some((x: any) => ['en_file', 'en_generation'].includes(x.statut)) ? 'generation_en_cours' : 'en_preparation'
     d.prochain_creneau_depot = d.statut === 'pret_pour_depot_manuel' ? prochainCreneau() : null
     return d
   }
 
-  const resume = (d) => {
-    const { documents, evenements, prochain_creneau_depot, ...r } = d // eslint-disable-line no-unused-vars
+  const resume = (d: any) => {
+    const r = { ...d }
+    delete r.documents
+    delete r.evenements
+    delete r.prochain_creneau_depot
     return r
   }
 
-  function journaliser(d, acteur, action, detail, document_id = null) {
+  function journaliser(d: any, acteur: string, action: string, detail: string, document_id: number | null = null) {
     d.evenements.unshift({ horodatage: maintenant(), acteur, action, detail, document_id })
   }
 
-  function decider(d, piece, corps, action) {
+  function decider(d: any, piece: any, corps: any, action: string) {
     const validateur = (corps.validateur || '').trim()
     const commentaire = (corps.commentaire || '').trim()
     if (validateur.length < 2) return erreur(422, 'validateur : au moins 2 caractères')
@@ -90,7 +95,7 @@
     return reponse(recalculer(d))
   }
 
-  function router(methode, chemin, corps) {
+  function router(methode: string, chemin: string, corps: any): Response {
     if (methode === 'GET' && chemin === '/health') {
       return reponse({ ...instantane.health, authentification: 'aucune' })
     }
@@ -107,7 +112,7 @@
         id: prochainId++, produit: corps.produit, pays_origine: corps.pays_origine, pays_destination: 'maroc',
         classe: corps.classe, fournisseur: corps.fournisseur, cree_par: corps.cree_par, cree_le: maintenant(),
         regles_version: instantane.dossiers[0]?.regles_version ?? '—', evenements: [],
-        documents: requis.documents.map((x) => ({
+        documents: requis.documents.map((x: any) => ({
           id: prochainePiece++, code: x.id, nom: x.nom, nature: x.nature, fourni_par: x.fourni_par,
           traduction_requise: x.traduction_requise, legalisation_requise: x.legalisation_requise,
           origine_regle: x.origine_regle, statut: x.nature === 'a_rediger' ? 'a_generer' : 'a_obtenir',
@@ -119,11 +124,11 @@
       dossiers.set(d.id, recalculer(d))
       return reponse(d, 201)
     }
-    let m = chemin.match(/^\/dossiers\/(\d+)(?:\/documents\/(\d+))?(?:\/([\w-]+))?$/)
+    const m = chemin.match(/^\/dossiers\/(\d+)(?:\/documents\/(\d+))?(?:\/([\w-]+))?$/)
     if (!m) return erreur(404, 'Not Found')
     const d = dossiers.get(Number(m[1]))
     if (!d) return erreur(404, `Dossier ${m[1]} introuvable.`)
-    const piece = m[2] ? d.documents.find((x) => x.id === Number(m[2])) : null
+    const piece = m[2] ? d.documents.find((x: any) => x.id === Number(m[2])) : null
     if (m[2] && !piece) return erreur(404, `Pièce ${m[2]} introuvable dans le dossier ${m[1]}.`)
     const action = m[3]
     if (!action && methode === 'GET') return reponse(d)
@@ -148,14 +153,14 @@
   }
 
   const fetchOriginal = window.fetch.bind(window)
-  window.fetch = async function (entree, options = {}) {
-    const url = typeof entree === 'string' ? entree : entree.url
+  window.fetch = async function (entree: RequestInfo | URL, options: RequestInit = {}) {
+    const url = typeof entree === 'string' ? entree : entree instanceof URL ? entree.href : entree.url
     if (!url.startsWith(BASE)) return fetchOriginal(entree, options)
     const chemin = new URL(url).pathname
     const methode = (options.method || 'GET').toUpperCase()
-    let corps = {}
-    try { corps = options.body ? JSON.parse(options.body) : {} } catch { corps = {} }
+    let corps: any = {}
+    try { corps = options.body ? JSON.parse(String(options.body)) : {} } catch { corps = {} }
     await new Promise((r) => setTimeout(r, 120)) // latence réseau réaliste
     return router(methode, chemin, corps)
   }
-})()
+}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { API_URL, api, definirCleApi, type Sante } from './api'
+import { API_URL, MODE_DEMO, api, definirCleApi, type Sante } from './api'
 import Connexion, { type Session } from './pages/Connexion'
 import ListeDossiers from './pages/ListeDossiers'
 import NouveauDossier from './pages/NouveauDossier'
@@ -110,6 +110,14 @@ export default function App() {
         </div>
       </header>
 
+      {MODE_DEMO && (
+        <div className="bandeau-demo" role="note">
+          <strong>Démonstration</strong> — données réelles d'exemple (dossiers de test, projet rédigé par Mistral,
+          certificats spécimens lus par l'agent). Aucun serveur n'est connecté : les validations restent dans cet onglet
+          et la rédaction ou la lecture par l'agent sont désactivées.
+        </div>
+      )}
+
       {santeErreur && (
         <div className="bandeau-erreur" role="alert">
           <strong>Backend injoignable.</strong> Le tableau de bord ne peut pas contacter <code>{API_URL}</code>.
@@ -138,6 +146,7 @@ export default function App() {
 }
 
 function EtatBackend({ sante, erreur }: { sante: Sante | null; erreur: string | null }) {
+  if (MODE_DEMO) return <span className="pastille attention">Données de démonstration</span>
   if (erreur) return <span className="pastille erreur" title={erreur}>Backend hors ligne</span>
   if (!sante) return <span className="pastille neutre">Connexion…</span>
   const hs = Object.entries(sante.services).filter(([, ok]) => !ok).map(([n]) => n)

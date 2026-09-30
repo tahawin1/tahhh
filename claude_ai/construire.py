@@ -37,10 +37,13 @@ args = parser.parse_args()
 with tempfile.TemporaryDirectory() as dist:
     subprocess.run(
         ["npx", "vite", "build", "--outDir", dist, "--emptyOutDir"],
-        cwd=RACINE / "frontend", check=True, env={**os.environ, "VITE_API_URL": "https://moteur.claude-ai.invalid"},
+        cwd=RACINE / "frontend", check=True,
+        env={**os.environ, "VITE_API_URL": "https://moteur.claude-ai.invalid", "PAGE_UNIQUE": "1"},
     )
+    fichiers_js = list((Path(dist) / "assets").glob("*.js"))
+    assert len(fichiers_js) == 1, fichiers_js  # page autonome : un seul fichier JS
     css = next((Path(dist) / "assets").glob("*.css")).read_text()
-    app = next((Path(dist) / "assets").glob("*.js")).read_text()
+    app = fichiers_js[0].read_text()
 
 regles = (ICI / "regles.json").read_text().replace("</", "<\\/")
 scripts_js = [(ICI / "controle.js").read_text(), (ICI / "moteur.js").read_text()]

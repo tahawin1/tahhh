@@ -8,7 +8,12 @@
 // lisible par tous) : chaque utilisateur la saisit à la connexion, elle
 // reste dans son navigateur.
 
-export const API_URL: string | undefined = import.meta.env.VITE_API_URL?.replace(/\/+$/, '') || undefined
+// VITE_API_URL=demo : mode démonstration sans backend (données d'exemple
+// réelles embarquées, voir src/demo/) — pour montrer l'interface, sur Vercel par exemple.
+export const MODE_DEMO = import.meta.env.VITE_API_URL === 'demo'
+export const API_URL: string | undefined = MODE_DEMO
+  ? 'https://demo.invalid'
+  : import.meta.env.VITE_API_URL?.replace(/\/+$/, '') || undefined
 
 export type Nature = 'a_rediger' | 'a_fournir'
 export type StatutPiece =

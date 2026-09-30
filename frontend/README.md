@@ -16,6 +16,10 @@ npm install
 npm run dev                         # http://localhost:5173
 ```
 
+`VITE_API_URL=demo` : mode démonstration sans backend (données d'exemple
+de `src/demo/instantane.json`, règles de validation rejouées par
+`src/demo/moteurDemo.ts`) — pour montrer l'interface, par exemple sur Vercel.
+
 Sans `VITE_API_URL`, l'application affiche « Configuration manquante »
 (aucune adresse par défaut). Si le backend ne répond pas, elle reste
 utilisable en lecture de l'interface mais affiche « Backend injoignable ».

@@ -114,6 +114,14 @@ rédige en tâche de fond) : les limites de durée de requête des tunnels
 
 ## 3. Frontend sur Vercel
 
+**Pour montrer l'interface sans backend** (mode démonstration, données
+d'exemple réelles embarquées) : importer le dépôt en ne gardant que
+l'application Vite (*l'extrémité avant*, dossier `frontend`) — ne pas
+importer l'application FastAPI : Vercel ne peut pas faire tourner le
+backend (PostgreSQL, Qdrant et Mistral doivent tourner en permanence) — et
+définir `VITE_API_URL = demo`. Pour passer au vrai backend plus tard, il
+suffit de remplacer cette valeur par l'adresse du tunnel et de redéployer.
+
 Dans Vercel → *Add New Project* → importer ce dépôt GitHub :
 - **Root Directory** : `frontend`
 - **Framework** : Vite (détecté ; `frontend/vercel.json`)

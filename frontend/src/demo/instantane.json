@@ -1,0 +1,2113 @@
+{
+ "pris_le": "2026-09-30T16:40:27.382850+00:00",
+ "health": {
+  "statut": "ok",
+  "services": {
+   "postgres": true,
+   "qdrant": true,
+   "ollama": true
+  },
+  "authentification": "cle_api"
+ },
+ "pays": {
+  "maroc": {
+   "autorite": "Direction du Médicament et de la Pharmacie (DMP)",
+   "classification": [
+    "I",
+    "IIA",
+    "IIB",
+    "III"
+   ]
+  },
+  "chine": {
+   "autorite": "National Medical Products Administration (NMPA)",
+   "classification": [
+    "I",
+    "II",
+    "III"
+   ]
+  },
+  "inde": {
+   "autorite": "Central Drugs Standard Control Organization (CDSCO)",
+   "classification": [
+    "A",
+    "B",
+    "C",
+    "D"
+   ]
+  },
+  "union_europeenne": {
+   "autorite": "Organismes notifiés (évaluation de conformité) + autorités compétentes nationales",
+   "classification": [
+    "I",
+    "IIa",
+    "IIb",
+    "III"
+   ]
+  }
+ },
+ "dossiers": [
+  {
+   "id": 2,
+   "produit": "Stent coronaire (test E2E)",
+   "pays_origine": "inde",
+   "pays_destination": "maroc",
+   "classe": "III",
+   "fournisseur": "Fabricant indien (test)",
+   "cree_par": "Testeur E2E",
+   "cree_le": "2026-09-30T16:04:28.102000Z",
+   "regles_version": "11e549e753b0",
+   "statut": "en_preparation",
+   "compteurs": {
+    "total": 8,
+    "valides": 1,
+    "a_valider": 0,
+    "a_obtenir": 3,
+    "a_generer": 4,
+    "en_cours": 0,
+    "erreurs": 0,
+    "rejetes": 0
+   },
+   "documents": [
+    {
+     "id": 9,
+     "code": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 10,
+     "code": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 11,
+     "code": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 12,
+     "code": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 13,
+     "code": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 14,
+     "code": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 15,
+     "code": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 16,
+     "code": "piece_specifique_inde",
+     "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+     "nature": "a_fournir",
+     "fourni_par": "la CDSCO (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.inde",
+     "statut": "valide",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": "Testeur E2E",
+     "valide_le": "2026-09-30T16:04:28.331253Z",
+     "commentaire": "Certificat CDSCO reçu le 30/09 — test E2E",
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    }
+   ],
+   "evenements": [
+    {
+     "horodatage": "2026-09-30T16:04:28.334066Z",
+     "acteur": "Testeur E2E",
+     "action": "piece_validee",
+     "detail": "Autorisation de mise en vente délivrée par la CDSCO — Certificat CDSCO reçu le 30/09 — test E2E",
+     "document_id": 16
+    },
+    {
+     "horodatage": "2026-09-30T16:04:28.107610Z",
+     "acteur": "Testeur E2E",
+     "action": "dossier_cree",
+     "detail": "8 pièces décidées par le moteur de règles (règles 11e549e753b0)",
+     "document_id": null
+    }
+   ],
+   "prochain_creneau_depot": null
+  },
+  {
+   "id": 1,
+   "produit": "Prothèse orthopédique de hanche",
+   "pays_origine": "chine",
+   "pays_destination": "maroc",
+   "classe": "IIB",
+   "fournisseur": "Fournisseur chinois (test)",
+   "cree_par": "Claude (test)",
+   "cree_le": "2026-09-30T16:00:06.169917Z",
+   "regles_version": "11e549e753b0",
+   "statut": "en_preparation",
+   "compteurs": {
+    "total": 8,
+    "valides": 0,
+    "a_valider": 1,
+    "a_obtenir": 4,
+    "a_generer": 3,
+    "en_cours": 0,
+    "erreurs": 0,
+    "rejetes": 0
+   },
+   "documents": [
+    {
+     "id": 1,
+     "code": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_valider",
+     "fichier_disponible": true,
+     "sources": [
+      {
+       "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+       "pays": "maroc",
+       "date_version": "2015-08-04",
+       "fichier": "maroc_arretes_2853-2856.pdf",
+       "chunk_index": 6,
+       "score": 0.7615
+      },
+      {
+       "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+       "pays": "maroc",
+       "date_version": "2015-08-04",
+       "fichier": "maroc_arretes_2853-2856.pdf",
+       "chunk_index": 7,
+       "score": 0.7467
+      },
+      {
+       "texte_source": "Arrêtés 2853/2854/2855/2856-15",
+       "pays": "maroc",
+       "date_version": "2015-08-04",
+       "fichier": "maroc_arretes_2853-2856.pdf",
+       "chunk_index": 5,
+       "score": 0.744
+      }
+     ],
+     "erreur": null,
+     "genere_le": "2026-09-30T16:09:53.064350Z",
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 2,
+     "code": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 3,
+     "code": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 4,
+     "code": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 5,
+     "code": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 6,
+     "code": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_generer",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": false,
+     "nom_fichier_recu": null,
+     "recu_le": null,
+     "extraction_statut": null,
+     "extraction": null,
+     "extraction_erreur": null
+    },
+    {
+     "id": 7,
+     "code": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": "specimen_iso13485_scanne.pdf",
+     "recu_le": "2026-09-30T16:36:19.755364Z",
+     "extraction_statut": "terminee",
+     "extraction": {
+      "champs": [
+       {
+        "nom": "numero",
+        "libelle": "Numéro du certificat",
+        "type": "texte",
+        "valeur": "SCB-MD-2024-0457",
+        "valeur_normalisee": "SCB-MD-2024-0457",
+        "citation": "Certificate No. SCB-MD-2024-0457",
+        "verification": "verifie"
+       },
+       {
+        "nom": "emetteur",
+        "libelle": "Émis par",
+        "type": "texte",
+        "valeur": "SPECIMEN CERTIFICATION BODY GmbH",
+        "valeur_normalisee": "SPECIMEN CERTIFICATION BODY GmbH",
+        "citation": "SPECIMEN CERTIFICATION BODY GmbH",
+        "verification": "verifie"
+       },
+       {
+        "nom": "titulaire",
+        "libelle": "Titulaire (fabricant)",
+        "type": "texte",
+        "valeur": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "valeur_normalisee": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "citation": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "verification": "verifie"
+       },
+       {
+        "nom": "produit_couvert",
+        "libelle": "Produits couverts",
+        "type": "texte",
+        "valeur": "Design and manufacture of hip joint prostheses (femoral stems, acetabular cups, femoral heads)",
+        "valeur_normalisee": "Design and manufacture of hip joint prostheses (femoral stems, acetabular cups, femoral heads)",
+        "citation": "Design and manufacture of hip joint prostheses (femoral stems, acetabular cups, femoral heads)",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_emission",
+        "libelle": "Date d'émission",
+        "type": "date",
+        "valeur": "12 March 2024",
+        "valeur_normalisee": "2024-03-12",
+        "citation": "Date of issue: 12 March 2024",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_expiration",
+        "libelle": "Valable jusqu'au",
+        "type": "date",
+        "valeur": "11 March 2027",
+        "valeur_normalisee": "2027-03-11",
+        "citation": "Valid until 11 March 2027",
+        "verification": "verifie"
+       },
+       {
+        "nom": "norme",
+        "libelle": "Référentiel",
+        "type": "texte",
+        "valeur": "ISO 13485:2016",
+        "valeur_normalisee": "ISO 13485:2016",
+        "citation": "ISO 13485:2016",
+        "verification": "verifie"
+       }
+      ],
+      "resume": {
+       "verifie": 7,
+       "citation_introuvable": 0,
+       "valeur_hors_citation": 0,
+       "absent": 0
+      },
+      "caracteres_lus": 706,
+      "modele": "mistral"
+     },
+     "extraction_erreur": null
+    },
+    {
+     "id": 8,
+     "code": "piece_specifique_chine",
+     "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+     "nature": "a_fournir",
+     "fourni_par": "la NMPA (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.chine",
+     "statut": "a_obtenir",
+     "fichier_disponible": false,
+     "sources": null,
+     "erreur": null,
+     "genere_le": null,
+     "valide_par": null,
+     "valide_le": null,
+     "commentaire": null,
+     "lisible_par_agent": true,
+     "nom_fichier_recu": "specimen_nmpa_traduction.pdf",
+     "recu_le": "2026-09-30T16:36:20.089522Z",
+     "extraction_statut": "terminee",
+     "extraction": {
+      "champs": [
+       {
+        "nom": "numero",
+        "libelle": "Numéro du certificat",
+        "type": "texte",
+        "valeur": "Guo Xie Zhu Zhun 20213130457",
+        "valeur_normalisee": "Guo Xie Zhu Zhun 20213130457",
+        "citation": "Numéro d'enregistrement : Guo Xie Zhun 20213130457",
+        "verification": "valeur_hors_citation"
+       },
+       {
+        "nom": "emetteur",
+        "libelle": "Émis par",
+        "type": "texte",
+        "valeur": "Administration nationale des produits médicaux (NMPA)",
+        "valeur_normalisee": "Administration nationale des produits médicaux (NMPA)",
+        "citation": "Administration nationale des produits médicaux (NMPA)",
+        "verification": "verifie"
+       },
+       {
+        "nom": "titulaire",
+        "libelle": "Titulaire (fabricant)",
+        "type": "texte",
+        "valeur": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "valeur_normalisee": "Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "citation": "Titulaire de l'enregistrement : Hangzhou Specimen Orthopaedics Co., Ltd.",
+        "verification": "verifie"
+       },
+       {
+        "nom": "produit_couvert",
+        "libelle": "Produits couverts",
+        "type": "texte",
+        "valeur": "Prothèse totale de hanche non cimentée",
+        "valeur_normalisee": "Prothèse totale de hanche non cimentée",
+        "citation": "Nom du produit : Prothèse totale de hanche non cimentée",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_emission",
+        "libelle": "Date d'émission",
+        "type": "date",
+        "valeur": "15/06/2021",
+        "valeur_normalisee": "2021-06-15",
+        "citation": "Date d'approbation : 15/06/2021",
+        "verification": "verifie"
+       },
+       {
+        "nom": "date_expiration",
+        "libelle": "Valable jusqu'au",
+        "type": "date",
+        "valeur": "14/06/2026",
+        "valeur_normalisee": "2026-06-14",
+        "citation": "Date d'expiration : 14/06/2026",
+        "verification": "verifie"
+       },
+       {
+        "nom": "classe_indiquee",
+        "libelle": "Classe indiquée",
+        "type": "texte",
+        "valeur": "Classe III",
+        "valeur_normalisee": "Classe III",
+        "citation": "Classe de gestion : Classe III",
+        "verification": "verifie"
+       }
+      ],
+      "resume": {
+       "verifie": 6,
+       "citation_introuvable": 0,
+       "valeur_hors_citation": 1,
+       "absent": 0
+      },
+      "caracteres_lus": 786,
+      "modele": "mistral"
+     },
+     "extraction_erreur": null
+    }
+   ],
+   "evenements": [
+    {
+     "horodatage": "2026-09-30T16:39:21.417216Z",
+     "acteur": "système",
+     "action": "lecture_terminee",
+     "detail": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) — 6 champ(s) vérifié(s), 1 non vérifié(s), 0 absent(s)",
+     "document_id": 8
+    },
+    {
+     "horodatage": "2026-09-30T16:37:47.373935Z",
+     "acteur": "système",
+     "action": "lecture_terminee",
+     "detail": "Certificat ISO 13485 (système de management de la qualité) — 7 champ(s) vérifié(s), 0 non vérifié(s), 0 absent(s)",
+     "document_id": 7
+    },
+    {
+     "horodatage": "2026-09-30T16:36:20.090792Z",
+     "acteur": "Salma (test)",
+     "action": "document_recu_depose",
+     "detail": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) — specimen_nmpa_traduction.pdf",
+     "document_id": 8
+    },
+    {
+     "horodatage": "2026-09-30T16:36:19.757302Z",
+     "acteur": "Salma (test)",
+     "action": "document_recu_depose",
+     "detail": "Certificat ISO 13485 (système de management de la qualité) — specimen_iso13485_scanne.pdf",
+     "document_id": 7
+    },
+    {
+     "horodatage": "2026-09-30T16:09:53.065677Z",
+     "acteur": "système",
+     "action": "generation_terminee",
+     "detail": "Demande signée adressée au ministre de la Santé",
+     "document_id": 1
+    },
+    {
+     "horodatage": "2026-09-30T16:06:43.012073Z",
+     "acteur": "Claude (test)",
+     "action": "generation_demandee",
+     "detail": "Demande signée adressée au ministre de la Santé",
+     "document_id": 1
+    },
+    {
+     "horodatage": "2026-09-30T16:05:04.393241Z",
+     "acteur": "système",
+     "action": "generation_terminee",
+     "detail": "Demande signée adressée au ministre de la Santé",
+     "document_id": 1
+    },
+    {
+     "horodatage": "2026-09-30T16:00:14.381741Z",
+     "acteur": "Claude (test)",
+     "action": "generation_demandee",
+     "detail": "Demande signée adressée au ministre de la Santé",
+     "document_id": 1
+    },
+    {
+     "horodatage": "2026-09-30T16:00:06.185310Z",
+     "acteur": "Claude (test)",
+     "action": "dossier_cree",
+     "detail": "8 pièces décidées par le moteur de règles (règles 11e549e753b0)",
+     "document_id": null
+    }
+   ],
+   "prochain_creneau_depot": null
+  }
+ ],
+ "apercus": {
+  "1/1": {
+   "piece": "Demande signée adressée au ministre de la Santé",
+   "genere_le": "2026-09-30T16:09:53.064350+00:00",
+   "paragraphes": [
+    {
+     "genre": "titre",
+     "texte": "Demande signée adressée au ministre de la Santé"
+    },
+    {
+     "genre": "texte",
+     "texte": "PROJET GÉNÉRÉ AUTOMATIQUEMENT — EN ATTENTE DE VALIDATION HUMAINE. Ne pas déposer avant relecture et validation explicite."
+    },
+    {
+     "genre": "texte",
+     "texte": " Monsieur le Ministre,"
+    },
+    {
+     "genre": "texte",
+     "texte": "Ministre de la Santé"
+    },
+    {
+     "genre": "texte",
+     "texte": "Direction du Médicament et de la Pharmacie"
+    },
+    {
+     "genre": "texte",
+     "texte": "Rue du Trône, Rabat"
+    },
+    {
+     "genre": "texte",
+     "texte": "---"
+    },
+    {
+     "genre": "texte",
+     "texte": "[Date]"
+    },
+    {
+     "genre": "texte",
+     "texte": "[À COMPLÉTER]"
+    },
+    {
+     "genre": "texte",
+     "texte": "[Cachet]"
+    },
+    {
+     "genre": "texte",
+     "texte": "Monsieur le Ministre,"
+    },
+    {
+     "genre": "texte",
+     "texte": "Je vous adresse la présente demande d'enregistrement d'un dispositif médical, à savoir une prothèse orthopédique de hanche, de classe IIB, produit par un fournisseur chinois."
+    },
+    {
+     "genre": "texte",
+     "texte": "Voici la liste des pièces jointes à cette demande :"
+    },
+    {
+     "genre": "texte",
+     "texte": "1. Cette lettre"
+    },
+    {
+     "genre": "texte",
+     "texte": "2. Fiche signalétique du dispositif (exemplaires requis)"
+    },
+    {
+     "genre": "texte",
+     "texte": "3. Dossier technique (description, composition, fabrication, contrôles)"
+    },
+    {
+     "genre": "texte",
+     "texte": "4. Bulletin d'analyse signé par le fabricant"
+    },
+    {
+     "genre": "texte",
+     "texte": "5. Échantillon modèle, emballage et étiquetage conforme"
+    },
+    {
+     "genre": "texte",
+     "texte": "6. Mandataire du fabricant établi au Maroc"
+    },
+    {
+     "genre": "texte",
+     "texte": "7. Certificat ISO 13485 (système de management de la qualité)"
+    },
+    {
+     "genre": "texte",
+     "texte": "8. Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)"
+    },
+    {
+     "genre": "texte",
+     "texte": "Je vous prie de trouver en attachement les pièces techniques complémentaires demandées par les arrêtés 2853/2854/2855/2856-15 (version du 2015-08-04)."
+    },
+    {
+     "genre": "texte",
+     "texte": "Je vous remercie de votre attention et de votre coopération."
+    },
+    {
+     "genre": "texte",
+     "texte": "[Signature]"
+    },
+    {
+     "genre": "texte",
+     "texte": "[Nom et prénom]"
+    },
+    {
+     "genre": "texte",
+     "texte": "[Qualité et adresse]"
+    },
+    {
+     "genre": "titre",
+     "texte": "Sources réglementaires utilisées (à vérifier)"
+    },
+    {
+     "genre": "puce",
+     "texte": "Arrêtés 2853/2854/2855/2856-15 — version du 2015-08-04 (maroc_arretes_2853-2856.pdf, extrait n°6)"
+    },
+    {
+     "genre": "puce",
+     "texte": "Arrêtés 2853/2854/2855/2856-15 — version du 2015-08-04 (maroc_arretes_2853-2856.pdf, extrait n°7)"
+    },
+    {
+     "genre": "puce",
+     "texte": "Arrêtés 2853/2854/2855/2856-15 — version du 2015-08-04 (maroc_arretes_2853-2856.pdf, extrait n°5)"
+    }
+   ]
+  }
+ },
+ "requis": {
+  "chine|I": {
+   "produit": "aperçu",
+   "pays_origine": "chine",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_chine",
+     "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+     "nature": "a_fournir",
+     "fourni_par": "la NMPA (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.chine"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "chine|IIA": {
+   "produit": "aperçu",
+   "pays_origine": "chine",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_chine",
+     "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+     "nature": "a_fournir",
+     "fourni_par": "la NMPA (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.chine"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "chine|IIB": {
+   "produit": "aperçu",
+   "pays_origine": "chine",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_chine",
+     "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+     "nature": "a_fournir",
+     "fourni_par": "la NMPA (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.chine"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "chine|III": {
+   "produit": "aperçu",
+   "pays_origine": "chine",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_chine",
+     "nom": "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)",
+     "nature": "a_fournir",
+     "fourni_par": "la NMPA (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.chine"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "inde|I": {
+   "produit": "aperçu",
+   "pays_origine": "inde",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_inde",
+     "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+     "nature": "a_fournir",
+     "fourni_par": "la CDSCO (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.inde"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "inde|IIA": {
+   "produit": "aperçu",
+   "pays_origine": "inde",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_inde",
+     "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+     "nature": "a_fournir",
+     "fourni_par": "la CDSCO (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.inde"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "inde|IIB": {
+   "produit": "aperçu",
+   "pays_origine": "inde",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_inde",
+     "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+     "nature": "a_fournir",
+     "fourni_par": "la CDSCO (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.inde"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "inde|III": {
+   "produit": "aperçu",
+   "pays_origine": "inde",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_inde",
+     "nom": "Autorisation de mise en vente délivrée par la CDSCO",
+     "nature": "a_fournir",
+     "fourni_par": "la CDSCO (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.inde"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "union_europeenne|I": {
+   "produit": "aperçu",
+   "pays_origine": "union_europeenne",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_union_europeenne",
+     "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme notifié (via le fabricant)",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "piece_specifique_selon_origine.union_europeenne"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "union_europeenne|IIA": {
+   "produit": "aperçu",
+   "pays_origine": "union_europeenne",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_union_europeenne",
+     "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme notifié (via le fabricant)",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "piece_specifique_selon_origine.union_europeenne"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "union_europeenne|IIB": {
+   "produit": "aperçu",
+   "pays_origine": "union_europeenne",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_union_europeenne",
+     "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme notifié (via le fabricant)",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "piece_specifique_selon_origine.union_europeenne"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "union_europeenne|III": {
+   "produit": "aperçu",
+   "pays_origine": "union_europeenne",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_union_europeenne",
+     "nom": "Certificat de marquage CE délivré par un organisme notifié (année + numéro d'identification)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme notifié (via le fabricant)",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "piece_specifique_selon_origine.union_europeenne"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "autre|I": {
+   "produit": "aperçu",
+   "pays_origine": "autre",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_autre",
+     "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+     "nature": "a_fournir",
+     "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.autre"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "autre|IIA": {
+   "produit": "aperçu",
+   "pays_origine": "autre",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_autre",
+     "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+     "nature": "a_fournir",
+     "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.autre"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "autre|IIB": {
+   "produit": "aperçu",
+   "pays_origine": "autre",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_autre",
+     "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+     "nature": "a_fournir",
+     "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.autre"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  },
+  "autre|III": {
+   "produit": "aperçu",
+   "pays_origine": "autre",
+   "pays_destination": "maroc",
+   "documents": [
+    {
+     "id": "demande_signee",
+     "nom": "Demande signée adressée au ministre de la Santé",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "fiche_signaletique",
+     "nom": "Fiche signalétique du dispositif (exemplaires requis)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "dossier_technique",
+     "nom": "Dossier technique (description, composition, fabrication, contrôles)",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "bulletin_analyse",
+     "nom": "Bulletin d'analyse signé par le fabricant",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "echantillon_etiquetage",
+     "nom": "Échantillon modèle, emballage et étiquetage conforme",
+     "nature": "a_fournir",
+     "fourni_par": "le fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "mandataire_maroc",
+     "nom": "Mandataire du fabricant établi au Maroc",
+     "nature": "a_rediger",
+     "fourni_par": null,
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "iso_13485",
+     "nom": "Certificat ISO 13485 (système de management de la qualité)",
+     "nature": "a_fournir",
+     "fourni_par": "l'organisme de certification du fabricant",
+     "traduction_requise": false,
+     "legalisation_requise": false,
+     "origine_regle": "socle_commun"
+    },
+    {
+     "id": "piece_specifique_autre",
+     "nom": "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine + ISO 13485",
+     "nature": "a_fournir",
+     "fourni_par": "l'autorité de tutelle du pays d'origine (via le fabricant)",
+     "traduction_requise": true,
+     "legalisation_requise": true,
+     "origine_regle": "piece_specifique_selon_origine.autre"
+    }
+   ],
+   "prochain_creneau_depot": "2026-09-30"
+  }
+ }
+}

@@ -136,6 +136,10 @@ button.lien { border: 0; background: none; padding: 0; color: var(--accent); fon
 .neutre { color: var(--neutre); background: var(--neutre-fond); }
 
 .message { padding: 0.6rem 0.8rem; border-radius: 6px; margin: 0.5rem 0; }
+.bandeau-demo {
+  background: var(--attention-fond); color: var(--attention); border-bottom: 1px solid var(--bordure);
+  padding-block: 0.6rem; padding-inline: 1rem; font-size: 0.88rem; line-height: 1.45; text-align: center;
+}
 .bandeau-erreur { background: var(--erreur-fond); color: var(--erreur); padding: 0.75rem 1.25rem; text-align: center; }
 .alerte h1 { margin-bottom: 0.5rem; }
 
