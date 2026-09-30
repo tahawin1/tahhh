@@ -97,7 +97,7 @@ export function installerDemo(base: string) {
 
   function router(methode: string, chemin: string, corps: any): Response {
     if (methode === 'GET' && chemin === '/health') {
-      return reponse({ ...instantane.health, authentification: 'aucune' })
+      return reponse({ ...instantane.health, authentification: 'aucune', prochain_creneau_depot: prochainCreneau() })
     }
     if (methode === 'GET' && chemin === '/pays') return reponse(instantane.pays)
     if (chemin === '/dossiers/documents-requis') {

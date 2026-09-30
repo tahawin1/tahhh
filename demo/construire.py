@@ -36,6 +36,7 @@ with tempfile.TemporaryDirectory() as dist:
 
 assert "</script" not in app
 page = f"""<title>Tableau de bord conformité DM</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;650;700&display=swap">
 <style>
 {css}
 </style>

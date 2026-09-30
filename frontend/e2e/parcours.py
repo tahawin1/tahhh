@@ -15,6 +15,7 @@ connexion, liste des dossiers, aperçu des pièces requises (moteur de règles),
 création d'un dossier, validation d'une pièce à fournir, journal.
 """
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -34,34 +35,37 @@ with sync_playwright() as p:
     navigateur = p.chromium.launch(executable_path=CHROMIUM if Path(CHROMIUM).exists() else None)
     page = navigateur.new_page(viewport={"width": 1280, "height": 900})
     erreurs_console = []
-    page.on("console", lambda m: m.type == "error" and erreurs_console.append(m.text))
+    # polices Google : externes, parfois bloquées par un proxy — sans effet sur le fonctionnement
+    page.on("console", lambda m: m.type == "error" and "fonts.g" not in (m.location or {}).get("url", "")
+            and erreurs_console.append(m.text))
 
     # 1. Connexion
     page.goto(URL)
-    expect(page.get_by_text("Backend en ligne")).to_be_visible(timeout=15000)
+    page.get_by_label("Nom et prénom").wait_for(timeout=15000)
     page.get_by_label("Nom et prénom").fill("Testeur E2E")
     if os.environ.get("E2E_API_KEY"):
         page.get_by_label("Clé d'API").fill(os.environ["E2E_API_KEY"])
     page.get_by_role("button", name="Accéder au tableau de bord").click()
-    expect(page.get_by_role("heading", name="Dossiers")).to_be_visible()
-    etape("connexion et état du backend (/health) affichés")
+    expect(page.get_by_text("Serveur en ligne")).to_be_visible(timeout=15000)
+    expect(page.get_by_role("heading", name="Vos dossiers")).to_be_visible()
+    etape("connexion et état du serveur (/health) affichés")
 
     # 2. Liste des dossiers chargée depuis PostgreSQL via l'API
-    expect(page.locator("table.tableau tbody tr").first.or_(page.get_by_text("Aucun dossier pour l'instant"))).to_be_visible()
-    nb_lignes = page.locator("table.tableau tbody tr").count()
+    expect(page.locator(".carte-dossier").first.or_(page.get_by_text("Aucun dossier pour l'instant"))).to_be_visible()
+    nb_lignes = page.locator(".carte-dossier").count()
     page.screenshot(path=CAPTURES / "1-liste-dossiers.png", full_page=True)
     etape(f"liste des dossiers chargée depuis le backend ({nb_lignes} dossier(s))")
 
     # 3. Aperçu des pièces requises : décidé par le moteur de règles du backend
-    page.get_by_role("link", name="Nouveau dossier").click()
-    page.get_by_label("Pays d'origine").select_option("inde")
-    page.get_by_label("Classe (Maroc)").select_option("III")
-    expect(page.get_by_text("À obtenir auprès du fournisseur (4)")).to_be_visible()
+    page.get_by_role("link", name="Nouveau dossier").first.click()
+    page.get_by_role("radio", name="Inde").check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
+    page.get_by_role("radio", name=re.compile(r"^III ")).check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
+    expect(page.get_by_text("Le fournisseur les envoie (4)")).to_be_visible()
     expect(page.get_by_text("Autorisation de mise en vente délivrée par la CDSCO")).to_be_visible()
-    expect(page.get_by_text("À rédiger (4)")).to_be_visible()
-    page.get_by_label("Classe (Maroc)").select_option("I")
-    expect(page.get_by_text("À obtenir auprès du fournisseur (3)")).to_be_visible()  # pas d'ISO 13485 en classe I
-    page.get_by_label("Classe (Maroc)").select_option("III")
+    expect(page.get_by_text("L'agent les rédige (4)")).to_be_visible()
+    page.get_by_role("radio", name=re.compile(r"^I ")).check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
+    expect(page.get_by_text("Le fournisseur les envoie (3)")).to_be_visible()  # pas d'ISO 13485 en classe I
+    page.get_by_role("radio", name=re.compile(r"^III ")).check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
     etape("aperçu des documents requis chargé depuis /dossiers/documents-requis (Inde III : 4+4, classe I : sans ISO)")
 
     # 4. Création d'un dossier
@@ -91,7 +95,7 @@ with sync_playwright() as p:
     page.screenshot(path=CAPTURES / "3-detail-dossier.png", full_page=True)
 
     # 7. Retour à la liste : le dossier créé y figure
-    page.get_by_role("link", name="← Dossiers").click()
+    page.get_by_role("link", name="Tableau de bord").first.click()
     expect(page.get_by_role("link", name="Stent coronaire (test E2E)").first).to_be_visible()
     page.screenshot(path=CAPTURES / "4-liste-apres-creation.png", full_page=True)
     etape("le dossier créé apparaît dans la liste")

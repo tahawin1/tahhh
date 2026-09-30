@@ -8,6 +8,14 @@ export const PAYS: Record<string, string> = {
   maroc: 'Maroc',
 }
 
+/** Code court et teinte d'identification par pays d'origine (puces des cartes). */
+export const PAYS_PUCE: Record<string, { code: string; teinte: string }> = {
+  chine: { code: 'CN', teinte: 'rouge' },
+  inde: { code: 'IN', teinte: 'safran' },
+  union_europeenne: { code: 'UE', teinte: 'bleu' },
+  autre: { code: '··', teinte: 'gris' },
+}
+
 export const STATUT_PIECE: Record<StatutPiece, { libelle: string; ton: string }> = {
   a_generer: { libelle: 'À rédiger', ton: 'neutre' },
   en_file: { libelle: 'En file de rédaction', ton: 'encours' },
@@ -47,4 +55,20 @@ export function dateLongue(iso: string): string {
   return new Date(`${iso}T12:00:00`).toLocaleDateString('fr-FR', {
     weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
   })
+}
+
+export function dateCourte(iso: string): string {
+  return new Date(`${iso}T12:00:00`).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })
+}
+
+/** Jours restants avant une date (AAAA-MM-JJ), 0 = aujourd'hui. */
+export function joursAvant(iso: string): number {
+  const cible = new Date(`${iso}T00:00:00`)
+  const aujourdhui = new Date()
+  aujourdhui.setHours(0, 0, 0, 0)
+  return Math.round((cible.getTime() - aujourdhui.getTime()) / 86400000)
+}
+
+export function prenom(nom: string): string {
+  return nom.trim().split(/\s+/)[0] || nom
 }

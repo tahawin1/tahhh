@@ -394,6 +394,7 @@ Réponds uniquement avec un objet JSON de la forme :
         statut: 'ok',
         services: { 'base de données': !!cap.db, 'agent (Claude)': !!cap.sample, 'stockage des documents': !!cap.assets },
         authentification: 'aucune',
+        prochain_creneau_depot: prochainCreneau(),
       })
     }
     await pret

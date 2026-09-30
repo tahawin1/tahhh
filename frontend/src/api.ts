@@ -145,6 +145,7 @@ export interface Sante {
   statut: string
   services: Record<string, boolean>
   authentification: 'cle_api' | 'aucune'
+  prochain_creneau_depot?: string
 }
 
 export class ErreurApi extends Error {

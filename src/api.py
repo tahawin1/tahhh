@@ -326,6 +326,7 @@ def health():
             "ollama": _service_joignable(f"{OLLAMA_BASE_URL}/api/version"),
         },
         "authentification": "cle_api" if API_KEY else "aucune",
+        "prochain_creneau_depot": str(prochain_creneau_depot()),  # règle DMP (YAML) : mercredi/jeudi
     }
 
 

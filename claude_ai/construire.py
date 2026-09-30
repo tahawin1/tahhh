@@ -59,6 +59,7 @@ libs = "\n".join(f'<script src="{sources[k]}"></script>' for k in ("pdf", "pdf_w
 inline = "\n".join(f"<script>\n{code}\n</script>" for code in scripts_js)
 
 page = f"""<title>Espace conformité DM</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Outfit:wght@500;600;650;700&display=swap">
 <style>
 {css}
 </style>

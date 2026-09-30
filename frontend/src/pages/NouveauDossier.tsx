@@ -1,9 +1,21 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { api, type Apercu } from '../api'
-import { PAYS } from '../libelles'
+import { PAYS, PAYS_PUCE } from '../libelles'
+import Icone from '../composants/Icone'
 import type { Session } from './Connexion'
 
-const CLASSES = ['I', 'IIA', 'IIB', 'III']
+const CLASSES = [
+  { id: 'I', aide: 'Risque faible' },
+  { id: 'IIA', aide: 'Risque modéré' },
+  { id: 'IIB', aide: 'Risque élevé' },
+  { id: 'III', aide: 'Risque très élevé' },
+]
+const ORIGINES = [
+  { id: 'chine', autorite: 'Certificat NMPA' },
+  { id: 'inde', autorite: 'Certificat CDSCO' },
+  { id: 'union_europeenne', autorite: 'Marquage CE' },
+  { id: 'autre', autorite: 'Certificat de libre vente' },
+]
 
 export default function NouveauDossier({ session }: { session: Session }) {
   const [produit, setProduit] = useState('')
@@ -48,66 +60,95 @@ export default function NouveauDossier({ session }: { session: Session }) {
   const aFournir = apercu?.documents.filter((d) => d.nature === 'a_fournir') ?? []
 
   return (
-    <>
-      <p><a href="#/">← Dossiers</a></p>
-      <h1>Nouveau dossier</h1>
-      <div className="deux-colonnes">
-        <form className="carte" onSubmit={creer}>
-          <label>
-            Dispositif médical
-            <input value={produit} onChange={(e) => setProduit(e.target.value)} required placeholder="ex. Prothèse orthopédique de hanche" />
-          </label>
-          <label>
-            <span>Fournisseur / fabricant <span className="facultatif">(facultatif)</span></span>
-            <input value={fournisseur} onChange={(e) => setFournisseur(e.target.value)} />
-          </label>
-          <div className="ligne">
+    <div className="nouveau">
+      <a className="lien-retour" href="#/"><Icone nom="retour" taille={18} /> Tableau de bord</a>
+      <header className="page-entete">
+        <p className="surtitre">Nouveau dossier</p>
+        <h1>Quel dispositif voulez-vous enregistrer ?</h1>
+        <p className="hero-sous">Trois informations suffisent : les règles de la DMP donnent aussitôt la liste des pièces.</p>
+      </header>
+
+      <div className="nouveau-grille">
+        <form className="panneau formulaire" onSubmit={creer}>
+          <fieldset>
+            <legend><span className="numero">1</span> Le dispositif</legend>
             <label>
-              Pays d'origine
-              <select value={pays} onChange={(e) => setPays(e.target.value)}>
-                {['chine', 'inde', 'union_europeenne', 'autre'].map((p) => <option key={p} value={p}>{PAYS[p]}</option>)}
-              </select>
+              Dispositif médical
+              <input value={produit} onChange={(e) => setProduit(e.target.value)} required placeholder="ex. Prothèse totale de hanche" />
             </label>
             <label>
-              Classe (Maroc)
-              <select value={classe} onChange={(e) => setClasse(e.target.value)}>
-                {CLASSES.map((c) => <option key={c} value={c}>{c}</option>)}
-              </select>
+              <span>Fournisseur / fabricant <span className="facultatif">(facultatif)</span></span>
+              <input value={fournisseur} onChange={(e) => setFournisseur(e.target.value)} placeholder="ex. Hangzhou Orthopaedics Co., Ltd." />
             </label>
-          </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span className="numero">2</span> Pays d'origine</legend>
+            <div className="tuiles" role="radiogroup" aria-label="Pays d'origine">
+              {ORIGINES.map((o) => {
+                const puce = PAYS_PUCE[o.id]
+                return (
+                  <label key={o.id} className={`tuile ${pays === o.id ? 'choisie' : ''}`}>
+                    <input type="radio" name="pays" value={o.id} checked={pays === o.id} onChange={() => setPays(o.id)} />
+                    <span className={`puce-pays ${puce.teinte}`} aria-hidden>{puce.code}</span>
+                    <span className="tuile-texte">
+                      <strong>{PAYS[o.id]}</strong>
+                      <small>{o.autorite}</small>
+                    </span>
+                  </label>
+                )
+              })}
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span className="numero">3</span> Classe de risque (Maroc)</legend>
+            <div className="segments" role="radiogroup" aria-label="Classe de risque">
+              {CLASSES.map((c) => (
+                <label key={c.id} className={`segment ${classe === c.id ? 'choisi' : ''}`}>
+                  <input type="radio" name="classe" value={c.id} checked={classe === c.id} onChange={() => setClasse(c.id)} />
+                  <strong>{c.id}</strong>
+                  <small>{c.aide}</small>
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
           {erreur && <p className="message erreur" role="alert">{erreur}</p>}
-          <button className="principal" disabled={enCours || !produit.trim()}>
-            {enCours ? 'Création…' : 'Créer le dossier'}
+          <button className="principal grand" disabled={enCours || !produit.trim()}>
+            {enCours ? 'Création…' : <>Créer le dossier <Icone nom="suite" /></>}
           </button>
         </form>
 
-        <section className="carte" aria-live="polite">
-          <h2>Pièces requises</h2>
-          <p className="aide">Liste décidée par le moteur de règles (règles marocaines, pays d'origine, classe).</p>
+        <aside className="panneau apercu" aria-live="polite">
+          <h2>Pièces exigées</h2>
+          <p className="aide">Décidé par les règles de la DMP selon le pays et la classe, jamais par l'IA.</p>
           {!apercu && !erreur && <p className="aide">Chargement…</p>}
           {apercu && (
             <>
-              <h3>À rédiger ({aRediger.length})</h3>
-              <ul className="liste-pieces">
-                {aRediger.map((d) => <li key={d.id}>{d.nom}</li>)}
-              </ul>
-              <h3>À obtenir auprès du fournisseur ({aFournir.length})</h3>
-              <ul className="liste-pieces">
-                {aFournir.map((d) => (
-                  <li key={d.id}>
-                    {d.nom}
-                    <div className="secondaire">
-                      Émise par {d.fourni_par}
-                      {d.traduction_requise && ' · traduction assermentée'}
-                      {d.legalisation_requise && ' · légalisation'}
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <div className="groupe-pieces ia">
+                <h3><Icone nom="ia" taille={18} /> L'agent les rédige ({aRediger.length})</h3>
+                <ul>{aRediger.map((d) => <li key={d.id}>{d.nom}</li>)}</ul>
+              </div>
+              <div className="groupe-pieces fournisseur">
+                <h3><Icone nom="deposer" taille={18} /> Le fournisseur les envoie ({aFournir.length})</h3>
+                <ul>
+                  {aFournir.map((d) => (
+                    <li key={d.id}>
+                      {d.nom}
+                      <small>
+                        Émise par {d.fourni_par}
+                        {d.traduction_requise && ' · traduction assermentée'}
+                        {d.legalisation_requise && ' · légalisation'}
+                      </small>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </>
           )}
-        </section>
+        </aside>
       </div>
-    </>
+    </div>
   )
 }

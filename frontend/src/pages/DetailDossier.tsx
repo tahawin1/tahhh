@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { api, type ApercuProjet, type DossierDetail, type Piece } from '../api'
-import { ACTIONS, PAYS, STATUT_DOSSIER, STATUT_PIECE, dateHeure, dateLongue } from '../libelles'
-import Progression from '../composants/Progression'
+import { ACTIONS, PAYS, PAYS_PUCE, STATUT_DOSSIER, STATUT_PIECE, dateHeure, dateLongue } from '../libelles'
+import { Anneau } from '../composants/Progression'
+import Icone from '../composants/Icone'
+import { etapes, prochaineAction } from '../parcours'
 import LectureAgent from '../composants/LectureAgent'
 import type { Session } from './Connexion'
 
@@ -39,61 +41,75 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
   }
 
   if (!dossier) {
-    return erreur ? <p className="message erreur" role="alert">{erreur}</p> : <p className="aide">Chargement…</p>
+    return erreur ? <p className="message erreur" role="alert">{erreur}</p> : <p className="aide">Chargement du dossier…</p>
   }
 
   const aRediger = dossier.documents.filter((d) => d.nature === 'a_rediger')
   const aFournir = dossier.documents.filter((d) => d.nature === 'a_fournir')
   const aLancer = aRediger.filter((d) => ['a_generer', 'erreur', 'rejete'].includes(d.statut)).length
   const st = STATUT_DOSSIER[dossier.statut]
+  const puce = PAYS_PUCE[dossier.pays_origine] ?? PAYS_PUCE.autre
+  const frise = etapes(dossier)
+  const suite = prochaineAction(dossier)
 
   return (
-    <>
-      <p><a href="#/">← Dossiers</a></p>
-      <div className="titre-page">
-        <div>
-          <h1>Dossier n°{dossier.id} — {dossier.produit}</h1>
-          <p className="secondaire">
-            Origine : {PAYS[dossier.pays_origine] ?? dossier.pays_origine} · Classe {dossier.classe ?? 'non précisée'}
-            {dossier.fournisseur && ` · ${dossier.fournisseur}`} · Créé le {dateHeure(dossier.cree_le)} par {dossier.cree_par}
-            {' · '}Règles <code>{dossier.regles_version}</code>
-          </p>
+    <div className="detail">
+      <a className="lien-retour" href="#/"><Icone nom="retour" taille={18} /> Tableau de bord</a>
+
+      <header className="dossier-entete">
+        <Anneau valides={dossier.compteurs.valides} total={dossier.compteurs.total} taille={84} />
+        <div className="dossier-titre">
+          <p className="surtitre">Dossier n°{dossier.id} · {PAYS[dossier.pays_origine] ?? dossier.pays_origine} → Maroc</p>
+          <h1>{dossier.produit}</h1>
+          <div className="etiquettes">
+            <span className={`puce-pays ${puce.teinte}`}>{puce.code}</span>
+            <span className="etiquette">Classe {dossier.classe ?? 'non précisée'}</span>
+            {dossier.fournisseur && <span className="etiquette"><Icone nom="monde" taille={14} /> {dossier.fournisseur}</span>}
+            <span className="etiquette discrete">Créé le {dateHeure(dossier.cree_le)} par {dossier.cree_par}</span>
+            <span className="etiquette discrete" title="Version des règles utilisées">Règles {dossier.regles_version}</span>
+          </div>
         </div>
         <span className={`pastille grande ${st.ton}`}>{st.libelle}</span>
-      </div>
+      </header>
 
-      <div className="carte resume">
-        <Progression compteurs={dossier.compteurs} />
-        {dossier.statut === 'pret_pour_depot_manuel' && dossier.prochain_creneau_depot ? (
-          <p className="message ok">
-            Toutes les pièces sont validées. Dépôt physique à effectuer <strong>manuellement</strong> auprès de la DMP —
-            prochain créneau (mercredi ou jeudi) : <strong>{dateLongue(dossier.prochain_creneau_depot)}</strong>.
-          </p>
-        ) : (
-          <p className="aide">
-            Chaque pièce doit être validée par une personne nommée. Le dossier n'est jamais déposé par le système.
-          </p>
-        )}
+      <ol className="frise" aria-label="Avancement du dossier">
+        {frise.map((e, i) => (
+          <li key={e.cle} className={`etape ${e.etat}`} aria-current={e.etat === 'en_cours' ? 'step' : undefined}>
+            <span className="etape-rond">{e.etat === 'fait' ? <Icone nom="valide" taille={16} /> : i + 1}</span>
+            <span className="etape-texte">
+              <strong>{e.titre}</strong>
+              <small>{e.detail}</small>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <div className={`prochaine-action ${suite.ton}`}>
+        <span className="icone-rond"><Icone nom={suite.ton === 'ok' ? 'valide' : suite.ton === 'erreur' ? 'alerte' : suite.ton === 'encours' ? 'ia' : 'cible'} /></span>
+        <div>
+          <p className="surtitre">Prochaine action</p>
+          <strong>{suite.titre}</strong>
+          {suite.ton === 'ok' && dossier.prochain_creneau_depot ? (
+            <p>Dépôt physique à effectuer <strong>manuellement</strong> à la DMP — prochain créneau : <strong>{dateLongue(dossier.prochain_creneau_depot)}</strong>.</p>
+          ) : suite.detail && <p>{suite.detail}</p>}
+        </div>
       </div>
 
       {erreur && <p className="message erreur" role="alert">{erreur}</p>}
 
       <section>
-        <div className="titre-section">
-          <h2>Pièces à rédiger <span className="secondaire">— projets rédigés par l'IA, à relire</span></h2>
+        <div className="section-titre">
+          <h2><span className="icone-rond accent petit"><Icone nom="ia" taille={16} /></span> Rédigées par l'agent <span className="compte">{aRediger.length}</span></h2>
           <button
             className="principal"
             disabled={!!action || aLancer === 0}
             onClick={() => executer('generer', () => api.genererTout(dossier.id, session.nom))}
           >
+            <Icone nom="ia" taille={18} />
             {aLancer ? `Lancer la rédaction (${aLancer} pièce${aLancer > 1 ? 's' : ''})` : 'Rien à rédiger'}
           </button>
         </div>
-        {enCours && (
-          <p className="aide">
-            Rédaction en cours sur le serveur (plusieurs minutes par pièce sans GPU) — la page se met à jour automatiquement.
-          </p>
-        )}
+        <p className="aide">Projets rédigés par l'IA à partir des règles et des textes officiels : à relire puis valider.</p>
         <div className="pieces">
           {aRediger.map((p) => (
             <CartePiece key={p.id} piece={p} dossierId={dossier.id} session={session} occupe={!!action} executer={executer} />
@@ -102,9 +118,10 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
       </section>
 
       <section>
-        <div className="titre-section">
-          <h2>Pièces à obtenir <span className="secondaire">— émises par des tiers, jamais rédigées par le système</span></h2>
+        <div className="section-titre">
+          <h2><span className="icone-rond neutre petit"><Icone nom="deposer" taille={16} /></span> Envoyées par le fournisseur <span className="compte">{aFournir.length}</span></h2>
         </div>
+        <p className="aide">Documents émis par des tiers (autorités, organismes, fabricant) : jamais rédigés par le système. Déposez-les, l'agent les lit et contrôle chaque valeur.</p>
         <div className="pieces">
           {aFournir.map((p) => (
             <CartePiece key={p.id} piece={p} dossierId={dossier.id} session={session} occupe={!!action} executer={executer} />
@@ -113,19 +130,23 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
       </section>
 
       <section>
-        <h2>Journal</h2>
+        <div className="section-titre">
+          <h2><span className="icone-rond neutre petit"><Icone nom="journal" taille={16} /></span> Journal</h2>
+        </div>
         <ol className="journal">
           {dossier.evenements.map((e, i) => (
-            <li key={i}>
-              <span className="secondaire">{dateHeure(e.horodatage)}</span>
-              <strong>{ACTIONS[e.action] ?? e.action}</strong>
-              <span>{e.acteur}</span>
-              {e.detail && <span className="secondaire">{e.detail}</span>}
+            <li key={i} className={e.acteur.startsWith('agent') || e.acteur === 'système' ? 'par-agent' : 'par-humain'}>
+              <span className="journal-point" aria-hidden />
+              <div>
+                <p><strong>{ACTIONS[e.action] ?? e.action}</strong> · {e.acteur}</p>
+                {e.detail && <p className="secondaire">{e.detail}</p>}
+              </div>
+              <time className="secondaire">{dateHeure(e.horodatage)}</time>
             </li>
           ))}
         </ol>
       </section>
-    </>
+    </div>
   )
 }
 
@@ -174,6 +195,7 @@ function CartePiece({
   return (
     <article className={`piece ton-${st.ton}`}>
       <header>
+        <span className={`icone-piece ${st.ton}`}><Icone nom={piece.statut === 'valide' ? 'valide' : redigee ? 'document' : 'deposer'} taille={18} /></span>
         <h3>{piece.nom}</h3>
         <span className={`pastille ${st.ton}`}>{st.libelle}</span>
       </header>
@@ -186,7 +208,7 @@ function CartePiece({
 
       {piece.activite && (
         <div className="agent-en-direct" aria-live="polite">
-          <div className="agent-titre"><span className="pulsation" aria-hidden /> {piece.activite}</div>
+          <div className="agent-titre"><span className="pulsation" aria-hidden /><Icone nom="ia" taille={16} /> {piece.activite}</div>
           {piece.progression && <pre className="agent-flux">{piece.progression}</pre>}
         </div>
       )}
@@ -256,21 +278,21 @@ function CartePiece({
         <div className="actions">
           {piece.fichier_disponible && (
             <>
-              <button onClick={basculerProjet}>{projet ? 'Masquer le projet' : 'Lire le projet'}</button>
+              <button onClick={basculerProjet}><Icone nom="lire" taille={16} />{projet ? 'Masquer le projet' : 'Lire le projet'}</button>
               <button onClick={() => api.telecharger(dossierId, piece).catch((e: Error) => setErreurFichier(e.message))}>
-                Télécharger (.docx)
+                <Icone nom="telecharger" taille={16} />Télécharger (.docx)
               </button>
             </>
           )}
           {peutValider && (
             <button className="principal" disabled={occupe} onClick={() => setDecision('valider')}>
-              {redigee ? 'Valider le projet' : 'Marquer reçue et vérifiée'}
+              <Icone nom="valide" taille={16} />{redigee ? 'Valider le projet' : 'Marquer reçue et vérifiée'}
             </button>
           )}
           {peutRejeter && <button className="danger" disabled={occupe} onClick={() => setDecision('rejeter')}>Rejeter</button>}
           {peutRegenerer && (
             <button disabled={occupe} onClick={() => executer('regenerer', () => api.genererPiece(dossierId, piece.id, session.nom))}>
-              {piece.statut === 'a_valider' ? 'Régénérer' : 'Relancer la rédaction'}
+              <Icone nom="relancer" taille={16} />{piece.statut === 'a_valider' ? 'Régénérer' : 'Relancer la rédaction'}
             </button>
           )}
         </div>
