@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Mise à jour du serveur avec la dernière version publiée sur GitHub.
 #
-#   cd /opt/conformite && sudo bash scripts/mettre_a_jour.sh
+#   cd /opt/conformite && sudo bash scripts/mettre_a_jour.sh                  # depuis GitHub
+#   cd /opt/conformite && sudo bash scripts/mettre_a_jour.sh /tmp/maj.bundle  # depuis un fichier envoyé par Taha
+#                                                         (serveur sans accès à GitHub)
 #
 # Étapes : sauvegarde -> récupération du code -> reconstruction et
 # redémarrage -> contrôle de santé -> rapport (sans aucun secret) à
@@ -18,8 +20,17 @@ echo "== 1. Sauvegarde"
 bash scripts/sauvegarder.sh
 
 echo "== 2. Code"
+git config --global --get-all safe.directory | grep -qx "$PWD" || git config --global --add safe.directory "$PWD"
+[ -z "$(git status --porcelain --untracked-files=no)" ] \
+  || { echo "  Des fichiers du code ont été modifiés à la main sur le serveur :"; git status --short --untracked-files=no; echo "  Annuler ces modifications (git checkout -- .) ou prévenir Taha, puis relancer."; exit 1; }
 AVANT=$(git rev-parse --short HEAD)
-git pull --ff-only
+BRANCHE=$(git rev-parse --abbrev-ref HEAD)
+if [ -n "${1:-}" ]; then
+  git bundle verify "$1" >/dev/null || { echo "  Fichier de mise à jour invalide : $1"; exit 1; }
+  git pull --ff-only "$1" "$BRANCHE"
+else
+  git pull --ff-only origin "$BRANCHE"
+fi
 APRES=$(git rev-parse --short HEAD)
 if [ "$AVANT" = "$APRES" ]; then echo "  déjà à jour ($APRES)"; else echo "  $AVANT -> $APRES"; git log --oneline "$AVANT..$APRES" | sed 's/^/    /'; fi
 

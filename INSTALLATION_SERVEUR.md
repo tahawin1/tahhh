@@ -79,6 +79,17 @@ Après l'installation, Internet n'est plus nécessaire, sauf pour les mises à j
 
 ## 3. Étape 1 — Récupérer le code
 
+**Méthode A : le fichier `conformite-serveur.zip` remis par Taha** (recommandée, aucun compte GitHub nécessaire). Copiez-le sur le serveur (clé USB, partage réseau ou `scp conformite-serveur.zip admin@serveur:/tmp/`), puis :
+
+```bash
+sudo apt update && sudo apt install -y git curl unzip
+sudo unzip /tmp/conformite-serveur.zip -d /opt      # crée /opt/conformite
+cd /opt/conformite
+git log -1 --oneline                                # affiche la version installée
+```
+
+**Méthode B : directement depuis GitHub** (si le serveur y a accès) :
+
 ```bash
 sudo apt update && sudo apt install -y git curl
 sudo git clone --branch claude/complete-pipeline-setup-ikdsp0 \
@@ -86,13 +97,9 @@ sudo git clone --branch claude/complete-pipeline-setup-ikdsp0 \
 cd /opt/conformite
 ```
 
-- **Si GitHub demande un identifiant** (dépôt privé) : le nom d'utilisateur GitHub, puis, à la place du mot de passe, un *jeton d'accès* en lecture seule fourni par Taha. Ne pas l'écrire dans un e-mail : le recevoir de vive voix ou par le gestionnaire de mots de passe de l'entreprise.
-- **Sans accès à GitHub depuis le serveur** : Taha fournit l'archive ZIP de la branche. Copiez-la sur le serveur (`scp archive.zip admin@serveur:/tmp/`), puis :
-  ```bash
-  sudo apt install -y unzip && sudo unzip /tmp/archive.zip -d /opt && sudo mv /opt/tahhh-* /opt/conformite
-  ```
+Si GitHub demande un identifiant (dépôt privé) : le nom d'utilisateur GitHub, puis, à la place du mot de passe, un *jeton d'accès* en lecture seule fourni par Taha, de vive voix ou par le gestionnaire de mots de passe, jamais par e-mail.
 
-Le code est ensuite dans `/opt/conformite`. Toutes les commandes suivantes se lancent **depuis ce dossier**.
+Dans les deux cas, le code est dans `/opt/conformite` avec son historique de versions, ce qui permet les mises à jour du §10. Toutes les commandes suivantes se lancent **depuis ce dossier**. **Ne modifiez pas les fichiers du code à la main** : toute correction passe par Taha, sinon la mise à jour suivante s'arrête pour vous prévenir.
 
 ---
 
@@ -250,13 +257,22 @@ L'index Qdrant n'a pas besoin d'être sauvegardé : il se reconstruit avec `sudo
 
 ## 10. Mise à jour, et cas du proxy d'entreprise
 
-**Mettre à jour l'outil** quand Taha l'annonce : une seule commande.
+**Mettre à jour l'outil** quand Taha l'annonce : une seule commande, selon la façon dont il envoie la nouvelle version.
 
 ```bash
-cd /opt/conformite && sudo bash scripts/mettre_a_jour.sh
+cd /opt/conformite
+sudo bash scripts/mettre_a_jour.sh                      # nouvelle version publiée sur GitHub
+sudo bash scripts/mettre_a_jour.sh /tmp/maj.bundle      # ou : fichier « .bundle » remis par Taha
 ```
 
-Le script sauvegarde d'abord, puis récupère la nouvelle version, reconstruit, redémarre et contrôle. Il termine par un **rapport** encadré, sans aucun secret : copiez-le et envoyez-le à Taha. La dernière ligne doit être « Mise à jour réussie ».
+Le script :
+1. sauvegarde la base et les documents ;
+2. vérifie que personne n'a modifié le code à la main, sinon il s'arrête ;
+3. applique la nouvelle version (un fichier abîmé ou étranger est refusé) ;
+4. reconstruit et redémarre les services ;
+5. contrôle que tout répond.
+
+Il termine par un **rapport** encadré, sans aucun secret : copiez-le et envoyez-le à Taha. La dernière ligne doit être « Mise à jour réussie ». Les données (dossiers, validations, documents reçus, `.env`) ne sont jamais touchées par une mise à jour.
 
 Les règles réglementaires (`rules/*.yaml`) font partie de l'image : `--build` suffit à les prendre en compte. Si Taha ajoute des textes dans `data/raw_pdfs/`, il précisera la commande de réindexation.
 
@@ -283,21 +299,47 @@ Si le proxy **inspecte le HTTPS** (certificat d'entreprise), prévenez Taha : il
 
 ---
 
-## 10 bis. Comment tout est relié
+## 10 bis. Architecture et circuit des modifications
+
+**Sur le serveur** (rien d'autre n'est installé) :
 
 ```
- Claude (développement)  ──push──►  GitHub (branche du projet)
-                                          │  sudo bash scripts/mettre_a_jour.sh
-                                          ▼
- Serveur de l'entreprise : tableau de bord ─► API ─► PostgreSQL / Qdrant / Mistral (Ollama)
-                                          │
-                     rapport de mise à jour, anomalies, résultats de test ──► Taha ──► Claude
+ Postes de l'entreprise (navigateur)
+        │  http://IP-du-serveur            (port 80, seul port ouvert)
+        ▼
+┌─────────────────────────── serveur de l'entreprise ───────────────────────────┐
+│  [interface]  nginx : tableau de bord ── /api ──►  [api]  FastAPI (Python)     │
+│                                                     │  ├─ moteur de règles     │
+│                                                     │  │   rules/*.yaml        │
+│                                                     │  │   (décide des pièces) │
+│                                                     │  ├─ agent : lecture +    │
+│                                                     │  │   rédaction           │
+│                                                     │  └─ file de tâches       │
+│                       ┌─────────────────────────────┼──────────────┐           │
+│                       ▼                             ▼              ▼           │
+│               [postgres]                    [qdrant]         Ollama (hôte)     │
+│               dossiers, validations,        textes           Mistral 7B        │
+│               journal d'audit               réglementaires   bge-m3            │
+│                                             indexés                            │
+│  output/ : projets rédigés et documents reçus des fournisseurs                 │
+└────────────────────────────────────────────────────────────────────────────────┘
+   [ … ] = conteneur Docker ; Ollama tourne directement sur la machine (accès au GPU)
 ```
 
-- Claude **n'a aucun accès au serveur** : il ne voit ni la base, ni les dossiers, ni la clé. Il publie les nouvelles versions sur GitHub.
-- L'administrateur les installe avec `mettre_a_jour.sh` et renvoie le rapport.
+**Circuit d'une modification** (règles corrigées, nouvelle fonction de l'agent…) :
+
+```
+ 1. Taha envoie à Claude un dossier accepté ou une anomalie constatée
+ 2. Claude modifie le code, le teste, et le publie ──► GitHub (ou fichier .bundle remis à Taha)
+ 3. L'administrateur lance : sudo bash scripts/mettre_a_jour.sh
+ 4. Le serveur sauvegarde, applique, redémarre, contrôle ──► rapport ──► Taha ──► Claude
+```
+
+- Claude **n'a aucun accès au serveur** : il ne voit ni la base, ni les dossiers, ni la clé. Il ne peut rien modifier sur le serveur ; seul l'administrateur applique une version.
+- Chaque version est numérotée (`git log -1 --oneline`) et chaque mise à jour est précédée d'une sauvegarde.
+- **Revenir à la version précédente** si une mise à jour pose problème : le script affiche `ancienne -> nouvelle` (ex. `b236c4c -> 15d993e`). Lancez `sudo git reset --hard b236c4c && sudo docker compose --profile api --profile interface up -d --build` avec l'ancien code, puis prévenez Taha.
 - Les dossiers réels restent sur le serveur. Seuls ceux que la direction autorise sont transmis à Claude pour les tests.
-- **Option, sur décision de la direction :** installer Claude Code sur le serveur (`claude remote-control` lancé dans `/opt/conformite`). Claude peut alors travailler et tester directement sur place, avec le vrai Mistral. Contrepartie : il accède au code et aux données du serveur pendant la session. Ne rien installer de tel sans accord écrit.
+- **Option, sur décision de la direction :** installer Claude Code sur le serveur (`claude remote-control` lancé dans `/opt/conformite`), pour que Claude teste directement sur place avec le vrai Mistral. Contrepartie : il accède au code et aux données du serveur pendant la session. Ne rien installer de tel sans accord écrit.
 
 ---
 

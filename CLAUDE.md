@@ -135,7 +135,12 @@ supporte déjà.
       (`deploiement/interface/`, API relayée sous `/api`) — image construite et
       parcours E2E réussi à travers nginx ; sauvegarde `scripts/sauvegarder.sh`
       testée (restauration comprise) ; mise à jour en une commande
-      `scripts/mettre_a_jour.sh` (sauvegarde, pull, rebuild, rapport sans secret). Pas encore exécutée sur le vrai serveur.
+      `scripts/mettre_a_jour.sh` (sauvegarde, pull GitHub ou fichier .bundle,
+      rebuild, rapport sans secret). Pile complète testée comme sur le serveur
+      (API en conteneur + nginx + clé obligatoire + Ollama sur l'hôte) : E2E,
+      indexation depuis le conteneur, rédaction Mistral. Non testable ici :
+      la couche apt (Tesseract) de l'image API, deb.debian.org étant bloqué
+      dans l'environnement de développement. Pas encore exécutée sur le vrai serveur.
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué
