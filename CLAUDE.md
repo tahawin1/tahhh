@@ -134,7 +134,8 @@ supporte déjà.
       fiche `INSTALLATION_SERVEUR.md`) : tableau de bord servi par nginx
       (`deploiement/interface/`, API relayée sous `/api`) — image construite et
       parcours E2E réussi à travers nginx ; sauvegarde `scripts/sauvegarder.sh`
-      testée (restauration comprise). Pas encore exécutée sur le vrai serveur.
+      testée (restauration comprise) ; mise à jour en une commande
+      `scripts/mettre_a_jour.sh` (sauvegarde, pull, rebuild, rapport sans secret). Pas encore exécutée sur le vrai serveur.
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué
@@ -174,6 +175,8 @@ supporte déjà.
     5 ISO 13485, 6 déclaration de conformité, 7 étiquettes, 8 notice (partie
     française), 9 photos, 14 catalogue, 16 certificat d'enregistrement au
     modèle de l'annexe II pré-rempli par le demandeur) ;
+    les numéros 10 à 13 et 15 sont sans objet pour ce type de produit
+    (confirmé par l'utilisateur) — ne pas les exiger ;
   - **certificat CE (directive 93/42) expiré sur le papier mais valide** grâce
     à la lettre de confirmation de l'organisme notifié au titre du Règlement
     (UE) 2023/607 : un contrôle d'expiration naïf rejetterait à tort ;

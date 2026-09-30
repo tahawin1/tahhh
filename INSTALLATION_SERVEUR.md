@@ -250,15 +250,13 @@ L'index Qdrant n'a pas besoin d'être sauvegardé : il se reconstruit avec `sudo
 
 ## 10. Mise à jour, et cas du proxy d'entreprise
 
-**Mettre à jour l'outil** quand Taha l'annonce, après une sauvegarde :
+**Mettre à jour l'outil** quand Taha l'annonce : une seule commande.
 
 ```bash
-cd /opt/conformite
-sudo bash scripts/sauvegarder.sh
-sudo git pull
-sudo docker compose --profile api --profile interface up -d --build
-curl -s http://127.0.0.1:8000/health
+cd /opt/conformite && sudo bash scripts/mettre_a_jour.sh
 ```
+
+Le script sauvegarde d'abord, puis récupère la nouvelle version, reconstruit, redémarre et contrôle. Il termine par un **rapport** encadré, sans aucun secret : copiez-le et envoyez-le à Taha. La dernière ligne doit être « Mise à jour réussie ».
 
 Les règles réglementaires (`rules/*.yaml`) font partie de l'image : `--build` suffit à les prendre en compte. Si Taha ajoute des textes dans `data/raw_pdfs/`, il précisera la commande de réindexation.
 
@@ -282,6 +280,24 @@ Les règles réglementaires (`rules/*.yaml`) font partie de l'image : `--build` 
 - Pour Ollama (téléchargement des modèles) : ajoutez `Environment="HTTPS_PROXY=http://proxy:3128"` dans `/etc/systemd/system/ollama.service.d/conformite.conf`, puis lancez `sudo systemctl daemon-reload && sudo systemctl restart ollama`.
 
 Si le proxy **inspecte le HTTPS** (certificat d'entreprise), prévenez Taha : il faut ajouter ce certificat aux images.
+
+---
+
+## 10 bis. Comment tout est relié
+
+```
+ Claude (développement)  ──push──►  GitHub (branche du projet)
+                                          │  sudo bash scripts/mettre_a_jour.sh
+                                          ▼
+ Serveur de l'entreprise : tableau de bord ─► API ─► PostgreSQL / Qdrant / Mistral (Ollama)
+                                          │
+                     rapport de mise à jour, anomalies, résultats de test ──► Taha ──► Claude
+```
+
+- Claude **n'a aucun accès au serveur** : il ne voit ni la base, ni les dossiers, ni la clé. Il publie les nouvelles versions sur GitHub.
+- L'administrateur les installe avec `mettre_a_jour.sh` et renvoie le rapport.
+- Les dossiers réels restent sur le serveur. Seuls ceux que la direction autorise sont transmis à Claude pour les tests.
+- **Option, sur décision de la direction :** installer Claude Code sur le serveur (`claude remote-control` lancé dans `/opt/conformite`). Claude peut alors travailler et tester directement sur place, avec le vrai Mistral. Contrepartie : il accède au code et aux données du serveur pendant la session. Ne rien installer de tel sans accord écrit.
 
 ---
 
