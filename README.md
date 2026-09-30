@@ -65,7 +65,11 @@ processus par cœur). Prérequis système :
 apt-get install -y tesseract-ocr tesseract-ocr-fra
 ```
 
-**Deux corrections de métadonnées faites dans `scripts/indexer_tout.sh` :**
+**Corrections de métadonnées faites dans `scripts/indexer_tout.sh` :**
+- Loi 84-12 : `date_version=2013-08-30` (dahir 1-13-90 du 30 août 2013,
+  BO n°6188 du 19-9-2013) — et non 2013-03-01.
+- Décret 2-14-607 : `date_version=2014-09-18` (décret du 18 septembre 2014,
+  BO n°6292 bis) — et non 2015-08-04, qui est la date des arrêtés.
 - `data/raw_pdfs/ue_mdr_annexe.txt` n'est **pas** une annexe du MDR
   européen : c'est la version consolidée des *Medical Devices Rules 2017
   indiennes* (amendées jusqu'au G.S.R. 777(E) du 14-10-2022). Il est

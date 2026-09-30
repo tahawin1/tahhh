@@ -10,11 +10,11 @@ PYTHON=python3
 
 echo "=== Maroc ==="
 $PYTHON src/ingest.py --source data/raw_pdfs/maroc_loi_84-12.pdf \
-  --pays maroc --type-document loi --date-version 2013-03-01 \
+  --pays maroc --type-document loi --date-version 2013-08-30 \
   --texte-source "Loi 84-12 relative aux dispositifs médicaux"
 
 $PYTHON src/ingest.py --source data/raw_pdfs/maroc_decret_2-14-607.pdf \
-  --pays maroc --type-document decret --date-version 2015-08-04 \
+  --pays maroc --type-document decret --date-version 2014-09-18 \
   --texte-source "Décret 2-14-607"
 
 $PYTHON src/ingest.py --source data/raw_pdfs/maroc_arretes_2853-2856.pdf \
