@@ -23,6 +23,19 @@ injoignable »).
 
 ## 1. Serveur de l'entreprise
 
+**Méthode rapide (recommandée)** : un seul script fait tout, étape par étape,
+et s'arrête avec un message clair si quelque chose manque.
+
+```bash
+git clone https://github.com/tahawin1/tahhh.git conformite && cd conformite
+git checkout claude/complete-pipeline-setup-ikdsp0
+sudo bash scripts/installer_serveur.sh --verifier        # diagnostic seul
+sudo NGROK_AUTHTOKEN=<authtoken> NGROK_URL=<domaine>.ngrok-free.app \
+     bash scripts/installer_serveur.sh                  # installation
+```
+
+Détail des étapes, si on préfère les faire à la main :
+
 Prérequis : Docker + Docker Compose, Git, et idéalement un GPU (sur CPU
 seul, Mistral 7B met ~4 minutes par pièce rédigée).
 
