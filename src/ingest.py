@@ -13,7 +13,10 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
+import os
 import sys
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 try:
@@ -37,12 +40,17 @@ COLLECTION = "dossiers_reference"
 TAILLE_LOT_EMBEDDING = 16
 
 
+os.environ.setdefault("OMP_THREAD_LIMIT", "1")  # voir extraire_texte : OCR parallélisé par pages
+
 SEUIL_CARACTERES_PAGE_VIDE = 20  # en-dessous, on considère la page comme un scan sans texte
-# Page "scan + en-tête texte" : peu de texte natif (ex. seulement l'en-tête du
-# Bulletin officiel) alors que l'essentiel de la page est une image. Cas réel :
-# page 2 du Décret 2-14-607 (64 caractères natifs, corps du texte scanné).
+# Page à peine textuelle mais visuellement pleine : peu de texte natif (ex.
+# seulement l'en-tête du Bulletin officiel) alors que le corps est une image
+# scannée ou du texte vectorisé (glyphes convertis en tracés). Cas réel :
+# page 2 du Décret 2-14-607 — 64 caractères natifs, corps en 108 tracés
+# vectoriels ; l'OCR y retrouve ~5 200 caractères (articles 15 à 19).
 SEUIL_CARACTERES_PAGE_PARTIELLE = 300
 SEUIL_COUVERTURE_IMAGE = 0.5
+SEUIL_TRACES_VECTORIELS = 20
 
 
 def _couverture_images(page) -> float:
@@ -60,7 +68,12 @@ def page_a_ocr(page, texte_natif: str) -> bool:
     n = len(texte_natif.strip())
     if n < SEUIL_CARACTERES_PAGE_VIDE:
         return True
-    return n < SEUIL_CARACTERES_PAGE_PARTIELLE and _couverture_images(page) >= SEUIL_COUVERTURE_IMAGE
+    if n >= SEUIL_CARACTERES_PAGE_PARTIELLE:
+        return False
+    return (
+        _couverture_images(page) >= SEUIL_COUVERTURE_IMAGE
+        or len(page.get_drawings()) >= SEUIL_TRACES_VECTORIELS
+    )
 
 
 def extraire_texte(chemin: Path, langues_ocr: str = "fra") -> str:
@@ -80,34 +93,37 @@ def extraire_texte(chemin: Path, langues_ocr: str = "fra") -> str:
 
     doc = fitz.open(chemin)
     nb_pages = doc.page_count
-    pages_texte = []
-    pages_ocr = 0
+    # Une entrée par page, dans l'ordre : texte natif, ou image PNG à OCRiser
+    pages: list[str | bytes | None] = []
 
     for page in doc:
         texte_page = page.get_text()
         if not page_a_ocr(page, texte_page):
-            pages_texte.append(texte_page)
-            continue
-
-        # Page vide/scannée : fallback OCR
-        if pytesseract is None:
+            pages.append(texte_page)
+        elif pytesseract is None:
             print(f"  ! Page scannée dans {chemin.name}, OCR indisponible "
                   f"(pip install pytesseract pillow + apt install tesseract-ocr-fra tesseract-ocr-ara)",
                   file=sys.stderr)
-            continue
-
-        pix = page.get_pixmap(dpi=200)
-        image = Image.open(__import__("io").BytesIO(pix.tobytes("png")))
-        texte_ocr = pytesseract.image_to_string(image, lang=langues_ocr)
-        pages_texte.append(texte_ocr)
-        pages_ocr += 1
+            pages.append(None)
+        else:
+            pages.append(page.get_pixmap(dpi=200).tobytes("png"))
 
     doc.close()
 
-    if pages_ocr:
-        print(f"  (OCR appliqué sur {pages_ocr}/{nb_pages} page(s) de {chemin.name})")
+    a_ocr = [i for i, contenu in enumerate(pages) if isinstance(contenu, bytes)]
+    if a_ocr:
+        # Pages scannées OCRisées en parallèle (un processus tesseract par
+        # cœur, chacun limité à 1 thread : plusieurs tesseract multi-threads
+        # simultanés s'écroulent en performance).
+        def ocr(png: bytes) -> str:
+            return pytesseract.image_to_string(Image.open(io.BytesIO(png)), lang=langues_ocr)
 
-    return "\n".join(pages_texte).strip()
+        with ThreadPoolExecutor(max_workers=os.cpu_count() or 1) as pool:
+            for i, texte_ocr in zip(a_ocr, pool.map(ocr, [pages[i] for i in a_ocr])):
+                pages[i] = texte_ocr
+        print(f"  (OCR appliqué sur {len(a_ocr)}/{nb_pages} page(s) de {chemin.name})")
+
+    return "\n".join(p for p in pages if p).strip()
 
 
 def decouper_en_chunks(texte: str, taille: int = 500, chevauchement: int = 50) -> list[str]:

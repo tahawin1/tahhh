@@ -115,14 +115,29 @@ supporte déjà.
 
 - [x] Structure du projet et textes réglementaires collectés
 - [x] CLAUDE.md (ce fichier)
-- [ ] Règles YAML par pays (`rules/`)
-- [ ] Moteur de règles (`src/rule_engine.py`)
-- [ ] Pipeline d'extraction/indexation (`src/ingest.py`)
-- [ ] Pipeline RAG + génération (`src/generate.py`)
-- [ ] docker-compose (PostgreSQL + Qdrant)
-- [ ] Test end-to-end sur un cas réel
-- [ ] Interface de validation humaine (React/FastAPI) — phase suivante,
-      après validation du pipeline CLI
+- [x] Règles YAML par pays (`rules/`)
+- [x] Moteur de règles (`src/rule_engine.py`) + tests (`tests/`)
+- [x] Pipeline d'extraction/indexation (`src/ingest.py`) — OCR parallélisé,
+      détection des pages scannées ou vectorisées
+- [x] Pipeline RAG + génération (`src/generate.py`)
+- [x] docker-compose (PostgreSQL + Qdrant) — démarré et vérifié
+- [x] Backend FastAPI (`src/api.py`) — endpoints testés
+- [x] Indexation de tous les textes de `data/raw_pdfs/` dans Qdrant
+- [ ] Test end-to-end sur un dossier réel connu (le pipeline tourne de bout
+      en bout ; reste à le valider sur un dossier réel déjà déposé)
+- [ ] Données réelles : dossiers déjà réalisés + base fournisseurs (PostgreSQL)
+- [ ] Interface de validation humaine (React) — phase suivante
+
+### Points d'attention découverts en exécutant le pipeline
+- Les embeddings (bge-m3) passent par Ollama par défaut (`src/embeddings.py`) ;
+  l'indexation et la recherche doivent utiliser le même backend.
+- La condition de classe d'un document du socle se déclare en liste YAML
+  (`classes_concernees`), jamais en texte libre (bug corrigé : l'ISO 13485
+  était exigé pour la classe I).
+- `data/raw_pdfs/ue_mdr_annexe.txt` contient en réalité les Medical Devices
+  Rules 2017 indiennes consolidées — indexé sous `pays=inde`.
+- Sur CPU seul, Mistral 7B rédige ~5 tokens/s : `/dossiers/generer` prend
+  plusieurs minutes par document. Un GPU (ou vLLM) est nécessaire en production.
 
 ## 8. Ce qui n'est volontairement PAS fait à ce stade
 

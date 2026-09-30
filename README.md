@@ -9,26 +9,39 @@ projet — à lire avant toute modification.
 
 ## Démarrage rapide (pilote local)
 
-### 1. Installer les dépendances Python
+### 1. Installer les dépendances Python (environnement virtuel)
 ```bash
-pip install --break-system-packages -r requirements.txt
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 ```
+`scripts/indexer_tout.sh` utilise automatiquement `.venv` s'il existe.
 
 ### 2. Démarrer PostgreSQL et Qdrant
 ```bash
 docker compose up -d
 ```
 
-### 3. Installer et démarrer Mistral via Ollama
+### 3. Installer et démarrer Mistral (+ bge-m3 pour les embeddings) via Ollama
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
-ollama pull mistral
 ollama serve &
+ollama pull mistral   # rédaction des documents
+ollama pull bge-m3    # embeddings du RAG (1024 dimensions, multilingue)
 ```
+Les embeddings passent par Ollama par défaut (`EMBEDDING_BACKEND=ollama`) :
+pas besoin de torch ni d'accès à Hugging Face. Pour utiliser
+sentence-transformers à la place : `EMBEDDING_BACKEND=sentence-transformers`
+— mais **la même valeur doit servir à l'indexation et à la génération**
+(sinon ré-indexer). Le backend est tracé dans chaque chunk (champ `embedding`).
+
+Variables utiles pour la génération (voir `src/generate.py`) :
+`OLLAMA_TIMEOUT` (défaut 900 s — Mistral 7B sur CPU seul rédige ~5 tokens/s),
+`OLLAMA_NUM_PREDICT` (longueur max par document, défaut 700 tokens).
 
 ### 4. Vérifier le moteur de règles (ne nécessite aucune infra)
 ```bash
-python3 src/rule_engine.py
+.venv/bin/python src/rule_engine.py
+.venv/bin/python -m unittest discover -s tests   # tests du moteur de règles
 ```
 Affiche, pour chaque pays d'origine (Chine/Inde/UE/autre), la liste des
 documents requis pour un dossier marocain — logique 100% déterministe,
@@ -43,21 +56,43 @@ sans appel au LLM.
 Arrêtés 2853-2856 (`data/raw_pdfs/maroc_loi_84-12.pdf` et
 `maroc_arretes_2853-2856.pdf`) sont des **scans sans couche de texte** —
 l'extraction directe retourne 0 caractère. `src/ingest.py` bascule
-automatiquement en OCR (Tesseract, français) page par page quand c'est le
-cas. Prérequis système :
+automatiquement en OCR (Tesseract, français) quand c'est le cas — y compris
+pour les pages qui n'ont qu'un en-tête en texte et un corps scanné ou
+vectorisé (page 2 du Décret 2-14-607 : sans cela, les articles 15 à 19
+n'étaient pas indexés). Les pages scannées sont OCRisées en parallèle (un
+processus par cœur). Prérequis système :
 ```bash
 apt-get install -y tesseract-ocr tesseract-ocr-fra
-pip install --break-system-packages pytesseract pillow
 ```
-Comptez environ 20 secondes par page scannée. Les autres textes (Décret
-2-14-607, Order 739 chinois, les 3 textes indiens) sont en texte natif et
-s'extraient instantanément.
+
+**Deux corrections de métadonnées faites dans `scripts/indexer_tout.sh` :**
+- `data/raw_pdfs/ue_mdr_annexe.txt` n'est **pas** une annexe du MDR
+  européen : c'est la version consolidée des *Medical Devices Rules 2017
+  indiennes* (amendées jusqu'au G.S.R. 777(E) du 14-10-2022). Il est
+  indexé sous `pays=inde`, `date_version=2022-10-14`.
+- `ue_mdr_2017-745.txt` est une version **consolidée** du MDR (amendements
+  M1 à M8, JO du 29.6.2026) : `date_version=2026-06-29`, et non la date du
+  texte d'origine (2017-05-05).
 
 ### 6. Générer un dossier complet (nécessite Qdrant + Ollama démarrés)
 ```bash
-python3 src/generate.py --pays-origine chine --produit "Prothèse orthopédique de hanche" --classe IIB
+.venv/bin/python src/generate.py --pays-origine chine --produit "Prothèse orthopédique de hanche" --classe IIB
 ```
-Les fichiers `.docx` générés apparaissent dans `output/`.
+Les fichiers `.docx` générés apparaissent dans un sous-dossier horodaté de
+`output/` (un par dossier). Chaque document porte la mention « en attente
+de validation humaine », les flags traduction/légalisation, et la liste
+des extraits réglementaires (texte, version, n° d'extrait) utilisés pour
+le rédiger — à vérifier lors de la validation.
+
+### 7. Lancer l'API
+```bash
+.venv/bin/uvicorn src.api:app --reload --port 8000
+```
+- `GET /health` — état de l'API, de Qdrant et d'Ollama
+- `GET /pays` — autorité et classification par pays
+- `POST /dossiers/documents-requis` — liste des pièces (moteur de règles seul, instantané)
+- `POST /dossiers/generer` — génération complète RAG + Mistral + DOCX
+  (long sur CPU : plusieurs minutes par document)
 
 ## Structure du projet
 
@@ -72,8 +107,11 @@ agent-conformite-dm/
 │   └── union_europeenne.yaml
 ├── src/
 │   ├── rule_engine.py     # Décide les documents requis (déterministe)
-│   ├── ingest.py          # Extraction + indexation dans Qdrant (RAG)
-│   └── generate.py        # RAG + Mistral + génération DOCX
+│   ├── embeddings.py      # Embeddings bge-m3 (Ollama ou sentence-transformers)
+│   ├── ingest.py          # Extraction + OCR + indexation dans Qdrant (RAG)
+│   ├── generate.py        # RAG + Mistral + génération DOCX
+│   └── api.py             # Backend FastAPI
+├── tests/                 # Tests du moteur de règles (unittest)
 ├── scripts/
 │   └── indexer_tout.sh    # Indexe tous les textes en une commande
 ├── output/                # Documents générés (dossiers de sortie)
