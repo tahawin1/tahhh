@@ -1,0 +1,35 @@
+﻿CLE D'INSTALLATION - OUTIL DE CONFORMITE DM (serveur Windows Server 2022)
+=========================================================================
+
+Contenu de la cle :
+  INSTALLER.cmd                    -> l'installation (double-clic)
+  INSTALLER-port-8080.cmd          -> variante si le port 80 est deja pris (IIS)
+  installer_depuis_cle.ps1         -> script appele par INSTALLER.cmd (ne pas ouvrir)
+  conformite-serveur.zip           -> l'outil complet (ne pas extraire a la main)
+  empreinte-sha256.txt             -> controle que le zip est intact
+  GUIDE_INSTALLATION_WINDOWS.html  -> le guide detaille (ouvrir dans un navigateur)
+
+INSTALLATION
+  1. Brancher la cle sur le serveur.
+  2. Double-clic sur INSTALLER.cmd, puis "Oui" (droits administrateur).
+  3. Le script demande de REDEMARRER : redemarrer le serveur.
+  4. Apres le redemarrage : double-clic a nouveau sur INSTALLER.cmd.
+  5. Repondre aux questions (detail dans le guide, partie B3), environ 1 h 15.
+  6. A la fin : noter l'adresse "Tableau de bord : http://..." .
+
+ENSUITE
+  Dossier C:\ConformiteDM (raccourci "Conformite DM" sur le bureau) :
+  1 - Etat du serveur, 2 - Profil de l'entreprise, 3 - Deposer les dossiers
+  acceptes, 4 - Indexer les modeles, 5 - Verification complete,
+  6 - Mettre a jour, 7 - Sauvegarder, 8 - Redemarrer, 9 - Cle d'acces.
+
+LIEN AVEC GITHUB
+  L'outil installe est relie au depot public github.com/tahawin1/tahhh
+  (branche claude/complete-pipeline-setup-ikdsp0). Quand Taha publie une
+  nouvelle version, double-clic sur "6 - Mettre a jour" : le serveur la
+  recupere tout seul. Aucun mot de passe GitHub n'est necessaire.
+  Sans Internet : Taha envoie un fichier .bundle, a copier dans
+  C:\ConformiteDM\maj\ avant le double-clic.
+
+NE JAMAIS ENVOYER : la cle d'acces par ecrit, le dossier
+C:\ConformiteDM\sauvegardes, les documents des fournisseurs.

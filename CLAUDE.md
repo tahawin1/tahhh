@@ -159,6 +159,11 @@ supporte déjà.
       l'installation (/etc/cron.d) et copiée dans C:\ConformiteDM\sauvegardes.
       Règle : aucun guillemet double dans les commandes passées à wsl.exe
       (PowerShell 5.1 ne les échappe pas). Testés avec un faux wsl.exe.
+      Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
+      CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
+      extraction, installer_windows.ps1). Dépôt GitHub **public** : le serveur
+      se met à jour par `git pull` sans identifiant (outil 6) ; .bundle si
+      pas d'accès. Ne jamais versionner de données réelles (dépôt public).
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué

@@ -2,7 +2,7 @@
 
 - **Pour :** le collègue qui installe et suit l'outil sur le serveur de l'entreprise (machine physique, Windows Server 2022, 16 Go).
 - **Durée :** 1 h 30 environ pour l'installation, dont 1 h d'attente.
-- **Fichiers remis par Taha :** `conformite-serveur.zip` (l'outil) et ce guide.
+- **Remis par Taha :** le dossier **`CLE-USB-ConformiteDM`**, à copier tel quel sur une clé USB. Il contient l'outil, l'installateur et ce guide.
 
 **Tout se fait sous Windows** : dans **PowerShell** pour l'installation, puis par **double-clic** sur des outils numérotés. L'outil fonctionne en interne dans un Linux intégré à Windows (WSL2), mais vous n'avez pas à vous en occuper : les scripts le pilotent pour vous.
 
@@ -51,54 +51,54 @@ Pour tester l'accès, lancez dans PowerShell. Toutes les lignes doivent afficher
 "github.com","ollama.com","registry-1.docker.io","pypi.org","registry.npmjs.org" | ForEach-Object { "{0,-25} {1}" -f $_, (Test-NetConnection $_ -Port 443 -WarningAction SilentlyContinue).TcpTestSucceeded }
 ```
 
-### A4. Copier et extraire le paquet
+### A4. La clé USB
 
-Dans PowerShell, adaptez le premier chemin si le zip n'est pas dans le dossier Téléchargements :
+Copiez le dossier **`CLE-USB-ConformiteDM`** sur une clé USB. Il contient :
 
-```powershell
-New-Item -ItemType Directory -Force C:\conformite-install
-Copy-Item "$HOME\Downloads\conformite-serveur.zip" C:\conformite-install\
-Expand-Archive C:\conformite-install\conformite-serveur.zip -DestinationPath C:\conformite-install\conformite-serveur -Force
-Test-Path C:\conformite-install\conformite-serveur\conformite\deploiement\windows\installer_windows.ps1
-```
-
-La dernière commande doit afficher `True`.
+| Fichier | Rôle |
+|---|---|
+| `INSTALLER.cmd` | l'installation, par double-clic |
+| `INSTALLER-port-8080.cmd` | variante si le port 80 est déjà pris (IIS) |
+| `conformite-serveur.zip` | l'outil complet (ne pas extraire à la main) |
+| `empreinte-sha256.txt` | sert à vérifier que le zip n'est pas abîmé |
+| `installer_depuis_cle.ps1` | script lancé par INSTALLER.cmd |
+| `LISEZ-MOI.txt`, `GUIDE_INSTALLATION_WINDOWS.*` | ce guide et son résumé |
 
 ---
 
 ## Partie B — Installation (≈ 1 h 15)
 
-### B1. Ouvrir PowerShell en administrateur
+### B1. Premier lancement : activation des composants Windows
 
-Menu **Démarrer**, tapez `PowerShell`, faites un clic droit sur **Windows PowerShell**, puis **Exécuter en tant qu'administrateur**, et répondez **Oui**.
+Branchez la clé sur le serveur et double-cliquez sur **`INSTALLER.cmd`**, puis répondez **Oui** à la demande de droits administrateur.
 
-### B2. Premier lancement : activation des composants Windows
+Le script :
 
-```powershell
-powershell -ExecutionPolicy Bypass -File C:\conformite-install\conformite-serveur\conformite\deploiement\windows\installer_windows.ps1 -Zip C:\conformite-install\conformite-serveur.zip
-```
+- copie le paquet dans `C:\conformite-install` ;
+- vérifie son empreinte (`[OK] Paquet intact`) ;
+- l'extrait ;
+- vérifie Windows, la mémoire, le disque et la virtualisation ;
+- active WSL2.
 
-Le script vérifie Windows, la mémoire, le disque et la virtualisation, puis active WSL2. Il s'arrête sur :
+Il s'arrête sur :
 
 ```
 [!]  Composants WSL2 activés : REDÉMARRER le serveur, puis relancer ce même script.
 ```
 
-Redémarrez :
+Redémarrez le serveur (menu Démarrer → Marche/Arrêt → Redémarrer, ou en PowerShell `Restart-Computer`).
+
+> Si le message **« Le port 80 est déjà utilisé (programme : …, souvent IIS) »** apparaît, utilisez **`INSTALLER-port-8080.cmd`** à la place de `INSTALLER.cmd`, ici et à la relance. Le tableau de bord sera alors à l'adresse `http://IP-du-serveur:8080`.
+
+**Équivalent en PowerShell administrateur**, si vous préférez taper la commande (la clé étant par exemple en `E:`) :
 
 ```powershell
-Restart-Computer
+powershell -ExecutionPolicy Bypass -File E:\CLE-USB-ConformiteDM\installer_depuis_cle.ps1
 ```
 
-> Si le message **« Le port 80 est déjà utilisé (programme : …, souvent IIS) »** apparaît, ajoutez ` -Port 8080` à la fin de la commande, ici et à chaque relance. Le tableau de bord sera alors à l'adresse `http://IP-du-serveur:8080`.
+### B2. Second lancement : installation complète
 
-### B3. Second lancement : installation complète
-
-Après le redémarrage, rouvrez **PowerShell en administrateur** et relancez **la même commande** :
-
-```powershell
-powershell -ExecutionPolicy Bypass -File C:\conformite-install\conformite-serveur\conformite\deploiement\windows\installer_windows.ps1 -Zip C:\conformite-install\conformite-serveur.zip
-```
+Après le redémarrage, la clé toujours branchée, **double-cliquez à nouveau sur `INSTALLER.cmd`**, ou sur `INSTALLER-port-8080.cmd` si vous l'avez utilisé.
 
 Restez devant l'écran **pendant les 10 premières minutes, puis à la fin** : le script pose 4 questions.
 
@@ -172,7 +172,7 @@ powershell -ExecutionPolicy Bypass -File C:\ConformiteDM\outils\Etat.ps1
 
 ## Partie D — Premier test depuis un poste de travail
 
-1. Sur un autre ordinateur du réseau, ouvrez dans un navigateur l'adresse notée en B3, par exemple `http://192.168.1.20`.
+1. Sur un autre ordinateur du réseau, ouvrez dans un navigateur l'adresse notée en B2, par exemple `http://192.168.1.20`.
 2. La page **« Vos dossiers AMMPS, préparés par un agent. Validés par vous. »** s'affiche.
 3. Saisissez votre **nom** et la **clé d'accès**. En bas à gauche doit s'afficher **« Serveur en ligne »**.
 4. Cliquez sur **Nouveau dossier** et créez un essai : Union européenne, classe IIb, un nom de produit.
@@ -180,14 +180,23 @@ powershell -ExecutionPolicy Bypass -File C:\ConformiteDM\outils\Etat.ps1
 
 ---
 
-## Partie E — Mises à jour (quand Taha envoie une nouvelle version)
+## Partie E — Mises à jour et lien avec GitHub
 
-**Taha envoie un fichier `.bundle`** (cas habituel) :
+L'outil installé est **relié au dépôt GitHub public de Taha** : `github.com/tahawin1/tahhh`, branche `claude/complete-pipeline-setup-ikdsp0`. Aucun mot de passe ni jeton n'est nécessaire.
 
-1. Copiez-le dans **`C:\ConformiteDM\maj\`**.
-2. Double-cliquez sur **6 - Mettre a jour**. Le fichier le plus récent est utilisé, puis rangé dans `maj\appliques`.
+```
+ Taha (avec Claude) ── publie une nouvelle version ──► GitHub (tahawin1/tahhh)
+                                                          │
+                       double-clic « 6 - Mettre a jour » sur le serveur
+                                                          ▼
+                              le serveur télécharge la version, l'installe, vérifie
+```
 
-**Le serveur a accès à GitHub et `maj` est vide** : **6 - Mettre a jour** récupère la nouvelle version directement.
+**Cas habituel (serveur connecté à Internet)** : quand Taha annonce une nouvelle version, double-cliquez sur **6 - Mettre a jour**. Le dossier `C:\ConformiteDM\maj\` doit être vide.
+
+**Sans accès à GitHub** : Taha envoie un fichier `.bundle`. Copiez-le dans **`C:\ConformiteDM\maj\`**, puis double-cliquez sur **6 - Mettre a jour**. Le fichier le plus récent est utilisé, puis rangé dans `maj\appliques`.
+
+Ce qui transite par GitHub : **uniquement le code de l'outil**. Les dossiers, documents des fournisseurs, profil de l'entreprise et clé d'accès restent sur le serveur et n'y vont jamais.
 
 La mise à jour :
 
@@ -248,9 +257,9 @@ Commandes PowerShell utiles au service informatique :
 | Symptôme | Cause | Solution |
 |---|---|---|
 | `[X] La virtualisation est désactivée dans le BIOS` | VT-x / AMD-V désactivé | Partie A1 |
-| `[X] WSL n'a pas pu être mis à jour` | pas d'accès à GitHub/Microsoft | autoriser les sites (A3), ou télécharger `wsl.x64.msi` sur https://github.com/microsoft/WSL/releases depuis un autre poste, l'installer par double-clic, puis relancer B3 |
-| `[X] Le port 80 est déjà utilisé` | IIS ou un autre site web | relancer B3 avec ` -Port 8080` |
-| `[X] systemd ne démarre pas` | composant Linux trop ancien | PowerShell administrateur : `wsl --update --web-download`, puis relancer B3 |
+| `[X] WSL n'a pas pu être mis à jour` | pas d'accès à GitHub/Microsoft | autoriser les sites (A3), ou télécharger `wsl.x64.msi` sur https://github.com/microsoft/WSL/releases depuis un autre poste, l'installer par double-clic, puis relancer B2 |
+| `[X] Le port 80 est déjà utilisé` | IIS ou un autre site web | relancer avec `INSTALLER-port-8080.cmd` |
+| `[X] systemd ne démarre pas` | composant Linux trop ancien | PowerShell administrateur : `wsl --update --web-download`, puis relancer B2 |
 | « l'exécution de scripts est désactivée » | stratégie PowerShell | utiliser les commandes du guide (`-ExecutionPolicy Bypass`) ou les outils `.cmd` |
 | « Ubuntu introuvable pour le compte … » | outil lancé avec un autre compte Windows | se connecter avec le compte qui a fait l'installation |
 | Tableau de bord inaccessible depuis les postes, mais OK sur le serveur | pare-feu réseau ou profil réseau « Public » | `Get-NetConnectionProfile` ; sinon service informatique |
@@ -258,15 +267,15 @@ Commandes PowerShell utiles au service informatique :
 | « Serveur hors ligne » dans le tableau de bord | application arrêtée | **8 - Redemarrer l'outil** |
 | Pièce en erreur « Mistral a échoué deux fois » | Mistral surchargé ou mémoire pleine | **Relancer la rédaction** ; si ça se répète, **5 - Verification complete** et envoyer le rapport à Taha |
 | Rédaction lente (3 à 5 min par pièce) | serveur sans carte graphique | normal ; éviter d'autres programmes lourds sur ce serveur |
-| Mot de passe du compte Windows changé | la tâche planifiée utilise l'ancien | relancer B3 : il recrée la tâche |
+| Mot de passe du compte Windows changé | la tâche planifiée utilise l'ancien | relancer B2 : il recrée la tâche |
 
 ---
 
 ## Partie H — À renvoyer à Taha
 
-1. La **capture du diagnostic** (B3, « 4. Diagnostic »).
+1. La **capture du diagnostic** (B2, « 4. Diagnostic »).
 2. Le rapport **`C:\ConformiteDM\rapports\verification_<date>.txt`** (outil 5).
-3. L'**adresse du tableau de bord** (fin de B3).
+3. L'**adresse du tableau de bord** (fin de B2).
 4. La **clé d'accès** (outil 9), **de vive voix uniquement**.
 
 En cas de problème, envoyez le dernier rapport de `C:\ConformiteDM\rapports` et le fichier `C:\ProgramData\ConformiteDM\demarrage.log`. Ils ne contiennent aucun secret.
@@ -275,22 +284,26 @@ En cas de problème, envoyez le dernier rapport de `C:\ConformiteDM\rapports` et
 
 ---
 
-## Récapitulatif — toutes les commandes PowerShell
+## Récapitulatif
 
-**Préparation**
+**Installation** (clé USB branchée sur le serveur)
+
+1. Double-clic sur `INSTALLER.cmd`, puis **Oui**.
+2. Redémarrer le serveur.
+3. Double-clic sur `INSTALLER.cmd` à nouveau, puis répondre aux questions.
+
+Équivalent en PowerShell administrateur (clé en `E:`), à lancer avant et après le redémarrage :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File E:\CLE-USB-ConformiteDM\installer_depuis_cle.ps1
+Restart-Computer
+```
+
+**Vérifications avant installation**
 
 ```powershell
 Get-CimInstance Win32_Processor | Select-Object Name, VirtualizationFirmwareEnabled
-New-Item -ItemType Directory -Force C:\conformite-install
-Copy-Item "$HOME\Downloads\conformite-serveur.zip" C:\conformite-install\
-Expand-Archive C:\conformite-install\conformite-serveur.zip -DestinationPath C:\conformite-install\conformite-serveur -Force
-```
-
-**Installation** (PowerShell administrateur, 2 fois : avant et après le redémarrage)
-
-```powershell
-powershell -ExecutionPolicy Bypass -File C:\conformite-install\conformite-serveur\conformite\deploiement\windows\installer_windows.ps1 -Zip C:\conformite-install\conformite-serveur.zip
-Restart-Computer
+"github.com","ollama.com","registry-1.docker.io","pypi.org","registry.npmjs.org" | ForEach-Object { "{0,-25} {1}" -f $_, (Test-NetConnection $_ -Port 443 -WarningAction SilentlyContinue).TcpTestSucceeded }
 ```
 
 **Outils** (ou double-clic dans `C:\ConformiteDM`)
