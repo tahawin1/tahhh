@@ -34,6 +34,8 @@ L'outil (Docker, PostgreSQL, Qdrant, Mistral) fonctionne sous Linux. Sur un serv
 | Windows Server 2022 ou 2025, Windows 10 (2004 et plus) ou 11 | **Script Windows ci-dessous** (WSL2) |
 | Windows Server 2019 ou plus ancien | WSL2 indisponible : créer une **machine virtuelle Ubuntu 24.04 dans Hyper-V** (16 Go de mémoire, 80 Go de disque, carte réseau externe), puis suivre cette fiche **à partir du §3**, dans la machine virtuelle |
 
+**Mémoire :** un serveur Windows de **16 Go** convient pour le pilote. Ubuntu en reçoit environ 11 à 12 Go : Mistral, bge-m3, la base et l'index en utilisent environ 8. Windows garde environ 4 Go. Évitez d'y faire tourner d'autres applications gourmandes.
+
 Si le serveur Windows est lui-même une machine virtuelle (VMware, Hyper-V…), la **virtualisation imbriquée** doit être activée sur l'hôte. Sinon WSL2 ne démarre pas.
 
 **Installation sur Windows (Server 2022/2025, 10, 11), en une commande :**

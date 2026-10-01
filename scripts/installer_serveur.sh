@@ -40,7 +40,9 @@ fi
 CPU=$(nproc); RAM_GO=$(( $(awk '/MemTotal/ {print $2}' /proc/meminfo) / 1024 / 1024 ))
 DISQUE_GO=$(df -BG --output=avail . | tail -1 | tr -dc '0-9')
 ok "Processeurs : $CPU  |  Mémoire : ${RAM_GO} Go  |  Disque libre : ${DISQUE_GO} Go"
-[ "$RAM_GO" -ge 12 ] || alerte "Moins de 12 Go de mémoire : Mistral 7B risque d'être très lent ou de ne pas démarrer."
+# sous WSL2, Ubuntu ne voit que la part réservée par installer_windows.ps1 (75 % : ~11 Go sur un serveur de 16 Go)
+RAM_MIN=12; grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null && RAM_MIN=10
+[ "$RAM_GO" -ge "$RAM_MIN" ] || alerte "Moins de $RAM_MIN Go de mémoire pour Ubuntu : Mistral 7B risque d'être très lent ou de ne pas démarrer."
 [ "$DISQUE_GO" -ge 40 ] || alerte "Moins de 40 Go libres : images Docker + modèles (~6 Go) + index peuvent manquer de place."
 [ -x /usr/lib/wsl/lib/nvidia-smi ] && PATH="$PATH:/usr/lib/wsl/lib"  # GPU NVIDIA vu depuis WSL (pilote Windows)
 if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then

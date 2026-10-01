@@ -9,7 +9,9 @@
 
   Ce que fait le script (relançable : chaque étape déjà faite est sautée) :
     1. vérifie Windows (WSL2 : Windows Server 2022/2025, Windows 10 2004+ ou 11)
-    2. installe WSL2 (redémarrage demandé la première fois), puis Ubuntu 24.04
+    2. active WSL2 (redémarrage demandé la première fois), le met à jour (le WSL
+       intégré à Windows Server 2022 ne gère pas systemd), puis installe Ubuntu
+       24.04 — téléchargements directs, sans Microsoft Store
     3. réserve la mémoire de WSL (75 % de la RAM, pour Mistral) et active systemd
     4. copie le paquet dans Ubuntu (/opt/conformite)
     5. lance le diagnostic, puis l'installation (le même script que sous Ubuntu)
@@ -26,7 +28,10 @@ param(
     [string]$Distro = "Ubuntu-24.04"
 )
 
-$ErrorActionPreference = "Stop"
+# « Continue » : sous Windows PowerShell 5.1, avec « Stop », un simple message de
+# wsl.exe sur la sortie d'erreur interromprait le script. Les erreurs sont
+# testées explicitement (codes de retour, -ErrorAction Stop sur les cmdlets).
+$ErrorActionPreference = "Continue"
 $Dossier = "C:\ProgramData\ConformiteDM"
 
 function Titre($t) { Write-Host ""; Write-Host "== $t" -ForegroundColor Cyan }
@@ -84,16 +89,25 @@ if ($occupe -and -not (Get-Content "$Dossier\port.txt" -ErrorAction SilentlyCont
 
 # ---------------------------------------------------------------- 2. WSL2 et Ubuntu
 Titre "2. WSL2 et Ubuntu"
-& wsl.exe --status *> $null
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "  Installation de WSL2 (composant Windows)…"
-    & wsl.exe --install --no-distribution
-    Alerte "WSL2 installé : REDÉMARRER le serveur, puis relancer ce même script."
+# Windows Server 2022 : pas de Microsoft Store -> téléchargements directs (--web-download)
+$fonctions = @("Microsoft-Windows-Subsystem-Linux", "VirtualMachinePlatform")
+$manquantes = @($fonctions | Where-Object { (Get-WindowsOptionalFeature -Online -FeatureName $_).State -ne "Enabled" })
+if ($manquantes.Count -gt 0 -or -not (Get-Command wsl.exe -ErrorAction SilentlyContinue)) {
+    Write-Host "  Activation des composants Windows : $($fonctions -join ', ')…"
+    foreach ($f in $fonctions) { Enable-WindowsOptionalFeature -Online -FeatureName $f -All -NoRestart -ErrorAction Stop | Out-Null }
+    Alerte "Composants WSL2 activés : REDÉMARRER le serveur, puis relancer ce même script."
     exit 0
 }
-& wsl.exe --update *> $null
-& wsl.exe --set-default-version 2 *> $null
-Ok "WSL2 présent et à jour"
+# Le WSL intégré à Windows Server 2022 est trop ancien pour systemd : mise à jour obligatoire
+Write-Host "  Mise à jour de WSL (téléchargement direct)…"
+& wsl.exe --update --web-download | Out-Host
+$version = Wsl-Texte @("--version")
+if ($LASTEXITCODE -ne 0 -or $version -notmatch "WSL[^\d]*(\d+)\.(\d+)") {
+    Echec ("WSL n'a pas pu être mis à jour (sans accès Internet ?). Installer à la main le paquet " +
+           "« wsl.x64.msi » de https://github.com/microsoft/WSL/releases (dernière version), puis relancer ce script.")
+}
+& wsl.exe --set-default-version 2 | Out-Null
+Ok "WSL2 à jour ($($version.Split("`n")[0].Trim()))"
 
 # Mémoire de WSL : 75 % de la RAM (par défaut 50 %, trop peu pour Mistral + base + index)
 $wslconfig = "$env:USERPROFILE\.wslconfig"
@@ -108,7 +122,7 @@ if ($distros -notmatch [regex]::Escape($Distro)) {
     Write-Host "  Installation d'Ubuntu ($Distro)…"
     Write-Host "  >>> Une invite Ubuntu va demander un NOM D'UTILISATEUR et un MOT DE PASSE :" -ForegroundColor Yellow
     Write-Host "  >>> choisissez-les (à noter), puis tapez  exit  pour revenir ici." -ForegroundColor Yellow
-    & wsl.exe --install -d $Distro
+    & wsl.exe --install -d $Distro --web-download
     $distros = Wsl-Texte @("-l", "-q")
     if ($distros -notmatch [regex]::Escape($Distro)) { Echec "Ubuntu n'a pas été installé (voir le message ci-dessus)." }
 }
@@ -151,13 +165,13 @@ if ($code -ne 0) { Echec "L'installation s'est arrêtée (message ci-dessus). Co
 # ---------------------------------------------------------------- 6. Réseau et démarrage automatique
 Titre "6. Accès depuis le réseau et démarrage automatique"
 New-Item -ItemType Directory -Force -Path $Dossier | Out-Null
-Copy-Item -Force (Join-Path $PSScriptRoot "demarrer_conformite.ps1") "$Dossier\demarrer_conformite.ps1"
+Copy-Item -Force -ErrorAction Stop (Join-Path $PSScriptRoot "demarrer_conformite.ps1") "$Dossier\demarrer_conformite.ps1"
 "$Port" | Set-Content -Encoding ASCII "$Dossier\port.txt"
 "$Distro" | Set-Content -Encoding ASCII "$Dossier\distribution.txt"
 
 if (-not (Get-NetFirewallRule -DisplayName "Conformite DM - tableau de bord" -ErrorAction SilentlyContinue)) {
     New-NetFirewallRule -DisplayName "Conformite DM - tableau de bord" -Direction Inbound -Protocol TCP `
-        -LocalPort $Port -Action Allow -Profile Domain, Private | Out-Null
+        -LocalPort $Port -Action Allow -Profile Domain, Private -ErrorAction Stop | Out-Null
 }
 Ok "Pare-feu Windows : port $Port ouvert (réseaux du domaine et privés)"
 
@@ -169,7 +183,7 @@ $declencheur = New-ScheduledTaskTrigger -AtStartup
 $reglages = New-ScheduledTaskSettingsSet -ExecutionTimeLimit ([TimeSpan]::Zero) -RestartCount 3 `
     -RestartInterval (New-TimeSpan -Minutes 1) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 Register-ScheduledTask -TaskName "ConformiteDM-Demarrage" -Action $action -Trigger $declencheur -Settings $reglages `
-    -User $cred.UserName -Password $cred.GetNetworkCredential().Password -RunLevel Highest -Force | Out-Null
+    -User $cred.UserName -Password $cred.GetNetworkCredential().Password -RunLevel Highest -Force -ErrorAction Stop | Out-Null
 Start-ScheduledTask -TaskName "ConformiteDM-Demarrage"
 Ok "Tâche « ConformiteDM-Demarrage » créée et lancée (démarre Ubuntu et le relais du port $Port à chaque démarrage)"
 
