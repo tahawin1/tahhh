@@ -165,7 +165,11 @@ supporte déjà.
       (Windows 11) : « unzip: cannot find C:conformite-install… ».
       2e essai : copie, diagnostic (16 cœurs, RTX 3050 vue depuis WSL) et
       Docker OK ; l'installateur officiel d'Ollama exige désormais `zstd`
-      (ajouté à installer_serveur.sh) ; console Windows passée en UTF-8. Testés avec un faux wsl.exe.
+      (ajouté à installer_serveur.sh) ; console Windows passée en UTF-8.
+      3e essai : Ollama, Mistral et bge-m3 installés, .env créé ; échec de la
+      construction de l'interface (apostrophe de « l'AMMPS » dans une chaîne
+      TS entre apostrophes, introduite sans relancer `npm run build`).
+      Toujours relancer `npm run build` (tsc + vite) après toute retouche du frontend. Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
       extraction, installer_windows.ps1). Dépôt GitHub **public** : le serveur

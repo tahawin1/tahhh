@@ -21,7 +21,7 @@ export function etapes(d: DossierDetail): Etape[] {
     { cle: 'fournisseur', titre: 'Documents fournisseur', detail: `${nbRecus}/${f.length} reçus` },
     { cle: 'redaction', titre: "Rédaction par l'agent", detail: `${nbRediges}/${r.length} rédigées` },
     { cle: 'verification', titre: 'Vérification humaine', detail: `${nbValides}/${d.compteurs.total} validées` },
-    { cle: 'depot', titre: 'Prêt pour dépôt', detail: d.statut === 'pret_pour_depot_manuel' ? 'Dossier complet' : 'Dépôt manuel à l'AMMPS' },
+    { cle: 'depot', titre: 'Prêt pour dépôt', detail: d.statut === 'pret_pour_depot_manuel' ? 'Dossier complet' : "Dépôt manuel à l'AMMPS" },
   ]
   const faits = [true, nbRecus === f.length, nbRediges === r.length, nbValides === d.compteurs.total, d.statut === 'pret_pour_depot_manuel']
   const premierNonFait = faits.findIndex((x) => !x)
