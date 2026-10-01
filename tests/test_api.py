@@ -116,6 +116,9 @@ class TestApi(unittest.TestCase):
         codes = [x["code"] for x in d["documents"]]
         self.assertIn("piece_specifique_union_europeenne", codes)
         self.assertNotIn("iso_13485", codes)
+        d = self.creer(pays="union_europeenne", classe="IR")  # classe I réutilisable (MDR)
+        self.assertEqual(d["classe"], "IR")
+        self.assertIn("piece_specifique_union_europeenne", [x["code"] for x in d["documents"]])
 
     def test_generation_ne_redige_que_les_pieces_a_rediger(self):
         d = self.creer()

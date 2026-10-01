@@ -227,6 +227,10 @@ supporte déjà.
       (la liste des pièces, elle, reste figée). Testé (unitaires + navigateur
       avec les vrais fichiers de Ciment osseux, sans Mistral) ; à valider sur le
       PC de l'utilisateur avec la lecture réelle.
+- [x] Classe IR (classe I réutilisable, MDR art. 52 (7) c), demandée par
+      l'utilisateur) — règles Maroc 2.2 : absente de l'arrêté 2855-15, traitée
+      comme Is/Im (certificat CE exigé, pas d'ISO 13485) ; à confirmer auprès
+      de l'AMMPS. Tuile dans l'interface, « Ir » dans les formulaires.
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
       préparées (jamais envoyées sans validation)

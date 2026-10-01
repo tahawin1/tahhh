@@ -23,7 +23,7 @@ from rule_engine import RULES_DIR
 
 FICHIER = RULES_DIR / "formulaires_maroc.yaml"
 A_COMPLETER = "[À COMPLÉTER]"
-CLASSES = {"I": "I", "IS": "Is", "IM": "Im", "IIA": "IIa", "IIB": "IIb", "III": "III"}
+CLASSES = {"I": "I", "IS": "Is", "IM": "Im", "IR": "Ir", "IIA": "IIa", "IIB": "IIb", "III": "III"}
 MENTION_VALIDATION = (
     "PROJET GÉNÉRÉ AUTOMATIQUEMENT — EN ATTENTE DE VALIDATION HUMAINE. "
     "Ne pas déposer avant relecture et validation explicite."

@@ -80,9 +80,10 @@ class TestDossierReelAccepte(unittest.TestCase):
     def test_certificat_ce_selon_classe(self):
         # arrêté 2855-15 : IIA, IIB, III et sous-classes Is, Im ; pas la classe I simple
         self.assertNotIn("piece_specifique_union_europeenne", ids("union_europeenne", "I"))
-        for classe in ("IS", "IM", "IIA", "IIB", "III", None):
+        for classe in ("IS", "IM", "IR", "IIA", "IIB", "III", None):
             self.assertIn("piece_specifique_union_europeenne", ids("union_europeenne", classe))
         self.assertNotIn("iso_13485", ids("union_europeenne", "IS"))
+        self.assertNotIn("iso_13485", ids("union_europeenne", "IR"))  # classe I réutilisable : comme Is/Im
 
     def test_lettre_de_confirmation_2023_607_signalee(self):
         ce = {d.id: d for d in documents_requis_maroc("union_europeenne", "IIB")}["piece_specifique_union_europeenne"]
@@ -93,7 +94,7 @@ class TestDossierReelAccepte(unittest.TestCase):
         regles = charger_regles("maroc")
         self.assertIn("AMMPS", regles["autorite"])
         self.assertIn("Directeur Général", regles["destinataire_demande"])
-        self.assertEqual(regles["version"], 2.1)
+        self.assertEqual(regles["version"], 2.2)
 
 
 class TestNatureDesPieces(unittest.TestCase):

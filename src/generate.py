@@ -405,7 +405,7 @@ def main():
     parser = argparse.ArgumentParser(description="Génère un dossier de conformité complet")
     parser.add_argument("--pays-origine", required=True, choices=["chine", "inde", "union_europeenne", "autre"])
     parser.add_argument("--produit", required=True)
-    parser.add_argument("--classe", default=None, choices=["I", "IIA", "IIB", "III"])
+    parser.add_argument("--classe", default=None, choices=["I", "IS", "IM", "IR", "IIA", "IIB", "III"])
     args = parser.parse_args()
 
     resultat = traiter_dossier(args.pays_origine, args.produit, args.classe)

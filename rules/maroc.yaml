@@ -17,14 +17,21 @@
 #   lire en plus dans les documents reçus (coordonnées du fabricant, notice,
 #   étiquettes, catalogue), qui alimentent la fiche signalétique et l'annexe II
 #   remplies par le code (rules/formulaires_maroc.yaml).
+# 2.2 — 2026-10-01 : classe IR (classe I, instrument chirurgical réutilisable,
+#   règlement (UE) 2017/745, art. 52 (7) c) et annexe VIII règle 6), demandée
+#   par l'utilisateur. Absente de l'arrêté 2855-15 (antérieur au MDR) : traitée
+#   comme Is et Im (certificat CE ou équivalent exigé, l'organisme notifié
+#   n'intervenant que sur la réutilisation ; pas d'ISO 13485 exigé, comme pour
+#   la classe I). Traitement à confirmer auprès de l'AMMPS.
 
 pays: maroc
-version: 2.1
+version: 2.2
 date_version: "2026-10-01"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
 # IS : classe I stérile ; IM : classe I avec fonction de mesurage (arrêté 2855-15)
-classification: [I, IS, IM, IIA, IIB, III]
+# IR : classe I instrument chirurgical réutilisable (règlement (UE) 2017/745) — voir 2.2
+classification: [I, IS, IM, IR, IIA, IIB, III]
 
 # nature (obligatoire pour chaque pièce) :
 #   a_rediger : document produit par l'entreprise — projet rédigé par
@@ -256,7 +263,7 @@ piece_specifique_selon_origine:
         description: "classe du dispositif indiquée sur le document"
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: &classes_certificat [IS, IM, IIA, IIB, III]
+    classes_concernees: &classes_certificat [IS, IM, IR, IIA, IIB, III]
   inde:
     numero: 4
     document: "Autorisation de mise en vente délivrée par la CDSCO"
@@ -308,4 +315,5 @@ contraintes_operationnelles:
 notes:
   - "Le Maroc accepte les certificats étrangers comme pièce justificative — système plus souple que l'UE."
   - "Toutes les pièces administratives et la déclaration de conformité sont datées, signées et cachetées par le représentant légal de l'établissement marocain (arrêté 2855-15, art. 3)."
+  - "Classe IR (instrument chirurgical réutilisable, règlement (UE) 2017/745) : absente de l'arrêté 2855-15, traitée comme Is/Im (certificat CE exigé) — à confirmer auprès de l'AMMPS."
   - "Pièces 10 à 13 et 15 de la numérotation : sans objet pour un DM importé ordinaire (confirmé par l'utilisateur, 2026-10-01)."

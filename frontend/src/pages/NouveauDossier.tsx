@@ -8,6 +8,7 @@ const CLASSES = [
   { id: 'I', aide: 'Risque faible' },
   { id: 'IS', aide: 'Classe I stérile' },
   { id: 'IM', aide: 'Classe I avec mesurage' },
+  { id: 'IR', aide: 'Classe I réutilisable' },
   { id: 'IIA', aide: 'Risque modéré' },
   { id: 'IIB', aide: 'Risque élevé' },
   { id: 'III', aide: 'Risque très élevé' },

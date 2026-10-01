@@ -126,7 +126,7 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
     if piece is None:
         piece = regles["piece_specifique_selon_origine"]["autre"]
 
-    # ex: certificat CE / équivalent exigé pour IS, IM, IIA, IIB, III (pas pour la classe I simple)
+    # ex: certificat CE / équivalent exigé pour IS, IM, IR, IIA, IIB, III (pas pour la classe I simple)
     if _classe_concernee(piece, classe):
         documents.append(
             DocumentRequis(

@@ -109,7 +109,7 @@ app.add_middleware(
 )
 
 PaysOrigine = Literal["chine", "inde", "union_europeenne", "autre"]
-Classe = Literal["I", "IS", "IM", "IIA", "IIB", "III"]  # IS : stérile ; IM : mesurage
+Classe = Literal["I", "IS", "IM", "IR", "IIA", "IIB", "III"]  # IS : stérile ; IM : mesurage ; IR : réutilisable
 
 
 # ---------------------------------------------------------------- schémas
