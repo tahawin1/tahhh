@@ -142,6 +142,13 @@ supporte déjà.
       indexation depuis le conteneur, rédaction Mistral. Non testable ici :
       la couche apt (Tesseract) de l'image API, deb.debian.org étant bloqué
       dans l'environnement de développement. Pas encore exécutée sur le vrai serveur.
+- [x] **Serveur de l'entreprise = Windows** (2026-10-01) : installation via
+      WSL2 + Ubuntu 24.04 (`deploiement/windows/installer_windows.ps1`, puis le
+      même `installer_serveur.sh` dans Ubuntu) ; relais du port (netsh
+      portproxy) et tâche planifiée au démarrage (`demarrer_conformite.ps1`) ;
+      Windows Server 2019 et antérieurs : VM Ubuntu Hyper-V. Scripts PowerShell
+      vérifiés (syntaxe, encodage UTF-8 BOM pour PowerShell 5.1, logique avec
+      un faux wsl.exe) mais **jamais exécutés sur un vrai Windows**.
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué

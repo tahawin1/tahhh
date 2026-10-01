@@ -25,6 +25,47 @@ Le script **peut être relancé sans risque** : ce qui est déjà fait est saut�
 
 ---
 
+## 0 bis. Serveur Windows : à lire en premier
+
+L'outil (Docker, PostgreSQL, Qdrant, Mistral) fonctionne sous Linux. Sur un serveur Windows, il tourne dans **Ubuntu sous WSL2**, le sous-système Linux fourni gratuitement par Microsoft. Docker Desktop n'est pas utilisé : il n'est pas pris en charge sur Windows Server et il est payant pour les grandes entreprises.
+
+| Version de Windows | Méthode |
+|---|---|
+| Windows Server 2022 ou 2025, Windows 10 (2004 et plus) ou 11 | **Script Windows ci-dessous** (WSL2) |
+| Windows Server 2019 ou plus ancien | WSL2 indisponible : créer une **machine virtuelle Ubuntu 24.04 dans Hyper-V** (16 Go de mémoire, 80 Go de disque, carte réseau externe), puis suivre cette fiche **à partir du §3**, dans la machine virtuelle |
+
+Si le serveur Windows est lui-même une machine virtuelle (VMware, Hyper-V…), la **virtualisation imbriquée** doit être activée sur l'hôte. Sinon WSL2 ne démarre pas.
+
+**Installation sur Windows (Server 2022/2025, 10, 11), en une commande :**
+
+1. Copier `conformite-serveur.zip` dans `C:\conformite-install\`, puis faire clic droit → **Extraire tout** dans ce même dossier.
+2. Ouvrir **PowerShell en tant qu'administrateur** et lancer :
+
+```powershell
+powershell -ExecutionPolicy Bypass -File C:\conformite-install\conformite-serveur\conformite\deploiement\windows\installer_windows.ps1 -Zip C:\conformite-install\conformite-serveur.zip
+```
+
+Le dossier extrait peut s'appeler `conformite-serveur\conformite` ou `conformite` : adaptez le chemin. Si le port 80 est déjà pris (IIS), ajoutez `-Port 8080` à la fin de la commande.
+
+Ce que fait le script (relançable : ce qui est déjà fait est sauté) :
+- **WSL2 absent** : il l'installe, puis demande de **redémarrer le serveur et de relancer la même commande**.
+- **Ubuntu** : une invite demande un nom d'utilisateur et un mot de passe Ubuntu. Choisissez-les, notez-les, puis tapez `exit`.
+- **Réglages** : il réserve 75 % de la mémoire à Ubuntu (pour Mistral) et active les services (systemd).
+- **Diagnostic** (§4) : il le lance, puis **demande de confirmer** avant l'installation complète (§5, ≈ 1 h). Il s'agit du même script que pour un serveur Ubuntu.
+- **Réseau et démarrage** :
+  - il ouvre le port au pare-feu Windows ;
+  - il crée la tâche planifiée **ConformiteDM-Demarrage**. Elle relance Ubuntu, Docker et Mistral à chaque démarrage de Windows et relaie le port vers Ubuntu. Elle **demande le mot de passe de votre compte Windows**.
+- **Vérification complète** (§6) : il la lance, puis affiche l'adresse du tableau de bord.
+
+**Ensuite, sur un serveur Windows :**
+- Toutes les commandes `bash`/`sudo` de cette fiche (§6 à §11) se tapent dans le **terminal Ubuntu**. On l'ouvre depuis PowerShell avec `wsl -d Ubuntu-24.04 -u root`, puis `cd /opt/conformite`. `sudo` y est facultatif : on est déjà administrateur.
+- Le profil et les dossiers acceptés (§5 bis) se déposent aussi depuis l'**Explorateur Windows**, à l'adresse `\\wsl.localhost\Ubuntu-24.04\opt\conformite\data\dossiers_valides`. Lancez ensuite `bash scripts/indexer_modeles.sh` dans le terminal Ubuntu.
+- Les fichiers de Windows sont visibles dans Ubuntu sous `/mnt/c/…`. Exemple de mise à jour par fichier : `bash scripts/mettre_a_jour.sh /mnt/c/conformite-install/maj.bundle`.
+- Pour copier les sauvegardes hors du serveur, passez par Windows : `cp -r /var/backups/conformite /mnt/c/Sauvegardes/`.
+- Le journal du démarrage automatique se trouve dans `C:\ProgramData\ConformiteDM\demarrage.log`.
+
+---
+
 ## 1. Mistral doit-il être sur le serveur ? Oui.
 
 L'agent qui **rédige** les pièces (lettre de demande, fiche signalétique…) et qui **lit** les documents envoyés par les fournisseurs (certificats CE, ISO 13485…) est **Mistral**. Il tourne **sur le serveur lui-même**, via Ollama. Le script l'installe automatiquement.
@@ -42,10 +83,10 @@ La liste des pièces exigées n'est **pas** décidée par Mistral : elle vient d
 
 | | Minimum | Recommandé |
 |---|---|---|
-| Système | Ubuntu 22.04 ou 24.04 LTS (64 bits) ; Debian 12 fonctionne | Ubuntu 24.04 LTS |
+| Système | Ubuntu 22.04 ou 24.04 LTS (64 bits) ; Debian 12 fonctionne ; **Windows Server 2022/2025 ou Windows 10/11 via WSL2 (§0 bis)** | Ubuntu 24.04 LTS |
 | Processeur | 4 cœurs | 8 cœurs ou plus |
 | Mémoire | 16 Go (12 Go absolu minimum) | 32 Go |
-| Disque libre | 40 Go | 100 Go (dossiers, sauvegardes) |
+| Disque libre | 40 Go (60 Go sur C: pour Windows) | 100 Go (dossiers, sauvegardes) |
 | GPU | aucun (fonctionne sur CPU) | NVIDIA ≥ 8 Go de mémoire vidéo |
 | Droits | un compte avec `sudo` | |
 

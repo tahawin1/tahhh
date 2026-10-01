@@ -30,11 +30,19 @@ titre "1. Diagnostic du serveur"
 command -v curl >/dev/null || { [ "$VERIFIER_SEULEMENT" -eq 0 ] && apt-get update -qq && apt-get install -y -qq curl openssl ca-certificates; } \
   || echec "curl absent : sudo apt install -y curl openssl ca-certificates"
 . /etc/os-release 2>/dev/null && ok "Système : ${PRETTY_NAME:-inconnu}"
+# Serveur Windows : ce script tourne dans Ubuntu sous WSL2 (voir deploiement/windows/)
+WSL=0; grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null && WSL=1
+if [ "$WSL" -eq 1 ]; then
+  ok "Ubuntu sous WSL2 (serveur Windows)"
+  [ "$(ps -p 1 -o comm= 2>/dev/null)" = systemd ] \
+    || echec "systemd inactif dans WSL : lancer deploiement/windows/installer_windows.ps1 (qui l'active), ou ajouter [boot] systemd=true dans /etc/wsl.conf puis « wsl --shutdown » sous Windows."
+fi
 CPU=$(nproc); RAM_GO=$(( $(awk '/MemTotal/ {print $2}' /proc/meminfo) / 1024 / 1024 ))
 DISQUE_GO=$(df -BG --output=avail . | tail -1 | tr -dc '0-9')
 ok "Processeurs : $CPU  |  Mémoire : ${RAM_GO} Go  |  Disque libre : ${DISQUE_GO} Go"
 [ "$RAM_GO" -ge 12 ] || alerte "Moins de 12 Go de mémoire : Mistral 7B risque d'être très lent ou de ne pas démarrer."
 [ "$DISQUE_GO" -ge 40 ] || alerte "Moins de 40 Go libres : images Docker + modèles (~6 Go) + index peuvent manquer de place."
+[ -x /usr/lib/wsl/lib/nvidia-smi ] && PATH="$PATH:/usr/lib/wsl/lib"  # GPU NVIDIA vu depuis WSL (pilote Windows)
 if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then
   ok "GPU NVIDIA : $(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader | head -1) (Mistral ~20x plus rapide)"
 else
@@ -146,6 +154,8 @@ bash scripts/indexer_modeles.sh
 # ------------------------------------------------------------------ résumé
 titre "Terminé"
 IP_SERVEUR=$(hostname -I 2>/dev/null | awk '{print $1}')
+# sous WSL, l'adresse vue du réseau est celle du serveur Windows (relais installé par installer_windows.ps1)
+[ "$WSL" -eq 1 ] && IP_SERVEUR="IP-du-serveur-Windows"
 echo "  Tableau de bord   : http://${IP_SERVEUR:-IP-du-serveur}$( [ "${INTERFACE_PORT:-80}" != 80 ] && echo ":${INTERFACE_PORT}")   (réseau de l'entreprise)"
 echo "  API locale        : http://127.0.0.1:8000  (clé d'API dans .env : API_KEY)"
 if [ -n "${NGROK_URL:-}" ]; then

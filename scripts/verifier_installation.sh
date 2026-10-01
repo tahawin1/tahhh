@@ -9,6 +9,7 @@ cd "$(dirname "$0")/.."
 [ "$(id -u)" -eq 0 ] || { echo "Lancer avec sudo."; exit 1; }
 [ -f .env ] && { set -a; . ./.env; set +a; }
 PORT=${INTERFACE_PORT:-80}
+[ -x /usr/lib/wsl/lib/nvidia-smi ] && PATH="$PATH:/usr/lib/wsl/lib"  # GPU vu depuis WSL2
 ECHECS=0
 ok()    { printf '  \033[32m✓\033[0m %s\n' "$*"; }
 ko()    { printf '  \033[31m✗\033[0m %s\n' "$*"; ECHECS=$((ECHECS+1)); }
@@ -80,7 +81,9 @@ nvidia-smi >/dev/null 2>&1 && ok "GPU : $(nvidia-smi --query-gpu=name --format=c
 
 echo
 if [ "$ECHECS" -eq 0 ]; then
-  echo "RÉSULTAT : installation complète et fonctionnelle. Adresse : http://$(hostname -I | awk '{print $1}')$( [ "$PORT" != 80 ] && echo ":$PORT")"
+  ADRESSE=$(hostname -I | awk '{print $1}')
+  grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null && ADRESSE="IP-du-serveur-Windows"  # WSL2 : relais Windows
+  echo "RÉSULTAT : installation complète et fonctionnelle. Adresse : http://$ADRESSE$( [ "$PORT" != 80 ] && echo ":$PORT")"
 else
   echo "RÉSULTAT : $ECHECS point(s) en échec (✗) — envoyer ce rapport à Taha (il ne contient aucun secret)."
   exit 1
