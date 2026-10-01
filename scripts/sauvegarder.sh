@@ -25,9 +25,14 @@ find "$DEST" -name 'fichiers_*.tar.gz' -mtime +30 -delete
 # Serveur Windows : copie côté Windows (mêmes 30 jours)
 if grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null && [ -d /mnt/c ]; then
   COPIE=/mnt/c/ConformiteDM/sauvegardes
-  mkdir -p "$COPIE" && cp "$DEST/base_$HORODATAGE.dump" "$DEST/fichiers_$HORODATAGE.tar.gz" "$COPIE/"
-  find "$COPIE" -name 'base_*.dump' -mtime +30 -delete
-  find "$COPIE" -name 'fichiers_*.tar.gz' -mtime +30 -delete
-  echo "  copie Windows : C:\\ConformiteDM\\sauvegardes"
+  # La sauvegarde Linux est faite : un refus d'accès côté Windows (dossier réservé
+  # aux administrateurs, outil lancé sans élévation) ne doit pas bloquer la suite.
+  if mkdir -p "$COPIE" 2>/dev/null && cp "$DEST/base_$HORODATAGE.dump" "$DEST/fichiers_$HORODATAGE.tar.gz" "$COPIE/" 2>/dev/null; then
+    find "$COPIE" -name 'base_*.dump' -mtime +30 -delete 2>/dev/null || true
+    find "$COPIE" -name 'fichiers_*.tar.gz' -mtime +30 -delete 2>/dev/null || true
+    echo "  copie Windows : C:\\ConformiteDM\\sauvegardes"
+  else
+    echo "  ATTENTION : copie dans C:\\ConformiteDM\\sauvegardes refusée (droits Windows) ; sauvegarde gardée dans $DEST"
+  fi
 fi
 echo "$(date '+%F %T') sauvegarde OK : $DEST/base_$HORODATAGE.dump ($(du -h "$DEST/base_$HORODATAGE.dump" | cut -f1)), fichiers_$HORODATAGE.tar.gz"

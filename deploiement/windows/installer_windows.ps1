@@ -225,7 +225,8 @@ foreach ($d in @("$Outils\outils", "$Outils\rapports", "$Outils\maj", "$Outils\s
 Copy-Item -Force (Join-Path $PSScriptRoot "outils\*.ps1") "$Outils\outils\"
 Copy-Item -Force (Join-Path $PSScriptRoot "outils\*.cmd") "$Outils\"
 # sauvegardes : contiennent la clé d'accès -> administrateurs et système uniquement (SID, quelle que soit la langue)
-& icacls.exe "$Outils\sauvegardes" /inheritance:r /grant:r "*S-1-5-32-544:(OI)(CI)F" "*S-1-5-18:(OI)(CI)F" | Out-Null
+# + le compte qui installe : les outils sont lancés sans élévation (jeton administrateur filtré)
+& icacls.exe "$Outils\sauvegardes" /inheritance:r /grant:r "*S-1-5-32-544:(OI)(CI)F" "*S-1-5-18:(OI)(CI)F" "$($env:USERDOMAIN)\$($env:USERNAME):(OI)(CI)F" | Out-Null
 # raccourci sur le bureau de tous les utilisateurs
 $raccourci = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:PUBLIC\Desktop\Conformite DM.lnk")
 $raccourci.TargetPath = $Outils

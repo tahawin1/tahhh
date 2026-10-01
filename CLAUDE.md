@@ -181,6 +181,9 @@ supporte déjà.
       des scripts PowerShell (accents de la sortie Ubuntu mal affichés).
       Puis relais /api en 502 : nginx gardait l'ancienne adresse de l'API
       recréée — résolution par le DNS Docker (`resolver 127.0.0.11`), testé.
+      4e essai (mise à jour) : « Permission denied » sur C:\ConformiteDM\sauvegardes
+      (réservé aux administrateurs ; outils lancés sans élévation) — copie Windows
+      rendue non bloquante, l'installateur donne aussi le droit au compte qui installe.
       Toujours relancer `npm run build` (tsc + vite) après toute retouche du frontend. Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
