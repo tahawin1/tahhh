@@ -14,15 +14,15 @@ if ($Bundle) {
     # copie sous un nom sans espace (ex. « maj (1).bundle » téléchargé deux fois)
     $enCours = Join-Path $Racine "maj\en_cours.bundle"
     Copy-Item -Force $Bundle $enCours
-    $source = "`$(wslpath -a '$enCours')"
+    $source = "'$(Chemin-Linux $enCours)'"
 } else {
     Write-Host "Aucun fichier .bundle dans $Racine\maj : mise à jour depuis GitHub."
     $source = ""
 }
 # après la mise à jour, les outils Windows eux-mêmes sont rafraîchis depuis le paquet
 $cmd = "bash scripts/mettre_a_jour.sh $source && bash scripts/verifier_installation.sh && " +
-       "cp deploiement/windows/outils/*.ps1 `$(wslpath -a '$Racine\outils')/ && " +
-       "cp deploiement/windows/outils/*.cmd `$(wslpath -a '$Racine')/"
+       "cp deploiement/windows/outils/*.ps1 '$(Chemin-Linux (Join-Path $Racine "outils"))/' && " +
+       "cp deploiement/windows/outils/*.cmd '$(Chemin-Linux $Racine)/'"
 $code = Executer-Dans-Ubuntu "mise_a_jour" $cmd
 Remove-Item -Force (Join-Path $Racine "maj\en_cours.bundle") -ErrorAction SilentlyContinue
 if ($code -eq 0 -and $Bundle) {

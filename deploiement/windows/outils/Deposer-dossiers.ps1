@@ -2,7 +2,7 @@
 #   <pays d'origine>\<produit>\<fichiers PDF numérotés : 1-…, 2-…, 16-…>
 . (Join-Path $PSScriptRoot "_commun.ps1")
 Verifier-Ubuntu
-& wsl.exe -d $Distro -u root -- bash -lc "mkdir -p /opt/conformite/data/dossiers_valides/union_europeenne /opt/conformite/data/dossiers_valides/chine /opt/conformite/data/dossiers_valides/inde /opt/conformite/data/dossiers_valides/autre && chown -R 1000:1000 /opt/conformite/data/dossiers_valides" | Out-Host
+& wsl.exe -d $Distro -u root --exec bash -lc "mkdir -p /opt/conformite/data/dossiers_valides/union_europeenne /opt/conformite/data/dossiers_valides/chine /opt/conformite/data/dossiers_valides/inde /opt/conformite/data/dossiers_valides/autre && chown -R 1000:1000 /opt/conformite/data/dossiers_valides" | Out-Host
 $chemin = "\\wsl.localhost\$Distro\opt\conformite\data\dossiers_valides"
 Write-Host "Ouverture de : $chemin"
 Write-Host ""

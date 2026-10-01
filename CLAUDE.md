@@ -157,8 +157,12 @@ supporte déjà.
       vérification, mise à jour par .bundle, sauvegarde, redémarrage, clé),
       rapports datés sans couleurs ; sauvegarde nocturne programmée par
       l'installation (/etc/cron.d) et copiée dans C:\ConformiteDM\sauvegardes.
-      Règle : aucun guillemet double dans les commandes passées à wsl.exe
-      (PowerShell 5.1 ne les échappe pas). Testés avec un faux wsl.exe.
+      Règles : aucun guillemet double dans les commandes passées à wsl.exe
+      (PowerShell 5.1 ne les échappe pas) ; toujours `wsl.exe … --exec bash -lc`
+      (avec `--`, un shell intermédiaire supprime les « \ » et remplace les `$`)
+      et chemins Windows convertis en PowerShell (`Chemin-Linux`), jamais
+      par wslpath. Bug réel rencontré au 1er essai sur le PC de l'utilisateur
+      (Windows 11) : « unzip: cannot find C:conformite-install… ». Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
       extraction, installer_windows.ps1). Dépôt GitHub **public** : le serveur

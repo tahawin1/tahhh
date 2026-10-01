@@ -1,7 +1,7 @@
 ﻿# Affiche la clé d'accès au tableau de bord (à transmettre de vive voix uniquement).
 . (Join-Path $PSScriptRoot "_commun.ps1")
 Verifier-Ubuntu
-$cle = ((& wsl.exe -d $Distro -u root -- bash -lc "grep '^API_KEY=' /opt/conformite/.env | cut -d= -f2-") -join "").Trim()
+$cle = ((& wsl.exe -d $Distro -u root --exec bash -lc "grep '^API_KEY=' /opt/conformite/.env | cut -d= -f2-") -join "").Trim()
 Titre "Clé d'accès au tableau de bord"
 if (-not $cle) { Write-Host "Clé introuvable : l'installation est-elle terminée ?" -ForegroundColor Red; Fin 1 }
 Write-Host "  $cle" -ForegroundColor Yellow

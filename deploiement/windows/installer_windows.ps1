@@ -41,10 +41,20 @@ function Echec($t) { Write-Host "  [X]  $t" -ForegroundColor Red; exit 1 }
 
 # wsl.exe écrit en UTF-16 : on retire les caractères nuls pour pouvoir comparer
 function Wsl-Texte { param([string[]]$Arguments) ((& wsl.exe @Arguments) -join "`n") -replace "`0", "" }
+# Chemin Windows -> chemin Linux, calculé ici (pas de wslpath : un shell intermédiaire
+# supprimerait les « \ » du chemin Windows). C:\a\b -> /mnt/c/a/b
+function Chemin-Linux([string]$Chemin) {
+    if ($Chemin -notmatch '^[A-Za-z]:') { return $Chemin }   # déjà un chemin Linux (essais)
+    $p = [System.IO.Path]::GetFullPath($Chemin)
+    return "/mnt/" + $p.Substring(0, 1).ToLower() + ($p.Substring(2) -replace '\\', '/')
+}
+
 # Exécute une commande dans Ubuntu (root) : affiche sa sortie, renvoie SEULEMENT son code de retour
 function Dans-Ubuntu {
     param([string]$Commande)
-    & wsl.exe -d $Distro -u root -- bash -lc $Commande | Out-Host
+    # --exec : bash est lancé directement, sans shell intermédiaire qui réinterpréterait
+    # les « \ », « $ » et guillemets de la commande
+    & wsl.exe -d $Distro -u root --exec bash -lc $Commande | Out-Host
     return $LASTEXITCODE
 }
 
@@ -153,7 +163,7 @@ Titre "3. Copie du paquet dans Ubuntu (/opt/conformite)"
 if ((Dans-Ubuntu "test -d /opt/conformite/.git") -eq 0) {
     Ok "Déjà présent : conservé (mettre à jour avec scripts/mettre_a_jour.sh, voir la fiche §10)"
 } else {
-    $zipLinux = ((& wsl.exe -d $Distro -u root -- wslpath -a "$Zip") -join "").Trim()
+    $zipLinux = Chemin-Linux $Zip
     $code = Dans-Ubuntu "apt-get update -qq && apt-get install -y -qq unzip git curl >/dev/null && unzip -q '$zipLinux' -d /opt && test -d /opt/conformite/.git"
     if ($code -ne 0) { Echec "Décompression du paquet impossible dans Ubuntu." }
     Ok "Paquet décompressé dans /opt/conformite"

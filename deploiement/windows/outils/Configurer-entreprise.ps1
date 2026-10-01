@@ -36,7 +36,7 @@ $ok = Read-Host "Enregistrer ce profil ? (O/N)"
 if ($ok -notmatch "^[oOyY]") { Write-Host "Rien n'a été modifié."; Fin 0 }
 $tmp = Join-Path $Racine "entreprise.tmp.yaml"
 [System.IO.File]::WriteAllLines($tmp, $lignes, (New-Object System.Text.UTF8Encoding($false)))
-& wsl.exe -d $Distro -u root -- bash -lc "cp `$(wslpath -a '$tmp') /opt/conformite/config/entreprise.yaml && chmod 600 /opt/conformite/config/entreprise.yaml" | Out-Host
+& wsl.exe -d $Distro -u root --exec bash -lc "cp '$(Chemin-Linux $tmp)' /opt/conformite/config/entreprise.yaml && chmod 600 /opt/conformite/config/entreprise.yaml" | Out-Host
 $code = $LASTEXITCODE
 Remove-Item -Force $tmp -ErrorAction SilentlyContinue
 if ($code -eq 0) { Write-Host "Profil enregistré. Il sera utilisé pour les prochaines rédactions." -ForegroundColor Green }

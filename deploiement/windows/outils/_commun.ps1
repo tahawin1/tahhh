@@ -15,6 +15,14 @@ if (-not $Port) { $Port = "80" }
 $Rapports = Join-Path $Racine "rapports"
 New-Item -ItemType Directory -Force -Path $Rapports | Out-Null
 
+# Chemin Windows -> chemin Linux, calculé ici (pas de wslpath : un shell intermédiaire
+# supprimerait les « \ » du chemin Windows). C:\a\b -> /mnt/c/a/b
+function Chemin-Linux([string]$Chemin) {
+    if ($Chemin -notmatch '^[A-Za-z]:') { return $Chemin }   # déjà un chemin Linux (essais)
+    $p = [System.IO.Path]::GetFullPath($Chemin)
+    return "/mnt/" + $p.Substring(0, 1).ToLower() + ($p.Substring(2) -replace '\\', '/')
+}
+
 function Titre($t) { Write-Host ""; Write-Host "== $t" -ForegroundColor Cyan; Write-Host "" }
 
 function Fin([int]$Code = 0) {
@@ -43,8 +51,9 @@ function Executer-Dans-Ubuntu([string]$Nom, [string]$Commande) {
     # Aucun guillemet double dans la commande transmise : PowerShell 5.1 ne les
     # échappe pas en appelant wsl.exe (chemins sans espace, voir $Racine).
     $bash = "cd /opt/conformite && { $Commande ; } 2>&1 | tee /tmp/rapport_outil.txt; code=`${PIPESTATUS[0]}; " +
-            "sed -r 's/\x1b\[[0-9;]*m//g' /tmp/rapport_outil.txt > `$(wslpath -a '$fichier'); exit `$code"
-    & wsl.exe -d $Distro -u root -- bash -lc $bash | Out-Host
+            "sed -r 's/\x1b\[[0-9;]*m//g' /tmp/rapport_outil.txt > '$(Chemin-Linux $fichier)'; exit `$code"
+    # --exec : pas de shell intermédiaire (il remplacerait $code et ${PIPESTATUS[0]} avant bash)
+    & wsl.exe -d $Distro -u root --exec bash -lc $bash | Out-Host
     $code = $LASTEXITCODE
     Write-Host ""
     Write-Host "Rapport enregistré : $fichier"
