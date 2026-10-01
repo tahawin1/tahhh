@@ -57,5 +57,8 @@ $PYTHON src/ingest.py --source data/raw_pdfs/ue_mdr_2017-745.txt \
   --pays union_europeenne --type-document reglement --date-version 2026-06-29 \
   --texte-source "Règlement (UE) 2017/745 (MDR) - version consolidée (amendements M1 à M8, JO du 29.6.2026)"
 
+echo "=== États-Unis, Corée du Sud, Pakistan (si téléchargés) ==="
+bash scripts/indexer_textes_pays.sh
+
 echo ""
 echo "Indexation terminée."

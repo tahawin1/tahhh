@@ -1,0 +1,125 @@
+# Rapprochement des réglementations — sept pays, une grille commune.
+#
+# Pivot : les quatre niveaux de risque de l'IMDRF (ex-GHTF, document
+# GHTF/SG1/N77:2012 « Principles of Medical Devices Classification »), sur
+# lesquels la plupart des classifications nationales sont calquées.
+#
+# À QUOI SERT CE FICHIER : aider la personne qui monte un dossier à situer un
+# produit étranger (« classe 2 coréenne, c'est quoi au Maroc ? ») et à savoir
+# quel document du pays d'origine prouve la mise sur le marché.
+# CE QU'IL NE FAIT PAS : décider. La classe marocaine d'un dispositif se
+# détermine par les règles de classification marocaines (arrêté 2855-15),
+# et les pièces exigées par rules/maroc.yaml. Une correspondance de classe
+# est indicative : deux systèmes peuvent classer différemment le même produit.
+#
+# statut : verifie    = repris d'un fichier de règles établi sur le texte indexé
+#          provisoire = texte officiel pas encore indexé (voir
+#                       scripts/telecharger_textes_pays.sh) : à confronter au texte
+#
+# VERSION 1 — 2026-10-01.
+
+version: 1
+date_version: "2026-10-01"
+
+niveaux:
+  - id: A
+    libelle: "Risque faible"
+  - id: B
+    libelle: "Risque faible à modéré"
+  - id: C
+    libelle: "Risque modéré à élevé"
+  - id: D
+    libelle: "Risque élevé"
+
+pays:
+  maroc:
+    nom: "Maroc (destination)"
+    statut: verifie
+    autorite: "AMMPS"
+    texte: "Loi 84-12 ; décret 2-14-607 ; arrêté 2855-15"
+    classes: {A: [I, IS, IM, IR], B: [IIA], C: [IIB], D: [III]}
+    note_classes: "Classification calquée sur la directive 93/42/CEE (IR : voir rules/maroc.yaml 2.2)."
+    preuve_mise_sur_le_marche: "Certificat d'enregistrement AMMPS (5 ans)"
+    certificat_pour_export: null
+    systeme_qualite: "ISO 13485 exigé pour IIA, IIB, III (arrêté 2855-15)"
+    equivalence_etrangere: "Accepte les certificats étrangers comme pièce justificative (pièce 4)"
+  union_europeenne:
+    nom: "Union européenne"
+    statut: verifie
+    autorite: "Organismes notifiés + autorités compétentes"
+    texte: "Règlement (UE) 2017/745 (MDR)"
+    classes: {A: [I, Is, Im, Ir], B: [IIa], C: [IIb], D: [III]}
+    preuve_mise_sur_le_marche: "Certificat CE de l'organisme notifié (+ lettre de confirmation 2023/607 si certificat MDD expiré)"
+    certificat_pour_export: "Certificat de libre vente délivré par l'autorité compétente nationale (MDR, art. 60)"
+    systeme_qualite: "ISO 13485 / annexe IX du MDR"
+    equivalence_etrangere: "Aucune : évaluation de conformité UE complète obligatoire"
+  chine:
+    nom: "Chine"
+    statut: verifie
+    autorite: "NMPA"
+    texte: "Règlement du Conseil d'État n°739 (2021)"
+    classes: {A: [I], B: [II], C: [II, III], D: [III]}
+    note_classes: "Trois classes : le niveau C se répartit entre II et III selon le produit."
+    preuve_mise_sur_le_marche: "Certificat d'enregistrement NMPA (classes II, III) ou récépissé de déclaration (classe I)"
+    certificat_pour_export: "Certificat de vente libre (autorité délivrante à confirmer dans le règlement 739)"
+    systeme_qualite: "GMP chinoises des dispositifs médicaux"
+    equivalence_etrangere: "Équivalence étrangère pour II/III, sauf dispositif innovant non commercialisé ailleurs"
+  inde:
+    nom: "Inde"
+    statut: verifie
+    autorite: "CDSCO"
+    texte: "Medical Devices Rules 2017 et amendements"
+    classes: {A: [A], B: [B], C: [C], D: [D]}
+    preuve_mise_sur_le_marche: "Licence d'importation ou de fabrication CDSCO"
+    certificat_pour_export: "Free Sale Certificate (CDSCO / autorité de l'État)"
+    systeme_qualite: "Fifth Schedule des Medical Devices Rules 2017 (aligné ISO 13485)"
+    equivalence_etrangere: "Dispense d'essai clinique local si FSC d'un pays reconnu (AU, CA, JP, UE, UK, USA)"
+  etats_unis:
+    nom: "États-Unis"
+    statut: provisoire
+    autorite: "FDA (CDRH)"
+    texte: "FD&C Act ; 21 CFR 807, 814, 820, 860"
+    classes: {A: [I], B: [II], C: [II, III], D: [III]}
+    note_classes: "Trois classes : la plupart des dispositifs IIb européens sont en classe II, certains en III."
+    preuve_mise_sur_le_marche: "Lettre 510(k) (K…), approbation PMA (P…) ou décision De Novo (DEN…)"
+    certificat_pour_export: "Certificate to Foreign Government (CFG) de la FDA"
+    systeme_qualite: "21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)"
+    equivalence_etrangere: "Aucune : 510(k), PMA ou De Novo obligatoire"
+  coree_du_sud:
+    nom: "Corée du Sud"
+    statut: provisoire
+    autorite: "MFDS"
+    texte: "Medical Devices Act, décret et arrêté d'application"
+    classes: {A: ["1"], B: ["2"], C: ["3"], D: ["4"]}
+    preuve_mise_sur_le_marche: "Certificat de notification (grade 1), de certification ou d'autorisation MFDS"
+    certificat_pour_export: "Certificate of Free Sale du MFDS"
+    systeme_qualite: "KGMP (bonnes pratiques de fabrication coréennes)"
+    equivalence_etrangere: "À vérifier dans le texte indexé"
+  pakistan:
+    nom: "Pakistan"
+    statut: provisoire
+    autorite: "DRAP"
+    texte: "DRAP Act 2012 ; Medical Devices Rules 2017 (S.R.O. 32(I)/2018)"
+    classes: {A: [A], B: [B], C: [C], D: [D]}
+    preuve_mise_sur_le_marche: "Certificat d'enregistrement ou d'inscription (enlistment) DRAP"
+    certificat_pour_export: "Free Sale Certificate de la DRAP"
+    systeme_qualite: "Licence d'établissement DRAP (exigences qualité à confirmer dans le texte)"
+    equivalence_etrangere: "À vérifier dans le texte indexé"
+
+# Thèmes communs, pour comparer les textes indexés article par article
+# (recherche RAG par pays sur la même question).
+themes:
+  - id: classification
+    question: "règles de classification des dispositifs médicaux selon le risque"
+  - id: mise_sur_le_marche
+    question: "procédure d'autorisation ou d'enregistrement avant mise sur le marché"
+  - id: systeme_qualite
+    question: "exigences de système de management de la qualité du fabricant"
+  - id: libre_vente
+    question: "certificat de libre vente ou certificat pour l'exportation"
+  - id: representant
+    question: "représentant local, mandataire ou agent du fabricant étranger"
+  - id: etiquetage
+    question: "exigences d'étiquetage et langue de la notice"
+  - id: vigilance
+    question: "matériovigilance et déclaration des incidents"

@@ -1,0 +1,39 @@
+# Règles réglementaires — Corée du Sud (pays d'origine possible du fournisseur)
+# Sources (à indexer, voir scripts/telecharger_textes_pays.sh) :
+#   Medical Devices Act (의료기기법), Enforcement Decree, Enforcement Rule
+#   (traductions anglaises officielles MFDS / KLRI — non contraignantes)
+# Autorité : MFDS (Ministry of Food and Drug Safety)
+#
+# STATUT : PROVISOIRE (2026-10-01). Rédigé avant l'indexation des textes
+# officiels (sites bloqués depuis l'environnement de développement) : chaque
+# point est à confronter au texte indexé avant tout usage dans une décision.
+
+pays: coree_du_sud
+statut: provisoire
+date_version: "2026-10-01"
+autorite: "Ministry of Food and Drug Safety (MFDS)"
+classification: ["1", "2", "3", "4"]  # grades 1 (risque faible) à 4 (risque très élevé)
+
+mise_sur_le_marche_par_classe:
+  "1": "notification (신고)"
+  "2": "certification (인증) par un organisme désigné, ou autorisation MFDS selon le dispositif"
+  "3": "autorisation (허가) par le MFDS, avec revue du dossier technique"
+  "4": "autorisation (허가) par le MFDS, avec revue du dossier technique et des données cliniques"
+
+systeme_qualite:
+  texte: "KGMP — bonnes pratiques de fabrication coréennes (audit MFDS / organisme désigné)"
+  note: "exigé pour la mise sur le marché ; certificat KGMP à demander au fabricant"
+
+preuve_mise_sur_le_marche:
+  document: "certificat de notification, de certification ou d'autorisation MFDS"
+  certificat_exportation: "certificat de libre vente (Certificate of Free Sale) délivré par le MFDS"
+
+representant_local_requis: true
+representant_local_nom: "titulaire coréen de l'autorisation (fabricant étranger : importateur ou représentant agréé)"
+
+contraintes_operationnelles:
+  langue_etiquetage: [coreen]
+
+notes:
+  - "Quatre grades, proches des classes A à D de l'IMDRF."
+  - "Documents en coréen : traduction assermentée nécessaire pour le dossier marocain."

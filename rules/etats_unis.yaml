@@ -1,0 +1,47 @@
+# Règles réglementaires — États-Unis (pays d'origine possible du fournisseur)
+# Sources (à indexer, voir scripts/telecharger_textes_pays.sh) :
+#   Federal Food, Drug, and Cosmetic Act (FD&C Act), sections 510, 513, 515, 801
+#   21 CFR 807 (enregistrement, listing, 510(k)), 814 (PMA), 820 (QMSR),
+#   860 (classification), 801 (étiquetage)
+# Autorité : FDA (Food and Drug Administration) — CDRH
+#
+# STATUT : PROVISOIRE (2026-10-01). Rédigé avant l'indexation des textes
+# officiels (sites bloqués depuis l'environnement de développement) : chaque
+# point est à confronter au texte indexé avant tout usage dans une décision.
+#
+# Usage principal dans ce projet : identifier la pièce justificative
+# américaine (autorisation FDA + certificat d'exportation) exigée par le
+# Maroc pour un fournisseur américain (voir rules/maroc.yaml).
+
+pays: etats_unis
+statut: provisoire
+date_version: "2026-10-01"
+autorite: "Food and Drug Administration (FDA) — Center for Devices and Radiological Health (CDRH)"
+classification: [I, II, III]
+
+mise_sur_le_marche_par_classe:
+  I: "la plupart exemptés de 510(k) ; enregistrement de l'établissement et listing (21 CFR 807)"
+  II: "notification préalable 510(k) (équivalence substantielle à un dispositif déjà commercialisé), sauf exemption"
+  III: "autorisation préalable PMA (21 CFR 814) ; De Novo pour un dispositif nouveau à risque faible ou modéré"
+
+systeme_qualite:
+  texte: "21 CFR 820 — Quality Management System Regulation (QMSR)"
+  note: "intègre la norme ISO 13485:2016 par référence (en vigueur depuis le 2 février 2026)"
+
+preuve_mise_sur_le_marche:
+  document: "lettre d'autorisation 510(k), approbation PMA ou décision De Novo (numéro K…, P…, DEN…)"
+  certificat_exportation: "Certificate to Foreign Government (CFG) délivré par la FDA (base : FD&C Act, section 801(e)(4))"
+
+equivalence_etrangere:
+  acceptee: false
+  note: "La FDA n'accepte pas d'autorisation étrangère à la place d'un 510(k) ou d'une PMA."
+
+representant_local_requis: true
+representant_local_nom: "US Agent (fabricant étranger, 21 CFR 807.40)"
+
+contraintes_operationnelles:
+  langue_etiquetage: [anglais]
+
+notes:
+  - "Trois classes seulement : la classe II américaine couvre à la fois des dispositifs IIa et IIb européens."
+  - "Utilisé dans ce projet surtout comme SOURCE de l'autorisation FDA et du CFG à fournir au dossier marocain."

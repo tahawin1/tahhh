@@ -183,7 +183,7 @@ def resume_regles_pays(pays: str) -> str:
 
 if __name__ == "__main__":
     # Démonstration rapide en ligne de commande
-    for pays_origine in ["chine", "inde", "union_europeenne", "autre"]:
+    for pays_origine in ["chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan", "autre"]:
         print(f"\n=== Dossier Maroc — fournisseur : {pays_origine} ===")
         for doc in documents_requis_maroc(pays_origine, classe="IIB"):
             flags = []

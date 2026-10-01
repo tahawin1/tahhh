@@ -5,16 +5,18 @@ import Connexion, { type Session } from './pages/Connexion'
 import Accueil from './pages/ListeDossiers'
 import NouveauDossier from './pages/NouveauDossier'
 import DetailDossier from './pages/DetailDossier'
+import Correspondances from './pages/Correspondances'
 
 // Navigation par ancre (#/dossiers/3) : fonctionne sur n'importe quel
 // hébergement statique, sans configuration de réécriture d'URL.
-type Route = { vue: 'liste' } | { vue: 'nouveau' } | { vue: 'dossier'; id: number }
+type Route = { vue: 'liste' } | { vue: 'nouveau' } | { vue: 'correspondances' } | { vue: 'dossier'; id: number }
 
 function lireRoute(): Route {
   const h = window.location.hash
   const m = h.match(/^#\/dossiers\/(\d+)/)
   if (m) return { vue: 'dossier', id: Number(m[1]) }
   if (h.startsWith('#/nouveau')) return { vue: 'nouveau' }
+  if (h.startsWith('#/correspondances')) return { vue: 'correspondances' }
   return { vue: 'liste' }
 }
 
@@ -143,6 +145,9 @@ export default function App() {
           <a href="#/nouveau" className={actif === 'nouveau' ? 'actif' : ''} aria-current={actif === 'nouveau' ? 'page' : undefined}>
             <Icone nom="plus" /> <span>Nouveau dossier</span>
           </a>
+          <a href="#/correspondances" className={actif === 'correspondances' ? 'actif' : ''} aria-current={actif === 'correspondances' ? 'page' : undefined}>
+            <Icone nom="monde" /> <span>Correspondances pays</span>
+          </a>
         </nav>
         <div className="lateral-bas">
           <EtatServeur sante={sante} erreur={santeErreur} />
@@ -161,6 +166,8 @@ export default function App() {
         <main className="page">
           {route.vue === 'nouveau' ? (
             <NouveauDossier session={session} />
+          ) : route.vue === 'correspondances' ? (
+            <Correspondances />
           ) : route.vue === 'dossier' ? (
             <DetailDossier id={route.id} session={session} />
           ) : (

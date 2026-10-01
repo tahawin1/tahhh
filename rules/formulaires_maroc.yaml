@@ -134,16 +134,16 @@ donnees:
   ce_numero:
     libelle: "Numéro du certificat de marquage CE"
     sources: ["piece:piece_specifique:numero"]
-    na_si_origine: [chine, inde, autre]
+    na_si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
   ce_validite:
     libelle: "Date du certificat CE (valable jusqu'au)"
     format: date
     sources: ["piece:piece_specifique:date_expiration"]
-    na_si_origine: [chine, inde, autre]
+    na_si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
   ce_organisme:
     libelle: "Code de l'organisme notifié"
     sources: ["piece:piece_specifique:numero_organisme_notifie"]
-    na_si_origine: [chine, inde, autre]
+    na_si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
   cvl_numero:
     libelle: "Numéro du certificat de vente libre ou équivalent dans le pays d'origine"
     sources: ["piece:piece_specifique:numero"]

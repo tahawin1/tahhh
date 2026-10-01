@@ -108,7 +108,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-PaysOrigine = Literal["chine", "inde", "union_europeenne", "autre"]
+PaysOrigine = Literal["chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan", "autre"]
 Classe = Literal["I", "IS", "IM", "IR", "IIA", "IIB", "III"]  # IS : stérile ; IM : mesurage ; IR : réutilisable
 
 
@@ -348,13 +348,37 @@ def health():
 def liste_pays():
     """Liste les pays dont les règles sont chargées, avec un résumé de chacun."""
     resultat = {}
-    for pays in ["maroc", "chine", "inde", "union_europeenne"]:
+    for pays in ["maroc", "chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan"]:
         regles = charger_regles(pays)
         resultat[pays] = {
             "autorite": regles["autorite"],
             "classification": regles["classification"],
+            "statut": regles.get("statut", "verifie"),  # provisoire : texte officiel pas encore indexé
         }
     return resultat
+
+
+@app.get("/correspondances")
+def correspondances():
+    """Rapprochement des sept réglementations (grille IMDRF A à D) — indicatif, ne décide rien."""
+    import correspondances as c
+
+    return c.tableau()
+
+
+@app.get("/correspondances/comparer/{theme}")
+def comparer_textes(theme: str):
+    """Extraits des textes officiels indexés de chaque pays sur un même thème (RAG)."""
+    import correspondances as c
+
+    try:
+        from generate import GenerateurDocuments
+
+        return c.comparer(theme, GenerateurDocuments())
+    except KeyError:
+        raise HTTPException(status_code=404, detail=f"Thème inconnu : {theme}")
+    except Exception as e:  # Qdrant ou Ollama indisponible
+        raise HTTPException(status_code=503, detail=f"Recherche dans les textes impossible : {type(e).__name__}: {e}")
 
 
 @app.post("/dossiers/documents-requis", response_model=DossierDocumentsReponse)

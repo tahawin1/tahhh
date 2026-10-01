@@ -206,7 +206,7 @@ class Indexeur:
 def main():
     parser = argparse.ArgumentParser(description="Indexe un texte réglementaire dans Qdrant")
     parser.add_argument("--source", required=True, help="Chemin du fichier PDF ou TXT")
-    parser.add_argument("--pays", required=True, choices=["maroc", "chine", "inde", "union_europeenne"])
+    parser.add_argument("--pays", required=True, choices=["maroc", "chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan", "international"])
     parser.add_argument("--type-document", required=True, choices=["loi", "decret", "arrete", "reglement", "annexe_technique"])
     parser.add_argument("--date-version", required=True, help="Date de la version du texte, format AAAA-MM-JJ")
     parser.add_argument("--texte-source", help="Nom lisible du texte (ex: 'Loi 84-12')")

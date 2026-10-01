@@ -17,6 +17,9 @@ const ORIGINES = [
   { id: 'chine', autorite: 'Certificat NMPA' },
   { id: 'inde', autorite: 'Certificat CDSCO' },
   { id: 'union_europeenne', autorite: 'Marquage CE' },
+  { id: 'etats_unis', autorite: 'FDA : 510(k) / PMA + CFG' },
+  { id: 'coree_du_sud', autorite: 'MFDS + certificat de libre vente' },
+  { id: 'pakistan', autorite: 'DRAP + certificat de libre vente' },
   { id: 'autre', autorite: 'Certificat de libre vente' },
 ]
 

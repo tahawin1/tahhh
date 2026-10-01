@@ -75,6 +75,9 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 | Chine (origine possible) | Règlement du Conseil d'État n°739 (2021) | NMPA | `rules/chine.yaml` |
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
+| États-Unis (origine possible) | FD&C Act ; 21 CFR 807, 814, 820, 860 | FDA | `rules/etats_unis.yaml` (provisoire) |
+| Corée du Sud (origine possible) | Medical Devices Act | MFDS | `rules/coree_du_sud.yaml` (provisoire) |
+| Pakistan (origine possible) | Medical Devices Rules 2017 (S.R.O. 32(I)/2018) | DRAP | `rules/pakistan.yaml` (provisoire) |
 
 ### Différence clé entre les 4 systèmes (à respecter dans le rule engine)
 - **Maroc** accepte les certificats étrangers (CE, NMPA, CDSCO) comme pièce
@@ -231,6 +234,18 @@ supporte déjà.
       l'utilisateur) — règles Maroc 2.2 : absente de l'arrêté 2855-15, traitée
       comme Is/Im (certificat CE exigé, pas d'ISO 13485) ; à confirmer auprès
       de l'AMMPS. Tuile dans l'interface, « Ir » dans les formulaires.
+- [x] Origines États-Unis, Corée du Sud, Pakistan (règles Maroc 2.3 : pièce 4
+      = autorisation + certificat de libre vente du pays : CFG FDA, MFDS, DRAP) ;
+      `rules/etats_unis.yaml`, `coree_du_sud.yaml`, `pakistan.yaml` **provisoires**
+      (rédigés avant indexation : sites officiels bloqués depuis l'environnement
+      de développement). Rapprochement des 7 pays (`rules/correspondances.yaml`,
+      pivot IMDRF A–D, indicatif, ne décide rien ; page « Correspondances pays »,
+      comparaison RAG des textes par thème). Téléchargement + OCR :
+      `scripts/telecharger_textes_pays.sh` (eCFR 21 CFR 801/807/814/820/860,
+      Medical Devices Act coréen, Medical Devices Rules 2017 DRAP, GHTF N77),
+      textes extraits dans `data/raw_pdfs/textes/`, indexation
+      `scripts/indexer_textes_pays.sh`. À faire : exécuter le téléchargement
+      (domaines à autoriser), confronter les YAML provisoires aux textes.
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
       préparées (jamais envoyées sans validation)

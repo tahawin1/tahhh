@@ -23,9 +23,15 @@
 #   comme Is et Im (certificat CE ou équivalent exigé, l'organisme notifié
 #   n'intervenant que sur la réutilisation ; pas d'ISO 13485 exigé, comme pour
 #   la classe I). Traitement à confirmer auprès de l'AMMPS.
+# 2.3 — 2026-10-01 : origines États-Unis, Corée du Sud et Pakistan (demandées
+#   par l'utilisateur). Même exigence marocaine que « autre » (certificat de
+#   libre vente du pays d'origine, art. 2 (1)), avec le nom du document propre
+#   à chaque pays (rules/etats_unis.yaml, coree_du_sud.yaml, pakistan.yaml,
+#   encore provisoires : textes à indexer). Rapprochement des sept pays :
+#   rules/correspondances.yaml.
 
 pays: maroc
-version: 2.2
+version: 2.3
 date_version: "2026-10-01"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
@@ -293,6 +299,46 @@ piece_specifique_selon_origine:
         description: "classe du dispositif indiquée sur le certificat"
     traduction_requise: false
     legalisation_requise: false
+    classes_concernees: *classes_certificat
+  etats_unis:
+    numero: 4
+    document: "Autorisation FDA (lettre 510(k), approbation PMA ou décision De Novo) + Certificate to Foreign Government (CFG) de la FDA"
+    nature: a_fournir
+    fourni_par: "la FDA (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document américain : rules/etats_unis.yaml (provisoire)"
+    remarque: >-
+      Classes américaines I à III : la classe II couvre des dispositifs IIa et
+      IIb (voir le rapprochement des pays). Le CFG atteste la libre vente aux
+      États-Unis ; joindre aussi la lettre d'autorisation (K…, P… ou DEN…).
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_certificat
+  coree_du_sud:
+    numero: 4
+    document: "Certificat d'autorisation, de certification ou de notification MFDS + certificat de libre vente (Certificate of Free Sale) du MFDS"
+    nature: a_fournir
+    fourni_par: "le MFDS (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document coréen : rules/coree_du_sud.yaml (provisoire)"
+    remarque: >-
+      Grades coréens 1 à 4, proches des classes I, IIa, IIb, III. Documents
+      en coréen : traduction assermentée en français.
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
+    classes_concernees: *classes_certificat
+  pakistan:
+    numero: 4
+    document: "Certificat d'enregistrement ou d'inscription DRAP + certificat de libre vente (Free Sale Certificate) de la DRAP"
+    nature: a_fournir
+    fourni_par: "la DRAP (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document pakistanais : rules/pakistan.yaml (provisoire)"
+    remarque: >-
+      Classes pakistanaises A à D (alignées sur l'IMDRF), proches des classes
+      I, IIa, IIb, III.
+    champs_a_extraire: *champs_autorisation
+    traduction_requise: true
+    legalisation_requise: true
     classes_concernees: *classes_certificat
   autre:
     numero: 4

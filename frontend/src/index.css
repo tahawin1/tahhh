@@ -143,6 +143,9 @@ input:focus, textarea:focus, select:focus { outline: none; border-color: var(--a
 .puce-pays.rouge { background: var(--rouge-pays); }
 .puce-pays.safran { background: var(--safran-pays); }
 .puce-pays.bleu { background: var(--bleu-pays); }
+.puce-pays.marine { background: #1f3a5f; }
+.puce-pays.ardoise { background: #5b4b8a; }
+.puce-pays.vert { background: #1d6b45; }
 .puce-pays.gris { background: var(--neutre); }
 
 .message { padding: 0.7rem 0.9rem; border-radius: 10px; font-size: 0.9rem; }
@@ -518,3 +521,22 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .projet .ligne-formulaire span:first-child { font-weight: 600; }
 .projet .ligne-formulaire.vide span:last-child { background: #fde68a; color: #1f2937; }
 @media (max-width: 560px) { .projet .ligne-formulaire { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+/* Correspondances entre pays */
+.correspondances { display: grid; gap: 1.2rem; }
+.defilement { overflow-x: auto; margin: 0.6rem 0; -webkit-overflow-scrolling: touch; }
+.grille-pays { border-collapse: collapse; min-width: 900px; width: 100%; font-size: 0.85rem; }
+.grille-pays th, .grille-pays td { border: 1px solid var(--bordure); padding: 0.5rem 0.6rem; vertical-align: top; text-align: left; }
+.grille-pays thead th { background: var(--surface-2); }
+.grille-pays tbody th { background: var(--surface-2); width: 12rem; }
+.grille-pays tbody th small { display: block; color: var(--secondaire); font-weight: 400; }
+.entete-pays { display: inline-flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.entete-pays .pastille { font-size: 0.68rem; }
+.notes-pays { margin: 0.4rem 0 0; padding-left: 1.1rem; font-size: 0.85rem; color: var(--secondaire); }
+.choix-theme { display: grid; gap: 0.3rem; max-width: 520px; margin: 0.6rem 0; }
+.comparaison { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0.9rem; }
+.extraits-pays { border: 1px solid var(--bordure); border-radius: 10px; padding: 0.8rem; min-width: 0; }
+.extraits-pays h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.extraits-pays blockquote { margin: 0 0 0.6rem; padding-left: 0.7rem; border-left: 3px solid var(--bordure); font-size: 0.82rem; }
+.extraits-pays blockquote p { white-space: pre-line; overflow-wrap: anywhere; max-height: 14rem; overflow: auto; margin: 0; }
+.extraits-pays footer { color: var(--secondaire); font-size: 0.75rem; margin-top: 0.3rem; }

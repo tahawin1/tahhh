@@ -57,7 +57,7 @@ def profil_entreprise() -> dict:
 DESTINATAIRE = charger_regles("maroc").get("destinataire_demande", "[À COMPLÉTER : destinataire]")
 
 # Pays dont les textes sont indexés dans Qdrant (voir scripts/indexer_tout.sh)
-PAYS_INDEXES = {"maroc", "chine", "inde", "union_europeenne"}
+PAYS_INDEXES = {"maroc", "chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan"}
 
 MENTION_VALIDATION = (
     "PROJET GÉNÉRÉ AUTOMATIQUEMENT — EN ATTENTE DE VALIDATION HUMAINE. "
@@ -403,7 +403,7 @@ def _slug(texte: str) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description="Génère un dossier de conformité complet")
-    parser.add_argument("--pays-origine", required=True, choices=["chine", "inde", "union_europeenne", "autre"])
+    parser.add_argument("--pays-origine", required=True, choices=["chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan", "autre"])
     parser.add_argument("--produit", required=True)
     parser.add_argument("--classe", default=None, choices=["I", "IS", "IM", "IR", "IIA", "IIB", "III"])
     args = parser.parse_args()

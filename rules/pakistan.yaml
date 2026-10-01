@@ -1,0 +1,39 @@
+# Règles réglementaires — Pakistan (pays d'origine possible du fournisseur)
+# Sources (à indexer, voir scripts/telecharger_textes_pays.sh) :
+#   DRAP Act 2012 ; Medical Devices Rules 2017 (S.R.O. 32(I)/2018 du
+#   16-01-2018, version mise à jour jusqu'en avril 2022, publiée par la DRAP)
+# Autorité : DRAP (Drug Regulatory Authority of Pakistan) — division des
+# dispositifs médicaux
+#
+# STATUT : PROVISOIRE (2026-10-01). Rédigé avant l'indexation des textes
+# officiels (sites bloqués depuis l'environnement de développement) : chaque
+# point est à confronter au texte indexé avant tout usage dans une décision.
+
+pays: pakistan
+statut: provisoire
+date_version: "2026-10-01"
+autorite: "Drug Regulatory Authority of Pakistan (DRAP)"
+classification: [A, B, C, D]  # classement fondé sur les principes GHTF/IMDRF
+
+mise_sur_le_marche_par_classe:
+  A: "enlistment (inscription) — à vérifier dans les Medical Devices Rules 2017"
+  B: "enlistment (inscription) — à vérifier dans les Medical Devices Rules 2017"
+  C: "registration (enregistrement) — à vérifier dans les Medical Devices Rules 2017"
+  D: "registration (enregistrement) — à vérifier dans les Medical Devices Rules 2017"
+
+systeme_qualite:
+  texte: "licence d'établissement (fabrication ou importation) délivrée par la DRAP"
+  note: "exigences de système qualité à confirmer dans les Medical Devices Rules 2017"
+
+preuve_mise_sur_le_marche:
+  document: "certificat d'enregistrement ou d'inscription DRAP"
+  certificat_exportation: "certificat de libre vente (Free Sale Certificate) délivré par la DRAP"
+
+representant_local_requis: true
+representant_local_nom: "importateur titulaire d'une licence DRAP (fabricant étranger)"
+
+contraintes_operationnelles:
+  langue_etiquetage: [anglais]
+
+notes:
+  - "Classes A à D, alignées sur l'IMDRF (comme l'Inde)."

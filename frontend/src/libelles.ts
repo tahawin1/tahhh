@@ -4,6 +4,9 @@ export const PAYS: Record<string, string> = {
   chine: 'Chine',
   inde: 'Inde',
   union_europeenne: 'Union européenne',
+  etats_unis: 'États-Unis',
+  coree_du_sud: 'Corée du Sud',
+  pakistan: 'Pakistan',
   autre: 'Autre pays',
   maroc: 'Maroc',
 }
@@ -13,6 +16,9 @@ export const PAYS_PUCE: Record<string, { code: string; teinte: string }> = {
   chine: { code: 'CN', teinte: 'rouge' },
   inde: { code: 'IN', teinte: 'safran' },
   union_europeenne: { code: 'UE', teinte: 'bleu' },
+  etats_unis: { code: 'US', teinte: 'marine' },
+  coree_du_sud: { code: 'KR', teinte: 'ardoise' },
+  pakistan: { code: 'PK', teinte: 'vert' },
   autre: { code: '··', teinte: 'gris' },
 }
 

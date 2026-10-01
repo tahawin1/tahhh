@@ -170,6 +170,33 @@ export interface DonneesDispositif {
   a_completer: number
 }
 
+export interface PaysCorrespondance {
+  id: string
+  nom: string
+  statut: 'verifie' | 'provisoire'
+  autorite: string
+  texte: string
+  classes: Record<string, string[]>
+  note_classes?: string
+  preuve_mise_sur_le_marche: string
+  certificat_pour_export: string | null
+  systeme_qualite: string
+  equivalence_etrangere: string
+}
+
+export interface Correspondances {
+  version: number
+  date_version: string
+  niveaux: { id: string; libelle: string }[]
+  pays: PaysCorrespondance[]
+  themes: { id: string; question: string }[]
+}
+
+export interface Comparaison {
+  theme: { id: string; question: string }
+  pays: Record<string, (Source & { texte: string })[]>
+}
+
 export interface Affectation {
   fichier: string
   piece: number | null
@@ -278,6 +305,8 @@ export const api = {
       method: 'POST', headers: enTetes(), body: donnees,
     })
   },
+  correspondances: () => requete<Correspondances>('/correspondances', { headers: enTetes() }),
+  comparer: (theme: string) => requete<Comparaison>(`/correspondances/comparer/${theme}`, { headers: enTetes() }),
   donnees: (id: number) => requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, { headers: enTetes() }),
   enregistrerDonnees: (id: number, acteur: string, valeurs: Record<string, string>) =>
     requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, {

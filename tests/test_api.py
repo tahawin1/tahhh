@@ -120,6 +120,17 @@ class TestApi(unittest.TestCase):
         self.assertEqual(d["classe"], "IR")
         self.assertIn("piece_specifique_union_europeenne", [x["code"] for x in d["documents"]])
 
+    def test_correspondances_et_nouvelles_origines(self):
+        r = self.client.get("/correspondances")
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(len(r.json()["pays"]), 7)
+        pays = self.client.get("/pays").json()
+        self.assertEqual(pays["coree_du_sud"]["statut"], "provisoire")
+        self.assertEqual(pays["maroc"]["statut"], "verifie")
+        d = self.creer(pays="etats_unis")
+        self.assertIn("piece_specifique_etats_unis", [x["code"] for x in d["documents"]])
+        self.assertEqual(self.client.get("/correspondances/comparer/inconnu").status_code, 404)
+
     def test_generation_ne_redige_que_les_pieces_a_rediger(self):
         d = self.creer()
         r = self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
