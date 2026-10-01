@@ -9,6 +9,7 @@
 #   piece_maroc / numero : pièce correspondante de rules/maroc.yaml (null : nouvelle)
 #   fondement            : texte qui fonde l'exigence (ou « pratique »)
 #   rapprochement        : conforme | ecart_classes (classes différentes de la loi)
+#                          | valide_entreprise (écart tranché par l'entreprise, voir decisions)
 #                          | nouveau_complement (complément d'une pièce existante)
 #                          | nouveau_conditionnel (pièce nouvelle sous condition)
 #                          | a_preciser
@@ -20,7 +21,24 @@
 version: 1
 date_version: '2026-10-01'
 source: Checklist interne de vérification des dossiers réglementaires (fichier Excel transmis le 2026-10-01)
-statut: a_valider
+statut: a_valider  # décisions déjà prises : voir `decisions`
+decisions:  # réponses de l'entreprise aux écarts (2026-10-01), appliquées dans rules/maroc.yaml 2.4
+  - id: iso_toutes_classes
+    reponse: "ISO 13485 exigé pour toutes les classes"
+    applique: "maroc.yaml 2.4 (iso_13485 sans restriction de classe)"
+  - id: valeur_unitaire
+    reponse: "échantillon sous 500 $, facture pro-forma à partir de 500 $ ; valeur saisie à la création du dossier"
+    applique: "maroc.yaml 2.4 (echantillon_modele_vente, facture_proforma, si_valeur_usd)"
+  - id: equipement
+    reponse: "case « équipement médical » à la création du dossier"
+    applique: "maroc.yaml 2.4 (note_descriptive, documentation_technique, manuel_utilisation, si_equipement)"
+  - {id: fsc_toutes_classes, reponse: null, question: "FSC exigé pour quelles origines (le dossier UE accepté n'en avait pas) et pour la classe I ?"}
+  - {id: classe_iii_complements, reponse: null, question: "CE Design (MDD) / certificat d'évaluation de la documentation technique (MDR) en complément de la pièce 4 ?"}
+  - {id: etude_clinique_hors_ue, reponse: null, question: "Étude clinique exigée pour IIb/III quand il n'y a pas de certificat CE (origines hors UE) ?"}
+  - {id: lettre_de_lien, reponse: null, question: "Lettre de lien : quand le fournisseur n'est pas le fabricant ?"}
+  - {id: declaration_societe, reponse: null, question: "Déclaration de la société : contenu, modèle ?"}
+  - {id: quittance, reponse: null, question: "Quittance des droits : exigée par l'arrêté 2855-15 mais absente de la checklist et du dossier accepté ?"}
+  - {id: numerotation, reponse: null, question: "Numéros des nouvelles pièces (10 à 13, 15 libres) ?"}
 documents:
 - id: lettre_d_autorisation
   nom: Lettre d'autorisation
@@ -154,7 +172,7 @@ documents:
   numero: 5
   fondement: 'Arrêté 2855-15, art. 2 (1) a) : « certificat ISO13485 ou équivalent » pour les classes IIa, IIb et III ; arrêté
     2856-15, art. 3 (NM ISO 13485)'
-  rapprochement: ecart_classes
+  rapprochement: valide_entreprise
   elements:
   - texte: Nom et adresse du fabricant
     controle: lecture
@@ -463,7 +481,7 @@ documents:
   piece_maroc: null
   numero: null
   fondement: Arrêté 2855-15, art. 2 (1) b) (notice) — équipements
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements:
   - texte: Identification du fabricant (nom, adresse)
     controle: lecture
@@ -583,7 +601,7 @@ documents:
   piece_maroc: echantillon
   numero: 9
   fondement: 'Arrêté 2855-15, art. 2 (1) b) : échantillon modèle-vente ou prototype, sauf équipement médical'
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements:
   - texte: Correspondance avec la référence produit / dossier technique
     controle: humain
@@ -613,7 +631,7 @@ documents:
   piece_maroc: null
   numero: null
   fondement: 'Pratique (non citée par l''arrêté) : remplace l''échantillon pour un produit de plus de 500 $'
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements:
   - texte: Identité du vendeur (nom, adresse, contact)
     controle: lecture
@@ -728,7 +746,7 @@ documents:
   piece_maroc: null
   numero: null
   fondement: Équipements — non cité pour un DM importé par l'arrêté 2855-15
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements: []
 - id: documentation_technique
   nom: Documentation technique
@@ -745,7 +763,7 @@ documents:
   numero: null
   fondement: 'Arrêté 2855-15, art. 2 (1) : documentation technique avec check-list des exigences essentielles « peut être
     demandée » au cours de l''évaluation'
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements: []
 - id: certificat_d_enregistrement
   nom: Certificat d'enregistrement

@@ -26,7 +26,7 @@ from __future__ import annotations
 import datetime
 import os
 
-from sqlalchemy import JSON, Boolean, DateTime, ForeignKey, Integer, String, Text, create_engine, inspect, text
+from sqlalchemy import JSON, Boolean, DateTime, Float, ForeignKey, Integer, String, Text, create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship, sessionmaker
 
 DATABASE_URL = os.environ.get(
@@ -56,6 +56,8 @@ class Dossier(Base):
     pays_destination: Mapped[str] = mapped_column(String(40), default="maroc")
     classe: Mapped[str | None] = mapped_column(String(10), nullable=True)
     fournisseur: Mapped[str | None] = mapped_column(String(300), nullable=True)
+    equipement: Mapped[bool | None] = mapped_column(Boolean, nullable=True)  # équipement médical (checklist)
+    valeur_unitaire_usd: Mapped[float | None] = mapped_column(Float, nullable=True)  # échantillon < 500 $ <= pro-forma
     regles_version: Mapped[str] = mapped_column(String(20))
     dossier_sortie: Mapped[str] = mapped_column(String(500))
     cree_par: Mapped[str] = mapped_column(String(120))

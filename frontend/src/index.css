@@ -543,3 +543,6 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .parcours-pays { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.35rem; font-size: 0.9rem; }
 .parcours-pays li.origine { font-weight: 600; }
 .grille-pays tbody th { font-weight: 600; }
+.case-a-cocher { display: flex !important; align-items: flex-start; gap: 0.6rem; }
+.case-a-cocher input { width: auto; margin-top: 0.25rem; }
+.case-a-cocher small { display: block; color: var(--secondaire); font-weight: 400; }

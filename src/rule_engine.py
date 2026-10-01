@@ -92,7 +92,21 @@ def _classe_concernee(regle: dict, classe: str | None) -> bool:
     return not (classes and classe and classe not in classes)
 
 
-def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None) -> list[DocumentRequis]:
+def _condition_dossier(regle: dict, equipement: bool, valeur_usd: float | None) -> bool:
+    """Conditions de la checklist (décisions de l'entreprise) : équipement
+    médical ou non, valeur unitaire du produit."""
+    if "si_equipement" in regle and bool(regle["si_equipement"]) != bool(equipement):
+        return False
+    seuil = regle.get("si_valeur_usd") or {}
+    if "min" in seuil and (valeur_usd is None or valeur_usd < seuil["min"]):
+        return False
+    if "max" in seuil and valeur_usd is not None and valeur_usd >= seuil["max"]:
+        return False
+    return True
+
+
+def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None,
+                           equipement: bool = False, valeur_usd: float | None = None) -> list[DocumentRequis]:
     """
     Cas A du projet : dossier destiné au Maroc, produit venant d'un pays
     étranger (chine / inde / union_europeenne / autre).
@@ -106,7 +120,9 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
         # faisait passer la classe "I" dans "classes IIA, IIB, III").
         # Classe inconnue -> document conservé (choix prudent).
         if not _classe_concernee(doc, classe):
-            continue  # ex: ISO 13485 seulement pour IIA/IIB/III
+            continue  # ex: certificat CE seulement pour IS/IM/IR/IIA/IIB/III
+        if not _condition_dossier(doc, equipement, valeur_usd):
+            continue  # ex: échantillon (< 500 $, hors équipement) ou pro-forma (>= 500 $)
         documents.append(
             DocumentRequis(
                 id=doc["id"],
@@ -117,7 +133,10 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None)
                 consigne_redaction=doc.get("consigne_redaction"),
                 champs_a_extraire=_champs(doc, f"socle_commun.{doc['id']}"),
                 numero=doc.get("numero"),
-                remarque=doc.get("remarque"),
+                remarque=doc.get("remarque") or (
+                    "Valeur unitaire du produit non saisie : échantillon retenu par défaut ; "
+                    f"à partir de {doc['si_valeur_usd']['max']} $, c'est la facture pro-forma qui est demandée."
+                    if valeur_usd is None and "max" in (doc.get("si_valeur_usd") or {}) else None),
                 source=doc.get("source"),
             )
         )

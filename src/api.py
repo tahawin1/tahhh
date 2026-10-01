@@ -132,6 +132,8 @@ class DossierRequete(BaseModel):
     pays_origine: PaysOrigine
     produit: str = Field(min_length=1, max_length=300)
     classe: Classe | None = None
+    equipement: bool = False  # équipement médical : note descriptive, documentation technique, manuel
+    valeur_unitaire_usd: float | None = Field(default=None, ge=0, le=10_000_000)  # échantillon / pro-forma
 
 
 class DossierDocumentsReponse(BaseModel):
@@ -199,6 +201,8 @@ class DossierResume(BaseModel):
     pays_destination: str
     classe: str | None
     fournisseur: str | None
+    equipement: bool | None = None
+    valeur_unitaire_usd: float | None = None
     cree_par: str
     cree_le: datetime.datetime
     regles_version: str
@@ -259,6 +263,8 @@ def _resume(dossier: Dossier) -> dict:
         "pays_destination": dossier.pays_destination,
         "classe": dossier.classe,
         "fournisseur": dossier.fournisseur,
+        "equipement": dossier.equipement,
+        "valeur_unitaire_usd": dossier.valeur_unitaire_usd,
         "cree_par": dossier.cree_par,
         "cree_le": dossier.cree_le,
         "regles_version": dossier.regles_version,
@@ -292,7 +298,12 @@ def _detail(dossier: Dossier) -> dict:
 
 @functools.lru_cache(maxsize=64)
 def _champs_regles(pays_origine: str, classe: str | None, empreinte: str) -> dict[str, list[dict]]:
-    return {d.id: d.champs_a_extraire for d in documents_requis_maroc(pays_origine, classe=classe)}
+    champs = {}
+    for equipement in (False, True):  # toutes les pièces possibles, quelles que soient les conditions
+        for valeur in (0, 10_000):
+            champs.update({d.id: d.champs_a_extraire for d in documents_requis_maroc(
+                pays_origine, classe=classe, equipement=equipement, valeur_usd=valeur)})
+    return champs
 
 
 def _champs_de(doc: Document) -> list[dict]:
@@ -408,7 +419,8 @@ def documents_requis(requete: DossierRequete):
     aucun appel IA sur cet endpoint. N'enregistre rien (aperçu).
     """
     try:
-        documents = documents_requis_maroc(requete.pays_origine, classe=requete.classe)
+        documents = documents_requis_maroc(requete.pays_origine, classe=requete.classe, equipement=requete.equipement,
+                                           valeur_usd=requete.valeur_unitaire_usd)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -469,7 +481,8 @@ def creer_dossier(requete: DossierCreation):
     from generate import nouveau_dossier_sortie
 
     try:
-        requis = documents_requis_maroc(requete.pays_origine, classe=requete.classe)
+        requis = documents_requis_maroc(requete.pays_origine, classe=requete.classe, equipement=requete.equipement,
+                                        valeur_usd=requete.valeur_unitaire_usd)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -479,6 +492,8 @@ def creer_dossier(requete: DossierCreation):
             pays_origine=requete.pays_origine,
             classe=requete.classe,
             fournisseur=requete.fournisseur,
+            equipement=requete.equipement,
+            valeur_unitaire_usd=requete.valeur_unitaire_usd,
             regles_version=empreinte_regles("maroc"),
             dossier_sortie=str(nouveau_dossier_sortie(requete.pays_origine, requete.produit)),
             cree_par=requete.cree_par,

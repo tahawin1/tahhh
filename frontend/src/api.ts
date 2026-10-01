@@ -103,6 +103,8 @@ export interface DossierResume {
   pays_destination: string
   classe: string | null
   fournisseur: string | null
+  equipement?: boolean | null
+  valeur_unitaire_usd?: number | null
   cree_par: string
   cree_le: string
   regles_version: string
@@ -281,11 +283,12 @@ async function telechargerFichier(chemin: string, nom: string) {
 export const api = {
   sante: () => requete<Sante>('/health', { headers: enTetes() }),
   pays: () => requete<Record<string, { autorite: string; classification: string[] }>>('/pays', { headers: enTetes() }),
-  apercu: (pays_origine: string, produit: string, classe: string | null) =>
-    post<Apercu>('/dossiers/documents-requis', { pays_origine, produit, classe }),
+  apercu: (pays_origine: string, produit: string, classe: string | null, equipement = false, valeur_unitaire_usd: number | null = null) =>
+    post<Apercu>('/dossiers/documents-requis', { pays_origine, produit, classe, equipement, valeur_unitaire_usd }),
   dossiers: () => requete<DossierResume[]>('/dossiers', { headers: enTetes() }),
   dossier: (id: number) => requete<DossierDetail>(`/dossiers/${id}`, { headers: enTetes() }),
-  creer: (d: { pays_origine: string; produit: string; classe: string | null; fournisseur: string | null; cree_par: string }) =>
+  creer: (d: { pays_origine: string; produit: string; classe: string | null; fournisseur: string | null;
+    equipement: boolean; valeur_unitaire_usd: number | null; cree_par: string }) =>
     post<DossierDetail>('/dossiers', d),
   genererTout: (id: number, acteur: string) => post<DossierDetail>(`/dossiers/${id}/generer`, { acteur }),
   genererPiece: (id: number, piece: number, acteur: string) =>

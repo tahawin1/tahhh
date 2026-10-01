@@ -29,9 +29,21 @@
 #   à chaque pays (rules/etats_unis.yaml, coree_du_sud.yaml, pakistan.yaml,
 #   encore provisoires : textes à indexer). Rapprochement des sept pays :
 #   rules/correspondances.yaml.
+# 2.4 — 2026-10-01 : décisions de l'entreprise sur sa checklist
+#   (rules/checklist_maroc.yaml) :
+#   - ISO 13485 exigé pour TOUTES les classes (plus exigeant que l'arrêté
+#     2855-15, art. 2 (1) a), qui le limite à IIa, IIb, III) ;
+#   - valeur unitaire du produit : échantillon modèle-vente sous 500 $,
+#     facture pro-forma à partir de 500 $ (pratique de l'entreprise) ;
+#   - « équipement médical » : note descriptive, documentation technique et
+#     manuel d'utilisation ; pas d'échantillon (art. 2 (1) b) : « ne
+#     constituant pas un équipement médical »).
+#   Photos : pièce 9 (dossier accepté), désormais distincte de l'échantillon.
+#   Nouvelles pièces sans numéro tant que l'entreprise n'a pas confirmé la
+#   numérotation attendue par l'AMMPS (n° 10 à 13 et 15 libres).
 
 pays: maroc
-version: 2.3
+version: 2.4
 date_version: "2026-10-01"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
@@ -53,6 +65,11 @@ classification: [I, IS, IM, IR, IIA, IIB, III]
 #              numérotation observée.
 # classes_concernees : si présent, la pièce n'est exigée que pour ces classes
 #              (classe inconnue : pièce conservée par prudence).
+# si_equipement : true = seulement pour un équipement médical ; false = jamais
+#              pour un équipement (absent : dans les deux cas).
+# si_valeur_usd : {min: X} = valeur unitaire >= X ; {max: X} = valeur < X
+#              (valeur non saisie : la pièce « max » est retenue, la « min » non,
+#              et le dossier signale que la valeur manque).
 
 # Champs que l'agent extrait des documents reçus (pièces a_fournir). Seul ce
 # fichier décide quels champs sont lus ; l'IA ne fait que les retrouver dans le
@@ -150,13 +167,13 @@ socle_commun:
     nom: "Certificat ISO 13485 (système de management de la qualité)"
     nature: a_fournir
     fourni_par: "l'organisme de certification du fabricant"
-    source: "Arrêté 2855-15, art. 2 (1) a) — classes IIA, IIB, III"
+    source: "Arrêté 2855-15, art. 2 (1) a) (classes IIa, IIb, III) ; exigé pour toutes les classes par décision de l'entreprise (checklist, 2026-10-01)"
     champs_a_extraire:
       - *champs_certificat
       - nom: norme
         libelle: "Référentiel"
         description: "norme certifiée, avec son année (ex. ISO 13485:2016)"
-    classes_concernees: [IIA, IIB, III]
+    # classes_concernees retiré en 2.4 : toutes les classes (décision de l'entreprise)
   - id: declaration_conformite
     numero: 6
     nom: "Déclaration de conformité du fabricant (exigences essentielles)"
@@ -219,10 +236,46 @@ socle_commun:
         description: "conditions de stockage (température, humidité, lumière)"
   - id: echantillon
     numero: 9
-    nom: "Échantillon modèle-vente ou photos du dispositif"
-    nature: a_fournir  # pièce physique ou photos
+    nom: "Photos du dispositif"
+    nature: a_fournir
     fourni_par: "le fabricant"
-    source: "Arrêté 2855-15, art. 2 (1) b) — sauf équipement médical"
+    source: "Pratique : dossier accepté (pièce 9) ; checklist de l'entreprise (toutes classes)"
+  - id: echantillon_modele_vente
+    nom: "Échantillon modèle-vente ou prototype"
+    nature: a_fournir  # pièce physique
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b) — sauf équipement médical ; checklist : produit de moins de 500 $"
+    si_equipement: false
+    si_valeur_usd: {max: 500}
+  - id: facture_proforma
+    nom: "Facture pro-forma (remplace l'échantillon pour un produit de 500 $ ou plus)"
+    nature: a_fournir
+    fourni_par: "le fournisseur"
+    source: "Pratique de l'entreprise (checklist, 2026-10-01) — non citée par l'arrêté 2855-15"
+    si_valeur_usd: {min: 500}
+    champs_a_extraire:
+      - nom: vendeur
+        libelle: "Vendeur"
+        description: "nom et adresse du vendeur (fournisseur)"
+      - nom: numero
+        libelle: "Numéro de la facture"
+        description: "numéro de la facture pro-forma"
+      - nom: date_document
+        libelle: "Date"
+        description: "date de la facture pro-forma"
+        type: date
+      - nom: produits
+        libelle: "Produits, références et quantités"
+        description: "désignation des produits avec références, modèles et quantités"
+      - nom: montant
+        libelle: "Montant total et devise"
+        description: "prix unitaires, montant total et devise"
+      - nom: incoterm
+        libelle: "Incoterm"
+        description: "Incoterm (EXW, FOB, CIF…) et conditions de livraison"
+      - nom: pays_origine
+        libelle: "Pays d'origine des produits"
+        description: "pays d'origine indiqué pour les produits"
   - id: catalogue
     numero: 14
     nom: "Catalogue du fabricant (références du dispositif)"
@@ -250,6 +303,40 @@ socle_commun:
       du fabricant, sous-traitant (NA sinon) ; annexe : tableau nom de
       marque / noms commerciaux / références. Ne jamais remplir la partie 2
       (réservée à l'administration).
+  - id: note_descriptive
+    nom: "Note descriptive de l'équipement"
+    nature: a_rediger
+    source: "Checklist de l'entreprise : demandée pour un équipement, remplie avec les informations du fabricant"
+    si_equipement: true
+    consigne_redaction: >-
+      Note descriptive de l'équipement médical : désignation, fabricant,
+      principe de fonctionnement, composants et accessoires, caractéristiques
+      techniques, usage prévu et indications, conditions d'installation et
+      d'utilisation, maintenance — uniquement d'après les informations du
+      fabricant, [À COMPLÉTER] sinon.
+  - id: documentation_technique
+    nom: "Documentation technique de l'équipement (check-list des exigences essentielles)"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) : documentation technique avec check-list des exigences essentielles ; checklist : demandée pour un équipement"
+    si_equipement: true
+  - id: manuel_utilisation
+    nom: "Manuel d'utilisation de l'équipement"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Arrêté 2855-15, art. 2 (1) b) (notice) ; checklist : manuel d'utilisation pour un équipement"
+    si_equipement: true
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: usage_prevu
+        libelle: "Usage prévu"
+        description: "usage prévu (intended use) et indications médicales"
+      - nom: maintenance
+        libelle: "Maintenance"
+        description: "maintenance, nettoyage, désinfection prévus"
+      - nom: duree_vie
+        libelle: "Durée de vie"
+        description: "durée de vie de l'équipement ou péremption"
   - id: quittance_droits
     nom: "Copie de la quittance des droits d'enregistrement"
     nature: a_fournir  # paiement effectué par l'établissement demandeur

@@ -222,6 +222,12 @@ supporte déjà.
       > 500 $ ; pièces « équipement » ; CE Design et certificat d'évaluation de
       la documentation technique en classe III ; lettre de lien ; déclaration
       de la société ; quittance absente). Aucun contrôle codé avant validation.
+      Décisions reçues (règles Maroc 2.4) : ISO pour toutes les classes ;
+      valeur unitaire saisie (échantillon < 500 $, pro-forma ≥ 500 $) ; case
+      « équipement médical » (note descriptive rédigée, documentation technique,
+      manuel ; pas d'échantillon) ; photos = pièce 9. En attente : FSC, classe
+      III, étude clinique hors UE, lettre de lien, déclaration de la société,
+      quittance, numérotation (`decisions` dans checklist_maroc.yaml).
 - [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
       reçus (expiration, produit, classe, émetteur) — règles en YAML
 - [x] Agent — étape 3 (formulaires) : fiche signalétique (pièce 2) et annexe II
@@ -287,8 +293,10 @@ supporte déjà.
 - Les embeddings (bge-m3) passent par Ollama par défaut (`src/embeddings.py`) ;
   l'indexation et la recherche doivent utiliser le même backend.
 - La condition de classe d'un document du socle se déclare en liste YAML
-  (`classes_concernees`), jamais en texte libre (bug corrigé : l'ISO 13485
-  était exigé pour la classe I).
+  (`classes_concernees`), jamais en texte libre (bug corrigé en v1 : l'ISO 13485
+  était exigé pour la classe I par erreur de test de sous-chaîne). Depuis les
+  règles 2.4, l'ISO 13485 est exigé pour toutes les classes **par décision de
+  l'entreprise** (checklist), plus exigeante que l'arrêté 2855-15.
 - `data/raw_pdfs/ue_mdr_annexe.txt` contient en réalité les Medical Devices
   Rules 2017 indiennes consolidées — indexé sous `pays=inde`.
 - Même avec la liste des pièces imposée et les données du dossier fournies,

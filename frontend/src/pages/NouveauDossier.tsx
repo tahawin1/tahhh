@@ -28,6 +28,9 @@ export default function NouveauDossier({ session }: { session: Session }) {
   const [fournisseur, setFournisseur] = useState('')
   const [pays, setPays] = useState('chine')
   const [classe, setClasse] = useState('IIB')
+  const [equipement, setEquipement] = useState(false)
+  const [valeur, setValeur] = useState('')
+  const valeurUsd = valeur.trim() === '' ? null : Number(valeur.replace(',', '.'))
   const [apercu, setApercu] = useState<Apercu | null>(null)
   const [erreur, setErreur] = useState<string | null>(null)
   const [enCours, setEnCours] = useState(false)
@@ -36,12 +39,12 @@ export default function NouveauDossier({ session }: { session: Session }) {
   // backend (YAML, déterministe), jamais par le frontend ni par l'IA.
   useEffect(() => {
     let actif = true
-    api.apercu(pays, 'aperçu', classe).then(
+    api.apercu(pays, 'aperçu', classe, equipement, valeurUsd).then(
       (a) => { if (actif) { setApercu(a); setErreur(null) } },
       (e: Error) => { if (actif) { setApercu(null); setErreur(e.message) } },
     )
     return () => { actif = false }
-  }, [pays, classe])
+  }, [pays, classe, equipement, valeurUsd])
 
   async function creer(e: FormEvent) {
     e.preventDefault()
@@ -53,6 +56,8 @@ export default function NouveauDossier({ session }: { session: Session }) {
         produit: produit.trim(),
         classe,
         fournisseur: fournisseur.trim() || null,
+        equipement,
+        valeur_unitaire_usd: valeurUsd,
         cree_par: session.nom,
       })
       window.location.hash = `#/dossiers/${d.id}`
@@ -118,6 +123,19 @@ export default function NouveauDossier({ session }: { session: Session }) {
                 </label>
               ))}
             </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span className="numero">4</span> Nature et valeur</legend>
+            <label className="case-a-cocher">
+              <input type="checkbox" checked={equipement} onChange={(e) => setEquipement(e.target.checked)} />
+              <span>Équipement médical <small>(ajoute note descriptive, documentation technique et manuel ; pas d'échantillon)</small></span>
+            </label>
+            <label>
+              <span>Valeur unitaire du produit en dollars <span className="facultatif">(échantillon sous 500 $, facture pro-forma au-delà)</span></span>
+              <input type="number" min="0" step="0.01" inputMode="decimal" value={valeur}
+                onChange={(e) => setValeur(e.target.value)} placeholder="ex. 120" />
+            </label>
           </fieldset>
 
           {erreur && <p className="message erreur" role="alert">{erreur}</p>}

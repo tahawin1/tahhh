@@ -39,7 +39,11 @@ class TestChecklist(unittest.TestCase):
 
     def test_ecarts_avec_la_loi_signales(self):
         par_id = {d["id"]: d for d in CHECKLIST["documents"]}
-        self.assertEqual(par_id["certificat_iso"]["rapprochement"], "ecart_classes")  # loi : IIa, IIb, III
+        self.assertEqual(par_id["certificat_iso"]["rapprochement"], "valide_entreprise")  # loi : IIa, IIb, III ; entreprise : toutes
+        self.assertEqual(par_id["free_sales_certificate_fsc"]["rapprochement"], "ecart_classes")  # en attente de réponse
+        decisions = {d["id"]: d for d in CHECKLIST["decisions"]}
+        self.assertTrue(decisions["iso_toutes_classes"]["reponse"])
+        self.assertIsNone(decisions["quittance"]["reponse"])
         self.assertIn("I", par_id["certificat_iso"]["classes"])
         self.assertEqual(par_id["certificat_ce_mdd_mdr"]["classes"], ["IS", "IM", "IIA", "IIB", "III"])  # = la loi
 

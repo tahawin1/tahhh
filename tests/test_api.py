@@ -90,7 +90,7 @@ class TestApi(unittest.TestCase):
 
     def test_creation_fige_la_decision_du_moteur_de_regles(self):
         d = self.creer()
-        self.assertEqual(d["compteurs"]["total"], 12)  # règles v2, Chine IIb : 10 pièces du socle + ISO + NMPA
+        self.assertEqual(d["compteurs"]["total"], 13)  # règles 2.4, Chine IIb : socle + ISO + NMPA + échantillon (valeur non saisie)
         natures = {x["code"]: (x["nature"], x["statut"]) for x in d["documents"]}
         self.assertEqual(natures["demande_signee"], ("a_rediger", "a_generer"))
         self.assertEqual(natures["piece_specifique_chine"], ("a_fournir", "a_obtenir"))
@@ -99,9 +99,17 @@ class TestApi(unittest.TestCase):
         self.assertEqual(len(d["regles_version"]), 12)
         self.assertEqual(d["evenements"][0]["action"], "dossier_cree")
 
-    def test_classe_I_sans_iso(self):
+    def test_classe_I_avec_iso_et_conditions(self):
         d = self.creer(pays="union_europeenne", classe="I")
-        self.assertNotIn("iso_13485", [x["code"] for x in d["documents"]])
+        self.assertIn("iso_13485", [x["code"] for x in d["documents"]])  # règles 2.4 : toutes les classes
+        r = self.client.post("/dossiers", json={"pays_origine": "chine", "produit": "Moniteur", "classe": "IIB",
+                                                "equipement": True, "valeur_unitaire_usd": 4000, "cree_par": "Testeur"})
+        codes = [x["code"] for x in r.json()["documents"]]
+        self.assertTrue(r.json()["equipement"])
+        self.assertEqual(r.json()["valeur_unitaire_usd"], 4000)
+        self.assertIn("facture_proforma", codes)
+        self.assertIn("note_descriptive", codes)
+        self.assertNotIn("echantillon_modele_vente", codes)
 
     def test_numero_remarque_et_source_exposes(self):
         d = self.creer(pays="union_europeenne", classe="IIB")
@@ -115,7 +123,7 @@ class TestApi(unittest.TestCase):
         d = self.creer(pays="union_europeenne", classe="IS")
         codes = [x["code"] for x in d["documents"]]
         self.assertIn("piece_specifique_union_europeenne", codes)
-        self.assertNotIn("iso_13485", codes)
+        self.assertIn("iso_13485", codes)  # règles 2.4 : toutes les classes
         d = self.creer(pays="union_europeenne", classe="IR")  # classe I réutilisable (MDR)
         self.assertEqual(d["classe"], "IR")
         self.assertIn("piece_specifique_union_europeenne", [x["code"] for x in d["documents"]])

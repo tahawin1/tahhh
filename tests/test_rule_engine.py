@@ -30,9 +30,9 @@ class TestDocumentsRequisMaroc(unittest.TestCase):
             for doc in SOCLE:
                 self.assertIn(doc, ids(pays, "IIB"), f"{doc} manquant pour {pays}")
 
-    def test_iso_13485_selon_classe(self):
-        self.assertNotIn("iso_13485", ids("chine", "I"))
-        for classe in ["IIA", "IIB", "III"]:
+    def test_iso_13485_toutes_classes(self):
+        # règles 2.4 : décision de l'entreprise (checklist), plus exigeante que l'arrêté 2855-15
+        for classe in ["I", "IS", "IM", "IR", "IIA", "IIB", "III"]:
             self.assertIn("iso_13485", ids("chine", classe))
 
     def test_iso_13485_conserve_si_classe_inconnue(self):
@@ -58,6 +58,28 @@ class TestDocumentsRequisMaroc(unittest.TestCase):
         self.assertTrue(piece.traduction_requise)
 
 
+class TestConditionsChecklist(unittest.TestCase):
+    """Règles 2.4 : décisions de l'entreprise sur sa checklist."""
+
+    def test_echantillon_ou_proforma_selon_la_valeur(self):
+        moins = [d.id for d in documents_requis_maroc("union_europeenne", "IIB", valeur_usd=499)]
+        plus = [d.id for d in documents_requis_maroc("union_europeenne", "IIB", valeur_usd=500)]
+        self.assertIn("echantillon_modele_vente", moins)
+        self.assertNotIn("facture_proforma", moins)
+        self.assertIn("facture_proforma", plus)
+        self.assertNotIn("echantillon_modele_vente", plus)
+        self.assertIn("echantillon", plus)  # les photos restent demandées
+
+    def test_equipement(self):
+        equipement = [d.id for d in documents_requis_maroc("chine", "IIA", equipement=True, valeur_usd=100)]
+        for code in ("note_descriptive", "documentation_technique", "manuel_utilisation"):
+            self.assertIn(code, equipement)
+            self.assertNotIn(code, ids("chine", "IIA"))
+        self.assertNotIn("echantillon_modele_vente", equipement)  # arrêté 2855-15 : sauf équipement médical
+        note = next(d for d in documents_requis_maroc("chine", "IIA", equipement=True) if d.id == "note_descriptive")
+        self.assertTrue(note.a_rediger and note.consigne_redaction)
+
+
 class TestDossierReelAccepte(unittest.TestCase):
     """Dossier réel accepté par l'AMMPS (UE, classe IIb) : pièces 1 à 9, 14, 16."""
 
@@ -70,7 +92,9 @@ class TestDossierReelAccepte(unittest.TestCase):
             (7, "etiquetage"), (8, "notice"), (9, "echantillon"), (14, "catalogue"),
             (16, "certificat_enregistrement_annexe2"),
         ])
-        self.assertEqual([d.id for d in docs if d.numero is None], ["quittance_droits"])  # arrêté 2855-15
+        # sans numéro : échantillon (valeur non saisie -> retenu par défaut) et quittance (arrêté 2855-15)
+        self.assertEqual([d.id for d in docs if d.numero is None], ["echantillon_modele_vente", "quittance_droits"])
+        self.assertIn("Valeur unitaire du produit non saisie", next(d for d in docs if d.id == "echantillon_modele_vente").remarque)
 
     def test_pieces_retirees_en_v2(self):
         for pays in ["chine", "inde", "union_europeenne", "autre"]:
@@ -82,8 +106,7 @@ class TestDossierReelAccepte(unittest.TestCase):
         self.assertNotIn("piece_specifique_union_europeenne", ids("union_europeenne", "I"))
         for classe in ("IS", "IM", "IR", "IIA", "IIB", "III", None):
             self.assertIn("piece_specifique_union_europeenne", ids("union_europeenne", classe))
-        self.assertNotIn("iso_13485", ids("union_europeenne", "IS"))
-        self.assertNotIn("iso_13485", ids("union_europeenne", "IR"))  # classe I réutilisable : comme Is/Im
+        self.assertIn("iso_13485", ids("union_europeenne", "IR"))  # règles 2.4 : ISO pour toutes les classes
 
     def test_lettre_de_confirmation_2023_607_signalee(self):
         ce = {d.id: d for d in documents_requis_maroc("union_europeenne", "IIB")}["piece_specifique_union_europeenne"]
@@ -94,7 +117,7 @@ class TestDossierReelAccepte(unittest.TestCase):
         regles = charger_regles("maroc")
         self.assertIn("AMMPS", regles["autorite"])
         self.assertIn("Directeur Général", regles["destinataire_demande"])
-        self.assertEqual(regles["version"], 2.3)
+        self.assertEqual(regles["version"], 2.4)
 
 
 class TestNatureDesPieces(unittest.TestCase):
