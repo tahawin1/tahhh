@@ -68,6 +68,7 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
             <span className="etiquette">Classe {dossier.classe ?? 'non précisée'}</span>
             {dossier.fournisseur && <span className="etiquette"><Icone nom="monde" taille={14} /> {dossier.fournisseur}</span>}
             {dossier.equipement && <span className="etiquette">Équipement médical</span>}
+            {dossier.fournisseur_distributeur && <span className="etiquette">Fournisseur distributeur</span>}
             {dossier.valeur_unitaire_usd != null && <span className="etiquette">{dossier.valeur_unitaire_usd} $ / unité</span>}
             <span className="etiquette discrete">Créé le {dateHeure(dossier.cree_le)} par {dossier.cree_par}</span>
             <span className="etiquette discrete" title="Version des règles utilisées">Règles {dossier.regles_version}</span>

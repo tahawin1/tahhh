@@ -41,9 +41,35 @@
 #   Photos : pièce 9 (dossier accepté), désormais distincte de l'échantillon.
 #   Nouvelles pièces sans numéro tant que l'entreprise n'a pas confirmé la
 #   numérotation attendue par l'AMMPS (n° 10 à 13 et 15 libres).
+# 2.5 — 2026-10-01 : réponses tirées des textes (à la demande de l'entreprise)
+#   pour les points restants de sa checklist :
+#   - libre vente : arrêté 2855-15, art. 2 (1) a) (« certificat de marquage CE,
+#     ou attestation FDA, ou autorisation de mise en vente (CVL) ou équivalent
+#     délivrée par les autorités compétentes du pays d'origine ») + checklist
+#     (FSC pour toutes les classes, délivré par l'autorité sanitaire) :
+#     hors UE, pièce 4 = autorisation du pays + FSC, TOUTES classes ; UE :
+#     certificat CE pour Is à III, et pour la classe I (sans organisme notifié)
+#     certificat de libre vente de l'État membre (règlement 2017/745, art. 60) ;
+#   - classe III UE : certificat d'évaluation de la documentation technique
+#     (MDR, art. 52 (3) et annexe IX) ou certificat d'examen CE de la
+#     conception (directive 93/42, annexe II.4) en complément de la pièce 4 ;
+#   - données cliniques : loi 84-12, art. 15 (investigation clinique ou
+#     évaluation des données cliniques par équivalence). UE : couvertes par le
+#     certificat CE (MDR, art. 61) ; hors UE, classes IIb et III (checklist) :
+#     rapport d'évaluation ou d'investigation clinique demandé ;
+#   - lettre de lien : arrêté 2855-15, art. 2 (1) a) (lien entre le fabricant
+#     et l'établissement demandeur) : quand le fournisseur est un distributeur,
+#     la chaîne fabricant -> distributeur doit être prouvée (case du dossier) ;
+#   - « déclaration de la société » : déclaration de l'établissement
+#     importateur, préalable à toute activité (loi 84-12, art. 7 ; modèle :
+#     arrêté 2853-15) — copie jointe au dossier ;
+#   - quittance des droits : exigée par l'arrêté 2855-15, art. 2 (1) a) — la
+#     loi prévaut, la pièce est gardée (hors numérotation) ;
+#   - numérotation : aucun texte ne fixe les numéros ; ceux du dossier accepté
+#     sont gardés, les pièces nouvelles restent sans numéro (en fin de liste).
 
 pays: maroc
-version: 2.4
+version: 2.5
 date_version: "2026-10-01"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
@@ -67,6 +93,8 @@ classification: [I, IS, IM, IR, IIA, IIB, III]
 #              (classe inconnue : pièce conservée par prudence).
 # si_equipement : true = seulement pour un équipement médical ; false = jamais
 #              pour un équipement (absent : dans les deux cas).
+# si_origine : la pièce n'est exigée que pour ces pays d'origine.
+# si_distributeur : true = seulement si le fournisseur n'est pas le fabricant.
 # si_valeur_usd : {min: X} = valeur unitaire >= X ; {max: X} = valeur < X
 #              (valeur non saisie : la pièce « max » est retenue, la « min » non,
 #              et le dossier signale que la valeur manque).
@@ -337,16 +365,112 @@ socle_commun:
       - nom: duree_vie
         libelle: "Durée de vie"
         description: "durée de vie de l'équipement ou péremption"
+  - id: certificat_libre_vente_ue
+    nom: "Certificat de libre vente délivré par l'autorité compétente de l'État membre (classe I sans organisme notifié)"
+    nature: a_fournir
+    fourni_par: "l'autorité compétente de l'État membre (via le fabricant ou son mandataire)"
+    source: "Règlement (UE) 2017/745, art. 60 ; arrêté 2855-15, art. 2 (1) a) (« CVL ou équivalent ») ; checklist : FSC toutes classes"
+    si_origine: [union_europeenne]
+    classes_concernees: [I]
+    champs_a_extraire: &champs_libre_vente
+      - nom: pays_emetteur
+        libelle: "Pays émetteur"
+        description: "pays dont l'autorité a délivré le certificat"
+      - nom: emetteur
+        libelle: "Autorité émettrice"
+        description: "autorité sanitaire (ministère, agence) qui a délivré le certificat"
+      - nom: numero
+        libelle: "N° du certificat"
+        description: "numéro du certificat de libre vente"
+      - nom: titulaire
+        libelle: "Fabricant"
+        description: "nom du fabricant cité dans le certificat"
+      - nom: produit_couvert
+        libelle: "Produits / références"
+        description: "dispositifs et références couverts par le certificat"
+      - nom: date_emission
+        libelle: "Date d'émission"
+        description: "date de délivrance du certificat"
+        type: date
+      - nom: date_expiration
+        libelle: "Valable jusqu'au"
+        description: "date de fin de validité du certificat, si indiquée"
+        type: date
+  - id: certificat_evaluation_classe_iii
+    nom: "Certificat d'évaluation de la documentation technique (MDR) ou certificat d'examen CE de la conception (directive 93/42) — classe III"
+    nature: a_fournir
+    fourni_par: "l'organisme notifié (via le fabricant)"
+    source: "Règlement (UE) 2017/745, art. 52 (3) et annexe IX ; directive 93/42/CEE, annexe II.4 ; checklist : classe III"
+    si_origine: [union_europeenne]
+    classes_concernees: [III]
+    champs_a_extraire:
+      - *champs_certificat
+      - nom: numero_organisme_notifie
+        libelle: "N° de l'organisme notifié"
+        description: "numéro d'identification à 4 chiffres de l'organisme notifié"
+  - id: evaluation_clinique
+    nom: "Rapport d'évaluation clinique ou d'investigation clinique"
+    nature: a_fournir
+    fourni_par: "le fabricant"
+    source: "Loi 84-12, art. 15 (investigation clinique ou évaluation des données cliniques par équivalence) ; checklist : IIb et III, inutile avec un certificat CE (UE)"
+    si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
+    classes_concernees: [IIB, III]
+    champs_a_extraire:
+      - nom: titre
+        libelle: "Identification de l'étude"
+        description: "titre, code ou version du rapport d'évaluation ou d'investigation clinique"
+      - nom: dispositif
+        libelle: "Dispositif concerné"
+        description: "dispositif, modèle ou version évalué"
+      - nom: type_etude
+        libelle: "Type d'étude"
+        description: "investigation clinique, évaluation par équivalence, étude observationnelle…"
+      - nom: conclusion
+        libelle: "Conclusion"
+        description: "conclusion sur la sécurité, la performance et le rapport bénéfice/risque"
+      - nom: date_document
+        libelle: "Date du rapport"
+        description: "date du rapport"
+        type: date
+  - id: lettre_de_lien
+    nom: "Lettre de lien fabricant – distributeur (fournisseur autre que le fabricant)"
+    nature: a_fournir
+    fourni_par: "le fabricant et le distributeur"
+    source: "Arrêté 2855-15, art. 2 (1) a) (lien entre le fabricant et l'établissement demandeur) ; checklist : lettre de lien"
+    si_distributeur: true
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: partenaire
+        libelle: "Distributeur / promoteur"
+        description: "nom et adresse du partenaire (distributeur ou promoteur) désigné par le fabricant"
+      - nom: nature_relation
+        libelle: "Nature de la relation"
+        description: "promotion, distribution, représentation"
+      - nom: produits
+        libelle: "Produits concernés"
+        description: "produits, références ou gammes concernés"
+      - nom: territoire
+        libelle: "Territoire"
+        description: "territoire ou marché couvert"
+      - nom: date_fin
+        libelle: "Valable jusqu'au"
+        description: "durée de l'accord ou date de fin de validité"
+        type: date
+  - id: declaration_etablissement
+    nom: "Copie de la déclaration de l'établissement importateur (et de son récépissé)"
+    nature: a_fournir
+    fourni_par: "l'établissement demandeur (dossier interne)"
+    source: "Loi 84-12, art. 7 (déclaration préalable de tout établissement d'importation) ; arrêté 2853-15 (modèle) ; checklist : « déclaration de la société »"
   - id: quittance_droits
     nom: "Copie de la quittance des droits d'enregistrement"
     nature: a_fournir  # paiement effectué par l'établissement demandeur
     fourni_par: "l'établissement demandeur (paiement des droits)"
-    source: "Arrêté 2855-15, art. 2 (1) a) — absente de la numérotation du dossier accepté : à confirmer"
+    source: "Arrêté 2855-15, art. 2 (1) a) : « une copie de la quittance des droits d'enregistrement » — exigée par la loi, gardée (hors numérotation du dossier accepté)"
 
 piece_specifique_selon_origine:
   chine:
     numero: 4
-    document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois)"
+    document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) + certificat de libre vente (FSC)"
     nature: a_fournir
     fourni_par: "la NMPA (via le fabricant)"
     champs_a_extraire: &champs_autorisation
@@ -356,16 +480,16 @@ piece_specifique_selon_origine:
         description: "classe du dispositif indiquée sur le document"
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: &classes_certificat [IS, IM, IR, IIA, IIB, III]
+    classes_concernees: &classes_toutes [I, IS, IM, IR, IIA, IIB, III]  # 2.5 : FSC toutes classes (checklist)
   inde:
     numero: 4
-    document: "Autorisation de mise en vente délivrée par la CDSCO"
+    document: "Autorisation de mise en vente délivrée par la CDSCO + certificat de libre vente (FSC)"
     nature: a_fournir
     fourni_par: "la CDSCO (via le fabricant)"
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: *classes_certificat
+    classes_concernees: *classes_toutes
   union_europeenne:
     numero: 4
     document: "Certificat de marquage CE délivré par un organisme notifié (+ lettre de confirmation si certificat MDD expiré)"
@@ -386,7 +510,7 @@ piece_specifique_selon_origine:
         description: "classe du dispositif indiquée sur le certificat"
     traduction_requise: false
     legalisation_requise: false
-    classes_concernees: *classes_certificat
+    classes_concernees: [IS, IM, IR, IIA, IIB, III]  # classe I : certificat de libre vente (socle, art. 60 MDR)
   etats_unis:
     numero: 4
     document: "Autorisation FDA (lettre 510(k), approbation PMA ou décision De Novo) + Certificate to Foreign Government (CFG) de la FDA"
@@ -400,7 +524,7 @@ piece_specifique_selon_origine:
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: *classes_certificat
+    classes_concernees: *classes_toutes
   coree_du_sud:
     numero: 4
     document: "Certificat d'autorisation, de certification ou de notification MFDS + certificat de libre vente (Certificate of Free Sale) du MFDS"
@@ -414,7 +538,7 @@ piece_specifique_selon_origine:
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: *classes_certificat
+    classes_concernees: *classes_toutes
   pakistan:
     numero: 4
     document: "Certificat d'enregistrement ou d'inscription DRAP + certificat de libre vente (Free Sale Certificate) de la DRAP"
@@ -427,7 +551,7 @@ piece_specifique_selon_origine:
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: *classes_certificat
+    classes_concernees: *classes_toutes
   autre:
     numero: 4
     document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine (ou attestation FDA, ou équivalent)"
@@ -436,7 +560,7 @@ piece_specifique_selon_origine:
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
-    classes_concernees: *classes_certificat
+    classes_concernees: *classes_toutes
 
 contraintes_operationnelles:
   jours_depot_physique: [mercredi, jeudi]

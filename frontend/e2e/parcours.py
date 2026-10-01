@@ -60,13 +60,13 @@ with sync_playwright() as p:
     page.get_by_role("link", name="Nouveau dossier").first.click()
     page.get_by_role("radio", name="Inde").check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
     page.get_by_role("radio", name=re.compile(r"^III ")).check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
-    expect(page.get_by_text("Le fournisseur les envoie (10)")).to_be_visible()
+    expect(page.get_by_text("Le fournisseur les envoie (12)")).to_be_visible()
     expect(page.get_by_text("Autorisation de mise en vente délivrée par la CDSCO")).to_be_visible()
     expect(page.get_by_text("L'agent les rédige (3)")).to_be_visible()
     page.get_by_role("radio", name=re.compile(r"^I ")).check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
-    expect(page.get_by_text("Le fournisseur les envoie (9)")).to_be_visible()  # classe I : sans certificat CDSCO (ISO exigé : règles 2.4)
+    expect(page.get_by_text("Le fournisseur les envoie (11)")).to_be_visible()  # classe I : sans évaluation clinique (règles 2.5)
     page.get_by_role("radio", name=re.compile(r"^III ")).check(force=True)  # radio masqué sous sa tuile : le libellé reçoit le clic
-    etape("aperçu des documents requis chargé depuis /dossiers/documents-requis (Inde III : 3+10, classe I : sans CDSCO)")
+    etape("aperçu des documents requis chargé depuis /dossiers/documents-requis (Inde III : 3+12, classe I : 3+11)")
 
     # 4. Création d'un dossier
     page.get_by_label("Dispositif médical").fill("Stent coronaire (test E2E)")
@@ -74,9 +74,9 @@ with sync_playwright() as p:
     page.screenshot(path=CAPTURES / "2-nouveau-dossier.png", full_page=True)
     page.get_by_role("button", name="Créer le dossier").click()
     expect(page.get_by_role("heading", name="Stent coronaire (test E2E)")).to_be_visible()
-    expect(page.locator("article.piece")).to_have_count(13)
+    expect(page.locator("article.piece")).to_have_count(15)
     expect(page.locator("article.piece").first).to_contain_text("Pièce 1")
-    etape("dossier créé et affiché (13 pièces, numérotées comme le dossier déposé)")
+    etape("dossier créé et affiché (15 pièces, numérotées comme le dossier déposé)")
 
     # 5. Une pièce à fournir n'a jamais de bouton de rédaction
     cdsco = page.locator("article.piece", has_text="CDSCO")

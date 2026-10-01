@@ -21,7 +21,7 @@
 version: 1
 date_version: '2026-10-01'
 source: Checklist interne de vérification des dossiers réglementaires (fichier Excel transmis le 2026-10-01)
-statut: a_valider  # décisions déjà prises : voir `decisions`
+statut: decisions_appliquees  # toutes les décisions : voir `decisions` (maroc.yaml 2.4 et 2.5)
 decisions:  # réponses de l'entreprise aux écarts (2026-10-01), appliquées dans rules/maroc.yaml 2.4
   - id: iso_toutes_classes
     reponse: "ISO 13485 exigé pour toutes les classes"
@@ -32,13 +32,14 @@ decisions:  # réponses de l'entreprise aux écarts (2026-10-01), appliquées da
   - id: equipement
     reponse: "case « équipement médical » à la création du dossier"
     applique: "maroc.yaml 2.4 (note_descriptive, documentation_technique, manuel_utilisation, si_equipement)"
-  - {id: fsc_toutes_classes, reponse: null, question: "FSC exigé pour quelles origines (le dossier UE accepté n'en avait pas) et pour la classe I ?"}
-  - {id: classe_iii_complements, reponse: null, question: "CE Design (MDD) / certificat d'évaluation de la documentation technique (MDR) en complément de la pièce 4 ?"}
-  - {id: etude_clinique_hors_ue, reponse: null, question: "Étude clinique exigée pour IIb/III quand il n'y a pas de certificat CE (origines hors UE) ?"}
-  - {id: lettre_de_lien, reponse: null, question: "Lettre de lien : quand le fournisseur n'est pas le fabricant ?"}
-  - {id: declaration_societe, reponse: null, question: "Déclaration de la société : contenu, modèle ?"}
-  - {id: quittance, reponse: null, question: "Quittance des droits : exigée par l'arrêté 2855-15 mais absente de la checklist et du dossier accepté ?"}
-  - {id: numerotation, reponse: null, question: "Numéros des nouvelles pièces (10 à 13, 15 libres) ?"}
+  # réponses suivantes tirées des textes à la demande de l'entreprise, appliquées dans maroc.yaml 2.5
+  - {id: fsc_toutes_classes, reponse: "Tiré des textes : hors UE, pièce 4 = autorisation du pays + FSC pour toutes les classes ; UE : certificat CE (Is à III), classe I : certificat de libre vente de l'État membre (MDR art. 60) — arrêté 2855-15 art. 2 (1) a)", question: "FSC exigé pour quelles origines (le dossier UE accepté n'en avait pas) et pour la classe I ?"}
+  - {id: classe_iii_complements, reponse: "Tiré des textes : UE classe III : certificat d'évaluation de la documentation technique (MDR art. 52 (3), annexe IX) ou examen CE de la conception (directive 93/42, annexe II.4)", question: "CE Design (MDD) / certificat d'évaluation de la documentation technique (MDR) en complément de la pièce 4 ?"}
+  - {id: etude_clinique_hors_ue, reponse: "Tiré des textes : loi 84-12 art. 15 ; hors UE, IIb et III : rapport d'évaluation ou d'investigation clinique ; UE : couvert par le certificat CE (MDR art. 61)", question: "Étude clinique exigée pour IIb/III quand il n'y a pas de certificat CE (origines hors UE) ?"}
+  - {id: lettre_de_lien, reponse: "Tiré des textes : arrêté 2855-15 art. 2 (1) a) (lien fabricant – demandeur) ; exigée quand le fournisseur est un distributeur (case du dossier)", question: "Lettre de lien : quand le fournisseur n'est pas le fabricant ?"}
+  - {id: declaration_societe, reponse: "Tiré des textes : déclaration de l'établissement importateur (loi 84-12 art. 7 ; modèle : arrêté 2853-15), copie jointe", question: "Déclaration de la société : contenu, modèle ?"}
+  - {id: quittance, reponse: "Tiré des textes : exigée par l'arrêté 2855-15 art. 2 (1) a) — gardée, hors numérotation", question: "Quittance des droits : exigée par l'arrêté 2855-15 mais absente de la checklist et du dossier accepté ?"}
+  - {id: numerotation, reponse: "Aucun texte ne fixe de numéros : ceux du dossier accepté sont gardés, pièces nouvelles sans numéro", question: "Numéros des nouvelles pièces (10 à 13, 15 libres) ?"}
 documents:
 - id: lettre_d_autorisation
   nom: Lettre d'autorisation
@@ -235,7 +236,7 @@ documents:
   numero: 4
   fondement: 'Arrêté 2855-15, art. 2 (1) a) : « autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités
     compétentes au niveau du pays d''origine » — classes Is, Im, IIa, IIb, III'
-  rapprochement: ecart_classes
+  rapprochement: valide_entreprise
   elements:
   - texte: Pays émetteur
     controle: lecture
@@ -368,7 +369,7 @@ documents:
   numero: 4
   fondement: Complément du certificat CE pour la classe III sous directive 93/42 (examen de la conception) — arrêté 2855-15,
     art. 2 (1) a)
-  rapprochement: nouveau_complement
+  rapprochement: valide_entreprise
   elements:
   - texte: Fabricant (nom et adresse)
     controle: lecture
@@ -398,7 +399,7 @@ documents:
   piece_maroc: null
   numero: null
   fondement: 'Loi 84-12, art. 15 : investigation clinique OU évaluation des données cliniques (équivalence)'
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements:
   - texte: Identification de l’étude (titre, code, version)
     controle: lecture
@@ -528,7 +529,7 @@ documents:
   piece_maroc: piece_specifique
   numero: 4
   fondement: Complément du certificat CE pour la classe III sous règlement 2017/745 (annexe IX, chapitre II)
-  rapprochement: nouveau_complement
+  rapprochement: valide_entreprise
   elements:
   - texte: Organisme notifié (nom, numéro, signature)
     controle: humain
@@ -674,7 +675,7 @@ documents:
   numero: null
   fondement: 'Pratique : lien fabricant ↔ distributeur/promoteur quand le fournisseur n''est pas le fabricant (non cité par
     l''arrêté)'
-  rapprochement: nouveau_conditionnel
+  rapprochement: valide_entreprise
   elements:
   - texte: Identification du fabricant (nom, adresse)
     controle: lecture
@@ -795,5 +796,5 @@ documents:
   piece_maroc: null
   numero: null
   fondement: À préciser (non citée par l'arrêté 2855-15)
-  rapprochement: a_preciser
+  rapprochement: valide_entreprise
   elements: []

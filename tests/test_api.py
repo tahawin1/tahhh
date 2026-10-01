@@ -90,7 +90,9 @@ class TestApi(unittest.TestCase):
 
     def test_creation_fige_la_decision_du_moteur_de_regles(self):
         d = self.creer()
-        self.assertEqual(d["compteurs"]["total"], 13)  # règles 2.4, Chine IIb : socle + ISO + NMPA + échantillon (valeur non saisie)
+        # règles 2.5, Chine IIb : socle + ISO + NMPA/FSC + échantillon (valeur non saisie) + évaluation clinique
+        # (hors UE, loi 84-12 art. 15) + déclaration de l'établissement (loi 84-12 art. 7)
+        self.assertEqual(d["compteurs"]["total"], 15)
         natures = {x["code"]: (x["nature"], x["statut"]) for x in d["documents"]}
         self.assertEqual(natures["demande_signee"], ("a_rediger", "a_generer"))
         self.assertEqual(natures["piece_specifique_chine"], ("a_fournir", "a_obtenir"))

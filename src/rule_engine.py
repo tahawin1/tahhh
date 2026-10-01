@@ -92,9 +92,14 @@ def _classe_concernee(regle: dict, classe: str | None) -> bool:
     return not (classes and classe and classe not in classes)
 
 
-def _condition_dossier(regle: dict, equipement: bool, valeur_usd: float | None) -> bool:
-    """Conditions de la checklist (décisions de l'entreprise) : équipement
-    médical ou non, valeur unitaire du produit."""
+def _condition_dossier(regle: dict, equipement: bool, valeur_usd: float | None,
+                       pays_origine: str = "", distributeur: bool = False) -> bool:
+    """Conditions de la checklist : équipement médical ou non, valeur unitaire
+    du produit, pays d'origine, fournisseur distributeur (et non fabricant)."""
+    if "si_origine" in regle and pays_origine not in regle["si_origine"]:
+        return False
+    if "si_distributeur" in regle and bool(regle["si_distributeur"]) != bool(distributeur):
+        return False
     if "si_equipement" in regle and bool(regle["si_equipement"]) != bool(equipement):
         return False
     seuil = regle.get("si_valeur_usd") or {}
@@ -106,7 +111,8 @@ def _condition_dossier(regle: dict, equipement: bool, valeur_usd: float | None) 
 
 
 def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None,
-                           equipement: bool = False, valeur_usd: float | None = None) -> list[DocumentRequis]:
+                           equipement: bool = False, valeur_usd: float | None = None,
+                           distributeur: bool = False) -> list[DocumentRequis]:
     """
     Cas A du projet : dossier destiné au Maroc, produit venant d'un pays
     étranger (chine / inde / union_europeenne / autre).
@@ -121,7 +127,7 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None,
         # Classe inconnue -> document conservé (choix prudent).
         if not _classe_concernee(doc, classe):
             continue  # ex: certificat CE seulement pour IS/IM/IR/IIA/IIB/III
-        if not _condition_dossier(doc, equipement, valeur_usd):
+        if not _condition_dossier(doc, equipement, valeur_usd, pays_origine_produit, distributeur):
             continue  # ex: échantillon (< 500 $, hors équipement) ou pro-forma (>= 500 $)
         documents.append(
             DocumentRequis(

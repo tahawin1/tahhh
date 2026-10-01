@@ -213,7 +213,7 @@ supporte déjà.
       `recadrer_sur_modele` (préambule et ajouts après la fin du modèle retirés).
       Essai réel : la lettre (pièce 1) d'un nouveau dossier UE est conforme au
       modèle accepté, via la pile serveur complète.
-- [ ] Checklist de l'entreprise (Excel, 2026-10-01) transcrite dans
+- [x] Checklist de l'entreprise (Excel, 2026-10-01) transcrite dans
       `rules/checklist_maroc.yaml` : 23 documents, 197 éléments (lecture par
       l'agent / cohérence entre documents / vérification humaine), chacun
       rapproché de la pièce de maroc.yaml et de son fondement. **Statut
@@ -228,6 +228,17 @@ supporte déjà.
       manuel ; pas d'échantillon) ; photos = pièce 9. En attente : FSC, classe
       III, étude clinique hors UE, lettre de lien, déclaration de la société,
       quittance, numérotation (`decisions` dans checklist_maroc.yaml).
+      **Règles 2.5** : l'utilisateur ne veut plus de questions — les points
+      restants sont tranchés d'après les textes : hors UE pièce 4 = autorisation
+      + FSC toutes classes ; UE classe I = certificat de libre vente (MDR art. 60) ;
+      UE classe III = certificat d'évaluation de la documentation technique
+      (MDR art. 52 (3)) / examen CE de la conception (93/42 annexe II.4) ; hors
+      UE IIb/III = évaluation clinique (loi 84-12 art. 15) ; lettre de lien si
+      fournisseur distributeur (case du dossier) ; déclaration de l'établissement
+      (loi 84-12 art. 7, arrêté 2853-15) ; quittance gardée (2855-15). Moteur :
+      conditions `si_origine`, `si_distributeur`. Checklist : statut
+      `decisions_appliquees`. Prochaine étape : contrôles automatiques des
+      197 éléments (agent — étape 2).
 - [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
       reçus (expiration, produit, classe, émetteur) — règles en YAML
 - [x] Agent — étape 3 (formulaires) : fiche signalétique (pièce 2) et annexe II

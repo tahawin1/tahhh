@@ -58,6 +58,7 @@ class Dossier(Base):
     fournisseur: Mapped[str | None] = mapped_column(String(300), nullable=True)
     equipement: Mapped[bool | None] = mapped_column(Boolean, nullable=True)  # équipement médical (checklist)
     valeur_unitaire_usd: Mapped[float | None] = mapped_column(Float, nullable=True)  # échantillon < 500 $ <= pro-forma
+    fournisseur_distributeur: Mapped[bool | None] = mapped_column(Boolean, nullable=True)  # lettre de lien
     regles_version: Mapped[str] = mapped_column(String(20))
     dossier_sortie: Mapped[str] = mapped_column(String(500))
     cree_par: Mapped[str] = mapped_column(String(120))

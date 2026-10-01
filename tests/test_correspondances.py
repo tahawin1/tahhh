@@ -29,7 +29,7 @@ class TestNouvellesOrigines(unittest.TestCase):
             self.assertIn("2855-15", piece.source)
             self.assertTrue(piece.champs_a_extraire)
             self.assertIn("iso_13485", docs)
-        self.assertNotIn("piece_specifique_pakistan", [d.id for d in documents_requis_maroc("pakistan", "I")])
+        self.assertIn("piece_specifique_pakistan", [d.id for d in documents_requis_maroc("pakistan", "I")])  # 2.5 : FSC toutes classes
 
     def test_regles_des_pays_provisoires_signalees(self):
         attendus = {"etats_unis": "partiel", "coree_du_sud": "partiel", "pakistan": "provisoire"}

@@ -93,7 +93,8 @@ class TestDossierReelAccepte(unittest.TestCase):
             (16, "certificat_enregistrement_annexe2"),
         ])
         # sans numéro : échantillon (valeur non saisie -> retenu par défaut) et quittance (arrêté 2855-15)
-        self.assertEqual([d.id for d in docs if d.numero is None], ["echantillon_modele_vente", "quittance_droits"])
+        self.assertEqual([d.id for d in docs if d.numero is None],
+                         ["echantillon_modele_vente", "declaration_etablissement", "quittance_droits"])
         self.assertIn("Valeur unitaire du produit non saisie", next(d for d in docs if d.id == "echantillon_modele_vente").remarque)
 
     def test_pieces_retirees_en_v2(self):
@@ -117,7 +118,7 @@ class TestDossierReelAccepte(unittest.TestCase):
         regles = charger_regles("maroc")
         self.assertIn("AMMPS", regles["autorite"])
         self.assertIn("Directeur Général", regles["destinataire_demande"])
-        self.assertEqual(regles["version"], 2.4)
+        self.assertEqual(regles["version"], 2.5)
 
 
 class TestNatureDesPieces(unittest.TestCase):
@@ -172,3 +173,29 @@ class TestCreneauDepot(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestReponsesTirees(unittest.TestCase):
+    """Règles 2.5 : points de la checklist tranchés d'après les textes."""
+
+    def test_libre_vente(self):
+        ue_i = ids("union_europeenne", "I")
+        self.assertIn("certificat_libre_vente_ue", ue_i)  # MDR art. 60 : classe I sans organisme notifié
+        self.assertNotIn("piece_specifique_union_europeenne", ue_i)
+        self.assertNotIn("certificat_libre_vente_ue", ids("union_europeenne", "IIB"))  # le certificat CE suffit
+        for pays in ("chine", "inde", "etats_unis", "coree_du_sud", "pakistan", "autre"):
+            self.assertIn(f"piece_specifique_{pays}", ids(pays, "I"))
+
+    def test_classe_iii_ue_et_donnees_cliniques(self):
+        self.assertIn("certificat_evaluation_classe_iii", ids("union_europeenne", "III"))
+        self.assertNotIn("certificat_evaluation_classe_iii", ids("union_europeenne", "IIB"))
+        self.assertNotIn("evaluation_clinique", ids("union_europeenne", "III"))  # couvert par le certificat CE
+        self.assertIn("evaluation_clinique", ids("chine", "IIB"))
+        self.assertNotIn("evaluation_clinique", ids("chine", "IIA"))
+
+    def test_lettre_de_lien_declaration_quittance(self):
+        self.assertNotIn("lettre_de_lien", ids("inde", "IIA"))
+        self.assertIn("lettre_de_lien", [d.id for d in documents_requis_maroc("inde", "IIA", distributeur=True)])
+        for pays in ("chine", "union_europeenne"):
+            self.assertIn("declaration_etablissement", ids(pays, "I"))
+            self.assertIn("quittance_droits", ids(pays, "I"))
