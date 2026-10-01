@@ -212,7 +212,22 @@ supporte déjà.
       modèle accepté, via la pile serveur complète.
 - [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
       reçus (expiration, produit, classe, émetteur) — règles en YAML
-- [ ] Agent — étape 3 : projets remplis avec les données extraites
+- [x] Agent — étape 3 (formulaires) : fiche signalétique (pièce 2) et annexe II
+      (pièce 16) **remplies par le code**, case par case (`src/formulaires.py`,
+      `rules/formulaires_maroc.yaml` : sections et libellés du dossier accepté,
+      sources par priorité saisie > document lu > profil > dossier > valeur
+      habituelle « à confirmer » ; jamais d'invention : sinon [À COMPLÉTER]).
+      Panneau « Données du dispositif » (provenance de chaque case, saisie,
+      reprise d'un autre dossier). Mistral ne rédige plus que la lettre (avec
+      les données connues). Dépôt groupé des documents du fournisseur
+      (`src/classement.py` : numéro en tête du nom, sinon mots du nom ; plusieurs
+      fichiers d'une pièce réunis en un PDF ; non reconnu = signalé). Règles
+      Maroc 2.1 : champs à lire en plus (coordonnées fabricant, notice,
+      étiquettes, catalogue) ; les champs à lire suivent les règles actuelles
+      (la liste des pièces, elle, reste figée). Testé (unitaires + navigateur
+      avec les vrais fichiers de Ciment osseux, sans Mistral) ; à valider sur le
+      PC de l'utilisateur avec la lecture réelle.
+- [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
       préparées (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

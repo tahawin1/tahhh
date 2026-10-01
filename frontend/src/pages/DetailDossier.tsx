@@ -5,6 +5,8 @@ import { Anneau } from '../composants/Progression'
 import Icone from '../composants/Icone'
 import { etapes, prochaineAction } from '../parcours'
 import LectureAgent from '../composants/LectureAgent'
+import DepotGroupe from '../composants/DepotGroupe'
+import DonneesDispositif from '../composants/DonneesDispositif'
 import type { Session } from './Connexion'
 
 export default function DetailDossier({ id, session }: { id: number; session: Session }) {
@@ -99,6 +101,28 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
 
       <section>
         <div className="section-titre">
+          <h2><span className="icone-rond neutre petit"><Icone nom="deposer" taille={16} /></span> Envoyées par le fournisseur <span className="compte">{aFournir.length}</span></h2>
+        </div>
+        <p className="aide">Documents émis par des tiers (autorités, organismes, fabricant) : jamais rédigés par le système. Déposez-les, l'agent les lit et contrôle chaque valeur.</p>
+        <DepotGroupe dossierId={dossier.id} acteur={session.nom} occupe={!!action} surDossier={setDossier} />
+        <div className="pieces">
+          {aFournir.map((p) => (
+            <CartePiece key={p.id} piece={p} dossierId={dossier.id} session={session} occupe={!!action} executer={executer} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="section-titre">
+          <h2><span className="icone-rond neutre petit"><Icone nom="document" taille={16} /></span> Données du dispositif</h2>
+        </div>
+        <p className="aide">Lues dans les documents du fournisseur, reprises du profil de l'entreprise ou saisies ici : elles remplissent les formulaires officiels case par case.</p>
+        <DonneesDispositif dossierId={dossier.id} acteur={session.nom}
+          version={dossier.documents.map((d) => `${d.extraction_statut}`).join(',')} />
+      </section>
+
+      <section>
+        <div className="section-titre">
           <h2><span className="icone-rond accent petit"><Icone nom="ia" taille={16} /></span> Rédigées par l'agent <span className="compte">{aRediger.length}</span></h2>
           <button
             className="principal"
@@ -109,21 +133,9 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
             {aLancer ? `Lancer la rédaction (${aLancer} pièce${aLancer > 1 ? 's' : ''})` : 'Rien à rédiger'}
           </button>
         </div>
-        <p className="aide">Projets rédigés par l'IA à partir des règles et des textes officiels : à relire puis valider.</p>
+        <p className="aide">La lettre est rédigée par l'IA sur le modèle d'un dossier accepté ; la fiche signalétique et l'annexe II sont remplies par le code avec les données ci-dessus. À relire puis valider.</p>
         <div className="pieces">
           {aRediger.map((p) => (
-            <CartePiece key={p.id} piece={p} dossierId={dossier.id} session={session} occupe={!!action} executer={executer} />
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <div className="section-titre">
-          <h2><span className="icone-rond neutre petit"><Icone nom="deposer" taille={16} /></span> Envoyées par le fournisseur <span className="compte">{aFournir.length}</span></h2>
-        </div>
-        <p className="aide">Documents émis par des tiers (autorités, organismes, fabricant) : jamais rédigés par le système. Déposez-les, l'agent les lit et contrôle chaque valeur.</p>
-        <div className="pieces">
-          {aFournir.map((p) => (
             <CartePiece key={p.id} piece={p} dossierId={dossier.id} session={session} occupe={!!action} executer={executer} />
           ))}
         </div>
@@ -250,6 +262,7 @@ function CartePiece({
           {projet.paragraphes.map((p, i) =>
             p.genre === 'titre' ? <h4 key={i}>{p.texte}</h4>
               : p.genre === 'puce' ? <p key={i} className="puce">{p.texte}</p>
+              : p.genre === 'ligne' ? <LigneFormulaire key={i} texte={p.texte} />
               : <p key={i}>{p.texte}</p>,
           )}
         </div>
@@ -300,5 +313,15 @@ function CartePiece({
         </div>
       )}
     </article>
+  )
+}
+
+function LigneFormulaire({ texte }: { texte: string }) {
+  const [libelle, ...valeurs] = texte.split(' | ')
+  const valeur = valeurs.join(' | ')
+  return (
+    <p className={`ligne-formulaire ${valeur.includes('[À COMPLÉTER]') ? 'vide' : ''}`}>
+      <span>{libelle}</span><span>{valeur}</span>
+    </p>
   )
 }

@@ -60,6 +60,7 @@ class TestApi(unittest.TestCase):
         generate.OUTPUT_DIR = TMP / "output"
         api.OUTPUT_DIR = (TMP / "output").resolve()
         generate.generer_document = faux_generer_document
+        generate.PROFIL_ENTREPRISE = TMP / "profil_absent.yaml"  # jamais le profil réel de l'entreprise
         taches._obtenir_generateur = lambda: None
         taches.soumettre = taches.executer_generation  # exécution immédiate
         taches.soumettre_extraction = taches.executer_extraction
@@ -120,8 +121,12 @@ class TestApi(unittest.TestCase):
         d = self.creer()
         r = self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
         self.assertEqual(r.status_code, 202, r.text)
-        self.assertEqual(sorted(APPELS_GENERATION),
-                         sorted(["demande_signee", "fiche_signaletique", "certificat_enregistrement_annexe2"]))
+        # Mistral ne rédige que la lettre ; les deux formulaires sont remplis par le code
+        self.assertEqual(APPELS_GENERATION, ["demande_signee"])
+        for code in ("fiche_signaletique", "certificat_enregistrement_annexe2"):
+            piece = self.piece(r.json(), code)
+            self.assertTrue(piece["fichier_disponible"], code)
+            self.assertIn("rempli par le code", piece["sources"][0]["texte_source"])
         d = self.client.get(f"/dossiers/{d['id']}").json()
         for x in d["documents"]:
             attendu = "a_valider" if x["nature"] == "a_rediger" else "a_obtenir"
@@ -223,6 +228,49 @@ class TestApi(unittest.TestCase):
         self.assertIn("lecture_terminee", actions)
         orig = self.client.get(f"/dossiers/{d['id']}/documents/{iso['id']}/document-recu")
         self.assertEqual(orig.content, b"%PDF-1.4 certificat")
+
+    def test_donnees_du_dispositif(self):
+        d = self.creer(pays="union_europeenne")
+        url = f"/dossiers/{d['id']}/donnees-dispositif"
+        r = self.client.get(url).json()
+        champs = {c["id"]: c for s in r["sections"] for c in s["champs"]}
+        self.assertEqual(champs["designation"]["valeur"], "Prothèse orthopédique de hanche")
+        self.assertEqual(champs["indications"]["provenance"], "manquant")
+        self.assertGreater(r["a_completer"], 5)
+        r = self.client.put(url, json={"acteur": "Testeur", "valeurs": {"indications": "Arthroplastie", "categorie": ""}})
+        champs = {c["id"]: c for s in r.json()["sections"] for c in s["champs"]}
+        self.assertEqual((champs["indications"]["valeur"], champs["indications"]["provenance"]), ("Arthroplastie", "saisie"))
+        self.assertEqual(self.client.put(url, json={"acteur": "Testeur", "valeurs": {"pirate": "x"}}).status_code, 422)
+        journal = self.client.get(f"/dossiers/{d['id']}").json()["evenements"]
+        self.assertEqual(journal[0]["action"], "donnees_saisies")
+        # la saisie est reprise dans le formulaire rempli par le code
+        self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
+        fiche = self.piece(self.client.get(f"/dossiers/{d['id']}").json(), "fiche_signaletique")
+        apercu = self.client.get(f"/dossiers/{d['id']}/documents/{fiche['id']}/apercu").json()["paragraphes"]
+        self.assertIn({"genre": "ligne", "texte": "Indications | Arthroplastie"}, apercu)
+        # reprise dans un autre dossier, sans écraser ce qui y est déjà saisi
+        autre = self.creer(pays="union_europeenne")
+        self.client.put(f"/dossiers/{autre['id']}/donnees-dispositif",
+                        json={"acteur": "Testeur", "valeurs": {"indications": "Autre"}})
+        r = self.client.post(f"/dossiers/{autre['id']}/donnees-dispositif/reprendre",
+                             json={"acteur": "Testeur", "depuis": d["id"]})
+        champs = {c["id"]: c for s in r.json()["sections"] for c in s["champs"]}
+        self.assertEqual(champs["indications"]["valeur"], "Autre")
+
+    def test_depot_groupe_range_par_le_code(self):
+        d = self.creer(pays="union_europeenne")
+        fichiers = [("fichiers", (nom, b"%PDF-1.4 " + nom.encode(), "application/pdf")) for nom in
+                    ("ISO13485.pdf", "DoC for Morocco.pdf", "facture.pdf", "9-9- Photo.pdf")]
+        r = self.client.post(f"/dossiers/{d['id']}/documents-recus", data={"acteur": "Testeur"}, files=fichiers)
+        self.assertEqual(r.status_code, 202, r.text)
+        affectations = {a["fichier"]: a["piece"] for a in r.json()["affectations"]}
+        self.assertEqual(affectations, {"ISO13485.pdf": 5, "DoC for Morocco.pdf": 6, "facture.pdf": None,
+                                        "9-9- Photo.pdf": None})  # photos : rien à lire
+        dossier = r.json()["dossier"]
+        self.assertEqual(self.piece(dossier, "iso_13485")["extraction_statut"], "terminee")
+        doc = self.piece(dossier, "declaration_conformite")
+        self.assertIn("adresse_fabricant", [c["nom"] for c in doc["extraction"]["champs"]])  # champs des règles actuelles
+        self.assertEqual(self.piece(dossier, "notice")["extraction_statut"], None)
 
     def test_lecture_en_echec_visible(self):
         d = self.creer()

@@ -70,9 +70,11 @@ TYPES_CHAMPS = ("texte", "date")
 def _champs(regle: dict, ref: str) -> list[dict]:
     """Champs à extraire d'une pièce reçue, tels que déclarés dans le YAML.
     Les modèles réutilisés par ancre YAML (liste dans la liste) sont aplatis."""
-    champs: list[dict] = []
-    for element in regle.get("champs_a_extraire") or []:
-        champs.extend(element if isinstance(element, list) else [element])
+    def aplatir(elements):
+        for e in elements:
+            yield from (aplatir(e) if isinstance(e, list) else [e])
+
+    champs: list[dict] = list(aplatir(regle.get("champs_a_extraire") or []))
     noms = set()
     for c in champs:
         if not c.get("nom") or not c.get("libelle") or not c.get("description"):

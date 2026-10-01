@@ -44,6 +44,8 @@ export const ACTIONS: Record<string, string> = {
   lecture_demandee: 'Lecture relancée',
   lecture_terminee: "Document lu par l'agent",
   lecture_echec: 'Échec de lecture',
+  donnees_saisies: 'Données du dispositif saisies',
+  donnees_reprises: "Données reprises d'un autre dossier",
 }
 
 export function dateHeure(iso: string | null): string {

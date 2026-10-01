@@ -147,7 +147,34 @@ export interface Apercu {
 export interface ApercuProjet {
   piece: string
   genere_le: string | null
-  paragraphes: { genre: 'titre' | 'puce' | 'texte'; texte: string }[]
+  /** 'ligne' : une ligne de tableau d'un formulaire (« libellé | valeur ») */
+  paragraphes: { genre: 'titre' | 'puce' | 'texte' | 'ligne'; texte: string }[]
+}
+
+export type Provenance = 'saisie' | 'piece' | 'profil' | 'dossier' | 'donnee' | 'defaut' | 'regle' | 'manquant'
+
+/** Une case de la fiche signalétique / de l'annexe II, avec sa provenance */
+export interface DonneeDispositif {
+  id: string
+  libelle: string
+  type: 'texte' | 'long' | 'choix' | 'references'
+  options: string[] | null
+  valeur: string | null
+  provenance: Provenance
+  detail: string | null
+  a_verifier: boolean
+}
+
+export interface DonneesDispositif {
+  sections: { titre: string; champs: DonneeDispositif[] }[]
+  a_completer: number
+}
+
+export interface Affectation {
+  fichier: string
+  piece: number | null
+  piece_nom?: string | null
+  raison: string
 }
 
 export interface Sante {
@@ -243,6 +270,21 @@ export const api = {
       method: 'POST', headers: enTetes(), body: donnees,
     })
   },
+  deposerGroupe: (id: number, fichiers: File[], acteur: string) => {
+    const donnees = new FormData()
+    for (const f of fichiers) donnees.append('fichiers', f)
+    donnees.append('acteur', acteur)
+    return requete<{ dossier: DossierDetail; affectations: Affectation[] }>(`/dossiers/${id}/documents-recus`, {
+      method: 'POST', headers: enTetes(), body: donnees,
+    })
+  },
+  donnees: (id: number) => requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, { headers: enTetes() }),
+  enregistrerDonnees: (id: number, acteur: string, valeurs: Record<string, string>) =>
+    requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, {
+      method: 'PUT', headers: enTetes(true), body: JSON.stringify({ acteur, valeurs }),
+    }),
+  reprendreDonnees: (id: number, acteur: string, depuis: number) =>
+    post<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif/reprendre`, { acteur, depuis }),
   relire: (id: number, piece: number, acteur: string) =>
     post<DossierDetail>(`/dossiers/${id}/documents/${piece}/relire`, { acteur }),
   apercuProjet: (id: number, piece: number) =>

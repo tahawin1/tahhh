@@ -38,7 +38,7 @@ OUTPUT_DIR = Path(__file__).resolve().parent.parent / "output"
 PROFIL_ENTREPRISE = Path(__file__).resolve().parent.parent / "config" / "entreprise.yaml"
 LIBELLES_PROFIL = {
     "raison_sociale": "Raison sociale", "ville": "Ville (lieu des courriers)", "adresse": "Adresse",
-    "telephone": "Téléphone", "representant_legal": "Représentant légal", "ice": "ICE",
+    "telephone": "Téléphone", "email": "Adresse électronique", "representant_legal": "Représentant légal", "ice": "ICE",
     "identifiant_fiscal": "IF", "registre_commerce": "RC", "patente": "Patente", "banque_rib": "Banque / RIB",
 }
 
@@ -147,6 +147,7 @@ class GenerateurDocuments:
         classe: str | None = None,
         fournisseur: str | None = None,
         pieces_du_dossier: list[str] | None = None,
+        donnees: dict[str, str] | None = None,
     ) -> tuple[str, list[dict]]:
         """Appelle Mistral (via Ollama) pour rédiger le contenu d'un document,
         en s'appuyant sur les extraits réglementaires retrouvés par RAG.
@@ -210,6 +211,8 @@ Comment utiliser le modèle :
             + "\n".join(f"  - {LIBELLES_PROFIL[k]} : {v}" for k, v in profil.items()) + "\n"
         ) if profil else "Établissement demandeur : [À COMPLÉTER] (profil config/entreprise.yaml absent)\n"
 
+        # Données déjà établies (saisies par l'utilisateur ou lues dans les documents reçus)
+        bloc_donnees = "".join(f"- {k} : {v}\n" for k, v in (donnees or {}).items())
         consigne = document.consigne_redaction or document.nom
         # La liste des pièces vient du moteur de règles, jamais du LLM
         liste_pieces = (
@@ -228,7 +231,7 @@ Informations connues sur le dossier (à reprendre telles quelles) :
 - Fabricant / fournisseur : {fournisseur or "[À COMPLÉTER]"}
 - Pays d'origine du fournisseur : {pays_origine}
 - Pays de destination du dossier : {pays_destination}
-{bloc_profil}{liste_pieces}{bloc_modele}
+{bloc_donnees}{bloc_profil}{liste_pieces}{bloc_modele}
 {"" if modele else "Extraits de textes réglementaires officiels, fournis UNIQUEMENT comme référence (pour les exigences et le vocabulaire) :" + chr(10) + contexte}
 
 Consignes strictes :
@@ -328,12 +331,13 @@ def generer_document(
     classe: str | None = None,
     fournisseur: str | None = None,
     pieces_du_dossier: list[str] | None = None,
+    donnees: dict[str, str] | None = None,
 ) -> dict:
     """Rédige UN document à rédiger (RAG + Mistral) et l'enregistre en DOCX.
     Lève GenerationImpossible pour une pièce à fournir ou si Mistral échoue."""
     contenu, sources = generateur.generer_contenu(
         doc, pays_destination="maroc", produit=produit, pays_origine=pays_origine,
-        classe=classe, fournisseur=fournisseur, pieces_du_dossier=pieces_du_dossier,
+        classe=classe, fournisseur=fournisseur, pieces_du_dossier=pieces_du_dossier, donnees=donnees,
     )
     chemin = generateur.creer_fichier_docx(
         doc.nom, contenu, dossier_sortie / f"{doc.id}.docx".replace(" ", "_"), document=doc, sources=sources

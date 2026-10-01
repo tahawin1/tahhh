@@ -60,6 +60,8 @@ class Dossier(Base):
     dossier_sortie: Mapped[str] = mapped_column(String(500))
     cree_par: Mapped[str] = mapped_column(String(120))
     cree_le: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), default=maintenant)
+    # Données du dispositif saisies ou corrigées par l'utilisateur (fiche signalétique, annexe II)
+    donnees_dispositif: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
     documents: Mapped[list[Document]] = relationship(
         back_populates="dossier", order_by="Document.ordre", cascade="all, delete-orphan"

@@ -9,6 +9,7 @@ raison_sociale: "NOM DE L'ÉTABLISSEMENT"
 ville: "Ville"                        # lieu indiqué avant la date des lettres
 adresse: "Adresse complète"
 telephone: ""
+email: ""
 representant_legal: "Nom du représentant légal"
 ice: ""
 identifiant_fiscal: ""

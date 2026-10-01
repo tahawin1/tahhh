@@ -1,0 +1,256 @@
+# Formulaires officiels remplis PAR LE CODE (pas par Mistral) — Maroc.
+#
+# La fiche signalétique (pièce 2) et le certificat d'enregistrement de
+# l'annexe II (pièce 16) sont des formulaires : Mistral n'en respecte pas la
+# mise en page (essai du 2026-10-01). Ils sont donc remplis case par case à
+# partir des données ci-dessous, dans l'ordre et avec les libellés des
+# formulaires du dossier accepté (Ciment osseux, UE, IIb).
+#
+# VERSION 1 — 2026-10-01.
+#
+# `donnees` : chaque donnée du dispositif, avec ses sources possibles, par
+# ordre de priorité (la première trouvée l'emporte) :
+#   saisie (toujours en premier, implicite) : valeur saisie ou corrigée par
+#                         l'utilisateur dans le tableau de bord ;
+#   dossier:<champ>     : produit, classe, pays_origine du dossier ;
+#   profil:<champ>      : config/entreprise.yaml (établissement demandeur) ;
+#   piece:<code>:<champ>: valeur lue par l'agent dans le document reçu de
+#                         cette pièce (« piece_specifique » = certificat CE,
+#                         NMPA, CDSCO ou de libre vente selon l'origine) ;
+#                         une valeur non vérifiée dans le texte est marquée
+#                         « à vérifier » ;
+#   donnee:<id>         : reprend une autre donnée (ex. site de fabrication) ;
+#   defaut:<valeur>     : valeur habituelle (dossier accepté), toujours
+#                         marquée « à confirmer ».
+# Sans aucune source : [À COMPLÉTER].
+# type : texte (défaut) | long | choix (cases ☒/☐, `options`) | references
+#        (tableau marque / nom commercial / référence, une ligne par produit :
+#        « MARQUE | NOM COMMERCIAL | RÉFÉRENCE »)
+# na_si_origine : la donnée vaut « NA » pour ces pays d'origine.
+# format : date (la date lue est écrite jj/mm/aaaa) | classe (IIB -> IIb).
+
+version: 1
+date_version: "2026-10-01"
+
+donnees:
+  # ---- objet et statut
+  objet:
+    libelle: "Objet de la demande"
+    type: choix
+    options: ["Nouvel enregistrement", "Mise à jour", "Renouvellement quinquennal", "Notification", "Autre objet"]
+    sources: ["defaut:Nouvel enregistrement"]
+  certificat_existant:
+    libelle: "Numéro et date du certificat d'enregistrement (renouvellement, mise à jour ou notification)"
+    sources: ["defaut:NA"]
+  statut_dm:
+    libelle: "Statut du dispositif médical"
+    type: choix
+    options: ["Dispositif médical seul", "Kit de DM", "Système de DM", "Famille ou gamme de DM"]
+    sources: ["defaut:Dispositif médical seul"]
+  fabrication:
+    libelle: "Fabrication"
+    type: choix
+    options: ["Fabriqué localement", "Importé", "Importé semi-fini"]
+    sources: ["defaut:Importé"]
+  # ---- identification
+  classe:
+    libelle: "Classe de risque"
+    format: classe
+    sources: ["dossier:classe"]
+  sterilisation:
+    libelle: "DM stérile — méthode de stérilisation"
+    sources: ["piece:etiquetage:sterilisation", "piece:notice:sterilisation"]
+  type_dm:
+    libelle: "Type de DM"
+    type: choix
+    options: ["Produit/matière", "Implantable actif", "Logiciel", "Instrument", "Appareillage", "DM sur mesure",
+              "Equipement neuf", "Equipement remis à neuf", "Equipement usagé", "Autres DM"]
+    sources: []
+  categorie:
+    libelle: "Catégorie du DM"
+    sources: []
+  code_classification:
+    libelle: "Code GMDN et/ou code de classification (EMDN, Cladimed)"
+    sources: []
+  designation:
+    libelle: "Désignation du dispositif médical"
+    sources: ["dossier:produit"]
+  nom_marque:
+    libelle: "Nom de marque / Nom(s) commercial(aux)"
+    sources: ["piece:catalogue:nom_marque", "piece:etiquetage:noms_commerciaux"]
+  references_resume:
+    libelle: "Numéro(s) de référence(s) ou de série(s)"
+    sources: ["defaut:Voir annexe"]
+  presentation:
+    libelle: "Présentation(s)"
+    type: long
+    sources: ["piece:notice:presentation"]
+  indications:
+    libelle: "Indications"
+    type: long
+    sources: ["piece:notice:indications"]
+  domaine_therapeutique:
+    libelle: "Domaine thérapeutique"
+    sources: []
+  duree_validite:
+    libelle: "Durée de validité (si applicable)"
+    sources: ["piece:etiquetage:duree_validite", "piece:notice:duree_validite"]
+  conservation:
+    libelle: "Conditions de conservation"
+    sources: ["piece:notice:conservation", "piece:etiquetage:conservation"]
+  # ---- composition (jamais supposée : toujours confirmée par l'utilisateur)
+  composition:
+    libelle: "Composition : éléments et matériaux constitutifs du dispositif"
+    type: long
+    sources: ["piece:notice:composition"]
+  contient_medicament:
+    libelle: "Dispositif contenant un médicament (oui / non ; nature)"
+    sources: []
+  contient_composant_sanguin:
+    libelle: "Dispositif contenant un composant sanguin (oui / non ; nature)"
+    sources: []
+  contient_origine_animale:
+    libelle: "Dispositif contenant un produit d'origine animale (oui / non ; nature, origine)"
+    sources: []
+  contient_nano:
+    libelle: "Dispositif contenant des nano-éléments (oui / non)"
+    sources: []
+  contient_radionucleide:
+    libelle: "Dispositif contenant un radionucléide artificiel (oui / non)"
+    sources: []
+  emet_rayonnements:
+    libelle: "Dispositif émettant des rayonnements ionisants (oui / non)"
+    sources: []
+  contient_latex:
+    libelle: "Dispositif contenant du latex (oui / non)"
+    sources: []
+  contient_phtalates:
+    libelle: "Dispositif contenant des phtalates (oui / non)"
+    sources: []
+  informations_complementaires:
+    libelle: "Informations complémentaires"
+    sources: ["defaut:NA"]
+  # ---- situation juridique dans le pays d'origine
+  ce_numero:
+    libelle: "Numéro du certificat de marquage CE"
+    sources: ["piece:piece_specifique:numero"]
+    na_si_origine: [chine, inde, autre]
+  ce_validite:
+    libelle: "Date du certificat CE (valable jusqu'au)"
+    format: date
+    sources: ["piece:piece_specifique:date_expiration"]
+    na_si_origine: [chine, inde, autre]
+  ce_organisme:
+    libelle: "Code de l'organisme notifié"
+    sources: ["piece:piece_specifique:numero_organisme_notifie"]
+    na_si_origine: [chine, inde, autre]
+  cvl_numero:
+    libelle: "Numéro du certificat de vente libre ou équivalent dans le pays d'origine"
+    sources: ["piece:piece_specifique:numero"]
+    na_si_origine: [union_europeenne]
+  cvl_date:
+    libelle: "Date du certificat de vente libre ou équivalent"
+    format: date
+    sources: ["piece:piece_specifique:date_emission"]
+    na_si_origine: [union_europeenne]
+  # ---- établissements
+  importateur_nom:
+    libelle: "Établissement d'importation — nom"
+    sources: ["profil:raison_sociale"]
+  importateur_adresse:
+    libelle: "Établissement d'importation — adresse"
+    sources: ["profil:adresse"]
+  importateur_telephone:
+    libelle: "Établissement d'importation — téléphone"
+    sources: ["profil:telephone"]
+  importateur_email:
+    libelle: "Établissement d'importation — adresse électronique"
+    sources: ["profil:email"]
+  fabricant_nom:
+    libelle: "Établissement de fabrication — nom"
+    sources: ["piece:declaration_conformite:fabricant", "piece:attestation_fabricant:fabricant",
+              "piece:notice:fabricant", "piece:etiquetage:fabricant", "piece:piece_specifique:titulaire"]
+  fabricant_adresse:
+    libelle: "Établissement de fabrication — adresse"
+    sources: ["piece:declaration_conformite:adresse_fabricant", "piece:attestation_fabricant:adresse_fabricant",
+              "piece:notice:adresse_fabricant", "piece:etiquetage:adresse_fabricant"]
+  fabricant_contact:
+    libelle: "Établissement de fabrication — téléphone, fax, adresse électronique"
+    sources: ["piece:notice:contact_fabricant", "piece:etiquetage:contact_fabricant",
+              "piece:declaration_conformite:contact_fabricant", "piece:attestation_fabricant:contact_fabricant"]
+  sous_traitant:
+    libelle: "Sous-traitant (nom, adresse, téléphone, fax, adresse électronique)"
+    sources: ["defaut:NA"]
+  site_fabrication:
+    libelle: "Site(s) de fabrication et de contrôle"
+    type: long
+    sources: ["donnee:fabricant_nom"]
+  # ---- DM usagés ou remis à neuf (sans objet pour un dispositif neuf)
+  usage_date_fabrication: {libelle: "Date de fabrication", sources: ["defaut:NA"]}
+  usage_age: {libelle: "Âge du DM usagé", sources: ["defaut:NA"]}
+  usage_mise_en_service: {libelle: "Lieu et date de la première mise en service", sources: ["defaut:NA"]}
+  usage_maintenance: {libelle: "Données concernant le prestataire de la maintenance", sources: ["defaut:NA"]}
+  usage_operations: {libelle: "Dates et nature des opérations effectuées, niveau de performances et conformité", sources: ["defaut:NA"]}
+  usage_hors_service: {libelle: "Dates de mise hors service et de remise en service", sources: ["defaut:NA"]}
+  usage_remise_a_neuf: {libelle: "Date de remise à neuf (DM remis à neuf)", sources: ["defaut:NA"]}
+  # ---- annexe (liste des références)
+  references:
+    libelle: "Liste des références (Nom de marque | Nom commercial | Référence), une ligne par produit"
+    type: references
+    sources: ["piece:catalogue:references", "piece:etiquetage:noms_commerciaux"]
+  representant_legal:
+    libelle: "Représentant légal de l'établissement (signataire)"
+    sources: ["profil:representant_legal"]
+
+# Mise en page de chaque formulaire : sections et données, dans l'ordre du
+# formulaire officiel. `libelle` d'une ligne : remplace celui de la donnée.
+formulaires:
+  fiche_signaletique:
+    titre: "FICHE SIGNALÉTIQUE"
+    sections:
+      - titre: "1- OBJET DE LA DEMANDE"
+        lignes: [objet, certificat_existant]
+      - titre: "2- STATUT DU DISPOSITIF MÉDICAL"
+        lignes: [statut_dm, fabrication]
+      - titre: "3- IDENTIFICATION DU DISPOSITIF MÉDICAL"
+        lignes: [classe, sterilisation, type_dm, categorie, code_classification, designation, nom_marque,
+                 references_resume, presentation, indications, domaine_therapeutique, duree_validite, conservation]
+      - titre: "4- INFORMATIONS SUR LA COMPOSITION DU DISPOSITIF MÉDICAL"
+        lignes: [composition, contient_medicament, contient_composant_sanguin, contient_origine_animale,
+                 contient_nano, contient_radionucleide, emet_rayonnements, contient_latex, contient_phtalates,
+                 informations_complementaires]
+      - titre: "5- SITUATION JURIDIQUE DU DISPOSITIF MÉDICAL DANS LE PAYS D'ORIGINE"
+        lignes: [ce_numero, ce_validite, ce_organisme, cvl_numero, cvl_date]
+      - titre: "6- INFORMATIONS SUR LES ÉTABLISSEMENTS CONCERNÉS PAR LE DISPOSITIF MÉDICAL"
+        lignes: [importateur_nom, importateur_adresse, importateur_telephone, importateur_email,
+                 fabricant_nom, fabricant_adresse, fabricant_contact, sous_traitant, site_fabrication]
+      - titre: "7- INFORMATIONS SUPPLÉMENTAIRES POUR LES DM USAGÉS OU REMIS À NEUF"
+        lignes: [usage_date_fabrication, usage_age, usage_mise_en_service, usage_maintenance, usage_operations,
+                 usage_hors_service, usage_remise_a_neuf]
+    signature: "Date : …………………   Cachet et signature du représentant légal de l'établissement : {representant_legal}"
+    annexe: "Annexe — Certificat d'enregistrement n° …………… du …………… — Valable jusqu'au ……………\nListe des références (Famille)"
+
+  certificat_enregistrement_annexe2:
+    titre: "CERTIFICAT D'ENREGISTREMENT — Partie I : réservée au demandeur"
+    sections:
+      - titre: "Statut du (des) dispositif(s) médical(aux)"
+        lignes: [statut_dm, fabrication]
+      - titre: "Information concernant le (les) dispositif(s) médical(aux)"
+        lignes:
+          - designation: "Désignation de (des) dispositif(s)"
+          - nom_marque: "Nom de marque / Nom(s) commercial(aux)"
+          - presentation: "Présentation"
+          - references_resume: "Numéro(s) de référence(s) (séries)"
+          - classe: "Classe de risque"
+          - ce_organisme: "Code CE (pour les dispositifs médicaux marqués CE)"
+          - domaine_therapeutique: "Catégories"
+      - titre: "Informations administratives"
+        lignes:
+          - importateur_nom: "Nom de l'établissement marocain"
+          - importateur_adresse: "Adresse de l'établissement marocain"
+          - fabricant_nom: "Nom de l'établissement de fabrication"
+          - fabricant_adresse: "Adresse de l'établissement de fabrication"
+          - sous_traitant: "Nom et adresse du sous-traitant (en cas de sous-traitance)"
+    signature: "Signature et cachet du représentant légal de l'établissement demandeur : {representant_legal}"
+    partie_reservee: "PARTIE 2 : RÉSERVÉE AU MINISTÈRE DE LA SANTÉ ET DE LA PROTECTION SOCIALE — ne pas remplir."
+    annexe: "Annexe — Certificat d'enregistrement n° …………… — Valable jusqu'au ……………\nListe des références du dispositif médical (Famille) « Nom de marque / Nom commercial »"

@@ -27,6 +27,7 @@ Documentation interactive générée automatiquement : http://localhost:8000/doc
 from __future__ import annotations
 
 import datetime
+import functools
 import logging
 import os
 import secrets
@@ -289,14 +290,20 @@ def _detail(dossier: Dossier) -> dict:
     }
 
 
+@functools.lru_cache(maxsize=64)
+def _champs_regles(pays_origine: str, classe: str | None, empreinte: str) -> dict[str, list[dict]]:
+    return {d.id: d.champs_a_extraire for d in documents_requis_maroc(pays_origine, classe=classe)}
+
+
 def _champs_de(doc: Document) -> list[dict]:
-    """Champs à extraire figés à la création du dossier. Pour un dossier créé
-    avant l'existence de cette fonction, ils sont repris des règles actuelles."""
-    if doc.champs_a_extraire is None and doc.nature == "a_fournir":
-        dossier = doc.dossier
-        actuels = {d.id: d for d in documents_requis_maroc(dossier.pays_origine, classe=dossier.classe)}
-        doc.champs_a_extraire = actuels[doc.code].champs_a_extraire if doc.code in actuels else []
-    return doc.champs_a_extraire or []
+    """Champs à lire dans le document reçu : ceux des règles ACTUELLES (lire un
+    champ de plus ne change aucune exigence ; la liste des pièces, elle, reste
+    figée à la création du dossier). Recopiés sur la pièce à chaque lecture."""
+    if doc.nature != "a_fournir":
+        return []
+    dossier = doc.dossier
+    actuels = _champs_regles(dossier.pays_origine, dossier.classe, empreinte_regles("maroc"))
+    return actuels.get(doc.code, doc.champs_a_extraire or [])
 
 
 def _charger_dossier(session, dossier_id: int) -> Dossier:
@@ -556,6 +563,82 @@ def rejeter_piece(dossier_id: int, document_id: int, decision: Decision):
 TAILLE_MAX_RECU = 20 * 1024 * 1024
 
 
+class SaisieDonnees(BaseModel):
+    acteur: str = Field(min_length=2, max_length=120)
+    valeurs: dict[str, str]
+
+
+class Reprise(BaseModel):
+    acteur: str = Field(min_length=2, max_length=120)
+    depuis: int
+
+
+def _donnees(dossier: Dossier) -> dict:
+    """Données du dispositif, groupées comme la fiche signalétique, avec la
+    provenance de chaque valeur (saisie, document lu, profil, défaut…)."""
+    import formulaires
+    from generate import profil_entreprise
+
+    donnees = formulaires.resoudre(dossier, profil_entreprise(), dossier.donnees_dispositif)
+    fiche = formulaires.charger()["formulaires"]["fiche_signaletique"]
+    sections = [{"titre": s["titre"], "champs": [donnees[l] for l in s["lignes"]]} for s in fiche["sections"]]
+    sections.append({"titre": "ANNEXE ET SIGNATURE", "champs": [donnees["references"], donnees["representant_legal"]]})
+    vides = sum(1 for s in sections for c in s["champs"] if not c["valeur"])
+    return {"sections": sections, "a_completer": vides}
+
+
+@app.get("/dossiers/{dossier_id}/donnees-dispositif")
+def lire_donnees(dossier_id: int):
+    with db.SessionLocal() as session:
+        return _donnees(_charger_dossier(session, dossier_id))
+
+
+@app.put("/dossiers/{dossier_id}/donnees-dispositif")
+def saisir_donnees(dossier_id: int, saisie: SaisieDonnees):
+    """Enregistre les valeurs saisies ou corrigées (une valeur vide efface la saisie :
+    la case reprend sa valeur lue ou par défaut). Les formulaires sont à régénérer."""
+    import formulaires
+
+    connues = formulaires.charger()["donnees"]
+    inconnues = sorted(set(saisie.valeurs) - set(connues))
+    if inconnues:
+        raise HTTPException(status_code=422, detail=f"Données inconnues : {', '.join(inconnues)}")
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        actuelles = dict(dossier.donnees_dispositif or {})
+        modifiees = []
+        for ident, valeur in saisie.valeurs.items():
+            valeur = valeur.strip()[:4000]
+            if actuelles.get(ident, "") != valeur:
+                modifiees.append(connues[ident]["libelle"])
+                if valeur:
+                    actuelles[ident] = valeur
+                else:
+                    actuelles.pop(ident, None)
+        if modifiees:
+            dossier.donnees_dispositif = actuelles
+            journaliser(session, dossier_id, saisie.acteur, "donnees_saisies", "; ".join(modifiees))
+            session.commit()
+        return _donnees(dossier)
+
+
+@app.post("/dossiers/{dossier_id}/donnees-dispositif/reprendre")
+def reprendre_donnees(dossier_id: int, reprise: Reprise):
+    """Reprend les valeurs saisies dans un autre dossier (même fabricant, même
+    gamme), sans écraser celles déjà saisies dans celui-ci."""
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        source = _charger_dossier(session, reprise.depuis)
+        actuelles = dict(dossier.donnees_dispositif or {})
+        reprises = {k: v for k, v in (source.donnees_dispositif or {}).items() if k not in actuelles}
+        if reprises:
+            dossier.donnees_dispositif = {**actuelles, **reprises}
+            journaliser(session, dossier_id, reprise.acteur, "donnees_reprises",
+                        f"{len(reprises)} valeur(s) reprise(s) du dossier n°{source.id} ({source.produit})")
+            session.commit()
+        return _donnees(dossier)
+
+
 @app.post("/dossiers/{dossier_id}/documents/{document_id}/document-recu", response_model=DossierDetail, status_code=202)
 async def deposer_document_recu(
     dossier_id: int, document_id: int, fichier: UploadFile = File(...), acteur: str = Form(..., min_length=2, max_length=120),
@@ -584,22 +667,88 @@ async def deposer_document_recu(
         if doc.extraction_statut in ("en_file", "en_cours"):
             raise HTTPException(status_code=409, detail="Une lecture est déjà en cours pour cette pièce.")
 
-        horodatage = maintenant().strftime("%Y%m%d-%H%M%S")
-        chemin = Path(doc.dossier.dossier_sortie) / "recus" / f"{doc.code}_{horodatage}{extension}"
-        chemin.parent.mkdir(parents=True, exist_ok=True)
-        chemin.write_bytes(contenu)
-        doc.fichier_recu = str(chemin)
-        doc.nom_fichier_recu = Path(fichier.filename or f"document{extension}").name[:300]
-        doc.recu_le = maintenant()
-        doc.extraction_statut = "en_file"
-        doc.extraction = None
-        doc.extraction_erreur = None
-        doc.texte_recu = None
-        journaliser(session, dossier_id, acteur, "document_recu_depose", f"{doc.nom} — {doc.nom_fichier_recu}", document_id=doc.id)
+        _enregistrer_recu(session, doc, contenu, extension, fichier.filename or f"document{extension}", acteur)
         session.commit()
         taches.soumettre_extraction(doc.id)
         session.expire_all()
         return _detail(_charger_dossier(session, dossier_id))
+
+
+def _enregistrer_recu(session, doc: Document, contenu: bytes, extension: str, nom: str, acteur: str) -> None:
+    horodatage = maintenant().strftime("%Y%m%d-%H%M%S")
+    chemin = Path(doc.dossier.dossier_sortie) / "recus" / f"{doc.code}_{horodatage}{extension}"
+    chemin.parent.mkdir(parents=True, exist_ok=True)
+    chemin.write_bytes(contenu)
+    doc.fichier_recu = str(chemin)
+    doc.nom_fichier_recu = Path(nom).name[:300]
+    doc.recu_le = maintenant()
+    doc.champs_a_extraire = _champs_de(doc)
+    doc.extraction_statut = "en_file"
+    doc.extraction = None
+    doc.extraction_erreur = None
+    doc.texte_recu = None
+    journaliser(session, doc.dossier_id, acteur, "document_recu_depose", f"{doc.nom} — {doc.nom_fichier_recu}", document_id=doc.id)
+
+
+@app.post("/dossiers/{dossier_id}/documents-recus", status_code=202)
+async def deposer_documents_groupes(
+    dossier_id: int, fichiers: list[UploadFile] = File(...), acteur: str = Form(..., min_length=2, max_length=120),
+):
+    """Dépôt groupé : tous les documents du fournisseur d'un coup. Le CODE range
+    chaque fichier dans sa pièce (numéro en tête du nom, sinon mots du nom :
+    ISO 13485, EC certificate, DoC, label, IFU, catalogue…) ; plusieurs
+    fichiers d'une même pièce (certificat CE + lettre de confirmation,
+    plusieurs étiquettes) sont réunis en un seul PDF. Un fichier non reconnu
+    n'est jamais rangé au hasard : il est signalé, à déposer à la main."""
+    import classement
+    import extraction
+
+    if len(fichiers) > 40:
+        raise HTTPException(status_code=413, detail="40 fichiers au plus par dépôt.")
+    lus = []
+    for f in fichiers:
+        extension = Path(f.filename or "").suffix.lower()
+        contenu = await f.read(TAILLE_MAX_RECU + 1)
+        lus.append((Path(f.filename or "document").name, extension, contenu))
+
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        pieces = [d for d in dossier.documents if d.nature == "a_fournir"]
+        affectations, groupes = [], {}
+        for nom, extension, contenu in lus:
+            if extension not in extraction.EXTENSIONS_ACCEPTEES:
+                affectations.append({"fichier": nom, "piece": None, "raison": "format non pris en charge (PDF, PNG, JPG)"})
+                continue
+            if not contenu or len(contenu) > TAILLE_MAX_RECU:
+                affectations.append({"fichier": nom, "piece": None, "raison": "fichier vide ou de plus de 20 Mo"})
+                continue
+            doc, raison = classement.classer(nom, pieces)
+            if doc is not None and not _champs_de(doc):
+                doc, raison = None, f"pièce {doc.numero} ({doc.nom}) : rien à lire, à cocher à la main"
+            elif doc is not None and doc.statut == "valide":
+                doc, raison = None, f"pièce {doc.numero} déjà validée : la rejeter pour remplacer son document"
+            elif doc is not None and doc.extraction_statut in ("en_file", "en_cours"):
+                doc, raison = None, f"pièce {doc.numero} : une lecture est déjà en cours"
+            affectations.append({"fichier": nom, "piece": doc.numero if doc else None,
+                                 "piece_nom": doc.nom if doc else None, "raison": raison})
+            if doc is not None:
+                groupes.setdefault(doc.id, (doc, []))[1].append((nom, extension, contenu))
+        a_lire = []
+        for doc, elements in groupes.values():
+            try:
+                nom, extension, contenu = classement.reunir(elements)
+            except Exception as e:  # PDF corrompu : signalé, les autres pièces continuent
+                for a in affectations:
+                    if a["piece"] == doc.numero:
+                        a.update(piece=None, raison=f"lecture du fichier impossible ({type(e).__name__})")
+                continue
+            _enregistrer_recu(session, doc, contenu, extension, nom, acteur)
+            a_lire.append(doc.id)
+        session.commit()
+        for ident in a_lire:
+            taches.soumettre_extraction(ident)
+        session.expire_all()
+        return {"dossier": _detail(_charger_dossier(session, dossier_id)), "affectations": affectations}
 
 
 @app.post("/dossiers/{dossier_id}/documents/{document_id}/relire", response_model=DossierDetail, status_code=202)
@@ -642,8 +791,21 @@ def apercu_piece(dossier_id: int, document_id: int):
         chemin = Path(doc.fichier).resolve() if doc.fichier else None
         if chemin is None or not chemin.is_relative_to(OUTPUT_DIR) or not chemin.exists():
             raise HTTPException(status_code=404, detail="Aucun projet rédigé pour cette pièce.")
+        from docx.table import Table
+        from docx.text.paragraph import Paragraph
+
+        fichier = Docx(chemin)
         paragraphes = []
-        for p in Docx(chemin).paragraphs:
+        for element in fichier.element.body.iterchildren():
+            if element.tag.endswith("}tbl"):  # formulaires : une ligne par case
+                for ligne in Table(element, fichier).rows:
+                    cellules = [c.text.strip() for c in ligne.cells]
+                    if any(cellules):
+                        paragraphes.append({"genre": "ligne", "texte": " | ".join(cellules)})
+                continue
+            if not element.tag.endswith("}p"):
+                continue
+            p = Paragraph(element, fichier)
             if not p.text.strip():
                 continue
             style = p.style.name if p.style is not None else ""

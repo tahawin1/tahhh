@@ -13,9 +13,13 @@
 #     accepté : catalogue, certificat d'enregistrement (annexe II) pré-rempli
 #   - certificat CE / équivalent : classes IIA, IIB, III et sous-classes IS, IM
 #   - numéro de chaque pièce dans le dossier déposé (`numero`)
+# 2.1 — 2026-10-01 : aucune pièce ajoutée ni retirée ; seulement des champs à
+#   lire en plus dans les documents reçus (coordonnées du fabricant, notice,
+#   étiquettes, catalogue), qui alimentent la fiche signalétique et l'annexe II
+#   remplies par le code (rules/formulaires_maroc.yaml).
 
 pays: maroc
-version: 2
+version: 2.1
 date_version: "2026-10-01"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
@@ -62,10 +66,18 @@ modeles_champs:
       libelle: "Valable jusqu'au"
       description: "date de fin de validité ou d'expiration du document"
       type: date
-  document_fabricant: &champs_document_fabricant
+  coordonnees_fabricant: &champs_coordonnees_fabricant
     - nom: fabricant
       libelle: "Fabricant"
-      description: "nom et adresse de l'établissement de fabrication qui émet le document"
+      description: "raison sociale de l'établissement de fabrication (sans l'adresse)"
+    - nom: adresse_fabricant
+      libelle: "Adresse du fabricant"
+      description: "adresse postale complète du fabricant (rue, code postal, ville, pays)"
+    - nom: contact_fabricant
+      libelle: "Contact du fabricant"
+      description: "téléphone, fax et adresse électronique du fabricant, tels qu'écrits"
+  document_fabricant: &champs_document_fabricant
+    - *champs_coordonnees_fabricant
     - nom: produits
       libelle: "Produits concernés"
       description: "dispositif(s), noms commerciaux ou références concernés"
@@ -152,12 +164,46 @@ socle_commun:
     nature: a_fournir
     fourni_par: "le fabricant (étiquettes), signées par l'établissement demandeur"
     source: "Arrêté 2855-15, art. 2 (1) b)"
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: noms_commerciaux
+        libelle: "Noms commerciaux et références"
+        description: "nom(s) commercial(aux) et référence(s) (REF) imprimés sur les étiquettes"
+      - nom: sterilisation
+        libelle: "Stérilisation"
+        description: "mention STERILE et méthode de stérilisation (oxyde d'éthylène, rayonnement gamma…), si indiquée"
+      - nom: duree_validite
+        libelle: "Durée de validité"
+        description: "durée de conservation ou date de péremption indiquée (ex. 5 ans)"
+      - nom: conservation
+        libelle: "Conditions de conservation"
+        description: "conditions de stockage indiquées (température, humidité, lumière)"
   - id: notice
     numero: 8
     nom: "Notice d'utilisation, partie en français (signée et cachetée)"
     nature: a_fournir
     fourni_par: "le fabricant (notice), signée par l'établissement demandeur"
     source: "Arrêté 2855-15, art. 2 (1) b) — le cas échéant"
+    champs_a_extraire:
+      - *champs_coordonnees_fabricant
+      - nom: indications
+        libelle: "Indications"
+        description: "indications d'utilisation du dispositif (à quoi il sert, pour quelles pathologies)"
+      - nom: presentation
+        libelle: "Présentation"
+        description: "conditionnement : ce que contient la boîte ou l'emballage"
+      - nom: composition
+        libelle: "Composition"
+        description: "composants et matériaux du dispositif, y compris tout médicament, produit d'origine animale, latex ou phtalate mentionné"
+      - nom: sterilisation
+        libelle: "Stérilisation"
+        description: "mention stérile et méthode de stérilisation, si indiquée"
+      - nom: duree_validite
+        libelle: "Durée de validité"
+        description: "durée de conservation ou de validité du dispositif"
+      - nom: conservation
+        libelle: "Conditions de conservation"
+        description: "conditions de stockage (température, humidité, lumière)"
   - id: echantillon
     numero: 9
     nom: "Échantillon modèle-vente ou photos du dispositif"
@@ -170,6 +216,13 @@ socle_commun:
     nature: a_fournir
     fourni_par: "le fabricant"
     source: "Pratique : dossier accepté (pièce 14)"
+    champs_a_extraire:
+      - nom: nom_marque
+        libelle: "Nom de marque"
+        description: "marque sous laquelle les produits sont vendus (souvent le nom du fabricant)"
+      - nom: references
+        libelle: "Noms commerciaux et références"
+        description: "liste des noms commerciaux du dispositif avec leur référence catalogue, une ligne par produit"
   - id: certificat_enregistrement_annexe2
     numero: 16
     nom: "Certificat d'enregistrement au modèle de l'annexe II, partie I pré-remplie"

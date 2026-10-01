@@ -61,11 +61,21 @@ def executer_generation(document_id: int) -> None:
             consigne_redaction=doc.consigne_redaction,
         )
         try:
-            resultat = generer_document(
+            import formulaires
+
+            if doc.code in formulaires.formulaires():
+                # formulaire officiel : rempli case par case par le code, jamais par Mistral
+                from generate import profil_entreprise
+
+                resultat = formulaires.generer_formulaire(dossier, doc.code, doc.nom, Path(dossier.dossier_sortie),
+                                                          profil_entreprise())
+            else:
+                resultat = generer_document(
                 _obtenir_generateur(), requis, dossier.produit, dossier.pays_origine, Path(dossier.dossier_sortie),
                 classe=dossier.classe,
                 fournisseur=dossier.fournisseur,
                 pieces_du_dossier=[d.nom for d in dossier.documents],  # figées à la création du dossier
+                donnees=_donnees_connues(dossier),
             )
         except GenerationImpossible as e:
             doc.statut = "erreur"
@@ -85,6 +95,18 @@ def executer_generation(document_id: int) -> None:
             doc.valide_le = None
             journaliser(session, dossier.id, "système", "generation_terminee", doc.nom, document_id=doc.id)
         session.commit()
+
+
+def _donnees_connues(dossier) -> dict[str, str]:
+    """Données du dispositif déjà établies (saisies ou lues), transmises à Mistral
+    pour la lettre : il les reprend au lieu de les inventer."""
+    import formulaires
+    from generate import profil_entreprise
+
+    utiles = ("designation", "nom_marque", "indications", "fabricant_nom", "fabricant_adresse", "presentation")
+    donnees = formulaires.resoudre(dossier, profil_entreprise(), dossier.donnees_dispositif)
+    return {donnees[i]["libelle"]: donnees[i]["valeur"] for i in utiles
+            if donnees[i]["valeur"] and donnees[i]["provenance"] in ("saisie", "piece")}
 
 
 def soumettre_extraction(document_id: int) -> None:

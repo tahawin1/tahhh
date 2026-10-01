@@ -8,6 +8,7 @@ $rubriques = [ordered]@{
     ville              = "Ville (lieu indiqué avant la date des lettres)"
     adresse            = "Adresse complète"
     telephone          = "Téléphone"
+    email              = "Adresse électronique"
     representant_legal = "Représentant légal (nom affiché sous la signature)"
     ice                = "ICE"
     identifiant_fiscal = "Identifiant fiscal (IF)"
