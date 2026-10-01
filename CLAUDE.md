@@ -239,8 +239,18 @@ supporte déjà.
       conditions `si_origine`, `si_distributeur`. Checklist : statut
       `decisions_appliquees`. Prochaine étape : contrôles automatiques des
       197 éléments (agent — étape 2).
-- [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
-      reçus (expiration, produit, classe, émetteur) — règles en YAML
+- [x] Agent — étape 2 : contrôles automatiques de la checklist (`src/controles.py`,
+      `GET /dossiers/{id}/controles`, section « Contrôles de la checklist ») :
+      chaque document de la checklist est rattaché aux pièces du dossier
+      (`pieces` dans checklist_maroc.yaml) ; ses points « lecture » sont ajoutés
+      aux champs que Mistral cherche dans le document reçu (citation vérifiée
+      par le code) ; contrôles déterministes en plus : expiration (exception
+      lettre 2023/607 → « à vérifier »), classe lue vs dossier ; cohérence entre
+      documents par le code (même fabricant, n° de certificat CE de la DoC =
+      pièce 4) ; points humains cochés par une personne nommée (journalisés) ;
+      papiers à réclamer + projet de relance au fournisseur (jamais envoyé).
+      Testé sans Mistral (unitaires, API, navigateur) ; à essayer sur le PC avec
+      la lecture réelle (num_predict porté à 90 jetons par champ).
 - [x] Agent — étape 3 (formulaires) : fiche signalétique (pièce 2) et annexe II
       (pièce 16) **remplies par le code**, case par case (`src/formulaires.py`,
       `rules/formulaires_maroc.yaml` : sections et libellés du dossier accepté,

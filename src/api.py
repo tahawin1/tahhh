@@ -316,9 +316,14 @@ def _champs_de(doc: Document) -> list[dict]:
     figée à la création du dossier). Recopiés sur la pièce à chaque lecture."""
     if doc.nature != "a_fournir":
         return []
+    import controles
+
     dossier = doc.dossier
     actuels = _champs_regles(dossier.pays_origine, dossier.classe, empreinte_regles("maroc"))
-    return actuels.get(doc.code, doc.champs_a_extraire or [])
+    champs = list(actuels.get(doc.code, doc.champs_a_extraire or []))
+    # points « lecture » de la checklist de l'entreprise pour cette pièce
+    deja = {c["nom"] for c in champs}
+    return champs + [c for c in controles.champs_checklist(doc.code) if c["nom"] not in deja]
 
 
 def _charger_dossier(session, dossier_id: int) -> Dossier:
@@ -626,6 +631,47 @@ def rejeter_piece(dossier_id: int, document_id: int, decision: Decision):
 
 
 TAILLE_MAX_RECU = 20 * 1024 * 1024
+
+
+class PointHumain(BaseModel):
+    acteur: str = Field(min_length=2, max_length=120)
+    element: str = Field(min_length=3, max_length=200)
+    fait: bool
+
+
+@app.get("/dossiers/{dossier_id}/controles")
+def controles_dossier(dossier_id: int):
+    """Contrôles automatiques de la checklist de l'entreprise sur ce dossier :
+    ✓ / ✗ / à vérifier pour chaque point, papiers à réclamer et projet de
+    relance au fournisseur (jamais envoyé par le système)."""
+    import controles
+
+    with db.SessionLocal() as session:
+        return controles.evaluer(_charger_dossier(session, dossier_id))
+
+
+@app.post("/dossiers/{dossier_id}/controles/humain")
+def cocher_point_humain(dossier_id: int, point: PointHumain):
+    """Une personne nommée atteste avoir vérifié un point visuel (signature,
+    cachet, photos…) ; tracé dans le journal."""
+    import controles
+
+    humains_connus = {controles.element_id(d["id"], i): e["texte"] for d in controles.charger()["documents"]
+                      for i, e in enumerate(d["elements"]) if e["controle"] == "humain"}
+    if point.element not in humains_connus:
+        raise HTTPException(status_code=422, detail="Point de checklist inconnu ou non humain.")
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        coches = dict(dossier.controles_humains or {})
+        if point.fait:
+            coches[point.element] = {"par": point.acteur, "le": maintenant().isoformat()}
+        else:
+            coches.pop(point.element, None)
+        dossier.controles_humains = coches
+        journaliser(session, dossier_id, point.acteur, "point_verifie" if point.fait else "point_decoche",
+                    humains_connus[point.element])
+        session.commit()
+        return controles.evaluer(dossier)
 
 
 class SaisieDonnees(BaseModel):

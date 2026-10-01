@@ -83,7 +83,8 @@ export default function LectureAgent({
             </p>
           )}
           <dl className="champs-lus">
-            {e.champs.map((c) => {
+            {/* les points de la checklist (cl_…) sont montrés dans « Contrôles de la checklist » */}
+            {e.champs.filter((c) => !c.nom.startsWith('cl_')).map((c) => {
               const v = VERDICT[c.verification]
               return (
                 <div key={c.nom} className="champ-lu">

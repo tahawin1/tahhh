@@ -65,6 +65,8 @@ class Dossier(Base):
     cree_le: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), default=maintenant)
     # Données du dispositif saisies ou corrigées par l'utilisateur (fiche signalétique, annexe II)
     donnees_dispositif: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    # Points « humains » de la checklist cochés : {id du point: {par, le}}
+    controles_humains: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
     documents: Mapped[list[Document]] = relationship(
         back_populates="dossier", order_by="Document.ordre", cascade="all, delete-orphan"

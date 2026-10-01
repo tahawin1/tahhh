@@ -186,7 +186,8 @@ Réponds uniquement avec l'objet JSON demandé."""
                     "prompt": prompt,
                     "stream": False,
                     "format": _schema(champs),
-                    "options": {"temperature": 0, "num_ctx": 8192, "num_predict": 1200},
+                    # ~80 jetons par champ (valeur + citation) : la checklist ajoute jusqu'à 30 points par pièce
+                    "options": {"temperature": 0, "num_ctx": 8192, "num_predict": max(1200, 90 * len(champs))},
                 },
                 timeout=OLLAMA_TIMEOUT,
             )

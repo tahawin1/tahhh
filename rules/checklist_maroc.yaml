@@ -6,6 +6,10 @@
 # STATUT : À VALIDER par l'entreprise avant que les contrôles soient codés.
 #
 # Pour chaque document :
+#   pieces               : codes des pièces du dossier contrôlées avec cette liste
+#                          (seules celles présentes dans le dossier s'appliquent)
+#   optionnel            : document qui n'est pas toujours fourni (ses points
+#                          absents sont « à vérifier », jamais « non conforme »)
 #   piece_maroc / numero : pièce correspondante de rules/maroc.yaml (null : nouvelle)
 #   fondement            : texte qui fonde l'exigence (ou « pratique »)
 #   rapprochement        : conforme | ecart_classes (classes différentes de la loi)
@@ -42,6 +46,7 @@ decisions:  # réponses de l'entreprise aux écarts (2026-10-01), appliquées da
   - {id: numerotation, reponse: "Aucun texte ne fixe de numéros : ceux du dossier accepté sont gardés, pièces nouvelles sans numéro", question: "Numéros des nouvelles pièces (10 à 13, 15 libres) ?"}
 documents:
 - id: lettre_d_autorisation
+  pieces: [attestation_fabricant]
   nom: Lettre d'autorisation
   groupe: fabricant
   classes:
@@ -83,6 +88,7 @@ documents:
   - texte: Cohérence des informations avec la déclaration de conformité, le certificat CE et les autres documents
     controle: coherence
 - id: declaration_de_conformite
+  pieces: [declaration_conformite]
   nom: Déclaration de conformité
   groupe: fabricant
   classes:
@@ -159,6 +165,7 @@ documents:
   - texte: Signature du fournisseur
     controle: humain
 - id: certificat_iso
+  pieces: [iso_13485]
   nom: Certificat ISO
   groupe: fabricant
   classes:
@@ -190,6 +197,7 @@ documents:
   - texte: Cohérence avec la déclaration de conformité
     controle: coherence
 - id: certificat_ce_mdd_mdr
+  pieces: [piece_specifique_union_europeenne]
   nom: Certificat CE (MDD/MDR)
   groupe: fabricant
   classes:
@@ -222,6 +230,7 @@ documents:
   - texte: Cohérence avec la déclaration de conformité et l’étiquetage
     controle: coherence
 - id: free_sales_certificate_fsc
+  pieces: [piece_specifique_chine, piece_specifique_inde, piece_specifique_etats_unis, piece_specifique_coree_du_sud, piece_specifique_pakistan, piece_specifique_autre, certificat_libre_vente_ue]
   nom: Free Sales Certificate (FSC)
   groupe: fabricant
   classes:
@@ -257,6 +266,7 @@ documents:
   - texte: Qu'il soit effectué par ministre de la santé
     controle: lecture
 - id: notice_d_utilisation_ifu
+  pieces: [notice]
   nom: Notice d’utilisation (IFU)
   groupe: fabricant
   classes:
@@ -292,6 +302,7 @@ documents:
   - texte: Stérilisation ( s'il est stérile)  avec la méthode utilisé
     controle: lecture
 - id: projet_d_etiquetage
+  pieces: [etiquetage]
   nom: Projet d’étiquetage
   groupe: fabricant
   classes:
@@ -330,6 +341,7 @@ documents:
   - texte: Date de fabrication et expiration
     controle: lecture
 - id: catalogue_produit
+  pieces: [catalogue]
   nom: Catalogue produit
   groupe: fabricant
   classes:
@@ -360,6 +372,8 @@ documents:
   - texte: Version du catalogue
     controle: lecture
 - id: ce_design_mdd
+  pieces: [certificat_evaluation_classe_iii]
+  optionnel: "alternative : certificat sous directive 93/42 (l'un des deux certificats de classe III suffit)"
   nom: CE Design (MDD)
   groupe: fabricant
   classes:
@@ -390,6 +404,7 @@ documents:
   - texte: Cohérence avec le dossier technique, la déclaration de conformité et l’étiquetage
     controle: coherence
 - id: etude_clinique
+  pieces: [evaluation_clinique]
   nom: Etude clinique
   groupe: fabricant
   classes:
@@ -430,6 +445,8 @@ documents:
   - texte: Conclusion et justification de la conformité clinique
     controle: lecture
 - id: extention_letter
+  pieces: [piece_specifique_union_europeenne]
+  optionnel: "seulement si le certificat CE relève de la directive 93/42 (prolongation au titre du règlement 2023/607)"
   nom: Extention letter
   groupe: fabricant
   classes:
@@ -469,6 +486,7 @@ documents:
   - texte: Cohérence avec certificat CE et dossier technique
     controle: coherence
 - id: manuel_d_utilisation
+  pieces: [manuel_utilisation]
   nom: Manuel d'utilisation
   groupe: fabricant
   classes:
@@ -521,6 +539,8 @@ documents:
   - texte: Version du document + date de révision
     controle: lecture
 - id: eu_technical_documentation_assessment_certificate_mdr
+  pieces: [certificat_evaluation_classe_iii]
+  optionnel: "alternative : certificat sous règlement 2017/745 (l'un des deux certificats de classe III suffit)"
   nom: EU Technical documentation Assessment Certificate ( MDR)
   groupe: fabricant
   classes:
@@ -552,6 +572,7 @@ documents:
   - texte: Limitations ou conditions éventuelles
     controle: lecture
 - id: photo
+  pieces: [echantillon]
   nom: Photo
   groupe: fabricant
   classes:
@@ -589,6 +610,7 @@ documents:
   - texte: Cohérence avec le dossier technique / artwork approuvé
     controle: coherence
 - id: echantillon
+  pieces: [echantillon_modele_vente]
   nom: Echantillon
   groupe: fabricant
   classes:
@@ -619,6 +641,7 @@ documents:
   - texte: Cohérence avec la version approuvée (design / artwork / IFU)
     controle: coherence
 - id: facture_pro_forma
+  pieces: [facture_proforma]
   nom: Facture Pro-forma
   groupe: fabricant
   classes:
@@ -661,6 +684,7 @@ documents:
   - texte: Signature ou cachet du fournisseur (si requis)
     controle: humain
 - id: lettre_de_lien
+  pieces: [lettre_de_lien]
   nom: Lettre de lien
   groupe: fabricant
   classes:
@@ -702,6 +726,7 @@ documents:
   - texte: Signatures autorisées des deux parties
     controle: humain
 - id: lettre_de_demande
+  pieces: [demande_signee]
   nom: Lettre de demande
   groupe: interne
   classes:
@@ -718,6 +743,7 @@ documents:
   rapprochement: conforme
   elements: []
 - id: fiche_signaletique
+  pieces: [fiche_signaletique]
   nom: Fiche signalétique
   groupe: interne
   classes:
@@ -734,6 +760,7 @@ documents:
   rapprochement: conforme
   elements: []
 - id: note_descriptive
+  pieces: [note_descriptive]
   nom: Note descriptive
   groupe: interne
   classes:
@@ -750,6 +777,7 @@ documents:
   rapprochement: valide_entreprise
   elements: []
 - id: documentation_technique
+  pieces: [documentation_technique]
   nom: Documentation technique
   groupe: interne
   classes:
@@ -767,6 +795,7 @@ documents:
   rapprochement: valide_entreprise
   elements: []
 - id: certificat_d_enregistrement
+  pieces: [certificat_enregistrement_annexe2]
   nom: Certificat d'enregistrement
   groupe: interne
   classes:
@@ -783,6 +812,7 @@ documents:
   rapprochement: conforme
   elements: []
 - id: declaration_de_la_societe
+  pieces: [declaration_etablissement]
   nom: Déclaration de la société
   groupe: interne
   classes:

@@ -7,6 +7,7 @@ import { etapes, prochaineAction } from '../parcours'
 import LectureAgent from '../composants/LectureAgent'
 import DepotGroupe from '../composants/DepotGroupe'
 import DonneesDispositif from '../composants/DonneesDispositif'
+import ControlesChecklist from '../composants/ControlesChecklist'
 import type { Session } from './Connexion'
 
 export default function DetailDossier({ id, session }: { id: number; session: Session }) {
@@ -113,6 +114,15 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
             <CartePiece key={p.id} piece={p} dossierId={dossier.id} session={session} occupe={!!action} executer={executer} />
           ))}
         </div>
+      </section>
+
+      <section>
+        <div className="section-titre">
+          <h2><span className="icone-rond accent petit"><Icone nom="bouclier" taille={16} /></span> Contrôles de la checklist</h2>
+        </div>
+        <p className="aide">Chaque point de la checklist de l'entreprise : lu par l'agent dans les documents reçus, comparé entre documents par le code, ou à cocher par vous (signatures, cachets, photos).</p>
+        <ControlesChecklist dossierId={dossier.id} acteur={session.nom}
+          version={dossier.documents.map((d) => `${d.extraction_statut}${d.statut}`).join(',')} />
       </section>
 
       <section>

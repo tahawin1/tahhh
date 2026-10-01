@@ -546,3 +546,21 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .case-a-cocher { display: flex !important; align-items: flex-start; gap: 0.6rem; }
 .case-a-cocher input { width: auto; margin-top: 0.25rem; }
 .case-a-cocher small { display: block; color: var(--secondaire); font-weight: 400; }
+
+/* Contrôles de la checklist */
+.controles { display: grid; gap: 0.9rem; }
+.compteurs-controles, .mini-compteurs-controles { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.a-reclamer h3 { display: flex; align-items: center; gap: 0.4rem; font-size: 1rem; }
+.a-reclamer ul { margin: 0.4rem 0; padding-left: 1.2rem; display: grid; gap: 0.3rem; font-size: 0.9rem; overflow-wrap: anywhere; }
+.a-reclamer details { margin-top: 0.6rem; }
+.relance { white-space: pre-wrap; background: var(--surface-2); border: 1px solid var(--bordure); border-radius: 10px; padding: 0.8rem; font-size: 0.85rem; overflow-wrap: anywhere; }
+.docs-controles { display: grid; gap: 0.5rem; }
+.doc-controle { border: 1px solid var(--bordure); border-radius: 10px; background: var(--surface); min-width: 0; }
+.doc-controle > p { margin: 0 0.9rem 0.4rem; }
+.doc-controle-titre { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; flex-wrap: wrap;
+  padding: 0.7rem 0.9rem; background: none; border: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; white-space: normal; }
+.points-controle { list-style: none; margin: 0; padding: 0 0.9rem 0.8rem; display: grid; gap: 0.35rem; }
+.point-controle { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0.5rem; align-items: start; font-size: 0.88rem; }
+.point-controle input { margin-top: 0.2rem; width: auto; }
+.point-controle .signe { font-weight: 700; text-align: center; border-radius: 6px; line-height: 1.4; }
+.point-texte small { display: block; overflow-wrap: anywhere; }

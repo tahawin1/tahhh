@@ -243,8 +243,9 @@ class TestApi(unittest.TestCase):
         self.assertEqual(r.status_code, 202, r.text)
         iso = self.piece(r.json(), "iso_13485")
         self.assertEqual(iso["extraction_statut"], "terminee")
-        self.assertEqual([c["nom"] for c in iso["extraction"]["champs"]],
-                         ["numero", "emetteur", "titulaire", "produit_couvert", "date_emission", "date_expiration", "norme"])
+        noms = [c["nom"] for c in iso["extraction"]["champs"]]
+        self.assertEqual(noms[:7], ["numero", "emetteur", "titulaire", "produit_couvert", "date_emission", "date_expiration", "norme"])
+        self.assertIn("cl_certificat_iso_1", noms)  # + les points « lecture » de la checklist de l'entreprise
         self.assertNotIn("texte", iso["extraction"])  # le texte intégral n'est pas renvoyé au navigateur
         self.assertEqual(iso["statut"], "a_obtenir")  # lire n'est pas valider : la décision reste humaine
         actions = [e["action"] for e in r.json()["evenements"]]
@@ -295,6 +296,27 @@ class TestApi(unittest.TestCase):
         doc = self.piece(dossier, "declaration_conformite")
         self.assertIn("adresse_fabricant", [c["nom"] for c in doc["extraction"]["champs"]])  # champs des règles actuelles
         self.assertEqual(self.piece(dossier, "notice")["extraction_statut"], None)
+
+    def test_controles_de_la_checklist(self):
+        d = self.creer(pays="union_europeenne")
+        r = self.client.get(f"/dossiers/{d['id']}/controles")
+        self.assertEqual(r.status_code, 200, r.text)
+        ids = {x["id"] for x in r.json()["documents"]}
+        self.assertIn("declaration_de_conformite", ids)
+        self.assertGreater(r.json()["resume"]["en_attente"], 0)
+        self.assertIn("Prothèse orthopédique de hanche", r.json()["relance"])
+        self.deposer(d, "iso_13485")  # lu par le faux agent : tous les points « vérifiés »
+        r = self.client.get(f"/dossiers/{d['id']}/controles").json()
+        iso = next(x for x in r["documents"] if x["id"] == "certificat_iso")
+        self.assertEqual(iso["elements"][1]["statut"], "ok")  # périmètre du certificat
+        sig = "cl_declaration_de_conformite_19"
+        r = self.client.post(f"/dossiers/{d['id']}/controles/humain", json={"acteur": "Testeur", "element": sig, "fait": True})
+        doc = next(x for x in r.json()["documents"] if x["id"] == "declaration_de_conformite")
+        self.assertEqual(doc["elements"][19]["statut"], "humain_fait")
+        self.assertEqual(self.client.post(f"/dossiers/{d['id']}/controles/humain",
+                                          json={"acteur": "Testeur", "element": "cl_certificat_iso_1", "fait": True}).status_code, 422)
+        journal = self.client.get(f"/dossiers/{d['id']}").json()["evenements"]
+        self.assertEqual(journal[0]["action"], "point_verifie")
 
     def test_lecture_en_echec_visible(self):
         d = self.creer()

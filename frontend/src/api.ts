@@ -206,6 +206,24 @@ export interface Comparaison {
   pays: Record<string, (Source & { texte: string })[]>
 }
 
+export type StatutPoint = 'ok' | 'ko' | 'a_verifier' | 'en_attente' | 'humain_fait' | 'humain_a_faire'
+
+export interface ControlesChecklist {
+  resume: Record<StatutPoint, number>
+  documents: {
+    id: string
+    nom: string
+    condition: string | null
+    optionnel: string | null
+    fondement: string | null
+    piece: { code: string; numero: number | null; nom: string; statut: string; recu: boolean; nature: string }
+    elements: { id: string; texte: string; controle: 'lecture' | 'coherence' | 'humain'; statut: StatutPoint; detail: string | null; citation?: string | null }[]
+  }[]
+  a_reclamer: { piece: number | null; nom: string; fourni_par: string | null; raisons: string[] }[]
+  relance: string | null
+  checklist_version: number
+}
+
 export interface Affectation {
   fichier: string
   piece: number | null
@@ -319,6 +337,9 @@ export const api = {
   correspondances: () => requete<Correspondances>('/correspondances', { headers: enTetes() }),
   synthese: (theme: string) => post<Synthese>(`/correspondances/synthese/${theme}`, {}),
   comparer: (theme: string) => requete<Comparaison>(`/correspondances/comparer/${theme}`, { headers: enTetes() }),
+  controles: (id: number) => requete<ControlesChecklist>(`/dossiers/${id}/controles`, { headers: enTetes() }),
+  cocherPoint: (id: number, acteur: string, element: string, fait: boolean) =>
+    post<ControlesChecklist>(`/dossiers/${id}/controles/humain`, { acteur, element, fait }),
   donnees: (id: number) => requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, { headers: enTetes() }),
   enregistrerDonnees: (id: number, acteur: string, valeurs: Record<string, string>) =>
     requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, {
