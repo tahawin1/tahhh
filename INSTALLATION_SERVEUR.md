@@ -27,7 +27,7 @@ Le script **peut être relancé sans risque** : ce qui est déjà fait est saut�
 
 ## 0 bis. Serveur Windows : à lire en premier
 
-> **Guide pas à pas dédié (Windows Server 2022, toutes les commandes Windows et Ubuntu) : [GUIDE_INSTALLATION_WINDOWS.md](GUIDE_INSTALLATION_WINDOWS.md).**
+> **Serveur Windows : suivre le guide dédié [GUIDE_INSTALLATION_WINDOWS.md](GUIDE_INSTALLATION_WINDOWS.md)** : uniquement des commandes PowerShell, puis des outils à double-cliquer dans `C:\ConformiteDM`. La suite de cette fiche concerne les serveurs Ubuntu.
 
 L'outil (Docker, PostgreSQL, Qdrant, Mistral) fonctionne sous Linux. Sur un serveur Windows, il tourne dans **Ubuntu sous WSL2**, le sous-système Linux fourni gratuitement par Microsoft. Docker Desktop n'est pas utilisé : il n'est pas pris en charge sur Windows Server et il est payant pour les grandes entreprises.
 

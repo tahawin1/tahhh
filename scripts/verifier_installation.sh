@@ -72,8 +72,14 @@ done
 verifier "fichier .env protégé (lisible par root seulement)" test "$(stat -c %a .env 2>/dev/null)" = 600
 
 echo "-- Exploitation"
-crontab -l 2>/dev/null | grep -q sauvegarder.sh && ok "sauvegarde automatique programmée" \
-  || alerte "sauvegarde automatique non programmée (fiche §9 : sudo crontab -e)"
+if { grep -qs sauvegarder.sh /etc/cron.d/conformite-sauvegarde || crontab -l 2>/dev/null | grep -q sauvegarder.sh; } \
+   && systemctl is-active --quiet cron 2>/dev/null; then
+  DERNIERE=$(ls -t /var/backups/conformite/base_*.dump 2>/dev/null | head -1)
+  if [ -n "$DERNIERE" ]; then DERNIERE=$(basename "$DERNIERE"); else DERNIERE="aucune pour le moment"; fi
+  ok "sauvegarde automatique programmée (dernière : $DERNIERE)"
+else
+  alerte "sauvegarde automatique non programmée ou service cron arrêté (relancer installer_serveur.sh)"
+fi
 DISQUE=$(df -BG --output=avail . | tail -1 | tr -dc '0-9')
 [ "$DISQUE" -ge 10 ] && ok "disque libre : ${DISQUE} Go" || alerte "disque libre : ${DISQUE} Go seulement"
 nvidia-smi >/dev/null 2>&1 && ok "GPU : $(nvidia-smi --query-gpu=name --format=csv,noheader | head -1)" \

@@ -151,6 +151,14 @@ supporte déjà.
       un faux wsl.exe) mais **jamais exécutés sur un vrai Windows**.
       Serveur réel : Windows Server 2022, machine physique, 16 Go ; guide pas à
       pas `GUIDE_INSTALLATION_WINDOWS.md` (contrôle de la virtualisation BIOS).
+      L'utilisateur ne veut que PowerShell : outils Windows numérotés
+      (`deploiement/windows/outils/`, installés dans C:\ConformiteDM, lanceurs
+      .cmd + .ps1 : état, profil, dépôt des dossiers acceptés, indexation,
+      vérification, mise à jour par .bundle, sauvegarde, redémarrage, clé),
+      rapports datés sans couleurs ; sauvegarde nocturne programmée par
+      l'installation (/etc/cron.d) et copiée dans C:\ConformiteDM\sauvegardes.
+      Règle : aucun guillemet double dans les commandes passées à wsl.exe
+      (PowerShell 5.1 ne les échappe pas). Testés avec un faux wsl.exe.
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué

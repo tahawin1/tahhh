@@ -203,6 +203,27 @@ try {
     else { Alerte "Réponse inattendue du tableau de bord : $($r.Content)" }
 } catch { Alerte "Tableau de bord pas encore joignable depuis Windows : voir $Dossier\demarrage.log" }
 
+# ---------------------------------------------------------------- 6 bis. Outils Windows
+Titre "6 bis. Outils (C:\ConformiteDM)"
+$Outils = "C:\ConformiteDM"
+foreach ($d in @("$Outils\outils", "$Outils\rapports", "$Outils\maj", "$Outils\sauvegardes")) {
+    New-Item -ItemType Directory -Force -Path $d | Out-Null
+}
+Copy-Item -Force (Join-Path $PSScriptRoot "outils\*.ps1") "$Outils\outils\"
+Copy-Item -Force (Join-Path $PSScriptRoot "outils\*.cmd") "$Outils\"
+# sauvegardes : contiennent la clé d'accès -> administrateurs et système uniquement (SID, quelle que soit la langue)
+& icacls.exe "$Outils\sauvegardes" /inheritance:r /grant:r "*S-1-5-32-544:(OI)(CI)F" "*S-1-5-18:(OI)(CI)F" | Out-Null
+# raccourci sur le bureau de tous les utilisateurs
+$raccourci = (New-Object -ComObject WScript.Shell).CreateShortcut("$env:PUBLIC\Desktop\Conformite DM.lnk")
+$raccourci.TargetPath = $Outils
+$raccourci.Save()
+Ok "Outils installés dans $Outils (raccourci « Conformite DM » sur le bureau)"
+
+$reponse = Read-Host "  Remplir maintenant le profil de l'entreprise (raison sociale, adresse, ICE…) ? (O/N)"
+if ($reponse -match "^[oOyY]") {
+    & powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$Outils\outils\Configurer-entreprise.ps1"
+}
+
 # ---------------------------------------------------------------- 7. Vérification complète
 Titre "7. Vérification complète (≈10 min, ne modifie rien)"
 Dans-Ubuntu "cd /opt/conformite && bash scripts/verifier_installation.sh" | Out-Null
@@ -214,6 +235,7 @@ $suffixe = ""
 if ($Port -ne 80) { $suffixe = ":$Port" }
 Titre "Terminé"
 Write-Host "  Tableau de bord : http://$ip$suffixe   (depuis les postes du réseau de l'entreprise)"
-Write-Host "  Clé d'accès     : wsl -d $Distro -u root -- grep API_KEY /opt/conformite/.env"
-Write-Host "  Terminal Ubuntu : wsl -d $Distro -u root     (puis : cd /opt/conformite)"
-Write-Host "  Dossiers acceptés (Explorateur) : \\wsl.localhost\$Distro\opt\conformite\data\dossiers_valides"
+Write-Host "  Outils (double-clic) : dossier C:\ConformiteDM — raccourci « Conformite DM » sur le bureau"
+Write-Host "     1 Etat du serveur | 2 Profil de l'entreprise | 3 Deposer les dossiers acceptes | 4 Indexer les modeles"
+Write-Host "     5 Verification complete | 6 Mettre a jour | 7 Sauvegarder | 8 Redemarrer | 9 Cle d'acces"
+Write-Host "  Rapports de chaque outil : C:\ConformiteDM\rapports"

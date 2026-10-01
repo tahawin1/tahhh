@@ -153,6 +153,13 @@ fi
 mkdir -p data/dossiers_valides
 bash scripts/indexer_modeles.sh
 
+titre "8. Sauvegarde automatique (chaque nuit à 2 h)"
+command -v cron >/dev/null || { apt-get install -y -qq cron >/dev/null; }
+systemctl enable --now cron >/dev/null 2>&1 || true
+echo "0 2 * * * root bash $PWD/scripts/sauvegarder.sh >> /var/log/conformite-sauvegarde.log 2>&1" > /etc/cron.d/conformite-sauvegarde
+chmod 644 /etc/cron.d/conformite-sauvegarde
+ok "Sauvegarde programmée (/etc/cron.d/conformite-sauvegarde ; journal : /var/log/conformite-sauvegarde.log)"
+
 # ------------------------------------------------------------------ résumé
 titre "Terminé"
 IP_SERVEUR=$(hostname -I 2>/dev/null | awk '{print $1}')
