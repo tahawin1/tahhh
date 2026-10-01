@@ -23,6 +23,8 @@ for c in conformite-postgres conformite-qdrant conformite-api conformite-interfa
   verifier "conteneur $c démarré" test "$(docker inspect -f '{{.State.Running}}' $c 2>/dev/null)" = true
 done
 verifier "Ollama démarré (service système)" curl -sf http://127.0.0.1:11434/api/version
+# l'API peut sortir d'un redémarrage (mise à jour) : jusqu'à 90 s pour être prête
+for i in $(seq 1 30); do curl -sf -m 5 http://127.0.0.1:8000/health >/dev/null && break; sleep 3; done
 SANTE=$(curl -s -m 10 http://127.0.0.1:8000/health || true)
 verifier "API : PostgreSQL, Qdrant et Ollama joignables" grep -q '"postgres":true,"qdrant":true,"ollama":true' <<<"$SANTE"
 verifier "API : clé d'accès activée" grep -q '"authentification":"cle_api"' <<<"$SANTE"
