@@ -176,6 +176,8 @@ supporte déjà.
       ils ne repartaient pas après un redémarrage de Docker/Ubuntu ; api et
       interface oui) — `restart: unless-stopped` ajouté ; `chcp 65001` en tête
       des scripts PowerShell (accents de la sortie Ubuntu mal affichés).
+      Puis relais /api en 502 : nginx gardait l'ancienne adresse de l'API
+      recréée — résolution par le DNS Docker (`resolver 127.0.0.11`), testé.
       Toujours relancer `npm run build` (tsc + vite) après toute retouche du frontend. Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
