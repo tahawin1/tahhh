@@ -149,6 +149,8 @@ supporte déjà.
       Windows Server 2019 et antérieurs : VM Ubuntu Hyper-V. Scripts PowerShell
       vérifiés (syntaxe, encodage UTF-8 BOM pour PowerShell 5.1, logique avec
       un faux wsl.exe) mais **jamais exécutés sur un vrai Windows**.
+      Serveur réel : Windows Server 2022, machine physique, 16 Go ; guide pas à
+      pas `GUIDE_INSTALLATION_WINDOWS.md` (contrôle de la virtualisation BIOS).
 - [x] Interface de validation (React, `frontend/`) — testée dans Chromium
       contre le backend local ; déploiement Vercel prêt (`DEPLOIEMENT.md`)
       mais pas encore effectué

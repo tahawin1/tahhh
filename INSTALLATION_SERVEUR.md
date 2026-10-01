@@ -27,6 +27,8 @@ Le script **peut être relancé sans risque** : ce qui est déjà fait est saut�
 
 ## 0 bis. Serveur Windows : à lire en premier
 
+> **Guide pas à pas dédié (Windows Server 2022, toutes les commandes Windows et Ubuntu) : [GUIDE_INSTALLATION_WINDOWS.md](GUIDE_INSTALLATION_WINDOWS.md).**
+
 L'outil (Docker, PostgreSQL, Qdrant, Mistral) fonctionne sous Linux. Sur un serveur Windows, il tourne dans **Ubuntu sous WSL2**, le sous-système Linux fourni gratuitement par Microsoft. Docker Desktop n'est pas utilisé : il n'est pas pris en charge sur Windows Server et il est payant pour les grandes entreprises.
 
 | Version de Windows | Méthode |
@@ -50,6 +52,7 @@ powershell -ExecutionPolicy Bypass -File C:\conformite-install\conformite-serveu
 Le dossier extrait peut s'appeler `conformite-serveur\conformite` ou `conformite` : adaptez le chemin. Si le port 80 est déjà pris (IIS), ajoutez `-Port 8080` à la fin de la commande.
 
 Ce que fait le script (relançable : ce qui est déjà fait est sauté) :
+
 - **WSL2 absent** : il l'installe, puis demande de **redémarrer le serveur et de relancer la même commande**.
 - **Ubuntu** : une invite demande un nom d'utilisateur et un mot de passe Ubuntu. Choisissez-les, notez-les, puis tapez `exit`.
 - **Réglages** : il réserve 75 % de la mémoire à Ubuntu (pour Mistral) et active les services (systemd).
@@ -60,6 +63,7 @@ Ce que fait le script (relançable : ce qui est déjà fait est sauté) :
 - **Vérification complète** (§6) : il la lance, puis affiche l'adresse du tableau de bord.
 
 **Ensuite, sur un serveur Windows :**
+
 - Toutes les commandes `bash`/`sudo` de cette fiche (§6 à §11) se tapent dans le **terminal Ubuntu**. On l'ouvre depuis PowerShell avec `wsl -d Ubuntu-24.04 -u root`, puis `cd /opt/conformite`. `sudo` y est facultatif : on est déjà administrateur.
 - Le profil et les dossiers acceptés (§5 bis) se déposent aussi depuis l'**Explorateur Windows**, à l'adresse `\\wsl.localhost\Ubuntu-24.04\opt\conformite\data\dossiers_valides`. Lancez ensuite `bash scripts/indexer_modeles.sh` dans le terminal Ubuntu.
 - Les fichiers de Windows sont visibles dans Ubuntu sous `/mnt/c/…`. Exemple de mise à jour par fichier : `bash scripts/mettre_a_jour.sh /mnt/c/conformite-install/maj.bundle`.
@@ -248,6 +252,7 @@ cd /opt/conformite && sudo bash scripts/verifier_installation.sh
 ```
 
 Elle contrôle :
+
 - les 4 conteneurs et Ollama ;
 - la santé de l'API et la clé d'accès (sans clé : refusé ; avec la clé : accepté) ;
 - le tableau de bord ;
@@ -312,6 +317,7 @@ Toutes les commandes se lancent depuis `/opt/conformite` :
 | Arrêter l'outil | `sudo docker compose --profile api --profile interface stop` |
 
 **Emplacement des données :**
+
 - base PostgreSQL (dossiers, validations, journal) : volume Docker `postgres_data` ;
 - index de recherche : volume `qdrant_data` ;
 - projets rédigés et documents reçus des fournisseurs : `/opt/conformite/output/` ;
@@ -360,6 +366,7 @@ sudo bash scripts/mettre_a_jour.sh /tmp/maj.bundle      # ou : fichier « .bundl
 ```
 
 Le script :
+
 1. sauvegarde la base et les documents ;
 2. vérifie que personne n'a modifié le code à la main, sinon il s'arrête ;
 3. applique la nouvelle version (un fichier abîmé ou étranger est refusé) ;
@@ -377,16 +384,19 @@ Les règles réglementaires (`rules/*.yaml`) font partie de l'image : `--build` 
   export http_proxy=http://proxy:3128 https_proxy=http://proxy:3128 no_proxy=localhost,127.0.0.1
   sudo -E bash scripts/installer_serveur.sh
   ```
+
 - Pour Docker (téléchargement des images) : créez `/etc/systemd/system/docker.service.d/proxy.conf` avec
   ```
   [Service]
   Environment="HTTP_PROXY=http://proxy:3128" "HTTPS_PROXY=http://proxy:3128" "NO_PROXY=localhost,127.0.0.1"
   ```
   puis lancez `sudo systemctl daemon-reload && sudo systemctl restart docker`.
+
 - Pour la construction des images (pip, npm) : créez `/root/.docker/config.json` avec
   ```json
   { "proxies": { "default": { "httpProxy": "http://proxy:3128", "httpsProxy": "http://proxy:3128", "noProxy": "localhost,127.0.0.1" } } }
   ```
+
 - Pour Ollama (téléchargement des modèles) : ajoutez `Environment="HTTPS_PROXY=http://proxy:3128"` dans `/etc/systemd/system/ollama.service.d/conformite.conf`, puis lancez `sudo systemctl daemon-reload && sudo systemctl restart ollama`.
 
 Si le proxy **inspecte le HTTPS** (certificat d'entreprise), prévenez Taha : il faut ajouter ce certificat aux images.
@@ -457,6 +467,7 @@ Si le proxy **inspecte le HTTPS** (certificat d'entreprise), prévenez Taha : il
 | Disque plein | journaux ou images Docker anciennes | `sudo docker system prune` (ne supprime ni les volumes ni les données) |
 
 Pour tout autre problème, envoyez à Taha la sortie de ces trois commandes, **jamais le contenu de `.env`** :
+
 - `sudo docker compose --profile api --profile interface ps`
 - `sudo docker compose logs --tail 100 api`
 - `sudo journalctl -u ollama -n 100`

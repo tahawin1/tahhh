@@ -64,6 +64,15 @@ if ($build -lt 19041) {
            "et suivre la fiche d'installation Ubuntu dans cette machine. Prévenir Taha.")
 }
 if ($ramGo -lt 16) { Alerte "Moins de 16 Go de mémoire : Mistral risque d'être très lent." }
+# Machine physique : la virtualisation doit être activée dans le BIOS (Intel VT-x / AMD-V)
+$hyperviseur = (Get-CimInstance Win32_ComputerSystem).HypervisorPresent
+$virtBios = @(Get-CimInstance Win32_Processor | Where-Object { $_.VirtualizationFirmwareEnabled }).Count -gt 0
+if (-not $hyperviseur -and -not $virtBios) {
+    Echec ("La virtualisation est désactivée dans le BIOS/UEFI du serveur. Redémarrer, entrer dans le BIOS " +
+           "(souvent F2, F10 ou Suppr), activer « Intel Virtualization Technology (VT-x) » ou « AMD-V / SVM », " +
+           "enregistrer, puis relancer ce script.")
+}
+Ok "Virtualisation matérielle disponible"
 if ((Get-CimInstance Win32_ComputerSystem).Model -match "Virtual|VMware|KVM") {
     Alerte "Ce serveur est lui-même une machine virtuelle : la « virtualisation imbriquée » doit être activée sur l'hôte (sinon WSL2 ne démarre pas)."
 }
