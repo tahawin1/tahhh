@@ -4,6 +4,8 @@
   À relancer de la même façon après le redémarrage demandé.
 #>
 param([int]$Port = 80)
+# Affichage correct des accents envoyés par Ubuntu (UTF-8) dans la console Windows
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $ErrorActionPreference = "Continue"
 $Cle = $PSScriptRoot
 $Dest = "C:\conformite-install"

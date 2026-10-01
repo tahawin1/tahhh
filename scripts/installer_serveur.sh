@@ -70,6 +70,8 @@ ok "Docker prêt"
 # ------------------------------------------------------------------ 3. Ollama + modèles
 titre "3. Ollama, Mistral et bge-m3"
 if ! command -v ollama >/dev/null; then
+  # l'installateur officiel d'Ollama exige zstd (décompression) depuis 2026
+  command -v zstd >/dev/null || { apt-get update -qq && apt-get install -y -qq zstd >/dev/null; }
   curl -fsSL https://ollama.com/install.sh | sh
 fi
 # Ollama doit être joignable depuis les conteneurs (host.docker.internal)

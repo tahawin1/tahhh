@@ -4,6 +4,8 @@
   rapport daté dans C:\ConformiteDM\rapports. À lancer avec le compte Windows
   qui a installé l'outil (Ubuntu est rattaché à ce compte).
 #>
+# Affichage correct des accents envoyés par Ubuntu (UTF-8) dans la console Windows
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $ErrorActionPreference = "Continue"   # PowerShell 5.1 : voir installer_windows.ps1
 $Racine = "C:\ConformiteDM"
 $Parametres = "C:\ProgramData\ConformiteDM"

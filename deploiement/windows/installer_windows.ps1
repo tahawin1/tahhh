@@ -31,6 +31,8 @@ param(
 # « Continue » : sous Windows PowerShell 5.1, avec « Stop », un simple message de
 # wsl.exe sur la sortie d'erreur interromprait le script. Les erreurs sont
 # testées explicitement (codes de retour, -ErrorAction Stop sur les cmdlets).
+# Affichage correct des accents envoyés par Ubuntu (UTF-8) dans la console Windows
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $ErrorActionPreference = "Continue"
 $Dossier = "C:\ProgramData\ConformiteDM"
 

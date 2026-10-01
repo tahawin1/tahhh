@@ -162,7 +162,10 @@ supporte déjà.
       (avec `--`, un shell intermédiaire supprime les « \ » et remplace les `$`)
       et chemins Windows convertis en PowerShell (`Chemin-Linux`), jamais
       par wslpath. Bug réel rencontré au 1er essai sur le PC de l'utilisateur
-      (Windows 11) : « unzip: cannot find C:conformite-install… ». Testés avec un faux wsl.exe.
+      (Windows 11) : « unzip: cannot find C:conformite-install… ».
+      2e essai : copie, diagnostic (16 cœurs, RTX 3050 vue depuis WSL) et
+      Docker OK ; l'installateur officiel d'Ollama exige désormais `zstd`
+      (ajouté à installer_serveur.sh) ; console Windows passée en UTF-8. Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
       extraction, installer_windows.ps1). Dépôt GitHub **public** : le serveur
