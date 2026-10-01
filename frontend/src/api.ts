@@ -354,6 +354,8 @@ export const api = {
   // Téléchargement via fetch (et non un simple lien) pour pouvoir envoyer la clé d'API
   telecharger: (id: number, piece: Piece) =>
     telechargerFichier(`/dossiers/${id}/documents/${piece.id}/fichier`, `dossier${id}_${piece.code}.docx`),
+  // Dossier complet en ZIP (pièces numérotées + bordereau) ; BROUILLON tant que tout n'est pas validé
+  exporter: (id: number) => telechargerFichier(`/dossiers/${id}/export`, `dossier${id}.zip`),
   telechargerRecu: (id: number, piece: Piece) =>
     telechargerFichier(`/dossiers/${id}/documents/${piece.id}/document-recu`, piece.nom_fichier_recu ?? `${piece.code}.pdf`),
 }

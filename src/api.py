@@ -730,6 +730,7 @@ def saisir_donnees(dossier_id: int, saisie: SaisieDonnees):
             dossier.donnees_dispositif = actuelles
             journaliser(session, dossier_id, saisie.acteur, "donnees_saisies", "; ".join(modifiees))
             session.commit()
+            taches.enchainer(session, dossier, saisie.acteur)  # formulaires remis à jour avec la saisie
         return _donnees(dossier)
 
 
@@ -923,6 +924,22 @@ def apercu_piece(dossier_id: int, document_id: int):
             genre = "titre" if style.startswith("Heading") else "puce" if "List" in style else "texte"
             paragraphes.append({"genre": genre, "texte": p.text})
         return {"piece": doc.nom, "genere_le": doc.genere_le, "paragraphes": paragraphes}
+
+
+@app.get("/dossiers/{dossier_id}/export")
+def exporter_dossier(dossier_id: int):
+    """Le dossier en ZIP pour le dépôt manuel : pièces dans l'ordre du dossier
+    (« 01-… »), bordereau des pièces. Marqué BROUILLON tant que toutes les
+    pièces ne sont pas validées par une personne. Aucun envoi."""
+    import export
+
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        archive, complet = export.construire(dossier)
+        journaliser(session, dossier_id, "système", "export_dossier",
+                    f"{archive.name} — {'complet' if complet else 'brouillon (pièces non toutes validées)'}")
+        session.commit()
+        return FileResponse(archive, media_type="application/zip", filename=archive.name)
 
 
 @app.get("/dossiers/{dossier_id}/documents/{document_id}/fichier")

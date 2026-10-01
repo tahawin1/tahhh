@@ -266,8 +266,9 @@ class TestApi(unittest.TestCase):
         champs = {c["id"]: c for s in r.json()["sections"] for c in s["champs"]}
         self.assertEqual((champs["indications"]["valeur"], champs["indications"]["provenance"]), ("Arthroplastie", "saisie"))
         self.assertEqual(self.client.put(url, json={"acteur": "Testeur", "valeurs": {"pirate": "x"}}).status_code, 422)
-        journal = self.client.get(f"/dossiers/{d['id']}").json()["evenements"]
-        self.assertEqual(journal[0]["action"], "donnees_saisies")
+        journal = [e["action"] for e in self.client.get(f"/dossiers/{d['id']}").json()["evenements"]]
+        self.assertIn("donnees_saisies", journal)
+        self.assertIn("formulaire_mis_a_jour", journal)  # fiche et annexe II remises à jour automatiquement
         # la saisie est reprise dans le formulaire rempli par le code
         self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
         fiche = self.piece(self.client.get(f"/dossiers/{d['id']}").json(), "fiche_signaletique")
@@ -317,6 +318,40 @@ class TestApi(unittest.TestCase):
                                           json={"acteur": "Testeur", "element": "cl_certificat_iso_1", "fait": True}).status_code, 422)
         journal = self.client.get(f"/dossiers/{d['id']}").json()["evenements"]
         self.assertEqual(journal[0]["action"], "point_verifie")
+
+    def test_enchainement_automatique(self):
+        d = self.creer(pays="union_europeenne")
+        APPELS_GENERATION.clear()
+        lisibles = [x["code"] for x in d["documents"] if x["lisible_par_agent"]]
+        for code in lisibles[:-1]:
+            self.deposer(d, code)
+        dossier = self.client.get(f"/dossiers/{d['id']}").json()
+        self.assertEqual(self.piece(dossier, "fiche_signaletique")["statut"], "a_valider")  # rempli dès la 1re lecture
+        self.assertEqual(self.piece(dossier, "demande_signee")["statut"], "a_generer")  # pas tout lu : pas de lettre
+        self.deposer(d, lisibles[-1])  # dernier document lu -> la lettre part en rédaction
+        dossier = self.client.get(f"/dossiers/{d['id']}").json()
+        self.assertEqual(APPELS_GENERATION, ["demande_signee"])
+        self.assertEqual(self.piece(dossier, "demande_signee")["statut"], "a_valider")
+        self.assertEqual(self.piece(dossier, "demande_signee")["valide_par"], None)  # rien n'est validé automatiquement
+
+    def test_export_du_dossier(self):
+        import io
+        import zipfile
+
+        d = self.creer(pays="union_europeenne")
+        self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
+        self.deposer(d, "iso_13485")
+        r = self.client.get(f"/dossiers/{d['id']}/export")
+        self.assertEqual(r.status_code, 200, r.text)
+        self.assertIn("BROUILLON", r.headers["content-disposition"])  # rien n'est validé
+        noms = zipfile.ZipFile(io.BytesIO(r.content)).namelist()
+        self.assertEqual(noms[0], "00-Bordereau.docx")
+        self.assertTrue(any(n.startswith("01-Lettre_de_demande") for n in noms), noms)
+        self.assertTrue(any(n.startswith("05-Certificat_ISO_13485") and n.endswith(".pdf") for n in noms))
+        bordereau = Docx(io.BytesIO(zipfile.ZipFile(io.BytesIO(r.content)).read("00-Bordereau.docx")))
+        texte = "\n".join(p.text for p in bordereau.paragraphs) + "\n".join(c.text for row in bordereau.tables[0].rows for c in row.cells)
+        self.assertIn("NE PAS DÉPOSER", texte)
+        self.assertIn("MANQUANTE", texte)
 
     def test_lecture_en_echec_visible(self):
         d = self.creer()

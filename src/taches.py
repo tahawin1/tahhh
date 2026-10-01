@@ -148,6 +148,49 @@ def executer_extraction(document_id: int) -> None:
                 document_id=doc.id,
             )
         session.commit()
+        if doc.extraction_statut == "terminee":
+            enchainer(session, doc.dossier)
+
+
+def enchainer(session, dossier, acteur: str = "système") -> list[str]:
+    """Agent, étape 4 — enchaînement automatique, sans rien valider ni envoyer :
+    1. les formulaires remplis par le code (fiche signalétique, annexe II) sont
+       remis à jour avec les nouvelles données, sauf s'ils sont déjà validés
+       ou en cours (une validation humaine n'est jamais défaite en silence) ;
+    2. quand tous les documents lisibles du fournisseur sont lus, la lettre de
+       demande est mise en file de rédaction si elle ne l'a jamais été.
+    Retourne les codes des pièces relancées."""
+    import formulaires
+    from generate import profil_entreprise
+
+    relances = []
+    codes_formulaires = formulaires.formulaires()
+    for doc in dossier.documents:
+        if doc.code in codes_formulaires and doc.statut in ("a_generer", "a_valider", "erreur"):
+            try:
+                resultat = formulaires.generer_formulaire(dossier, doc.code, doc.nom, Path(dossier.dossier_sortie),
+                                                          profil_entreprise())
+            except Exception as e:  # jamais silencieux
+                journaliser(session, dossier.id, acteur, "generation_echec", f"{doc.nom} — {e}", document_id=doc.id)
+                continue
+            doc.statut, doc.fichier, doc.sources, doc.genere_le = "a_valider", resultat["fichier"], resultat["sources"], maintenant()
+            journaliser(session, dossier.id, acteur, "formulaire_mis_a_jour",
+                        f"{doc.nom} — {resultat['bilan']['a_completer']} case(s) à compléter", document_id=doc.id)
+            relances.append(doc.code)
+    lisibles = [d for d in dossier.documents if d.nature == "a_fournir" and d.champs_a_extraire]
+    tout_lu = lisibles and all(d.extraction_statut == "terminee" for d in lisibles)
+    a_lancer = [d for d in dossier.documents if d.nature == "a_rediger" and d.code not in codes_formulaires
+                and d.statut == "a_generer"]
+    if tout_lu:
+        for doc in a_lancer:
+            doc.statut = "en_file"
+            journaliser(session, dossier.id, acteur, "generation_demandee",
+                        f"{doc.nom} — lancée automatiquement : tous les documents du fournisseur sont lus", document_id=doc.id)
+            relances.append(doc.code)
+    session.commit()
+    for doc in a_lancer if tout_lu else []:
+        soumettre(doc.id)
+    return relances
 
 
 def reprendre_apres_redemarrage() -> int:

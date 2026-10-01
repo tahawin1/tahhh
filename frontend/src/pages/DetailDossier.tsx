@@ -98,6 +98,12 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
           {suite.ton === 'ok' && dossier.prochain_creneau_depot ? (
             <p>Dépôt physique à effectuer <strong>manuellement</strong> à l'AMMPS — prochain créneau : <strong>{dateLongue(dossier.prochain_creneau_depot)}</strong>.</p>
           ) : suite.detail && <p>{suite.detail}</p>}
+          <div className="actions">
+            <button onClick={() => api.exporter(dossier.id).catch((e: Error) => setErreur(e.message))}
+              title="Pièces numérotées et bordereau ; marqué BROUILLON tant que toutes les pièces ne sont pas validées">
+              <Icone nom="telecharger" taille={16} />Télécharger le dossier (ZIP)
+            </button>
+          </div>
         </div>
       </div>
 

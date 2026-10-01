@@ -304,8 +304,15 @@ supporte déjà.
       vérifiée par le code (`/correspondances/synthese/{theme}`) ; rapprochement
       indexé comme texte (`pays=international`). 21 CFR 803 (vigilance) ajouté.
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
-- [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
-      préparées (jamais envoyées sans validation)
+- [x] Agent — étape 4 (début) : enchaînement automatique (`taches.enchainer`) —
+      après chaque lecture réussie ou saisie de données, fiche signalétique et
+      annexe II remises à jour (sauf si déjà validées) ; dès que toutes les pièces
+      lisibles reçues sont lues, la lettre est lancée. Export du dossier
+      (`src/export.py`, `GET /dossiers/{id}/export`, bouton « Télécharger le
+      dossier (ZIP) ») : pièces numérotées « 01-… », bordereau 00 ; marqué
+      BROUILLON / « ne pas déposer » tant qu'une pièce n'est pas validée.
+- [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
+      (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
 - [ ] Authentification réelle (Keycloak) — aujourd'hui : clé d'API partagée
       + nom saisi par l'utilisateur (non vérifié)
