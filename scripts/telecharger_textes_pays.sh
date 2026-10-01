@@ -91,7 +91,10 @@ mfds coree_classification_annexe1_2022.pdf 72634 1 "[Attached Table 1] Standards
 mfds coree_reglement_autorisation_2022.pdf 72633 1 "Regulation on the Permission, Notification, Review, Etc. of Medical Devices(No. 2022-52, July 29, 2022).pdf"
 mfds coree_bpf_gmp_2026.pdf 72638 1
 
-echo "== Pakistan : Medical Devices Rules 2017 (DRAP)"
+echo "== Pakistan : loi DRAP 2012 (Pakistan Code, ministère de la Justice) et Medical Devices Rules 2017 (DRAP)"
+pdf pakistan_drap_act_2012.pdf "https://pakistancode.gov.pk/pdffiles/administrator4bdd8bbbbac998fddc0f485b698b55b7.pdf"
+# dra.gov.pk refuse les connexions hors du Pakistan (constaté depuis le cloud et depuis le Maroc) :
+# PDF des Rules à obtenir par un contact au Pakistan (fabricant, distributeur) et à déposer sous ces noms
 pdf pakistan_medical_devices_rules_2017_maj_2022.pdf \
   "https://www.dra.gov.pk/wp-content/uploads/2022/10/Medical-Devices-Rules-2017-updated-upto-april-2022-2.pdf"
 pdf pakistan_medical_devices_rules_2017_sro32_2018.pdf \

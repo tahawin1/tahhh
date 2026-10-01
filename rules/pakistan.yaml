@@ -5,9 +5,12 @@
 # Autorité : DRAP (Drug Regulatory Authority of Pakistan) — division des
 # dispositifs médicaux
 #
-# STATUT : PROVISOIRE (2026-10-01). Rédigé avant l'indexation des textes
-# officiels (sites bloqués depuis l'environnement de développement) : chaque
-# point est à confronter au texte indexé avant tout usage dans une décision.
+# STATUT : PROVISOIRE (2026-10-01). Seule la loi DRAP 2012 est indexée
+# (Pakistan Code, data/raw_pdfs/textes/pakistan_drap_act_2012.txt) : elle
+# confirme que la DRAP évalue, inscrit (enlistment) ou enregistre
+# (registration) les dispositifs médicaux. Les Medical Devices Rules 2017, qui
+# fixent les classes et les procédures, restent à obtenir : dra.gov.pk refuse
+# les connexions hors du Pakistan (constaté depuis le cloud et depuis le Maroc).
 
 pays: pakistan
 statut: provisoire

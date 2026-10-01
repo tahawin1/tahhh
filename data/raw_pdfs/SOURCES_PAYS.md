@@ -12,3 +12,4 @@
 | coree_reglement_autorisation_2022.pdf | https://www.mfds.go.kr/eng/brd/m_40/list.do (traduction anglaise MFDS) | 2026-10-01 | 57f3389aab90a4e6… |
 | coree_bpf_gmp_2026.pdf | https://www.mfds.go.kr/eng/brd/m_40/down.do?brd_id=eng0011&seq=72638&data_tp=A&file_seq=1 | 2026-10-01 | 39aba687b2a4e84b… |
 | textes/coree_medical_devices_act_2025.txt | https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=69923 | 2026-10-01 | — |
+| pakistan_drap_act_2012.pdf | https://pakistancode.gov.pk/pdffiles/administrator4bdd8bbbbac998fddc0f485b698b55b7.pdf | 2026-10-01 | a956e2c67279af5b… |
