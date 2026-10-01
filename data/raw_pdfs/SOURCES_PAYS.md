@@ -14,3 +14,8 @@
 | textes/coree_medical_devices_act_2025.txt | https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=69923 | 2026-10-01 | — |
 | pakistan_drap_act_2012.pdf | https://pakistancode.gov.pk/pdffiles/administrator4bdd8bbbbac998fddc0f485b698b55b7.pdf | 2026-10-01 | a956e2c67279af5b… |
 | etats_unis_21cfr_803.xml | https://www.ecfr.gov/api/versioner/v1/full/2026-09-25/title-21.xml?part=803 (édition du 2026-09-25) | 2026-10-01 | 858f23499499e7ad… |
+| etats_unis_21cfr_806.xml | https://www.ecfr.gov/api/versioner/v1/full/2026-09-25/title-21.xml?part=806 (édition du 2026-09-25) | 2026-10-01 | b90c4645e77ae39d… |
+| etats_unis_21cfr_812.xml | https://www.ecfr.gov/api/versioner/v1/full/2026-09-25/title-21.xml?part=812 (édition du 2026-09-25) | 2026-10-01 | ab3feaa13b5aaa64… |
+| etats_unis_21cfr_830.xml | https://www.ecfr.gov/api/versioner/v1/full/2026-09-25/title-21.xml?part=830 (édition du 2026-09-25) | 2026-10-01 | 51acea65627690dd… |
+| etats_unis_21cfr_888.xml | https://www.ecfr.gov/api/versioner/v1/full/2026-09-25/title-21.xml?part=888 (édition du 2026-09-25) | 2026-10-01 | a72701d00829dfec… |
+| textes/coree_decret_application_2025.txt | https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=70928 | 2026-10-01 | — |

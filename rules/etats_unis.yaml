@@ -47,5 +47,6 @@ contraintes_operationnelles:
   langue_etiquetage: [anglais]
 
 notes:
+  - "Exemple : ciment osseux PMMA = classe II (contrôles spéciaux), 21 CFR 888.3027 (vérifié) — classe IIb au Maroc (dossier accepté Ciment osseux)."
   - "Trois classes seulement : la classe II américaine couvre à la fois des dispositifs IIa et IIb européens."
   - "Utilisé dans ce projet surtout comme SOURCE de l'autorisation FDA et du CFG à fournir au dossier marocain."

@@ -43,7 +43,7 @@ DATE_CFR=$(curl -fsSL -m 60 -A "$UA" https://www.ecfr.gov/api/versioner/v1/title
 if [ -z "$DATE_CFR" ]; then
   echo "  ✗ ecfr.gov injoignable"; ECHECS=$((ECHECS+1))
 else
-  for part in 801 803 807 814 820 860; do
+  for part in 801 803 806 807 812 814 820 830 860 888; do
     nom="etats_unis_21cfr_${part}.xml"
     url="https://www.ecfr.gov/api/versioner/v1/full/${DATE_CFR}/title-21.xml?part=${part}"
     if [ -s "$DEST/$nom" ]; then echo "  = $nom déjà présent"; continue; fi

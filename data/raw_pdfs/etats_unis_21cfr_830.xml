@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<DIV5 N="830" TYPE="PART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-830&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 830&amp;quot;}">
+<HEAD>PART 830&#x2014;UNIQUE DEVICE IDENTIFICATION
+</HEAD>
+<AUTH>
+<HED>Authority:</HED><PSPACE>21 U.S.C. 321, 331, 352, 353, 360, 360d, 360i, 360j, 371.
+</PSPACE></AUTH>
+<SOURCE>
+<HED>Source:</HED><PSPACE>78 FR 58823, Sept. 24, 2013, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV6 N="A" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-830/subpart-A&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 830 Subpart A&amp;quot;}">
+<HEAD>Subpart A&#x2014;General Provisions</HEAD>
+<SOURCE>
+<HED>Source:</HED><PSPACE>78 FR 58825, Sept. 24, 2013, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV8 N="830.3" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.3&quot;,&quot;citation&quot;:&quot;21 CFR 830.3&quot;}">
+<HEAD>&#xA7; 830.3 Definitions.</HEAD>
+<P>As used in this part:</P>
+<P><I>Automatic identification and data capture (AIDC)</I> means any technology that conveys the unique device identifier or the device identifier of a device in a form that can be entered into an electronic patient record or other computer system via an automated process.</P>
+<P><I>Center Director</I> means the Director of the Center for Devices and Radiological Health or the Director of the Center for Biologics Evaluation and Research, depending on which Center has been assigned lead responsibility for the device.</P>
+<P><I>Device package</I> means a package that contains a fixed quantity of a particular version or model of a device.</P>
+<P><I>Expiration date</I> means the date by which the label of a device states the device must or should be used.</P>
+<P><I>FDA, we,</I> or <I>us</I> means the Food and Drug Administration.</P>
+<P><I>Federal Food, Drug, and Cosmetic Act</I> means 21 U.S.C. 321 <I>et seq.,</I> as amended.</P>
+<P><I>Finished device</I> means any device or accessory to any device that is suitable for use or capable of functioning.</P>
+<P><I>Global Unique Device Identification Database (GUDID)</I> means the database that serves as a repository of information to facilitate the identification of medical devices through their distribution and use.</P>
+<P><I>Human cell, tissue, or cellular or tissue-based product (HCT/P) regulated as a device</I> means an HCT/P as defined in &#xA7; 1271.3(d) of this chapter that does not meet the criteria in &#xA7; 1271.10(a) and that is also regulated as a device.</P>
+<P><I>Issuing agency</I> means an organization accredited by FDA to operate a system for the issuance of unique device identifiers.</P>
+<P><I>Label</I> has the meaning set forth in section 201(k) of the Federal Food, Drug, and Cosmetic Act.</P>
+<P><I>Labeler</I> means:</P>
+<P>(1) Any person who causes a label to be applied to a device with the intent that the device will be commercially distributed without any subsequent replacement or modification of the label; and</P>
+<P>(2) Any person who causes the label of a device to be replaced or modified with the intent that the device will be commercially distributed without any subsequent replacement or modification of the label, except that the addition of the name of, and contact information for, a person who distributes the device, without making any other changes to the label, is not a modification for the purposes of determining whether a person is a labeler.</P>
+<P><I>Lot or batch</I> means one <I>finished device</I> or more that consist of a single type, model, class, size, composition, or software version that are manufactured under essentially the same conditions and that are intended to have uniform characteristics and quality within specified limits.</P>
+<P><I>Shipping container</I> means a container used during the shipment or transportation of devices, and whose contents may vary from one shipment to another.</P>
+<P><I>Small business</I> means a medical device manufacturer with 500 or fewer employees, or a medical device relabeler or repackager with 100 or fewer employees.</P>
+<P><I>Specification</I> means any requirement with which a device must conform.</P>
+<P><I>Unique device identifier (UDI)</I> means an identifier that adequately identifies a device through its distribution and use by meeting the requirements of &#xA7; 830.20. A UDI is composed of:</P>
+<P>(1) A <I>device identifier</I>&#x2014;a mandatory, fixed portion of a UDI that identifies the specific version or model of a device and the labeler of that device; and</P>
+<P>(2) A <I>production identifier</I>&#x2014;a conditional, variable portion of a UDI that identifies one or more of the following when included on the label of the device:</P>
+<P>(i) The lot or batch within which a device was manufactured;</P>
+<P>(ii) The serial number of a specific device;</P>
+<P>(iii) The expiration date of a specific device;</P>
+<P>(iv) The date a specific device was manufactured.</P>
+<P>(v) For an HCT/P regulated as a device, the distinct identification code required by &#xA7; 1271.290(c) of this chapter.</P>
+<P><I>Universal product code (UPC)</I> means the product identifier used to identify an item sold at retail in the United States.</P>
+<P><I>Version or model</I> means all devices that have specifications, performance, size, and composition, within limits set by the labeler.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="B" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-830/subpart-B&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 830 Subpart B&amp;quot;}">
+<HEAD>Subpart B&#x2014;Requirements for a Unique Device Identifier</HEAD>
+<DIV8 N="830.10" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.10&quot;,&quot;citation&quot;:&quot;21 CFR 830.10&quot;}">
+<HEAD>&#xA7; 830.10 Incorporation by reference.</HEAD>
+<P>(a) Certain material is incorporated by reference into this part with the approval of the Director of the Federal Register in accordance with 5 U.S.C. 552(a) and 1 CFR part 51. To enforce any edition other than that specified in this section, the Food and Drug Administration must publish notice of change in the <E T="04">Federal Register</E> and the material must be available to the public. All approved material is available for inspection at the Dockets Management Staff (HFA-305), Food and Drug Administration, 5630 Fishers Lane, rm. 1061, Rockville, MD 20852, 301-827-6860, and is available from the source listed in paragraph (b) of this section. Copies are also available for purchase from the American National Standards Institute (ANSI), mailing address: ANSI, Attn: Customer Service Department, 25 West 43rd St., 4th floor, New York, NY 10036, phone: 212-642-4980, and may be ordered online at <I>http://webstore.ansi.org/.</I> The material is also available for inspection at the National Archives and Records Administration (NARA). For information on the availability of this material at NARA, call 202-741-6030 or go to: <I>http://www.archives.gov/federal_register/code_of_federal_regulations/ibr_locations.html.</I></P>
+<P>(b) International Organization for Standardization (ISO), mailing address: ISO, Attn: ISO Central Secretariat, 1, ch. de la Voie-Creuse, Case postale 56, CH-1211 Geneva 20, Switzerland, phone (dialing from the United States): 011-41-22-749-0111, and may be ordered online at <I>http://www.standardsinfo.net.</I></P>
+<P>(1) ISO/IEC 646:1991(E), Information technology&#x2014;ISO 7-bit coded character set for information interchange (third edition; December 15, 1991), into &#xA7;&#xA7; 830.20(c) and 830.100(b);</P>
+<P>(2) ISO/IEC 15459-2:2006(E), Information technology&#x2014;Unique identifiers&#x2014;Part 2: Registration procedures (second edition; March 1, 2006), into &#xA7;&#xA7; 830.20(b) and 830.100(b);</P>
+<P>(3) ISO/IEC 15459-4:2008(E), Information technology&#x2014;Unique identifiers&#x2014;Part 4: Individual items (second edition; July 15, 2008), into &#xA7;&#xA7; 830.20(b) and 830.100(b);</P>
+<P>(4) ISO/IEC 15459-6:2007(E), Information technology&#x2014;Unique identifiers&#x2014;Part 6: Unique identifier for product groupings (first edition; June 15, 2007), into &#xA7;&#xA7; 830.20(b) and 830.100(b).</P>
+<CITA TYPE="N">[78 FR 58823, Sept. 24, 2013, as amended at 88 FR 45067, July 14, 2023]
+</CITA>
+</DIV8>
+
+<DIV8 N="830.20" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.20&quot;,&quot;citation&quot;:&quot;21 CFR 830.20&quot;}">
+<HEAD>&#xA7; 830.20 Requirements for a unique device identifier.</HEAD>
+<P>A unique device identifier (UDI) must:</P>
+<P>(a) Be issued under a system operated by FDA or an FDA-accredited issuing agency;</P>
+<P>(b) Conform to each of the following international standards:</P>
+<P>(1) ISO/IEC 15459-2, which is incorporated by reference at &#xA7; 830.10;</P>
+<P>(2) ISO/IEC 15459-4, which is incorporated by reference at &#xA7; 830.10; and</P>
+<P>(3) ISO/IEC 15459-6, which is incorporated by reference at &#xA7; 830.10.</P>
+<P>(c) Use only characters and numbers from the invariant character set of ISO/IEC 646, which is incorporated by reference at &#xA7; 830.10.</P>
+<CITA TYPE="N">[78 FR 58825, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="830.40" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.40&quot;,&quot;citation&quot;:&quot;21 CFR 830.40&quot;}">
+<HEAD>&#xA7; 830.40 Use and discontinuation of a device identifier.</HEAD>
+<P>(a) Only one device identifier from any particular system for the issuance of unique device identifiers (UDIs) may be used to identify a particular version or model of a device. A particular version or model may be identified by UDIs from two or more systems for the issuance of UDIs.</P>
+<P>(b) A device identifier shall be used to identify only one version or model.</P>
+<P>(c) In the event that a version or model of a device is discontinued, its device identifier may not be reassigned to another device. If a discontinued version or model is re-introduced and no changes have been made that would require the use of a new device identifier, the device identifier that was previously in use may be used to identify the device.</P>
+<P>(d) In the event that an issuing agency relinquishes or does not renew its accreditation, you may continue to use a previously issued UDI until such time as &#xA7; 830.50 requires you to assign a new device identifier.</P>
+<CITA TYPE="N">[78 FR 58825, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="830.50" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.50&quot;,&quot;citation&quot;:&quot;21 CFR 830.50&quot;}">
+<HEAD>&#xA7; 830.50 Changes that require use of a new device identifier.</HEAD>
+<P>(a) Whenever you make a change to a device that is required to bear a unique device identifier (UDI) on its label, and the change results in a new version or model, you must assign a new device identifier to the new version or model.</P>
+<P>(b) Whenever you create a new device package, you must assign a new device identifier to the new device package.</P>
+<CITA TYPE="N">[78 FR 58825, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="830.60" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.60&quot;,&quot;citation&quot;:&quot;21 CFR 830.60&quot;}">
+<HEAD>&#xA7; 830.60 Relabeling of a device that is required to bear a unique device identifier.</HEAD>
+<P>If you relabel a device that is required to bear a unique device identifier (UDI), you must:</P>
+<P>(a) Assign a new device identifier to the device, and</P>
+<P>(b) Keep a record showing the relationship of the prior device identifier to your new device identifier.</P>
+<CITA TYPE="N">[78 FR 58825, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="C" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-830/subpart-C&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 830 Subpart C&amp;quot;}">
+<HEAD>Subpart C&#x2014;FDA Accreditation of an Issuing Agency</HEAD>
+<DIV8 N="830.100" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.100&quot;,&quot;citation&quot;:&quot;21 CFR 830.100&quot;}">
+<HEAD>&#xA7; 830.100 FDA accreditation of an issuing agency.</HEAD>
+<P>(a) <I>Eligibility.</I> A private organization may apply for accreditation as an issuing agency.</P>
+<P>(b) <I>Accreditation criteria.</I> FDA may accredit an organization as an issuing agency, if the system it will operate:</P>
+<P>(1) Will employ unique device identifiers (UDIs) that meet the requirements of this part to adequately identify a device through its distribution and use;</P>
+<P>(2) Conforms to each of the following international standards:</P>
+<P>(i) ISO/IEC 15459-2, which is incorporated by reference at &#xA7; 830.10;</P>
+<P>(ii) ISO/IEC 15459-4, which is incorporated by reference at &#xA7; 830.10;</P>
+<P>(iii) ISO/IEC 15459-6, which is incorporated by reference at &#xA7; 830.10.</P>
+<P>(3) Uses only characters and numbers from the invariant character set of ISO/IEC 646, which is incorporated by reference at &#xA7; 830.10.</P>
+<P>(4) Will be available to all users according to a single set of consistent, fair, and reasonable terms and conditions.</P>
+<P>(5) Will protect against conflicts of interest between the issuing agency (and its officers, employees, and other agents) and labelers (and their officers, employees, and other agents) seeking to use UDIs that may impede the applicant's ability to independently operate a fair and neutral identifier system.</P>
+</DIV8>
+
+<DIV8 N="830.110" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.110&quot;,&quot;citation&quot;:&quot;21 CFR 830.110&quot;}">
+<HEAD>&#xA7; 830.110 Application for accreditation as an issuing agency.</HEAD>
+<P>(a) <I>Application for initial accreditation.</I> (1) An applicant seeking initial FDA accreditation as an issuing agency shall notify FDA of its desire to be accredited by sending a notification by email to: <I>GUDIDSupport@fda.hhs.gov,</I> or by correspondence to: UDI Regulatory Policy Support, Center for Devices and Radiological Health, Food and Drug Administration, 10903 New Hampshire Ave., Bldg. 32, Rm. 3293, Silver Spring, MD 20993-0002.</P>
+<P>(2) FDA will provide the applicant with additional information to aid in submission of an application for approval as an issuing agency, together with an email address for submission of an application.</P>
+<P>(3) The applicant shall furnish to FDA, via email to the email address provided in paragraph (a)(1) of this section, an application containing the following information, materials, and supporting documentation:</P>
+<P>(i) Name, address, and phone number of the applicant;</P>
+<P>(ii) Detailed descriptions of any standards or criteria the applicant will apply to participating labelers;</P>
+<P>(iii) A detailed description of the guidelines that govern assignment of a unique device identifier (UDI) to a device;</P>
+<P>(iv) A detailed description of the review and decisionmaking process the applicant will apply when determining whether a particular labeler may use the applicant's UDI system, including:</P>
+<P>(A) Copies of the application forms, guidelines, instructions, and other materials the applicant will send to medical device labelers who wish to use the applicant's unique device identification system;</P>
+<P>(B) Policies and procedures for notifying a labeler of deficiencies in its use of UDIs;</P>
+<P>(C) Procedures for monitoring a labeler's correction of deficiencies in its use of UDIs;</P>
+<P>(D) Policies and procedures for suspending or revoking a labeler's use of the applicant's UDI system, including any appeals process.</P>
+<P>(v) Description of the applicant's electronic data management system with respect to its review and decision processes and the applicant's ability to provide electronic data in a format compatible with FDA data systems;</P>
+<P>(vi) Fee schedules, if any, together with an explanation of any fee waivers or reductions that are available;</P>
+<P>(vii) Detailed information regarding any financial or other relationship between the applicant and any labeler(s) or governmental entity(ies); and</P>
+<P>(viii) Other information required by FDA to clarify the application for accreditation.</P>
+<P>(b) <I>Application for renewal of accreditation.</I> An accredited issuing agency that intends to continue to serve as an issuing agency beyond its current term shall apply to FDA for renewal or notify FDA of its plans not to apply for renewal in accordance with the following procedures and schedule:</P>
+<P>(1) At least 9 months before the date of expiration of its accreditation, an issuing agency shall inform FDA, at the address given in paragraph (a)(1) of this section, of its intent to seek renewal.</P>
+<P>(2) FDA will notify the issuing agency of the relevant information, materials, and supporting documentation that we will require the issuing agency to submit as part of the renewal procedure. We will tailor these requirements to reflect our experience with the issuing agency during the current and any prior period of accreditation. We will limit our request to the types of the information required by paragraph (a)(3) of this section, and we will require less information if experience shows that we need only a subset of that information.</P>
+<P>(3) At least 6 months before the date of expiration of its accreditation, an issuing agency shall furnish to FDA, at the email address we provide, a copy of a renewal application containing the information, materials, and supporting documentation requested by FDA in accordance with paragraph (b)(2) of this section.</P>
+<P>(4) Any issuing agency that does not plan to renew its accreditation shall so notify FDA at the address given in paragraph (a)(1) of this section at least 9 months before the expiration of the issuing agency's term of accreditation and shall include a description of its plans for allowing continued use of UDIs issued prior to the expiration of the current term of accreditation.</P>
+<P>(c) <I>FDA action on an application for initial or renewal accreditation.</I> (1) FDA will conduct a review and evaluation to determine whether the applicant meets the requirements of this subpart and whether the UDI system proposed by the applicant will meet the requirements of this subpart.</P>
+<P>(2) Within 60 days of receipt of an application for accreditation, FDA will notify the applicant of any deficiencies in its application and will request correction of those deficiencies within 60 days. The applicant may request an extension if it needs additional time to correct deficiencies in its application. If the deficiencies are not resolved to FDA's satisfaction within the specified time period, the application for accreditation as an issuing agency may be denied.</P>
+<P>(3) FDA shall notify the applicant whether the application for accreditation has been granted or denied. That notification shall list any conditions of approval or state the reasons for denial.</P>
+<P>(4) If FDA denies an application, we will advise the applicant of the circumstances under which a denied application may be resubmitted.</P>
+<P>(5) If FDA does not reach a final decision on a renewal application before the expiration of an issuing agency's current accreditation, the approval will be deemed extended until FDA reaches a final decision on the application.</P>
+<P>(d) <I>Relinquishment of accreditation.</I> If an issuing agency decides to relinquish its accreditation before expiration of the current term of accreditation, it shall submit a letter of such intent to FDA, at the address provided in paragraph (a)(1) of this section, at least 9 months before relinquishing its accreditation.</P>
+<P>(e) <I>Notice of termination of accreditation.</I> An issuing agency that does not apply for renewal of its accreditation, is denied renewal of accreditation by FDA, or relinquishes its accreditation and duties before expiration of the current term of accreditation, shall notify all labelers that are using the issuing agency's UDI system, in a manner and time period approved by FDA, of the date that the issuing agency will cease to serve as an FDA-accredited issuing agency.</P>
+<P>(f) <I>Term of accreditation.</I> The initial term of accreditation for an issuing agency shall be for a period of 3 years. An issuing agency's term of accreditation may be periodically renewed for a period of 7 years.</P>
+<CITA TYPE="N">[78 FR 58825, Sept. 24, 2013, as amended at 81 FR 11429, Mar. 4, 2016; 85 FR 18443, Apr. 2, 2020]
+</CITA>
+</DIV8>
+
+<DIV8 N="830.120" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.120&quot;,&quot;citation&quot;:&quot;21 CFR 830.120&quot;}">
+<HEAD>&#xA7; 830.120 Responsibilities of an FDA-accredited issuing agency.</HEAD>
+<P>To maintain its accreditation, an issuing agency must:</P>
+<P>(a) Operate a system for assignment of unique device identifiers (UDIs) that meets the requirements of &#xA7; 830.20;</P>
+<P>(b) Make available information concerning its system for the assignment of UDIs;</P>
+<P>(c) Maintain a list of labelers that use its system for the assignment of UDIs and provide FDA a copy of such list in electronic form by December 31 of each year;</P>
+<P>(d) Upon request, provide FDA with information concerning a labeler that is employing the issuing agency's system for assignment of UDIs; and</P>
+<P>(e) Remain in compliance with the eligibility and accreditation criteria set forth in &#xA7; 830.100.</P>
+</DIV8>
+
+<DIV8 N="830.130" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.130&quot;,&quot;citation&quot;:&quot;21 CFR 830.130&quot;}">
+<HEAD>&#xA7; 830.130 Suspension or revocation of the accreditation of an issuing agency.</HEAD>
+<P>FDA may suspend or revoke the accreditation of an issuing agency if FDA finds, after providing the issuing agency with notice and opportunity for an informal hearing in accordance with part 16 of this chapter, that the issuing agency or any officer, employee, or other agent of the issuing agency:</P>
+<P>(a) Has been guilty of misrepresentation or failure to disclose required information in obtaining accreditation;</P>
+<P>(b) Has failed to fulfill the responsibilities outlined in &#xA7; 830.120;</P>
+<P>(c) Has failed to protect against conflicts of interest that may impede the issuing agency's ability to independently operate a fair and neutral identifier system;</P>
+<P>(d) In the operation of the issuing agency, has engaged in any anticompetitive activity to restrain trade; or</P>
+<P>(e) Has violated or aided and abetted in the violation of any regulation issued under section 510(e) or section 519(f) of the Federal Food, Drug, and Cosmetic Act.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="D" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-830/subpart-D&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 830 Subpart D&amp;quot;}">
+<HEAD>Subpart D&#x2014;FDA as an Issuing Agency</HEAD>
+<SOURCE>
+<HED>Source:</HED><PSPACE>78 FR 58826, Sept. 24, 2013, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV8 N="830.200" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.200&quot;,&quot;citation&quot;:&quot;21 CFR 830.200&quot;}">
+<HEAD>&#xA7; 830.200 When FDA will act as an issuing agency.</HEAD>
+<P>(a) During any period where there is no accredited issuing agency, FDA will act as an issuing agency.</P>
+<P>(b) If FDA determines that a significant number of small businesses would be substantially and adversely affected by the fees required by all accredited issuing agencies, FDA will act as an issuing agency.</P>
+<P>(c) FDA may, in its discretion, act as an issuing agency if we determine it is necessary for us to do so to ensure the continuity or the effectiveness of the system for the identification of medical devices.</P>
+<P>(d) FDA may, in its discretion, act as an issuing agency if we determine it is appropriate for us to do so in order to facilitate or implement an alternative granted under &#xA7; 801.55 of this chapter.</P>
+</DIV8>
+
+<DIV8 N="830.210" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.210&quot;,&quot;citation&quot;:&quot;21 CFR 830.210&quot;}">
+<HEAD>&#xA7; 830.210 Eligibility for use of FDA as an issuing agency.</HEAD>
+<P>When FDA acts as an issuing agency, any labeler will be permitted to use FDA's unique device identification system, regardless of whether the labeler is considered a small business.</P>
+</DIV8>
+
+<DIV8 N="830.220" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.220&quot;,&quot;citation&quot;:&quot;21 CFR 830.220&quot;}">
+<HEAD>&#xA7; 830.220 Termination of FDA service as an issuing agency.</HEAD>
+<P>(a) FDA may end our services as an issuing agency if we determine that the conditions that prompted us to act no longer exist and that ending our services would not be likely to lead to a return of the conditions that prompted us to act.</P>
+<P>(b) If FDA has ended our services as an issuing agency, a labeler may continue to use a device identifier assigned under FDA's unique device identification system until such time as &#xA7; 830.50 requires the use of a new device identifier.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="E" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-830/subpart-E&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 830 Subpart E&amp;quot;}">
+<HEAD>Subpart E&#x2014;Global Unique Device Identification Database</HEAD>
+<SOURCE>
+<HED>Source:</HED><PSPACE>78 FR 58826, Sept. 24, 2013, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV8 N="830.300" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.300&quot;,&quot;citation&quot;:&quot;21 CFR 830.300&quot;}">
+<HEAD>&#xA7; 830.300 Devices subject to device identification data submission requirements.</HEAD>
+<P>(a) <I>In general.</I> The labeler of a device must provide the information required by this subpart for each version or model required to bear a unique device identifier (UDI).</P>
+<P>(b) <I>Voluntary submission of information.</I> If a labeler voluntarily includes a UDI on the label of a device under &#xA7; 801.40, the labeler may also voluntarily submit information concerning that device under this part.</P>
+<P>(c) <I>Exclusions.</I> FDA may reject or remove any device identification data where:</P>
+<P>(1) The device identifier submitted does not conform to &#xA7; 830.20;</P>
+<P>(2) The information concerns a device that is neither manufactured in the United States nor in interstate commerce in the United States,</P>
+<P>(3) The information concerns a product that FDA determines is not a device or a combination product that includes a device constituent part,</P>
+<P>(4) The information concerns a device or a combination product that requires, but does not have, FDA premarket approval, licensure, or clearance;</P>
+<P>(5) A device that FDA has banned under section 516 of the Federal Food, Drug, and Cosmetic Act; or</P>
+<P>(6) FDA has suspended the accreditation of the issuing agency that operates the system used by the labeler.</P>
+</DIV8>
+
+<DIV8 N="830.310" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.310&quot;,&quot;citation&quot;:&quot;21 CFR 830.310&quot;}">
+<HEAD>&#xA7; 830.310 Information required for unique device identification.</HEAD>
+<P>The contact for device identification designated under &#xA7; 830.320(a) shall provide FDA with the following information concerning each version or model of a device required to bear a unique device identifier (UDI) on its label:</P>
+<P>(a) <I>Concerning the labeler:</I></P>
+<P>(1) The name of the labeler;</P>
+<P>(2) A telephone number or email address that will allow FDA to communicate with the contact for device identification designated under &#xA7; 830.320(a); and</P>
+<P>(3) The name of each issuing agency whose system is used by the labeler to assign UDIs used by the labeler.</P>
+<P>(b) <I>Concerning each version or model of a device with a UDI on its label:</I></P>
+<P>(1) The device identifier portion of the UDI assigned to the version or model;</P>
+<P>(2) When reporting a substitution of a new device identifier that will be used in lieu of a previously reported identifier, the device identifier that was previously assigned to the version or model;</P>
+<P>(3) If &#xA7; 801.45 of this chapter requires the device to bear a UDI as a permanent marking on the device itself, either:</P>
+<P>(i) A statement that the device identifier that appears as a permanent marking on the device is identical to that reported under paragraph (b)(1) of this section, or</P>
+<P>(ii) The device identifier portion of the UDI that appears as a permanent marking on the device;</P>
+<P>(4) The proprietary, trade, or brand name of the device as it appears on the label of the device;</P>
+<P>(5) Any version or model number or similar reference that appears on the label of the device;</P>
+<P>(6) If the device is labeled as sterile, a statement to that effect;</P>
+<P>(7) If the device is labeled as containing natural rubber latex that contacts humans, or is labeled as having packaging containing natural rubber latex that contacts humans, as described by &#xA7;&#xA7; 801.437(b)(1), 801.437(b)(3), and 801.437(f) of this chapter, a statement to that effect;</P>
+<P>(8) Whether a patient may be safely exposed to magnetic resonance imaging, nuclear magnetic resonance imaging, or magnetic resonance tomography while using the device, or while the device is implanted in patient.</P>
+<P>(9) If the device is available in more than one size, the size of the particular version or model, together with the unit of measure, as it appears on the label of the device;</P>
+<P>(10) The type of production identifiers that appear on the label of the device;</P>
+<P>(11) The FDA premarket submission number of a cleared or approved device, or a statement that FDA has by regulation exempted the device from premarket notification;</P>
+<P>(12) The FDA listing number assigned to the device;</P>
+<P>(13) The Global Medical Device Nomenclature (GMDN) term or code for the device;</P>
+<P>(14) The total number of individual devices contained in the device package.</P>
+</DIV8>
+
+<DIV8 N="830.320" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.320&quot;,&quot;citation&quot;:&quot;21 CFR 830.320&quot;}">
+<HEAD>&#xA7; 830.320 Submission of unique device identification information.</HEAD>
+<P>(a) <I>Designation of contact for device identification.</I> Each labeler must designate an individual to serve as the point of contact with FDA on matters relating to the identification of medical devices marketed by the labeler. The contact for device information is responsible for ensuring FDA is provided with all information required by this part. The contact for device information may authorize an issuing agency or any other person to provide information to FDA on behalf of the labeler.</P>
+<P>(b) <I>Information shall be submitted via electronic means.</I> All information required by this subpart shall be submitted electronically to FDA's Global Unique Device Identification Database (GUDID) in a format that we can process, review, and archive, unless the labeler has obtained a waiver from electronic submission of unique device identifier (UDI) data.</P>
+<P>(c) <I>Waiver from electronic submission.</I> (1) A labeler may request a waiver from electronic submission of UDI data by submitting a letter addressed to the appropriate Center Director explaining why electronic submission is not technologically feasible; send the request by email to: <I>udi@fda.hhs.gov,</I> or by correspondence to: UDI Regulatory Policy Support, Center for Devices and Radiological Health, Food and Drug Administration, 10903 New Hampshire Ave., Bldg. 32, Rm. 3293, Silver Spring, MD 20993-0002.</P>
+<P>(2) If the establishment where the labeler is located has obtained a waiver from electronic submission of registration and listing information under section 510(p) of the Federal Food, Drug, and Cosmetic Act, the labeler is deemed to have a waiver from electronic submission of UDI data.</P>
+<P>(3) A labeler that has a waiver from electronic submission of UDI data must send a letter containing all of the information required by &#xA7; 830.310, as well as any ancillary information permitted to be submitted under &#xA7; 830.340 that the labeler wishes to submit, within the time permitted by &#xA7; 830.330, addressed to: UDI Regulatory Policy Support, Center for Devices and Radiological Health, Food and Drug Administration, 10903 New Hampshire Ave., Bldg. 32, Rm. 3293, Silver Spring, MD 20993-0002.</P>
+<CITA TYPE="N">[78 FR 58826, Sept. 24, 2013, as amended at 85 FR 18443, Apr. 2, 2020]
+</CITA>
+</DIV8>
+
+<DIV8 N="830.330" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.330&quot;,&quot;citation&quot;:&quot;21 CFR 830.330&quot;}">
+<HEAD>&#xA7; 830.330 Times for submission of unique device identification information.</HEAD>
+<P>(a) The labeler shall submit to FDA the information required by &#xA7; 830.310 no later than the date the label of the device must bear a unique device identifier under &#xA7; 801.20 of this chapter.</P>
+<P>(b) The labeler of a device shall submit to FDA an update to the information required by &#xA7; 830.310 whenever the information changes. The updated information must be submitted no later than the date a device is first labeled with the changed information. If the information does not appear on the label of a device, the updated information must be submitted within 10 business days of the change.</P>
+</DIV8>
+
+<DIV8 N="830.340" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.340&quot;,&quot;citation&quot;:&quot;21 CFR 830.340&quot;}">
+<HEAD>&#xA7; 830.340 Voluntary submission of ancillary device identification information.</HEAD>
+<P>(a) You may not submit any information to the Global Unique Device Identification Database (GUDID) other than that specified by &#xA7; 830.310, except where FDA acts to permit the submission of specified additional types of information, termed ancillary information.</P>
+<P>(b) FDA will provide information through the FDA Web site at <I>http://www.fda.gov/udi/</I> concerning the types of ancillary information that may be submitted to the GUDID.</P>
+<P>(c) FDA may periodically change the types of ancillary information that may be submitted to the GUDID. We will announce any change on the FDA Web site at <I>http://www.fda.gov/udi/</I> at least 60 days before making the change.</P>
+</DIV8>
+
+<DIV8 N="830.350" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.350&quot;,&quot;citation&quot;:&quot;21 CFR 830.350&quot;}">
+<HEAD>&#xA7; 830.350 Correction of information submitted to the Global Unique Device Identification Database.</HEAD>
+<P>(a) If FDA becomes aware that any information submitted to the Global Unique Device Identification Database (GUDID) appears to be incorrect or potentially misleading, we may notify the labeler of the specific information that appears to be incorrect, and request that the labeler provide corrected information or explain why the information is correct. The labeler must provide corrected information or provide a satisfactory explanation of why the information is correct within 30 days of receipt of FDA's notification.</P>
+<P>(b) If the labeler does not respond to FDA's notification within 30 days of receipt, or if FDA determines, at any time, that any information in the GUDID is incorrect or could be misleading, we may delete or correct the information. Any action taken by FDA under this paragraph does not relieve the labeler of its responsibility under paragraph (a) of this section to provide corrected information or an explanation of why the information previously submitted is correct.</P>
+</DIV8>
+
+<DIV8 N="830.360" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-830.360&quot;,&quot;citation&quot;:&quot;21 CFR 830.360&quot;}">
+<HEAD>&#xA7; 830.360 Records to be maintained by the labeler.</HEAD>
+<P>(a) Each labeler shall retain, and submit to FDA upon specific request, records showing all unique device identifiers (UDIs) used to identify devices that must bear a UDI on their label, and the particular version or model associated with each device identifier. These records must be retained for 3 years from the date the labeler ceases to market the version or model.</P>
+<P>(b) Compliance with this section does not relieve the labeler of the need to comply with recordkeeping requirements of any other FDA regulation.</P>
+</DIV8>
+
+</DIV6>
+</DIV5>

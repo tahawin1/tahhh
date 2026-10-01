@@ -14,11 +14,12 @@ indexer() {  # fichier pays type date libellé
 version_cfr() { grep -F "| $1 |" data/raw_pdfs/SOURCES_PAYS.md 2>/dev/null | grep -o 'édition du [0-9-]*' | cut -d' ' -f3; }
 
 echo "=== États-Unis ==="
-for part in 801 803 807 814 820 860; do
+for part in 801 803 806 807 812 814 820 830 860 888; do
   indexer "etats_unis_21cfr_${part}.txt" etats_unis reglement "$(version_cfr etats_unis_21cfr_${part}.xml || date +%F)" "21 CFR Part ${part}"
 done
 echo "=== Corée du Sud ==="
 indexer coree_medical_devices_act_2025.txt coree_du_sud loi 2025-04-01 "Medical Devices Act (Act No. 20888, 1-4-2025, traduction KLRI)"
+indexer coree_decret_application_2025.txt coree_du_sud decret 2025-07-22 "Enforcement Decree of the Medical Devices Act (Presidential Decree No. 35669, 22-7-2025, traduction KLRI)"
 indexer coree_arrete_application_2022.txt coree_du_sud reglement 2022-07-21 "Enforcement Rule of the Medical Devices Act (Ordinance No. 1819, traduction MFDS)"
 indexer coree_classification_annexe1_2022.txt coree_du_sud annexe_technique 2020-05-01 "Enforcement Rule, annexe 1 — classification des dispositifs (classes I à IV)"
 indexer coree_reglement_autorisation_2022.txt coree_du_sud reglement 2022-07-29 "Regulation on the Permission, Notification, Review of Medical Devices (No. 2022-52)"

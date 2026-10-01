@@ -1,0 +1,781 @@
+# Checklist de vérification des dossiers d'enregistrement (Maroc) — transcrite
+# fidèlement depuis le fichier Excel de l'entreprise (2026-10-01), puis
+# rapprochée de la loi 84-12, des arrêtés 2855-15 / 2856-15 et des pièces de
+# rules/maroc.yaml.
+#
+# STATUT : À VALIDER par l'entreprise avant que les contrôles soient codés.
+#
+# Pour chaque document :
+#   piece_maroc / numero : pièce correspondante de rules/maroc.yaml (null : nouvelle)
+#   fondement            : texte qui fonde l'exigence (ou « pratique »)
+#   rapprochement        : conforme | ecart_classes (classes différentes de la loi)
+#                          | nouveau_complement (complément d'une pièce existante)
+#                          | nouveau_conditionnel (pièce nouvelle sous condition)
+#                          | a_preciser
+#   elements[].controle  : lecture   = valeur lue par l'agent dans le document
+#                          coherence = comparaison entre documents (par le code)
+#                          humain    = vérification visuelle par une personne
+#                                      (signature, cachet, photos, intégrité…)
+
+version: 1
+date_version: '2026-10-01'
+source: Checklist interne de vérification des dossiers réglementaires (fichier Excel transmis le 2026-10-01)
+statut: a_valider
+documents:
+- id: lettre_d_autorisation
+  nom: Lettre d'autorisation
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: attestation_fabricant
+  numero: 3
+  fondement: 'Arrêté 2855-15, art. 2 (1) a) : attestation du fabricant ou de son mandataire démontrant le lien avec l''établissement
+    demandeur'
+  rapprochement: conforme
+  elements:
+  - texte: Nom et adresse complète du fabricant
+    controle: lecture
+  - texte: Nom et adresse de l’établissement autorisé (distributeur/importateur/mandataire)
+    controle: lecture
+  - texte: Objet clair de la lettre d’autorisation
+    controle: lecture
+  - texte: Identification précise du ou des dispositifs concernés (nom, modèles, références)
+    controle: lecture
+  - texte: Définition de la nature de la relation (distribution, importation, représentation, etc.)
+    controle: lecture
+  - texte: Étendue géographique de l’autorisation (pays/territoire)
+    controle: lecture
+  - texte: Date d’émission de la lettre
+    controle: lecture
+  - texte: Date de validité ou durée de l’autorisation
+    controle: lecture
+  - texte: Signature d’une personne autorisée du fabricant
+    controle: humain
+  - texte: Nom et fonction du signataire
+    controle: lecture
+  - texte: Cachet du fabricant (si applicable)
+    controle: humain
+  - texte: Cohérence des informations avec la déclaration de conformité, le certificat CE et les autres documents
+    controle: coherence
+- id: declaration_de_conformite
+  nom: Déclaration de conformité
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: declaration_conformite
+  numero: 6
+  fondement: 'Arrêté 2855-15, art. 2 (1) b) : déclaration de conformité aux exigences essentielles'
+  rapprochement: conforme
+  elements:
+  - texte: Doit contenir le code EMDN
+    controle: lecture
+  - texte: Nom et adresse complète du fabricant
+    controle: lecture
+  - texte: Mandataire européen (si fabricant hors UE)
+    controle: lecture
+  - texte: Coordonnées de contact du fabricant
+    controle: lecture
+  - texte: Nom du produit / modèle
+    controle: lecture
+  - texte: Référence(s) produit
+    controle: lecture
+  - texte: UDI-DI (si applicable)
+    controle: lecture
+  - texte: Classe du DM (I, IIa, IIb, III)
+    controle: lecture
+  - texte: Destination d’usage (intended purpose)
+    controle: lecture
+  - texte: Mention du Règlement (UE) 2017/745 (MDR) ou de la directive applicable
+    controle: lecture
+  - texte: 'Normes harmonisées utilisées (ex : EN ISO 13485, EN ISO 14971)'
+    controle: lecture
+  - texte: Versions des normes à jour
+    controle: lecture
+  - texte: Voie/procédure d’évaluation de conformité
+    controle: lecture
+  - texte: Rôle de l’organisme notifié (si applicable)
+    controle: lecture
+  - texte: Numéro du certificat
+    controle: lecture
+  - texte: Nom de l’organisme notifié (si applicable)
+    controle: lecture
+  - texte: Numéro d’identification de l’organisme notifié
+    controle: lecture
+  - texte: Cohérence avec le certificat CE
+    controle: coherence
+  - texte: Date de la déclaration
+    controle: lecture
+  - texte: Signature d’une personne autorisée
+    controle: humain
+  - texte: Nom et fonction du signataire
+    controle: lecture
+  - texte: Version du document
+    controle: lecture
+  - texte: Cohérence avec le certificat CE
+    controle: coherence
+  - texte: Cohérence avec l’étiquetage
+    controle: coherence
+  - texte: Cohérence avec la notice d’utilisation (IFU)
+    controle: coherence
+  - texte: Cohérence des noms de produit avec le catalogue produit
+    controle: coherence
+  - texte: Nom du fournisseur
+    controle: lecture
+  - texte: Adresse du fournisseur
+    controle: lecture
+  - texte: Cachet du fournisseur
+    controle: humain
+  - texte: Signature du fournisseur
+    controle: humain
+- id: certificat_iso
+  nom: Certificat ISO
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: iso_13485
+  numero: 5
+  fondement: 'Arrêté 2855-15, art. 2 (1) a) : « certificat ISO13485 ou équivalent » pour les classes IIa, IIb et III ; arrêté
+    2856-15, art. 3 (NM ISO 13485)'
+  rapprochement: ecart_classes
+  elements:
+  - texte: Nom et adresse du fabricant
+    controle: lecture
+  - texte: Périmètre/scope du certificat (inclut le DM concerné)
+    controle: lecture
+  - texte: Organisme certificateur
+    controle: lecture
+  - texte: Numéro du certificat
+    controle: lecture
+  - texte: Date d’émission et date d’expiration
+    controle: lecture
+  - texte: Statut valide (non expiré)
+    controle: lecture
+  - texte: Cohérence avec la déclaration de conformité
+    controle: coherence
+- id: certificat_ce_mdd_mdr
+  nom: Certificat CE (MDD/MDR)
+  groupe: fabricant
+  classes:
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: piece_specifique
+  numero: 4
+  fondement: 'Arrêté 2855-15, art. 2 (1) a) : certificat de marquage CE (ou attestation FDA, ou CVL) pour Is, Im, IIa, IIb,
+    III'
+  rapprochement: conforme
+  elements:
+  - texte: Nom et adresse du fabricant
+    controle: lecture
+  - texte: Nom du produit ou famille de produits
+    controle: lecture
+  - texte: Références concernées
+    controle: lecture
+  - texte: Classe du DM
+    controle: lecture
+  - texte: Organisme notifié et numéro
+    controle: lecture
+  - texte: Numéro du certificat CE
+    controle: lecture
+  - texte: Date de validité
+    controle: lecture
+  - texte: Cohérence avec la déclaration de conformité et l’étiquetage
+    controle: coherence
+- id: free_sales_certificate_fsc
+  nom: Free Sales Certificate (FSC)
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: piece_specifique
+  numero: 4
+  fondement: 'Arrêté 2855-15, art. 2 (1) a) : « autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités
+    compétentes au niveau du pays d''origine » — classes Is, Im, IIa, IIb, III'
+  rapprochement: ecart_classes
+  elements:
+  - texte: Pays émetteur
+    controle: lecture
+  - texte: N° de Certificat
+    controle: lecture
+  - texte: Autorité émettrice
+    controle: lecture
+  - texte: Nom du fabricant
+    controle: lecture
+  - texte: Nom du produit / références
+    controle: lecture
+  - texte: Confirmation de libre vente
+    controle: lecture
+  - texte: Date d’émission et validité
+    controle: lecture
+  - texte: Cohérence avec CE et DoC
+    controle: coherence
+  - texte: Qu'il soit effectué par ministre de la santé
+    controle: lecture
+- id: notice_d_utilisation_ifu
+  nom: Notice d’utilisation (IFU)
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: notice
+  numero: 8
+  fondement: 'Arrêté 2855-15, art. 2 (1) b) : projet de notice d''utilisation (le cas échéant) ; langues : arrêté 2856-15,
+    annexe II, point 14'
+  rapprochement: conforme
+  elements:
+  - texte: Nom du fabricant
+    controle: lecture
+  - texte: Nom du produit / modèle
+    controle: lecture
+  - texte: Destination d’usage
+    controle: lecture
+  - texte: Instructions d’utilisation claires
+    controle: humain
+  - texte: Avertissements et précautions
+    controle: lecture
+  - texte: Symboles réglementaires
+    controle: humain
+  - texte: Version et date ( durée de vie)
+    controle: lecture
+  - texte: Cohérence avec étiquetage et DoC
+    controle: coherence
+  - texte: Stérilisation ( s'il est stérile)  avec la méthode utilisé
+    controle: lecture
+- id: projet_d_etiquetage
+  nom: Projet d’étiquetage
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: etiquetage
+  numero: 7
+  fondement: 'Arrêté 2855-15, art. 2 (1) b) : projet d''étiquetage signé et cacheté ; arrêté 2856-15, annexe II'
+  rapprochement: conforme
+  elements:
+  - texte: Nom et adresse du fabricant
+    controle: lecture
+  - texte: Nom du dispositif
+    controle: lecture
+  - texte: Référence(s) produit(s)
+    controle: lecture
+  - texte: code CE  (si applicable)
+    controle: lecture
+  - texte: Symboles obligatoires
+    controle: humain
+  - texte: Conditions de stockage
+    controle: lecture
+  - texte: Numéro de lot / série (si applicable)
+    controle: lecture
+  - texte: Destination d’usage (si requis)
+    controle: lecture
+  - texte: Cohérence avec IFU, CE et DoC
+    controle: coherence
+  - texte: Indiquer stérile si le produit est stérile, ou non stérile dans le cas où ce n’est pas le cas
+    controle: lecture
+  - texte: Date de fabrication et expiration
+    controle: lecture
+- id: catalogue_produit
+  nom: Catalogue produit
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: catalogue
+  numero: 14
+  fondement: Pratique (dossier accepté, pièce 14) — non cité par l'arrêté
+  rapprochement: conforme
+  elements:
+  - texte: Nom du fabricant
+    controle: lecture
+  - texte: Nom du produit
+    controle: lecture
+  - texte: Références exactes
+    controle: lecture
+  - texte: Description du produit
+    controle: lecture
+  - texte: Photos cohérentes avec le DM
+    controle: humain
+  - texte: Cohérence avec DoC et CE
+    controle: coherence
+  - texte: Version du catalogue
+    controle: lecture
+- id: ce_design_mdd
+  nom: CE Design (MDD)
+  groupe: fabricant
+  classes:
+  - III
+  condition: null
+  piece_maroc: piece_specifique
+  numero: 4
+  fondement: Complément du certificat CE pour la classe III sous directive 93/42 (examen de la conception) — arrêté 2855-15,
+    art. 2 (1) a)
+  rapprochement: nouveau_complement
+  elements:
+  - texte: Fabricant (nom et adresse)
+    controle: lecture
+  - texte: Dispositif médical concerné (nom / modèle / famille)
+    controle: lecture
+  - texte: Classe du dispositif médical
+    controle: lecture
+  - texte: Organisme notifié (nom et numéro)
+    controle: lecture
+  - texte: Référence et numéro du certificat CE Design
+    controle: lecture
+  - texte: Champ de la certification (design couvert / portée)
+    controle: lecture
+  - texte: Normes et exigences réglementaires appliquées (MDD)
+    controle: lecture
+  - texte: Validité du certificat
+    controle: lecture
+  - texte: Cohérence avec le dossier technique, la déclaration de conformité et l’étiquetage
+    controle: coherence
+- id: etude_clinique
+  nom: Etude clinique
+  groupe: fabricant
+  classes:
+  - IIB
+  - III
+  condition: Pas besoin de la demander au fournisseur si le produit contient le cetificat MDD/MDR
+  piece_maroc: null
+  numero: null
+  fondement: 'Loi 84-12, art. 15 : investigation clinique OU évaluation des données cliniques (équivalence)'
+  rapprochement: nouveau_conditionnel
+  elements:
+  - texte: Identification de l’étude (titre, code, version)
+    controle: lecture
+  - texte: Sponsor / fabricant (nom et coordonnées)
+    controle: lecture
+  - texte: Dispositif médical concerné (nom, modèle, version)
+    controle: lecture
+  - texte: Objectif de l’étude clinique (performance et/ou sécurité)
+    controle: lecture
+  - texte: Type d’étude (interventionnelle, observationnelle, équivalence, etc.)
+    controle: lecture
+  - texte: Protocole clinique (référence et version)
+    controle: lecture
+  - texte: Population étudiée (critères d’inclusion et d’exclusion)
+    controle: lecture
+  - texte: Méthodologie (design, durée, centres, nombre de patients)
+    controle: lecture
+  - texte: Analyse des données (méthodes statistiques utilisées)
+    controle: lecture
+  - texte: Résultats principaux (sécurité, performance clinique)
+    controle: lecture
+  - texte: Évaluation des risques et bénéfice clinique
+    controle: lecture
+  - texte: Conformité aux exigences réglementaires (MDR Annexe XIV / ISO 14155)
+    controle: lecture
+  - texte: Rapport final d’étude clinique (Clinical Investigation Report – CIR)
+    controle: lecture
+  - texte: Conclusion et justification de la conformité clinique
+    controle: lecture
+- id: extention_letter
+  nom: Extention letter
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: piece_specifique
+  numero: 4
+  fondement: 'Règlement (UE) 2023/607 : lettre de confirmation de l''organisme notifié (certificat MDD prolongé) — déjà signalée
+    en pièce 4'
+  rapprochement: conforme
+  elements:
+  - texte: Identité de l’organisme notifié (nom, numéro, signature)
+    controle: humain
+  - texte: Fabricant (nom et adresse exacts)
+    controle: lecture
+  - texte: Référence du certificat CE MDD principal
+    controle: lecture
+  - texte: Mention explicite de l’extension / prolongation et son périmètre
+    controle: lecture
+  - texte: Produits ou familles de produits concernés
+    controle: lecture
+  - texte: Base réglementaire (Directive 93/42/CEE + annexes)
+    controle: lecture
+  - texte: Motif de l’extension (changement technique, gamme, site, etc.)
+    controle: lecture
+  - texte: Nouvelle période de validité / date d’expiration mise à jour
+    controle: lecture
+  - texte: Confirmation du maintien de la conformité CE
+    controle: lecture
+  - texte: Conditions associées (audits, surveillance, restrictions éventuelles)
+    controle: lecture
+  - texte: Cohérence avec certificat CE et dossier technique
+    controle: coherence
+- id: manuel_d_utilisation
+  nom: Manuel d'utilisation
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: Pour les équipements
+  piece_maroc: null
+  numero: null
+  fondement: Arrêté 2855-15, art. 2 (1) b) (notice) — équipements
+  rapprochement: nouveau_conditionnel
+  elements:
+  - texte: Identification du fabricant (nom, adresse)
+    controle: lecture
+  - texte: Nom du dispositif + modèle / référence
+    controle: lecture
+  - texte: Usage prévu (intended use)
+    controle: lecture
+  - texte: Indications médicales
+    controle: lecture
+  - texte: Contre-indications
+    controle: lecture
+  - texte: Population cible (patients / utilisateurs)
+    controle: lecture
+  - texte: Conditions d’utilisation
+    controle: lecture
+  - texte: Instructions d’utilisation
+    controle: lecture
+  - texte: Précautions d’emploi / avertissements
+    controle: lecture
+  - texte: Risques résiduels / effets indésirables
+    controle: lecture
+  - texte: Conditions de stockage et transport
+    controle: lecture
+  - texte: Stérilité (si applicable)
+    controle: lecture
+  - texte: Durée de vie / péremption
+    controle: lecture
+  - texte: Maintenance / nettoyage / désinfection (si applicable)
+    controle: lecture
+  - texte: Usage unique ou réutilisation
+    controle: lecture
+  - texte: Symboles et légende
+    controle: humain
+  - texte: Traçabilité (lot / numéro de série)
+    controle: lecture
+  - texte: Version du document + date de révision
+    controle: lecture
+- id: eu_technical_documentation_assessment_certificate_mdr
+  nom: EU Technical documentation Assessment Certificate ( MDR)
+  groupe: fabricant
+  classes:
+  - III
+  condition: null
+  piece_maroc: piece_specifique
+  numero: 4
+  fondement: Complément du certificat CE pour la classe III sous règlement 2017/745 (annexe IX, chapitre II)
+  rapprochement: nouveau_complement
+  elements:
+  - texte: Organisme notifié (nom, numéro, signature)
+    controle: humain
+  - texte: Fabricant (nom et adresse)
+    controle: lecture
+  - texte: Référence du certificat d’évaluation
+    controle: lecture
+  - texte: Identification du dispositif (nom, modèle)
+    controle: lecture
+  - texte: Classe de risque du dispositif
+    controle: lecture
+  - texte: Confirmation d’évaluation de la documentation technique
+    controle: lecture
+  - texte: Périmètre des produits couverts
+    controle: lecture
+  - texte: Conformité aux exigences MDR
+    controle: lecture
+  - texte: Période de validité du certificat
+    controle: lecture
+  - texte: Limitations ou conditions éventuelles
+    controle: lecture
+- id: photo
+  nom: Photo
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: echantillon
+  numero: 9
+  fondement: 'Arrêté 2855-15, art. 2 (1) b) : échantillon modèle-vente ou prototype (sauf équipement) ; photos : pratique
+    (dossier accepté, pièce 9)'
+  rapprochement: conforme
+  elements:
+  - texte: Correspondance avec la référence produit déclarée
+    controle: humain
+  - texte: Nom du dispositif visible ou identifiable
+    controle: humain
+  - texte: Marquage CE présent (si applicable)
+    controle: humain
+  - texte: Code article / référence / modèle lisible
+    controle: humain
+  - texte: Numéro de lot ou de série (si visible)
+    controle: humain
+  - texte: Étiquetage conforme à l’IFU (informations essentielles présentes)
+    controle: humain
+  - texte: Intégrité du produit (pas de défaut visible)
+    controle: humain
+  - texte: Emballage conforme (primaire et/ou secondaire si applicable)
+    controle: humain
+  - texte: Présence des symboles réglementaires (stérile, usage unique, etc.)
+    controle: humain
+  - texte: Cohérence avec le dossier technique / artwork approuvé
+    controle: coherence
+- id: echantillon
+  nom: Echantillon
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: Pour les produits dont la valeur est inférieure à 500 $
+  piece_maroc: echantillon
+  numero: 9
+  fondement: 'Arrêté 2855-15, art. 2 (1) b) : échantillon modèle-vente ou prototype, sauf équipement médical'
+  rapprochement: nouveau_conditionnel
+  elements:
+  - texte: Correspondance avec la référence produit / dossier technique
+    controle: humain
+  - texte: Conformité du marquage (nom, modèle, lot/série)
+    controle: humain
+  - texte: Présence et lisibilité du marquage CE (si applicable)
+    controle: humain
+  - texte: Intégrité du produit (absence de défauts, dommages)
+    controle: humain
+  - texte: Conformité de l’étiquetage (infos essentielles + symboles)
+    controle: humain
+  - texte: Conformité de l’emballage (type, scellage, stérilité si applicable)
+    controle: humain
+  - texte: Cohérence avec la version approuvée (design / artwork / IFU)
+    controle: coherence
+- id: facture_pro_forma
+  nom: Facture Pro-forma
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: Pour les produits dont la valeur est supérieure à 500 $
+  piece_maroc: null
+  numero: null
+  fondement: 'Pratique (non citée par l''arrêté) : remplace l''échantillon pour un produit de plus de 500 $'
+  rapprochement: nouveau_conditionnel
+  elements:
+  - texte: Identité du vendeur (nom, adresse, contact)
+    controle: lecture
+  - texte: Identité de l’acheteur (nom, adresse)
+    controle: lecture
+  - texte: Numéro et date de la facture pro-forma
+    controle: lecture
+  - texte: Description précise des produits (références, modèles)
+    controle: lecture
+  - texte: Quantités et unités
+    controle: lecture
+  - texte: Prix unitaires et montant total
+    controle: lecture
+  - texte: Devise utilisée
+    controle: lecture
+  - texte: Incoterms (EXW, FOB, CIF, etc.)
+    controle: lecture
+  - texte: Conditions de livraison (lieu, délai)
+    controle: lecture
+  - texte: Conditions de paiement
+    controle: lecture
+  - texte: Pays d’origine des produits
+    controle: lecture
+  - texte: Poids / volume (si applicable logistique)
+    controle: lecture
+  - texte: Signature ou cachet du fournisseur (si requis)
+    controle: humain
+- id: lettre_de_lien
+  nom: Lettre de lien
+  groupe: fabricant
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: null
+  numero: null
+  fondement: 'Pratique : lien fabricant ↔ distributeur/promoteur quand le fournisseur n''est pas le fabricant (non cité par
+    l''arrêté)'
+  rapprochement: nouveau_conditionnel
+  elements:
+  - texte: Identification du fabricant (nom, adresse)
+    controle: lecture
+  - texte: Identification du partenaire (promoteur / distributeur)
+    controle: lecture
+  - texte: Nature de la relation (promotion et/ou distribution)
+    controle: lecture
+  - texte: Produits concernés (références / gammes)
+    controle: lecture
+  - texte: Territoire de distribution / marché couvert
+    controle: lecture
+  - texte: Rôle du partenaire (promotion, vente, stockage, logistique, etc.)
+    controle: lecture
+  - texte: Confirmation de non-modification du produit et de l’étiquetage (si applicable)
+    controle: lecture
+  - texte: Respect des exigences réglementaires locales (MDR/MDD selon marché)
+    controle: lecture
+  - texte: Responsabilités en matière de traçabilité et vigilance (si applicable)
+    controle: lecture
+  - texte: Conditions commerciales générales (si mentionnées)
+    controle: lecture
+  - texte: Durée de l’accord / validité
+    controle: lecture
+  - texte: Signatures autorisées des deux parties
+    controle: humain
+- id: lettre_de_demande
+  nom: Lettre de demande
+  groupe: interne
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: À remplir par les informations de fabricant et de la société
+  piece_maroc: demande_signee
+  numero: 1
+  fondement: 'Arrêté 2855-15, art. 2 (1) a) : demande en 3 exemplaires, signée et cachetée'
+  rapprochement: conforme
+  elements: []
+- id: fiche_signaletique
+  nom: Fiche signalétique
+  groupe: interne
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: À remplir par les informations de fabricant et de la société
+  piece_maroc: fiche_signaletique
+  numero: 2
+  fondement: 'Arrêté 2855-15, art. 2 (1) a) : fiche signalétique en 3 exemplaires + version électronique'
+  rapprochement: conforme
+  elements: []
+- id: note_descriptive
+  nom: Note descriptive
+  groupe: interne
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: Demandé au cas d'équipement À remplir par les informations de fabricant
+  piece_maroc: null
+  numero: null
+  fondement: Équipements — non cité pour un DM importé par l'arrêté 2855-15
+  rapprochement: nouveau_conditionnel
+  elements: []
+- id: documentation_technique
+  nom: Documentation technique
+  groupe: interne
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: Demandé au cas d'équipement À remplir par les informations de fabricant
+  piece_maroc: null
+  numero: null
+  fondement: 'Arrêté 2855-15, art. 2 (1) : documentation technique avec check-list des exigences essentielles « peut être
+    demandée » au cours de l''évaluation'
+  rapprochement: nouveau_conditionnel
+  elements: []
+- id: certificat_d_enregistrement
+  nom: Certificat d'enregistrement
+  groupe: interne
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: À remplir par les informations de fabricant et de la société
+  piece_maroc: certificat_enregistrement_annexe2
+  numero: 16
+  fondement: Arrêté 2855-15, annexe II (partie I pré-remplie par le demandeur)
+  rapprochement: conforme
+  elements: []
+- id: declaration_de_la_societe
+  nom: Déclaration de la société
+  groupe: interne
+  classes:
+  - I
+  - IS
+  - IM
+  - IIA
+  - IIB
+  - III
+  condition: null
+  piece_maroc: null
+  numero: null
+  fondement: À préciser (non citée par l'arrêté 2855-15)
+  rapprochement: a_preciser
+  elements: []

@@ -213,6 +213,15 @@ supporte déjà.
       `recadrer_sur_modele` (préambule et ajouts après la fin du modèle retirés).
       Essai réel : la lettre (pièce 1) d'un nouveau dossier UE est conforme au
       modèle accepté, via la pile serveur complète.
+- [ ] Checklist de l'entreprise (Excel, 2026-10-01) transcrite dans
+      `rules/checklist_maroc.yaml` : 23 documents, 197 éléments (lecture par
+      l'agent / cohérence entre documents / vérification humaine), chacun
+      rapproché de la pièce de maroc.yaml et de son fondement. **Statut
+      à valider** : écarts soumis à l'utilisateur (ISO et FSC exigés pour toutes
+      les classes alors que la loi les limite ; échantillon < 500 $ / pro-forma
+      > 500 $ ; pièces « équipement » ; CE Design et certificat d'évaluation de
+      la documentation technique en classe III ; lettre de lien ; déclaration
+      de la société ; quittance absente). Aucun contrôle codé avant validation.
 - [ ] Agent — étape 2 : contrôles automatiques de conformité des documents
       reçus (expiration, produit, classe, émetteur) — règles en YAML
 - [x] Agent — étape 3 (formulaires) : fiche signalétique (pièce 2) et annexe II

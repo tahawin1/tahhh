@@ -81,7 +81,7 @@ pays:
     autorite: "FDA (CDRH)"
     texte: "FD&C Act ; 21 CFR 807, 814, 820, 860"
     classes: {A: [I], B: [II], C: [II, III], D: [III]}
-    note_classes: "Trois classes : la plupart des dispositifs IIb européens sont en classe II, certains en III."
+    note_classes: "Trois classes : la plupart des dispositifs IIb européens sont en classe II, certains en III. Exemple vérifié : ciment osseux PMMA = classe II (contrôles spéciaux), 21 CFR 888.3027 ; classe IIb au Maroc et en UE."
     preuve_mise_sur_le_marche: "Lettre 510(k) (K…), approbation PMA (P…) ou décision De Novo (DEN…)"
     certificat_pour_export: "Certificate to Foreign Government (CFG) de la FDA (FD&C Act 801(e)(4), à vérifier)"
     systeme_qualite: "21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)"
