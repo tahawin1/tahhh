@@ -2,6 +2,7 @@ services:
   postgres:
     image: postgres:16-alpine
     container_name: conformite-postgres
+    restart: unless-stopped  # relancé avec Docker (redémarrage du serveur ou d'Ubuntu)
     environment:
       POSTGRES_DB: conformite_dm
       POSTGRES_USER: conformite
@@ -15,6 +16,7 @@ services:
   qdrant:
     image: qdrant/qdrant:latest
     container_name: conformite-qdrant
+    restart: unless-stopped
     ports:
       - "127.0.0.1:6333:6333"
       - "127.0.0.1:6334:6334"

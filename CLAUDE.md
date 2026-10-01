@@ -172,6 +172,10 @@ supporte déjà.
       Profil : la sortie de wsl.exe capturée par PowerShell était mal décodée
       (« repr├®sentant » gardé comme valeur) : le fichier est désormais copié
       côté Windows et lu en UTF-8.
+      Vérification du 3e essai : postgres et qdrant arrêtés (sans `restart:`,
+      ils ne repartaient pas après un redémarrage de Docker/Ubuntu ; api et
+      interface oui) — `restart: unless-stopped` ajouté ; `chcp 65001` en tête
+      des scripts PowerShell (accents de la sortie Ubuntu mal affichés).
       Toujours relancer `npm run build` (tsc + vite) après toute retouche du frontend. Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
