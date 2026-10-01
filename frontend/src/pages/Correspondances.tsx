@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { MODE_DEMO, api, type Comparaison, type Correspondances as Donnees } from '../api'
+import { MODE_DEMO, api, type Comparaison, type Correspondances as Donnees, type Synthese } from '../api'
 import { PAYS_PUCE } from '../libelles'
 import Icone from '../composants/Icone'
 
@@ -21,12 +21,29 @@ export default function Correspondances() {
   const [theme, setTheme] = useState('')
   const [comparaison, setComparaison] = useState<Comparaison | null>(null)
   const [recherche, setRecherche] = useState<string | null>(null)
+  const [origine, setOrigine] = useState('union_europeenne')
+  const [synthese, setSynthese] = useState<Synthese | null>(null)
+  const [enSynthese, setEnSynthese] = useState(false)
+
+  async function synthetiser() {
+    setEnSynthese(true)
+    setSynthese(null)
+    setRecherche(null)
+    try {
+      setSynthese(await api.synthese(theme))
+    } catch (e) {
+      setRecherche((e as Error).message)
+    } finally {
+      setEnSynthese(false)
+    }
+  }
 
   useEffect(() => { api.correspondances().then(setDonnees, (e: Error) => setErreur(e.message)) }, [])
 
   async function comparer(id: string) {
     setTheme(id)
     setComparaison(null)
+    setSynthese(null)
     setRecherche(null)
     if (!id) return
     try {
@@ -105,6 +122,43 @@ export default function Correspondances() {
       </section>
 
       <section className="panneau">
+        <h2><Icone nom="journal" taille={18} /> Article par article</h2>
+        <p className="aide">Pour chaque thème, l'article qui le traite dans chaque pays (relevé dans les textes officiels indexés).</p>
+        <div className="defilement">
+          <table className="grille-pays">
+            <thead>
+              <tr>
+                <th scope="col">Thème</th>
+                {donnees.pays.map((p) => <th key={p.id} scope="col"><EntetePays id={p.id} nom={p.nom} statut={p.statut} /></th>)}
+              </tr>
+            </thead>
+            <tbody>
+              {donnees.themes.filter((t) => t.articles).map((t) => (
+                <tr key={t.id}>
+                  <th scope="row">{t.question}</th>
+                  {donnees.pays.map((p) => <td key={p.id}>{t.articles?.[p.id] ?? '—'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section className="panneau">
+        <h2><Icone nom="suite" taille={18} /> Du pays d'origine au dépôt au Maroc</h2>
+        <label className="choix-theme">
+          Pays d'origine
+          <select value={origine} onChange={(e) => setOrigine(e.target.value)}>
+            {donnees.pays.filter((p) => p.id !== 'maroc').map((p) => <option key={p.id} value={p.id}>{p.nom}</option>)}
+          </select>
+        </label>
+        <ol className="parcours-pays">
+          {(donnees.parcours_vers_maroc[origine] ?? []).map((e, i) => <li key={`o${i}`} className="origine">{e}</li>)}
+          {(donnees.parcours_vers_maroc.commun_maroc ?? []).map((e, i) => <li key={`m${i}`}>{e}</li>)}
+        </ol>
+      </section>
+
+      <section className="panneau">
         <h2><Icone nom="lire" taille={18} /> Comparer les textes officiels</h2>
         <label className="choix-theme">
           Thème
@@ -113,6 +167,33 @@ export default function Correspondances() {
             {donnees.themes.map((t) => <option key={t.id} value={t.id}>{t.question}</option>)}
           </select>
         </label>
+        {theme && (
+          <div className="actions">
+            <button className="principal" disabled={enSynthese} onClick={synthetiser}>
+              <Icone nom="ia" taille={16} />{enSynthese ? 'Mistral lit les textes de chaque pays…' : 'Synthèse par Mistral (avec citations vérifiées)'}
+            </button>
+          </div>
+        )}
+        {synthese && (
+          <div className="comparaison">
+            {Object.entries(synthese.pays).map(([pays, r]) => (
+              <article key={pays} className="extraits-pays">
+                <h3><EntetePays id={pays} nom={donnees.pays.find((p) => p.id === pays)?.nom ?? 'Texte pivot (IMDRF)'} /></h3>
+                {r.reference && <p className="secondaire"><strong>Référence :</strong> {r.reference}</p>}
+                {r.resume ? <p>{r.resume}</p> : <p className="aide">Aucune réponse dans les extraits indexés.</p>}
+                {r.citation && (
+                  <blockquote>
+                    <p>« {r.citation} »</p>
+                    <footer>
+                      <span className={`pastille ${r.verifiee ? 'ok' : 'erreur'}`}>{r.verifiee ? 'Citation vérifiée dans le texte' : 'Citation introuvable : ne pas s\'y fier'}</span>
+                      {r.sources.length > 0 && <> {r.sources.join(' ; ')}</>}
+                    </footer>
+                  </blockquote>
+                )}
+              </article>
+            ))}
+          </div>
+        )}
         {recherche && <p className="message erreur">{recherche}</p>}
         {theme && !comparaison && !recherche && <p className="aide">Recherche dans les textes indexés…</p>}
         {comparaison && (

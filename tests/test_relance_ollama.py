@@ -90,6 +90,8 @@ class TestModeleDansLePrompt(unittest.TestCase):
         self.assertIn("Vis d'ostéosynthèse", prompt)
         self.assertTrue(sources[0]["texte_source"].startswith("Modèle : pièce 1"))  # visible à la validation
         self.assertEqual(s.dernier_json["options"]["num_ctx"], 8192)
+        self.assertIn("Cadre réglementaire", prompt)  # parcours UE -> Maroc, articles cités
+        self.assertIn("arrêté 2855-15", prompt)
 
     def test_sans_modele_redaction_quand_meme(self):
         s = FausseSession([200])

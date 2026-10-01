@@ -1,0 +1,154 @@
+RAPPROCHEMENT DES RÉGLEMENTATIONS DES DISPOSITIFS MÉDICAUX — version 1 du 2026-10-01
+
+Maroc (destination) — autorité AMMPS — Loi 84-12 ; décret 2-14-607 ; arrêté 2855-15
+Classes : niveau A : I, IS, IM, IR ; niveau B : IIA ; niveau C : IIB ; niveau D : III
+Preuve de mise sur le marché : Certificat d'enregistrement AMMPS (5 ans)
+Certificat pour l'exportation : sans objet
+Système qualité : ISO 13485 exigé pour IIA, IIB, III (arrêté 2855-15)
+Certificats étrangers : Accepte les certificats étrangers comme pièce justificative (pièce 4)
+
+Union européenne — autorité Organismes notifiés + autorités compétentes — Règlement (UE) 2017/745 (MDR)
+Classes : niveau A : I, Is, Im, Ir ; niveau B : IIa ; niveau C : IIb ; niveau D : III
+Preuve de mise sur le marché : Certificat CE de l'organisme notifié (+ lettre de confirmation 2023/607 si certificat MDD expiré)
+Certificat pour l'exportation : Certificat de libre vente délivré par l'autorité compétente nationale (MDR, art. 60)
+Système qualité : ISO 13485 / annexe IX du MDR
+Certificats étrangers : Aucune : évaluation de conformité UE complète obligatoire
+
+Chine — autorité NMPA — Règlement du Conseil d'État n°739 (2021)
+Classes : niveau A : I ; niveau B : II ; niveau C : II, III ; niveau D : III
+Preuve de mise sur le marché : Certificat d'enregistrement NMPA (classes II, III) ou récépissé de déclaration (classe I)
+Certificat pour l'exportation : Certificat de vente libre (autorité délivrante à confirmer dans le règlement 739)
+Système qualité : GMP chinoises des dispositifs médicaux
+Certificats étrangers : Équivalence étrangère pour II/III, sauf dispositif innovant non commercialisé ailleurs
+
+Inde — autorité CDSCO — Medical Devices Rules 2017 et amendements
+Classes : niveau A : A ; niveau B : B ; niveau C : C ; niveau D : D
+Preuve de mise sur le marché : Licence d'importation ou de fabrication CDSCO
+Certificat pour l'exportation : Free Sale Certificate (CDSCO / autorité de l'État)
+Système qualité : Fifth Schedule des Medical Devices Rules 2017 (aligné ISO 13485)
+Certificats étrangers : Dispense d'essai clinique local si FSC d'un pays reconnu (AU, CA, JP, UE, UK, USA)
+
+États-Unis — autorité FDA (CDRH) — FD&C Act ; 21 CFR 807, 814, 820, 860
+Classes : niveau A : I ; niveau B : II ; niveau C : II, III ; niveau D : III
+Preuve de mise sur le marché : Lettre 510(k) (K…), approbation PMA (P…) ou décision De Novo (DEN…)
+Certificat pour l'exportation : Certificate to Foreign Government (CFG) de la FDA (FD&C Act 801(e)(4), à vérifier)
+Système qualité : 21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)
+Certificats étrangers : Aucune : 510(k), PMA ou De Novo obligatoire
+
+Corée du Sud — autorité MFDS — Medical Devices Act, décret et arrêté d'application
+Classes : niveau A : I ; niveau B : II ; niveau C : III ; niveau D : IV
+Preuve de mise sur le marché : Notification (classe I), certification (classe II désignée) ou autorisation MFDS (classes II à IV), valable 5 ans
+Certificat pour l'exportation : Certificate of Free Sale du MFDS (absent des textes indexés, à vérifier)
+Système qualité : KGMP exigé avant toute autorisation d'import (Medical Devices Act, art. 15 (4))
+Certificats étrangers : À vérifier dans le texte indexé
+
+Pakistan — autorité DRAP — DRAP Act 2012 ; Medical Devices Rules 2017 (S.R.O. 32(I)/2018)
+Classes : niveau A : A ; niveau B : B ; niveau C : C ; niveau D : D
+Preuve de mise sur le marché : Certificat d'enregistrement ou d'inscription (enlistment) DRAP
+Certificat pour l'exportation : Free Sale Certificate de la DRAP
+Système qualité : Licence d'établissement DRAP (exigences qualité à confirmer dans le texte)
+Certificats étrangers : À vérifier dans le texte indexé
+
+Thème : règles de classification des dispositifs médicaux selon le risque
+  Maroc (destination) : Loi 84-12, art. 4 (classes I, IIa, IIb, III) ; arrêté 2856-15, annexe I (18 règles, reprises de la directive 93/42)
+  Union européenne : Règlement 2017/745, art. 51 et annexe VIII (22 règles)
+  Chine : Règlement 739, art. 6 (classes I à III selon le risque)
+  Inde : Medical Devices Rules 2017, règle 4 et First Schedule (classes A à D)
+  États-Unis : 21 CFR 860.3 (c) (classes I à III) ; De Novo : 21 CFR 860, art. 513(f)(2) FD&C Act
+  Corée du Sud : Medical Devices Act, art. 3 ; Enforcement Rule, annexe 1 (classes I à IV)
+  Pakistan : Medical Devices Rules 2017 (classes A à D) — texte à obtenir
+
+Thème : procédure d'autorisation ou d'enregistrement avant mise sur le marché
+  Maroc (destination) : Loi 84-12, art. 12 à 15 (certificat d'enregistrement, dossier, données cliniques) ; arrêté 2855-15, art. 2 (pièces)
+  Union européenne : Règlement 2017/745, art. 52 (évaluation de la conformité) et annexes IX à XI
+  Chine : Règlement 739, art. 13 à 18 (déclaration classe I, enregistrement classes II et III)
+  Inde : Medical Devices Rules 2017, règles 34 à 36 (licence d'importation, formulaires MD-14/MD-15)
+  États-Unis : 21 CFR 807.81 (510(k)) ; 21 CFR 814 (PMA) ; 21 CFR 860 (De Novo)
+  Corée du Sud : Medical Devices Act, art. 15 (autorisation d'importation) ; Enforcement Rule, art. 4 (notification, certification, autorisation selon la classe)
+  Pakistan : Loi DRAP 2012, art. 4 (1) (d) (évaluation, inscription ou enregistrement des dispositifs) ; procédure : Rules 2017
+
+Thème : autorisation de mise en vente délivrée par l'autorité du pays d'origine pour un dispositif importé
+  Maroc (destination) : Arrêté 2855-15, art. 2 (1) a) : « certificat de marquage CE, ou attestation FDA, ou autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités compétentes du pays d'origine » (classes IIa, IIb, III, Is, Im)
+  Union européenne : Aucune : le règlement 2017/745 n'accepte pas d'autorisation étrangère
+  Chine : Règlement 739, art. 15 et 16 : document de l'autorité du pays du fabricant autorisant la vente (sauf dispositif innovant)
+  Inde : Medical Devices Rules 2017, règle 36 (3) à (5) : free sale certificate (AU, CA, JP, UE, UK, USA : sans investigation clinique)
+  États-Unis : Aucune : 510(k), PMA ou De Novo obligatoire
+  Corée du Sud : Pas de reconnaissance trouvée dans les textes indexés
+  Pakistan : À vérifier dans les Rules 2017
+
+Thème : certificat de libre vente ou certificat pour l'exportation
+  Maroc (destination) : Loi 84-12, art. 1 (10) ; arrêté 2855-15, art. 2 (2) : certificat de libre vente délivré par la DMP/AMMPS pour un dispositif fabriqué au Maroc et exporté
+  Union européenne : Règlement 2017/745, art. 60 (certificat de libre vente délivré par l'État membre)
+  Chine : Règlement 739, art. 59 (l'exportateur respecte les exigences du pays importateur) ; certificat de vente : à vérifier
+  Inde : Medical Devices Rules 2017, règle 36 (3) (free sale certificate des pays reconnus)
+  États-Unis : Certificate to Foreign Government : FD&C Act, section 801(e)(4) — loi non indexée
+  Corée du Sud : Absent des textes indexés (certificat à demander au fabricant)
+  Pakistan : À vérifier dans les Rules 2017
+
+Thème : exigences de système de management de la qualité du fabricant
+  Maroc (destination) : Loi 84-12, art. 11 ; arrêté 2856-15, art. 3 (norme NM ISO 13485) ; arrêté 2855-15, art. 2 (ISO 13485 pour IIa, IIb, III)
+  Union européenne : Règlement 2017/745, art. 10 (9) et annexe IX
+  Chine : Règlement 739, art. 20, 33 et 35 (normes de gestion de la qualité de production)
+  Inde : Medical Devices Rules 2017, Fifth Schedule (Quality Management System)
+  États-Unis : 21 CFR 820.7 et 820.10 (QMSR, ISO 13485:2016 incorporée par référence)
+  Corée du Sud : Medical Devices Act, art. 15 (4) ; Medical Device GMP Regulations (MFDS, 2026)
+  Pakistan : Loi DRAP 2012 (bonnes pratiques de fabrication) ; détail : Rules 2017
+
+Thème : représentant local, mandataire ou agent du fabricant étranger
+  Maroc (destination) : Arrêté 2855-15, art. 2 (1) a) : attestation du fabricant ou de son mandataire liant l'établissement demandeur ; loi 84-12, art. 7 (déclaration de l'établissement importateur)
+  Union européenne : Règlement 2017/745, art. 11 (mandataire)
+  Chine : Règlement 739, art. 15, 16 et 98 (personne morale chinoise désignée)
+  Inde : Medical Devices Rules 2017, règle 3 (f) (authorised agent) et règle 34
+  États-Unis : 21 CFR 807.3 (s) et 807.40 (United States agent)
+  Corée du Sud : Medical Devices Act, art. 15 (1) (importateur autorisé)
+  Pakistan : À vérifier dans les Rules 2017
+
+Thème : exigences d'étiquetage et langue de la notice
+  Maroc (destination) : Arrêté 2856-15, annexe II, point 14 : produits importés à usage professionnel : anglais et/ou français et/ou arabe ; grand public : français et/ou arabe
+  Union européenne : Règlement 2017/745, annexe I, section 23 ; langue fixée par l'État membre (art. 10)
+  Chine : Règlement 739, art. 39 ; art. 57 (notice et étiquettes en chinois pour les importations)
+  Inde : Medical Devices Rules 2017, règle 44
+  États-Unis : 21 CFR 801 (801.1, 801.15 : mentions en anglais)
+  Corée du Sud : Medical Devices Act, art. 20 à 24
+  Pakistan : À vérifier dans les Rules 2017
+
+Thème : matériovigilance et déclaration des incidents
+  Maroc (destination) : Loi 84-12, art. 24 à 29 (matériovigilance, signalement, retrait, rappel)
+  Union européenne : Règlement 2017/745, art. 87 (incidents graves et mesures correctives)
+  Chine : Règlement 739, art. 61 à 67 (événements indésirables, réévaluation, rappel)
+  Inde : Medical Devices Rules 2017 : définition de l'événement indésirable grave (règle 3 (zq)) et du rappel (règle 3 (zr)) ; obligations à préciser
+  États-Unis : 21 CFR 803 (Medical Device Reporting, 803.50 pour le fabricant)
+  Corée du Sud : Medical Devices Act, art. 31 (effets indésirables), 32 et 34 (rappel)
+  Pakistan : À vérifier dans les Rules 2017
+
+Parcours vers le Maroc — commun_maroc :
+  - Établissement importateur déclaré à l'administration (loi 84-12, art. 7 ; arrêté 2853-15)
+  - Classe marocaine déterminée par les 18 règles de l'arrêté 2856-15, annexe I
+  - Dossier d'enregistrement : pièces de l'arrêté 2855-15, art. 2 (1), numérotées (rules/maroc.yaml)
+  - Données cliniques : investigation ou équivalence (loi 84-12, art. 15)
+  - Étiquetage et notice : langues de l'arrêté 2856-15, annexe II, point 14
+  - Dépôt physique le mercredi ou le jeudi ; certificat d'enregistrement valable 5 ans ; matériovigilance (art. 24 à 29)
+
+Parcours vers le Maroc — union_europeenne :
+  - Fabricant : certificat CE d'un organisme notifié (règlement 2017/745, art. 52) ou certificat MDD prolongé (règlement 2023/607 + lettre de confirmation)
+  - Pièce 4 au Maroc : ce certificat CE ; ISO 13485 (pièce 5) pour IIa, IIb, III
+
+Parcours vers le Maroc — chine :
+  - Fabricant : enregistrement NMPA (règlement 739, art. 13 à 18) ou déclaration (classe I)
+  - Pièce 4 au Maroc : certificat NMPA, traduit et légalisé
+
+Parcours vers le Maroc — inde :
+  - Fabricant : licence CDSCO (Medical Devices Rules 2017)
+  - Pièce 4 au Maroc : licence ou free sale certificate CDSCO, traduits et légalisés
+
+Parcours vers le Maroc — etats_unis :
+  - Fabricant : 510(k) (21 CFR 807.81), PMA (21 CFR 814) ou De Novo ; enregistrement et listing (21 CFR 807)
+  - Pièce 4 au Maroc : « attestation FDA » prévue par l'arrêté 2855-15 (autorisation + Certificate to Foreign Government)
+
+Parcours vers le Maroc — coree_du_sud :
+  - Fabricant : notification, certification ou autorisation MFDS selon la classe (Enforcement Rule, art. 4) ; GMP
+  - Pièce 4 au Maroc : certificat MFDS (et de libre vente), traduits et légalisés ; classe IV coréenne = classe III marocaine
+
+Parcours vers le Maroc — pakistan :
+  - Fabricant : inscription ou enregistrement DRAP (loi DRAP 2012, art. 4 ; Rules 2017)
+  - Pièce 4 au Maroc : certificat DRAP et de libre vente, traduits et légalisés

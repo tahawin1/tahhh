@@ -255,6 +255,18 @@ supporte déjà.
       (WAF) → PDF à fournir par l'utilisateur ; IMDRF N77 idem (facultatif).
       Pas encore indexés dans Qdrant (pas d'Ollama ici) : sur le serveur,
       `docker compose --profile api run --rm api bash scripts/indexer_textes_pays.sh`.
+- [x] Rapprochement article par article (2026-10-01) : tous les textes en texte
+      brut dans `data/raw_pdfs/textes/` (OCR des scans marocains : loi 84-12,
+      arrêtés 2853-2856 ; voir LISEZ-MOI.md) ; `rules/correspondances.yaml` :
+      8 thèmes × 7 pays avec l'article qui les traite (relevés dans les textes),
+      parcours pays d'origine → dépôt au Maroc. Découvertes : arrêté 2855-15,
+      art. 2 cite « certificat CE, ou attestation FDA, ou CVL ou équivalent » ;
+      arrêté 2856-15 annexe I = 18 règles de la directive 93/42 ; art. 3 : NM
+      ISO 13485 ; annexe II point 14 : langues (importé pro : anglais et/ou
+      français et/ou arabe). Mistral reçoit la fiche du pays d'origine dans le
+      prompt (`correspondances.fiche_pays`) ; synthèse par thème avec citation
+      vérifiée par le code (`/correspondances/synthese/{theme}`) ; rapprochement
+      indexé comme texte (`pays=international`). 21 CFR 803 (vigilance) ajouté.
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
       préparées (jamais envoyées sans validation)

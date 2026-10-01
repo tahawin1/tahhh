@@ -76,3 +76,44 @@ class TestCorrespondances(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FauxGenerateur:
+    """RAG et Mistral factices : un extrait par pays, réponse JSON imposée."""
+    def __init__(self, reponse):
+        self.reponse = reponse
+
+    def rechercher_references(self, pays, question, k=2):
+        if pays != "maroc":
+            return []
+        return [{"texte_source": "Arrêtés 2853/2854/2855/2856-15", "date_version": "2015-08-04", "fichier": "x.pdf",
+                 "chunk_index": 3, "score": 0.9,
+                 "texte": "le certificat de marquage CE, ou l'attestation FDA, ou l'autorisation de mise en vente"}]
+
+    def interroger_json(self, prompt, schema):
+        return self.reponse
+
+
+class TestRapprochementArticles(unittest.TestCase):
+    def test_chaque_theme_cite_les_sept_pays(self):
+        pays = set(correspondances.charger()["pays"])
+        for theme in correspondances.charger()["themes"]:
+            self.assertEqual(set(theme["articles"]), pays, theme["id"])
+        self.assertIn("attestation FDA", next(t for t in correspondances.charger()["themes"]
+                                              if t["id"] == "preuve_pays_origine")["articles"]["maroc"])
+
+    def test_fiche_pays_pour_mistral(self):
+        fiche = correspondances.fiche_pays("coree_du_sud", "IIB")
+        self.assertIn("MFDS", fiche)
+        self.assertIn("≈ classe(s) III", fiche)
+        self.assertIn("arrêté 2855-15", fiche)
+        self.assertIn("Établissement importateur", correspondances.fiche_pays("autre"))
+
+    def test_synthese_citation_verifiee_par_le_code(self):
+        bon = '{"resume": "Le Maroc accepte le marquage CE ou l\'attestation FDA.", "citation": "le certificat de marquage CE, ou l\'attestation FDA"}'
+        r = correspondances.synthese("preuve_pays_origine", FauxGenerateur(bon))["pays"]
+        self.assertTrue(r["maroc"]["verifiee"])
+        self.assertIsNone(r["inde"]["resume"])  # aucun extrait : pas de réponse inventée
+        invente = '{"resume": "x", "citation": "le Maroc exige un essai clinique local"}'
+        r = correspondances.synthese("preuve_pays_origine", FauxGenerateur(invente))["pays"]
+        self.assertFalse(r["maroc"]["verifiee"])

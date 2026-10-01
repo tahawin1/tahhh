@@ -120,6 +120,19 @@ class GenerateurDocuments:
         ).points
         return [{**r.payload, "score": r.score} for r in resultats]
 
+    def interroger_json(self, prompt: str, schema: dict) -> str:
+        """Réponse de Mistral au format JSON imposé (sortie structurée d'Ollama),
+        température 0 ; une erreur 5xx passagère est relancée une fois."""
+        for tentative in (1, 2):
+            r = self._session_ollama.post(OLLAMA_URL, json={
+                "model": OLLAMA_MODEL, "prompt": prompt, "stream": False, "format": schema,
+                "options": {"temperature": 0, "num_ctx": 8192, "num_predict": 400}}, timeout=OLLAMA_TIMEOUT)
+            if r.status_code < 500 or tentative == 2:
+                break
+            time.sleep(5)
+        r.raise_for_status()
+        return r.json()["response"]
+
     def modele_pour(self, document: DocumentRequis, pays_origine: str, produit: str) -> dict | None:
         """Pièce équivalente d'un dossier accepté, ou None (rédaction sans modèle)."""
         from modeles import modele_pour
@@ -211,6 +224,13 @@ Comment utiliser le modèle :
             + "\n".join(f"  - {LIBELLES_PROFIL[k]} : {v}" for k, v in profil.items()) + "\n"
         ) if profil else "Établissement demandeur : [À COMPLÉTER] (profil config/entreprise.yaml absent)\n"
 
+        # Cadre réglementaire du pays d'origine jusqu'au Maroc (rules/correspondances.yaml)
+        try:
+            from correspondances import fiche_pays
+            bloc_cadre = ("Cadre réglementaire (fixé par les règles, à ne jamais contredire ; ne cite un article que s'il figure ici) :\n"
+                          + fiche_pays(pays_origine, classe) + "\n")
+        except Exception:  # fichier absent ou invalide : rédaction sans ce bloc
+            bloc_cadre = ""
         # Données déjà établies (saisies par l'utilisateur ou lues dans les documents reçus)
         bloc_donnees = "".join(f"- {k} : {v}\n" for k, v in (donnees or {}).items())
         consigne = document.consigne_redaction or document.nom
@@ -231,7 +251,7 @@ Informations connues sur le dossier (à reprendre telles quelles) :
 - Fabricant / fournisseur : {fournisseur or "[À COMPLÉTER]"}
 - Pays d'origine du fournisseur : {pays_origine}
 - Pays de destination du dossier : {pays_destination}
-{bloc_donnees}{bloc_profil}{liste_pieces}{bloc_modele}
+{bloc_donnees}{bloc_profil}{liste_pieces}{bloc_cadre}{bloc_modele}
 {"" if modele else "Extraits de textes réglementaires officiels, fournis UNIQUEMENT comme référence (pour les exigences et le vocabulaire) :" + chr(10) + contexte}
 
 Consignes strictes :

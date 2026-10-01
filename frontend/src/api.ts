@@ -189,7 +189,13 @@ export interface Correspondances {
   date_version: string
   niveaux: { id: string; libelle: string }[]
   pays: PaysCorrespondance[]
-  themes: { id: string; question: string }[]
+  themes: { id: string; question: string; articles?: Record<string, string> }[]
+  parcours_vers_maroc: Record<string, string[]>
+}
+
+export interface Synthese {
+  theme: { id: string; question: string }
+  pays: Record<string, { resume: string | null; citation: string | null; verifiee: boolean; reference: string | null; sources: string[] }>
 }
 
 export interface Comparaison {
@@ -306,6 +312,7 @@ export const api = {
     })
   },
   correspondances: () => requete<Correspondances>('/correspondances', { headers: enTetes() }),
+  synthese: (theme: string) => post<Synthese>(`/correspondances/synthese/${theme}`, {}),
   comparer: (theme: string) => requete<Comparaison>(`/correspondances/comparer/${theme}`, { headers: enTetes() }),
   donnees: (id: number) => requete<DonneesDispositif>(`/dossiers/${id}/donnees-dispositif`, { headers: enTetes() }),
   enregistrerDonnees: (id: number, acteur: string, valeurs: Record<string, string>) =>

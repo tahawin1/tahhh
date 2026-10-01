@@ -107,20 +107,117 @@ pays:
     systeme_qualite: "Licence d'établissement DRAP (exigences qualité à confirmer dans le texte)"
     equivalence_etrangere: "À vérifier dans le texte indexé"
 
-# Thèmes communs, pour comparer les textes indexés article par article
-# (recherche RAG par pays sur la même question).
+# Thèmes communs : pour chaque thème, l'article qui le traite dans chaque pays.
+# Références relevées dans les textes indexés (data/raw_pdfs/textes/, OCR
+# compris) le 2026-10-01 ; `question` sert à la comparaison RAG des textes.
+# Pakistan : seule la loi DRAP 2012 est indexée (Rules 2017 à obtenir).
 themes:
   - id: classification
     question: "règles de classification des dispositifs médicaux selon le risque"
+    articles:
+      maroc: "Loi 84-12, art. 4 (classes I, IIa, IIb, III) ; arrêté 2856-15, annexe I (18 règles, reprises de la directive 93/42)"
+      union_europeenne: "Règlement 2017/745, art. 51 et annexe VIII (22 règles)"
+      chine: "Règlement 739, art. 6 (classes I à III selon le risque)"
+      inde: "Medical Devices Rules 2017, règle 4 et First Schedule (classes A à D)"
+      etats_unis: "21 CFR 860.3 (c) (classes I à III) ; De Novo : 21 CFR 860, art. 513(f)(2) FD&C Act"
+      coree_du_sud: "Medical Devices Act, art. 3 ; Enforcement Rule, annexe 1 (classes I à IV)"
+      pakistan: "Medical Devices Rules 2017 (classes A à D) — texte à obtenir"
   - id: mise_sur_le_marche
     question: "procédure d'autorisation ou d'enregistrement avant mise sur le marché"
-  - id: systeme_qualite
-    question: "exigences de système de management de la qualité du fabricant"
+    articles:
+      maroc: "Loi 84-12, art. 12 à 15 (certificat d'enregistrement, dossier, données cliniques) ; arrêté 2855-15, art. 2 (pièces)"
+      union_europeenne: "Règlement 2017/745, art. 52 (évaluation de la conformité) et annexes IX à XI"
+      chine: "Règlement 739, art. 13 à 18 (déclaration classe I, enregistrement classes II et III)"
+      inde: "Medical Devices Rules 2017, règles 34 à 36 (licence d'importation, formulaires MD-14/MD-15)"
+      etats_unis: "21 CFR 807.81 (510(k)) ; 21 CFR 814 (PMA) ; 21 CFR 860 (De Novo)"
+      coree_du_sud: "Medical Devices Act, art. 15 (autorisation d'importation) ; Enforcement Rule, art. 4 (notification, certification, autorisation selon la classe)"
+      pakistan: "Loi DRAP 2012, art. 4 (1) (d) (évaluation, inscription ou enregistrement des dispositifs) ; procédure : Rules 2017"
+  - id: preuve_pays_origine
+    question: "autorisation de mise en vente délivrée par l'autorité du pays d'origine pour un dispositif importé"
+    articles:
+      maroc: "Arrêté 2855-15, art. 2 (1) a) : « certificat de marquage CE, ou attestation FDA, ou autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités compétentes du pays d'origine » (classes IIa, IIb, III, Is, Im)"
+      union_europeenne: "Aucune : le règlement 2017/745 n'accepte pas d'autorisation étrangère"
+      chine: "Règlement 739, art. 15 et 16 : document de l'autorité du pays du fabricant autorisant la vente (sauf dispositif innovant)"
+      inde: "Medical Devices Rules 2017, règle 36 (3) à (5) : free sale certificate (AU, CA, JP, UE, UK, USA : sans investigation clinique)"
+      etats_unis: "Aucune : 510(k), PMA ou De Novo obligatoire"
+      coree_du_sud: "Pas de reconnaissance trouvée dans les textes indexés"
+      pakistan: "À vérifier dans les Rules 2017"
   - id: libre_vente
     question: "certificat de libre vente ou certificat pour l'exportation"
+    articles:
+      maroc: "Loi 84-12, art. 1 (10) ; arrêté 2855-15, art. 2 (2) : certificat de libre vente délivré par la DMP/AMMPS pour un dispositif fabriqué au Maroc et exporté"
+      union_europeenne: "Règlement 2017/745, art. 60 (certificat de libre vente délivré par l'État membre)"
+      chine: "Règlement 739, art. 59 (l'exportateur respecte les exigences du pays importateur) ; certificat de vente : à vérifier"
+      inde: "Medical Devices Rules 2017, règle 36 (3) (free sale certificate des pays reconnus)"
+      etats_unis: "Certificate to Foreign Government : FD&C Act, section 801(e)(4) — loi non indexée"
+      coree_du_sud: "Absent des textes indexés (certificat à demander au fabricant)"
+      pakistan: "À vérifier dans les Rules 2017"
+  - id: systeme_qualite
+    question: "exigences de système de management de la qualité du fabricant"
+    articles:
+      maroc: "Loi 84-12, art. 11 ; arrêté 2856-15, art. 3 (norme NM ISO 13485) ; arrêté 2855-15, art. 2 (ISO 13485 pour IIa, IIb, III)"
+      union_europeenne: "Règlement 2017/745, art. 10 (9) et annexe IX"
+      chine: "Règlement 739, art. 20, 33 et 35 (normes de gestion de la qualité de production)"
+      inde: "Medical Devices Rules 2017, Fifth Schedule (Quality Management System)"
+      etats_unis: "21 CFR 820.7 et 820.10 (QMSR, ISO 13485:2016 incorporée par référence)"
+      coree_du_sud: "Medical Devices Act, art. 15 (4) ; Medical Device GMP Regulations (MFDS, 2026)"
+      pakistan: "Loi DRAP 2012 (bonnes pratiques de fabrication) ; détail : Rules 2017"
   - id: representant
     question: "représentant local, mandataire ou agent du fabricant étranger"
+    articles:
+      maroc: "Arrêté 2855-15, art. 2 (1) a) : attestation du fabricant ou de son mandataire liant l'établissement demandeur ; loi 84-12, art. 7 (déclaration de l'établissement importateur)"
+      union_europeenne: "Règlement 2017/745, art. 11 (mandataire)"
+      chine: "Règlement 739, art. 15, 16 et 98 (personne morale chinoise désignée)"
+      inde: "Medical Devices Rules 2017, règle 3 (f) (authorised agent) et règle 34"
+      etats_unis: "21 CFR 807.3 (s) et 807.40 (United States agent)"
+      coree_du_sud: "Medical Devices Act, art. 15 (1) (importateur autorisé)"
+      pakistan: "À vérifier dans les Rules 2017"
   - id: etiquetage
     question: "exigences d'étiquetage et langue de la notice"
+    articles:
+      maroc: "Arrêté 2856-15, annexe II, point 14 : produits importés à usage professionnel : anglais et/ou français et/ou arabe ; grand public : français et/ou arabe"
+      union_europeenne: "Règlement 2017/745, annexe I, section 23 ; langue fixée par l'État membre (art. 10)"
+      chine: "Règlement 739, art. 39 ; art. 57 (notice et étiquettes en chinois pour les importations)"
+      inde: "Medical Devices Rules 2017, règle 44"
+      etats_unis: "21 CFR 801 (801.1, 801.15 : mentions en anglais)"
+      coree_du_sud: "Medical Devices Act, art. 20 à 24"
+      pakistan: "À vérifier dans les Rules 2017"
   - id: vigilance
     question: "matériovigilance et déclaration des incidents"
+    articles:
+      maroc: "Loi 84-12, art. 24 à 29 (matériovigilance, signalement, retrait, rappel)"
+      union_europeenne: "Règlement 2017/745, art. 87 (incidents graves et mesures correctives)"
+      chine: "Règlement 739, art. 61 à 67 (événements indésirables, réévaluation, rappel)"
+      inde: "Medical Devices Rules 2017 : définition de l'événement indésirable grave (règle 3 (zq)) et du rappel (règle 3 (zr)) ; obligations à préciser"
+      etats_unis: "21 CFR 803 (Medical Device Reporting, 803.50 pour le fabricant)"
+      coree_du_sud: "Medical Devices Act, art. 31 (effets indésirables), 32 et 34 (rappel)"
+      pakistan: "À vérifier dans les Rules 2017"
+
+# Parcours d'un dispositif fabriqué dans le pays d'origine jusqu'au dépôt au
+# Maroc (cas A du projet) : les étapes s'enchaînent d'un texte à l'autre.
+parcours_vers_maroc:
+  commun_maroc:
+    - "Établissement importateur déclaré à l'administration (loi 84-12, art. 7 ; arrêté 2853-15)"
+    - "Classe marocaine déterminée par les 18 règles de l'arrêté 2856-15, annexe I"
+    - "Dossier d'enregistrement : pièces de l'arrêté 2855-15, art. 2 (1), numérotées (rules/maroc.yaml)"
+    - "Données cliniques : investigation ou équivalence (loi 84-12, art. 15)"
+    - "Étiquetage et notice : langues de l'arrêté 2856-15, annexe II, point 14"
+    - "Dépôt physique le mercredi ou le jeudi ; certificat d'enregistrement valable 5 ans ; matériovigilance (art. 24 à 29)"
+  union_europeenne:
+    - "Fabricant : certificat CE d'un organisme notifié (règlement 2017/745, art. 52) ou certificat MDD prolongé (règlement 2023/607 + lettre de confirmation)"
+    - "Pièce 4 au Maroc : ce certificat CE ; ISO 13485 (pièce 5) pour IIa, IIb, III"
+  chine:
+    - "Fabricant : enregistrement NMPA (règlement 739, art. 13 à 18) ou déclaration (classe I)"
+    - "Pièce 4 au Maroc : certificat NMPA, traduit et légalisé"
+  inde:
+    - "Fabricant : licence CDSCO (Medical Devices Rules 2017)"
+    - "Pièce 4 au Maroc : licence ou free sale certificate CDSCO, traduits et légalisés"
+  etats_unis:
+    - "Fabricant : 510(k) (21 CFR 807.81), PMA (21 CFR 814) ou De Novo ; enregistrement et listing (21 CFR 807)"
+    - "Pièce 4 au Maroc : « attestation FDA » prévue par l'arrêté 2855-15 (autorisation + Certificate to Foreign Government)"
+  coree_du_sud:
+    - "Fabricant : notification, certification ou autorisation MFDS selon la classe (Enforcement Rule, art. 4) ; GMP"
+    - "Pièce 4 au Maroc : certificat MFDS (et de libre vente), traduits et légalisés ; classe IV coréenne = classe III marocaine"
+  pakistan:
+    - "Fabricant : inscription ou enregistrement DRAP (loi DRAP 2012, art. 4 ; Rules 2017)"
+    - "Pièce 4 au Maroc : certificat DRAP et de libre vente, traduits et légalisés"

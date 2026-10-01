@@ -366,6 +366,25 @@ def correspondances():
     return c.tableau()
 
 
+@app.post("/correspondances/synthese/{theme}")
+def synthese_textes(theme: str):
+    """Pour un thème, Mistral résume le texte de chaque pays à partir des seuls
+    extraits retrouvés ; chaque citation est vérifiée par le code. Plusieurs
+    minutes sur CPU (un appel par pays)."""
+    import correspondances as c
+
+    try:
+        from generate import GenerateurDocuments
+
+        return c.synthese(theme, GenerateurDocuments())
+    except StopIteration:
+        raise HTTPException(status_code=404, detail=f"Thème inconnu : {theme}")
+    except KeyError:
+        raise HTTPException(status_code=404, detail=f"Thème inconnu : {theme}")
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Synthèse impossible : {type(e).__name__}: {e}")
+
+
 @app.get("/correspondances/comparer/{theme}")
 def comparer_textes(theme: str):
     """Extraits des textes officiels indexés de chaque pays sur un même thème (RAG)."""

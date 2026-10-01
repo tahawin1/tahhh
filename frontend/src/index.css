@@ -540,3 +540,6 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .extraits-pays blockquote { margin: 0 0 0.6rem; padding-left: 0.7rem; border-left: 3px solid var(--bordure); font-size: 0.82rem; }
 .extraits-pays blockquote p { white-space: pre-line; overflow-wrap: anywhere; max-height: 14rem; overflow: auto; margin: 0; }
 .extraits-pays footer { color: var(--secondaire); font-size: 0.75rem; margin-top: 0.3rem; }
+.parcours-pays { margin: 0.4rem 0 0; padding-left: 1.3rem; display: grid; gap: 0.35rem; font-size: 0.9rem; }
+.parcours-pays li.origine { font-weight: 600; }
+.grille-pays tbody th { font-weight: 600; }

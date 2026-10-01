@@ -14,7 +14,7 @@ indexer() {  # fichier pays type date libellé
 version_cfr() { grep -F "| $1 |" data/raw_pdfs/SOURCES_PAYS.md 2>/dev/null | grep -o 'édition du [0-9-]*' | cut -d' ' -f3; }
 
 echo "=== États-Unis ==="
-for part in 801 807 814 820 860; do
+for part in 801 803 807 814 820 860; do
   indexer "etats_unis_21cfr_${part}.txt" etats_unis reglement "$(version_cfr etats_unis_21cfr_${part}.xml || date +%F)" "21 CFR Part ${part}"
 done
 echo "=== Corée du Sud ==="
@@ -27,4 +27,27 @@ echo "=== Pakistan ==="
 indexer pakistan_drap_act_2012.txt pakistan loi 2012-11-13 "Drug Regulatory Authority of Pakistan Act, 2012 (Pakistan Code)"
 indexer pakistan_medical_devices_rules_2017_maj_2022.txt pakistan reglement 2022-04-30 "Medical Devices Rules 2017 (DRAP, mis à jour jusqu'en avril 2022)"
 echo "=== Texte pivot (rapprochement) ==="
+# Rapprochement des 7 pays (rules/correspondances.yaml) mis en texte, pour que la
+# recherche de Mistral le retrouve comme n'importe quel texte indexé
+$PYTHON - <<'PY'
+import sys, yaml
+sys.path.insert(0, "src")
+import correspondances as c
+d = c.charger()
+lignes = [f"RAPPROCHEMENT DES RÉGLEMENTATIONS DES DISPOSITIFS MÉDICAUX — version {d['version']} du {d['date_version']}"]
+for pid, p in d["pays"].items():
+    classes = " ; ".join(f"niveau {n} : {', '.join(map(str, v))}" for n, v in p["classes"].items())
+    lignes += [f"\n{p['nom']} — autorité {p['autorite']} — {p['texte']}", f"Classes : {classes}",
+               f"Preuve de mise sur le marché : {p['preuve_mise_sur_le_marche']}",
+               f"Certificat pour l'exportation : {p['certificat_pour_export'] or 'sans objet'}",
+               f"Système qualité : {p['systeme_qualite']}", f"Certificats étrangers : {p['equivalence_etrangere']}"]
+for t in d["themes"]:
+    lignes.append(f"\nThème : {t['question']}")
+    lignes += [f"  {d['pays'][pid]['nom']} : {ref}" for pid, ref in (t.get("articles") or {}).items()]
+for pid, etapes in d.get("parcours_vers_maroc", {}).items():
+    lignes.append(f"\nParcours vers le Maroc — {pid} :")
+    lignes += [f"  - {e}" for e in etapes]
+open("data/raw_pdfs/textes/correspondances_7_pays.txt", "w", encoding="utf-8").write("\n".join(lignes))
+PY
+indexer correspondances_7_pays.txt international annexe_technique "$(grep -m1 '^date_version' rules/correspondances.yaml | grep -o '[0-9-]\{10\}')" "Rapprochement des réglementations des 7 pays (rules/correspondances.yaml)"
 indexer imdrf_ghtf_sg1_n77_2012_classification.txt international annexe_technique 2012-11-02 "GHTF/SG1/N77:2012 — Principles of Medical Devices Classification"
