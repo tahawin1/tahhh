@@ -24,6 +24,8 @@ indexer coree_arrete_application_2022.txt coree_du_sud reglement 2022-07-21 "Enf
 indexer coree_classification_annexe1_2022.txt coree_du_sud annexe_technique 2020-05-01 "Enforcement Rule, annexe 1 — classification des dispositifs (classes I à IV)"
 indexer coree_reglement_autorisation_2022.txt coree_du_sud reglement 2022-07-29 "Regulation on the Permission, Notification, Review of Medical Devices (No. 2022-52)"
 indexer coree_bpf_gmp_2026.txt coree_du_sud reglement 2026-02-11 "Medical Device GMP Regulations (MFDS, février 2026)"
+indexer coree_loi_dm_2026_ko.txt coree_du_sud loi 2026-09-15 "의료기기법 — Medical Devices Act en vigueur (loi n° 21949, 15-9-2026, texte officiel coréen)"
+indexer coree_avis_mfds_2026_34_ko.txt coree_du_sud reglement 2026-04-28 "Avis MFDS n° 2026-34 (28-4-2026) modifiant le Regulation on the Permission, Notification, Review"
 echo "=== Pakistan ==="
 indexer pakistan_drap_act_2012.txt pakistan loi 2012-11-13 "Drug Regulatory Authority of Pakistan Act, 2012 (Pakistan Code)"
 indexer pakistan_medical_devices_rules_2017_maj_2022.txt pakistan reglement 2022-04-30 "Medical Devices Rules 2017 (DRAP, mis à jour jusqu'en avril 2022)"

@@ -88,14 +88,14 @@ pays:
     equivalence_etrangere: "Aucune : 510(k), PMA ou De Novo obligatoire"
   coree_du_sud:
     nom: "Corée du Sud"
-    statut: partiel
+    statut: verifie
     autorite: "MFDS"
-    texte: "Medical Devices Act, décret et arrêté d'application"
+    texte: "Medical Devices Act (loi n° 21949, en vigueur le 15-9-2026), décret et arrêté d'application"
     classes: {A: [I], B: [II], C: [III], D: [IV]}
-    preuve_mise_sur_le_marche: "Notification (classe I), certification (classe II désignée) ou autorisation MFDS (classes II à IV), valable 5 ans"
-    certificat_pour_export: "Certificate of Free Sale du MFDS (absent des textes indexés, à vérifier)"
-    systeme_qualite: "KGMP exigé avant toute autorisation d'import (Medical Devices Act, art. 15 (4))"
-    equivalence_etrangere: "À vérifier dans le texte indexé"
+    preuve_mise_sur_le_marche: "Notification (classe I), certification (classe II désignée) ou autorisation MFDS (classes II à IV), valable 5 ans (art. 49)"
+    certificat_pour_export: "Certificat de libre vente délivré par le MFDS sur demande (sans article de loi) ; au Maroc, l'autorisation MFDS vaut « autorisation de mise en vente »"
+    systeme_qualite: "KGMP exigé avant toute autorisation d'import (art. 15 (4)) ; certificat de conformité valable 3 ans (art. 28, depuis le 30-6-2026)"
+    equivalence_etrangere: "Aucune : autorisation MFDS obligatoire (texte intégral 2026 vérifié)"
   pakistan:
     nom: "Pakistan"
     statut: provisoire
@@ -140,7 +140,7 @@ themes:
       chine: "Règlement 739, art. 15 et 16 : document de l'autorité du pays du fabricant autorisant la vente (sauf dispositif innovant)"
       inde: "Medical Devices Rules 2017, règle 36 (3) à (5) : free sale certificate (AU, CA, JP, UE, UK, USA : sans investigation clinique)"
       etats_unis: "Aucune : 510(k), PMA ou De Novo obligatoire"
-      coree_du_sud: "Pas de reconnaissance trouvée dans les textes indexés"
+      coree_du_sud: "Aucune reconnaissance d'une autorisation étrangère (Medical Devices Act 2026, art. 15 : autorisation, certification ou notification MFDS obligatoire)"
       pakistan: "À vérifier dans les Rules 2017"
   - id: libre_vente
     question: "certificat de libre vente ou certificat pour l'exportation"
@@ -150,7 +150,7 @@ themes:
       chine: "Règlement 739, art. 59 (l'exportateur respecte les exigences du pays importateur) ; certificat de vente : à vérifier"
       inde: "Medical Devices Rules 2017, règle 36 (3) (free sale certificate des pays reconnus)"
       etats_unis: "Certificate to Foreign Government : FD&C Act, section 801(e)(4) — loi non indexée"
-      coree_du_sud: "Absent des textes indexés (certificat à demander au fabricant)"
+      coree_du_sud: "Aucun article : certificat délivré par le MFDS sur demande, à demander au fabricant ; l'autorisation MFDS (art. 15 (2)) suffit comme « autorisation de mise en vente » au sens de l'arrêté 2855-15"
       pakistan: "À vérifier dans les Rules 2017"
   - id: systeme_qualite
     question: "exigences de système de management de la qualité du fabricant"
@@ -160,7 +160,7 @@ themes:
       chine: "Règlement 739, art. 20, 33 et 35 (normes de gestion de la qualité de production)"
       inde: "Medical Devices Rules 2017, Fifth Schedule (Quality Management System)"
       etats_unis: "21 CFR 820.7 et 820.10 (QMSR, ISO 13485:2016 incorporée par référence)"
-      coree_du_sud: "Medical Devices Act, art. 15 (4) ; Medical Device GMP Regulations (MFDS, 2026)"
+      coree_du_sud: "Medical Devices Act, art. 15 (4) et 28 (reconnaissance de conformité, certificat valable 3 ans) ; Medical Device GMP Regulations (MFDS, 2026)"
       pakistan: "Loi DRAP 2012 (bonnes pratiques de fabrication) ; détail : Rules 2017"
   - id: representant
     question: "représentant local, mandataire ou agent du fabricant étranger"

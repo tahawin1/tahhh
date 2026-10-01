@@ -76,7 +76,7 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
 | États-Unis (origine possible) | FD&C Act ; 21 CFR 801, 807, 814, 820, 860 | FDA | `rules/etats_unis.yaml` (partiel) |
-| Corée du Sud (origine possible) | Medical Devices Act (2025) + Enforcement Rule | MFDS | `rules/coree_du_sud.yaml` (partiel) |
+| Corée du Sud (origine possible) | Medical Devices Act (loi n° 21949, 2026) + Enforcement Rule | MFDS | `rules/coree_du_sud.yaml` (vérifié) |
 | Pakistan (origine possible) | Medical Devices Rules 2017 (S.R.O. 32(I)/2018) | DRAP | `rules/pakistan.yaml` (provisoire) |
 
 ### Différence clé entre les 4 systèmes (à respecter dans le rule engine)
@@ -306,6 +306,15 @@ supporte déjà.
       prompt (`correspondances.fiche_pays`) ; synthèse par thème avec citation
       vérifiée par le code (`/correspondances/synthese/{theme}`) ; rapprochement
       indexé comme texte (`pays=international`). 21 CFR 803 (vigilance) ajouté.
+- [x] Corée **vérifiée** (2026-10-01) : traductions KLRI envoyées par
+      l'utilisateur = textes déjà indexés (99,9 %) ; loi en vigueur n° 21949
+      (2026-09-15) récupérée en coréen sur law.go.kr (POST `lsInfoR.do`,
+      `--http1.1`) : art. 28 réécrit (certificat GMP valable 3 ans, en vigueur
+      2026-06-30), art. 32-3 ; avis MFDS 2026-34 (traductions, données réelles).
+      Pas de reconnaissance d'autorisation étrangère ; certificat de libre vente
+      sans article de loi (au Maroc, l'autorisation MFDS suffit comme
+      « autorisation de mise en vente » ; le CLV reste exigé par la checklist).
+      Prochaine étape : même vérification pour les États-Unis.
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [x] Agent — étape 4 (début) : enchaînement automatique (`taches.enchainer`) —
       après chaque lecture réussie ou saisie de données, fiche signalétique et

@@ -4,17 +4,23 @@
 #   (traductions anglaises officielles MFDS / KLRI — non contraignantes)
 # Autorité : MFDS (Ministry of Food and Drug Safety)
 #
-# Textes indexés (data/raw_pdfs/textes/coree_*.txt) : Medical Devices Act,
-# Act No. 20888 du 1-4-2025 (KLRI) ; Enforcement Rule (Ordinance No. 1819 du
-# 21-7-2022, MFDS) et son annexe 1 (classification) ; Regulation on the
-# Permission, Notification, Review (No. 2022-52) ; GMP Regulations (févr. 2026).
+# Textes indexés (data/raw_pdfs/textes/coree_*.txt) : Medical Devices Act en
+# vigueur, loi n° 21949 du 15-9-2026 (texte officiel coréen, law.go.kr) et sa
+# traduction KLRI (Act No. 20888 du 1-4-2025) ; Enforcement Decree (No. 35669,
+# KLRI) ; Enforcement Rule (Ordinance No. 1819 du 21-7-2022, MFDS) et son
+# annexe 1 (classification) ; Regulation on the Permission, Notification,
+# Review (No. 2022-52) modifié par l'avis MFDS n° 2026-34 ; GMP Regulations
+# (févr. 2026).
 #
-# STATUT : PARTIEL (2026-10-01). Points vérifiés dans les textes : références
-# indiquées. Reste à vérifier : certificat de libre vente (absent des textes
-# indexés : document délivré à la demande, à confirmer auprès du fabricant).
+# STATUT : VÉRIFIÉ (2026-10-01). Chaque point est rapproché de l'article qui le
+# fonde, dans le texte en vigueur. Le certificat de libre vente n'a pas de
+# fondement dans la loi : au Maroc, la pièce 4 repose sur l'autorisation MFDS
+# (« autorisation de mise en vente ou équivalent », arrêté 2855-15, art. 2) ;
+# le certificat de libre vente reste exigé par la checklist de l'entreprise et
+# se contrôle sur le document reçu.
 
 pays: coree_du_sud
-statut: partiel
+statut: verifie
 date_version: "2026-10-01"
 autorite: "Ministry of Food and Drug Safety (MFDS)"
 # Enforcement Rule, annexe 1, 1. A (vérifié) : classe I « little potential
@@ -27,15 +33,16 @@ mise_sur_le_marche_par_classe:  # Enforcement Rule, art. 4 (vérifié)
   III: "autorisation (허가) par produit"
   IV: "autorisation (허가) par produit"
 
-validite_autorisation_ans: 5  # Medical Devices Act, autorisation, certification ou notification : 5 ans (vérifié)
+validite_autorisation_ans: 5  # Medical Devices Act, art. 49 : autorisation, certification ou notification : 5 ans (vérifié)
 
 systeme_qualite:
-  texte: "systèmes de fabrication et de management de la qualité (KGMP) exigés avant toute autorisation, certification ou notification d'importation (Medical Devices Act, art. 15 (4), vérifié) ; Medical Device GMP Regulations (MFDS, févr. 2026)"
-  note: "certificat GMP du fabricant à demander"
+  texte: "systèmes de fabrication et de management de la qualité exigés avant toute autorisation, certification ou notification d'importation (Medical Devices Act, art. 15 (4)) ; reconnaissance de conformité (적합성인정) par le MFDS ou un organisme désigné, certificat (적합인정서) valable 3 ans (art. 28, réécrit par la loi n° 21263, en vigueur le 30-6-2026) ; Medical Device GMP Regulations (MFDS, févr. 2026)"
+  note: "certificat de conformité GMP (KGMP) du fabricant : vérifier qu'il a moins de 3 ans"
 
 preuve_mise_sur_le_marche:
-  document: "certificat de notification, de certification ou d'autorisation MFDS"
-  certificat_exportation: "certificat de libre vente (Certificate of Free Sale) délivré par le MFDS — absent des textes indexés, à vérifier"
+  document: "certificat d'autorisation (허가증), de certification (인증서) ou de notification (신고증) MFDS (Medical Devices Act, art. 6 et 15 (2))"
+  certificat_exportation: "certificat de libre vente délivré par le MFDS sur demande : aucune disposition de la loi ni de ses textes d'application ; exigé par la checklist de l'entreprise, contrôlé sur le document reçu"
+  equivalence_etrangere: "aucune : la loi n'admet pas d'autorisation étrangère à la place de celle du MFDS (texte intégral 2026 vérifié)"
 
 representant_local_requis: true
 representant_local_nom: "importateur titulaire d'une autorisation d'activité d'importation (Medical Devices Act, art. 15 (1), vérifié)"
@@ -46,3 +53,4 @@ contraintes_operationnelles:
 notes:
   - "Quatre classes (I à IV), proches des classes A à D de l'IMDRF."
   - "Documents en coréen : traduction assermentée nécessaire pour le dossier marocain."
+  - "Avis MFDS n° 2026-34 : pour un enregistrement en Corée, la traduction certifiée par le fabricant remplace la traduction notariée (art. 30 (3) du Regulation) — sans effet sur le dossier marocain."

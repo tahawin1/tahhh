@@ -32,7 +32,7 @@ class TestNouvellesOrigines(unittest.TestCase):
         self.assertIn("piece_specifique_pakistan", [d.id for d in documents_requis_maroc("pakistan", "I")])  # 2.5 : FSC toutes classes
 
     def test_regles_des_pays_provisoires_signalees(self):
-        attendus = {"etats_unis": "partiel", "coree_du_sud": "partiel", "pakistan": "provisoire"}
+        attendus = {"etats_unis": "partiel", "coree_du_sud": "verifie", "pakistan": "provisoire"}
         for pays in NOUVEAUX:
             regles = charger_regles(pays)
             self.assertEqual(regles["statut"], attendus[pays])
@@ -58,7 +58,7 @@ class TestCorrespondances(unittest.TestCase):
             self.assertIn(p["statut"], ("verifie", "partiel", "provisoire"))
         statuts = {p["id"]: p["statut"] for p in t["pays"]}
         self.assertEqual(statuts["pakistan"], "provisoire")  # texte DRAP pas encore indexé
-        self.assertEqual(statuts["coree_du_sud"], "partiel")
+        self.assertEqual(statuts["coree_du_sud"], "verifie")  # texte en vigueur 2026 vérifié
 
     def test_classes_marocaines_toutes_placees(self):
         placees = {c for classes in correspondances.charger()["pays"]["maroc"]["classes"].values() for c in classes}

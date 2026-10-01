@@ -135,7 +135,7 @@ class TestApi(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(len(r.json()["pays"]), 7)
         pays = self.client.get("/pays").json()
-        self.assertEqual(pays["coree_du_sud"]["statut"], "partiel")
+        self.assertEqual(pays["coree_du_sud"]["statut"], "verifie")
         self.assertEqual(pays["maroc"]["statut"], "verifie")
         d = self.creer(pays="etats_unis")
         self.assertIn("piece_specifique_etats_unis", [x["code"] for x in d["documents"]])

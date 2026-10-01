@@ -530,7 +530,7 @@ piece_specifique_selon_origine:
     document: "Certificat d'autorisation, de certification ou de notification MFDS + certificat de libre vente (Certificate of Free Sale) du MFDS"
     nature: a_fournir
     fourni_par: "le MFDS (via le fabricant)"
-    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document coréen : rules/coree_du_sud.yaml (provisoire)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; autorisation MFDS : Medical Devices Act, art. 15 (2) ; document coréen : rules/coree_du_sud.yaml (vérifié)"
     remarque: >-
       Classes coréennes I à IV, proches des classes marocaines I, IIa, IIb, III
       (attention : la classe IV coréenne correspond à la classe III). Documents

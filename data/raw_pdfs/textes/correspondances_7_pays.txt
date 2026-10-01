@@ -35,12 +35,12 @@ Certificat pour l'exportation : Certificate to Foreign Government (CFG) de la FD
 Système qualité : 21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)
 Certificats étrangers : Aucune : 510(k), PMA ou De Novo obligatoire
 
-Corée du Sud — autorité MFDS — Medical Devices Act, décret et arrêté d'application
+Corée du Sud — autorité MFDS — Medical Devices Act (loi n° 21949, en vigueur le 15-9-2026), décret et arrêté d'application
 Classes : niveau A : I ; niveau B : II ; niveau C : III ; niveau D : IV
-Preuve de mise sur le marché : Notification (classe I), certification (classe II désignée) ou autorisation MFDS (classes II à IV), valable 5 ans
-Certificat pour l'exportation : Certificate of Free Sale du MFDS (absent des textes indexés, à vérifier)
-Système qualité : KGMP exigé avant toute autorisation d'import (Medical Devices Act, art. 15 (4))
-Certificats étrangers : À vérifier dans le texte indexé
+Preuve de mise sur le marché : Notification (classe I), certification (classe II désignée) ou autorisation MFDS (classes II à IV), valable 5 ans (art. 49)
+Certificat pour l'exportation : Certificat de libre vente délivré par le MFDS sur demande (sans article de loi) ; au Maroc, l'autorisation MFDS vaut « autorisation de mise en vente »
+Système qualité : KGMP exigé avant toute autorisation d'import (art. 15 (4)) ; certificat de conformité valable 3 ans (art. 28, depuis le 30-6-2026)
+Certificats étrangers : Aucune : autorisation MFDS obligatoire (texte intégral 2026 vérifié)
 
 Pakistan — autorité DRAP — DRAP Act 2012 ; Medical Devices Rules 2017 (S.R.O. 32(I)/2018)
 Classes : niveau A : A ; niveau B : B ; niveau C : C ; niveau D : D
@@ -73,7 +73,7 @@ Thème : autorisation de mise en vente délivrée par l'autorité du pays d'orig
   Chine : Règlement 739, art. 15 et 16 : document de l'autorité du pays du fabricant autorisant la vente (sauf dispositif innovant)
   Inde : Medical Devices Rules 2017, règle 36 (3) à (5) : free sale certificate (AU, CA, JP, UE, UK, USA : sans investigation clinique)
   États-Unis : Aucune : 510(k), PMA ou De Novo obligatoire
-  Corée du Sud : Pas de reconnaissance trouvée dans les textes indexés
+  Corée du Sud : Aucune reconnaissance d'une autorisation étrangère (Medical Devices Act 2026, art. 15 : autorisation, certification ou notification MFDS obligatoire)
   Pakistan : À vérifier dans les Rules 2017
 
 Thème : certificat de libre vente ou certificat pour l'exportation
@@ -82,7 +82,7 @@ Thème : certificat de libre vente ou certificat pour l'exportation
   Chine : Règlement 739, art. 59 (l'exportateur respecte les exigences du pays importateur) ; certificat de vente : à vérifier
   Inde : Medical Devices Rules 2017, règle 36 (3) (free sale certificate des pays reconnus)
   États-Unis : Certificate to Foreign Government : FD&C Act, section 801(e)(4) — loi non indexée
-  Corée du Sud : Absent des textes indexés (certificat à demander au fabricant)
+  Corée du Sud : Aucun article : certificat délivré par le MFDS sur demande, à demander au fabricant ; l'autorisation MFDS (art. 15 (2)) suffit comme « autorisation de mise en vente » au sens de l'arrêté 2855-15
   Pakistan : À vérifier dans les Rules 2017
 
 Thème : exigences de système de management de la qualité du fabricant
@@ -91,7 +91,7 @@ Thème : exigences de système de management de la qualité du fabricant
   Chine : Règlement 739, art. 20, 33 et 35 (normes de gestion de la qualité de production)
   Inde : Medical Devices Rules 2017, Fifth Schedule (Quality Management System)
   États-Unis : 21 CFR 820.7 et 820.10 (QMSR, ISO 13485:2016 incorporée par référence)
-  Corée du Sud : Medical Devices Act, art. 15 (4) ; Medical Device GMP Regulations (MFDS, 2026)
+  Corée du Sud : Medical Devices Act, art. 15 (4) et 28 (reconnaissance de conformité, certificat valable 3 ans) ; Medical Device GMP Regulations (MFDS, 2026)
   Pakistan : Loi DRAP 2012 (bonnes pratiques de fabrication) ; détail : Rules 2017
 
 Thème : représentant local, mandataire ou agent du fabricant étranger
