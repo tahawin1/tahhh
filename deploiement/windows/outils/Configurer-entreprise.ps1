@@ -17,14 +17,22 @@ $rubriques = [ordered]@{
 }
 # valeurs actuelles (lignes « cle: "valeur" »)
 $actuel = @{}
-$texte = (& wsl.exe -d $Distro -u root -- cat /opt/conformite/config/entreprise.yaml) -join "`n"
+# Lu par une copie côté Windows, en UTF-8 : la sortie de wsl.exe capturée par
+# PowerShell 5.1 peut être mal décodée (« repr├®sentant » au 1er essai réel).
+$lu = Join-Path $Racine "entreprise.lu.yaml"
+& wsl.exe -d $Distro -u root --exec bash -lc "cp /opt/conformite/config/entreprise.yaml '$(Chemin-Linux $lu)' 2>/dev/null" | Out-Null
+$texte = ""
+if (Test-Path $lu) {
+    $texte = [System.IO.File]::ReadAllText($lu, [System.Text.Encoding]::UTF8)
+    Remove-Item -Force $lu -ErrorAction SilentlyContinue
+}
 foreach ($l in $texte -split "`n") {
     if ($l -match '^\s*([a-z_]+)\s*:\s*"(.*)"\s*(#.*)?$') { $actuel[$Matches[1]] = $Matches[2] }
 }
 $lignes = @("# Profil de l'établissement demandeur — saisi avec Configurer-entreprise.ps1 le $(Get-Date -Format 'yyyy-MM-dd HH:mm')")
 foreach ($cle in $rubriques.Keys) {
     $defaut = $actuel[$cle]
-    if ($defaut -match "^NOM DE L|^Ville$|^Adresse complète$|^Nom du représentant légal$") { $defaut = "" }  # valeurs d'exemple
+    if ($defaut -match "^NOM DE L|^Ville$|^Adresse compl|^Nom du repr") { $defaut = "" }  # valeurs d'exemple (même mal décodées)
     $saisie = Read-Host "$($rubriques[$cle]) [$defaut]"
     if (-not $saisie) { $saisie = $defaut }
     $saisie = $saisie.Trim() -replace '\\', '/' -replace '"', "'"   # pas de caractère qui casserait le fichier

@@ -169,6 +169,9 @@ supporte déjà.
       3e essai : Ollama, Mistral et bge-m3 installés, .env créé ; échec de la
       construction de l'interface (apostrophe de « l'AMMPS » dans une chaîne
       TS entre apostrophes, introduite sans relancer `npm run build`).
+      Profil : la sortie de wsl.exe capturée par PowerShell était mal décodée
+      (« repr├®sentant » gardé comme valeur) : le fichier est désormais copié
+      côté Windows et lu en UTF-8.
       Toujours relancer `npm run build` (tsc + vite) après toute retouche du frontend. Testés avec un faux wsl.exe.
       Livraison par clé USB : `deploiement/cle_usb/construire_cle.sh` produit
       CLE-USB-ConformiteDM (INSTALLER.cmd -> copie, empreinte SHA-256,
