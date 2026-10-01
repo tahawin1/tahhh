@@ -1,0 +1,1794 @@
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 1 / 26 -
+Korean Law Information Center
+Regulation on the Permission, Notification, Review, Etc. of Medical 
+Devices
+[Enforcement: July 29, 2022] [Ministry of Food and Drug Safety Public Notification
+No. 2022-52, July 29, 2022, Partial Amendment]
+Ministry of Food and Drug Safety (Medical Device Policy Division) +82-43-719-3766
+         Chapter 1. General Provisions
+Article 1 (Purpose) The purpose of this Regulation is to ensure appropriate management of medical 
+devices, 
+such 
+as, 
+permission, 
+etc., 
+by 
+setting 
+forth 
+details 
+related 
+to 
+the 
+following: 
+permission/certification/notification 
+of 
+manufactured/imported 
+medical 
+devices; 
+review 
+of 
+technical 
+documents, etc. of medical devices; procedures for issuance of test certificate, etc.; methods and 
+procedures for preliminary reviews; application method and procedure for permission of medical devices 
+subject to exemption from distribution business notification and medical devices used for exhibition 
+purposes; scope of allowable function improvement of medical devices; criteria and procedure for 
+designation 
+of 
+orphan 
+devices; 
+and 
+exemption 
+of 
+fees, 
+etc. 
+for 
+application 
+of 
+manufacturing 
+license/certification and permission of import submitted by resident companies in medical research and 
+development in the High-Tech Medical Complex, pursuant to Articles 8 and 6-3 of the Medical Devices 
+Act, Articles 5, 6, 7, 9, 25, 26, 27, 30, 33, 38, 41, 46 and 47 of Enforcement DateEnforcement Rule of 
+the Medical Devices Act and Article 24 (3) of the Special Act on the Designation and Support of 
+High-Tech Medical Complexes, and Article 5 (6) of the Enforcement Rule of the same Act.
+Article 2 (Definitions) The meanings of the terms used herein are as below:
+  1. The term "same product item" means a group of products sharing the same country, the same name 
+of manufacturer, and the same title of product item, which have the same intended use, the same 
+instructions for use, the same manufacturing method, and the same raw materials (excluding instruments 
+or machines) other than coloring agent or fragrances; however, there may be various models in the same 
+product item that are different in colors, sizes, etc. or have modified or added components. Provided, that 
+if the only difference regarding the manufacturing method involves the sterilization or packaging methods, 
+the medical devices may still be considered part of a same product item.
+  2. The tern “single-use medical device” means a medical device intended to be used only once for one 
+patient or to be used for one patient in one treatment procedure.
+  3. The term “composite medical device” means 2 or more medical devices working as one medical 
+device with composite functions.
+  4. The term “medical devices packaged in a set” means 2 or more medical devices packaged as one 
+unit.
+  5. The term “high-tech medical devices” means novel medical devices based on innovative science and 
+technology, such as biotechnology, information technology, nanotechnology, robot technology, or medical 
+technology, including hybrid medical devices.
+  6. The term “components” means the parts needed to constitute the main body of a medical device.
+  7. The term “test specifications” means test parameters, test standards, and methods established to verify 
+the safety and performance of medical devices.
+  8. The term “product item” means an individual product belonging to the detailed product classification 
+under the Enforcement Rule of the Medical Devices Act (hereinafter the “Enforcement Rule”) as per 
+Attached Table No.1 and the Regulation on Medical Device Product Items and Class by Product Item 
+(Public Notification of the Ministry of Food and Drug Safety): Provided, That if an item that does not 
+fall under a detailed classification, it means an individual product classified in an intermediate 
+classification.
+  9. The term “product category” means a low-level detailed product classification under Attached Table 
+No.1 of the Enforcement Rule and the Regulation on Medical Device Product Items and Class by 
+Product Item.
+  10. The term “novel product” means a medical device whose intended use, operating priciples, or raw 
+materials (limited to medical supplies), etc., are not equivalent to a medical device that has already 
+been permitted or certified.
+  11. The term “enhanced product” means a medical device that has an equivalent intended use, operating 
+principles, and raw materials (limited to medical supplies) but does not have equivalent performance, 
+test specifications, or instructions for use, etc., as medical devices already permitted or certified. 
+  12. The term “equivalent product” means a medical device that has an equivalent intended use, 
+mechanism of action, raw materials (limited to medical supplies), performance, test specifications, and 
+instructions for use, etc. as medical devices already permitted or certified. 
+  13. <Deleted.>
+  14. The term “use period or validity period” means an actual date, by which the performance and safety 
+(sterilization for sterile devices) are maintained to ensure the proper function of a medical device as 
+intended for use by its manufacturer.
+  15. The term “summary technical documentation” means standardized documents developed by the 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 2 / 26 -
+Korean Law Information Center
+IMDRF (International Medical Device Regulators Forum) to eliminate discrepancies in medical device 
+regulations among countries. It is composed of the STED (Summary Technical Documentation) and 
+related attachments.
+  16. The term “implantable medical device” means a medical device intended to be inserted and remain 
+inside the human body for 30 days or more.
+  17. The term “by-stage review” means a review of the information necessary for permission, such as 
+technical documents, etc., before submission of the application for manufacturing permission by 
+classification at each stage of product development under Article 11 of the Medical Devices Act 
+(hereinafter the “Act”) and Article 9 of the Enforcement Rule.
+  18. <Deleted.>
+  19. The term “pre-review” means the procedures for expeditiously confirming whether data are provided 
+according to the data submission requirements before the official review of the application for 
+permission as a product item and requesting data, etc., if necessary.
+  20. The term “medical device software” means software developed/manufactured for the purposes 
+corresponding to Article 2 of the Act, including embedded software, stand-alone software, and mobile 
+medical apps. It includes software that transmits data generated from a medical device to a server, etc. 
+to perform storage/analysis and signal/image processing.
+  21. The term “embedded software” means software embedded/installed in a medical device or with a 
+wired or wireless connection to control/operate the medical device, store/transmit data generated from 
+the medical device, and process signals/images.
+  22. The term “stand-alone software” means an independent form of software operated in an equivalent 
+environment to general-purpose computers, etc., without being bound to integrated hardware such as an 
+electronic/mechanical device, and is used for purposes corresponding to Article 2 of the Act.
+  23. The term “medical mobile app” means software apps or web-based applications run on mobile 
+devices and used as embedded software/stand-alone software or other similar functions.
+  24. The term “software upgrade” means the changes (including additions) in any of the following items to 
+medical device software permitted, certified or notified for manufacture (import):
+    A. Intended use or related main functions (the primary performance)
+    B. Analytical algorithms (analytical methods), including analytical subject such as biosignals/medical 
+images, or analytical techniques
+    C. Development languages or operating environment of the medical device software
+    D. Communication functions, etc. that affect cybersecurity.
+         Chapter 2 Permission/Certification/Notification of Medical Device Product Items and Product 
+Categories
+Article 3 (Application for the Permission/Certification/Notification of Medical Devices, Etc.)  (1) Medical 
+devices subject to certification or notification of manufacture/import by product category shall be classified 
+as per Attached Table No.1, and 1 or more representative product in the same product item shall be 
+selected for the application: Provided, That if an applied-for product whose structure / mechanism of 
+action / performance / intended use and method of use, etc., are essentially not equivalent and clinical 
+investigation data are required to be submitted under Article 9 (2) 6 of the Enforcement Rule, it shall be 
+subject to an application for permission as a separate product item.
+  (2) A person seeking to obtain permission/certification or to fiile a notification by product items belonging 
+to the same product item shall submit one application for all product items.
+  (3) The product item title of a composite medical device shall be recorded as that of the medical device 
+that performs its primary function. In the case each device in the combination belongs to a different 
+class, the class of the device of highest risk shall be recorded: Provided, That in case of the 
+disassembly of a combined medical device, each medical device in the combination shall require separate 
+permission, certification or notification.
+  (4) Medical devices packaged in a set shall be permitted, certified, or notified as a product item 
+according to the following subparagraphs:
+  1. The title of the product item shall be recorded as the medical device packaged in a set that meets 
+the primary intended use or performs the primary function.
+  2. In the case that each device packaged in a set belongs to a different class, the class of the device 
+of highest risk shall be recorded.
+  3. For product permission, certification or notification, the code number, name (product name, title of 
+product item, and model name) and class of each device included in a set shall be recorded.
+  (5) A person seeking separate product permissions/certifications for each device in medical devices 
+packaged as a set that has already been permitted or certified under paragraph (4) may be exempted 
+from submitting technical documents and clinical investigation data, etc., (hereinafter “technical documents, 
+etc.”) or a report of the review of technical documents, etc.
+  (6) For product item permissions/certifications or notifications for export purposes only, the documents 
+provided by the following subparagraphs of Article 5 (1) of the Enforcement Rule (the documents in 
+Article 5 (1) 3 in case of a notification a product item) may be exempted.
+  (7) If a  person intends to sell in the Republic of Korea product items permitted, certified  or notified 
+following paragraph (6), he/she shall obtain a separate manufacture/import permission/certification or 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 3 / 26 -
+Korean Law Information Center
+notification of manufacture/import: Provided, That the foregoing shall not apply where an export contract is 
+concluded and a sale is made to “a trader” under subparagraph 3 of Article 2 of the “Foreign Trade Act, 
+“a trader” under Article 2, Subparagraph 2 of the Electronic Trade Facilitation Act or a medical device 
+vendor under Article 17 of the Act.
+  (8) For products whose classifications require more time to determine, such as newly developed medical 
+devices, etc., product permission/certification may be obtained or a product notification may be accepted 
+using an intermediate classification or a separately specified product item title and code number. In this 
+case, the classification standard following Article 2 of the Enforcement Rule shall be applied for 
+classification.
+  (9) For medical devices in class 2 that were permitted and certified more than 3 times as equivalent 
+products, the Minister of Food and Drug Safety may publicly announce on the home page of the Ministry 
+of Food and Drug Safety its intended use, mechanism of action, raw materials, performance, test 
+specification, instructions for use, etc. In the case of addition, amendment, or exclusion of the same 
+matters, a public announcement shall also be made.
+  (10) For the products being publicly announced following paragraph (9) (hereinafter “publicly announced 
+equivalent product”), a test report on safety and performance that proves conformity to publicly announced 
+equivalent products shall be submitted instead of the documents following Article 5 (1) 2 of the 
+Enforcement Rule. In such case, the test report shall be limited to those that have been issued by a 
+testing and inspection agency of medical devices (hereinafter “testing and inspection agency”) designated 
+by the Minister of Food and Drug Safety as set forth in Article 6 (2) 4 of the Act on Testing and 
+Inspection in the Food and Drug Industry.
+  (11) A person seeking to confirm that their product is the same as an already permitted or certified 
+product item (hereinafter “same product”) shall apply to the Minister of Food and Drug Safety for such 
+confirmation with evidence that the requirements in the following subparagraphs are fulfilled. The Minister 
+of Food and Drug Safety shall then notify the result of the review within 10 days.
+  1. The applicant device shall have the same intended use, operating priciples, raw materials, 
+performance, test specifications and method of use, etc. as a medical device already permitted or 
+certified
+  2. The applicant device shall be manufactured at the same factory (for imported medical devices, the 
+same country of manufacture, the same manufacturer, and the same factory).
+  3. The applicant device shall be manufactured according to the method of design/development/production 
+used by the subcontracted manufacturer (applicable only to the medical devices manufactured in Korea).
+  (12) In the case that a medical research and development organization located in a high-tech medical 
+complex applies for permission/certification for the manufacture of a medical device, it shall be exempt 
+from all fees under Attached Table No. 10 of the Enforcement Rule, in accordance with Article 4 (6) of 
+the Enforcement Rule of the Special Act on the Designation and Support of High-Tech Medical 
+Complexes, which shall apply mutatis mutandis according to Article 5 (6) of the Enforcement Rule of the 
+same Act.
+  (13) In the case that a resident medical research and development organization located in a high-tech 
+medical complex applies for an import license under Article 24 (2) of the Special Act on the Designation 
+and Support of High-Tech Medical Complexes, it shall be exempted from fees.
+  (14) A person that seeks to apply for manufacturing permission for high-tech medical devices, etc., may 
+apply for the review of technical documents, etc., under Article 9 of the Enforcement Rule at each stage 
+of product development.
+  (15) A person seeking permission, certification or notification under Article 6 (2) of the Act may apply for 
+a briefing session, etc., to the Minister of Food and Drug Safety in advance.
+Article 4 (Handling, Etc., of Manufacture/Import Notifications) (1) A person that seeks to file the 
+manufacturing or import notification of a medical device shall complete the registration of the 
+manufacturing (import) notification and submit it to the Director of the National Institute of Medical Device 
+Safety Information (hereinafter “a written notification”) through the electronic government service system of 
+the Institute. The notification shall then be considered accepted: Provided, any of the following 
+subparagraphs shall not be regarded as notification accepted.
+  1. Where the written notification medical device is subject to permission/certification following Article 4 of 
+the Enforcement Rule
+  2. Where the notified product is not a medical device
+  3. Where the notified medical device uses or contains raw materials that fall under any of the 
+subparagraphs of Article 5
+  (2) Notwithstanding paragraph (1), any notification submitted simultaneously with an application for the 
+permission of a medical device manufacturing (importing) business shall be regarded as accepted when 
+permission is granted.
+Article 5 (Medical Devices Using Raw Materials with Safety/Efficacy Concerns, Etc.)  The medical devices 
+in the following subparagraphs cannot obtain permission/certification or be notified under Article 6-3 (1) 
+and Article 15 (6) of the Act:
+  1. Medical devices to which the Minamata Convention on Mercury applies (except dental amalgams)
+  2. Medical devices using or containing asbestos
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 4 / 26 -
+Korean Law Information Center
+  3. Medical devices in the following Items containing phthalates such as DEHP (di-(2- ethylhexyl) 
+–phthalate), DBP (Dibutyl phthalate) or BBP (Benzyl butyl phthalate), etc.: 
+    A. An infusion set 
+    B. Blood circuit for an artificial kidney
+  4. Powdered surgical gloves and medical gloves
+Article 
+6 
+(Preparation 
+of 
+an 
+Application 
+and 
+Notification, 
+Etc., 
+for 
+Permission/Certification 
+of 
+Manufacture/Import) (1) An application for manufacturing (import) permission/certification of medical devices 
+(hereinafter referred to as “application for permission/certification”) or a notification shall be appropriately 
+prepared as evidenced by the attachments, as set forth in this Regulation, and shall be documented as 
+per Articles 8 through 18.  
+  (2) For medical devices for export only, the application for permission/certification or notification shall bear 
+the statement “For export purposes only” in the Remarks column.
+  (3) For medical devices subject to certification/notification by product category, the application for 
+certification or notification shall have the “Product category” box checked.
+  (4) For used medical devices, the application for import permission/certification or notification shall bear 
+the statement “Used medical device” in the Remarks 
+  (5) For equivalent products, the application for permission/certification shall bear the statement “Equivalent 
+product (permission number of the reference product)” in the Remarks column.
+  (6) For publicly announced equivalent products, the application for permission/certification shall bear the 
+statement “Publicly announced equivalent product (public announcement number, product item title, and 
+code number)” in the Remarks column. 
+  (7) For implantable medical devices, the application for permission/certification shall bear the statement 
+“Implantable medical device” in the Remarks column.
+  (8) For resident medical research and development organizations in high-tech medical complexes, 
+applications for permission/certification as per paragraph (1) may be prepared in English following the 
+Special Act on the Designation and Support of High-Tech Medical Complexes, Article 24 (3).
+  (9) For medical devices compounded with, or in combination of drugs or quasi drugs, the application for 
+permission shall bear the statement “product items compounded with, or in combination of drugs (quasi 
+drugs)” in the Remarks column.
+  (10) For newly developed medical devices, the application for permission shall bear the statement “Newly 
+developed medical devices” in the Remarks column.
+  (11) For same products, the application for permission/certification shall bear the statement “Same product 
+(permission/certification number of the same product)” in the Remarks column.
+Article 7 <Deleted.>
+         Chapter 
+3. 
+Specific 
+Information 
+Requirements 
+in 
+Medical 
+Device 
+Permission/Certification 
+Applications and notifications, Etc.
+Article 8 (Name) (1) The name of a medical device shall be recorded according to one of the following 
+subparagraphs: Provided That, for the certification/notification of product categories, the statement “and the 
+same product item” shall be added next to the model name of the applied-for representative product.
+  1. When the product name is recorded, the “manufacturer (importer) name / product name,” “product item 
+title,” and “model name” shall each be recorded. The manufacturer (importer) name may be omitted, 
+and 2 or more product names may be recorded.
+  2. When a product name is not recorded, the “manufacturer (importer) name,” “product item title,” and 
+“model name” shall be recorded.
+  (2) A product name shall not be the same as that of a medical device already permitted, certified or 
+notified. Any of the cases in the following subparagraphs shall be exceptions from the foregoing provision:
+  1. When the applicant device has the same intended use, operating priciples, raw materials, etc., as a 
+medical device whose permission/certification/notification was revoked, and a year has elapsed from the 
+date of revocation
+  2. When the same manufacturer (importer) applies for the permission/certification/notification of a product 
+for which they previously withdrew the permission/certification/notification
+  3. When different importers import a product from the same origin of manufacture, and the specific 
+importer name is recorded on the product
+  (3) A product item that falls under any of the classifications in the Regulation on Medical Device Product 
+Items and Class by Product Item shall have its product item title in the subparagraphs of paragraph (1) 
+and shall be recorded together with its product item classification number and class.
+  (4) For composite medical devices and medical devices packaged in a set, the information in paragraphs 
+(1) through (3) shall be recorded for each device according to their primary intended use and higher 
+classification.
+  (5) Notwithstanding the main text of paragraph (2), for product items whose intended use is similar to 
+those of products already permittted, certified, or notified, their names may be recorded in the forms by 
+adding or changing characters, words or numbers, etc., in the names of the products already permitted or 
+certified (e.g., △△-ADS, etc., △△-2).
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 5 / 26 -
+Korean Law Information Center
+  (6) When a separate name for export needs to be recorded, such shall be in parentheses, reading 
+“Export name: ○○○○.”
+Article 9 (Shape and Structure) Shape and structure shall be recorded according to the following 
+subparagraphs:
+  1. The shape, structure, weight, size, etc., including the mechanism of operation of the applied-for 
+product shall be recorded.
+  2. Notwithstanding subparagraph 1, for medical devices with electrical/mechanical properties, the 
+information that falls under the following Items shall be recorded:
+    A. Shape/structure/weight/size and functions of each part
+    B. Electrical rating
+    C. Type and level of protection from electric shock
+    D. Safety devices
+    E. Block diagram (including communication configuration diagrams only for medical devices using 
+wired/wireless communication) and principle of operation according to the block diagram
+    F. Electric circuit diagram (including power unit, mounting unit, etc.) of the insulating component for 
+verification of electrical/mechanical safety
+    G. Structure and main functions of embedded software (including mobile medical apps that function as 
+embedded software)
+  3. Notwithstanding subparagraph 1, for stand-alone software (including mobile medical apps that function 
+as stand-alone software), information that falls under the following items shall be recorded.
+    A. Shape/structure and functions of each part
+    B. Structure of medical device software (including communication configuration diagrams only for 
+medical devices using wired/wireless communication) and main functions
+  4. For medical devices packaged in a set, a list of each medical device shall be prepared, and 
+information shall be documented as per subparagraph 1, 2, or 3.
+Article 10 (Raw Materials) Raw materials shall be recorded according to the following subparagraphs:
+  1. For instruments/machines not using electricity, medical supplies, and dental materials, the information 
+shall be documented according to the following Items:
+    A. Raw materials shall be documented as per the following table:
+B. The column for component names shall contain the name of each component of the relevant 
+medical device.
+    C. The column for raw material or ingredient names shall specify the common name or chemical name 
+of each raw material of the components of the relevant medical device.
+    D. The column for specifications shall indicate the name of the standard for raw materials, if any, such 
+as KS, ASTM, ISO, etc. In the absence of such standard, the applicant’s own standard shall be 
+documented.
+    E. The column for quantity shall indicate the quantities (including units of measurement) of raw 
+materials/additives or coloring agents, etc., and mixture ratios used for finished products, components 
+or materials, etc.
+    F. The column for remarks shall contain information on any contact made with the human body and 
+the location of such contact, and if it is deemed necessary to state the purpose of adding raw 
+materials in direct or indirect contact with the human body, the purpose of addition (e.g., crosslinking 
+agent, plasticizer, initiator, preservative, dispersant, stabilizer, emulsifier, lubricant, UV blockers, 
+coloring agents, flavoring agents, catalysts, antioxidants, etc.) shall be recorded.
+    G. In the case that any drug is added, the name, purpose of addition, ingredients, specifications, and 
+dosage of the drug shall be recorded as per Item B or E, and the intended use of the drug shall 
+be documented in the Remarks column.
+  2. For electronic instruments/machines, the following information shall be documented:
+    A. Raw materials shall be documented as per the following table:
+    B. The column for component names shall indicate the common name of the relevant component.
+    C. The column for the component control numbers shall specify the model names or manufacturer’s 
+control numbers of the relevant components.
+    D. The column for specifications or characteristics shall indicate the name of standard for the relevant 
+component, if any, such as KS, ASTM, ISO, etc. In the absence of such standard, technical 
+specifications of the relevant component shall be documented.
+Serial 
+number
+  Component 
+names
+Raw 
+material or 
+ingredient 
+names
+Specification
+s
+Amount
+Remarks
+(Whether there is contact with the 
+human body, location of such 
+contact, and the purpose of the 
+addition)
+Serial number
+Component Names
+Component control 
+numbers
+Specification or 
+characteristics
+Quantity
+Remarks
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 6 / 26 -
+Korean Law Information Center
+    E. The column for quantity shall indicate the number of each component.
+    F. Information shall be documented as per subparagraph 1 for the following: medical devices in contact 
+with or inserted into the human body, medical devices in contact with blood, body fluids or drugs 
+that are injected into the human body, or medical devices that add drugs.
+    G. When embedded software (including mobile medical apps that function as embedded software) is 
+used, the name and version of the software shall be stated in the specification or characteristics 
+column as per Item A.
+  3. When stand-alone software (including mobile medical apps that function as stand-alone software) is 
+used, the corresponding columns shall each be recorded as per the following table:
+  4. For medical devices packaged in a set, the information in subparagraphs 1 through 2 shall be 
+documented for each medical device.
+Article 11 (Method of Manufacture) (1) The statement “The method of manufacture shall be provided by the 
+origin of manufacture” shall be recorded: Provided, That any of the following subparagraphs shall require 
+additional information as specified:
+  1. The manufacturing method of sterile medical devices shall be documented as equivalent to or more 
+stringent than the method specified in Attached Table No. 2.
+  2. For medical devices containing animal-derived substances in the finished product or using 
+animal-derived substances during the manufacturing process,  the relevant standards (KS, ASTM, ISO, 
+etc.) shall be documented to verify the conformity of the animal’s name, country of origin, age, parts 
+used, handling process, name of ingredients and results of handling process concerned. 
+  (2) Notwithstanding p (1), medical devices of Class 4 shall be documented as follows:
+  1. A flow chart of the entire manufacturing process shall record descriptions of each process, including 
+subcontracted processes, inspections, and sterilizations, from the purchase of raw materials to the 
+release of final products.
+  2. For products whose design and manufacturing processes are performed outside of the origin of 
+manufacture, the name of manufacture country, manufacturer name, and address of each factory shall 
+be documented on the manufacturing flow chart.
+  3. The manufacturing method of sterile medical devices shall include the sterilization method and 
+conditions as equivalent to or more stringent than those specified in Attached Table No. 2.
+Article 12 (Intended Use) (1) The intended use shall be documented according to the following 
+subparagraphs:
+  1. The intended use shall include indication(s), efficacy/effects, or the purpose as presented by supporting 
+documents.
+  2. Notwithstanding subparagraph 1, for medical devices subject to notification following Article 4 of the 
+Enforcement Rule, the intended use shall be documented as guided by the Regulation on Medical 
+Device Product Items and Class by Product Item (Public Notification of the Ministry of Food and Drug 
+Safety).
+  3. <Deleted.>
+  (2) For composite medical devices and medical devices packaged in a set, the intended use shall be 
+documented as per paragraph (1), for the composite device and for each device in the set, respectively.
+  (3) Expressions without clear evidence or ambiguous and broad-meaning expressions shall not be used. 
+Redundant expressions or overly exaggerated expressions, expressions with potential for misunderstanding 
+or misused/abused shall not be used.
+Article 
+12-2 
+(Performance) 
+(1) 
+Performance 
+shall 
+be 
+documented, 
+including 
+the 
+physical/chemical/electrical/mechanical properties of the product and features of the medical device 
+software as claimed by the applicant shall be stated. If the performance of a class 1 medical device 
+cannot be expressed due to product characteristics, it may be excluded.
+  (2) For composite medical devices, and medical devices packaged in a set, the performance shall be 
+documented as per paragraph (1) for the composite device and for each device in the set, respectively.
+Article 13 (Method of Use) The method of use shall be documented according to the following 
+subparagraphs:
+  1. The method of use shall include detailed information on pre-use preparations, operation methods, and 
+post-use storage and management. For medical devices used directly by general consumers who are 
+not professionals, easy-to-understand terminology shall be used to prevent inconveniences for the user 
+group (disabled persons, pregnant women, pediatric populations, etc.): Provided, That in the case of 
+stand-alone software (including mobile medical apps with that function as stand-alone software), the 
+pre-use preparation and description of post-use storage and management methodmay be omitted.
+  2. For medical devices requiring sterilization prior to use, the sterilization method as recognized by the 
+Minister of Food and Drug Safety shall be accurately documented as per Attached Table No. 2.
+Serial number
+Software name
+Version and operating 
+environment
+Remarks
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 7 / 26 -
+Korean Law Information Center
+  3. For medical device software, accurate documentation shall be provided through screenshots (only if 
+there is a screen printing function) that show the functions of the programs and methods of using such 
+functions. 
+  4. A “Do not reuse” warning shall be clearly indicated on single-use medical devices.
+Article 14 (Precautions) Precautions shall be documented according to the following subparagraphs:
+  1. Precautions shall include all of the latest safety information to ensure the safe and rational use of the 
+relevant medical device. The precautions shall reference medical dictionaries, etc. for easier 
+understanding of the users
+  2. Information shall be documented according to the sequence and method provided by the following 
+Items:
+    A. Warning: Record any fatal or extremely serious and irreversible device-related adverse reaction, or a 
+case where particular caution is needed because of the possible occurrence of an extremely serious 
+incident accordingly.
+    B. Cautions considering the characteristics of the medical device, the age, gender, health status, etc., 
+of the subject of use shall be noted.
+    C. Precautions for adverse reactions to medical devices that may occur as a result of the use and 
+fatal side effects and accidents caused by carelessness in use shall be noted. 
+    D. General caution=: To prevent serious accidents caused by medical devices, precautions during use 
+shall be listed, and, if necessary, countermeasures in case of an accident shall also be detailed. 
+    E. Interaction: If a medical device, when used in combination with another medical devices, enhances 
+or attenuates the action of the combined medical device, causes a new adverse reaction to the 
+medical device, or worsens the original disease, these matters of clinical significance shall be 
+described: Provided, That the foregoing may be omitted in the case of stand-alone software 
+(including mobile medical apps that function as stand-alone software).
+    F. Use by pregnant women, lactating women, fertile women, newborns, infants, children, and the 
+elderly: Matters that require particular caution compared to use by other patients, considering the 
+functional characteristics and usage methods of the medical device, shall be described.
+    G. Caution in application: The necessary precautions according to the method of use, etc., shall be 
+described.
+    H. If there are any matters necessary to prevent accidents, the related precautions shall be listed.
+Article 15 (Packaging Unit) The packaging unit of a medical device shall be stated as the minimum unit 
+determined by the manufacturer or origin of manufacture, but may be described as the “company’s 
+packaging unit” for manufactured medical devices, and the “ packaging unit of the origin of manufacture” 
+for imported medical devices.
+Article 16 (Storage Method and Usage Period) (1) The storage method shall be documented, in parallel, 
+with detailed storage conditions (temperature, etc.) and precautions, etc., to ensure stability considering 
+the characteristics of the medical device: Provided, That the foregoing may be omitted for stand-alone 
+software (including mobile medical apps that function as stand-alone software).
+  (2) For medical devices that fall under any of the following subparagraphs, the storage method and use 
+or validity period shall be established and documented as per the Standards for the Stability Testing of 
+Medical Devices (Public Notification of the Ministry of Food and Drug Safety) publicly notified by the 
+Minister of Food and Drug Safety.
+  1. Sterile medical devices
+  2. Medical devices whose safety or performance is anticipated to change with the passage of time in 
+terms of the physical/chemical properties of raw materials, etc.
+Article 17 (Test Specifications) (1) Test specifications shall specify the tests needed for the verification of 
+safety and performance of the relevant medical device according to the following subparagraphs:
+  1. For safety, the following shall be documented: applicable specifications from the Common Standard 
+Specifications Related to the Electrical/Mechanical Safety of Medical Devices announced by the Minister 
+of Food and Drug Safety according to the characteristics of products, Common Standard Specifications 
+Related to the Electromagnetic Safety of Medical Devices, Common Standard Specifications Related to 
+the Biological Safety of Medical Devices and Standard Specifications of Medical Devices, relevant 
+standards publicly notified by the Minister of Food and Drug Safety, or equivalent international standards 
+(IEC, ISO, etc.): Provided, That if there is no standard publicly announced or notified by the Minister of 
+Food and Drug Safety, the international standards of the medical device (IEC, ISO, etc.) shall be 
+specified.
+  2. Regarding performance, the test parameters, standards, and methods based on the rationale 
+established by the applicant or equivalent international specifications (IEC, ISO, etc.) shall be specified 
+according to the following Items:
+    A. For test standards, an allowable range of threshold values for determining the acceptability of the 
+test result shall be clearly recorded. When the test result is affected by environmental conditions 
+such as temperature, humidity, etc., such conditions shall be specified.
+    B. Test methods shall be documented in bullet point format, describing the detailed sequence to ensure 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 8 / 26 -
+Korean Law Information Center
+accurate derivation of the result.
+    C. The standards announced by the Minister of Food and Drug Safety or relevant standard (IEC, ISO, 
+KS, EN, ASTM, etc.) shall be documented for physicochemical tests on medical devices in contact 
+with or inserted into the human body, medical devices in contact with blood and body fluids, or 
+drugs that are injected into the human body: Provided, That in the case of the absence of a 
+standard announced by the Minister of Food and Drug Safety or relevant standard, the test 
+parameters, standards, and methods shall be documented based on the rationales established by the 
+applicant and as per Items A and B.
+  (2) For composite medical devices, test specifications shall be defined separately for parameters to be 
+evaluated as a single device and for parameters to be evaluated for individual devices in the 
+combination, while for medical devices packaged in a set, test specifications shall be set separately for 
+parameters to be evaluated for individual devices.
+Article 18 (Origin of Manufacture) The  origin of manufacture shall be recorded according to the following 
+subparagraphs:
+  1. For imported medical devices, the country of manufacture and the manufacturer's name and address in 
+relation to the origin of manfucature shall be documented.
+  2. In the case that an entire manufacturing process is contracted, the names and addresses of both the 
+legal manufacturer and the contracted manufacturer shall be recorded: Provided, That if the 
+manufacturer is a foreign entity, the country of manufacture shall be additionally recorded.
+Article 19 (Changes in the Permission/Certification/Notification of Medical Devices) (1) In the case of 
+changes in the permitted, certified or notified ㅡitems of a medical device already permitted, certified or 
+notified for manufacture (import), the permission/certification or notification shall be amended. Changes 
+that fall under any of the following subparagraphs shall require a new permission/certification or 
+notification:
+  1. Change of application for permitted, certifiedor notified matters due to changes in the mechanism of 
+action
+  2. Changes in the raw materials used for the first time in the domestic market for that product item 
+(limited to medical supplies)
+  (2) For any changes that impact safety or efficacy as per Attached Table No. 4, documents in each of 
+the following subparagraphs in Article 26 paragraph (3) of the Enforcement Rule shall be submitted: 
+Provided, That in the case of any of the following subparagraphs, the documents in Article 26 (3) 2 of the 
+Enforcement Rule need not be submitted.
+  1. When the Minister of Food and Drug Safety directs such change in relation to the amendment of the 
+standard specification, etc., following Article 19 of the Act.
+  2. When a change corresponding to “the unnecessary review of technical documents” following Attached 
+Table 4 occurs
+  3. Change in the notified product 
+  (3) <Deleted.>
+  (4) Minor changes following Article 26 (5) of the Enforcement Rule shall be as in the following 
+subparagraphs:
+  1. Changes in medical devices for export only (excluding changes in the intended use, changes in or 
+addtition of location of the factory, and changes in the transfer or  acquisition)
+  2. Minor changes as defined in Attached Table No. 3
+  3. <Deleted.>
+  4. <Deleted.>
+  (5) For minor changes of paragraph (4), a manufacturer/importer shall submit the report in accordance 
+with Attached Form No. 1 (including electronic documents) to the Minister of Food and Drug Safety or 
+Director of the National Institute of Medical Device Safety Information within 30 days from the date of 
+each minor change or by the end of the month in which the date of permission/certification or notification 
+of all the minor changes that occurred during the year dating back from the last day of the month 
+preceding the date of report.
+  (6) Notwithstanding paragraph (5), changes that fall under any of the following subparagraphs shall 
+require submission of the report as per Attached Form No. 1 (including electronic documents) to the 
+Minister of Food and Drug Safety or Director of the National Institute of Medical Device Safety 
+Information within 30 days after the change:
+  1. Deletion of some model names following the discontinuation of production and import
+  2. Change in or addition of a model name following a minor change
+  3. Change in the name of origin of manufacture and product name following a change of company name
+  4. Change in the address of the consigning manufacturer of the exporting country (a consignor) of an 
+imported medical device
+  5. <Deleted.>
+  (7) For medical devices subject to certification/notification by product category, changes shall be managed 
+autonomously within the scope of the same product item, but a list of changed model names shall be 
+submitted if any model name is added. In such case, paragraph (5) shall apply mutatis mutandis to the 
+document submission method.
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 9 / 26 -
+Korean Law Information Center
+  (8) For minor changes under paragraph (4), a manufacturer/importer shall document the date and details 
+of such changes on the back of the manufacturing (importing) permission/certificate, sectioned Changes 
+and Dispositions, Etc., at the time of each change.
+  (9) A medical device produced using an already-permittedd 3D printer, or a medical device in the 
+“orthopedic supply” or “human tissue or function replacement ” intermediate categories whose shape, and 
+structure are changed for manufacture or import by the manufacturer/importer upon the request of a 
+physician in charge and fulfills all the requirements in the following subparagraphs (hereinafter a 
+“patient-customized 
+medical 
+device”) 
+may 
+be 
+exempted 
+from 
+amended 
+permission/certification 
+or 
+notification . In such case, such exemption shall be limited to up to 5 times a year per permitted, 
+certified or notified product.
+  1. Medical devices manufactured/imported/designed according to the physiological and pathological 
+characteristics of a patient
+  2. Medical devices manufactured/imported upon the request in writing for materials as per the following 
+Items from the doctor: 
+    A. A doctor’s request letter and doctor’s opinion on the feasibility of applying the patient-customized 
+medical device
+    B. Written consent from the patient for the use of the patient-customized medical device
+  3. Medical devices that cannot be replaced by medical devices in circulation or medical devices used in 
+patients who do not have means of treatment
+  4. 
+Medical 
+devices 
+manufactured/imported 
+and 
+used 
+under 
+the 
+joint 
+responsibility 
+of 
+the 
+manufacturer/importer and the doctor (requesting person) in charge
+  5. Medical devices manufactured/imported according to procedures such as the recording/management of 
+documents concerning the warehousing and delivery of raw materials/finished products, manufacturing 
+processes, and quality control and inspection, etc., following Articles 27 and 33 of the Enforcement 
+Rule
+  (10) A manufacturer/importer who has obtained permission/certification for or notified the shape and 
+structure pursuant to paragraph (9) shall, within 15 days from the date the relevant medical device is 
+used, attach the following documents to the patient-customized medical device usage report in Attached 
+Form No.1–2 and report it to the Minister of Food and Drug Safety.
+  1. Documents in the Items of paragraph (9) 2.
+  2. Data confirming the joint responsibility of the manufacturer (importer) and the doctor in charge 
+according to Paragraph (9) 4 (e.g., Proof of clinical experiences such as the doctor’s qualifications, and 
+patient protection/compensation measures, etc., in the case of manufacturing technology and side 
+effects, etc., through consultation with the manufacturer (importer))
+  (11) <Deleted.>
+Article 19-2 (Handling of Changes in Medical Device Software permission/Certification/notification) (1) 
+Notwithstanding Article 19, the documents in subparagraphs of Article 26 (3) of the Enforcement Rule 
+shall be submitted for a medical software to obtain permission/certification or to notify the change in the 
+submitted information on manufacturing (importing) permission/certification obtained or notification filed, if 
+the medical software falls under any of the following subparagraphs: Provided, That for changes in the 
+products notified as product items and changes under subparagraphs 2 and 3, the submission of 
+documents in Article 26 (3) 2 and 3 of the Enforcement Rule may not be submitted:
+  1. A change that amounts to a software upgrades
+  2. Change in or addition to the location of the factory of a product for which related medical device 
+software-related manufacture (import) permission/certification was accepted or notification was made
+  3. Change due to the transfer/acquisition of a product for which medical device software-related 
+manufacture (import) permission/certification was accepted or notification was made 
+  (2) Notwithstanding paragraph (1), in the case of embedded software (including medical mobile apps that 
+function as embedded software), paragraph (1) shall apply only to changes in the software that do not 
+accompany changes in hardware, such as in electrical/mechanical devices, and do not affect performance 
+and safety.
+  (3) A manufacturer/importer to which paragraph (1) applies shall submit a report of minor changes for 
+changes other than those in the subparagraphs of paragraph (1), applying Article 19 (5) through (8) 
+mutatis mutandis, and describe the revision date, and revision details on the back of the relevant 
+manufacturing (importing) permission/certification under the Changes and Dispositions, Etc. section 
+whenever any change occurs.
+Article 20 <Deleted.>
+Article 20-2 <Deleted.>
+Article 21 (Application for Testing and Inspection) (1) A person seeking to apply for the testing and 
+inspection of a medical device at a testing and inspection agency designated by the Minister of Food 
+and Drug Safety shall submit to the agency an application as per Attached Form No. 4 and the materials 
+provided for in the following subparagraphs together with the medical device for testing:
+  1. Data related to the technical documents, etc., of the applied-for device following Article 5 (1) 2 of the 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 10 / 26 -
+Korean Law Information Center
+Enforcement Rule
+  2. For imported medical devices, recommendation confirming exemption from medical device requirements 
+in accordance with Regulation on the Exemption from Medical Device Import Requirement Exemption, 
+Etc. (Ministry of Food and Drug Safety Public Notice ) and a copy of the certificate of import 
+notification following the “Public Notification on Import Clearance Administrations, Etc.” (Korea Customs 
+Service Notification) as data providing evidence for the medical device for testing
+  (2) Medical devices that shall be subject to a total inspection following Article 33 of the Act and shall be 
+as per the following subparagraphs:
+  1. Medical devices deemed by the Minister of Food and Drug Safety to require special management for 
+public health, safety, and efficacy
+Article 22 (Issuance of Certificates of Inspection for Used Medical Devices)  (1) When a manufacturer or 
+importer purchases from a medical institution a medical device they manufactured or imported, such 
+device shall be inspected as per Article 27 (1) 15 or Article 33 (1) 19 of the Enforcement Rule and shall 
+be released with a labeling of the certificate of inspection as per Attached Form No. 10 on its outer 
+package, if appropriate.
+  (2) When a distributor or a lessor purchases a medical device from a medical institution, they shall 
+submit a request for inspection to its manufacturer, importer, or a testing and inspection agency with an 
+application as per Attached Form No. 11 following subparagraph 1 of Article 39 of the Enforcement Rule 
+and shall sell or lease only those devices labeled with certificates of inspection.
+  (3) When a manufacturer or importer receives a request for inspection by a distributor or a lessor under 
+paragraph (2), they shall perform an inspection following Article 27 (1) 16 or Article 33 (1) 20 of the 
+Enforcement Rule within 30 days from the date of the request, notify the client of the result as per 
+Attached Form No. 12, issue a certificate of inspection, if appropriate, as per Attached Form No. 10, and 
+attach the certificate to the outer package of the device.
+  (4) Notwithstanding paragraph (3), in the case that a manufacturer or an importer cannot issue a 
+certificate of inspection within 30 days, a reason for the delay and the expected timeline shall be 
+provided in a written response to the distributor or lessor.
+  (5) Notwithstanding paragraphs (1) and (2), medical devices that fall under any of the following 
+subparagraphs may be exempted, at release, sale/lease from the labeling of the certificate of inspection 
+for medical devices following Article 41 of the Enforcement Rule.
+  1. Diagnostic medical devices emitting radiation under Article 37 of the Medical Service Act
+  2. Class 1 medical devices, excluding those falling under the following Items: 
+    A. Medical devices that use electricity
+    B. Instruments that protect from radiation, lasers, etc.
+    C. <Deleted.>
+    D. Devices that deliver energy to the human body
+  (6) When an importer imports a used medical device that has been permitted, certified or notified, 
+paragraph (1) shall apply mutatis mutandis.
+         Chapter 4. Review of Technical Documents, Etc.
+Article 23 (Subjects of Review, Etc.) (1) A review of technical documents, etc., shall be conducted on 
+medical 
+devices 
+seeking 
+manufacturing/importing 
+permission/certification 
+(including 
+amendment 
+permission/certification). 
+  (2) For class 2 medical devices, a comparison table of essential equivalence as per Attached Form No. 
+3 and equivalent product criteria as per Attached Table No. 5 shall be used to classify and review 
+medical devices as novel products, enhanced products, or equivalent products.
+  (3) Notwithstanding paragraph (1), medical devices that fall under the following subparagraphs shall be 
+exempt from the review of technical documents, etc.:
+  1. Medical devices for export
+  2. Products publicly notified as equivalent
+  3. Medical devices verified as the same products following Article 3 (11)
+  4. Medical devices subject to minor changes
+Article 24 (Expeditious Review, etc.) The Minister of Food and Drug Safety may allow the medical devices 
+that fall under the following subparagraphs to receive an expeditious review for permission as priorities:
+  1. Medical devices designated by the Minister of Food and Drug Safety as necessary for industrial 
+development or treatment of patients, such as high-tech medical devices or orphan medical devices, 
+etc.
+  2. <Deleted.>
+  3. Medical devices subject to permission / new medical technology evaluation integrated operation under 
+the Regulation on Integrated Operation for Medical Devices permission / New Medical Technology 
+Assessment, etc.
+  4. Medical devices otherwise deemed by the Minister of Food and Drug Safety as requiring expeditious 
+review
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 11 / 26 -
+Korean Law Information Center
+Article 25 (Criteria for Review, Etc.) (1) The Minister of Food and Drug Safety or  the head of an 
+institution reviewing technical documents, upon receipt of a written request for review of technical 
+documents, etc., of medical devices following Article 9 (2) of the Enforcement Rule (hereinafter “written 
+request for review”), shall review the device, on principle, by manufacturer (importer), product category, or 
+product item (model name). Products added after the submission of the written request for review shall 
+be excluded from the review: Provided, That the same product item may be reviewed through a single 
+technical document.
+  (2) Terminologies, and symbols, etc., used in the written request for review shall be as per the Korean 
+Standard (KS), international standards (IEC, ISO, etc.), Korean Pharmacopoeia (KP), and official 
+compendia recognized by the Minister of Food and Drug Safety (USP, JP, etc.).
+Article 26 (Types and Scope, Etc., of Data to be Reviewed) (1) The types of data that must be submitted 
+for the review of technical documents, etc., shall be as in the following subparagraphs:
+  1. Comparison with previously permitted products
+  2. Data on intended use
+  3. Information on the mechanism of action
+  4. Information provided in the following items related to test specifications, their rationale, and actual 
+measurement data for the verification of performance and safety: Provided, That in the absence of test 
+specifications inside or outside of Korea, test specifications, rationales, and actual measurement data set 
+by the person applying for a review of technical documents, etc., for the purpose of verifying 
+performance and safety of the product: 
+    A. 
+Information 
+on 
+electrical/mechanical 
+safety 
+(limited 
+to 
+the 
+device/machine/equipment 
+using 
+electrical/electronic circuits)
+    B. Information on biological safety (limited to medical devices requiring the confirmation of biological 
+safety when coming in contact with the human body directly/indirectly)
+1) Data on toxicity testing
+      a) Data on cytotoxicity testing
+      b) Data on systemic toxicity (acute) testing
+      c) Data on subchronic (subacute) toxicity testing
+      d) Data on chronic toxicity testing
+      e) Data on genotoxicity testing 
+      f) Data on reproductive toxicity testing
+      g) Data on toxicokinetic testing
+      h) Data on immunotoxicity testing
+2) Data on stimulation and sensitization testing 
+3) Data on transplant testing 
+4) Data on blood compatibility testing 
+5) Data on carcinogenicity testing 
+6) Data on biodegradability testing 
+7) Data on ethylene oxide residual quantity testing 
+8) Data on sterility testing
+    c) Data on radiation safety (limited to medical devices that use or are exposed to radiation)
+    d) Information on electromagnetic safety (limited to medical devices using electrical/electronic circuits)
+    e) Data on performance
+    f) Data on physical and chemical properties
+    g) Data on stability
+  5. Data on the origin or discovery, and history of development
+  6. Data on clinical trials
+  7. Data on the current status of use in foreign countries, etc.
+  (2) The scope of data on biological safety under paragraph (1) 4 (B) to be submitted for review of 
+technical documents, etc., shall be as per Attached Table No.12. 
+Article 27 (Preparation of Internationally Standardized Technical Documents) (1) Notwithstanding Article 26, 
+an internationally standardized technical document shall be prepared for  medical devices of Class 4. 
+<Proviso deleted>
+  (2) For product items other than medical devices of Class 4, an internationally standardized technical 
+document may be used if desired by the applicant.
+  (3) Instructions for preparing an internationally standardized technical document shall be as per Attached 
+Table No. 10.
+  (4) The types of internationally standardized technical documents to be submitted shall be as the types of 
+review data specified in Article 26 according to the comparison in Attached Table No. 11 and be subject 
+to Article 28 (Exemption of Review Data), Article 29 (Requirements for Attached Data), Article 30 
+(Preparation of Data, Etc.), and Article 31 (Change of Technical Document Review Report).
+Article 28 (Exemption of Review Data) (1) For class 2 medical devices classified as novel products, 
+enhanced products, or equivalent products under Article 23 (2), the documents provided by the following 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 12 / 26 -
+Korean Law Information Center
+subparagraphs may be exempted as per Attached Table No. 7:
+  1. Data designated by subparagraphs 2, 3, and 5 through 7 of Article 26 (1) 
+  2. For data designated by the provisions of the Items under Article 26 (1) 4, the rationale for setting test 
+specifications and actual test data, excluding the test report
+  (2) For class 3 and 4 medical devices, data specified in subparagraphs 5 through 7 of Article 26 (1)  
+may be excluded as per Attached Table No. 7.
+  (3) In the case the biological safety of raw materials or finished products is recognized and confirmed 
+under any of the following subparagraphs, the submission of the data specified in subparagraph 4 (B) of 
+Article 26  (1) may be excluded:.
+  1. Specifications publicly notified or announced by the Minister of Food and Drug Safety
+  2. Specifications for raw materials or finished products corresponding to KS, ISO, and ASTM
+  (4) Notwithstanding Article 26, in the ecase that a test is theoretically/technically impossible to implement 
+or is deemed insignificant though possible to implement, the submission of the relevant data may be 
+omitted (e.g., for a wound dressing containing silver sulfadiazine cream, the safety of each raw material 
+may have been achieved, but the cytotoxicity test result will inevitably be unacceptable because of the 
+antibacterial function of the cream, and, thus, such test will be insignificant).
+Article 29 (Requirements for Attached Data) (1) Requirements for data attached for the review of technical 
+documents, etc., shall be as in the following subparagraphs: Provided, That if the test data specified in 
+Article 26 (1) 4 are 3 years or older as of the date of submission, documents evidencing that no 
+modification has been made to the product since the inspections shall be additionally submitted.
+  1. Data comparing with the previously permitted, certified product
+Comparison table as per Attached Form No. 3 that compares the names (product name, product item title, 
+and model name), manufacturer (importer) name, origin of manufacture and address of manufacture,  
+permission (certification) number, intended use, mechanism of action, raw materials, performance, test 
+specifications, methods of use, etc. of the product with the previously permitted, certified product
+  2. Data on the intended use 
+Information on the indication and intended use(efficacy/effectiveness) of the product
+  3. Information on the mechanism of action
+Information 
+on 
+the 
+physical/chemical/electrical/mechanical 
+mechanism 
+of 
+action 
+that 
+influences 
+the 
+achievement of the applied-for product’s intended use
+  4. Information on electrical/mechanical safety
+    A. General Information
+      General information is required for medical devices using electricity, and any of the following data for 
+products with the same model name as the product shall be submitted: Provided, That Wwhen 
+there is a discrepancy in the model names because of the use of a prototype name, etc., 
+evidence of their being the same model shall be submitted:
+      1) A test report issued by a testing and inspection agency designated by the Minister of Food and 
+Drug Safety
+      2) A test report issued by the National Certification Body (NCB) according to the IEC System for 
+Conformity Assessment Schemes for Electrotechnical Equipment and Components Certification Body 
+Scheme (IECEE CB-Scheme) operated by the International Electrotechnical Commission (IEC)
+      3) A test report issued in compliance with the specification code confirmed by a medical devices 
+testing and inspection agency accredited under the Korea Laboratory Accreditation Scheme 
+(hereinafter “KOLAS”)
+      4) A test report on the applicant product which was, at the time of permission, submitted to and 
+evaluated by an Organization for Economic Cooperation and Development (OECD) member country, 
+verifies or notarizes such submission to and permission by said country’s government or a 
+registered agency delegated with permission operations by said government 
+      5) A test report that is accredited by ISO/IEC17025 per the Mutual Recognition Agreement (MRA) of 
+the International Testing Laboratory Accreditation Cooperation (ILAC) and properly issued by an 
+international testing/inspection agency that can test for all items of the international standard for the 
+medical device
+    B. Criteria and Test Methods
+      The “Common Standard Specifications Related to the Electrical/Mechanical Safety of Medical Devices” 
+(Public Notification of the Ministry of Food and Drug Safety) and “Standard Specifications for 
+Medical Devices” (Public Notification of the Ministry of Food and Drug Safety), a specification 
+publicly notified by the Minister of Food and Drug Safety, or an equivalent or higher international 
+standard (IEC, ISO, etc.) shall be complied with; or when there is no specification notified or 
+announced by the Minister of Food and Drug Safety, the international standards for the medical 
+device, while also complying with standards such as Korean standard voltage, standard frequency, 
+standard power plug under the Korean Standard (KS), etc., as set forth in the Electric Utility Act.
+  5. Data on biological safety
+    A. General Information
+      This information is required for medical devices or components that come in contact with or are 
+inserted into the human body or come in contact with blood/body fluids or drugs injected into the 
+human body, and shall be one of the following documents with the same model name as the 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 13 / 26 -
+Korean Law Information Center
+applicant product. If there is a discrepancy in the model names because of the use of a prototype 
+name, etc., evidence of their being the same model shall be submitted. For the sterility and 
+ethylene oxide (EO) residual quantity tests, a test report or data proving suitability under the 
+“Medical Device Manufacturing and Quality Control Standards” (Public Notification of the Ministry of 
+Food and Drug Safety) or the manufacturer’s quality management system as per an equivalent or 
+higher standard, or a test result appropriately issued by a testing and inspection agency in the 
+medical devices field recognized through KOLAS with a recognized specification code may be 
+submitted.
+      1) A test report (final report) under Article 24-2 of the Enforcement Rule tested in accordance with 
+the “Nonclinical Trial Practice Standards” (Public Notification of the Ministry of Food and Drug 
+Safety) at a medical device nonclinical trial center designated by the Minister of Food and Drug 
+Safety (limited to the test items in Attached Table No. 2 of the “Nonclinical Test Management 
+Standards” (Public Notification of the Ministry of Food and Drug Safety))
+      2) Test data issued by a nonclinical trial center in a member or a nonmember country of the 
+Organization for Economic Cooperation and Development (OECD), recognized by the OECD as 
+compliant with Good Laboratory Practices (GLP)
+      3) Data falling under 1) or 2) on the biological safety of a product that has the same raw materials 
+as the applicant product and has at least the same time/area of contact with the human body
+    B. Criteria and Test Methods
+  The Common Standard Specifications Related to the Biological Safety of Medical Devices (Public 
+Notification of the Ministry of Food and Drug Safety) and specifications notified by the Minister of Food 
+and Drug Safety or an equivalent or higher International Standard (ISO, etc.) shall be complied with; or, if 
+there is no standard publicly notified or announced by the Minister of Food and Drug Safety, the 
+International Standards (ISO, etc.) of the relevant medical device shall be complied with.
+  6. Data on radiation safety
+    A. General Information
+If a device requires a radiation safety test because it is a device that uses or is exposed to radiation, etc., 
+this document shall be submitted in the form of one of the following and shall provide the information on 
+the product with the same model name as the applicant product: Provided, That when there is a 
+discrepancy in the model name mentioned in the documents and that of the actual product due to, e.g., 
+the product having a different name during the development stage, evidence demonstrating such 
+discrepancy shall be submitted.
+      1) A test report issued by a testing and inspection agency designated by the Minister of Food and 
+Drug Safety
+      2) A test report issued by the National Certification Body (NCB), etc., according to the International 
+Electrotechnical Commission (IEC) Electrotechnical Equipment and Components Certification Body 
+Scheme (IECEE CB-Scheme) operated by the IEC
+      3) A test report issued in compliance with the specification code recognized by a medical device 
+testing/inspection agency accredited under the KOLAS
+      4) A test report on the applicant product submitted to and evaluated by an Organization for 
+Economic Cooperation and Development (OECD) member country at the time of permission, 
+verifying or notarizing such submission to and permission by said country’s government or a 
+registered agency delegated with permission operations by said government 
+      5) A test report that is ISO/IEC17025 accredited per the Mutual Recognition Agreement (MRA) of the 
+International Testing Laboratory Accreditation Cooperation (ILAC) and properly issued by an 
+international testing and inspection agency that can test for all items of the international standard 
+for the medical device 
+    B. Criteria and Test Methods
+        The Common Standard Specifications Related to the Biological Safety of Medical Devices (Public 
+Notification of the Ministry of Food and Drug Safety) and specifications notified by the Minister of 
+Food and Drug Safety or an equivalent or higher International Standard (ISO, etc.) shall be 
+complied with; or, if there is no standard publicly notified or announced by the Minister of Food 
+and Drug Safety, the International Standards (ISO, etc.) of the relevant medical device shall be 
+complied with.
+  7. Data on electromagnetic wavessafety
+    A. General Information
+      This information is required for medical devices or components with electromagnetic safety 
+requirements, and shall be one of the following documents with the same model name as the 
+applicant product. If there is a discrepancy in the model names due to the use of a prototype 
+name, etc., evidence of their being the same model shall be submitted.
+      1) A test report issued by a testing and inspection agency designated by the Minister of Food and 
+Drug Safety
+      2) A test report issued by the National Certification Body (NCB), according to the International 
+Electrotechnical Commission (IEC) Electrotechnical Equipment and Components Certification Body 
+Scheme (IECEE CB-Scheme) operated by the IEC 
+      3) A test report issued in compliance with the specification code recognized by a medical devices 
+testing/inspection agency accredited under the KOLAS
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 14 / 26 -
+Korean Law Information Center
+      4) A test report on the applicant product submitted to and evaluated by an Organization for 
+Economic Cooperation and Development (OECD) member country at the time of permission, 
+verifying or notarizing such submission to and permission by said country’s government or a 
+registered agency delegated with permission operations by said government 
+      5) A test report that is ISO/IEC17025 accredited per the Mutual Recognition Agreement (MRA) of the 
+International Testing Laboratory Accreditation Cooperation (ILAC) and properly issued by an 
+international testing and inspection agency that can test for all items of the international standard 
+for the medical device 
+    B. Criteria and Test Methods
+        The “Common Standard Specifications Related to the Electromagnetic Safety of Medical Devices” 
+(Public Notification of the Ministry of Food and Drug Safety), “Standard Specifications for Medical 
+Devices” (Public Notification of Ministry of Food and Drug Safety), a standard announced by the 
+Minister of Food and Drug Safety or an equivalent or higher international standard (IEC, etc.) shall 
+be complied with; or, if there is no standard publicly notified or announced by the Minister of Food 
+and Drug Safety, the international standards (IEC, etc.) of the relevant medical device shall be 
+complied with along with standards such as standard voltage, standard frequency, standard power 
+plug according to Korean Standard (KS), etc. as set forth in the Electric Utility Act.
+  8. Data on performance
+    A. General Information
+      Any of the following data for products with the same model name as the applicant product shall be 
+submitted: Provided, That when there is a discrepancy in the model names because of the use of 
+a prototype name, etc., evidence of their being the same model shall be submitted. The verification 
+of software compatibility as per Attached Form No. 13 based on Attached Table No.13, software 
+confirmation report, and efficacy validation report shall be submitted for medical device software. In 
+the case that an animal performance test is needed, animal test data shall be submitted.
+      1) A test report issued by a testing and inspection agency designated by the Minister of Food and 
+Drug Safety
+      2) A report of a test conducted by a domestic or foreign professional institution, such as a university 
+or research institute. The report shall be issued by the head of the institution, and its substance 
+(including an overview of test facilities, key facilities, research experience of the testing personnel, 
+etc.) may be reviewed and recognized as reasonable
+      3) A test report proving suitability under the Medical Device Manufacturing and Quality Control 
+Standards (Public Notification of the Ministry of Food and Drug Safety) or the manufacturer’s 
+quality management system as per an equivalent or higher standard 
+    B. Criteria and Test Methods
+The company’s standard and test method shall be followed.
+  9. Data on physical and chemical properties;
+    A. General Information
+      For medical devices that come in contact with/are inserted into the human body or come in contact 
+with blood/body fluids or drugs injected into the human body, the data on chemical structure, 
+infrared absorption, ultraviolet absorption, atomic absorption, melting point, boiling point, durability, 
+hardness, color tone, elution surface characteristics, the name of the animals according to the 
+relevant standards (KS, ASTM, ISO, etc.) for medical devices using animal-derived substances, 
+country of origin, age, parts used, treatment process, substance name, etc., shall be as in one of 
+the following paragraphs, with the same model name of the applicant product: Provided, That when 
+there is a discrepancy in the model name in the data and the model name of the applicant 
+product due to the use of a prototype name during development, etc., evidence of their being the 
+same shall be submitted.
+      1) A test report issued by a testing and inspection agency designated by the Minister of Food and 
+Drug Safety
+      2) A report or data of a test conducted by a domestic or foreign professional institution, such as a 
+university or research institute. The report shall be issued by the head of the institution, and its 
+substance (including an overview of test facilities, key facilities, research experience of the testing 
+personnel, etc.) may be reviewed and recognized as reasonable
+      3) A test report or data on the physicochemical properties conducted under the manufacturer’s quality 
+management system according to the Medical Device Manufacturing and Quality Control Standards 
+or equivalent or higher standards
+    B. Criteria and Test Methods
+      Standards and test methods suitable for the standards for raw materials and finished products 
+recognized by the Minister of Food and Drug Safety shall be complied with: Provided, That if there 
+is no specification recognized by the Minister of Food and Drug Safety, the company’s standards 
+and testing methods shall be followed.
+  10. Data on stability
+    A. General Information
+      Data falling under one of the following shall be submitted for products having the same as the name 
+of the relevant product and model. If the model name of the product in the data and the model 
+name of the applicant product are not the same due to the use of prototype names, etc. in 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 15 / 26 -
+Korean Law Information Center
+development, data proving the same shall be submitted.
+      1) A test report issued by a testing and inspection agency designated by the Minister of Food and 
+Drug Safety
+      2) A test report conducted by a domestic or foreign professional institution, such as a university or 
+research institute. The report shall be issued by the head of the institution, and its substance 
+(including an overview of test facilities, key facilities, experience of researchers, etc.) may be 
+reviewed and recognized as reasonable
+      3) A test report on stability, tested under the quality management system of the manufacturer in 
+compliance with the Medical Device Good Manufacturing Practices or an equivalent or higher 
+standard.
+    B. Criteria and Test Methods
+      They shall be according to the Standards for the Stability Testing of Medical Devices.
+  11. Data regarding the origin, discovery, and history of development
+Data that clearly describe the 5Ws and 1H (e.g., when, where, who for the newly discovered mechanism of 
+action and raw materials, and when and where for those used in basic experiments / clinical trials, etc.) 
+to help review the applicant product
+  12. Data on clinical trials
+    A. General Information
+        General information shall be any of the following data on research conducted on humans for 
+demonstrating the safety and efficacy of a medical device used in a clinical investigation for the 
+permission of its application. In such cases, for medical devices in classes 1 and 2, data (including 
+articles, literature, etc.) on the clinical investigation of a product equivalent to the applicant product 
+may be submitted.
+      1) Data on a test conducted in a clinical trial center designated by the Minister of Food and Drug 
+Safety
+      2) Foreign data on a test whose substance is reviewed, was conducted by a reliable institution, and 
+is deemed to have been conducted in compliance with the Medical Device Clinical Trial 
+Management Standards (Attached Table No. 3 of the Enforcement Rule)
+      3) A test report on the applicant product submitted to and evaluated by an Organization for 
+Economic Cooperation and Development (OECD) member country at the time of permission, 
+verifying or notarizing such submission to and permission by said country’s government or a 
+registered agency delegated with permission operations by said government 
+4) Information published in professional journals registered in the Science Citation Index or Science Citation 
+Index Expanded
+    B. Information specified in Item A shall include the following information: 
+      1) Clinical Trial Method
+      A clinical trial method shall include the following:
+      A) Inclusion criteria, exclusion criteria, and target number of subjects
+      Data proving statistical validity of the number of samples by comprehensive consideration of the 
+characteristics of the applicant medical device and method of clinical trial method are required, on 
+principle, for each indication: Provided, That for indications whose incidence is too low to secure 
+clinical trial samples as a practical matter, data proving such fact shall be additionally submitted.
+      B) Method of operation or method of use and the rationale for the setting
+      C) When a comparator medical device is used, the rationale for such selection
+      D) Whether or not it is used in combination
+      E) Observation parameters, measurement parameters, clinical test parameters, measurement criteria, 
+and test method
+      F) Criteria and method of efficacy evaluation, and method of interpretation
+      G) Criteria for safety evaluation, including side effects, and test method
+      2) Clinical Outcome
+      Clinical outcomes shall include the following information:
+      A) Clinical trial outcome (including the planned number of samples for the trial, actual number of 
+subjects, number of subjects who completed the investigation, number of and reason for dropouts, 
+in which case information on side effects experienced by each subject, etc., shall be included)
+      B) Summary of case reports
+      C) Other data needed to verify the clinical investigation outcome
+      3) Clinical Evaluation
+      Data demonstrating the clinical significance of the effective ratio of the applicant medical device for 
+the proposed indication, based on the sciences of medicine and oriental medicine, may be 
+recognized, if deemed reasonable.
+    C. Other Information
+      1) When the direct application of foreign clinical trial data is deemed infeasible because of difference 
+in ethnic factors, the Minister of Food and Drug Safety may request the additional submission of 
+data on clinical investigation conducted in Korea targeting the Korean population.
+      2) For orphan medical devices used for rare, life-threatening diseases, clinical investigation data 
+recognized as reasonable by the Minister of Food and Drug Safety may suffice
+  13. Data on the current status of use in foreign countries, etc.
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 16 / 26 -
+Korean Law Information Center
+Data on the current status of use in foreign countries that may help review the efficacy of the applicant 
+medical device, including data on sales or permission in overseas markets, side effects reported from 
+use, status of manufacturing permission history, etc., reasons for non-use If it is not being used in its 
+country of manufacture
+  (2) The attached data submitted as per paragraph (1) shall be submitted together with a summary table 
+of attached data in Attached Table No. 16.
+Article 30 (Preparation of Data, Etc.) (1) A person seeking to obtain a review of technical documents, etc., 
+for a medical device shall prepare documents as per Attached Form No. 8 of the Enforcement Rule and 
+shall submit the attached data (including electronic documents), etc. as per Article 29 to the Minister of 
+Food and Drug Safety or the head of an institution reviewing technical documents. 
+  (2) The submitted data shall be in compliance with the requirements of Article 29: Provided, That when 
+some of the attached data is not needed, given the nature of the applicant product, the rationale shall be 
+described in detail.
+  (3) Foreign data shall be submitted together with a summary of key points in Korean and the original 
+text. A translation may be requested only if needed: Provided, That data in foreign languages other than 
+English shall be submitted with a notarized translation of the entire text.
+Article 31 (Change of Technical Document Review Report) (1) A person seeking to modify a technical 
+document review report according to Article 9 (4) of the Enforcement Rule shall submit a request for 
+review as per Attached Form No. 8 of the Enforcement Rule.
+  (2) The documents attached to the application for amended review under paragraph (1) shall be as in 
+the following subparagraphs:
+  1. Comparative table of changes
+  2. Supporting data for changes in the data specified in Article 26 or Article 27
+  (3) The document under paragraph (2) 1 shall be prepared as below:
+         Chapter 5 <Deleted.>
+Article 32 <Deleted.>
+Article 33 <Deleted.>
+Article 34 <Deleted.>
+         Chapter 6. Designation of Orphan Medical Devices, Etc.
+Article 35 (Application for the Designation of Orphan Medical Devices) (1) A person seeking to obtain 
+designation as an orphan medical device shall submit to the Minister of Food and Drug Safety an 
+application as per Attached Form No. 6 together with the documents provided by the following 
+subparagraphs: Provided, That if there is evidence of designation as an orphan device in a foreign 
+country, the submission of data under subparagraph 3 may be omitted.
+  1. Evidence of fulfillment of the criteria for designation as an orphan medical device as per Article 36. 
+For devices specified in the latter part of Article 36 (1) 3, evidence of special benefit based on the 
+intended use shall also be included.
+  2. Data on the intended use, shape and structure, raw materials, performance, method of use, 
+mechanism of action, specifications, etc. as per Article 60 (1)
+  3. Recommendation for designation as an orphan medical device as per Attached Form No. 7 by the 
+President of the Korean Medical Association, President of the Dental Association, President of the 
+Association of Korean Medicine, President of the Korean Hospital Association, or head of professional 
+societies on relevant diseases. Such recommendation shall include the following: background and 
+reason for the recommendation, medical opinion on alternative treatment or alternative medical device, 
+etc., and its rationale, statistics (incidence per population, etc.) on the subject diseases and its rationale, 
+and other opinions for reference, etc.: Provided, That if such recommendation cannot be submitted, the 
+submission may consist only of medical rationale for alternative treatment or alternative medical device, 
+etc., and statistics (incidence per population, etc.) on the subject diseases.
+  (2) Notwithstanding paragraph (1), a person simultaneously seeking a manufacturing (importing) 
+permission and orphan device designation shall indicate “Orphan medical device” in the Remarks section 
+of the application form.
+Article 36 (Criteria for the Designation of Orphan Medical Devices, Etc.) (1) The criteria for the designation 
+of orphan devices shall be as in the following subparagraphs:
+  1. The applicant device is used for the treatment or diagnosis of rare diseases with not more than 
+20,000 patients in the domestic market (prevalence)
+Serial number
+Item
+Before change
+After change
+Reason for 
+change
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 17 / 26 -
+Korean Law Information Center
+  2. <Deleted.>
+  3. There is no appropriate method of treatment or diagnosis, such as alternative medication or medical 
+devices available for that target disease in Korea, or the applicant device is recognized by the Minister 
+of Food and Drug Safety as having special benefits for other purposes
+  (2) A medical device that is under development may be designated as an orphan device as per 
+paragraph (1).
+  (3) Notwithstanding paragraphs (1) and (2), the applicant device may be designated as an orphan 
+medical device if the Minister of the Ministry of Food and Drug Safety recognizes the need for the 
+designation, such as a concern that suspended or limited supply in light of the current medical device 
+supply system would significantly impede the patient’s treatment and diagnosis, etc. 
+Article 37 (Obligations Following Designation as an Orphan Medical Device) A manufacturer or importer of a 
+medical device designated as an orphan medical device shall comply with the requirements provided by 
+the following subparagraphs:
+  1. Comply with the Regulation on Re-examination of Medical Devices (Public Notification of the Ministry 
+of Food and Drug Safety), if ordered to receive re-examination according to Article 8 of the Act. 
+  2. “The product is an orphan medical device, and its clinical effectiveness undergoing validation” shall be 
+written in the medical device attachment document (excluding orphan medical devices whose safety and 
+effectiveness were validated during the permission review): Provided, That if an orphan medical device 
+to which a re-examination order was issued is deemed suitable as a result of re-examination, the 
+notation shall be deleted.
+Article 38 (Orphan Medical Device Designation and Notification of Result, Etc.) (1) When a medical device 
+is reviewed according to Article 36 and found to meet the criteria for orphan medical device designation, 
+Tthe Minister of Food and Drug Safety may, designate it as an orphan medical device together with the 
+product’s title of item and intended use including of the indicated patients, disease, and product 
+characteristics, and make a public announcement of the same.
+  (2) The Minister of Food and Drug Safety shall notify the applicant of the result of designation as an 
+orphan medical device according to paragraph (1).
+  (3) For the designation of orphan medical devices, the Minister of Food and Drug Safety may be advised 
+by the Medical Devices Committee under Article 5 of the Act or opinions from relevant organizations such 
+as academic societies.
+Article 39 <Deleted.>
+         Chapter 7 <Deleted.>
+Article 40 <Deleted.>
+Article 41 <Deleted.>
+Article 42 <Deleted.>
+Article 43 <Deleted.>
+Article 44 <Deleted.>
+Article 45 <Deleted.>
+Article 46 <Deleted.>
+Article 47 <Deleted.>
+Article 48 <Deleted.>
+         Chapter 8. Operation of By-Stage Review
+Article 49 (Subject of Review) The Minister of Food and Drug Safety may review a medical device that 
+falls under any of the following subparagraphs that is under development for manufacturing permission at 
+each stage of product development: 
+  1. High-tech medical devices
+  2. Newly developed medical devices
+  3. Other medical devices as deemed necessary by the Minister of Food and Drug Safety
+Article 50 (Application for Review) A person who desires a by-stage review shall submit the Application for 
+Medical Device Review provided in Attached Form No. 15 (Including an electronic document) and data 
+described in Attached Table No. 15 (including electronic documents) to the Minister of Food and Drug 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 18 / 26 -
+Korean Law Information Center
+Safety.
+Article 51 (Type of Review Data, Etc.) (1) The data to be submitted for by-stage review shall be as in the 
+following subparagraphs:
+  1. Data on the product design and development review stage (applicable only at Stage 1)
+  2. Data on the safety and performance review stage (applicable only at Stage 2)
+  3. Data on the clinical trial protocols review stage (applicable only at Stage 3)
+  4. Data on technical documents and clinical data (applicable only at Stage 4)
+  (2) The scope of data submitted at each stage according to paragraph (1) shall be as per Attached 
+Table No. 15.
+  (3) The applicant may submit more than one set of data at the point the data required for the relevant 
+stage is prepared. In such cases, the Minister of Food and Drug Safety may request that the applicant 
+supplement each piece of data submitted.
+Article 52 (Review Procedure) (1) The submitted data shall be reviewed by stage, and the review will 
+proceed to the next stage if deemed suitable; Upon completion of the review for Stage 4, the review 
+procedure shall be completed.
+  (2) The Minister of Food and Drug Safety may, on reviewing the data submitted by stage, request a 
+review meeting with the applicant on the summary of product details and data to be submitted by stage, 
+if needed.
+Article 53 (Notification of Review Result, Etc.) (1) The Minister of Food and Drug Safety shall review the 
+data submitted by stage and inform the applicant of the review result within 30 days from the date of 
+each submission: Provided, That the period of notice for the review result may be extended if needed 
+due to advice from external experts, meeting, review of additionally submitted data, etc.
+  (2) Upon completion of the four-stage reviews by stage, the Minister of Food and Drug Safety shall notify 
+the applicant of a notice of the results of reviewing technical documents, etc. on medical devices  in 
+Attached Form No. 9 of the Enforcement Rule.
+Article 54 (Change of Review Result) (1) Notwithstanding Article 53, the Minister of Food and Drug Safety 
+may change the already notified review result that falls under any of the following subparagraphs:
+  1. A change occurs during product development that affects the safety and efficacy 
+  2. When requiring security on a product’s safety and efficacy upon newly suggested information on safety
+  3. The necessity of a change is recognized upon the applicant’s request
+  (2) When review data is changed in accordance with paragraph (1), the applicant shall re-submit 
+amended data for the previous stage, and the Minister of Food and Drug Safety shall notify the review 
+result.
+         Chapter 9. Designation of Medical Devices Exempted from Distribution Business Notification
+Article 55 (Medical Devices Exempted from Distribution Business Notification) The medical devices that may 
+be distributed without a distribution business notification under Article 38 (3) of the Enforcement Rule 
+shall be as in the following subparagraphs:
+  1. Electronic thermometer 
+  2. Infrared ear thermometer 
+  3. Infrared skin thermometer 
+  4. Automatic electronic sphygmomanometer
+  5. Self-diagnostic medical mobile applications (hereinafter “apps”) and products with such apps installed 
+(cellular phones, tablet PCs, etc.)
+  6. <Deleted.>
+  7. Colour display thermometer
+         Chapter 10. permission of Medical Devices for Exhibition Purposes
+Article 56 (Application for permission) A person seeking to display a medical device for exhibition purposes 
+following Article 46 of the Enforcement Rule (hereinafter “medical devices for exhibition”) shall submit the 
+documents provided by the following subparagraphs to the head of the regional office of the Ministry of 
+Food and Drug Safety for permission: Provided, That the medical device-related institution etc. organizing 
+or hosting such exhibition may make a collective application on behalf of participants based on identified 
+demand.
+  1. Data on the exhibition plan, including the purpose, venue, and duration of the exhibition, etc.
+  2. Product description and promotional information that fall under the following items: Provided, That for 
+devices permitted, certifiedor notified as medical devices for export purposes, the submission of the 
+following information may be omitted:
+    A. Information on the intended use
+    B. Information on product shape and structure, performance, characteristics, mechanism of action, 
+method of use
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 19 / 26 -
+Korean Law Information Center
+  3. Information on methods for notation and labeling indicating that the device is a medical device for 
+exhibition
+Article 57 (Criteria for permission) The head of the regional office of the Ministry of Food and Drug Safety 
+shall, upon receiving an application for the permission of a medical device for exhibition in accordance 
+with Article 50, review suitability based on the criteria in the following subparagraphs:
+  1. The proposed fair, exposition, exhibition, or an equivalent display shall be organized or hosted by the 
+central or local government or by an organization related to medical devices
+  2. Product descriptions and promotional information shall not include content prohibited under 
+subparagraphs 1 and 3 of Article 24 (1) and subparagraphs 1 through 4 of paragraph (2) of the Act
+  3. A label indicating “medical device for exhibition” or “unor notified medical device” shall be placed in an 
+easily visible or recognizable manner
+Article 58 (Notification of permission) (1) The head of the regional hoffice of the Ministry of Food and Drug 
+Safety shall notify the permission or non-permission in writing within 10 days of the date of the 
+application and notify the permission information to the head of the regional office of the Ministry of Food 
+and Drug Safety having jurisdiction over of the exhibition, etc.
+  (2) Notification of the permission shall include the information specified in the following subparagraphs:
+  1. Name and venue of the exhibition, etc.
+  2. The approved duration of the exhibition and the applicant product
+  3. Information on the scope of allowance as in the following Items for the approved medical device for 
+exhibition:
+    A. Simple operation for describing the method of use or intended use, etc.
+    B. Posting and placement of product description/promotional information in the exhibition venue for the 
+approved product
+Article 58-2 (Change in the Use of the Medical Devices for Exhibition) (1) A person who wants to change 
+the use of a medical device for exhibitions as per Article 46 (4) of the Enforcement Rule shall submit 
+the application for the change of use of medical devices for exhibition in Attached Form No. 17 and  to 
+the head of a Regional Office of the Ministry of Food and Drug Safety along with a usage plan that 
+includes details such as the period of use and methods of disposal after use, etc.
+  (2) The head  the regional office of Food and Drug Safety shall issue the permission for changing the 
+use of the medical device for exhibition of Attached Form No. 18 if the application under paragraph (1) is 
+suitable.
+         Chapter 11. Allowed Scope of Performance Improvement of Medical Devices
+Article 59 (Medical Devices Eligible for Performance Improvement)  A medical device software or embedded 
+software (including  mobile medical apps with embedded software functions) for which improvement is 
+sought may be improved according to the proviso of Article 26 (4) of the Act and Article 47 of the 
+Enforcement Rule within the scope of amended permission/certification obtained by the manufacturer or 
+importer or the amended notification of the manufacturer or importer.
+         Chapter 12. Review of Medical Device Regulation Applicability
+Article 60 (Review of Medical Device Regulation Applicability, Etc.)  (1) A person seeking to request a 
+review of whether a product is defined as a medical device under Article 2 (1) of the Act for the 
+purpose of permission/certification/notification/review, etc. shall prepare the data provided for in the 
+following subparagraphs and submit it to the Minister of Food and Drug Safety:
+  1. Data on the intended use of the product
+  2. Data on the shape and structure, raw materials, performance, method of use, etc., of the product
+  3. Other data on mechanism of action and specifications, etc., related to the product
+  (2) The Minister of Food and Drug Safety shall, upon a request for review in accordance with paragraph 
+(1), review whether the product falls under Article 2 (1) of the Act, whether the product is defined as an 
+individual product item under the “Regulation on Medical Device Groups and Class by Group,” and 
+whether it is possible to classify and designate the product, etc., and shall notify the applicant of the 
+result within 10 days.
+         Chapter 13 Supplementary Provisions
+Article 61 (Advice) When necessary for permission/certification/notification/review, the Minister of Food and 
+Drug Safety may receive advice from the Medical Devices Committee and National Institute of Food and 
+Drug Safety Evaluation (NIFDS).
+Article 62 (Verification of the Reliability of Submitted Data)  The Minister of Food and Drug Safety may 
+conduct an on-site inspection, if necessary, to verify the reliability of the test reports or data submitted 
+following Article 29 of the Act.
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 20 / 26 -
+Korean Law Information Center
+Article 62-2 (Request for and Supplementation of Data, Etc.) (1) The Minister of Food and Drug Safety 
+may request the relevant information for preliminary review within 5 days from the date of application, if 
+the attached data fails to meet the requirements for submitted data.
+  (2) The Minister of Food and Drug Safety or Director of the National Institute of Medical Device Safety 
+Information shall request, specifying the necessary information, that the applicant supplement the 
+application for medical device manufacture (import) permission/certification, medical device manufacture 
+(import) notification, application for change of medical device permission/certification, or review of technical 
+documents, etc. for a cause that falls under any of the following subparagraphs occurring during the 
+review:
+  1. The type, scope, or requirements of the application or notification do not comply with the provisions of 
+any Article
+  2. There is a concern during the review of the submitted materials that serious problems with safety and 
+efficacy, etc. may arise, and additional materials are deemed particularly necessary to resolve such 
+concerns
+  (3) The data supplementation period under paragraph (2) shall be sufficient for the applicant to prepare 
+supplemental documents,taking a processing period of civil petition into account The time of data 
+submission shall be regarded as the end of the supplementation request period, and the review shall 
+start over. If some or all the data for which supplementation is requested is not submitted within this 
+period, supplementation may be requested again with a period of 10 days: Provided, That if a petitioner 
+who has received a request for supplementation requests an extension by specifying the period necessary 
+for the supplementation because the supplementation request cannot be met within the given period, the 
+supplementation period shall be determined in consideration thereof. In such case, the petitioner’s request 
+for an extension of the petition period shall be limited to 2 times.
+  (4) The Minister of Food and Drug Safety or Director of the National Institute of Medical Device Safety 
+Information may return certain documents to the applicant during the review process, such as an 
+application for medical device manufacture (import) permission/certification, medical device manufacture 
+(import) notification, an application for change of medical device permission/certification, or technical 
+document, etc., if it is determined during the review or as a result of the review that such document falls 
+under any of the following subparagraphs:
+  1. Data is not submitted within the period granted for the repeated request for supplementation as per 
+paragraph (2)
+  2. When the document does not meet the criteria for review under Articles 8 through 18, 26, and 29, or 
+does not meet the requirements for attached data
+Article 62-3 (Video Conferencing, Etc.) (1) The Minister of Food and Drug Safety shall hold a meeting to 
+the extent it does not affect the processing period of a civil petition when a person who has applied for 
+a newly developedmen/orphan medical device permission as per Article 6 or 15 of the Act requests a 
+meeting in any of the following subparagraphs, and the result shall be notified to the applicant within 10 
+days of the meeting date:
+  1. Initiation meeting: when it is necessary to explain matters to be considered during permission/review, 
+such as product development history, etc.
+  2. Supplementation meeting: when it is necessary to explain reasons for the type, scope, requirements, 
+etc., of the data for which supplementation is requested, 
+  3. Additional supplementation meeting: when further explanation is required for the submitted data for 
+which supplementation is requested, or an explanation is required for the data for which repeat 
+supplementation is requested.
+  (2) Meetings in accordance with paragraph (1) may be conducted by video or in person.
+Article 63 (Refund of Fees) (1) Fees shall not be returned after receipt of a civil petition whose application 
+is filed as normal without problem: Provided, That fees shall be returned in part or in full if any of the 
+following subparagraphs applies:
+  1. When the review of technical documents, etc., has already been completed or is unnecessary
+  2. When the fee has been mistakenly paid, other than the case of subparagraph 1
+  3. When an applicant who has been requested to submit data under Article 62-2 (1) voluntarily withdraws 
+an application for permission under Article 5 (1) or Article 30 (1) of the Enforcement Rule within the 
+period specified in Article 62-2 (1) (80% of the fees paid shall be refunded).
+  (2) When the fee is returned to the applicant as per the proviso of (1), the relevant department for 
+permission/certification, etc., shall notify the payer about the return and request the revenue collection 
+officer to return the fee.
+  (3) The revenue collection officer requested to return the fee following paragraph (2) shall return the fee 
+to the payer by transfer to the payer’s account in a financial institution.
+Article 64 (Review examination of Regulations) Under Article 8 of the Framework Act on Administrative 
+Regulations and Regulation on the Issuance and Management of Instructions and Established Rules, Etc. 
+(Presidential Instruction No. 248), the reasonableness of the regulations shall be reviewed every 3 years 
+(meaning by December 31 of every third year) starting from January 1, 2014, and actions such as 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 21 / 26 -
+Korean Law Information Center
+improvements, etc., shall be taken.
+    ADDENDA   <Act No.2014-178, October 31, 2014>  
+Article 1 (Enforcement Date) (1) This Public Notification shall enter into force on the date of public 
+notification.
+  (2) Notwithstanding paragraph (1), Article 6 (1) and (2) of the ADDENDA shall enter into force on 
+November 10, 2014.
+Article 2 (Transitional Measures) Notwithstanding the amendments, the application for the designation of an 
+orphan medical device submitted as of the date of enforcement of this Public Notification shall follow the 
+previous regulations. 
+Article 3 (Transitional Measures on permission of Changes, Etc.) If the test specifications (including test 
+items) of a product item permitted under former provisions prior or subsequent to enforcement date of the 
+Common Standard Specifications Related to the Electrical/Mechanical Safety of Medical Devices (Public 
+Notification of the Ministry of Food and Drug Safety No. 2014-122, May 30, 2014; hereinafter “Common 
+Standard Specifications”) differ from the Common Standard Specifications, such specifications shall be 
+deemed to have been permitted for changes or to have had changes notified under the test 
+specifications of the Common Standard Specifications without separate procedures for such changes.
+Article 4 (Transitional Measures on Manufacturer Compliance, Etc.) A person who is deemed to have 
+obtained permission for or notified a change under Article 4 of the ADDENDUM shall maintain the facility 
+and quality control system, manufacture, import, quality control, or production control in compliance with 
+the Common Standard Specifications, and only medical devices suitable to the Common Standard 
+Specifications may be manufactured, imported, and sold.
+Article 5 (Transitional Measures on Raw Materials with Safety/Efficacy Concerns, Etc.) Medical devices 
+permitted or notified prior to the Enforcement Date of “The Regulations on the Permission, Notification, 
+Review, Etc. of Medical Devices” (Public Notification of the Ministry of Food and Drug Safety 
+No.2014-142, August 11, 2014) containing raw materials falling under Article 5 may not be manufactured, 
+imported, sold, or used from January 1, 2015: Provided, That products under subparagraph 3 of Article 5  
+may not be used from July 1, 2015, while raw materials under subparagraph 1 of Article 5 may not be 
+used from the date on which the Minamata Convention on Mercury takes effect in Korea.
+Article 6 (Amendments of Other Public Notifications) (1) The Regulations on the Permission, Notificatin, 
+Review, Etc. of Medical Devices shall be amended in part as follows:
+Subparagraph 
+４ 
+of 
+Article 
+2 
+shall 
+be 
+deleted, 
+and 
+“drugs 
+(including 
+in 
+vitro 
+diagnostic 
+radiopharmaceuticals)” in subparagraph 6 of the same Article shall be amended to “drugs.”
+“Drugs (excluding in vitro diagnostic drugs)” in all parts other than the Items of Article 4 (4) 1 shall be 
+amended to “drugs,” and subparagraph 2 of the same paragraph shall be deleted.
+The proviso other than the subparagraphs of Article 5 (1) shall be deleted.
+In the main text of Article 6 (1), “and other in vitro diagnostic drugs, etc.” shall become “and others.”
+Articles 8 and 23 shall be deleted.
+Article 25 (1) 3 and Article 25 (2) 11 shall be deleted.
+“The scope and submitted data for in vitro diagnostic drugs of Attached Table No. 2” in Article 27 (1) shall 
+become “scope,” and the proviso to paragraph (6) of the same Article shall be deleted.
+Article 40 shall be deleted.
+Attached Table 2-1 shall be deleted.
+The column for in vitro diagnostic drugs in Attachment No. 1 shall be deleted.
+  (2) The Regulations on Imported Drugs, Etc., shall be amended in part as follows:
+Article 5 Paragragh (2) Subparagaragh 2 shall be deleted.
+  (3) The Regulations on the permission of Clinical Trial Protocols for Medical Devices shall be amended in 
+part as follows:
+In Article 4 (1) 3, “Article 24” shall be “Article 26 or Article 33.”
+  (4) The Standards for the Stability Testing of Medical Devices shall be amended in part as follows:
+“Articles 16 and 26” of the parts other than the subparagraphs of Article 4 (2) shall be amended to 
+“Articles 17 and 29, or 33,” and “the reagents for in vitro diagnostic analyzers” in paragraph (4) 4 of the 
+same Article shall be amended to “in vitro diagnostic medical devices.” 
+  (5) The Regulation on Medical Device Product Items and Class by Product Item shall be amended in 
+part as follows:
+Article 4 shall be deleted.
+    ADDENDA   <Act No. 2015-46, July 29, 2015>  
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 22 / 26 -
+Korean Law Information Center
+Article 1 (Enforcement Date) This Public Notification shall enter into force on July 29, 2015.
+Article 2 (Transitional Measures on the Application for permission, Etc.) Notwithstanding the amendments, 
+previous provisions shall apply to the application for the permission of medical device manufacture 
+(import), application for changed permission for medical device permission items, request for the review of 
+medical device technical documents, etc. submitted under the previous provisions on the date of 
+Enforcement Date this Public Notification.
+    ADDENDA   <Act No. 2015-114, December 30. 2015>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Transitional Measures on Medical Devices Subject to Certification as Product Categories) A 
+person who has obtained permission for the manufacture (import) of medical devices under previous 
+provisions at the time Enforcement Datethis Public Notification enters into effect shall be deemed to have 
+obtained certification as product categories under the amended regulations of Attached Table No.1.
+    ADDENDA   <Act No. 2016-65, June 30, 2016>  
+Article 1 (Enforcement Date) (1) This Public Notification shall enter into force on the date of public 
+notification.
+  (2) Notwithstanding paragraph (1), the amended Article 20-2 shall enter into force on August 1, 2016.
+Article 
+2 
+(Transitional 
+Measures 
+on 
+the 
+Application 
+for 
+permission/Certification/Notification, 
+Etc.) 
+Notwithstanding the amendments, if an application for permission of medical device manufacture (import), 
+application for changed permission for medical device permission items, application for medical device 
+manufacture (import) certification, application for changed medical device manufacture (import) certification 
+items, notification of medical device manufacture (import), request for review of medical device technical 
+documents, etc., is submitted under the previous provisions on the date of Enforcement Date this Public 
+Notification, the previous provisions shall apply.
+    ADDENDA   <Act No.2016-96, August 31, 2016>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application to the Review of Technical Documents for In Vitro Diagnostic Medical 
+Devices, Etc.) The amendment of item (B) of Article 33 (3) 2 shall be also apply to applications for 
+permission of medical device manufacture (import), a request for review of medical device technical 
+documents, etc., or applications for changed medical device permission items that were filed before the 
+enforcement date of this Public Notification.
+Article 3 (Transitional Measures on Minor Changes) Notwithstanding the amendments of Attached Table No. 
+3, an application for changed permission items for medical devices, and application for changed 
+certification items for medical devices filed under the previous provisions as of the enforcement date of 
+this Public Notification shall follow the previous provisions.
+    ADDENDA  <Act No. 2016-105, September 30, 2016>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Transitional Measures on Application for permission/Certification/Notification, Etc.) Notwithstanding 
+the amendments, an application for changed permission items or an application for changed certification 
+items filed under the previous provisions as of the enforcement date of this Public Notification shall follow 
+the previous provisions.
+    ADDENDA  <Act No. 2016-132, Dec 7. 2016>  
+This Public Notification shall enter into force on the date of public notification.
+    ADDENDA  <Act No. 2017-58, July 10, 2017>  
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 23 / 26 -
+Korean Law Information Center
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Transitional Measures) Notwithstanding the amendments, if an application for permission of 
+medical device manufacture (import), application for changed permission for medical device permission 
+items, application for medical device manufacture (import) certification, application for changed medical 
+device manufacture (import) certification items, notification of medical device manufacture (import), request 
+for review of medical device technical documents, etc., is submitted under the previous provisions on the 
+date of the enforcement of this Public Notification, the previous provisions shall apply.
+    ADDENDA  <Act No. 2018-10, February 27, 2018>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification: 
+Provided, That the amendments of Article 19 (3) shall take effect 3 months after the date of public 
+notification.
+Article 2 (Examples of Application to Permission/Certification/Notification Application, Etc.) Notwithstanding 
+the amendments, amended provisions shall also apply to an application for medical device manufacture 
+(import) permission or changed permission, application for medical device manufacture (import) certification 
+or modified certification, or request for review of technical documents for medical devices, etc. submitted 
+prior to the enforcement of this Public Notification.
+Article 3 (Transitional Measures) (1) Medical devices falling under subparagraph 4 of Article 5 which are  
+permitted, certified or notified under the previous provisions before this Public Notification entered into 
+effect shall not be manufactured, imported, or sold from January 1, 2019.
+  (2) Changes in a product notified under the previous regulations may be notified according to Article 19 
+(4) and (5) up to the enforcement date of the amendments under Article 19 (3).
+    ADDENDA  <Act No. 2018-52, June 28, 2018>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application to Permission/Certification/Notification Application, Etc.) For applications for 
+medical device manufacturing (importing) permission or changed permission, certification medical device 
+manufacturing (importing) or changed certification, notification of manufacture (import), request for review 
+of technical documents, etc., submitted before the enforcement of this Public Notification, the amended 
+regulations may also apply.
+    ADDENDA  <Act No. 2018-55, July 24, 2018>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on July 25, 2018.
+Articles 2 and 3 are omitted.
+Article 4 (Amendment of Other Public Notifications) The Regulation on the Permission, Notification, Review, 
+Etc. of Medical Devices shall be amended in part as follows:
+Article 20 and Attached Form No.2 shall be deleted.
+In Article 21 (1) 2, “the Standard Customs Clearance Scheduled Report according to the ‘Integrated Public 
+Announcement’ (Public Notification of the Ministry of Trade, Industry and Energy)” shall be amended to 
+“a recommendation letter to confirm requirements for exemption from medical device requirements 
+following the ‘Regulations on Exemption from Confirmation of Medical Device Import Requirements’ 
+(Notice of Food and Drug Safety).”
+    ADDENDA  <Act No. 2018-59, Aug 7, 2018>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application to Permission/Certification/Notification Application, Etc.) For applications for 
+medical device manufacturing (import) permission or modified permission, applications for certification 
+medical device manufacture (import) or modified certification, notification of manufacture (import), 
+application for review of technical documents, etc., submitted before the enforcement of this Public 
+Notification, the amendment regulations may also apply.Amended provisions may also apply to an 
+application for medical device manufacture (import) permission or changed permission, application for 
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 24 / 26 -
+Korean Law Information Center
+medical device manufacture (import) certification or modified certification, medical device manufacture 
+(import) notification, or request for review of technical documents for medical devices, etc. submitted prior 
+to the enforcement of this Public Notification
+Article 3 (Transitional Measures on the Designation of Orphan Medical Devices) Notwithstanding the 
+amended regulations, previous provisions shall apply to applications for the designation of orphan medical 
+devices submitted under the previous provisions at the time of the enforcement of this Public Notification.
+    ADDENDA  <Act No. 2018-92, Nov 19. 2018>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification: 
+Provided, That the amendments of Article 29 (5) shall enter into force on May 1, 2019.
+Article 2 (Examples of Application to Permission/Certification/Notification Application, Etc.) If an application 
+for permission of medical device manufacture (import), application for changed permission for medical 
+device permission items, application for medical device manufacture (import) certification, application for 
+changed medical device manufacture (import) certification items, notification of medical device manufacture 
+(import), request for review of medical device technical documents, etc., is submitted under the previous 
+provisions on the date of the enforcement of this Public Notification, the amended provisions may apply.
+Article 3 (Transitional Measures on Test Reports, Etc.) Test results issued by a nonclinical trial center under 
+Article 3 of the ADDENDA of the Enforcement Rule of the Medical Devices Act the <Prime Minister's 
+Decree No. 1389, May 1, 2017> before the enforcement date in subparagraph 5 of Article 29 shall be 
+deemed to have been tested according to the amended provision of subparagraph 5 of Article 29.
+    ADDENDA  <Act No. 2019-13, February 28, 2019>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application for Minor Changes) The amendments for minor changes shall apply first 
+to medical devices with minor changes after the enforcement of this Public Notification.
+    ADDENDA  <Act No. 2019-62, July 23, 2019>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application for Permission/Certification/Notification, Etc.) Item A-4, subparagraph 12 of 
+Article 29 shall apply to the applications submitted for the first time after the enforcement of this Public 
+Notification for medical device manufacture (import) permission, application for changed medical device 
+manufacture (import) permission items, application for manufacture (import) certification, application for 
+changed manufacture (import) certification items, notification of manufacture (import), request for review of 
+medical devices technical documents, etc.
+    ADDENDA  <Act No. 2019-103, November 12. 2019>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application to permission of Medical Devices for Exhibition Application) The amended 
+regulations of Article 56 shall apply to the medical device for which the first application for permission 
+since the enforcement of this Public Notification was made.
+Article 3 (Examples of Application to Internationally Standardized Technical Document) The amendments of 
+Attached Table No. 10 (related to Article 27 (3)) shall apply to the medical device first to apply for 
+permission (including the changed permission) after the enforcement of this Public Notification.
+Article 4 (Transitional Measures for Application for Permission/Certification/Notification, Etc.) Notwithstanding 
+the amended provisions of Article 6, previous provisions shall apply to application for medical device 
+manufacture (import) permission, application for changed medical device manufacture (import) permission 
+items, application for medical device manufacture (import) certification, application for changed medical 
+device manufacture (import) certification items, notification of manufacture (import), request for review of 
+medical device technical documents, etc. filed under previous provisions as of the date of enforcement of 
+this Public Notification.
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 25 / 26 -
+Korean Law Information Center
+    ADDENDA  <Act No. 2020-26, April 24, 2020>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on May 1.
+    ADDENDA  <Act No. 2020-95, October 8. 2020>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification: 
+Provided, That the amendments of Article 63 shall enter into force on October 14, 2020.
+Article 2 (Examples of Application to Permission/Certification/Notification Application, Etc.) Previous provisions 
+shall apply to Applications for medical device manufacture (import) permission or modified permission, 
+medical device manufacture (import) certification or modified certification, medical device manufacture 
+(import) notification, request for review of medical device technical document, etc., submitted before the 
+enforcement of this Public Notification. 
+Article 3 (Transitional Measures on Minor Changes) Notwithstanding the amendments of Attached Table No. 
+3, an application for changed permission for medical devices and modified certification for medical 
+devices submitted as of the enforcement date of this Public Notification under the previous provisions 
+shall follow the previous provisions.
+    ADDENDA  <Act No. 2021-10, February 22, 2021>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Articles 2 and 3 shall be deleted.
+Article 4 (Other Amendments of Public Notifications)
+1. The Regulation on the Permission, Notification, Review, Etc. of Medical Devices (Public Notification of 
+the Ministry of Food and Drug Safety No. 2020-26, April 24, 2020) shall be amended in part as 
+follows:
+The provisions of Articles 40 through 48 shall be deleted.
+2. The Regulation on the Permission, Notification, Review, Etc. of In Vitro Diagnostic(Ministry of Food and 
+Drug Safety Public Notification No. 2020-29, May 1, 2020) shall be amended in part as follows:
+The provisions of Articles 34 through 42 shall be deleted.
+Article 5 shall be omitted.
+    ADDENDA  <Act No. 2021-15, February 26, 2021>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application) The provisions of Article 6 shall also apply to medical devices applied 
+for expeditious review before the enforcement of this Public Notification and undergoing review.
+Article 3 (Amendment of Other Public Notifications) (1) The Regulation on the Permission, Notification, 
+Review, Etc. of Medical Devices shall be amended in part as follows:
+“Article 5 (6) of the Enforcement Rule and Article 24 (4) of the ‘Act on Nurturing Medical Devices Industry 
+and Supporting Innovative Medical Devices’” in Article 1 shall be amended to “Article 5 6) of the 
+Enforcement Rule.”
+Article 19-2 shall be deleted.
+  (2) The Regulation on the Permission, Notification, Review, Etc. of In Vitro Diagnostic Medical Devices 
+shall be amended in part as follows:
+“Article 5 (6) and Article 24 (4) of the Act on Nurturing Medical Devices Industry and Supporting Innovative 
+Medical Devices” in Article 1 shall be amended to “Article 5 (6).”
+The “In vitro diagnostic equipment (innovative medical devices software)” section in Attached Table No. 4 
+shall be deleted.
+    ADDENDA  <Act No. 2021-35, April 22, 2021>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+
+Regulation on the Permission, Notification, Review, Etc. of Medical Devices
+Ministry of Government Legislation
+- 26 / 26 -
+Korean Law Information Center
+Article 2 (Examples of Application for Using Raw Materials with Safety/Efficacy Concerns, Etc.) The 
+amended provision of Article 5 shall apply to medical devices applied for approval or certification for the 
+first time since the enforcement of this Public Notification.
+Article 3 (Transitional Measures on Using Raw Materials with Safety/Efficacy Concerns, Etc.) No medical 
+device certified prior to the enforcement of this Public Notification containing raw materials that fall under 
+the amended provision of Article 5  may not be manufactured, imported, or sold from January 1, 2022, 
+and may not be used from July 1, 2022.
+    ADDENDA  <Act No. 2021-107, Dec 21. 2021>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application for Permission/Certification/notification Application, Etc.) If an application 
+for permission of medical device manufacture (import), application for changed permission for medical 
+device permission items, application for medical device manufacture (import) certification, application for 
+changed medical device manufacture (import) certification items, notification of medical device manufacture 
+(import), request for review of medical device technical documents, etc., is filed under the previous 
+provisions prior to the enforcement of this Public Notification, the amended provisions may also apply: 
+Provided, That in case of Attached Table No. 16, the provisions shall apply first to applications for 
+medical device manufacture (import) permission and applications for changed medical device manufacture 
+(import) permission items. 
+Article 3 (Examples of Application to Minor Changes) The amendments for minor changes shall apply first 
+to medical devices with minor changes after the enforcement of this Public Notification.
+Article 4 (Transitional Measures on the Change in Use of Medical Devices for Exhibition) The amended 
+provision of Article 58-2 may apply to medical devices approved for the purpose of exhibition before the 
+date of enforcement of this Public Notification.
+    ADDENDA  <Act No. 2022-52, July 29, 2022>  
+Article 1 (Enforcement Date) This Public Notification shall enter into force on the date of public notification.
+Article 2 (Examples of Application to permission/Certification/notification Application, Etc.) The amended 
+regulations may apply to applications for changed medical device permission items and applications for 
+changed medical device certification items filed before the date of enforcement of this Public Notification.
+Note: MFDS offers the English version as a service to an international audience. Any 
+discrepancies or differences created in the translation are not binding and have no 
+legal effect for compliance or enforcement purposes. The official version of this 
+document is the Korean version.

@@ -32,9 +32,10 @@ class TestNouvellesOrigines(unittest.TestCase):
         self.assertNotIn("piece_specifique_pakistan", [d.id for d in documents_requis_maroc("pakistan", "I")])
 
     def test_regles_des_pays_provisoires_signalees(self):
+        attendus = {"etats_unis": "partiel", "coree_du_sud": "partiel", "pakistan": "provisoire"}
         for pays in NOUVEAUX:
             regles = charger_regles(pays)
-            self.assertEqual(regles["statut"], "provisoire")
+            self.assertEqual(regles["statut"], attendus[pays])
             self.assertTrue(regles["autorite"] and regles["classification"])
 
     def test_certificat_americain_range_en_piece_4(self):
@@ -54,22 +55,23 @@ class TestCorrespondances(unittest.TestCase):
                          {"maroc", "union_europeenne", "chine", "inde", "etats_unis", "coree_du_sud", "pakistan"})
         for p in t["pays"]:
             self.assertEqual(set(p["classes"]), {"A", "B", "C", "D"}, p["id"])
-            self.assertIn(p["statut"], ("verifie", "provisoire"))
+            self.assertIn(p["statut"], ("verifie", "partiel", "provisoire"))
         statuts = {p["id"]: p["statut"] for p in t["pays"]}
-        for pays in NOUVEAUX:
-            self.assertEqual(statuts[pays], "provisoire")
+        self.assertEqual(statuts["pakistan"], "provisoire")  # texte DRAP pas encore indexé
+        self.assertEqual(statuts["coree_du_sud"], "partiel")
 
     def test_classes_marocaines_toutes_placees(self):
         placees = {c for classes in correspondances.charger()["pays"]["maroc"]["classes"].values() for c in classes}
         self.assertEqual(placees, set(charger_regles("maroc")["classification"]))
 
     def test_equivalents(self):
-        eq = correspondances.equivalents("coree_du_sud", "2")
+        eq = correspondances.equivalents("coree_du_sud", "II")
         self.assertEqual(eq["maroc"], ["IIA"])
         self.assertEqual(eq["inde"], ["B"])
         eq = correspondances.equivalents("maroc", "IIB")
         self.assertEqual(eq["etats_unis"], ["II", "III"])  # trois classes américaines : correspondance approximative
-        self.assertEqual(eq["coree_du_sud"], ["3"])
+        self.assertEqual(eq["coree_du_sud"], ["III"])
+        self.assertEqual(correspondances.equivalents("coree_du_sud", "IV")["maroc"], ["III"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,822 @@
+<?xml version="1.0"?>
+<DIV5 N="801" TYPE="PART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801&amp;quot;}">
+<HEAD>PART 801&#x2014;LABELING
+</HEAD>
+<AUTH>
+<HED>Authority:</HED><PSPACE>21 U.S.C. 321, 331-334, 351, 352, 360d, 360i, 360j, 371, 374.
+</PSPACE></AUTH>
+<SOURCE>
+<HED>Source:</HED><PSPACE>41 FR 6896, Feb. 13, 1976, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV6 N="A" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-A&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart A&amp;quot;}">
+<HEAD>Subpart A&#x2014;General Labeling Provisions</HEAD>
+<DIV8 N="801.1" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.1&quot;,&quot;citation&quot;:&quot;21 CFR 801.1&quot;}">
+<HEAD>&#xA7; 801.1 Medical devices; name and place of business of manufacturer, packer or distributor.</HEAD>
+<P>(a) The label of a device in package form shall specify conspicuously the name and place of business of the manufacturer, packer, or distributor.</P>
+<P>(b) The requirement for declaration of the name of the manufacturer, packer, or distributor shall be deemed to be satisfied, in the case of a corporation, only by the actual corporate name which may be preceded or followed by the name of the particular division of the corporation. Abbreviations for &#x201C;Company,&#x201D; &#x201C;Incorporated,&#x201D; etc., may be used and &#x201C;The&#x201D; may be omitted. In the case of an individual, partnership, or association, the name under which the business is conducted shall be used.</P>
+<P>(c) Where a device is not manufactured by the person whose name appears on the label, the name shall be qualified by a phrase that reveals the connection such person has with such device; such as, &#x201C;Manufactured for ___&#x201D;, &#x201C;Distributed by _____&#x201D;, or any other wording that expresses the facts.</P>
+<P>(d) The statement of the place of business shall include the street address, city, State, and Zip Code; however, the street address may be omitted if it is shown in a current city directory or telephone directory. The requirement for inclusion of the ZIP Code shall apply only to consumer commodity labels developed or revised after the effective date of this section. In the case of nonconsumer packages, the ZIP Code shall appear on either the label or the labeling (including the invoice).</P>
+<P>(e) If a person manufactures, packs, or distributes a device at a place other than his principal place of business, the label may state the principal place of business in lieu of the actual place where such device was manufactured or packed or is to be distributed, unless such statement would be misleading.</P>
+</DIV8>
+
+<DIV8 N="801.3" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.3&quot;,&quot;citation&quot;:&quot;21 CFR 801.3&quot;}">
+<HEAD>&#xA7; 801.3 Definitions.</HEAD>
+<P>As used in this part:</P>
+<P><I>Automatic identification and data capture (AIDC)</I> means any technology that conveys the unique device identifier or the device identifier of a device in a form that can be entered into an electronic patient record or other computer system via an automated process.</P>
+<P><I>Center Director</I> means the Director of the Center for Devices and Radiological Health or the Director of the Center for Biologics Evaluation and Research, depending on which Center has been assigned lead responsibility for the device.</P>
+<P><I>Combination product</I> has the meaning set forth in &#xA7; 3.2(e) of this chapter.</P>
+<P><I>Convenience kit</I> means two or more different medical devices packaged together for the convenience of the user.</P>
+<P><I>Device package</I> means a package that contains a fixed quantity of a particular version or model of a device.</P>
+<P><I>Expiration date</I> means the date by which the label of a device states the device must or should be used.</P>
+<P><I>FDA, we,</I> or <I>us</I> means the Food and Drug Administration.</P>
+<P><I>Finished device</I> means any device or accessory to any device that is suitable for use or capable of functioning.</P>
+<P><I>Global Unique Device Identification Database (GUDID)</I> means the database that serves as a repository of information to facilitate the identification of medical devices through their distribution and use.</P>
+<P><I>Human cells, tissues, or cellular or tissue-based product (HCT/P) regulated as a device</I> means an HCT/P as defined in &#xA7; 1271.3(d) of this chapter that does not meet the criteria in &#xA7; 1271.10(a) and that is also regulated as a device.</P>
+<P><I>Implantable device</I> means a device that is intended to be placed in a surgically or naturally formed cavity of the human body. A device is regarded as an <I>implantable device</I> for the purpose of this part only if it is intended to remain implanted continuously for a period of 30 days or more, unless the Commissioner of Food and Drugs determines otherwise in order to protect human health.</P>
+<P><I>Label</I> has the meaning set forth in section 201(k) of the Federal Food, Drug, and Cosmetic Act.</P>
+<P><I>Labeler</I> means:</P>
+<P>(1) Any person who causes a label to be applied to a device with the intent that the device will be commercially distributed without any intended subsequent replacement or modification of the label; and</P>
+<P>(2) Any person who causes the label of a device to be replaced or modified with the intent that the device will be commercially distributed without any subsequent replacement or modification of the label, except that the addition of the name of, and contact information for, a person who distributes the device, without making any other changes to the label, is not a modification for the purposes of determining whether a person is a labeler.</P>
+<P><I>Lot or batch</I> means one <I>finished device</I> or more that consist of a single type, model, class, size, composition, or software version that are manufactured under essentially the same conditions and that are intended to have uniform characteristics and quality within specified limits.</P>
+<P><I>Shipping container</I> means a container used during the shipment or transportation of devices, and whose contents may vary from one shipment to another.</P>
+<P><I>Specification</I> means any requirement with which a device must conform.</P>
+<P><I>Unique device identifier (UDI)</I> means an identifier that adequately identifies a device through its distribution and use by meeting the requirements of &#xA7; 830.20 of this chapter. A unique device identifier is composed of:</P>
+<P>(1) A <I>device identifier</I>&#x2014;a mandatory, fixed portion of a UDI that identifies the specific version or model of a device and the labeler of that device; and</P>
+<P>(2) A <I>production identifier</I>&#x2014;a conditional, variable portion of a UDI that identifies one or more of the following when included on the label of the device:</P>
+<P>(i) The lot or batch within which a device was manufactured;</P>
+<P>(ii) The serial number of a specific device;</P>
+<P>(iii) The expiration date of a specific device;</P>
+<P>(iv) The date a specific device was manufactured;</P>
+<P>(v) For an HCT/P regulated as a device, the distinct identification code required by &#xA7; 1271.290(c) of this chapter.</P>
+<P><I>Universal product code (UPC)</I> means the product identifier used to identify an item sold at retail in the United States.</P>
+<P><I>Version or model</I> means all devices that have specifications, performance, size, and composition, within limits set by the labeler.</P>
+<CITA TYPE="N">[78 FR 58817, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.4" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.4&quot;,&quot;citation&quot;:&quot;21 CFR 801.4&quot;}">
+<HEAD>&#xA7; 801.4 Meaning of intended uses.</HEAD>
+<XREF ID="20170109" REFID="4">Link to an amendment published at 82 FR 2217, Jan. 9, 2017.</XREF>
+<XREF ID="20170207" REFID="3a">This amendment was delayed until Mar. 21, 2017, at 82 FR 9501, Feb. 7, 2017.</XREF>
+<XREF ID="20170207" REFID="2">This amendment was further delayed until Mar. 19, 2018, at 82 FR 14319, Mar. 20, 2017.</XREF>
+<XREF ID="20180316" REFID="7">This amendment delayed indefinitely at 83 FR 11639, Mar. 16, 2018.</XREF>
+<P>The words <I>intended uses</I> or words of similar import in &#xA7;&#xA7; 801.5, 801.119, 801.122, and 1100.5 of this chapter refer to the objective intent of the persons legally responsible for the labeling of an article (or their representatives). The intent may be shown by such persons' expressions, the design or composition of the article, or by the circumstances surrounding the distribution of the article. This objective intent may, for example, be shown by labeling claims, advertising matter, or oral or written statements by such persons or their representatives. Objective intent may be shown, for example, by circumstances in which the article is, with the knowledge of such persons or their representatives, offered or used for a purpose for which it is neither labeled nor advertised; provided, however, that a firm would not be regarded as intending an unapproved new use for a device approved, cleared, granted marketing authorization, or exempted from premarket notification based solely on that firm's knowledge that such device was being prescribed or used by health care providers for such use. The intended uses of an article may change after it has been introduced into interstate commerce by its manufacturer. If, for example, a packer, distributor, or seller intends an article for different uses than those intended by the person from whom he or she received the article, such packer, distributor, or seller is required to supply adequate labeling in accordance with the new intended uses.</P>
+<CITA TYPE="N">[86 FR 41401, Aug. 2, 2021]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.5" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.5&quot;,&quot;citation&quot;:&quot;21 CFR 801.5&quot;}">
+<HEAD>&#xA7; 801.5 Medical devices; adequate directions for use.</HEAD>
+<P><I>Adequate directions for use</I> means directions under which the layman can use a device safely and for the purposes for which it is intended. Section 801.4 defines <I>intended use.</I> Directions for use may be inadequate because, among other reasons, of omission, in whole or in part, or incorrect specification of:</P>
+<P>(a) Statements of all conditions, purposes, or uses for which such device is intended, including conditions, purposes, or uses for which it is prescribed, recommended, or suggested in its oral, written, printed, or graphic advertising, and conditions, purposes, or uses for which the device is commonly used; except that such statements shall not refer to conditions, uses, or purposes for which the device can be safely used only under the supervision of a practitioner licensed by law and for which it is advertised solely to such practitioner.</P>
+<P>(b) Quantity of dose, including usual quantities for each of the uses for which it is intended and usual quantities for persons of different ages and different physical conditions.</P>
+<P>(c) Frequency of administration or application.</P>
+<P>(d) Duration of administration or application.</P>
+<P>(e) Time of administration or application, in relation to time of meals, time of onset of symptoms, or other time factors.</P>
+<P>(f) Route or method of administration or application.</P>
+<P>(g) Preparation for use, i.e., adjustment of temperature, or other manipulation or process.</P>
+</DIV8>
+
+<DIV8 N="801.6" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.6&quot;,&quot;citation&quot;:&quot;21 CFR 801.6&quot;}">
+<HEAD>&#xA7; 801.6 Medical devices; misleading statements.</HEAD>
+<P>Among representations in the labeling of a device which render such device misbranded is a false or misleading representation with respect to another device or a drug or food or cosmetic.</P>
+</DIV8>
+
+<DIV8 N="801.15" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.15&quot;,&quot;citation&quot;:&quot;21 CFR 801.15&quot;}">
+<HEAD>&#xA7; 801.15 Medical devices; prominence of required label statements; use of symbols in labeling.</HEAD>
+<P>(a) A word, statement, or other information required by or under authority of the act to appear on the label may lack that prominence and conspicuousness required by section 502(c) of the act by reason, among other reasons, of:</P>
+<P>(1) The failure of such word, statement, or information to appear on the part or panel of the label which is presented or displayed under customary conditions of purchase;</P>
+<P>(2) The failure of such word, statement, or information to appear on two or more parts or panels of the label, each of which has sufficient space therefor, and each of which is so designed as to render it likely to be, under customary conditions of purchase, the part or panel displayed;</P>
+<P>(3) The failure of the label to extend over the area of the container or package available for such extension, so as to provide sufficient label space for the prominent placing of such word, statement, or information;</P>
+<P>(4) Insufficiency of label space for the prominent placing of such word, statement, or information, resulting from the use of label space for any word, statement, design, or device which is not required by or under authority of the act to appear on the label;</P>
+<P>(5) Insufficiency of label space for the placing of such word, statement, or information, resulting from the use of label space to give materially greater conspicuousness to any other word, statement, or information, or to any design or device; or</P>
+<P>(6) Smallness or style of type in which such word, statement, or information appears, insufficient background contrast, obscuring designs or vignettes, or crowding with other written, printed, or graphic matter.</P>
+<P>(b) No exemption depending on insufficiency of label space, as prescribed in regulations promulgated under section 502(b) of the act, shall apply if such insufficiency is caused by:</P>
+<P>(1) The use of label space for any word, statement, design, or device which is not required by or under authority of the act to appear on the label;</P>
+<P>(2) The use of label space to give greater conspicuousness to any word, statement, or other information than is required by section 502(c) of the act; or</P>
+<P>(3) The use of label space for any representation in a foreign language.</P>
+<P>(c)(1)(i) All words, statements, and other information required by or under authority of the act to appear on the label or labeling for a device shall appear thereon in one or more of the following formats:</P>
+<P>(A) The English language;</P>
+<P>(B) In the case of articles distributed solely in Puerto Rico or in a Territory where the predominant language is one other than English, the predominant language may be substituted for English;</P>
+<P>(C) A symbol accompanied by adjacent explanatory English text, or text in the predominant language of the Territory, in the case of articles distributed solely in Puerto Rico or in a Territory where the predominant language is one other than English;</P>
+<P>(D) A symbol not accompanied by adjacent explanatory text that:</P>
+<P>(<I>1</I>) Is contained in a standard that FDA recognizes under its authority in section 514(c) of the act;</P>
+<P>(<I>2</I>) Is used according to the specifications for use of the symbol set forth in FDA's section 514(c) recognition; and</P>
+<P>(<I>3</I>) Is explained in a paper or electronic symbols glossary that is included in the labeling for the device and the labeling on or within the package containing the device bears a prominent and conspicuous statement identifying the location of the symbols glossary that is written in English or, in the case of articles distributed solely in Puerto Rico or in a Territory where the predominant language is one other than English, the predominant language may be used;</P>
+<P>(E) A symbol not accompanied by adjacent explanatory text that:</P>
+<P>(<I>1</I>) Is established in a standard developed by a standards development organization (SDO);</P>
+<P>(<I>2</I>) Is not contained in a standard that is recognized by FDA under its authority in section 514(c) of the act or is contained in a standard that is recognized by FDA but is not used according to the specifications for use of the symbol set forth in FDA's section 514(c) recognition;</P>
+<P>(<I>3</I>) Is determined by the manufacturer to be likely to be read and understood by the ordinary individual under customary conditions of purchase and use in compliance with section 502(c) of the act;</P>
+<P>(<I>4</I>) Is used according to the specifications for use of the symbol set forth in the SDO-developed standard; and</P>
+<P>(<I>5</I>) Is explained in a paper or electronic symbols glossary that is included in the labeling for the device and the labeling on or within the package containing the device bears a prominent and conspicuous statement identifying the location of the symbols glossary that is written in English or, in the case of articles distributed solely in Puerto Rico or in a Territory where the predominant language is one other than English, the predominant language may be used;</P>
+<P>(F) The symbol statement &#x201C;Rx only&#x201D; or &#x201C;&#x211E; only&#x201D; may be used as provided under &#xA7; 801.109(b)(1).</P>
+<P>(ii) The use of symbols in device labeling which do not meet the requirements of paragraph (c)(1)(i) of this section renders a device misbranded under section 502(c) of the act.</P>
+<P>(iii) For purposes of paragraph (c)(1)(i) of this section:</P>
+<P>(A) An SDO is an organization that is nationally or internationally recognized and that follows a process for standard development that is transparent, (<I>i.e.,</I> open to public scrutiny), where the participation is balanced, where an appeals process is included, where the standard is not in conflict with any statute, regulation, or policy under which FDA operates, and where the standard is national or international in scope.</P>
+<P>(B) The term &#x201C;symbols glossary&#x201D; means a compiled listing of:</P>
+<P>(<I>1</I>) Each SDO-established symbol used in the labeling for the device;</P>
+<P>(<I>2</I>) The title and designation number of the SDO-developed standard containing the symbol;</P>
+<P>(<I>3</I>) The title of the symbol and its reference number, if any, in the standard; and</P>
+<P>(<I>4</I>) The meaning or explanatory text for the symbol as provided in the FDA recognition or, if FDA has not recognized the standard or portion of the standard in which the symbol is located or the symbol is not used according to the specifications for use of the symbol set forth in FDA's section 514(c) recognition, the explanatory text as provided in the standard.</P>
+<P>(2) If the label contains any representation in a foreign language, all words, statements, and other information required by or under authority of the act to appear on the label shall appear thereon in the foreign language.</P>
+<P>(3) If the labeling contains any representation in a foreign language, all words, statements, and other information required by or under authority of the act to appear on the label or labeling shall appear on the labeling in the foreign language.</P>
+<CITA TYPE="N">[41 FR 6896, Feb. 13, 1976, as amended at 81 FR 38930, June 15, 2016]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.16" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.16&quot;,&quot;citation&quot;:&quot;21 CFR 801.16&quot;}">
+<HEAD>&#xA7; 801.16 Medical devices; Spanish-language version of certain required statements.</HEAD>
+<P>If devices restricted to prescription use only are labeled solely in Spanish for distribution in the Commonwealth of Puerto Rico where Spanish is the predominant language, such labeling is authorized under &#xA7; 801.15(c).</P>
+</DIV8>
+
+<DIV8 N="801.18" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.18&quot;,&quot;citation&quot;:&quot;21 CFR 801.18&quot;}">
+<HEAD>&#xA7; 801.18 Format of dates provided on a medical device label.</HEAD>
+<P>(a) <I>In general.</I> Whenever the label of a medical device includes a printed expiration date, date of manufacture, or any other date intended to be brought to the attention of the user of the device, the date must be presented in the following format: The year, using four digits; followed by the month, using two digits; followed by the day, using two digits; each separated by hyphens. For example, January 2, 2014, must be presented as 2014-01-02.</P>
+<P>(b) <I>Exceptions.</I> (1) A combination product that properly bears a National Drug Code (NDC) number is not subject to the requirements of paragraph (a) of this section.</P>
+<P>(2) If the device is an electronic product to which a standard is applicable under subchapter J of this chapter, Radiological Health, the date of manufacture shall be presented as required by &#xA7; 1010.3(a)(2)(ii) of this chapter.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="B" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-B&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart B&amp;quot;}">
+<HEAD>Subpart B&#x2014;Labeling Requirements for Unique Device Identification</HEAD>
+<DIV8 N="801.20" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.20&quot;,&quot;citation&quot;:&quot;21 CFR 801.20&quot;}">
+<HEAD>&#xA7; 801.20 Label to bear a unique device identifier.</HEAD>
+<P>(a) <I>In general.</I> (1) The label of every medical device shall bear a unique device identifier (UDI) that meets the requirements of this subpart and part 830 of this chapter.</P>
+<P>(2) Every device package shall bear a UDI that meets the requirements of this subpart and part 830 of this chapter.</P>
+<P>(b) <I>Exceptions.</I> Exceptions to the general rule of paragraph (a) of this section are provided by &#xA7;&#xA7; 801.30, 801.45, and 801.128(f)(2), and &#xA7; 801.55 provides a means to request an exception or alternative not provided by those provisions.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.30" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.30&quot;,&quot;citation&quot;:&quot;21 CFR 801.30&quot;}">
+<HEAD>&#xA7; 801.30 General exceptions from the requirement for the label of a device to bear a unique device identifier.</HEAD>
+<P>(a) <I>In general.</I> The following types of devices are excepted from the requirement of &#xA7; 801.20; a device within one or more of the following exceptions is not required to bear a unique device identifier (UDI):</P>
+<P>(1) A finished device manufactured and labeled prior to the compliance date established by FDA for &#xA7; 801.20 regarding the device. This exception expires with regard to a particular device 3 years after the compliance date established by FDA for the device.</P>
+<P>(2) A class I device that FDA has by regulation exempted from the good manufacturing practice requirements of part 820 of this chapter, exclusive of any continuing requirement for recordkeeping under &#xA7; 820.35 of this chapter.</P>
+<P>(3) Individual single-use devices, all of a single version or model, that are distributed together in a single device package, intended to be stored in that device package until removed for use, and which are not intended for individual commercial distribution. This exception is not available for any implantable device. The device package containing these individual devices is not excepted from the requirement of &#xA7; 801.20, and must bear a UDI.</P>
+<P>(4) A device used solely for research, teaching, or chemical analysis, and not intended for any clinical use.</P>
+<P>(5) A custom device within the meaning of &#xA7; 812.3(b) of this chapter.</P>
+<P>(6) An investigational device within the meaning of part 812 of this chapter.</P>
+<P>(7) A veterinary medical device not intended for use in the diagnosis of disease or other conditions in man, in the cure, mitigation, treatment, or prevention of disease in man, or intended to affect the structure or any function of the body of man.</P>
+<P>(8) A device intended for export from the United States.</P>
+<P>(9) A device held by the Strategic National Stockpile and granted an exception or alternative under &#xA7; 801.128(f)(2).</P>
+<P>(10) A device for which FDA has established a performance standard under section 514(b) of the Federal Food, Drug, and Cosmetic Act and has provided therein an exception from the requirement of &#xA7; 801.20, or for which FDA has recognized all or part of a performance standard under section 514(c) of the Federal Food, Drug, and Cosmetic Act and has included an exception from the requirement of &#xA7; 801.20 within the scope of that recognition.</P>
+<P>(11) A device packaged within the immediate container of a combination product or convenience kit, <I>provided that</I> the label of the combination product or convenience kit bears a UDI.</P>
+<P>(b) <I>National Drug Code (NDC) Numbers.</I> If a combination product properly bears an NDC number on its label&#x2014;</P>
+<P>(1) The combination product is not subject to the requirements of &#xA7; 801.20.</P>
+<P>(2) A device constituent of such a combination product whose components are physically, chemically, or otherwise combined or mixed and produced as a single entity as described by &#xA7; 3.2(e)(1) of this chapter is not subject to the requirements of &#xA7; 801.20.</P>
+<P>(3) Each device constituent of such a combination product, other than one described by &#xA7; 3.2(e)(1) of this chapter, must bear a UDI on its label unless paragraph (a)(11) of this section applies.</P>
+<P>(c) <I>Exception for shipping containers.</I> This rule does not require a UDI to be placed on any shipping container.</P>
+<P>(d) The UDI of a class I device is not required to include a production identifier.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013, as amended at 90 FR 55979, Dec. 4, 2025]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.35" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.35&quot;,&quot;citation&quot;:&quot;21 CFR 801.35&quot;}">
+<HEAD>&#xA7; 801.35 Voluntary labeling of a device with a unique device identifier.</HEAD>
+<P>(a) The labeler of a device that is not required to bear a unique device identifier (UDI) may voluntarily comply with &#xA7; 801.20. If a labeler voluntarily includes a UDI for a device, the labeler may voluntarily provide information concerning the device under subpart E of part 830 of this chapter.</P>
+<P>(b) A device may bear both a Universal Product Code (UPC) and a UDI on its label and packages.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.40" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.40&quot;,&quot;citation&quot;:&quot;21 CFR 801.40&quot;}">
+<HEAD>&#xA7; 801.40 Form of a unique device identifier.</HEAD>
+<P>(a) Every unique device identifier (UDI) must meet the technical requirements of &#xA7; 830.20 of this chapter. The UDI must be presented in two forms:</P>
+<P>(1) Easily readable plain-text, and</P>
+<P>(2) Automatic identification and data capture (AIDC) technology.</P>
+<P>(b) The UDI must include a device identifier segment. Whenever a device label includes a lot or batch number, a serial number, a manufacturing date, an expiration date, or for a human cell, tissue, or cellular or tissue-based product (HCT/P) regulated as a device, a distinct identification code as required by &#xA7; 1271.290(c) of this chapter, the UDI must include a production identifier segment that conveys such information.</P>
+<P>(c) If the AIDC technology is not evident upon visual examination of the label or device package, the label or device package must disclose the presence of AIDC technology.</P>
+<P>(d) A class I device that bears a Universal Product Code (UPC) on its label and device packages is deemed to meet all requirements of subpart B of this part. The UPC will serve as the unique device identifier required by &#xA7; 801.20.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.45" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.45&quot;,&quot;citation&quot;:&quot;21 CFR 801.45&quot;}">
+<HEAD>&#xA7; 801.45 Devices that must be directly marked with a unique device identifier.</HEAD>
+<P>(a) <I>In general.</I> A device that must bear a unique device identifier (UDI) on its label must also bear a permanent marking providing the UDI on the device itself if the device is intended to be used more than once and intended to be reprocessed before each use.</P>
+<P>(b) <I>UDI for direct marking.</I> The UDI provided through a direct marking on a device may be:</P>
+<P>(1) Identical to the UDI that appears on the label of the device, or</P>
+<P>(2) A different UDI used to distinguish the unpackaged device from any device package containing the device.</P>
+<P>(c) <I>Form of a UDI when provided as a direct marking.</I> When a device must bear a UDI as a direct marking, the UDI may be provided through either or both of the following:</P>
+<P>(1) Easily readable plain-text;</P>
+<P>(2) Automatic identification and data capture (AIDC) technology, or any alternative technology, that will provide the UDI of the device on demand.</P>
+<P>(d) <I>Exceptions.</I> The requirement of paragraph (a) of this section shall not apply to any device that meets any of the following criteria:</P>
+<P>(1) Any type of direct marking would interfere with the safety or effectiveness of the device;</P>
+<P>(2) The device cannot be directly marked because it is not technologically feasible;</P>
+<P>(3) The device is a single-use device and is subjected to additional processing and manufacturing for the purpose of an additional single use.</P>
+<P>(4) The device has been previously marked under paragraph (a) of this section.</P>
+<P>(e) <I>Exception to be noted in design and development files.</I> A labeler that decides to make use of an exception under paragraph (d) of this section must document the basis of that decision in the design and development files required by &#xA7; 820.10(c) of this chapter.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013, as amended at 90 FR 55979, Dec. 4, 2025]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.50" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.50&quot;,&quot;citation&quot;:&quot;21 CFR 801.50&quot;}">
+<HEAD>&#xA7; 801.50 Labeling requirements for stand-alone software.</HEAD>
+<P>(a) Stand-alone software that is not distributed in packaged form (e.g., when downloaded from a Web site) is deemed to meet the UDI labeling requirements of this subpart if it complies with the requirements of paragraph (b) of this section and conveys the version number in its production identifier.</P>
+<P>(b) Regardless of whether it is or is not distributed in packaged form, stand-alone software regulated as a medical device must provide its unique device identifier through either or both of the following:</P>
+<P>(1) An easily readable plain-text statement displayed whenever the software is started;</P>
+<P>(2) An easily readable plain-text statement displayed through a menu command (e.g., an &#x201C;About * * *&#x201D; command).</P>
+<P>(c) Stand-alone software that is distributed in both packaged form and in a form that is not packaged (e.g., when downloaded from a Web site) may be identified with the same device identifier.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.55" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.55&quot;,&quot;citation&quot;:&quot;21 CFR 801.55&quot;}">
+<HEAD>&#xA7; 801.55 Request for an exception from or alternative to a unique device identifier requirement.</HEAD>
+<P>(a) A labeler may submit a request for an exception from or alternative to the requirement of &#xA7; 801.20 or any other requirement of this subpart for a specified device or a specified type of device. A written request for an exception or alternative must:</P>
+<P>(1) Identify the device or devices that would be subject to the exception or alternative;</P>
+<P>(2) Identify the provisions of this subpart that are the subject of the request for an exception or alternative;</P>
+<P>(3) If requesting an exception, explain why you believe the requirements of this subpart are not technologically feasible;</P>
+<P>(4) If requesting an alternative, describe the alternative and explain why it would provide for more accurate, precise, or rapid device identification than the requirements of this subpart or how the alternative would better ensure the safety or effectiveness of the device that would be subject to the alternative;</P>
+<P>(5) Provide, if known, the number of labelers and the number of devices that would be affected if we grant the requested exception or alternative; and</P>
+<P>(6) Provide other requested information that the Center Director needs to clarify the scope and effects of the requested exception or alternative.</P>
+<P>(b) A written request for an exception or alternative must be submitted by sending it:</P>
+<P>(1) If the device is regulated by the Center for Biologics Evaluation and Research (CBER), by email to: <I>cberudirequests@fda.hhs.gov</I> or by correspondence to: Food and Drug Administration, Center for Biologics Evaluation and Research, Document Control Center, 10903 New Hampshire Ave., Bldg. 71, Rm. G112, Silver Spring, MD 20993.</P>
+<P>(2) In all other cases, by email to: <I>GUDIDSupport@fda.hhs.gov,</I> or by correspondence to: UDI Regulatory Policy Support, Center for Devices and Radiological Health, Food and Drug Administration, 10903 New Hampshire Ave., Bldg. 32, Rm. 3293, Silver Spring, MD 20993-0002.</P>
+<P>(c) The Center Director may grant an exception or alternative, either in response to a request or on his or her own initiative, if the Center Director determines that an exception is appropriate because the requirements of this subpart are not technologically feasible, or that an alternative would provide for more accurate, precise, or rapid device identification than the requirements of this subpart or would better ensure the safety or effectiveness of the device that would be subject to the alternative. If we grant an exception or alternative, we may include any safeguards or conditions deemed appropriate to ensure the adequate identification of the device through its distribution and use. Any labeler may make use of an exception or alternative granted under this section, provided that such use satisfies all safeguards or conditions that are part of the exception or alternative.</P>
+<P>(d) FDA may initiate and grant an exception or alternative if we determine that the exception or alternative is in the best interest of the public health. Any such exception or alternative will remain in effect only so long as there remains a public health need for the exception or alternative.</P>
+<P>(e) The Center Director may rescind an exception or alternative granted under this section if, after providing an opportunity for an informal hearing as defined in section 201(x) of the Federal Food, Drug, and Cosmetic Act and under part 16 of this chapter, the Center Director determines that the exception or alternative no longer satisfies the criteria described in this paragraph (e) or that any safeguard or condition required under this paragraph (e) has not been met.</P>
+<CITA TYPE="N">[78 FR 58818, Sept. 24, 2013, as amended at 80 FR 18093, Apr. 3, 2015; 81 FR 11428, Mar. 4, 2016; 85 FR 18441, Apr. 2, 2020]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.57" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.57&quot;,&quot;citation&quot;:&quot;21 CFR 801.57&quot;}">
+<HEAD>&#xA7; 801.57 Discontinuation of legacy FDA identification numbers assigned to devices.</HEAD>
+<P>(a) On the date your device must bear a unique device identifier (UDI) on its label, any National Health-Related Item Code (NHRIC) or National Drug Code (NDC) number assigned to that device is rescinded, and you may no longer provide an NHRIC or NDC number on the label of your device or on any device package.</P>
+<P>(b) If your device is not required to bear a UDI on its label, any NHRIC or NDC number assigned to that device is rescinded as of September 24, 2018, and beginning on that date, you may no longer provide an NHRIC or NDC number of the label of your device or on any device package.</P>
+<P>(c) A labeler who has been assigned an FDA labeler code to facilitate use of NHRIC or NDC numbers may continue to use that labeler code under a system for the issuance of UDIs, <I>provided that</I>&#x2014;</P>
+<P>(1) Such use is consistent with the framework of the issuing agency that operates that system; and</P>
+<P>(2) No later than September 24, 2014, the labeler submits, and obtains FDA approval of, a request for continued use of the assigned labeler code. A request for continued use of an assigned labeler code must be submitted by email to: <I>GUDIDSupport@fda.hhs.gov,</I> or by correspondence to: UDI Regulatory Policy Support, Center for Devices and Radiological Health, Food and Drug Administration, 10903 New Hampshire Ave., Bldg. 32, Rm. 3293, Silver Spring, MD 20993-0002.</P>
+<P>(d) Each request for continued use of an assigned labeler code must provide&#x2014;</P>
+<P>(1) The name, mailing address, email address, and phone number of the labeler who is currently using the labeler code;</P>
+<P>(2) The owner/operator account identification used by the labeler to submit registration and listing information using FDA's Unified Registration and Listing System (FURLS).</P>
+<P>(3) The FDA labeler code that the labeler wants to continue using.</P>
+<CITA TYPE="N">[78 FR 58820, Sept. 24, 2013, as amended at 81 FR 11428, Mar. 4, 2016; 85 FR 18441, Apr. 2, 2020]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="C" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-C&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart C&amp;quot;}">
+<HEAD>Subpart C&#x2014;Labeling Requirements for Over-the-Counter Devices</HEAD>
+<DIV8 N="801.60" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.60&quot;,&quot;citation&quot;:&quot;21 CFR 801.60&quot;}">
+<HEAD>&#xA7; 801.60 Principal display panel.</HEAD>
+<P>The term <I>principal display panel,</I> as it applies to over-the-counter devices in package form and as used in this part, means the part of a label that is most likely to be displayed, presented, shown, or examined under customary conditions of display for retail sale. The principal display panel shall be large enough to accommodate all the mandatory label information required to be placed thereon by this part with clarity and conspicuousness and without obscuring designs, vignettes, or crowding. Where packages bear alternate principal display panels, information required to be placed on the principal display panel shall be duplicated on each principal display panel. For the purpose of obtaining uniform type size in declaring the quantity of contents for all packages of substantially the same size, the term <I>area of the principal display panel</I> means the area of the side or surface that bears the principal display panel, which area shall be:</P>
+<P>(a) In the case of a rectangular package where one entire side properly can be considered to be the principal display panel side, the product of the height times the width of that side;</P>
+<P>(b) In the case of a cylindrical or nearly cylindrical container, 40 percent of the product of the height of the container times the circumference; and</P>
+<P>(c) In the case of any other shape of container, 40 percent of the total surface of the container: <I>Provided, however,</I> That where such container presents an obvious &#x201C;principal display panel&#x201D; such as the top of a triangular or circular package, the area shall consist of the entire top surface.</P>
+<FP>In determining the area of the principal display panel, exclude tops, bottoms, flanges at the tops and bottoms of cans, and shoulders and necks of bottles or jars. In the case of cylindrical or nearly cylindrical containers, information required by this part to appear on the principal display panel shall appear within that 40 percent of the circumference which is most likely to be displayed, presented, shown, or examined under customary conditions of display for retail sale.
+</FP>
+</DIV8>
+
+<DIV8 N="801.61" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.61&quot;,&quot;citation&quot;:&quot;21 CFR 801.61&quot;}">
+<HEAD>&#xA7; 801.61 Statement of identity.</HEAD>
+<P>(a) The principal display panel of an over-the-counter device in package form shall bear as one of its principal features a statement of the identity of the commodity.</P>
+<P>(b) Such statement of identity shall be in terms of the common name of the device followed by an accurate statement of the principal intended action(s) of the device. Such statement shall be placed in direct conjunction with the most prominent display of the name and shall employ terms descriptive of the principal intended action(s). The indications for use shall be included in the directions for use of the device, as required by section 502(f)(1) of the act and by the regulations in this part.</P>
+<P>(c) The statement of identity shall be presented in bold face type on the principal display panel, shall be in a size reasonably related to the most prominent printed matter on such panel, and shall be in lines generally parallel to the base on which the package rests as it is designed to be displayed.</P>
+</DIV8>
+
+<DIV8 N="801.62" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.62&quot;,&quot;citation&quot;:&quot;21 CFR 801.62&quot;}">
+<HEAD>&#xA7; 801.62 Declaration of net quantity of contents.</HEAD>
+<P>(a) The label of an over-the-counter device in package form shall bear a declaration of the net quantity of contents. This shall be expressed in the terms of weight, measure, numerical count, or a combination of numerical count and weight, measure, or size: <I>Provided,</I> That:</P>
+<P>(1) In the case of a firmly established general consumer usage and trade custom of declaring the quantity of a device in terms of linear measure or measure of area, such respective term may be used. Such term shall be augmented when necessary for accuracy of information by a statement of the weight, measure, or size of the individual units or of the entire device.</P>
+<P>(2) If the declaration of contents for a device by numerical count does not give accurate information as to the quantity of the device in the package, it shall be augmented by such statement of weight, measure, or size of the individual units or of the total weight, measure, or size of the device as will give such information; for example, &#x201C;100 tongue depressors, adult size&#x201D;, &#x201C;1 rectal syringe, adult size&#x201D;, etc. Whenever the Commissioner determines for a specific packaged device that an existing practice of declaring net quantity of contents by weight, measure, numerical count, or a combination of these does not facilitate value comparisions by consumers, he shall by regulation designate the appropriate term or terms to be used for such article.</P>
+<P>(b) Statements of weight of the contents shall be expressed in terms of avoirdupois pound and ounce. A statement of liquid measure of the contents shall be expressed in terms of the U.S. gallon of 231 cubic inches and quart, pint, and fluid-ounce subdivisions thereof, and shall express the volume at 68 &#xB0;F (20 &#xB0;C). See also paragraph (p) of this section.</P>
+<P>(c) The declaration may contain common or decimal fractions. A common fraction shall be in terms of halves, quarters, eighths, sixteenths, or thirty-seconds; except that if there exists a firmly established, general consumer usage and trade custom of employing different common fractions in the net quantity declaration of a particular commodity, they may be employed. A common fraction shall be reduced to its lowest terms; a decimal fraction shall not be carried out to more than two places. A statement that includes small fractions of an ounce shall be deemed to permit smaller variations than one which does not include such fractions.</P>
+<P>(d) The declaration shall be located on the principal display panel of the label, and with respect to packages bearing alternate principal panels it shall be duplicated on each principal display panel.</P>
+<P>(e) The declaration shall appear as a distinct item on the principal display panel, shall be separated, by at least a space equal to the height of the lettering used in the declaration, from other printed label information appearing above or below the declaration and, by at least a space equal to twice the width of the letter &#x201C;N&#x201D; of the style of type used in the quantity of contents statement, from other printed label information appearing to the left or right of the declaration. It shall not include any term qualifying a unit of weight, measure, or count, such as &#x201C;giant pint&#x201D; and &#x201C;full quart&#x201D;, that tends to exaggerate. It shall be placed on the principal display panel within the bottom 30 percent of the area of the label panel in lines generally parallel to the base on which the package rests as it is designed to be displayed: <I>Provided,</I> That:</P>
+<P>(1) On packages having a principal display panel of 5 square inches or less the requirement for placement within the bottom 30 percent of the area of the label panel shall not apply when the declaration of net quantity of contents meets the other requirements of this part; and</P>
+<P>(2) In the case of a device that is marketed with both outer and inner retail containers bearing the mandatory label information required by this part and the inner container is not intended to be sold separately, the net quantity of contents placement requirement of this section applicable to such inner container is waived.</P>
+<P>(3) The principal display panel of a device marketed on a display card to which the immediate container is affixed may be considered to be the display panel of the card, and the type size of the net quantity of contents statement is governed by the dimensions of the display card.</P>
+<P>(f) The declaration shall accurately reveal the quantity of device in the package exclusive of wrappers and other material packed therewith.</P>
+<P>(g) The declaration shall appear in conspicuous and easily legible boldface print or type in distinct contrast (by typography, layout, color, embossing, or molding) to other matter on the package; except that a declaration of net quantity blown, embossed, or molded on a glass or plastic surface is permissible when all label information is so formed on the surface. Requirements of conspicuousness and legibility shall include the specifications that:</P>
+<P>(1) The ratio of height to width of the letter shall not exceed a differential of 3 units to 1 unit, i.e., no more than 3 times as high as it is wide.</P>
+<P>(2) Letter heights pertain to upper case or capital letters. When upper and lower case or all lower case letters are used, it is the lower case letter &#x201C;o&#x201D; or its equivalent that shall meet the minimum standards.</P>
+<P>(3) When fractions are used, each component numeral shall meet one-half the minimum height standards.</P>
+<P>(h) The declaration shall be in letters and numerals in a type size established in relationship to the area of the principal display panel of the package and shall be uniform for all packages of substantially the same size by complying with the following type specifications:</P>
+<P>(1) Not less than one-sixteenth inch in height on packages the principal display panel of which has an area of 5 square inches or less.</P>
+<P>(2) Not less than one-eighth inch in height on packages the principal display panel of which has an area of more than 5 but not more than 25 square inches.</P>
+<P>(3) Not less than three-sixteenths inch in height on packages the principal display panel of which has an area of more than 25 but not more than 100 square inches.</P>
+<P>(4) Not less than one-fourth inch in height on packages the principal display panel of which has an area of more than 100 square inches, except not less than one-half inch in height if the area is more than 400 square inches.</P>
+<FP>Where the declaration is blown, embossed, or molded on a glass or plastic surface rather than by printing, typing, or coloring, the lettering sizes specified in paragraphs (h)(1) through (4) of this section shall be increased by one-sixteenth of an inch.
+</FP>
+<P>(i) On packages containing less than 4 pounds or 1 gallon and labeled in terms of weight or fluid measure:</P>
+<P>(1) The declaration shall be expressed both in ounces, with identification by weight or by liquid measure and, if applicable (1 pound or 1 pint or more) followed in parentheses by a declaration in pounds for weight units, with any remainder in terms of ounces or common or decimal fractions of the pound (see examples set forth in paragraphs (k) (1) and (2) of this section), or in the case of liquid measure, in the largest whole units (quarts, quarts and pints, or pints, as appropriate) with any remainder in terms of fluid ounces or common or decimal fractions of the pint or quart (see examples set forth in paragraphs (k) (3) and (4) of this section). If the net weight of the package is less than 1 ounce avoirdupois or the net fluid measure is less than 1 fluid ounce, the declaration shall be in terms of common or decimal fractions of the respective ounce and not in terms of drams.</P>
+<P>(2) The declaration may appear in more than one line. The term &#x201C;net weight&#x201D; shall be used when stating the net quantity of contents in terms of weight. Use of the terms &#x201C;net&#x201D; or &#x201C;net contents&#x201D; in terms of fluid measure or numerical count is optional. It is sufficient to distinguish avoirdupois ounce from fluid ounce through association of terms; for example, &#x201C;Net wt. 6 oz&#x201D; or &#x201C;6 oz net wt.,&#x201D; and &#x201C;6 fl oz&#x201D; or &#x201C;net contents 6 fl oz.&#x201D;</P>
+<P>(j) On packages containing 4 pounds or 1 gallon or more and labeled in terms of weight or fluid measure, the declaration shall be expressed in pounds for weight units with any remainder in terms of ounces or common or decimal fractions of the pound; in the case of fluid measure, it shall be expressed in the largest whole unit, i.e., gallons, followed by common or decimal fractions of a gallon or by the next smaller whole unit or units (quarts or quarts and pints), with any remainder in terms of fluid ounces or common or decimal fractions of the pint or quart; see paragraph (k)(5) of this section.</P>
+<P>(k) <I>Examples:</I> (1) A declaration of 1
+<FR>1/2</FR> pounds weight shall be expressed as &#x201C;net wt. 24 oz (1 lb 8 oz),&#x201D; or &#x201C;Net wt. 24 oz (1
+<FR>1/2</FR> lb)&#x201D; or &#x201C;Net wt. 24 oz (1.5 lb).&#x201D;</P>
+<P>(2) A declaration of three-fourths pound avoirdupois weight shall be expressed as &#x201C;Net wt. 12 oz.&#x201D;.</P>
+<P>(3) A declaration of 1 quart liquid measure shall be expressed as &#x201C;Net contents 32 fl oz (1 qt)&#x201D; or &#x201C;32 fl oz (1 qt).&#x201D;</P>
+<P>(4) A declaration of 1
+<FR>3/4</FR> quarts liquid measure shall be expressed as, &#x201C;Net contents 56 fl oz (1 qt 1 pt 8 oz)&#x201D; or &#x201C;Net contents 56 fl oz (1 qt 1.5 pt),&#x201D; but not in terms of quart and ounce such as &#x201C;Net contents 56 fl oz (1 qt 24 oz).&#x201D;</P>
+<P>(5) A declaration of 2
+<FR>1/2</FR> gallons liquid measure shall be expressed as &#x201C;Net contents 2 gal 2 qt&#x201D;, &#x201C;Net contents 2.5 gallons,&#x201D; or &#x201C;Net contents 2
+<FR>1/2</FR> gal&#x201D; but not as &#x201C;2 gal 4 pt&#x201D;.</P>
+<P>(l) For quantities, the following abbreviations and none other may be employed. Periods and plural forms are optional:</P>
+<DIV width="100%"><DIV class="gpotbl_div">
+<TABLE border="1" cellpadding="1" cellspacing="1" class="gpo_table" frame="void" width="100%">
+<THEAD>
+</THEAD>
+<TBODY>
+<TR>
+<TD class="left">gallon gal</TD>
+<TD class="left">liter l</TD>
+</TR>
+<TR>
+<TD class="left">milliliter ml</TD>
+<TD class="left">cubic centimeter cc</TD>
+</TR>
+<TR>
+<TD class="left">quart qt</TD>
+<TD class="left">yard yd</TD>
+</TR>
+<TR>
+<TD class="left">pint pt</TD>
+<TD class="left">feet or foot ft</TD>
+</TR>
+<TR>
+<TD class="left">ounce oz</TD>
+<TD class="left">inch in</TD>
+</TR>
+<TR>
+<TD class="left">pound lb</TD>
+<TD class="left">meter m</TD>
+</TR>
+<TR>
+<TD class="left">grain gr</TD>
+<TD class="left">centimeter cm</TD>
+</TR>
+<TR>
+<TD class="left">kilogram kg</TD>
+<TD class="left">millimeter mm</TD>
+</TR>
+<TR>
+<TD class="left">gram g</TD>
+<TD class="left">fluid fl</TD>
+</TR>
+<TR>
+<TD class="left">milligram mg</TD>
+<TD class="left">square sq</TD>
+</TR>
+<TR>
+<TD class="left">microgram mcg</TD>
+<TD class="left">weight wt</TD>
+</TR>
+</TBODY>
+</TABLE>
+</DIV></DIV>
+<P>(m) On packages labeled in terms of linear measure, the declaration shall be expressed both in terms of inches and, if applicable (1 foot or more), the largest whole units (yards, yards and feet, feet). The declaration in terms of the largest whole units shall be in parentheses following the declaration in terms of inches and any remainder shall be in terms of inches or common or decimal fractions of the foot or yard; if applicable, as in the case of adhesive tape, the initial declaration in linear inches shall be preceded by a statement of the width. Examples of linear measure are &#x201C;86 inches (2 yd 1 ft 2 in)&#x201D;, &#x201C;90 inches (2
+<FR>1/2</FR> yd)&#x201D;, &#x201C;30 inches (2.5 ft)&#x201D;, &#x201C;
+<FR>3/4</FR> inch by 36 in (1 yd)&#x201D;, etc.</P>
+<P>(n) On packages labeled in terms of area measure, the declaration shall be expressed both in terms of square inches and, if applicable (1 square foot or more), the largest whole square unit (square yards, square yards and square feet, square feet). The declaration in terms of the largest whole units shall be in parentheses following the declaration in terms of square inches and any remainder shall be in terms of square inches or common or decimal fractions of the square foot or square yard; for example, &#x201C;158 sq inches (1 sq ft 14 sq in)&#x201D;.</P>
+<P>(o) Nothing in this section shall prohibit supplemental statements at locations other than the principal display panel(s) describing in nondeceptive terms the net quantity of contents, provided that such supplemental statements of net quantity of contents shall not include any term qualifying a unit of weight, measure, or count that tends to exaggerate the amount of the device contained in the package; for example, &#x201C;giant pint&#x201D; and &#x201C;full quart&#x201D;. Dual or combination declarations of net quantity of contents as provided for in paragraphs (a) and (i) of this section are not regarded as supplemental net quantity statements and shall be located on the principal display panel.</P>
+<P>(p) A separate statement of net quantity of contents in terms of the metric system of weight or measure is not regarded as a supplemental statement and an accurate statement of the net quantity of contents in terms of the metric system of weight or measure may also appear on the principal display panel or on other panels.</P>
+<P>(q) The declaration of net quantity of contents shall express an accurate statement of the quantity of contents of the package. Reasonable variations caused by loss or gain of moisture during the course of good distribution practice or by unavoidable deviations in good manufacturing practice will be recognized. Variations from stated quantity of contents shall not be unreasonably large.</P>
+</DIV8>
+
+<DIV8 N="801.63" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.63&quot;,&quot;citation&quot;:&quot;21 CFR 801.63&quot;}">
+<HEAD>&#xA7; 801.63 Medical devices; warning statements for devices containing or manufactured with chlorofluorocarbons and other class I ozone-depleting substances.</HEAD>
+<P>(a) All over-the-counter devices containing or manufactured with chlorofluorocarbons, halons, carbon tetrachloride, methyl chloride, or any other class I substance designated by the Environmental Protection Agency (EPA) shall carry one of the following warnings:</P>
+<P>(1) The EPA warning statement:</P>
+<EXTRACT>
+<P><E T="04">Warning:</E> Contains [or Manufactured with, if applicable] [<I>insert name of substance</I>], a substance which harms public health and environment by destroying ozone in the upper atmosphere.</P></EXTRACT>
+<P>(2) The alternative statement:</P>
+<NOTE>
+<HED>Note:</HED>
+<P>The indented statement below is required by the Federal government's Clean Air Act for all products containing or manufactured with chlorofluorocarbons (CFC's) [or other class I substance, if applicable]:</P>
+<P><E T="04">Warning:</E> Contains [or Manufactured with, if applicable] [<I>insert name of substance</I>], a substance which harms public health and environment by destroying ozone in the upper atmosphere.</P>
+<P>CONSULT WITH YOUR PHYSICIAN, HEALTH PROFESSIONAL, OR SUPPLIER IF YOU HAVE ANY QUESTION ABOUT THE USE OF THIS PRODUCT.</P></NOTE>
+<P>(b) The warning statement shall be clearly legible and conspicuous on the product, its immediate container, its outer packaging, or other labeling in accordance with the requirements of 40 CFR part 82 and appear with such prominence and conspicuousness as to render it likely to be read and understood by consumers under normal conditions of purchase. This provision does not replace or relieve a person from any requirements imposed under 40 CFR part 82.</P>
+<CITA TYPE="N">[61 FR 20101, May 3, 1996]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="D" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-D&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart D&amp;quot;}">
+<HEAD>Subpart D&#x2014;Exemptions From Adequate Directions for Use</HEAD>
+<DIV8 N="801.109" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.109&quot;,&quot;citation&quot;:&quot;21 CFR 801.109&quot;}">
+<HEAD>&#xA7; 801.109 Prescription devices.</HEAD>
+<P>A device which, because of any potentiality for harmful effect, or the method of its use, or the collateral measures necessary to its use is not safe except under the supervision of a practitioner licensed by law to direct the use of such device, and hence for which &#x201C;adequate directions for use&#x201D; cannot be prepared, shall be exempt from section 502(f)(1) of the act if all the following conditions are met:</P>
+<P>(a) The device is:</P>
+<P>(1)(i) In the possession of a person, or his agents or employees, regularly and lawfully engaged in the manufacture, transportation, storage, or wholesale or retail distribution of such device; or</P>
+<P>(ii) In the possession of a practitioner, such as physicians, dentists, and veterinarians, licensed by law to use or order the use of such device; and</P>
+<P>(2) Is to be sold only to or on the prescription or other order of such practitioner for use in the course of his professional practice.</P>
+<P>(b) The label of the device, other than surgical instruments, bears:</P>
+<P>(1) The symbol statement &#x201C;Rx only&#x201D; or &#x201C;&#x211E; only&#x201D; or the statement &#x201C;Caution: Federal law restricts this device to sale by or on the order of a ___&#x201D;, the blank to be filled with the word &#x201C;physician&#x201D;, &#x201C;dentist&#x201D;, &#x201C;veterinarian&#x201D;, or with the descriptive designation of any other practitioner licensed by the law of the State in which the practitioner practices to use or order the use of the device; and</P>
+<P>(2) The method of its application or use.</P>
+<P>(c) Labeling on or within the package from which the device is to be dispensed bears information for use, including indications, effects, routes, methods, and frequency and duration of administration, and any relevant hazards, contraindications, side effects, and precautions under which practitioners licensed by law to administer the device can use the device safely and for the purpose for which it is intended, including all purposes for which it is advertised or represented: <I>Provided, however,</I> That such information may be omitted from the dispensing package if, but only if, the article is a device for which directions, hazards, warnings, and other information are commonly known to practitioners licensed by law to use the device. Upon written request, stating reasonable grounds therefor, the Commissioner will offer an opinion on a proposal to omit such information from the dispensing package under this proviso.</P>
+<P>(d) Any labeling, as defined in section 201(m) of the act, whether or not it is on or within a package from which the device is to be dispensed, distributed by or on behalf of the manufacturer, packer, or distributor of the device, that furnishes or purports to furnish information for use of the device contains adequate information for such use, including indications, effects, routes, methods, and frequency and duration of administration and any relevant hazards, contraindications, side effects, and precautions, under which practitioners licensed by law to employ the device can use the device safely and for the purposes for which it is intended, including all purposes for which it is advertised or represented. This information will not be required on so-called reminder&#x2014;piece labeling which calls attention to the name of the device but does not include indications or other use information.</P>
+<P>(e) All labeling, except labels and cartons, bearing information for use of the device also bears the date of the issuance or the date of the latest revision of such labeling.</P>
+<CITA TYPE="N">[41 FR 6896, Feb. 13, 1976, as amended at 81 FR 38930, June 15, 2016]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.110" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.110&quot;,&quot;citation&quot;:&quot;21 CFR 801.110&quot;}">
+<HEAD>&#xA7; 801.110 Retail exemption for prescription devices.</HEAD>
+<P>A device subject to &#xA7; 801.109 shall be exempt at the time of delivery to the ultimate purchaser or user from section 502(f)(1) of the act if it is delivered by a licensed practitioner in the course of his professional practice or upon a prescription or other order lawfully issued in the course of his professional practice, with labeling bearing the name and address of such licensed practitioner and the directions for use and cautionary statements, if any, contained in such order.</P>
+</DIV8>
+
+<DIV8 N="801.116" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.116&quot;,&quot;citation&quot;:&quot;21 CFR 801.116&quot;}">
+<HEAD>&#xA7; 801.116 Medical devices having commonly known directions.</HEAD>
+<P>A device shall be exempt from section 502(f)(1) of the act insofar as adequate directions for common uses thereof are known to the ordinary individual.</P>
+</DIV8>
+
+<DIV8 N="801.119" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.119&quot;,&quot;citation&quot;:&quot;21 CFR 801.119&quot;}">
+<HEAD>&#xA7; 801.119 In vitro diagnostic products.</HEAD>
+<P>A product intended for use in the diagnosis of disease and which is an in vitro diagnostic product as defined in &#xA7; 809.3(a) of this chapter shall be deemed to be in compliance with the requirements of this part and section 502(f)(1) of the Federal Food, Drug, and Cosmetic Act if it meets the requirements of subpart B of this part and the requirements of &#xA7; 809.10 of this chapter.</P>
+<CITA TYPE="N">[78 FR 58820, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.122" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.122&quot;,&quot;citation&quot;:&quot;21 CFR 801.122&quot;}">
+<HEAD>&#xA7; 801.122 Medical devices for processing, repacking, or manufacturing.</HEAD>
+<P>A device intended for processing, repacking, or use in the manufacture of another drug or device shall be exempt from section 502(f)(1) of the act if its label bears the statement &#x201C;Caution: For manufacturing, processing, or repacking&#x201D;.</P>
+</DIV8>
+
+<DIV8 N="801.125" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.125&quot;,&quot;citation&quot;:&quot;21 CFR 801.125&quot;}">
+<HEAD>&#xA7; 801.125 Medical devices for use in teaching, law enforcement, research, and analysis.</HEAD>
+<P>A device subject to &#xA7; 801.109 shall be exempt from section 502(f)(1) of this act if shipped or sold to, or in the possession of, persons regularly and lawfully engaged in instruction in pharmacy, chemistry, or medicine not involving clinical use, or engaged in law enforcement, or in research not involving clinical use, or in chemical analysis, or physical testing, and is to be used only for such instruction, law enforcement, research, analysis, or testing.</P>
+</DIV8>
+
+<DIV8 N="801.127" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.127&quot;,&quot;citation&quot;:&quot;21 CFR 801.127&quot;}">
+<HEAD>&#xA7; 801.127 Medical devices; expiration of exemptions.</HEAD>
+<P>(a) If a shipment or delivery, or any part thereof, of a device which is exempt under the regulations in this section is made to a person in whose possession the article is not exempt, or is made for any purpose other than those specified, such exemption shall expire, with respect to such shipment or delivery or part thereof, at the beginning of that shipment or delivery. The causing of an exemption to expire shall be considered an act which results in such device being misbranded unless it is disposed of under circumstances in which it ceases to be a drug or device.</P>
+<P>(b) The exemptions conferred by &#xA7;&#xA7; 801.119, 801.122, and 801.125 shall continue until the devices are used for the purposes for which they are exempted, or until they are relabeled to comply with section 502(f)(1) of the act. If, however, the device is converted, or manufactured into a form limited to prescription dispensing, no exemption shall thereafter apply to the article unless the device is labeled as required by &#xA7; 801.109.</P>
+</DIV8>
+
+<DIV8 N="801.128" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.128&quot;,&quot;citation&quot;:&quot;21 CFR 801.128&quot;}">
+<HEAD>&#xA7; 801.128 Exceptions or alternatives to labeling requirements for medical devices held by the Strategic National Stockpile.</HEAD>
+<P>(a) The appropriate FDA Center Director may grant an exception or alternative to any provision listed in paragraph (f) of this section and not explicitly required by statute, for specified lots, batches, or other units of a medical device, if the Center Director determines that compliance with such labeling requirement could adversely affect the safety, effectiveness, or availability of such devices that are or will be included in the Strategic National Stockpile.</P>
+<P>(b)(1)(i) A Strategic National Stockpile official or any entity that manufactures (including labeling, packing, relabeling, or repackaging), distributes, or stores devices that are or will be included in the Strategic National Stockpile may submit, with written concurrence from a Strategic National Stockpile official, a written request for an exception or alternative described in paragraph (a) of this section to the Center Director.</P>
+<P>(ii) The Center Director may grant an exception or alternative described in paragraph (a) of this section on his or her own initiative.</P>
+<P>(2) A written request for an exception or alternative described in paragraph (a) of this section must:</P>
+<P>(i) Identify the specified lots, batches, or other units of the medical device that would be subject to the exception or alternative;</P>
+<P>(ii) Identify the labeling provision(s) listed in paragraph (f) of this section that are the subject of the exception or alternative request;</P>
+<P>(iii) Explain why compliance with the labeling provision(s) could adversely affect the safety, effectiveness, or availability of the specified lots, batches, or other units of a medical device that are or will be held in the Strategic National Stockpile;</P>
+<P>(iv) Describe any proposed safeguards or conditions that will be implemented so that the labeling of the device includes appropriate information necessary for the safe and effective use of the device, given the anticipated circumstances of use of the device;</P>
+<P>(v) Provide a draft of the proposed labeling of the specified lots, batches, or other units of the medical device subject to the exception or alternative; and</P>
+<P>(vi) Provide any other information requested by the Center Director in support of the request.</P>
+<P>(c) The Center Director must respond in writing to all requests under this section. The Center Director may impose appropriate conditions when granting such an exception or alternative under this section.</P>
+<P>(d) A grant of an exception or alternative under this section will include any safeguards or conditions deemed appropriate by the Center Director so that the labeling of devices subject to the exception or alternative includes the information necessary for the safe and effective use of the device, given the anticipated circumstances of use.</P>
+<P>(e) If the Center Director grants a request for an exception or alternative to the labeling requirements under this section:</P>
+<P>(1) The Center Director may determine that the submission and grant of a written request under this section satisfies the provisions relating to premarket notification submissions under &#xA7; 807.81(a)(3) of this chapter.</P>
+<P>(2)(i) For a Premarket Approval Application (PMA)-approved device, the submission and grant of a written request under this section satisfies the provisions relating to submission of PMA supplements under &#xA7; 814.39 of this chapter; however,</P>
+<P>(ii) The grant of the request must be identified in a periodic report under &#xA7; 814.84 of this chapter.</P>
+<P>(f) The Center Director may grant an exception or alternative under this section to the following provisions of this chapter, to the extent that the requirements in these provisions are not explicitly required by statute:</P>
+<P>(1) &#xA7; 801.1(d);</P>
+<P>(2) Subpart B of this part and part 830 of this chapter in its entirety;</P>
+<P>(3) &#xA7; 801.60;</P>
+<P>(4) &#xA7; 801.61;</P>
+<P>(5) &#xA7; 801.62;</P>
+<P>(6) &#xA7; 801.63;</P>
+<P>(7) &#xA7; 801.109; and</P>
+<P>(8) Part 801, subpart H.</P>
+<CITA TYPE="N">[72 FR 73601, Dec. 28, 2007, as amended at 78 FR 58820, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="E" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-E&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart E&amp;quot;}">
+<HEAD>Subpart E&#x2014;Other Exemptions</HEAD>
+<DIV8 N="801.150" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.150&quot;,&quot;citation&quot;:&quot;21 CFR 801.150&quot;}">
+<HEAD>&#xA7; 801.150 Medical devices; processing, labeling, or repacking.</HEAD>
+<P>(a) Except as provided by paragraphs (b) and (c) of this section, a shipment or other delivery of a device which is, in accordance with the practice of the trade, to be processed, labeled, or repacked, in substantial quantity at an establishment other than that where originally processed or packed, shall be exempt, during the time of introduction into and movement in interstate commerce and the time of holding in such establishment, from compliance with the labeling and packaging requirements of section 502(b) and (f) of the act if:</P>
+<P>(1) The person who introduced such shipment or delivery into interstate commerce is the operator of the establishment where such device is to be processed, labeled, or repacked; or</P>
+<P>(2) In case such person is not such operator, such shipment or delivery is made to such establishment under a written agreement, signed by and containing the post office addresses of such person and such operator, and containing such specifications for the processing, labeling, or repacking, as the case may be, of such device in such establishment as will insure, if such specifications are followed, that such device will not be adulterated or misbranded within the meaning of the act upon completion of such processing, labeling, or repacking. Such person and such operator shall each keep a copy of such agreement until 2 years after the final shipment or delivery of such device from such establishment, and shall make such copies available for inspection at any reasonable hour to any officer or employee of the Department who requests them.</P>
+<P>(b) An exemption of a shipment or other delivery of a device under paragraph (a)(1) of this section shall, at the beginning of the act of removing such shipment or delivery, or any part thereof, from such establishment, become void ab initio if the device comprising such shipment, delivery, or part is adulterated or misbranded within the meaning of the act when so removed.</P>
+<P>(c) An exemption of a shipment or other delivery of a device under paragraph (a)(2) of this section shall become void ab initio with respect to the person who introduced such shipment or delivery into interstate commerce upon refusal by such person to make available for inspection a copy of the agreement, as required by such paragraph (a)(2).</P>
+<P>(d) An exemption of a shipment or other delivery of a device under paragraph (a)(2) of this section shall expire:</P>
+<P>(1) At the beginning of the act of removing such shipment or delivery, or any part thereof, from such establishment if the device comprising such shipment, delivery, or part is adulterated or misbranded within the meaning of the act when so removed; or</P>
+<P>(2) Upon refusal by the operator of the establishment where such device is to be processed, labeled, or repacked, to make available for inspection a copy of the agreement, as required by such clause.</P>
+<P>(e) As it is a common industry practice to manufacture and/or assemble, package, and fully label a device as sterile at one establishment and then ship such device in interstate commerce to another establishment or to a contract sterilizer for sterilization, the Food and Drug Administration will initiate no regulatory action against the device as misbranded or adulterated when the nonsterile device is labeled sterile, provided all the following conditions are met:</P>
+<P>(1) There is in effect a written agreement which:</P>
+<P>(i) Contains the names and post office addresses of the firms involved and is signed by the person authorizing such shipment and the operator or person in charge of the establishment receiving the devices for sterilization.</P>
+<P>(ii) Provides instructions for maintaining proper records or otherwise accounting for the number of units in each shipment to insure that the number of units shipped is the same as the number received and sterilized.</P>
+<P>(iii) Acknowledges that the device is nonsterile and is being shipped for further processing, and</P>
+<P>(iv) States in detail the sterilization process, the gaseous mixture or other media, the equipment, and the testing method or quality controls to be used by the contract sterilizer to assure that the device will be brought into full compliance with the Federal Food, Drug, and Cosmetic Act.</P>
+<P>(2) Each pallet, carton, or other designated unit is conspicuously marked to show its nonsterile nature when it is introduced into and is moving in interstate commerce, and while it is being held prior to sterilization. Following sterilization, and until such time as it is established that the device is sterile and can be released from quarantine, each pallet, carton, or other designated unit is conspicuously marked to show that it has not been released from quarantine, e.g., &#x201C;sterilized&#x2014;awaiting test results&#x201D; or an equivalent designation.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="F-G" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-F-G&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart F-G&amp;quot;}">
+<HEAD>Subparts F-G [Reserved]</HEAD>
+</DIV6>
+<DIV6 N="H" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-801/subpart-H&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 801 Subpart H&amp;quot;}">
+<HEAD>Subpart H&#x2014;Special Requirements for Specific Devices</HEAD>
+<DIV8 N="801.405" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.405&quot;,&quot;citation&quot;:&quot;21 CFR 801.405&quot;}">
+<HEAD>&#xA7; 801.405 Labeling of articles intended for lay use in the repairing and/or refitting of dentures.</HEAD>
+<P>(a) The American Dental Association and leading dental authorities have advised the Food and Drug Administration of their concern regarding the safety of denture reliners, repair kits, pads, cushions, and other articles marketed and labeled for lay use in the repairing, refitting, or cushioning of ill-fitting, broken, or irritating dentures. It is the opinion of dental authorities and the Food and Drug Administration that to properly repair and properly refit dentures a person must have professional knowledge and specialized technical skill. Laymen cannot be expected to maintain the original vertical dimension of occlusion and the centric relation essential in the proper repairing or refitting of dentures. The continued wearing of improperly repaired or refitted dentures may cause acceleration of bone resorption, soft tissue hyperplasia, and other irreparable damage to the oral cavity. Such articles designed for lay use should be limited to emergency or temporary situations pending the services of a licensed dentist.</P>
+<P>(b) The Food and Drug Administration therefore regards such articles as unsafe and misbranded under the Federal Food, Drug, and Cosmetic Act, unless the labeling:</P>
+<P>(1)(i) Limits directions for use for denture repair kits to emergency repairing pending unavoidable delay in obtaining professional reconstruction of the denture;</P>
+<P>(ii) Limits directions for use for denture reliners, pads, and cushions to temporary refitting pending unavoidable delay in obtaining professional reconstruction of the denture;</P>
+<P>(2) Contains in a conspicuous manner the word &#x201C;emergency&#x201D; preceding and modifying each indication-for-use statement for denture repair kits and the word &#x201C;temporary&#x201D; preceding and modifying each indication-for-use statement for reliners, pads, and cushions; and</P>
+<P>(3) Includes a conspicuous warning statement to the effect:</P>
+<P>(i) For denture repair kits: <I>&#x201C;Warning&#x2014;For emergency repairs only.</I> Long term use of home-repaired dentures may cause faster bone loss, continuing irritation, sores, and tumors. This kit for emergency use only. See Dentist Without Delay.&#x201D;</P>
+<P>(ii) For denture reliners, pads, and cushions: <I>&#x201C;Warning&#x2014;For temporary use only.</I> Longterm use of this product may lead to faster bone loss, continuing irritation, sores, and tumors. For Use Only Until a Dentist Can Be Seen.&#x201D;</P>
+<P>(c) Adequate directions for use require full information of the temporary and emergency use recommended in order for the layman to understand the limitations of usefulness, the reasons therefor, and the importance of adhering to the warnings. Accordingly, the labeling should contain substantially the following information:</P>
+<P>(1) For denture repair kits: Special training and tools are needed to repair dentures to fit properly. Home-repaired dentures may cause irritation to the gums and discomfort and tiredness while eating. Long term use may lead to more troubles, even permanent changes in bones, teeth, and gums, which may make it impossible to wear dentures in the future. For these reasons, dentures repaired with this kit should be used only in an emergency until a dentist can be seen. Dentures that don't fit properly cause irritation and injury to the gums and faster bone loss, which is permanent. Dentures that don't fit properly cause gum changes that may require surgery for correction. Continuing irritation and injury may lead to cancer in the mouth. You must see your dentist as soon as possible.</P>
+<P>(2) For denture reliners, pads, and cushions: Use of these preparations or devices may temporarily decrease the discomfort; however, their use will not make the denture fit properly. Special training and tools are needed to repair a denture to fit properly. Dentures that do not fit properly cause irritation and injury to the gums and faster bone loss, which is permanent and may require a completely new denture. Changes in the gums caused by dentures that do not fit properly may require surgery for correction. Continuing irritation and injury may lead to cancer in the mouth. You must see your dentist as soon as possible.</P>
+<P>(3) If the denture relining or repairing material forms a permanent bond with the denture, a warning statement to the following effect should be included: &#x201C;This reliner becomes fixed to the denture and a completely new denture may be required because of its use.&#x201D;</P>
+<P>(d) Labeling claims exaggerating the usefulness or the safety of the material or failing to disclose all facts relevant to the claims of usefulness will be regarded as false and misleading under sections 201(n) and 502(a) of the Federal Food, Drug, and Cosmetic Act.</P>
+<P>(e) Regulatory action may be initiated with respect to any article found within the jurisdiction of the act contrary to the provisions of this policy statement after 90 days following the date of publication of this section in the <E T="04">Federal Register.</E></P>
+</DIV8>
+
+<DIV8 N="801.410" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.410&quot;,&quot;citation&quot;:&quot;21 CFR 801.410&quot;}">
+<HEAD>&#xA7; 801.410 Use of impact-resistant lenses in eyeglasses and sunglasses.</HEAD>
+<P>(a) Examination of data available on the frequency of eye injuries resulting from the shattering of ordinary crown glass lenses indicates that the use of such lenses constitutes an avoidable hazard to the eye of the wearer.</P>
+<P>(b) The consensus of the ophthalmic community is that the number of eye injuries would be substantially reduced by the use in eyeglasses and sunglasses of impact-resistant lenses.</P>
+<P>(c)(1) To protect the public more adequately from potential eye injury, eyeglasses and sunglasses must be fitted with impact-resistant lenses, except in those cases where the physician or optometrist finds that such lenses will not fulfill the visual requirements of the particular patient, directs in writing the use of other lenses, and gives written notification thereof to the patient.</P>
+<P>(2) The physician or optometrist shall have the option of ordering glass lenses, plastic lenses, or laminated glass lenses made impact resistant by any method; however, all such lenses shall be capable of withstanding the impact test described in paragraph (d)(2) of this section.</P>
+<P>(3) Each finished impact-resistant glass lens for prescription use shall be individually tested for impact resistance and shall be capable of withstanding the impact test described in paragraph (d)(2) of this section. Raised multifocal lenses shall be impact resistant but need not be tested beyond initial design testing. Prism segment multifocal, slab-off prism, lenticular cataract, iseikonic, depressed segment one-piece multifocal, bioconcave, myodisc and minus lenticular, custom laminate and cemented assembly lenses shall be impact resistant but need not be subjected to impact testing. To demonstrate that all other types of impact-resistant lenses, including impact-resistant laminated glass lenses (i.e., lenses other than those described in the three preceding sentences of this paragraph (c)(3)), are capable of withstanding the impact test described in this regulation, the manufacturer of these lenses shall subject to an impact test a statistically significant sampling of lenses from each production batch, and the lenses so tested shall be representative of the finished forms as worn by the wearer, including finished forms that are of minimal lens thickness and have been subjected to any treatment used to impart impact resistance. All nonprescription lenses and plastic prescription lenses tested on the basis of statistical significance shall be tested in uncut-finished or finished form.</P>
+<P>(d)(1) For the purpose of this regulation, the impact test described in paragraph (d)(2) of this section shall be the &#x201C;referee test,&#x201D; defined as &#x201C;one which will be utilized to determine compliance with a regulation.&#x201D; The referee test provides the Food and Drug Administration with the means of examining a medical device for performance and does not inhibit the manufacturer from using equal or superior test methods. A lens manufacturer shall conduct tests of lenses using the impact test described in paragraph (d)(2) of this section or any equal or superior test. Whatever test is used, the lenses shall be capable of withstanding the impact test described in paragraph (d)(2) of this section if the Food and Drug Administration examines them for performance.</P>
+<P>(2) In the impact test, a
+<FR>5/8</FR>-inch steel ball weighing approximately 0.56 ounce is dropped from a height of 50 inches upon the horizontal upper surface of the lens. The ball shall strike within a
+<FR>5/8</FR>-inch diameter circle located at the geometric center of the lens. The ball may be guided but not restricted in its fall by being dropped through a tube extending to within approximately 4 inches of the lens. To pass the test, the lens must not fracture; for the purpose of this section, a lens will be considered to have fractured if it cracks through its entire thickness, including a laminar layer, if any, and across a complete diameter into two or more separate pieces, or if any lens material visible to the naked eyes becomes detached from the ocular surface. The test shall be conducted with the lens supported by a tube (1-inch inside diameter, 1
+<FR>1/4</FR>-inch outside diameter, and approximately 1-inch high) affixed to a rigid iron or steel base plate. The total weight of the base plate and its rigidly attached fixtures shall be not less than 27 pounds. For lenses of small minimum diameter, a support tube having an outside diameter of less than 1
+<FR>1/4</FR> inches may be used. The support tube shall be made of rigid acrylic plastic, steel, or other suitable substance and shall have securely bonded on the top edge a
+<FR>1/8</FR>- by
+<FR>1/8</FR>-inch neoprene gasket having a hardness of 40 &#xB1;5, as determined by ASTM Method D 1415-88, &#x201C;Standard Test Method for Rubber Property&#x2014;International Hardness&#x201D; a minimum tensile strength of 1,200 pounds, as determined by ASTM Method D 412-98A, &#x201C;Standard Test Methods for Vulcanized Rubber and Thermoplastic Elastomers&#x2014;Tension,&#x201D; and a minimum ultimate elongation of 400 percent, as determined by ASTM Method D 412-68 (Both methods are incorporated by reference and are available from the American Society for Testing Materials, 100 Barr Harbor Dr., West Conshohocken, Philadelphia, PA 19428, or available for inspection at the Center for Devices and Radiological Health's Library, 9200 Corporate Blvd., Rockville, MD 20850, or at the National Archives and Records Administration (NARA). For information on the availability of this material at NARA, call 202-741-6030, or go to: <I>http://www.archives.gov/federal_register/code_of_federal_regulations/ibr_locations.html.</I> The diameter or contour of the lens support may be modified as necessary so that the
+<FR>1/8</FR>- by
+<FR>1/8</FR>-inch neoprene gasket supports the lens at its periphery.</P>
+<P>(e) Copies of invoice(s), shipping document(s), and records of sale or distribution of all impact resistant lenses, including finished eyeglasses and sunglasses, shall be kept and maintained for a period of 3 years; however, the names and addresses of individuals purchasing nonprescription eyeglasses and sunglasses at the retail level need not be kept and maintained by the retailer. The records kept in compliance with this paragraph shall be made available upon request at all reasonable hours by any officer or employee of the Food and Drug Administration or by any other officer or employee acting on behalf of the Secretary of Health and Human Services and such officer or employee shall be permitted to inspect and copy such records, to make such inventories of stock as he deems necessary, and otherwise to check the correctness of such inventories.</P>
+<P>(f) In addition, those persons conducting tests in accordance with paragraph (d) of this section shall maintain the results thereof and a description of the test method and of the test apparatus for a period of 3 years. These records shall be made available upon request at any reasonable hour by any officer or employee acting on behalf of the Secretary of Health and Human Services. The persons conducting tests shall permit the officer or employee to inspect and copy the records, to make such inventories of stock as the officer or employee deems necessary, and otherwise to check the correctness of the inventories.</P>
+<P>(g) For the purpose of this section, the term &#x201C;manufacturer&#x201D; includes an importer for resale. Such importer may have the tests required by paragraph (d) of this section conducted in the country of origin but must make the results thereof available, upon request, to the Food and Drug Administration, as soon as practicable.</P>
+<P>(h) All lenses must be impact-resistant except when the physician or optometrist finds that impact-resistant lenses will not fulfill the visual requirements for a particular patient.</P>
+<P>(i) This statement of policy does not apply to contact lenses.</P>
+<CITA TYPE="N">[41 FR 6896, Feb. 13, 1976, as amended at 44 FR 20678, Apr. 6, 1979; 47 FR 9397, Mar. 5, 1982; 65 FR 3586, Jan. 24, 2000; 65 FR 44436, July 18, 2000; 69 FR 18803, Apr. 9, 2004]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.415" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.415&quot;,&quot;citation&quot;:&quot;21 CFR 801.415&quot;}">
+<HEAD>&#xA7; 801.415 Maximum acceptable level of ozone.</HEAD>
+<P>(a) Ozone is a toxic gas with no known useful medical application in specific, adjunctive, or preventive therapy. In order for ozone to be effective as a germicide, it must be present in a concentration far greater than that which can be safely tolerated by man and animals.</P>
+<P>(b) Although undesirable physiological effects on the central nervous system, heart, and vision have been reported, the predominant physiological effect of ozone is primary irritation of the mucous membranes. Inhalation of ozone can cause sufficient irritation to the lungs to result in pulmonary edema. The onset of pulmonary edema is usually delayed for some hours after exposure; thus, symptomatic response is not a reliable warning of exposure to toxic concentrations of ozone. Since olfactory fatigue develops readily, the odor of ozone is not a reliable index of atmospheric ozone concentration.</P>
+<P>(c) A number of devices currently on the market generate ozone by design or as a byproduct. Since exposure to ozone above a certain concentration can be injurious to health, any such device will be considered adulterated and/or misbranded within the meaning of sections 501 and 502 of the act if it is used or intended for use under the following conditions:</P>
+<P>(1) In such a manner that it generates ozone at a level in excess of 0.05 part per million by volume of air circulating through the device or causes an accumulation of ozone in excess of 0.05 part per million by volume of air (when measured under standard conditions at 25 &#xB0;C (77 &#xB0;F) and 760 millimeters of mercury) in the atmosphere of enclosed space intended to be occupied by people for extended periods of time, e.g., houses, apartments, hospitals, and offices. This applies to any such device, whether portable or permanent or part of any system, which generates ozone by design or as an inadvertent or incidental product.</P>
+<P>(2) To generate ozone and release it into the atmosphere in hospitals or other establishments occupied by the ill or infirm.</P>
+<P>(3) To generate ozone and release it into the atmosphere and does not indicate in its labeling the maximum acceptable concentration of ozone which may be generated (not to exceed 0.05 part per million by volume of air circulating through the device) as established herein and the smallest area in which such device can be used so as not to produce an ozone accumulation in excess of 0.05 part per million.</P>
+<P>(4) In any medical condition for which there is no proof of safety and effectiveness.</P>
+<P>(5) To generate ozone at a level less than 0.05 part per million by volume of air circulating through the device and it is labeled for use as a germicide or deodorizer.</P>
+<P>(d) This section does not affect the present threshold limit value of 0.10 part per million (0.2 milligram per cubic meter) of ozone exposure for an 8-hour-day exposure of industrial workers as recommended by the American Conference of Governmental Industrial Hygienists.</P>
+<P>(e) The method and apparatus specified in 40 CFR part 50, or any other equally sensitive and accurate method, may be employed in measuring ozone pursuant to this section.</P>
+</DIV8>
+
+<DIV8 N="801.417" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.417&quot;,&quot;citation&quot;:&quot;21 CFR 801.417&quot;}">
+<HEAD>&#xA7; 801.417 Chlorofluorocarbon propellants.</HEAD>
+<P>The use of chlorofluorocarbon in devices as propellants in self-pressurized containers is generally prohibited except as provided in &#xA7; 2.125 of this chapter.</P>
+<CITA TYPE="N">[43 FR 11318, Mar. 17, 1978]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.422" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.422&quot;,&quot;citation&quot;:&quot;21 CFR 801.422&quot;}">
+<HEAD>&#xA7; 801.422 Prescription hearing aid labeling.</HEAD>
+<P>(a) <I>Scope.</I> This section specifies the labeling requirements for prescription hearing aids. Any hearing aid that does not satisfy the requirements of &#xA7; 800.30 of this chapter shall be a prescription device. Unless otherwise specified, the requirements in this section are in addition to other applicable requirements, including but not limited to special controls found in the applicable classification regulation in part 874 of this chapter. This section does not apply to group auditory trainers.</P>
+<P>(b) <I>Definitions for the purposes of this section.</I> This section uses the following definitions:</P>
+<P><I>Dispenser.</I> A dispenser is any person, as defined in section 201(e) of the Federal Food, Drug, and Cosmetic Act, engaged in the sale of hearing aids to any member of the consuming public or any employee, agent, salesperson, and/or representative of such a person.</P>
+<P><I>Hearing aid.</I> A hearing aid is any wearable device designed for, offered for the purpose of, or represented as aiding persons with or compensating for, impaired hearing.</P>
+<P><I>Prescription hearing aid.</I> A prescription hearing aid is a hearing aid that is not an over-the-counter (OTC) hearing aid as defined in &#xA7; 800.30 of this chapter or a hearing aid that does not satisfy the requirements in &#xA7; 800.30 of this chapter.</P>
+<P><I>Rebuilt hearing aid.</I> A prescription hearing aid is &#x201C;rebuilt&#x201D; if the manufacturer has inspected and tested the device, made any necessary modifications to ensure it meets applicable regulatory requirements, including the requirements in this section, and adequately reprocessed the device for the next user.</P>
+<P><I>Sale.</I> Sale includes a lease, rental, or any other purchase or exchange for value.</P>
+<P><I>Used hearing aid.</I> A hearing aid is &#x201C;used&#x201D; if a user has worn it for any period of time. However, a hearing aid shall not be &#x201C;used&#x201D; merely because a prospective user wore it as part of a bona fide hearing aid evaluation to determine whether to select that particular hearing aid for that prospective user. A hearing aid evaluation is &#x201C;bona fide&#x201D; if it was conducted in the presence of the dispenser or a hearing health professional selected by the dispenser to assist the prospective user in making a determination.</P>
+<P>(c) <I>Labeling.</I> A prescription hearing aid shall bear all of the following labeling:</P>
+<P>(1) <I>Outside package labeling.</I> The outside package of a prescription hearing aid shall bear all of the following:</P>
+<P>(i) <I>Warnings and other important information.</I> All of the following shall appear on the outside package:</P>
+<P>(A) <I>Warning against use in people younger than 18 without prior medical evaluation.</I></P>
+<img src="/graphics/er17au22.015.gif"/>
+<P>(B) <I>&#x201C;Red flag&#x201D; conditions.</I></P>
+<img src="/graphics/er17au22.016.gif"/>
+<P>(C) <I>Note about device trial options.</I></P>
+<img src="/graphics/er17au22.017.gif"/>
+<P>(ii) <I>Statement of build condition.</I> If the prescription hearing aid is used or rebuilt, the outside package shall declare that fact. A sticker under and visible through the outer wrapper will suffice to declare such fact.</P>
+<P>(iii) <I>Indication of battery information.</I> The outside package shall indicate the type and number of batteries and whether batteries are included in the package.</P>
+<P>(iv) <I>Indication of control platform.</I> That outside package shall indicate whether a mobile device or other non-included control platform is required. The indication must include the type of platform and how the platform connects to the device.</P>
+<P>(2) <I>Labeling, inside the package.</I> The manufacturer or distributor of a prescription hearing aid shall include a user instructional brochure inside the package and shall make an electronic version available for download without site or customer registration and without requiring purchase of any product or service. The user instructional brochure shall include all of the following:</P>
+<P>(i) The following warnings, which shall appear in the following order and prior to any content except the cover page:</P>
+<P>(A) <I>Warning against use in people younger than 18 without prior medical evaluation.</I></P>
+<img src="/graphics/er17au22.018.gif"/>
+<P>(B) <I>&#x201C;Red flag&#x201D; conditions, addressed to dispensers.</I></P>
+<img src="/graphics/er17au22.019.gif"/>
+<P>(C) <I>Warning to dispensers about very high-output devices.</I></P>
+<img src="/graphics/er17au22.020.gif"/>
+<P>(D) <I>Additional warnings.</I> Any additional warnings the manufacturer may include prior to the cautions and notices to users in paragraph (c)(2)(ii) of this section.</P>
+<P>(ii) The following cautions and notices for users, which shall appear prior to any content, except the cover page and the warnings under paragraph (c)(2)(i) of this section:</P>
+<P>(A) <I>Caution about hearing protection.</I></P>
+<img src="/graphics/er17au22.021.gif"/>
+<P>(B) <I>Caution about excessive sound output.</I></P>
+<img src="/graphics/er17au22.022.gif"/>
+<P>(C) <I>Caution about components lodging in ear.</I></P>
+<img src="/graphics/er17au22.023.gif"/>
+<P>(D) <I>Note about user expectations.</I></P>
+<img src="/graphics/er17au22.024.gif"/>
+<P>(E) <I>Note about reporting adverse events to FDA.</I></P>
+<img src="/graphics/er17au22.025.gif"/>
+<P>(F) <I>Note about hearing loss in people younger than 18 and fitting devices.</I></P>
+<img src="/graphics/er17au22.026.gif"/>
+<P>(iii) An illustration(s) of the prescription hearing aid that indicates operating controls, user adjustments, and the battery compartment.</P>
+<P>(iv) Information on the function of all controls intended for user adjustment.</P>
+<P>(v) A description of any accessory that accompanies the prescription hearing aid, including but not limited to wax guards, and accessories for use with a computer, television, or telephone.</P>
+<P>(vi) Specific instructions for all of the following:</P>
+<P>(A) Use of the prescription hearing aid with any accompanying accessories.</P>
+<P>(B) Maintenance and care of the prescription hearing aid, including how a user can clean, disinfect, and replace parts or how to seek replacements, as well as how to store the hearing aid when it will not be used for an extended period of time.</P>
+<P>(C) If the battery is replaceable or rechargeable, how to replace or recharge the battery, including a generic designation of replacement batteries.</P>
+<P>(D) Expected battery life.</P>
+<P>(vii) Identification of any known physiological side effects associated with the use of the prescription hearing aid that may warrant consultation with a physician, referring to an ear-nose-throat doctor when preferable, including if applicable, skin irritation and accelerated accumulation of cerumen (ear wax).</P>
+<P>(viii) The technical specifications required by paragraph (c)(4) of this section unless such specifications appear in separate labeling accompanying the prescription hearing aid.</P>
+<P>(ix) A description of commonly occurring, avoidable events that could adversely affect or damage the prescription hearing aid, including but not limited to, as applicable, ear wax buildup, drops, immersion in water, or exposure to excessive heat.</P>
+<P>(x) If the hearing aid incorporates wireless technology in its programming or use, appropriate warnings, instructions, and information relating to electromagnetic compatibility and wireless technology and human exposure to non-ionizing radiation.</P>
+<P>(xi) Information on how and where to obtain repair service or replacements, including at least one specific address where the user can go or send the prescription hearing aid to obtain such repair service or replacements.</P>
+<P>(xii) If clinical or non-clinical studies were conducted by or for the manufacturer to support the performance of the prescription hearing aid, a summary of all such studies.</P>
+<P>(3) <I>Labeling on the device.</I> The labeling on a prescription hearing aid itself shall bear all of the following clearly and permanently, except as provided in paragraph (c)(3)(iii) of this section:</P>
+<P>(i) The serial number.</P>
+<P>(ii) If the battery is removable, a &#x201C;+&#x201D; symbol to indicate the positive terminal for battery insertion unless the battery's physical design prevents inserting the battery in the reversed position.</P>
+<P>(iii) If the prescription hearing aid is used or rebuilt, the manufacturer shall physically attach a removable tag to the hearing aid declaring that fact.</P>
+<P>(4) <I>Technical specifications.</I> You must determine the technical specification values for the prescription hearing aid labeling in accordance with the test procedures of ANSI/ASA S3.22-2014 (R2020), except as provided in paragraph (c)(4)(ix) of this section for latency. Technical specifications and their associated values that are useful in selecting, fitting, and checking the performance of the prescription hearing aid shall appear in the user instructional brochure or in separate labeling that accompanies the device, including all of the following:</P>
+<P>(i) Saturation output curve (Saturation Sound Pressure Level (SSPL) 90 curve).</P>
+<P>(ii) Frequency response curve.</P>
+<P>(iii) Average saturation output (High Frequency (HF)-Average SSPL 90).</P>
+<P>(iv) Average full-on gain (HF-Average full-on gain).</P>
+<P>(v) Reference test gain.</P>
+<P>(vi) Frequency range.</P>
+<P>(vii) Total harmonic distortion.</P>
+<P>(viii) Equivalent input noise.</P>
+<P>(ix) Latency, measured using a method that is accurate and repeatable to within 1.5 ms.</P>
+<P>(x) Battery current drain.</P>
+<P>(xi) Induction coil sensitivity (telephone coil aids only).</P>
+<P>(xii) Input-output curve (only for hearing aids with automatic gain control).</P>
+<P>(xiii) Attack and release times (only for hearing aids with automatic gain control).</P>
+<P>(5) <I>Software device labeling.</I> Prescription hearing aid software that is not distributed with the hearing aid or amplification platform shall meet all of the following labeling requirements. With respect to the information required under paragraphs (c)(1) through (4) of this section, the information must be provided in the software device labeling, as specified in paragraphs (c)(5)(i) through (v) of this section, rather than the locations (<I>e.g.,</I> outside package labeling) specified in paragraphs (c)(1) through (4).</P>
+<P>(i) Prior to first use of the software or obtaining payment information for the software, whichever occurs first, the labeling must clearly and prominently present all of the following to the prospective user. For each, the labeling must remain visible until the user dismisses it or proceeds to the next step:</P>
+<P>(A) Compatibility and minimum operating requirements for the software device.</P>
+<P>(B) Disclosures of any fees or payments after first use or initial payment, including but not limited to any fees or payments relating to subscriptions, add-on features, or continued access to features or services. The disclosures must name and briefly describe what each fee or payment covers.</P>
+<P>(C) The information required under paragraphs (c)(1)(i) and (iv) of this section.</P>
+<P>(ii) Prior to first use of the software, the labeling must clearly and prominently present all of the following to the prospective user:</P>
+<P>(A) The information required under paragraph (c)(2)(i)(A) of this section, and it must remain visible until the user acknowledges it.</P>
+<P>(B) The information required under paragraphs (c)(2)(i)(B) through (D) and (c)(2)(ii), (iv), (vii), and (viii) of this section, and the information must remain visible until the user dismisses it or proceeds to the next step.</P>
+<P>(C) All other information required under paragraph (c)(2) of this section, to the extent applicable, and the information must remain visible until the user dismisses it or proceeds to the next step.</P>
+<P>(iii) The software device labeling must include the information required under paragraphs (c)(3)(i) and (c)(4) of this section.</P>
+<P>(iv) All of the software device labeling must be accessible for review after acknowledgment, dismissal, or proceeding to the next step.</P>
+<P>(v) If there are changes to any of the labeling required under paragraph (c)(5) of this section, the labeling with the changed information must be presented to the user until the user dismisses it.</P>
+<P>(6) <I>Misbranding.</I> A prescription hearing aid that is not labeled as required under this section and &#xA7; 801.109 is misbranded under sections 201(n), 502(a), and/or 502(f) of the Federal Food, Drug, and Cosmetic Act.</P>
+<P>(d) <I>Incorporation by reference.</I> ANSI/ASA S3.22-2014 (R2020), &#x201C;AMERICAN NATIONAL STANDARD Specification of Hearing Aid Characteristics,&#x201D; dated June 5, 2020, is incorporated by reference into this section with the approval of the Director of the Office of the Federal Register under 5 U.S.C. 552(a) and 1 CFR part 51. This material is available for inspection at the Food and Drug Administration and at the National Archives and Records Administration (NARA). Contact the Dockets Management Staff, 5630 Fishers Lane, Rm. 1061, Rockville, MD 20852, 240-402-7500. For information on the availability of this material at NARA, email: <I>fr.inspection@nara.gov,</I> or go to: <I>www.archives.gov/federal-register/cfr/ibr-locations.html.</I> The material may be obtained from the Acoustical Society of America (ASA), 1305 Walt Whitman Road, Suite 300, Melville, NY 11747; phone: (631) 390-0215; fax: (631) 923-2875; email: <I>asastds@acousticalsociety.org.</I></P>
+<CITA TYPE="N">[87 FR 50755, Aug. 17, 2022]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.430" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.430&quot;,&quot;citation&quot;:&quot;21 CFR 801.430&quot;}">
+<HEAD>&#xA7; 801.430 User labeling for menstrual tampons.</HEAD>
+<P>(a) This section applies to scented or scented deodorized menstrual tampons as identified in &#xA7; 884.5460 and unscented menstrual tampons as identified in &#xA7; 884.5470 of this chapter.</P>
+<P>(b) Data show that toxic shock syndrome (TSS), a rare but serious and sometimes fatal disease, is associated with the use of menstrual tampons. To protect the public and to minimize the serious adverse effects of TSS, menstrual tampons shall be labeled as set forth in paragraphs (c), (d), and (e) of this section and tested for absorbency as set forth in paragraph (f) of this section.</P>
+<P>(c) If the information specified in paragraph (d) of this section is to be included as a package insert, the following alert statement shall appear prominently and legibly on the package label:</P>
+<EXTRACT>
+<P><E T="04">Attention:</E> Tampons are associated with Toxic Shock Syndrome (TSS). TSS is a rare but serious disease that may cause death. Read and save the enclosed information.</P></EXTRACT>
+<P>(d) The labeling of menstrual tampons shall contain the following consumer information prominently and legibly, in such terms as to render the information likely to be read and understood by the ordinary individual under customary conditions of purchase and use:</P>
+<P>(1)(i) Warning signs of TSS, e.g., sudden fever (usually 102&#xB0; or more) and vomiting, diarrhea, fainting or near fainting when standing up, dizziness, or a rash that looks like a sunburn;</P>
+<P>(ii) What to do if these or other signs of TSS appear, including the need to remove the tampon at once and seek medical attention immediately;</P>
+<P>(2) The risk of TSS to all women using tampons during their menstrual period, especially the reported higher risks to women under 30 years of age and teenage girls, the estimated incidence of TSS of 1 to 17 per 100,000 menstruating women and girls per year, and the risk of death from contracting TSS;</P>
+<P>(3) The advisability of using tampons with the minimum absorbency needed to control menstrual flow in order to reduce the risk of contracting TSS;</P>
+<P>(4) Avoiding the risk of getting tampon-associated TSS by not using tampons, and reducing the risk of getting TSS by alternating tampon use with sanitary napkin use during menstrual periods; and</P>
+<P>(5) The need to seek medical attention before again using tampons if TSS warning signs have occurred in the past, or if women have any questions about TSS or tampon use.</P>
+<P>(e) The statements required by paragraph (e) of this section shall be prominently and legibly placed on the package label of menstrual tampons in conformance with section 502(c) of the Federal Food, Drug, and Cosmetic Act (the act) (unless the menstrual tampons are exempt under paragraph (g) of this section).</P>
+<P>(1) Menstrual tampon package labels shall bear one of the following absorbency terms representing the absorbency of the production run, lot, or batch as measured by the test described in paragraph (f)(2) of this section;</P>
+<DIV width="100%"><DIV class="gpotbl_div">
+<TABLE border="1" cellpadding="1" cellspacing="1" class="gpo_table" frame="void" width="100%">
+<THEAD>
+<TR>
+<TH class="center border-top-single border-bottom-single border-right-single">Ranges of absorbency in grams <sup>1</sup></TH>
+<TH class="center border-top-single border-bottom-single">Corresponding term of absorbency</TH>
+</TR>
+</THEAD>
+<TBODY>
+<TR>
+<TD class="left border-bottom-single border-right-single">6 and under</TD>
+<TD class="left border-bottom-single">Light absorbency</TD>
+</TR>
+<TR>
+<TD class="left border-bottom-single border-right-single">6 to 9</TD>
+<TD class="left border-bottom-single">Regular absorbency</TD>
+</TR>
+<TR>
+<TD class="left border-bottom-single border-right-single">9 to 12</TD>
+<TD class="left border-bottom-single">Super absorbency</TD>
+</TR>
+<TR>
+<TD class="left border-bottom-single border-right-single">12 to 15</TD>
+<TD class="left border-bottom-single">Super plus absorbency</TD>
+</TR>
+<TR>
+<TD class="left border-bottom-single border-right-single">15 to 18</TD>
+<TD class="left border-bottom-single">Ultra absorbency</TD>
+</TR>
+<TR>
+<TD class="left border-bottom-single border-right-single">Above 18</TD>
+<TD class="left border-bottom-single">No term
+</TD>
+</TR>
+</TBODY>
+<TFOOT><TR><TD colspan="2"><sup>1</sup> These ranges are defined, respectively, as follows: Less than or equal to 6 grams (g); greater than 6 g up to and including 9 g; greater than 9 g up to and including 12 g; greater than 12 g up to and including 15 g; greater than 15 g up to and including 18 g; and greater than 18 g.</TD></TR></TFOOT></TABLE>
+</DIV></DIV>
+<P>(2) The package label shall include an explanation of the ranges of absorbency and a description of how consumers can use a range of absorbency, and its corresponding absorbency term, to make comparisons of absorbency of tampons to allow selection of the tampons with the minimum absorbency needed to control menstrual flow in order to reduce the risk of contracting TSS.</P>
+<P>(f) A manufacturer shall measure the absorbency of individual tampons using the test method specified in paragraph (f)(2) of this section and calculate the mean absorbency of a production run, lot, or batch by rounding to the nearest 0.1 gram.</P>
+<P>(1) A manufacturer shall design and implement a sampling plan that includes collection of probability samples of adequate size to yield consistent tolerance intervals such that the probability is 90 percent that at least 90 percent of the absorbencies of individual tampons within a brand and type are within the range of absorbency stated on the package label.</P>
+<P>(2) In the absorbency test, an unlubricated condom, with tensile strength between 17 Mega Pascals (MPa) and 30 MPa, as measured according to the procedure in the American Society for Testing and Materials (ASTM) D 3492-97, &#x201C;Standard Specification for Rubber Contraceptives (Male Condoms)&#x201D;
+<SU>1</SU>
+<FTREF/> for determining tensile strength, which is incorporated by reference in accordance with 5 U.S.C. 552(a), is attached to the large end of a glass chamber (or a chamber made from hard transparent plastic) with a rubber band (see figure 1) and pushed through the small end of the chamber using a smooth, finished rod. The condom is pulled through until all slack is removed. The tip of the condom is cut off and the remaining end of the condom is stretched over the end of the tube and secured with a rubber band. A preweighed (to the nearest 0.01 gram) tampon is placed within the condom membrane so that the center of gravity of the tampon is at the center of the chamber. An infusion needle (14 gauge) is inserted through the septum created by the condom tip until it contacts the end of the tampon. The outer chamber is filled with water pumped from a temperature-controlled waterbath to maintain the average temperature at 27&#xB1;1 &#xB0;C. The water returns to the waterbath as shown in figure 2. Syngyna fluid (10 grams sodium chloride, 0.5 gram Certified Reagent Acid Fushsin, 1,000 milliliters distilled water) is then pumped through the infusion needle at a rate of 50 milliliters per hour. The test shall be terminated when the tampon is saturated and the first drop of fluid exits the apparatus. (The test result shall be discarded if fluid is detected in the folds of the condom before the tampon is saturated). The water is then drained and the tampon is removed and immediately weighed to the nearest 0.01 gram. The absorbency of the tampon is determined by subtracting its dry weight from this value. The condom shall be replaced after 10 tests or at the end of the day during which the condom is used in testing, whichever occurs first.</P>
+<FTNT>
+<P><SU>1</SU>The Director of the Federal Register approves this incorporation by reference in accordance with 5 U.S.C. 552(a) and 1 CFR part 51. You may obtain a copy from the American Society for Testing and Materials International, 100 Barr Harbor Dr., P.O. Box C700, West Conshohocken, PA 19428-2959, 610-832-9578, <I>www.astm.org.</I> You may inspect a copy at the FDA Main Library, 10903 New Hampshire Ave., Bldg. 2, 3d floor, Silver Spring, MD 20993-0002, 301-796-2039, or at the National Archives and Records Administration (NARA). For information on the availability of this material at NARA, call 202-741-2139, or go to: <I>http://www.archives.gov/federal_register/code_of_federal_regulations/ibr_locations.html.</I></P></FTNT>
+<img src="/graphics/er01fe93.026.gif"/>
+<img src="/graphics/er01fe93.027.gif"/>
+<P>(3) The Food and Drug Administration may permit the use of an absorbency test method different from the test method specified in this section if each of the following conditions is met:</P>
+<P>(i) The manufacturer presents evidence, in the form of a citizen petition submitted in accordance with the requirements of &#xA7; 10.30 of this chapter, demonstrating that the alternative test method will yield results that are equivalent to the results yielded by the test method specified in this section; and</P>
+<P>(ii) FDA approves the method and has published notice of its approval of the alternative test method in the <E T="04">Federal Register.</E></P>
+<P>(g) Any menstrual tampon intended to be dispensed by a vending machine is exempt from the requirements of this section.</P>
+<P>(h) Any menstrual tampon that is not labeled as required by paragraphs (c), (d), and (e) of this section and that is initially introduced or initially delivered for introduction into commerce after March 1, 1990, is misbranded under sections 201(n), 502 (a) and (f) of the act.</P>
+<APPRO TYPE="N">(Information collection requirements contained in paragraphs (e) and (f) were approved by the Office of Management and Budget under control number 0910-0257)
+</APPRO>
+<CITA TYPE="N">[47 FR 26989, June 22, 1982, as amended at 54 FR 43771, Oct. 26, 1989; 55 FR 17600, Apr. 26, 1990; 65 FR 3586, Jan. 24, 2000; 65 FR 44436, July 18, 2000; 65 FR 62284, Oct. 18, 2000; 69 FR 18803, Apr. 9, 2004; 69 FR 52171, Aug. 25, 2004; 75 FR 20914, Apr. 22, 2010]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.433" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.433&quot;,&quot;citation&quot;:&quot;21 CFR 801.433&quot;}">
+<HEAD>&#xA7; 801.433 Warning statements for prescription and restricted device products containing or manufactured with chlorofluorocarbons or other ozone-depleting substances.</HEAD>
+<P>(a)(1) All prescription and restricted device products containing or manufactured with chlorofluorocarbons, halons, carbon tetrachloride, methyl chloride, or any other class I substance designated by the Environmental Protection Agency (EPA) shall, except as provided in paragraph (b) of this section, bear the following warning statement:</P>
+<EXTRACT>
+<P><E T="04">Warning:</E> Contains [or Manufactured with, if applicable] [<I>insert name of substance</I>], a substance which harms public health and environment by destroying ozone in the upper atmosphere.</P></EXTRACT>
+<P>(2) The warning statement shall be clearly legible and conspicuous on the product, its immediate container, its outer packaging, or other labeling in accordance with the requirements of 40 CFR part 82 and appear with such prominence and conspicuousness as to render it likely to be read and understood by consumers under normal conditions of purchase.</P>
+<P>(b)(1) For prescription and restricted device products, the following alternative warning statement may be used:</P>
+<NOTE>
+<HED>Note:</HED>
+<P>The indented statement below is required by the Federal government's Clean Air Act for all products containing or manufactured with chlorofluorocarbons (CFC's) [or name of other class I substance, if applicable]:</P>
+<P>This product contains [or is manufactured with, if applicable] [<I>insert name of substance</I>], a substance which harms the environment by destroying ozone in the upper atmosphere.</P>
+<P>Your physician has determined that this product is likely to help your personal health. USE THIS PRODUCT AS DIRECTED, UNLESS INSTRUCTED TO DO OTHERWISE BY YOUR PHYSICIAN. If you have any questions about alternatives, consult with your physician.</P></NOTE>
+<P>(2) The warning statement shall be clearly legible and conspicuous on the product, its immediate container, its outer packaging, or other labeling in accordance with the requirements of 40 CFR part 82 and appear with such prominence and conspicuousness as to render it likely to be read and understood by consumers under normal conditions of purchase.</P>
+<P>(3) If the warning statement in paragraph (b)(1) of this section is used, the following warning statement must be placed on the package labeling intended to be read by the physician (physician package insert) after the &#x201C;How supplied&#x201D; section, which describes special handling and storage conditions on the physician labeling:</P>
+<NOTE>
+<HED>Note:</HED>
+<P>The indented statement below is required by the Federal government's Clean Air Act for all products containing or manufactured with chlorofluorocarbons (CFC's) [or name of other class I substance, if applicable]:</P>
+<P><E T="04">Warning:</E> Contains [or Manufactured with, if applicable] [<I>insert name of substance</I>], a substance which harms public health and environment by destroying ozone in the upper atmosphere.</P>
+<P>A notice similar to the above WARNING has been placed in the information for the patient [or patient information leaflet, if applicable] of this product under Environmental Protection Agency (EPA) regulations. The patient's warning states that the patient should consult his or her physician if there are questions about alternatives.</P></NOTE>
+<P>(c) This section does not replace or relieve a person from any requirements imposed under 40 CFR part 82.</P>
+<CITA TYPE="N">[61 FR 20101, May 3, 1996]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.435" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.435&quot;,&quot;citation&quot;:&quot;21 CFR 801.435&quot;}">
+<HEAD>&#xA7; 801.435 User labeling for latex condoms.</HEAD>
+<P>(a) This section applies to the subset of condoms as identified in &#xA7; 884.5300 of this chapter, and condoms with spermicidal lubricant as identified in &#xA7; 884.5310 of this chapter, which products are formed from latex films.</P>
+<P>(b) Data show that the material integrity of latex condoms degrade over time. To protect the public health and minimize the risk of device failure, latex condoms must bear an expiration date which is supported by testing as described in paragraphs (d) and (h) of this section.</P>
+<P>(c) The expiration date, as demonstrated by testing procedures required by paragraphs (d) and (h) of this section, must be displayed prominently and legibly on the primary packaging (i.e., individual package), and higher levels of packaging (e.g., boxes of condoms), in order to ensure visibility of the expiration date by consumers.</P>
+<P>(d) Except as provided under paragraph (f) of this section, the expiration date must be supported by data demonstrating physical and mechanical integrity of the product after three discrete and representative lots of the product have been subjected to each of the following conditions:</P>
+<P>(1) Storage of unpackaged bulk product for the maximum amount of time the manufacturer allows the product to remain unpackaged, followed by storage of the packaged product at 70 &#xB0;C (plus or minus 2 &#xB0;C) for 7 days;</P>
+<P>(2) Storage of unpackaged bulk product for the maximum amount of time the manufacturer allows the product to remain unpackaged, followed by storage of the packaged product at a selected temperature between 40 and 50 &#xB0;C (plus or minus 2 &#xB0;C) for 90 days; and</P>
+<P>(3) Storage of unpackaged bulk product for the maximum amount of time the manufacturer allows the product to remain unpackaged, followed by storage of the packaged product at a monitored or controlled temperature between 15 and 30 &#xB0;C for the lifetime of the product (real time storage).</P>
+<P>(e) If a product fails the physical and mechanical integrity tests commonly used by industry after the completion of the accelerated storage tests described in paragraphs (d)(1) and (d)(2) of this section, the product expiration date must be demonstrated by real time storage conditions described in paragraph (d)(3) of this section. If all of the products tested after storage at temperatures as described in paragraphs (d)(1) and (d)(2) of this section pass the manufacturer's physical and mechanical integrity tests, the manufacturer may label the product with an expiration date of up to 5 years from the date of product packaging. If the extrapolated expiration date under paragraphs (d)(1) and (d)(2) of this section is used, the labeled expiration date must be confirmed by physical and mechanical integrity tests performed at the end of the stated expiration period as described in paragraph (d)(3) of this section. If the data from tests following real time storage described in paragraph (d)(3) of this section fails to confirm the extrapolated expiration date, the manufacturer must, at that time, relabel the product to reflect the actual shelf life.</P>
+<P>(f) Products that already have established shelf life data based upon real time storage and testing and have such storage and testing data available for inspection are not required to confirm such data using accelerated and intermediate aging data described in paragraphs (d)(1) and (d)(2) of this section. If, however, such real time expiration dates were based upon testing of products that were not first left unpackaged for the maximum amount of time as described in paragraph (d)(3) of this section, the real time testing must be confirmed by testing products consistent with the requirements of paragraph (d)(3) of this section. This testing shall be initiated no later than the effective date of this regulation. Until the confirmation testing in accordance with paragraph (d)(3) of this section is completed, the product may remain on the market labeled with the expiration date based upon previous real time testing.</P>
+<P>(g) If a manufacturer uses testing data from one product to support expiration dating on any variation of that product, the manufacturer must document and provide, upon request, an appropriate justification for the application of the testing data to the variation of the tested product.</P>
+<P>(h) If a latex condom contains a spermicide, and the expiration date based on spermicidal stability testing is different from the expiration date based upon latex integrity testing, the product shall bear only the earlier expiration date.</P>
+<P>(i) The time period upon which the expiration date is based shall start with the date of packaging.</P>
+<P>(j) As provided in part 820 of this chapter, all testing data must be retained in each company's files, and shall be made available upon request for inspection by the Food and Drug Administration.</P>
+<P>(k) Any latex condom not labeled with an expiration date as required by paragraph (c) of this section, and initially delivered for introduction into interstate commerce after the effective date of this regulation is misbranded under sections 201(n) and 502(a) and (f) of Federal Food, Drug, and Cosmetic Act (21 U.S.C. 321(n) and 352(a) and (f)).</P>
+<CITA TYPE="N">[62 FR 50501, Sept. 26, 1997]
+</CITA>
+</DIV8>
+
+<DIV8 N="801.437" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-801.437&quot;,&quot;citation&quot;:&quot;21 CFR 801.437&quot;}">
+<HEAD>&#xA7; 801.437 User labeling for devices that contain natural rubber.</HEAD>
+<P>(a) Data in the Medical Device Reporting System and the scientific literature indicate that some individuals are at risk of severe anaphylactic reactions to natural latex proteins. This labeling regulation is intended to minimize the risk to individuals sensitive to natural latex proteins and protect the public health.</P>
+<P>(b) This section applies to all devices composed of or containing, or having packaging or components that are composed of, or contain, natural rubber that contacts humans. The term &#x201C;natural rubber&#x201D; includes natural rubber latex, dry natural rubber, and synthetic latex or synthetic rubber that contains natural rubber in its formulation.</P>
+<P>(1) The term &#x201C;natural rubber latex&#x201D; means rubber that is produced by the natural rubber latex process that involves the use of natural latex in a concentrated colloidal suspension. Products are formed from natural rubber latex by dipping, extruding, or coating.</P>
+<P>(2) The term &#x201C;dry natural rubber&#x201D; means rubber that is produced by the dry natural rubber process that involves the use of coagulated natural latex in the form of dried or milled sheets. Products are formed from dry natural rubber by compression molding, extrusion, or by converting the sheets into a solution for dipping.</P>
+<P>(3) The term &#x201C;contacts humans&#x201D; means that the natural rubber contained in a device is intended to contact or is likely to contact the user or patient. This includes contact when the device that contains natural rubber is connected to the patient by a liquid path or an enclosed gas path; or the device containing the natural rubber is fully or partially coated with a powder, and such powder may carry natural rubber proteins that may contaminate the environment of the user or patient.</P>
+<P>(c) Devices containing natural rubber shall be labeled as set forth in paragraphs (d) through (h) of this section. Each required labeling statement shall be prominently and legibly displayed in conformance with section 502(c) of the Federal Food, Drug, and Cosmetic Act (the act) (21 U.S.C. 352(c)).</P>
+<P>(d) Devices containing natural rubber latex that contacts humans, as described in paragraph (b) of this section, shall bear the following statement in bold print on the device labeling:</P>
+<P>&#x201C;Caution: This Product Contains Natural Rubber Latex Which May Cause Allergic Reactions.&#x201D;</P>
+<FP>This statement shall appear on all device labels, and other labeling, and shall appear on the principal display panel of the device packaging, the outside package, container or wrapper, and the immediate device package, container, or wrapper.
+</FP>
+<P>(e) Devices containing dry natural rubber that contacts humans, as described in paragraph (b) of this section, that are not already subject to paragraph (d) of this section, shall bear the following statement in bold print on the device labeling:</P>
+<P>&#x201C;This Product Contains Dry Natural Rubber.&#x201D;</P>
+<FP>This statement shall appear on all device labels, and other labeling, and shall appear on the principal display panel of the device packaging, the outside package, container or wrapper, and the immediate device package, container, or wrapper.
+</FP>
+<P>(f) Devices that have packaging containing natural rubber latex that contacts humans, as described in paragraph (b) of this section, shall bear the following statement in bold print on the device labeling:</P>
+<P>&#x201C;Caution: The Packaging of This Product Contains Natural Rubber Latex Which May Cause Allergic Reactions.&#x201D;</P>
+<FP>This statement shall appear on the packaging that contains the natural rubber, and the outside package, container, or wrapper.
+</FP>
+<P>(g) Devices that have packaging containing dry natural rubber that contacts humans, as described in paragraph (b) of this section, shall bear the following statement in bold print on the device labeling:</P>
+<P>&#x201C;The Packaging of This Product Contains Dry Natural Rubber.&#x201D;</P>
+<FP>This statement shall appear on the packaging that contains the natural rubber, and the outside package, container, or wrapper.
+</FP>
+<P>(h) Devices that contain natural rubber that contacts humans, as described in paragraph (b) of this section, shall not contain the term &#x201C;hypoallergenic&#x201D; on their labeling.</P>
+<P>(i) Any affected person may request an exemption or variance from the requirements of this section by submitting a citizen petition in accordance with &#xA7; 10.30 of this chapter.</P>
+<P>(j) Any device subject to this section that is not labeled in accordance with paragraphs (d) through (h) of this section and that is initially introduced or initially delivered for introduction into interstate commerce after the effective date of this regulation is misbranded under sections 201(n) and 502(a), (c), and (f) of the act (21 U.S.C. 321(n) and 352(a), (c), and (f)).</P>
+<NOTE>
+<HED>Note to &#xA7; 801.437:</HED>
+<P>Paragraphs (f) and (g) are stayed until June 27, 1999, as those regulations relate to device packaging that uses &#x201C;cold seal&#x201D; adhesives.</P></NOTE>
+<CITA TYPE="N">[62 FR 51029, Sept. 30, 1997, as amended at 63 FR 46175, Aug. 31, 1998]
+</CITA>
+</DIV8>
+
+</DIV6>
+</DIV5>

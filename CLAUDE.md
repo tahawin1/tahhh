@@ -75,8 +75,8 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 | Chine (origine possible) | Règlement du Conseil d'État n°739 (2021) | NMPA | `rules/chine.yaml` |
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
-| États-Unis (origine possible) | FD&C Act ; 21 CFR 807, 814, 820, 860 | FDA | `rules/etats_unis.yaml` (provisoire) |
-| Corée du Sud (origine possible) | Medical Devices Act | MFDS | `rules/coree_du_sud.yaml` (provisoire) |
+| États-Unis (origine possible) | FD&C Act ; 21 CFR 801, 807, 814, 820, 860 | FDA | `rules/etats_unis.yaml` (partiel) |
+| Corée du Sud (origine possible) | Medical Devices Act (2025) + Enforcement Rule | MFDS | `rules/coree_du_sud.yaml` (partiel) |
 | Pakistan (origine possible) | Medical Devices Rules 2017 (S.R.O. 32(I)/2018) | DRAP | `rules/pakistan.yaml` (provisoire) |
 
 ### Différence clé entre les 4 systèmes (à respecter dans le rule engine)
@@ -244,8 +244,17 @@ supporte déjà.
       `scripts/telecharger_textes_pays.sh` (eCFR 21 CFR 801/807/814/820/860,
       Medical Devices Act coréen, Medical Devices Rules 2017 DRAP, GHTF N77),
       textes extraits dans `data/raw_pdfs/textes/`, indexation
-      `scripts/indexer_textes_pays.sh`. À faire : exécuter le téléchargement
-      (domaines à autoriser), confronter les YAML provisoires aux textes.
+      `scripts/indexer_textes_pays.sh`. Téléchargés le 2026-10-01 (manifeste
+      `data/raw_pdfs/SOURCES_PAYS.md`) : 21 CFR 801/807/814/820/860 (eCFR, exige
+      `--compressed`), loi coréenne Act No. 20888 (2025, KLRI), Enforcement Rule
+      + annexe 1 + règlement d'autorisation + GMP (MFDS, zip). États-Unis et
+      Corée confrontés aux textes → statut **partiel** (références citées ;
+      à vérifier : CFG/FD&C Act non indexé, Certificate of Free Sale coréen
+      absent des textes). Classes coréennes = I à IV (pas 1 à 4). Pakistan
+      **provisoire** : dra.gov.pk coupe la connexion depuis l'environnement
+      (WAF) → PDF à fournir par l'utilisateur ; IMDRF N77 idem (facultatif).
+      Pas encore indexés dans Qdrant (pas d'Ollama ici) : sur le serveur,
+      `docker compose --profile api run --rm api bash scripts/indexer_textes_pays.sh`.
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [ ] Agent — étape 4 : enchaînement automatique et relances fournisseur
       préparées (jamais envoyées sans validation)

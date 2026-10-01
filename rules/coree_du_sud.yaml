@@ -4,36 +4,45 @@
 #   (traductions anglaises officielles MFDS / KLRI — non contraignantes)
 # Autorité : MFDS (Ministry of Food and Drug Safety)
 #
-# STATUT : PROVISOIRE (2026-10-01). Rédigé avant l'indexation des textes
-# officiels (sites bloqués depuis l'environnement de développement) : chaque
-# point est à confronter au texte indexé avant tout usage dans une décision.
+# Textes indexés (data/raw_pdfs/textes/coree_*.txt) : Medical Devices Act,
+# Act No. 20888 du 1-4-2025 (KLRI) ; Enforcement Rule (Ordinance No. 1819 du
+# 21-7-2022, MFDS) et son annexe 1 (classification) ; Regulation on the
+# Permission, Notification, Review (No. 2022-52) ; GMP Regulations (févr. 2026).
+#
+# STATUT : PARTIEL (2026-10-01). Points vérifiés dans les textes : références
+# indiquées. Reste à vérifier : certificat de libre vente (absent des textes
+# indexés : document délivré à la demande, à confirmer auprès du fabricant).
 
 pays: coree_du_sud
-statut: provisoire
+statut: partiel
 date_version: "2026-10-01"
 autorite: "Ministry of Food and Drug Safety (MFDS)"
-classification: ["1", "2", "3", "4"]  # grades 1 (risque faible) à 4 (risque très élevé)
+# Enforcement Rule, annexe 1, 1. A (vérifié) : classe I « little potential
+# risk », II « low », III « moderate », IV « high risk »
+classification: [I, II, III, IV]
 
-mise_sur_le_marche_par_classe:
-  "1": "notification (신고)"
-  "2": "certification (인증) par un organisme désigné, ou autorisation MFDS selon le dispositif"
-  "3": "autorisation (허가) par le MFDS, avec revue du dossier technique"
-  "4": "autorisation (허가) par le MFDS, avec revue du dossier technique et des données cliniques"
+mise_sur_le_marche_par_classe:  # Enforcement Rule, art. 4 (vérifié)
+  I: "notification (신고) — par catégorie ou par produit"
+  II: "certification (인증) pour les dispositifs désignés par le MFDS, sinon autorisation (허가)"
+  III: "autorisation (허가) par produit"
+  IV: "autorisation (허가) par produit"
+
+validite_autorisation_ans: 5  # Medical Devices Act, autorisation, certification ou notification : 5 ans (vérifié)
 
 systeme_qualite:
-  texte: "KGMP — bonnes pratiques de fabrication coréennes (audit MFDS / organisme désigné)"
-  note: "exigé pour la mise sur le marché ; certificat KGMP à demander au fabricant"
+  texte: "systèmes de fabrication et de management de la qualité (KGMP) exigés avant toute autorisation, certification ou notification d'importation (Medical Devices Act, art. 15 (4), vérifié) ; Medical Device GMP Regulations (MFDS, févr. 2026)"
+  note: "certificat GMP du fabricant à demander"
 
 preuve_mise_sur_le_marche:
   document: "certificat de notification, de certification ou d'autorisation MFDS"
-  certificat_exportation: "certificat de libre vente (Certificate of Free Sale) délivré par le MFDS"
+  certificat_exportation: "certificat de libre vente (Certificate of Free Sale) délivré par le MFDS — absent des textes indexés, à vérifier"
 
 representant_local_requis: true
-representant_local_nom: "titulaire coréen de l'autorisation (fabricant étranger : importateur ou représentant agréé)"
+representant_local_nom: "importateur titulaire d'une autorisation d'activité d'importation (Medical Devices Act, art. 15 (1), vérifié)"
 
 contraintes_operationnelles:
   langue_etiquetage: [coreen]
 
 notes:
-  - "Quatre grades, proches des classes A à D de l'IMDRF."
+  - "Quatre classes (I à IV), proches des classes A à D de l'IMDRF."
   - "Documents en coréen : traduction assermentée nécessaire pour le dossier marocain."

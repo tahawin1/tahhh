@@ -1,0 +1,575 @@
+<?xml version="1.0"?>
+<DIV5 N="814" TYPE="PART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814&amp;quot;}">
+<HEAD>PART 814&#x2014;PREMARKET APPROVAL OF MEDICAL DEVICES
+</HEAD>
+<AUTH>
+<HED>Authority:</HED><PSPACE>21 U.S.C. 351, 352, 353, 360, 360c-360j, 360bbb-8b, 371, 372, 373, 374, 375, 379, 379e, 379k-1, 381.
+</PSPACE></AUTH>
+<SOURCE>
+<HED>Source:</HED><PSPACE>51 FR 26364, July 22, 1986, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV6 N="A" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-A&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart A&amp;quot;}">
+<HEAD>Subpart A&#x2014;General</HEAD>
+<DIV8 N="814.1" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.1&quot;,&quot;citation&quot;:&quot;21 CFR 814.1&quot;}">
+<HEAD>&#xA7; 814.1 Scope.</HEAD>
+<P>(a) This section implements sections 515 and 515A of the act by providing procedures for the premarket approval of medical devices intended for human use.</P>
+<P>(b) References in this part to regulatory sections of the Code of Federal Regulations are to chapter I of title 21, unless otherwise noted.</P>
+<P>(c) This part applies to any class III medical device, unless exempt under section 520(g) of the act, that:</P>
+<P>(1) Was not on the market (introduced or delivered for introduction into commerce for commercial distribution) before May 28, 1976, and is not substantially equivalent to a device on the market before May 28, 1976, or to a device first marketed on, or after that date, which has been classified into class I or class II; or</P>
+<P>(2) Is required to have an approved premarket approval application (PMA) or a declared completed product development protocol under a regulation issued under section 515(b) of the act; or</P>
+<P>(3) Was regulated by FDA as a new drug or antibiotic drug before May 28, 1976, and therefore is governed by section 520(1) of the act.</P>
+<P>(d) This part amends the conditions to approval for any PMA approved before the effective date of this part. Any condition to approval for an approved PMA that is inconsistent with this part is revoked. Any condition to approval for an approved PMA that is consistent with this part remains in effect.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 79 FR 1740, Jan. 10, 2014]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.2" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.2&quot;,&quot;citation&quot;:&quot;21 CFR 814.2&quot;}">
+<HEAD>&#xA7; 814.2 Purpose.</HEAD>
+<P>The purpose of this part is to establish an efficient and thorough device review process&#x2014;</P>
+<P>(a) To facilitate the approval of PMA's for devices that have been shown to be safe and effective and that otherwise meet the statutory criteria for approval; and</P>
+<P>(b) To ensure the disapproval of PMA's for devices that have not been shown to be safe and effective or that do not otherwise meet the statutory criteria for approval. This part shall be construed in light of these objectives.</P>
+</DIV8>
+
+<DIV8 N="814.3" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.3&quot;,&quot;citation&quot;:&quot;21 CFR 814.3&quot;}">
+<HEAD>&#xA7; 814.3 Definitions.</HEAD>
+<P>For the purposes of this part:</P>
+<P>(a) <I>Act</I> means the Federal Food, Drug, and Cosmetic Act (sections 201-902, 52 Stat. 1040 <I>et seq.,</I> as amended (21 U.S.C. 321-392)).</P>
+<P>(b) <I>FDA</I> means the Food and Drug Administration.</P>
+<P>(c) <I>IDE</I> means an approved or considered approved investigational device exemption under section 520(g) of the act and parts 812 and 813.</P>
+<P>(d) <I>Master file</I> means a reference source that a person submits to FDA. A master file may contain detailed information on a specific manufacturing facility, process, methodology, or component used in the manufacture, processing, or packaging of a medical device.</P>
+<P>(e) <I>PMA</I> means any premarket approval application for a class III medical device, including all information submitted with or incorporated by reference therein. &#x201C;PMA&#x201D; includes a new drug application for a device under section 520(1) of the act.</P>
+<P>(f) <I>PMA amendment</I> means information an applicant submits to FDA to modify a pending PMA or a pending PMA supplement.</P>
+<P>(g) <I>PMA supplement</I> means a supplemental application to an approved PMA for approval of a change or modification in a class III medical device, including all information submitted with or incorporated by reference therein.</P>
+<P>(h) <I>Person</I> includes any individual, partnership, corporation, association, scientific or academic establishment, Government agency, or organizational unit thereof, or any other legal entity.</P>
+<P>(i) <I>Statement of material fact</I> means a representation that tends to show that the safety or effectiveness of a device is more probable than it would be in the absence of such a representation. A false affirmation or silence or an omission that would lead a reasonable person to draw a particular conclusion as to the safety or effectiveness of a device also may be a false statement of material fact, even if the statement was not intended by the person making it to be misleading or to have any probative effect.</P>
+<P>(j) <I>30-day PMA supplement</I> means a supplemental application to an approved PMA in accordance with &#xA7; 814.39(e).</P>
+<P>(k) <I>Reasonable probability</I> means that it is more likely than not that an event will occur.</P>
+<P>(l) <I>Serious, adverse health consequences</I> means any significant adverse experience, including those which may be either life-threatening or involve permanent or long term injuries, but excluding injuries that are nonlife-threatening and that are temporary and reasonably reversible.</P>
+<P>(m) <I>HDE</I> means a premarket approval application submitted pursuant to this subpart seeking a humanitarian device exemption from the effectiveness requirements of sections 514 and 515 of the act as authorized by section 520(m)(2) of the act.</P>
+<P>(n) <I>HUD</I> (<I>humanitarian use device</I>) means a medical device intended to benefit patients in the treatment or diagnosis of a disease or condition that affects or is manifested in not more than 8,000 individuals in the United States per year.</P>
+<P>(o) <I>Newly acquired information</I> means data, analyses, or other information not previously submitted to the agency, which may include (but are not limited to) data derived from new clinical studies, reports of adverse events, or new analyses of previously submitted data (e.g., meta-analyses) if the studies, events or analyses reveal risks of a different type or greater severity or frequency than previously included in submissions to FDA.</P>
+<P>(p) <I>Human cell, tissue, or cellular or tissue-based product (HCT/P) regulated as a device</I> means an HCT/P as defined in &#xA7; 1271.3(d) of this chapter that does not meet the criteria in &#xA7; 1271.10(a) and that is also regulated as a device.</P>
+<P>(q) <I>Unique device identifier (UDI)</I> means an identifier that adequately identifies a device through its distribution and use by meeting the requirements of &#xA7; 830.20 of this chapter. A unique device identifier is composed of:</P>
+<P>(1) A <I>device identifier</I>&#x2014;a mandatory, fixed portion of a UDI that identifies the specific version or model of a device and the labeler of that device; and</P>
+<P>(2) A <I>production identifier</I>&#x2014;a conditional, variable portion of a UDI that identifies one or more of the following when included on the label of the device:</P>
+<P>(i) The lot or batch within which a device was manufactured;</P>
+<P>(ii) The serial number of a specific device;</P>
+<P>(iii) The expiration date of a specific device;</P>
+<P>(iv) The date a specific device was manufactured.</P>
+<P>(v) For an HCT/P regulated as a device, the distinct identification code required by &#xA7; 1271.290(c) of this chapter.</P>
+<P>(r) <I>Universal product code (UPC)</I> means the product identifier used to identify an item sold at retail in the United States.</P>
+<P>(s) <I>Pediatric patients</I> means patients who are 21 years of age or younger (that is, from birth through the twenty-first year of life, up to but not including the twenty-second birthday) at the time of the diagnosis or treatment.</P>
+<P>(t) <I>Readily available</I> means available in the public domain through commonly used public resources for conducting biomedical, regulatory, and medical product research.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 61 FR 15190, Apr. 5, 1996; 61 FR 33244, June 26, 1996; 73 FR 49610, Aug. 22, 2008; 78 FR 58821, Sept. 24, 2013; 79 FR 1740, Jan. 10, 2014; 82 FR 26349, June 7, 2017]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.9" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.9&quot;,&quot;citation&quot;:&quot;21 CFR 814.9&quot;}">
+<HEAD>&#xA7; 814.9 Confidentiality of data and information in a premarket approval application (PMA) file.</HEAD>
+<P>(a) A &#x201C;PMA file&#x201D; includes all data and information submitted with or incorporated by reference in the PMA, any IDE incorporated into the PMA, any PMA supplement, any report under &#xA7; 814.82, any master file, or any other related submission. Any record in the PMA file will be available for public disclosure in accordance with the provisions of this section and part 20. The confidentiality of information in a color additive petition submitted as part of a PMA is governed by &#xA7; 71.15.</P>
+<P>(b) The existence of a PMA file may not be disclosed by FDA before an approval order is issued to the applicant unless it previously has been publicly disclosed or acknowledged.</P>
+<P>(c) If the existence of a PMA file has not been publicly disclosed or acknowledged, data or information in the PMA file are not available for public disclosure.</P>
+<P>(d)(1) If the existence of a PMA file has been publicly disclosed or acknowledged before an order approving, or an order denying approval of the PMA is issued, data or information contained in the file are not available for public disclosure before such order issues. FDA may, however, disclose a summary of portions of the safety and effectiveness data before an approval order or an order denying approval of the PMA issues if disclosure is relevant to public consideration of a specific pending issue.</P>
+<P>(2) Notwithstanding paragraph (d)(1) of this section, FDA will make available to the public upon request the information in the IDE that was required to be filed in Docket Number 95S-0158 in the Dockets Management Staff (HFA-305), Food and Drug Administration, 12420 Parklawn Dr., rm. 1-23, Rockville, MD 20857, for investigations involving an exception from informed consent under &#xA7; 50.24 of this chapter. Persons wishing to request this information shall submit a request under the Freedom of Information Act.</P>
+<P>(e) Upon issuance of an order approving, or an order denying approval of any PMA, FDA will make available to the public the fact of the existence of the PMA and a detailed summary of information submitted to FDA respecting the safety and effectiveness of the device that is the subject of the PMA and that is the basis for the order.</P>
+<P>(f) After FDA issues an order approving, or an order denying approval of any PMA, the following data and information in the PMA file are immediately available for public disclosure:</P>
+<P>(1) All safety and effectiveness data and information previously disclosed to the public, as such disclosure is defined in &#xA7; 20.81.</P>
+<P>(2) Any protocol for a test or study unless the protocol is shown to constitute trade secret or confidential commercial or financial information under &#xA7; 20.61.</P>
+<P>(3) Any adverse reaction report, product experience report, consumer complaint, and other similar data and information, after deletion of:</P>
+<P>(i) Any information that constitutes trade secret or confidential commercial or financial information under &#xA7; 20.61; and</P>
+<P>(ii) Any personnel, medical, and similar information disclosure of which would constitute a clearly unwarranted invasion of personal privacy under &#xA7; 20.63; provided, however, that except for the information that constitutes trade secret or confidential commercial or financial information under &#xA7; 20.61, FDA will disclose to a patient who requests a report all the information in the report concerning that patient.</P>
+<P>(4) A list of components previously disclosed to the public, as such disclosure is defined in &#xA7; 20.81.</P>
+<P>(5) An assay method or other analytical method, unless it does not serve any regulatory purpose and is shown to fall within the exemption in &#xA7; 20.61 for trade secret or confidential commercial or financial information.</P>
+<P>(6) All correspondence and written summaries of oral discussions relating to the PMA file, in accordance with the provisions of &#xA7;&#xA7; 20.103 and 20.104.</P>
+<P>(g) All safety and effectiveness data and other information not previously disclosed to the public are available for public disclosure if any one of the following events occurs and the data and information do not constitute trade secret or confidential commercial or financial information under &#xA7; 20.61:</P>
+<P>(1) The PMA has been abandoned. FDA will consider a PMA abandoned if:</P>
+<P>(i)(A) The applicant fails to respond to a request for additional information within 180 days after the date FDA issues the request or</P>
+<P>(B) Other circumstances indicate that further work is not being undertaken with respect to it, and</P>
+<P>(ii) The applicant fails to communicate with FDA within 7 days after the date on which FDA notifies the applicant that the PMA appears to have been abandoned.</P>
+<P>(2) An order denying approval of the PMA has issued, and all legal appeals have been exhausted.</P>
+<P>(3) An order withdrawing approval of the PMA has issued, and all legal appeals have been exhausted.</P>
+<P>(4) The device has been reclassified.</P>
+<P>(5) The device has been found to be substantially equivalent to a class I or class II device.</P>
+<P>(6) The PMA is considered voluntarily withdrawn under &#xA7; 814.44(g).</P>
+<P>(h) The following data and information in a PMA file are not available for public disclosure unless they have been previously disclosed to the public, as such disclosure is defined in &#xA7; 20.81, or they relate to a device for which a PMA has been abandoned and they no longer represent a trade secret or confidential commercial or financial information as defined in &#xA7; 20.61:</P>
+<P>(1) Manufacturing methods or processes, including quality control procedures.</P>
+<P>(2) Production, sales, distribution, and similar data and information, except that any compilation of such data and information aggregated and prepared in a way that does not reveal data or information which are not available for public disclosure under this provision is available for public disclosure.</P>
+<P>(3) Quantitative or semiquantitative formulas.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 61 FR 51531, Oct. 2, 1996; 88 FR 45067, July 14, 2023]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.15" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.15&quot;,&quot;citation&quot;:&quot;21 CFR 814.15&quot;}">
+<HEAD>&#xA7; 814.15 Research conducted outside the United States.</HEAD>
+<P>(a) <I>Data to support PMA.</I> If data from clinical investigations conducted outside the United States are submitted to support a PMA, the applicant shall comply with the provisions in &#xA7; 812.28 of this chapter, as applicable.</P>
+<P>(b) <I>As sole basis for marketing approval.</I> A PMA based solely on foreign clinical data and otherwise meeting the criteria for approval under this part may be approved if:</P>
+<P>(1) The foreign data are applicable to the U.S. population and U.S. medical practice;</P>
+<P>(2) The studies have been performed by clinical investigators of recognized competence; and</P>
+<P>(3) The data may be considered valid without the need for an on-site inspection by FDA or, if FDA considers such an inspection to be necessary, FDA can validate the data through an on-site inspection or other appropriate means.</P>
+<P>(c) <I>Consultation between FDA and applicants.</I> Applicants are encouraged to meet with FDA officials in a &#x201C;presubmission&#x201D; meeting when approval based solely on foreign data will be sought.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986; 51 FR 40415, Nov. 7, 1986, as amended at 51 FR 43344, Dec. 2, 1986; 83 FR 7387, Feb. 21, 2018]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.17" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.17&quot;,&quot;citation&quot;:&quot;21 CFR 814.17&quot;}">
+<HEAD>&#xA7; 814.17 Service of orders.</HEAD>
+<P>Orders issued under this part will be served in person by a designated officer or employee of FDA on, or by registered mail to, the applicant or the designated agent at the applicant's or designated agent's last known address in FDA's records.</P>
+</DIV8>
+
+<DIV8 N="814.19" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.19&quot;,&quot;citation&quot;:&quot;21 CFR 814.19&quot;}">
+<HEAD>&#xA7; 814.19 Product development protocol (PDP).</HEAD>
+<P>A class III device for which a product development protocol has been declared completed by FDA under this chapter will be considered to have an approved PMA.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="B" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-B&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart B&amp;quot;}">
+<HEAD>Subpart B&#x2014;Premarket Approval Application (PMA)</HEAD>
+<DIV8 N="814.20" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.20&quot;,&quot;citation&quot;:&quot;21 CFR 814.20&quot;}">
+<HEAD>&#xA7; 814.20 Application.</HEAD>
+<P>(a) The applicant or an authorized representative shall sign the PMA. If the applicant does not reside or have a place of business within the United States, the PMA shall be countersigned by an authorized representative residing or maintaining a place of business in the United States and shall identify the representative's name and address.</P>
+<P>(b) Unless the applicant justifies an omission in accordance with paragraph (d) of this section, a PMA shall include in electronic format:</P>
+<P>(1) The name and address of the applicant.</P>
+<P>(2) A table of contents that specifies the volume and page number for each item referred to in the table. A PMA shall include separate sections on nonclinical laboratory studies and on clinical investigations involving human subjects. A PMA shall be submitted as a single version. The applicant shall include information that it believes to be trade secret or confidential commercial or financial information in the PMA and identify the information that it believes to be trade secret or confidential commercial or financial information.</P>
+<P>(3) A summary in sufficient detail that the reader may gain a general understanding of the data and information in the application. The summary shall contain the following information:</P>
+<P>(i) <I>Indications for use.</I> A general description of the disease or condition the device will diagnose, treat, prevent, cure, or mitigate, including a description of the patient population for which the device is intended.</P>
+<P>(ii) <I>Device description.</I> An explanation of how the device functions, the basic scientific concepts that form the basis for the device, and the significant physical and performance characteristics of the device. A brief description of the manufacturing process should be included if it will significantly enhance the reader's understanding of the device. The generic name of the device as well as any proprietary name or trade name should be included.</P>
+<P>(iii) <I>Alternative practices and procedures.</I> A description of existing alternative practices or procedures for diagnosing, treating, preventing, curing, or mitigating the disease or condition for which the device is intended.</P>
+<P>(iv) <I>Marketing history.</I> A brief description of the foreign and U.S. marketing history, if any, of the device, including a list of all countries in which the device has been marketed and a list of all countries in which the device has been withdrawn from marketing for any reason related to the safety or effectiveness of the device. The description shall include the history of the marketing of the device by the applicant and, if known, the history of the marketing of the device by any other person.</P>
+<P>(v) <I>Summary of studies.</I> An abstract of any information or report described in the PMA under paragraph (b)(8)(ii) of this section and a summary of the results of technical data submitted under paragraph (b)(6) of this section. Such summary shall include a description of the objective of the study, a description of the experimental design of the study, a brief description of how the data were collected and analyzed, and a brief description of the results, whether positive, negative, or inconclusive. This section shall include the following:</P>
+<P>(A) A summary of the nonclinical laboratory studies submitted in the application;</P>
+<P>(B) A summary of the clinical investigations involving human subjects submitted in the application including a discussion of subject selection and exclusion criteria, study population, study period, safety and effectiveness data, adverse reactions and complications, patient discontinuation, patient complaints, device failures and replacements, results of statistical analyses of the clinical investigations, contraindications and precautions for use of the device, and other information from the clinical investigations as appropriate (any investigation conducted under an IDE shall be identified as such).</P>
+<P>(vi) <I>Conclusions drawn from the studies.</I> A discussion demonstrating that the data and information in the application constitute valid scientific evidence within the meaning of &#xA7; 860.7 and provide reasonable assurance that the device is safe and effective for its intended use. A concluding discussion shall present benefit and risk considerations related to the device including a discussion of any adverse effects of the device on health and any proposed additional studies or surveillance the applicant intends to conduct following approval of the PMA.</P>
+<P>(4) A complete description of:</P>
+<P>(i) The device, including pictorial representations;</P>
+<P>(ii) Each of the functional components or ingredients of the device if the device consists of more than one physical component or ingredient;</P>
+<P>(iii) The properties of the device relevant to the diagnosis, treatment, prevention, cure, or mitigation of a disease or condition;</P>
+<P>(iv) The principles of operation of the device; and</P>
+<P>(v) The methods used in, and the facilities and controls used for, the manufacture, processing, packing, storage, and, where appropriate, installation of the device, in sufficient detail so that a person generally familiar with current good manufacturing practice can make a knowledgeable judgment about the quality control used in the manufacture of the device.</P>
+<P>(5) Reference to any performance standard under section 514 of the Federal Food, Drug, and Cosmetic Act or under section 534 of Subchapter C&#x2014;Electronic Product Radiation Control of the Federal Food, Drug, and Cosmetic Act (formerly the Radiation Control for Health and Safety Act of 1968) in effect or proposed at the time of the submission and to any voluntary standard that is relevant to any aspect of the safety or effectiveness of the device and that is known to or that should reasonably be known to the applicant. The applicant shall&#x2014;</P>
+<P>(i) Provide adequate information to demonstrate how the device meets, or justify any deviation from, any performance standard established under section 514 of the Federal Food, Drug, and Cosmetic Act or under section 534 of Subchapter C&#x2014;Electronic Product Radiation Control of the Federal Food, Drug, and Cosmetic Act (formerly the Radiation Control for Health and Safety Act of 1968); and</P>
+<P>(ii) Explain any deviation from a voluntary standard.</P>
+<P>(6) The following technical sections which shall contain data and information in sufficient detail to permit FDA to determine whether to approve or deny approval of the application:</P>
+<P>(i) A section containing results of the nonclinical laboratory studies with the device including microbiological, toxicological, immunological, biocompatibility, stress, wear, shelf life, and other laboratory or animal tests as appropriate. Information on nonclinical laboratory studies shall include a statement that each such study was conducted in compliance with part 58, or, if the study was not conducted in compliance with such regulations, a brief statement of the reason for the noncompliance.</P>
+<P>(ii) A section containing results of the clinical investigations involving human subjects with the device including clinical protocols, number of investigators and subjects per investigator, subject selection and exclusion criteria, study population, study period, safety and effectiveness data, adverse reactions and complications, patient discontinuation, patient complaints, device failures and replacements, tabulations of data from all individual subject report forms and copies of such forms for each subject who died during a clinical investigation or who did not complete the investigation, results of statistical analyses of the clinical investigations, device failures and replacements, contraindications and precautions for use of the device, and any other appropriate information from the clinical investigations. Any investigation conducted under an IDE shall be identified as such. Information on clinical investigations involving human subjects shall include the following:</P>
+<P>(A) For clinical investigations conducted in the United States, a statement with respect to each investigation that it either was conducted in compliance with the institutional review board regulations in part 56 of this chapter, or was not subject to the regulations under &#xA7; 56.104 or &#xA7; 56.105, and that it was conducted in compliance with the informed consent regulations in part 50 of this chapter; or if the investigation was not conducted in compliance with those regulations, a brief statement of the reason for the noncompliance. Failure or inability to comply with these requirements does not justify failure to provide information on a relevant clinical investigation.</P>
+<P>(B) For clinical investigations conducted in the United States, a statement that each investigation was conducted in compliance with part 812 of this chapter concerning sponsors of clinical investigations and clinical investigators, or if the investigation was not conducted in compliance with those regulations, a brief statement of the reason for the noncompliance. Failure or inability to comply with these requirements does not justify failure to provide information on a relevant clinical investigation.</P>
+<P>(C) For clinical investigations conducted outside the United States that are intended to support the PMA, the requirements under &#xA7; 812.28 of this chapter apply. If any such investigation was not conducted in accordance with good clinical practice (GCP) as described in &#xA7; 812.28(a), include either a waiver request in accordance with &#xA7; 812.28(c) or a brief statement of the reason for not conducting the investigation in accordance with GCP and a description of steps taken to ensure that the data and results are credible and accurate and that the rights, safety, and well-being of subjects have been adequately protected. Failure or inability to comply with these requirements does not justify failure to provide information on a relevant clinical investigation.</P>
+<P>(7) For a PMA supported solely by data from one investigation, a justification showing that data and other information from a single investigator are sufficient to demonstrate the safety and effectiveness of the device and to ensure reproducibility of test results.</P>
+<P>(8)(i) A bibliography of all published reports not submitted under paragraph (b)(6) of this section, whether adverse or supportive, known to or that should reasonably be known to the applicant and that concern the safety or effectiveness of the device.</P>
+<P>(ii) An identification, discussion, and analysis of any other data, information, or report relevant to an evaluation of the safety and effectiveness of the device known to or that should reasonably be known to the applicant from any source, foreign or domestic, including information derived from investigations other than those proposed in the application and from commercial marketing experience.</P>
+<P>(iii) Copies of such published reports or unpublished information in the possession of or reasonably obtainable by the applicant if an FDA advisory committee or FDA requests.</P>
+<P>(9) One or more samples of the device and its components, if requested by FDA. If it is impractical to submit a requested sample of the device, the applicant shall name the location at which FDA may examine and test one or more devices.</P>
+<P>(10) Copies of all proposed labeling for the device. Such labeling may include, e.g., instructions for installation and any information, literature, or advertising that constitutes labeling under section 201(m) of the Federal Food, Drug, and Cosmetic Act.</P>
+<P>(11) An environmental assessment under &#xA7; 25.20(n) prepared in the applicable format in &#xA7; 25.40, unless the action qualifies for exclusion under &#xA7; 25.30 or &#xA7; 25.34. If the applicant believes that the action qualifies for exclusion, the PMA shall under &#xA7; 25.15(a) and (d) provide information that establishes to FDA's satisfaction that the action requested is included within the excluded category and meets the criteria for the applicable exclusion.</P>
+<P>(12) A financial certification or disclosure statement or both as required by part 54 of this chapter.</P>
+<P>(13) <I>Information concerning uses in pediatric patients.</I> The application must include the following information, if readily available:</P>
+<P>(i) A description of any pediatric subpopulations (neonates, infants, children, adolescents) that suffer from the disease or condition that the device is intended to treat, diagnose, or cure; and</P>
+<P>(ii) The number of affected pediatric patients.</P>
+<P>(14) Such other information as FDA may request. If necessary, FDA will obtain the concurrence of the appropriate FDA advisory committee before requesting additional information.</P>
+<P>(c) Pertinent information in FDA files specifically referred to by an applicant may be incorporated into a PMA by reference. Information in a master file or other information submitted to FDA by a person other than the applicant will not be considered part of a PMA unless such reference is authorized in a record submitted to FDA by the person who submitted the information or the master file. If a master file is not referenced within 5 years after the date that it is submitted to FDA, FDA will return the master file to the person who submitted it.</P>
+<P>(d) If the applicant believes that certain information required under paragraph (b) of this section to be in a PMA is not applicable to the device that is the subject of the PMA, and omits any such information from its PMA, the applicant shall submit a statement that identifies the omitted information and justifies the omission. The statement shall be submitted as a separate section in the PMA and identified in the table of contents. If the justification for the omission is not accepted by the agency, FDA will so notify the applicant.</P>
+<P>(e) The applicant shall periodically update its pending application with new safety and effectiveness information learned about the device from ongoing or completed studies that may reasonably affect an evaluation of the safety or effectiveness of the device or that may reasonably affect the statement of contraindications, warnings, precautions, and adverse reactions in the draft labeling. The update report shall be consistent with the data reporting provisions of the protocol. The applicant shall submit any update report in electronic format and shall include in the report the number assigned by FDA to the PMA. These updates are considered to be amendments to the PMA. The time frame for review of a PMA will not be extended due to the submission of an update report unless the update is a major amendment under &#xA7; 814.37(c)(1). The applicant shall submit these reports&#x2014;</P>
+<P>(1) 3 months after the filing date;</P>
+<P>(2) Following receipt of an approvable letter; and</P>
+<P>(3) At any other time as requested by FDA.</P>
+<P>(f) If a color additive subject to section 721 of the Federal Food, Drug, and Cosmetic Act is used in or on the device and has not previously been listed for such use, then, in lieu of submitting a color additive petition under part 71 of this chapter, at the option of the applicant, the information required to be submitted under part 71 may be submitted as part of the PMA. When submitted as part of the PMA, the information shall be submitted in electronic format. A PMA for a device that contains a color additive that is subject to section 721 of the Federal Food, Drug, and Cosmetic Act will not be approved until the color additive is listed for use in or on the device.</P>
+<P>(g) Additional information on FDA policies and procedures, as well as links to PMA guidance documents, is available on the Internet at <I>http://www.fda.gov/MedicalDevices/DeviceRegulationandGuidance/HowtoMarketYourDevice/PremarketSubmissions/PremarketApprovalPMA/default.htm.</I></P>
+<P>(h) If you are sending a PMA, PMA amendment, PMA supplement, or correspondence with respect to a PMA, you must send the submission to the appropriate address as follows:</P>
+<P>(1) For devices regulated by the Center for Devices and Radiological Health, send it to the current address displayed on the website <I>https://www.fda.gov/cdrhsubmissionaddress.</I></P>
+<P>(2) For devices regulated by the Center for Biologics Evaluation and Research, send it to the current address displayed on the website <I>https://www.fda.gov/AboutFDA/CentersOffices/OfficeofMedicalProductsandTobacco/CBER/ucm385240.htm.</I></P>
+<P>(3) For devices regulated by the Center for Drug Evaluation and Research, send it to: Central Document Control Room, Center for Drug Evaluation and Research, Food and Drug Administration, 5901-B Ammendale Rd., Beltsville, MD 20705-1266.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986; 51 FR 40415, Nov. 7, 1986, as amended at 51 FR 43344, Dec. 2, 1986; 55 FR 11169, Mar. 27, 1990; 62 FR 40600, July 29, 1997; 63 FR 5253, Feb. 2, 1998; 65 FR 17137, Mar. 31, 2000; 65 FR 56480, Sept. 19, 2000; 67 FR 9587, Mar. 4, 2002; 71 FR 42048, July 25, 2006; 72 FR 17399, Apr. 9, 2007; 73 FR 34859, June 19, 2008; 74 FR 14478, Mar. 31, 2009; 75 FR 20915, Apr. 22, 2010; 78 FR 18233, Mar. 26, 2013; 79 FR 1740, Jan. 10, 2014; 80 FR 18094, Apr. 3, 2015; 83 FR 7387, Feb. 21, 2018; 84 FR 68339, Dec. 16, 2019]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.37" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.37&quot;,&quot;citation&quot;:&quot;21 CFR 814.37&quot;}">
+<HEAD>&#xA7; 814.37 PMA amendments and resubmitted PMAs.</HEAD>
+<P>(a) An applicant may amend a pending PMA or PMA supplement to revise existing information or provide additional information.</P>
+<P>(b)(1) FDA may request the applicant to amend a PMA or PMA supplement with any information regarding the device that is necessary for FDA or the appropriate advisory committee to complete the review of the PMA or PMA supplement.</P>
+<P>(2) FDA may request the applicant to amend a PMA or PMA supplement with information concerning pediatric uses as required under &#xA7;&#xA7; 814.20(b)(13) and 814.39(c)(2).</P>
+<P>(c) A PMA amendment submitted to FDA shall include the PMA or PMA supplement number assigned to the original submission and, if submitted on the applicant's own initiative, the reason for submitting the amendment. FDA may extend the time required for its review of the PMA, or PMA supplement, as follows:</P>
+<P>(1) If the applicant on its own initiative or at FDA's request submits a major PMA amendment (e.g., an amendment that contains significant new data from a previously unreported study, significant updated data from a previously reported study, detailed new analyses of previously submitted data, or significant required information previously omitted), the review period may be extended up to 180 days.</P>
+<P>(2) If an applicant declines to submit a major amendment requested by FDA, the review period may be extended for the number of days that elapse between the date of such request and the date that FDA receives the written response declining to submit the requested amendment.</P>
+<P>(d) An applicant may on its own initiative withdraw a PMA or PMA supplement. If FDA requests an applicant to submit a PMA amendment and a written response to FDA's request is not received within 180 days of the date of the request, FDA will consider the pending PMA or PMA supplement to be withdrawn voluntarily by the applicant.</P>
+<P>(e) An applicant may resubmit a PMA or PMA supplement after withdrawing it or after it is considered withdrawn under paragraph (d) of this section, or after FDA has refused to accept it for filing, or has denied approval of the PMA or PMA supplement. A resubmitted PMA or PMA supplement shall comply with the requirements of &#xA7; 814.20 or &#xA7; 814.39, respectively, and shall include the PMA number assigned to the original submission and the applicant's reasons for resubmission of the PMA or PMA supplement.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 79 FR 1740, Jan. 10, 2014]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.39" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.39&quot;,&quot;citation&quot;:&quot;21 CFR 814.39&quot;}">
+<HEAD>&#xA7; 814.39 PMA supplements.</HEAD>
+<P>(a) After FDA's approval of a PMA, an applicant shall submit a PMA supplement for review and approval by FDA before making a change affecting the safety or effectiveness of the device for which the applicant has an approved PMA, unless the change is of a type for which FDA, under paragraph (e) of this section, has advised that an alternate submission is permitted or is of a type which, under section 515(d)(6)(A) of the act and paragraph (f) of this section, does not require a PMA supplement under this paragraph. While the burden for determining whether a supplement is required is primarily on the PMA holder, changes for which an applicant shall submit a PMA supplement include, but are not limited to, the following types of changes if they affect the safety or effectiveness of the device:</P>
+<P>(1) New indications for use of the device.</P>
+<P>(2) Labeling changes.</P>
+<P>(3) The use of a different facility or establishment to manufacture, process, or package the device.</P>
+<P>(4) Changes in sterilization procedures.</P>
+<P>(5) Changes in packaging.</P>
+<P>(6) Changes in the performance or design specifications, circuits, components, ingredients, principle of operation, or physical layout of the device.</P>
+<P>(7) Extension of the expiration date of the device based on data obtained under a new or revised stability or sterility testing protocol that has not been approved by FDA. If the protocol has been approved, the change shall be reported to FDA under paragraph (b) of this section.</P>
+<P>(b) An applicant may make a change in a device after FDA's approval of a PMA for the device without submitting a PMA supplement if the change does not affect the device's safety or effectiveness and the change is reported to FDA in post approval periodic reports required as a condition to approval of the device, <I>e.g.,</I> an editorial change in labeling which does not affect the safety or effectiveness of the device, or if the change is consistent with a predetermined change control plan (PCCP) approved under section 515C of the act.</P>
+<P>(c)(1) All procedures and actions that apply to an application under &#xA7; 814.20 also apply to PMA supplements except that the information required in a supplement is limited to that needed to support the change. A summary under &#xA7; 814.20(b)(3) is required for only a supplement submitted for new indications for use of the device, significant changes in the performance or design specifications, circuits, components, ingredients, principles of operation, or physical layout of the device, or when otherwise required by FDA. The applicant shall submit a PMA supplement in electronic format and shall include information relevant to the proposed changes in the device. A PMA supplement shall include a separate section that identifies each change for which approval is being requested and explains the reason for each such change. The applicant shall submit additional information, if requested by FDA, in electronic format. The time frames for review of, and FDA action on, a PMA supplement are the same as those provided in &#xA7; 814.40 for a PMA.</P>
+<P>(2) The supplement must include the following information:</P>
+<P>(i) Information concerning pediatric uses as required under &#xA7; 814.20(b)(13).</P>
+<P>(ii) If information concerning the device that is the subject of the supplement was previously submitted under &#xA7; 814.20(b)(13) or under this section in a previous supplement, that information may be included by referencing a previous application or submission that contains the information. However, if additional information required under &#xA7; 814.20(b)(13) has become readily available to the applicant since the previous submission, the applicant must submit that information as part of the supplement.</P>
+<P>(d)(1) After FDA approves a PMA, any change described in paragraph (d)(2) of this section to reflect newly acquired information that enhances the safety of the device or the safety in the use of the device may be placed into effect by the applicant prior to the receipt under &#xA7; 814.17 of a written FDA order approving the PMA supplement provided that:</P>
+<P>(i) The PMA supplement and its mailing cover are plainly marked &#x201C;Special PMA Supplement&#x2014;Changes Being Effected&#x201D;;</P>
+<P>(ii) The PMA supplement provides a full explanation of the basis for the changes;</P>
+<P>(iii) The applicant has received acknowledgement from FDA of receipt of the supplement; and</P>
+<P>(iv) The PMA supplement specifically identifies the date that such changes are being effected.</P>
+<P>(2) The following changes are permitted by paragraph (d)(1) of this section:</P>
+<P>(i) Labeling changes that add or strengthen a contraindication, warning, precaution, or information about an adverse reaction for which there is reasonable evidence of a causal association.</P>
+<P>(ii) Labeling changes that add or strengthen an instruction that is intended to enhance the safe use of the device.</P>
+<P>(iii) Labeling changes that delete misleading, false, or unsupported indications.</P>
+<P>(iv) Changes in quality controls or manufacturing process that add a new specification or test method, or otherwise provide additional assurance of purity, identity, strength, or reliability of the device.</P>
+<P>(e)(1) FDA will identify a change to a device for which an applicant has an approved PMA and for which a PMA supplement under paragraph (a) is not required. FDA will identify such a change in an advisory opinion under &#xA7; 10.85, if the change applies to a generic type of device, or in correspondence to the applicant, if the change applies only to the applicant's device. FDA will require that a change for which a PMA supplement under paragraph (a) is not required be reported to FDA in:</P>
+<P>(i) A periodic report under &#xA7; 814.84 or</P>
+<P>(ii) A 30-day PMA supplement under this paragraph.</P>
+<P>(2) FDA will identify, in the advisory opinion or correspondence, the type of information that is to be included in the report or 30-day PMA supplement. If the change is required to be reported to FDA in a periodic report, the change may be made before it is reported to FDA. If the change is required to be reported in a 30-day PMA supplement, the change may be made 30 days after FDA files the 30-day PMA supplement unless FDA requires the PMA holder to provide additional information, informs the PMA holder that the supplement is not approvable, or disapproves the supplement. The 30-day PMA supplement shall follow the instructions in the correspondence or advisory opinion. Any 30-day PMA supplement that does not meet the requirements of the correspondence or advisory opinion will not be filed and, therefore, will not be deemed approved 30 days after receipt.</P>
+<P>(f) Under section 515(d) of the act, modifications to manufacturing procedures or methods of manufacture that affect the safety and effectiveness of a device subject to an approved PMA do not require submission of a PMA supplement under paragraph (a) of this section and are eligible to be the subject of a 30-day notice. A 30-day notice shall describe in detail the change, summarize the data or information supporting the change, and state that the change has been made in accordance with the requirements of part 820 of this chapter. The manufacturer may distribute the device 30 days after the date on which FDA receives the 30-day notice, unless FDA notifies the applicant within 30 days from receipt of the notice that the notice is not adequate. If the notice is not adequate, FDA shall inform the applicant in writing that a 135-day PMA supplement is needed and shall describe what further information or action is required for acceptance of such change. The number of days under review as a 30-day notice shall be deducted from the 135-day PMA supplement review period if the notice meets appropriate content requirements for a PMA supplement.</P>
+<P>(g) The submission and grant of a written request for an exception or alternative under &#xA7; 801.128 or &#xA7; 809.11 of this chapter satisfies the requirement in paragraph (a) of this section.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 51 FR 43344, Dec. 2, 1986; 63 FR 54044, Oct. 8, 1998; 67 FR 9587, Mar. 4, 2002; 69 FR 11313, Mar. 10, 2004; 72 FR 73602, Dec. 28, 2007; 73 FR 49610, Aug. 22, 2008; 79 FR 1740, Jan. 10, 2014; 84 FR 68340, Dec. 16, 2019; 89 FR 18793, Mar. 15, 2024]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="C" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-C&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart C&amp;quot;}">
+<HEAD>Subpart C&#x2014;FDA Action on a PMA</HEAD>
+<DIV8 N="814.40" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.40&quot;,&quot;citation&quot;:&quot;21 CFR 814.40&quot;}">
+<HEAD>&#xA7; 814.40 Time frames for reviewing a PMA.</HEAD>
+<P>Within 180 days after receipt of an application that is accepted for filing and to which the applicant does not submit a major amendment, FDA will review the PMA and, after receiving the report and recommendation of the appropriate FDA advisory committee, send the applicant an approval order under &#xA7; 814.44(d), an approvable letter under &#xA7; 814.44(e), a not approvable letter under &#xA7; 814.44(f), or an order denying approval under &#xA7; 814.45. The approvable letter and the not approvable letter will provide an opportunity for the applicant to amend or withdraw the application, or to consider the letter to be a denial of approval of the PMA under &#xA7; 814.45 and to request administrative review under section 515 (d)(4) and (g) of the act.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 87 FR 2045, Jan. 13, 2022]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.42" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.42&quot;,&quot;citation&quot;:&quot;21 CFR 814.42&quot;}">
+<HEAD>&#xA7; 814.42 Filing a PMA.</HEAD>
+<P>(a) The filing of an application means that FDA has made a threshold determination that the application is sufficiently complete to permit a substantive review. Within 45 days after a PMA is received by FDA, the agency will notify the applicant whether the application has been filed.</P>
+<P>(b) If FDA does not find that any of the reasons in paragraph (e) of this section for refusing to file the PMA applies, the agency will file the PMA and will notify the applicant in writing of the filing. The notice will include the PMA reference number and the date FDA filed the PMA. The date of filing is the date that a PMA accepted for filing was received by the agency. The 180-day period for review of a PMA starts on the date of filing.</P>
+<P>(c) If FDA refuses to file a PMA, the agency will notify the applicant of the reasons for the refusal. This notice will identify the deficiencies in the application that prevent filing and will include the PMA reference number.</P>
+<P>(d) If FDA refuses to file the PMA, the applicant may:</P>
+<P>(1) Resubmit the PMA with additional information necessary to comply with the requirements of section 515(c)(1) (A)-(G) of the act and &#xA7; 814.20. A resubmitted PMA shall include the PMA reference number of the original submission. If the resubmitted PMA is accepted for filing, the date of filing is the date FDA receives the resubmission;</P>
+<P>(2) Request in writing within 10 working days of the date of receipt of the notice refusing to file the PMA, an informal conference with the Director of the associated Office of Health Technology to review FDA's decision not to file the PMA. FDA will hold the informal conference within 10 working days of its receipt of the request and will render its decision on filing within 5 working days after the informal conference. If, after the informal conference, FDA accepts the PMA for filing, the date of filing will be the date of the decision to accept the PMA for filing. If FDA does not reverse its decision not to file the PMA, the applicant may request reconsideration of the decision from the Director of the Office of Product Evaluation and Quality, the Director of the Center for Biologics Evaluation and Research, or the Director of the Center for Drug Evaluation and Research, as applicable. The Director's decision will constitute final administrative action for the purpose of judicial review.</P>
+<P>(e) FDA may refuse to file a PMA if any of the following applies:</P>
+<P>(1) The application is incomplete because it does not on its face contain all the information required under section 515(c)(1) (A)-(G) of the act;</P>
+<P>(2) The PMA does not contain each of the items required under &#xA7; 814.20 and justification for omission of any item is inadequate;</P>
+<P>(3) The applicant has a pending premarket notification under section 510(k) of the act with respect to the same device, and FDA has not determined whether the device falls within the scope of &#xA7; 814.1(c).</P>
+<P>(4) The PMA contains a false statement of material fact.</P>
+<P>(5) The PMA is not accompanied by a statement of either certification or disclosure as required by part 54 of this chapter.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 63 FR 5254, Feb. 2, 1998; 73 FR 49942, Aug. 25, 2008; 85 FR 18442, Apr. 2, 2020]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.44" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.44&quot;,&quot;citation&quot;:&quot;21 CFR 814.44&quot;}">
+<HEAD>&#xA7; 814.44 Procedures for review of a PMA.</HEAD>
+<P>(a) FDA will begin substantive review of a PMA after the PMA is accepted for filing under &#xA7; 814.42. FDA may refer the PMA to a panel on its own initiative, and will do so upon request of an applicant, unless FDA determines that the application substantially duplicates information previously reviewed by a panel. If FDA refers an application to a panel, FDA will forward the PMA, or relevant portions thereof, to each member of the appropriate FDA panel for review. During the review process, FDA may communicate with the applicant as set forth under &#xA7; 814.37(b), or with a panel to respond to questions that may be posed by panel members or to provide additional information to the panel. FDA will maintain a record of all communications with the applicant and with the panel.</P>
+<P>(b) The advisory committee shall submit a report to FDA which includes the committee's recommendation and the basis for such recommendation on the PMA. Before submission of this report, the committee shall hold a public meeting to review the PMA in accordance with part 14. This meeting may be held by a telephone conference under &#xA7; 14.22(g). The advisory committee report and recommendation may be in the form of a meeting transcript signed by the chairperson of the committee.</P>
+<P>(c) FDA will complete its review of the PMA and the advisory committee report and recommendation and, within the later of 180 days from the date of filing of the PMA under &#xA7; 814.42 or the number of days after the date of filing as determined under &#xA7; 814.37(c), issue an approval order under paragraph (d) of this section, an approvable letter under paragraph (e) of this section, a not approvable letter under paragraph (f) of this section, or an order denying approval of the application under &#xA7; 814.45(a).</P>
+<P>(d)(1) FDA will issue to the applicant an order approving a PMA if none of the reasons in &#xA7; 814.45 for denying approval of the application applies. FDA will approve an application on the basis of draft final labeling if the only deficiencies in the application concern editorial or similar minor deficiencies in the draft final labeling. Such approval will be conditioned upon the applicant incorporating the specified labeling changes exactly as directed and upon the applicant submitting to FDA a copy of the final printed labeling before marketing. FDA will also give the public notice of the order, including notice of and opportunity for any interested persons to request review under section 515(d)(4) of the act. The notice of approval will be placed on FDA's home page on the Internet (<I>http://www.fda.gov</I>), and it will state that a detailed summary of information respecting the safety and effectiveness of the device, which was the basis for the order approving the PMA, including information about any adverse effects of the device on health, is available on the Internet and has been placed on public display, and that copies are available upon request. When a notice of approval is published, data and information in the PMA file will be available for public disclosure in accordance with &#xA7; 814.9.</P>
+<P>(2) A request for copies of the current PMA approvals and denials document and for copies of summaries of safety and effectiveness shall be sent in writing to the Freedom of Information Staff's address listed on the Agency's website at <I>https://www.fda.gov.</I></P>
+<P>(e) FDA will send the applicant an approvable letter if the application substantially meets the requirements of this part and the agency believes it can approve the application if specific additional information is submitted or specific conditions are agreed to by the applicant.</P>
+<P>(1) The approvable letter will describe the information FDA requires to be provided by the applicant or the conditions the applicant is required to meet to obtain approval. For example, FDA may require, as a condition to approval:</P>
+<P>(i) The submission of certain information identified in the approvable letter, e.g., final labeling;</P>
+<P>(ii) The submission of additional information concerning pediatric uses required by &#xA7; 814.20(b)(13);</P>
+<P>(iii) An FDA inspection that finds the manufacturing facilities, methods, and controls in compliance with part 820 and, if applicable, that verifies records pertinent to the PMA;</P>
+<P>(iv) Restrictions imposed on the device under section 515(d)(1)(B)(ii) or 520(e) of the act;</P>
+<P>(v) Postapproval requirements as described in subpart E of this part.</P>
+<P>(2) In response to an approvable letter the applicant may:</P>
+<P>(i) Amend the PMA as requested in the approvable letter; or</P>
+<P>(ii) Consider the approvable letter to be a denial of approval of the PMA under &#xA7; 814.45 and request administrative review under section 515(d)(4) of the act by filing a petition in the form of a petition for reconsideration under &#xA7; 10.33; or</P>
+<P>(iii) Withdraw the PMA.</P>
+<P>(f) FDA will send the applicant a not approvable letter if the agency believes that the application may not be approved for one or more of the reasons given in &#xA7; 814.45(a). The not approvable letter will describe the deficiencies in the application, including each applicable ground for denial under section 515(d)(2) (A)-(E) of the act, and, where practical, will identify measures required to place the PMA in approvable form. In response to a not approvable letter, the applicant may:</P>
+<P>(1) Amend the PMA as requested in the not approvable letter (such an amendment will be considered a major amendment under &#xA7; 814.37(c)(1)); or</P>
+<P>(2) Consider the not approvable letter to be a denial of approval of the PMA under &#xA7; 814.45 and request administrative review under section 515(d)(4) of the act by filing a petition in the form of a petition for reconsideration under &#xA7; 10.33; or</P>
+<P>(3) Withdraw the PMA.</P>
+<P>(g) FDA will consider a PMA to have been withdrawn voluntarily if:</P>
+<P>(1) The applicant fails to respond in writing to a written request for an amendment within 180 days after the date FDA issues such request;</P>
+<P>(2) The applicant fails to respond in writing to an approvable or not approvable letter within 180 days after the date FDA issues such letter; or</P>
+<P>(3) The applicant submits a written notice to FDA that the PMA has been withdrawn.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 57 FR 58403, Dec. 10, 1992; 63 FR 4572, Jan. 30, 1998; 79 FR 1740, Jan. 10, 2014; 87 FR 2045, Jan. 13, 2022]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.45" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.45&quot;,&quot;citation&quot;:&quot;21 CFR 814.45&quot;}">
+<HEAD>&#xA7; 814.45 Denial of approval of a PMA.</HEAD>
+<P>(a) FDA may issue an order denying approval of a PMA if the applicant fails to follow the requirements of this part or if, upon the basis of the information submitted in the PMA or any other information before the agency, FDA determines that any of the grounds for denying approval of a PMA specified in section 515(d)(2) (A)-(E) of the act applies. In addition, FDA may deny approval of a PMA for any of the following reasons:</P>
+<P>(1) The PMA contains a false statement of material fact;</P>
+<P>(2) The device's proposed labeling does not comply with the requirements in part 801 or part 809;</P>
+<P>(3) The applicant does not permit an authorized FDA employee an opportunity to inspect at a reasonable time and in a reasonable manner the facilities, controls, and to have access to and to copy and verify all records pertinent to the application;</P>
+<P>(4) A nonclinical laboratory study that is described in the PMA and that is essential to show that the device is safe for use under the conditions prescribed, recommended, or suggested in its proposed labeling, was not conducted in compliance with the good laboratory practice regulations in part 58 and no reason for the noncompliance is provided or, if it is, the differences between the practices used in conducting the study and the good laboratory practice regulations do not support the validity of the study; or</P>
+<P>(5) Any clinical investigation involving human subjects described in the PMA, subject to the institutional review board regulations in part 56 of this chapter or informed consent regulations in part 50 of this chapter or GCP referenced in &#xA7; 814.15(a) and described in &#xA7; 812.28(a) of this chapter, was not conducted in compliance with those regulations such that the rights or safety of human subjects were not adequately protected or the supporting data were determined to be otherwise unreliable.</P>
+<P>(b) FDA will issue any order denying approval of the PMA in accordance with &#xA7; 814.17. The order will inform the applicant of the deficiencies in the PMA, including each applicable ground for denial under section 515(d)(2) of the act and the regulations under this part, and, where practical, will identify measures required to place the PMA in approvable form. The order will include a notice of an opportunity to request review under section 515(d)(4) of the act.</P>
+<P>(c) FDA will use the criteria specified in &#xA7; 860.7 to determine the safety and effectiveness of a device in deciding whether to approve or deny approval of a PMA. FDA may use information other than that submitted by the applicant in making such determination.</P>
+<P>(d)(1) FDA will give the public notice of an order denying approval of the PMA. The notice will be placed on the FDA's home page on the Internet (<I>http://www.fda.gov</I>), and it will state that a detailed summary of information respecting the safety and effectiveness of the device, including information about any adverse effects of the device on health, is available on the Internet and has been placed on public display and that copies are available upon request. When a notice of denial of approval is made publicly available, data and information in the PMA file will be available for public disclosure in accordance with &#xA7; 814.9.</P>
+<P>(2) A request for copies of the current PMA approvals and denials document and copies of summaries of safety and effectiveness shall be sent in writing to the Freedom of Information Staff's address listed on the Agency's Web site at <I>http://www.fda.gov.</I></P>
+<P>(e) FDA will issue an order denying approval of a PMA after an approvable or not approvable letter has been sent and the applicant:</P>
+<P>(1) Submits a requested amendment but any ground for denying approval of the application under section 515(d)(2) of the act still applies; or</P>
+<P>(2) Notifies FDA in writing that the requested amendment will not be submitted; or</P>
+<P>(3) Petitions for review under section 515(d)(4) of the act by filing a petition in the form of a petition for reconsideration under &#xA7; 10.33.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 63 FR 4572, Jan. 30, 1998; 73 FR 34859, June 19, 2008; 76 FR 31470, June 1, 2011; 79 FR 68115, Nov. 14, 2014; 83 FR 7387, Feb. 21, 2018; 87 FR 2045, Jan. 13, 2022]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.46" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.46&quot;,&quot;citation&quot;:&quot;21 CFR 814.46&quot;}">
+<HEAD>&#xA7; 814.46 Withdrawal of approval of a PMA.</HEAD>
+<P>(a) FDA may issue an order withdrawing approval of a PMA if, from any information available to the agency, FDA determines that:</P>
+<P>(1) Any of the grounds under section 515(e)(1) (A)-(G) of the act applies.</P>
+<P>(2) Any postapproval requirement imposed by the PMA approval order or by regulation has not been met.</P>
+<P>(3) A nonclinical laboratory study that is described in the PMA and that is essential to show that the device is safe for use under the conditions prescribed, recommended, or suggested in its proposed labeling, was not conducted in compliance with the good laboratory practice regulations in part 58 and no reason for the noncompliance is provided or, if it is, the differences between the practices used in conducting the study and the good laboratory practice regulations do not support the validity of the study.</P>
+<P>(4) Any clinical investigation involving human subjects described in the PMA, subject to the institutional review board regulations in part 56 of this chapter or informed consent regulations in part 50 of this chapter or GCP referenced in &#xA7; 814.15(a) and described in &#xA7; 812.28(a) of this chapter, was not conducted in compliance with those regulations such that the rights or safety of human subjects were not adequately protected or the supporting data were determined to be otherwise unreliable.</P>
+<P>(b)(1) FDA may seek advice on scientific matters from any appropriate FDA advisory committee in deciding whether to withdraw approval of a PMA.</P>
+<P>(2) FDA may use information other than that submitted by the applicant in deciding whether to withdraw approval of a PMA.</P>
+<P>(c) Before issuing an order withdrawing approval of a PMA, FDA will issue the holder of the approved application a notice of opportunity for an informal hearing under part 16.</P>
+<P>(d) If the applicant does not request a hearing or if after the part 16 hearing is held the agency decides to proceed with the withdrawal, FDA will issue to the holder of the approved application an order withdrawing approval of the application. The order will be issued under &#xA7; 814.17, will state each ground for withdrawing approval, and will include a notice of an opportunity for administrative review under section 515(e)(2) of the act.</P>
+<P>(e) FDA will give the public notice of an order withdrawing approval of a PMA. The notice will be published in the <E T="04">Federal Register</E> and will state that a detailed summary of information respecting the safety and effectiveness of the device, including information about any adverse effects of the device on health, has been placed on public display and that copies are available upon request. When a notice of withdrawal of approval is published, data and information in the PMA file will be available for public disclosure in accordance with &#xA7; 814.9.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 83 FR 7387, Feb. 21, 2018]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.47" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.47&quot;,&quot;citation&quot;:&quot;21 CFR 814.47&quot;}">
+<HEAD>&#xA7; 814.47 Temporary suspension of approval of a PMA.</HEAD>
+<P>(a) <I>Scope.</I> (1) This section describes the procedures that FDA will follow in exercising its authority under section 515(e)(3) of the act (21 U.S.C. 360e(e)(3)). This authority applies to the original PMA, as well as any PMA supplement(s), for a medical device.</P>
+<P>(2) FDA will issue an order temporarily suspending approval of a PMA if FDA determines that there is a reasonable probability that continued distribution of the device would cause serious, adverse health consequences or death.</P>
+<P>(b) <I>Regulatory hearing.</I> (1) If FDA believes that there is a reasonable probability that the continued distribution of a device subject to an approved PMA would cause serious, adverse health consequences or death, FDA may initiate and conduct a regulatory hearing to determine whether to issue an order temporarily suspending approval of the PMA.</P>
+<P>(2) Any regulatory hearing to determine whether to issue an order temporarily suspending approval of a PMA shall be initiated and conducted by FDA pursuant to part 16 of this chapter. If FDA believes that immediate action to remove a dangerous device from the market is necessary to protect the public health, the agency may, in accordance with &#xA7; 16.60(h) of this chapter, waive, suspend, or modify any part 16 procedure pursuant to &#xA7; 10.19 of this chapter.</P>
+<P>(3) FDA shall deem the PMA holder's failure to request a hearing within the timeframe specified by FDA in the notice of opportunity for hearing to be a waiver.</P>
+<P>(c) <I>Temporary suspension order.</I> If the PMA holder does not request a regulatory hearing or if, after the hearing, and after consideration of the administrative record of the hearing, FDA determines that there is a reasonable probability that the continued distribution of a device under an approved PMA would cause serious, adverse health consequences or death, the agency shall, under the authority of section 515(e)(3) of the act, issue an order to the PMA holder temporarily suspending approval of the PMA.</P>
+<P>(d) <I>Permanent withdrawal of approval of the PMA.</I> If FDA issues an order temporarily suspending approval of a PMA, the agency shall proceed expeditiously, but within 60 days, to hold a hearing on whether to permanently withdraw approval of the PMA in accordance with section 515(e)(1) of the act and the procedures set out in &#xA7; 814.46.</P>
+<CITA TYPE="N">[61 FR 15190, Apr. 5, 1996]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="D" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-D&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart D&amp;quot;}">
+<HEAD>Subpart D&#x2014;Administrative Review [Reserved]</HEAD>
+</DIV6>
+<DIV6 N="E" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-E&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart E&amp;quot;}">
+<HEAD>Subpart E&#x2014;Postapproval Requirements</HEAD>
+<DIV8 N="814.80" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.80&quot;,&quot;citation&quot;:&quot;21 CFR 814.80&quot;}">
+<HEAD>&#xA7; 814.80 General.</HEAD>
+<P>A device may not be manufactured, packaged, stored, labeled, distributed, or advertised in a manner that is inconsistent with any conditions to approval specified in the PMA approval order for the device.</P>
+</DIV8>
+
+<DIV8 N="814.82" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.82&quot;,&quot;citation&quot;:&quot;21 CFR 814.82&quot;}">
+<HEAD>&#xA7; 814.82 Postapproval requirements.</HEAD>
+<P>(a) FDA may impose postapproval requirements in a PMA approval order or by regulation at the time of approval of the PMA or by regulation subsequent to approval. Postapproval requirements may include as a condition to approval of the device:</P>
+<P>(1) Restriction of the sale, distribution, or use of the device as provided by section 515(d)(1)(B)(ii) or 520(e) of the act.</P>
+<P>(2) Continuing evaluation and periodic reporting on the safety, effectiveness, and reliability of the device for its intended use. FDA will state in the PMA approval order the reason or purpose for such requirement and the number of patients to be evaluated and the reports required to be submitted.</P>
+<P>(3) Prominent display in the labeling of a device and in the advertising of any restricted device of warnings, hazards, or precautions important for the device's safe and effective use, including patient information, e.g., information provided to the patient on alternative modes of therapy and on risks and benefits associated with the use of the device.</P>
+<P>(4) Inclusion of identification codes on the device or its labeling, or in the case of an implant, on cards given to patients if necessary to protect the public health.</P>
+<P>(5) Maintenance of records that will enable the applicant to submit to FDA information needed to trace patients if such information is necessary to protect the public health. Under section 519(a)(4) of the act, FDA will require that the identity of any patient be disclosed in records maintained under this paragraph only to the extent required for the medical welfare of the individual, to determine the safety or effectiveness of the device, or to verify a record, report, or information submitted to the agency.</P>
+<P>(6) Maintenance of records for specified periods of time and organization and indexing of records into identifiable files to enable FDA to determine whether there is reasonable assurance of the continued safety and effectiveness of the device.</P>
+<P>(7) Submission to FDA at intervals specified in the approval order of periodic reports containing the information required by &#xA7; 814.84(b).</P>
+<P>(8) Batch testing of the device.</P>
+<P>(9) Such other requirements as FDA determines are necessary to provide reasonable assurance, or continued reasonable assurance, of the safety and effectiveness of the device.</P>
+<P>(b) An applicant shall grant to FDA access to any records and reports required under the provisions of this part, and shall permit authorized FDA employees to copy and verify such records and reports and to inspect at a reasonable time and in a reasonable manner all manufacturing facilities to verify that the device is being manufactured, stored, labeled, and shipped under approved conditions.</P>
+<P>(c) Failure to comply with any postapproval requirement constitutes a ground for withdrawal of approval of a PMA.</P>
+<APPRO TYPE="N">(Approved by the Office of Management and Budget under control number 0910-0231)
+</APPRO>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 51 FR 43344, Dec. 2, 1986]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.84" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.84&quot;,&quot;citation&quot;:&quot;21 CFR 814.84&quot;}">
+<HEAD>&#xA7; 814.84 Reports.</HEAD>
+<P>(a) The holder of an approved PMA shall comply with the requirements of part 803 and with any other requirements applicable to the device by other regulations in this subchapter or by order approving the device.</P>
+<P>(b) Unless FDA specifies otherwise, any periodic report shall:</P>
+<P>(1) Identify changes described in &#xA7; 814.39(a) and changes required to be reported to FDA under &#xA7; 814.39(b).</P>
+<P>(2) Contain a summary and bibliography of the following information not previously submitted as part of the PMA:</P>
+<P>(i) Unpublished reports of data from any clinical investigations or nonclinical laboratory studies involving the device or related devices and known to or that reasonably should be known to the applicant.</P>
+<P>(ii) Reports in the scientific literature concerning the device and known to or that reasonably should be known to the applicant. If, after reviewing the summary and bibliography, FDA concludes that the agency needs a copy of the unpublished or published reports, FDA will notify the applicant that copies of such reports shall be submitted.</P>
+<P>(3) Identify changes made pursuant to an exception or alternative granted under &#xA7; 801.128 or &#xA7; 809.11 of this chapter.</P>
+<P>(4) Identify each device identifier currently in use for the device, and each device identifier for the device that has been discontinued since the previous periodic report. It is not necessary to identify any device identifier discontinued prior to December 23, 2013.</P>
+<CITA TYPE="N">[51 FR 26364, July 22, 1986, as amended at 51 FR 43344, Dec. 2, 1986; 67 FR 9587, Mar. 4, 2002; 72 FR 73602, Dec. 28, 2007; 78 FR 58822, Sept. 24, 2013]
+</CITA>
+</DIV8>
+
+</DIV6>
+<DIV6 N="F-G" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-F-G&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart F-G&amp;quot;}">
+<HEAD>Subparts F-G [Reserved]</HEAD>
+</DIV6>
+<DIV6 N="H" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-814/subpart-H&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 814 Subpart H&amp;quot;}">
+<HEAD>Subpart H&#x2014;Humanitarian Use Devices</HEAD>
+<SOURCE>
+<HED>Source:</HED><PSPACE>61 FR 33244, June 26, 1996, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV8 N="814.100" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.100&quot;,&quot;citation&quot;:&quot;21 CFR 814.100&quot;}">
+<HEAD>&#xA7; 814.100 Purpose and scope.</HEAD>
+<P>(a) This subpart H implements sections 515A and 520(m) of the act.</P>
+<P>(b) The purpose of section 520(m) is, to the extent consistent with the protection of the public health and safety and with ethical standards, to encourage the discovery and use of devices intended to benefit patients in the treatment or diagnosis of diseases or conditions that affect or are manifested in not more than 8,000 individuals in the United States per year. This subpart provides procedures for obtaining:</P>
+<P>(1) HUD designation of a medical device; and</P>
+<P>(2) Marketing approval for the HUD notwithstanding the absence of reasonable assurance of effectiveness that would otherwise be required under sections 514 and 515 of the act.</P>
+<P>(c) Section 515A of the act is intended to ensure the submission of readily available information concerning:</P>
+<P>(1) Any pediatric subpopulations (neonates, infants, children, adolescents) that suffer from the disease or condition that the device is intended to treat, diagnose, or cure; and</P>
+<P>(2) The number of affected pediatric patients.</P>
+<P>(d) Although a HUD may also have uses that differ from the humanitarian use, applicants seeking approval of any non-HUD use shall submit a PMA as required under &#xA7; 814.20, or a premarket notification as required under part 807 of this chapter.</P>
+<P>(e) Obtaining marketing approval for a HUD involves two steps:</P>
+<P>(1) Obtaining designation of the device as a HUD from FDA's Office of Orphan Products Development, and</P>
+<P>(2) Submitting an HDE to the Office of Product Evaluation and Quality (OPEQ), Center for Devices and Radiological Health (CDRH), the Center for Biologics Evaluation and Research (CBER), or the Center for Drug Evaluation and Research (CDER), as applicable.</P>
+<P>(f) A person granted an exemption under section 520(m) of the act shall submit periodic reports as described in &#xA7; 814.126(b).</P>
+<P>(g) FDA may suspend or withdraw approval of an HDE after providing notice and an opportunity for an informal hearing.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 59220, Nov. 3, 1998; 73 FR 49942, Aug. 25, 2008; 79 FR 1740, Jan. 10, 2014; 82 FR 26349, June 7, 2017; 85 FR 18442, Apr. 2, 2020]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.102" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.102&quot;,&quot;citation&quot;:&quot;21 CFR 814.102&quot;}">
+<HEAD>&#xA7; 814.102 Designation of HUD status.</HEAD>
+<P>(a) <I>Request for designation.</I> Prior to submitting an HDE application, the applicant shall submit a request for HUD designation to FDA's Office of Orphan Products Development. The request shall contain the following:</P>
+<P>(1) A statement that the applicant requests HUD designation for a rare disease or condition or a valid subset of a disease or condition which shall be identified with specificity;</P>
+<P>(2) The name and address of the applicant, the name of the applicant's primary contact person and/or resident agent, including title, address, and telephone number;</P>
+<P>(3) A description of the rare disease or condition for which the device is to be used, the proposed indication or indications for use of the device, and the reasons why such therapy is needed. If the device is proposed for an indication that represents a subset of a common disease or condition, a demonstration that the subset is medically plausible should be included;</P>
+<P>(4) A description of the device and a discussion of the scientific rationale for the use of the device for the rare disease or condition; and</P>
+<P>(5) Documentation, with appended authoritative references, to demonstrate that the device is designed to treat or diagnose a disease or condition that affects or is manifested in not more than 8,000 people in the United States per year. If the device is for diagnostic purposes, the documentation must demonstrate that not more than 8,000 patients per year would be subjected to diagnosis by the device in the United States. Authoritative references include literature citations in specialized medical journals, textbooks, specialized medical society proceedings, or governmental statistics publications. When no such studies or literature citations exist, the applicant may be able to demonstrate the prevalence of the disease or condition in the United States by providing credible conclusions from appropriate research or surveys.</P>
+<P>(b) <I>FDA action.</I> Within 45 days of receipt of a request for HUD designation, FDA will take one of the following actions:</P>
+<P>(1) Approve the request and notify the applicant that the device has been designated as a HUD based on the information submitted;</P>
+<P>(2) Return the request to the applicant pending further review upon submission of additional information. This action will ensue if the request is incomplete because it does not on its face contain all of the information required under &#xA7; 814.102(a). Upon receipt of this additional information, the review period may be extended up to 45 days; or</P>
+<P>(3) Disapprove the request for HUD designation based on a substantive review of the information submitted. FDA may disapprove a request for HUD designation if:</P>
+<P>(i) There is insufficient evidence to support the estimate that the disease or condition for which the device is designed to treat or diagnose affects or is manifested in not more than 8,000 people in the United States per year;</P>
+<P>(ii) FDA determines that, for a diagnostic device, more than 8,000 patients in the United States would be subjected to diagnosis using the device per year; or</P>
+<P>(iii) FDA determines that the patient population defined in the request is not a medically plausible subset of a larger population.</P>
+<P>(c) <I>Revocation of designation.</I> FDA may revoke a HUD designation if the agency finds that:</P>
+<P>(1) The request for designation contained an untrue statement of material fact or omitted material information; or</P>
+<P>(2) Based on the evidence available, the device is not eligible for HUD designation.</P>
+<P>(d) <I>Submission.</I> The applicant shall submit two copies of a completed, dated, and signed request for HUD designation to: Office of Orphan Products Development (HF-35), Food and Drug Administration, 5600 Fishers Lane, Rockville, MD 20857.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 82 FR 26349, June 7, 2017]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.104" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.104&quot;,&quot;citation&quot;:&quot;21 CFR 814.104&quot;}">
+<HEAD>&#xA7; 814.104 Original applications.</HEAD>
+<P>(a) <I>United States applicant or representative.</I> The applicant or an authorized representative shall sign the HDE. If the applicant does not reside or have a place of business within the United States, the HDE shall be countersigned by an authorized representative residing or maintaining a place of business in the United States and shall identify the representative's name and address.</P>
+<P>(b) <I>Contents.</I> Unless the applicant justifies an omission in accordance with paragraph (d) of this section, an HDE shall include:</P>
+<P>(1) A copy of or reference to the determination made by FDA's Office of Orphan Products Development (in accordance with &#xA7; 814.102) that the device qualifies as a HUD;</P>
+<P>(2) An explanation of why the device would not be available unless an HDE were granted and a statement that no comparable device (other than another HUD approved under this subpart or a device under an approved IDE) is available to treat or diagnose the disease or condition. The application also shall contain a discussion of the risks and benefits of currently available devices or alternative forms of treatment in the United States;</P>
+<P>(3) An explanation of why the probable benefit to health from the use of the device outweighs the risk of injury or illness from its use, taking into account the probable risks and benefits of currently available devices or alternative forms of treatment. Such explanation shall include a description, explanation, or theory of the underlying disease process or condition, and known or postulated mechanism(s) of action of the device in relation to the disease process or condition;</P>
+<P>(4) All of the information required to be submitted under &#xA7; 814.20(b), except that:</P>
+<P>(i) In lieu of the summaries, conclusions, and results from clinical investigations required under &#xA7; 814.20(b)(3)(v)(B), (b)(3)(vi), and the introductory text of (b)(6)(ii), the applicant shall include the summaries, conclusions, and results of all clinical experience or investigations (whether adverse or supportive) reasonably obtainable by the applicant that are relevant to an assessment of the risks and probable benefits of the device and to the extent the applicant includes data from clinical investigations, the applicant shall include the statements described in &#xA7; 814.20(b)(6)(ii)(A) and (B) with respect to clinical investigations conducted in the United States and the information described in &#xA7; 814.20(b)(6)(ii)(C) with respect to clinical investigations conducted outside the United States; and</P>
+<P>(ii) In addition to the proposed labeling requirement set forth in &#xA7; 814.20(b)(10), the labeling shall bear the following statement: Humanitarian Device. Authorized by Federal law for use in the [treatment or diagnosis] of [specify disease or condition]. The effectiveness of this device for this use has not been demonstrated;</P>
+<P>(5) The amount to be charged for the device and, if the amount is more than $250, a report by an independent certified public accountant, made in accordance with the Statement on Standards for Attestation established by the American Institute of Certified Public Accountants, or in lieu of such a report, an attestation by a responsible individual of the organization, verifying that the amount charged does not exceed the costs of the device's research, development, fabrication, and distribution. If the amount charged is $250 or less, the requirement for a report by an independent certified public accountant or an attestation by a responsible individual of the organization is waived; and</P>
+<P>(6) Information concerning pediatric uses of the device, as required by &#xA7; 814.20(b)(13).</P>
+<P>(c) <I>Omission of information.</I> If the applicant believes that certain information required under paragraph (b) of this section is not applicable to the device that is the subject of the HDE, and omits any such information from its HDE, the applicant shall submit a statement that identifies and justifies the omission. The statement shall be submitted as a separate section in the HDE and identified in the table of contents. If the justification for the omission is not accepted by the agency, FDA will so notify the applicant.</P>
+<P>(d) <I>Address for submissions and correspondence.</I> All original HDEs, amendments and supplements, as well as any correspondence relating to an HDE, must be provided in electronic format. These materials must be sent or delivered to one of the following:</P>
+<P>(1) For devices regulated by the Center for Devices and Radiological Health, send it to the current address found on the website <I>https://www.fda.gov/cdrhsubmissionaddress.</I></P>
+<P>(2) For devices regulated by the Center for Biologics Evaluation and Research, send it to the current address displayed on the website <I>https://www.fda.gov/AboutFDA/CentersOffices/OfficeofMedicalProductsandTobacco/CBER/ucm385240.htm.</I></P>
+<P>(3) For devices regulated by the Center for Drug Evaluation and Research, send this information to the Central Document Control Room, Center for Drug Evaluation and Research, Food and Drug Administration, 5901-B Ammendale Rd., Beltsville, MD 20705-1266.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 59220, Nov. 3, 1998; 73 FR 49942, Aug. 25, 2008; 75 FR 20915, Apr. 22, 2010; 79 FR 1740, Jan. 10, 2014; 80 FR 18094, Apr. 3, 2015; 83 FR 7388, Feb. 21, 2018; 84 FR 68340, Dec. 16, 2019]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.106" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.106&quot;,&quot;citation&quot;:&quot;21 CFR 814.106&quot;}">
+<HEAD>&#xA7; 814.106 HDE amendments and resubmitted HDE's.</HEAD>
+<P>An HDE or HDE supplement may be amended or resubmitted upon an applicant's own initiative, or at the request of FDA, for the same reasons and in the same manner as prescribed for PMA's in &#xA7; 814.37, except that the timeframes set forth in &#xA7; 814.37(c)(1) and (d) do not apply. If FDA requests an HDE applicant to submit an HDE amendment, and a written response to FDA's request is not received within 75 days of the date of the request, FDA will consider the pending HDE or HDE supplement to be withdrawn voluntarily by the applicant. Furthermore, if the HDE applicant, on its own initiative or at FDA's request, submits a major amendment as described in &#xA7; 814.37(c)(1), the review period may be extended up to 75 days.</P>
+<CITA TYPE="N">[63 FR 59220, Nov. 3, 1998]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.108" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.108&quot;,&quot;citation&quot;:&quot;21 CFR 814.108&quot;}">
+<HEAD>&#xA7; 814.108 Supplemental applications.</HEAD>
+<P>After FDA approval of an original HDE, an applicant shall submit supplements in accordance with the requirements for PMA's under &#xA7; 814.39, except that a request for a new indication for use of a HUD shall comply with requirements set forth in &#xA7; 814.110. The timeframes for review of, and FDA action on, an HDE supplement are the same as those provided in &#xA7; 814.114 for an HDE.</P>
+<CITA TYPE="N">[63 FR 59220, Nov. 3, 1998]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.110" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.110&quot;,&quot;citation&quot;:&quot;21 CFR 814.110&quot;}">
+<HEAD>&#xA7; 814.110 New indications for use.</HEAD>
+<P>(a) An applicant seeking a new indication for use of a HUD approved under this subpart H shall obtain a new designation of HUD status in accordance with &#xA7; 814.102 and shall submit an original HDE in accordance with &#xA7; 814.104.</P>
+<P>(b) An application for a new indication for use made under &#xA7; 814.104 may incorporate by reference any information or data previously submitted to the agency under an HDE.</P>
+</DIV8>
+
+<DIV8 N="814.112" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.112&quot;,&quot;citation&quot;:&quot;21 CFR 814.112&quot;}">
+<HEAD>&#xA7; 814.112 Filing an HDE.</HEAD>
+<P>(a) The filing of an HDE means that FDA has made a threshold determination that the application is sufficiently complete to permit substantive review. Within 30 days from the date an HDE is received by FDA, the agency will notify the applicant whether the application has been filed. FDA may refuse to file an HDE if any of the following applies:</P>
+<P>(1) The application is incomplete because it does not on its face contain all the information required under &#xA7; 814.104(b);</P>
+<P>(2) FDA determines that there is a comparable device available (other than another HUD approved under this subpart or a device under an approved IDE) to treat or diagnose the disease or condition for which approval of the HUD is being sought; or</P>
+<P>(3) The application contains an untrue statement of material fact or omits material information.</P>
+<P>(4) The HDE is not accompanied by a statement of either certification or disclosure, or both, as required by part 54 of this chapter.</P>
+<P>(b) The provisions contained in &#xA7; 814.42(b), (c), and (d) regarding notification of filing decisions, filing dates, the start of the 75-day review period, and applicant's options in response to FDA refuse to file decisions shall apply to HDE's.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 5254, Feb. 2, 1998; 63 FR 59221, Nov. 3, 1998]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.114" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.114&quot;,&quot;citation&quot;:&quot;21 CFR 814.114&quot;}">
+<HEAD>&#xA7; 814.114 Timeframes for reviewing an HDE.</HEAD>
+<P>Within 75 days after receipt of an HDE that is accepted for filing and to which the applicant does not submit a major amendment, FDA shall send the applicant an approval order, an approvable letter, a not approvable letter (under &#xA7; 814.116), or an order denying approval (under &#xA7; 814.118).</P>
+<CITA TYPE="N">[63 FR 59221, Nov. 3, 1998]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.116" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.116&quot;,&quot;citation&quot;:&quot;21 CFR 814.116&quot;}">
+<HEAD>&#xA7; 814.116 Procedures for review of an HDE.</HEAD>
+<P>(a) <I>Substantive review.</I> FDA will begin substantive review of an HDE after the HDE is accepted for filing under &#xA7; 814.112. FDA may refer an original HDE application to a panel on its own initiative, and shall do so upon the request of an applicant, unless FDA determines that the application substantially duplicates information previously reviewed by a panel. If the HDE is referred to a panel, the agency shall follow the procedures set forth under &#xA7; 814.44, with the exception that FDA will complete its review of the HDE and the advisory committee report and recommendations within 75 days from receipt of an HDE that is accepted for filing under &#xA7; 814.112 or the date of filing as determined under &#xA7; 814.106, whichever is later. Within the later of these two timeframes, FDA will issue an approval order under paragraph (b) of this section, an approvable letter under paragraph (c) of this section, a not approvable letter under paragraph (d) of this section, or an order denying approval of the application under &#xA7; 814.118(a).</P>
+<P>(b) <I>Approval order.</I> FDA will issue to the applicant an order approving an HDE if none of the reasons in &#xA7; 814.118 for denying approval of the application applies. FDA will approve an application on the basis of draft final labeling if the only deficiencies in the application concern editorial or similar minor deficiencies in the draft final labeling. Such approval will be conditioned upon the applicant incorporating the specified labeling changes exactly as directed and upon the applicant submitting to FDA a copy of the final printed labeling before marketing. The notice of approval of an HDE will be placed on the FDA's home page on the internet (<I>https://www.fda.gov</I>) in accordance with the rules and policies applicable to PMAs submitted under &#xA7; 814.20. Following the issuance of an approval order, data and information in the HDE file will be available for public disclosure in accordance with &#xA7; 814.9(b) through (h), as applicable.</P>
+<P>(c) <I>Approvable letter.</I> FDA will send the applicant an approvable letter if the application substantially meets the requirements of this subpart and the agency believes it can approve the application if specific additional information is submitted or specific conditions are agreed to by the applicant. The approvable letter will describe the information FDA requires to be provided by the applicant or the conditions the applicant is required to meet to obtain approval. For example, FDA may require as a condition to approval:</P>
+<P>(1) The submission of certain information identified in the approvable letter, e.g., final labeling;</P>
+<P>(2) The submission of additional information concerning pediatric uses of the device, as required by &#xA7; 814.20(b)(13);</P>
+<P>(3) Restrictions imposed on the device under section 520(e) of the act;</P>
+<P>(4) Postapproval requirements as described in subpart E of this part; and</P>
+<P>(5) An FDA inspection that finds the manufacturing facilities, methods, and controls in compliance with part 820 of this chapter and, if applicable, that verifies records pertinent to the HDE.</P>
+<P>(d) <I>Not approvable letter.</I> FDA will send the applicant a not approvable letter if the agency believes that the application may not be approved for one or more of the reasons given in &#xA7; 814.118. The not approvable letter will describe the deficiencies in the application and, where practical, will identify measures required to place the HDE in approvable form. The applicant may respond to the not approvable letter in the same manner as permitted for not approvable letters for PMA's under &#xA7; 814.44(f), with the exception that if a major HDE amendment is submitted, the review period may be extended up to 75 days.</P>
+<P>(e) FDA will consider an HDE to have been withdrawn voluntarily if:</P>
+<P>(1) The applicant fails to respond in writing to a written request for an amendment within 75 days after the date FDA issues such request;</P>
+<P>(2) The applicant fails to respond in writing to an approvable or not approvable letter within 75 days after the date FDA issues such letter; or</P>
+<P>(3) The applicant submits a written notice to FDA that the HDE has been withdrawn.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 59221, Nov. 3, 1998; 79 FR 1741, Jan. 10, 2014; 87 FR 2045, Jan. 13, 2022]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.118" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.118&quot;,&quot;citation&quot;:&quot;21 CFR 814.118&quot;}">
+<HEAD>&#xA7; 814.118 Denial of approval or withdrawal of approval of an HDE.</HEAD>
+<P>(a) FDA may deny approval or withdraw approval of an application if the applicant fails to meet the requirements of section 520(m) of the act or of this part, or of any condition of approval imposed by an IRB or by FDA, or any postapproval requirements imposed under &#xA7; 814.126. In addition, FDA may deny approval or withdraw approval of an application if, upon the basis of the information submitted in the HDE or any other information before the agency, FDA determines that:</P>
+<P>(1) There is a lack of a showing of reasonable assurance that the device is safe under the conditions of use prescribed, recommended, or suggested in the labeling thereof;</P>
+<P>(2) The device is ineffective under the conditions of use prescribed, recommended, or suggested in the labeling thereof;</P>
+<P>(3) The applicant has not demonstrated that there is a reasonable basis from which to conclude that the probable benefit to health from the use of the device outweighs the risk of injury or illness, taking into account the probable risks and benefits of currently available devices or alternative forms of treatment;</P>
+<P>(4) The application or a report submitted by or on behalf of the applicant contains an untrue statement of material fact, or omits material information;</P>
+<P>(5) The device's labeling does not comply with the requirements in part 801 or part 809 of this chapter;</P>
+<P>(6) A nonclinical laboratory study that is described in the HDE and that is essential to show that the device is safe for use under the conditions prescribed, recommended, or suggested in its proposed labeling, was not conducted in compliance with the good laboratory practice regulations in part 58 of this chapter and no reason for the noncompliance is provided or, if it is, the differences between the practices used in conducting the study and the good laboratory practice regulations do not support the validity of the study;</P>
+<P>(7) Any clinical investigation involving human subjects described in the HDE, subject to the institutional review board regulations in part 56 of this chapter or the informed consent regulations in part 50 of this chapter, was not conducted in compliance with those regulations such that the rights or safety of human subjects were not adequately protected;</P>
+<P>(8) The applicant does not permit an authorized FDA employee an opportunity to inspect at a reasonable time and in a reasonable manner the facilities and controls, and to have access to and to copy and verify all records pertinent to the application; or</P>
+<P>(9) The device's HUD designation should be revoked in accordance with &#xA7; 814.102(c).</P>
+<P>(b) If FDA issues an order denying approval of an application, the agency will comply with the same notice and disclosure provisions required for PMA's under &#xA7; 814.45(b) and (d), as applicable.</P>
+<P>(c) FDA will issue an order denying approval of an HDE after an approvable or not approvable letter has been sent and the applicant:</P>
+<P>(1) Submits a requested amendment but any ground for denying approval of the application under &#xA7; 814.118(a) still applies;</P>
+<P>(2) Notifies FDA in writing that the requested amendment will not be submitted; or</P>
+<P>(3) Petitions for review under section 515(d)(4) of the act by filing a petition in the form of a petition for reconsideration under &#xA7; 10.33 of this chapter.</P>
+<P>(d) Before issuing an order withdrawing approval of an HDE, FDA will provide the applicant with notice and an opportunity for a hearing as required for PMA's under &#xA7; 814.46(c) and (d), and will provide the public with notice in accordance with &#xA7; 814.46(e), as applicable.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 59221, Nov. 3, 1998; 87 FR 2045, Jan. 13, 2022]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.120" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.120&quot;,&quot;citation&quot;:&quot;21 CFR 814.120&quot;}">
+<HEAD>&#xA7; 814.120 Temporary suspension of approval of an HDE.</HEAD>
+<P>An HDE or HDE supplement may be temporarily suspended for the same reasons and in the same manner as prescribed for PMA's in &#xA7; 814.47.</P>
+<CITA TYPE="N">[63 FR 59221, Nov. 3, 1998]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.122" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.122&quot;,&quot;citation&quot;:&quot;21 CFR 814.122&quot;}">
+<HEAD>&#xA7; 814.122 Confidentiality of data and information.</HEAD>
+<P>(a) <I>Requirement for disclosure.</I> The &#x201C;HDE file&#x201D; includes all data and information submitted with or referenced in the HDE, any IDE incorporated into the HDE, any HDE amendment or supplement, any report submitted under &#xA7; 814.126, any master file, or any other related submission. Any record in the HDE file will be available for public disclosure in accordance with the provisions of this section and part 20 of this chapter.</P>
+<P>(b) <I>Extent of disclosure.</I> Disclosure by FDA of the existence and contents of an HDE file shall be subject to the same rules that pertain to PMA's under &#xA7; 814.9(b) through (h), as applicable.</P>
+</DIV8>
+
+<DIV8 N="814.124" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.124&quot;,&quot;citation&quot;:&quot;21 CFR 814.124&quot;}">
+<HEAD>&#xA7; 814.124 Institutional Review Board requirements.</HEAD>
+<P>(a) <I>IRB approval.</I> The HDE holder is responsible for ensuring that a HUD approved under this subpart is administered only in facilities having oversight by an Institutional Review Board (IRB) constituted and acting pursuant to part 56 of this chapter, including continuing review of use of the device. In addition, a HUD may be administered only if such use has been approved by an IRB. If, however, a physician in an emergency situation determines that approval from an IRB cannot be obtained in time to prevent serious harm or death to a patient, a HUD may be administered without prior approval by an IRB. In such an emergency situation, the physician shall, within 5 days after the use of the device, provide written notification to the chairman of the IRB of such use. Such written notification shall include the identification of the patient involved, the date on which the device was used, and the reason for the use.</P>
+<P>(b) <I>Withdrawal of IRB approval.</I> A holder of an approved HDE shall notify FDA of any withdrawal of approval for the use of a HUD by a reviewing IRB within 5 working days after being notified of the withdrawal of approval.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 59221, Nov. 3, 1998; 82 FR 26349, June 7, 2017]
+</CITA>
+</DIV8>
+
+<DIV8 N="814.126" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-814.126&quot;,&quot;citation&quot;:&quot;21 CFR 814.126&quot;}">
+<HEAD>&#xA7; 814.126 Postapproval requirements and reports.</HEAD>
+<P>(a) An HDE approved under this subpart H shall be subject to the postapproval requirements and reports set forth under subpart E of this part, as applicable, with the exception of &#xA7; 814.82(a)(7). In addition, medical device reports submitted to FDA in compliance with the requirements of part 803 of this chapter shall also be submitted to the IRB of record.</P>
+<P>(b) In addition to the reports identified in paragraph (a) of this section, the holder of an approved HDE shall prepare and submit the following complete, accurate, and timely reports:</P>
+<P>(1) <I>Periodic reports.</I> An HDE applicant is required to submit reports in accordance with the approval order. Unless FDA specifies otherwise, any periodic report shall include:</P>
+<P>(i) An update of the information required under &#xA7; 814.102(a) in a separately bound volume;</P>
+<P>(ii) An update of the information required under &#xA7; 814.104(b)(2), (b)(3), and (b)(5);</P>
+<P>(iii) The number of devices that have been shipped or sold since initial marketing approval under this subpart H and, if the number shipped or sold exceeds 8,000, an explanation and estimate of the number of devices used per patient. If a single device is used on multiple patients, the applicant shall submit an estimate of the number of patients treated or diagnosed using the device together with an explanation of the basis for the estimate;</P>
+<P>(iv) Information describing the applicant's clinical experience with the device since the HDE was initially approved. This information shall include safety information that is known or reasonably should be known to the applicant, medical device reports made under part 803 of this chapter, any data generated from the postmarketing studies, and information (whether published or unpublished) that is known or reasonably expected to be known by the applicant that may affect an evaluation of the safety of the device or that may affect the statement of contraindications, warnings, precautions, and adverse reactions in the device's labeling; and</P>
+<P>(v) A summary of any changes made to the device in accordance with supplements submitted under &#xA7; 814.108. If information provided in the periodic reports, or any other information in the possession of FDA, gives the agency reason to believe that a device raises public health concerns or that the criteria for exemption are no longer met, the agency may require the HDE holder to submit additional information to demonstrate continued compliance with the HDE requirements.</P>
+<P>(2) <I>Other.</I> An HDE holder shall maintain records of the names and addresses of the facilities to which the HUD has been shipped, correspondence with reviewing IRB's, as well as any other information requested by a reviewing IRB or FDA. Such records shall be maintained in accordance with the HDE approval order.</P>
+<CITA TYPE="N">[61 FR 33244, June 26, 1996, as amended at 63 FR 59221, Nov. 3, 1998; 71 FR 16228, Mar. 31, 2006; 82 FR 26349, June 7, 2017]
+</CITA>
+</DIV8>
+
+</DIV6>
+</DIV5>

@@ -1,0 +1,1004 @@
+MEDICAL DEVICES ACT
+Act No. 20888, Apr. 1, 2025
+Wholly Amended by Act No. 10564, Apr. 7, 2011
+Amended by Act No. 11690, Mar. 23, 2013
+Act No. 11985, Jul. 30, 2013
+Act No. 11998, Aug. 6, 2013
+Act No. 12017, Aug. 13, 2013
+Act No. 12392, Jan. 28, 2014
+Act No. 13116, Jan. 28, 2015
+Act No. 13698, Dec. 29, 2015
+Act No. 14330, Dec. 2, 2016
+Act No. 15279, Dec. 19, 2017
+Act No. 15486, Mar. 13, 2018
+Act No. 15945, Dec. 11, 2018
+Act No. 16402, Apr. 23, 2019
+Act No. 16405, Apr. 30, 2019
+Act No. 17007, Feb. 18, 2020
+Act No. 17091, Mar. 24, 2020
+Act No. 17248, Apr. 7, 2020
+Act No. 17472, Aug. 11, 2020
+Act No. 17922, Mar. 9, 2021
+Act No. 17978, Mar. 23, 2021
+Act No. 18319, Jul. 20, 2021
+Act No. 18446, Aug. 17, 2021
+Act No. 19457, Jun. 13, 2023
+Act No. 19608, Aug. 8, 2023
+Act No. 19655, Aug. 16, 2023
+Act No. 20512, Oct. 22, 2024
+Act No. 20753, Jan. 31, 2025
+Act No. 20888, Apr. 1, 2025
+CHAPTER I GENERAL PROVISIONS
+Article 1 (Purpose)
+The purpose of this Act is to promote the efficient management of medical devices and further contribute to the improvement of public health by providing for matters concerning the manufacturing, import, distribution, etc. of medical devices.
+Article 2 (Definitions)
+(1) The term "medical device" in this Act means an instrument, machine, apparatus, material, software, or any other similar product specified in the following subparagraphs as one used, alone or in combination, for human beings or animals; provided, drugs and quasi-drugs under the Pharmaceutical Affairs Act and the prosthetic limbs and aids among assistive devices for persons with disabilities under Article 65 of the Act on Welfare of Persons with Disabilities shall be excluded herefrom: <Amended on Dec. 11, 2018>
+1. A product used for the purpose of diagnosing, curing, alleviating, treating, or preventing a disease;
+2. A product used for the purpose of diagnosing, curing, alleviating, or correcting an injury or impairment;
+3. A product used for the purpose of testing, replacing, or transforming a structure or function;
+4. A product used for the control of conception.
+(2) The term "technical document" in this Act means a document on the quality of a medical device, such as performance and safety, which includes raw materials, structure of the item, intended use, instructions for use, operating principles, precautions for use, test specifications.
+(3) The term "medical device handler" in this Act means any of the following persons who have obtained permission or have filed a notification under this Act with regard to their businesses of handling medical devices, a person who opens a medical institution under the Medical Service Act, or a person who opens a veterinary hospital under the Veterinarians Act:
+1. A manufacturer of medical devices;
+2. An importer of medical devices;
+3. A repairer of medical devices;
+4. A distributor of medical devices;
+5. A lessor of medical devices.
+(4) The term "Unique Device Identifiers on medical devices" in this Act means numbers and bar codes (including RFID tags), etc., which are marked in accordance with a standardized system, on containers or exteriors, etc. to identify and manage medical devices in a systematic and efficient manner. <Added on Dec. 2, 2016>
+Article 2-2 (Medical Device Day)
+(1) May 29 each year shall be designated as Medical Device Day to raise public awareness of the importance of medical devices in ensuring the health and safety of the people, and to promote public understanding and interest through the provision of appropriate information.
+(2) The State and local governments may conduct events, education, public relations, and other related projects in line with the purpose of Medical Device Day, or provide support for the activities of relevant organizations.
+(3) Matters necessary for the celebration of Medical Device Day and related projects, such as education and public relations under paragraph (2), shall be prescribed by Presidential Decree.
+[This Article Added on Apr. 1, 2025]
+Article 3 (Classification and designation of classes)
+(1) In order to ensure systematic and reasonable safety control of medical devices in conformity with the intended use of each medical device and differences in potential risks to humans while in use, the Minister of Food and Drug Safety shall classify and designate the class of each medical device. <Amended on Mar. 23, 2013>
+(2) Matters necessary for the standards and procedures for the classification and designation of the class of each medical device under paragraph (1) shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+Article 4 (Relationship to other statutes)
+Notwithstanding the provisions of this Act, the installation and operation of radiation-emitting equipment for diagnosis and special medical treatment equipment shall be governed by Articles 37 and 38 of the Medical Service Act and Articles 17-3 and 17-4 of the Veterinarians Act.
+Article 4-2 (Comprehensive plans for safety management of medical devices)
+(1) The Minister of Food and Drug Safety shall formulate a comprehensive plan for the safety management of medical devices (hereinafter referred to as "comprehensive safety management plan") every five years in consultation with the heads of related central administrative agencies for the safety management of medical devices.
+(2) A comprehensive safety management plan shall include the following matters:
+1. Basic objectives of medical device safety management policies and direction-setting for implementing medical device safety management policies;
+2. Matters concerning business plans for safety management of medical devices and methods of financing;
+3. Matters concerning education and public relations necessary for safety management of medical devices;
+4. Matters concerning investigation, research, and development of medical device safety management;
+5. Other matters deemed necessary by the Minister of Food and Drug Safety for the safety management of medical devices.
+(3) In order to implement a comprehensive safety management plan, the Minister of Food and Drug Safety shall formulate and implement an annual implementation plan for the safety management of medical devices (hereinafter referred to as "implementation plan for safety management") in consultation with the heads of related central administrative agencies.
+(4) If the Minister of Food and Drug Safety formulates a comprehensive safety management plan or an implementation plan for safety management, he or she shall notify the heads of relevant central administrative agencies and the heads of local governments thereof.
+(5) If necessary to formulate a comprehensive safety management plan or an implementation plan for safety management, the Minister of Food and Drug Safety may request the heads of relevant central administrative agencies, the heads of local governments, or the heads of relevant institutions or organizations to provide necessary data.
+(6) Except as provided in paragraphs (1) through (5), matters necessary for formulating and implementing comprehensive safety management plans and implementation plans for safety management shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Feb. 6, 2024]
+CHAPTER II MEDICAL DEVICES COMMITTEE
+Article 5 (Medical Devices Committee)
+(1) A Medical Devices Committee (hereinafter referred to as the "Committee") shall be established within the Ministry of Food and Drug Safety to investigate and deliberate on the following in response to a request from the Minister of Health and Welfare or the Minister of Food and Drug Safety: <Amended on Mar. 23, 2013; Jan. 28, 2015; Apr. 23, 2019; Aug. 17, 2021>
+1. Matters concerning standard specifications of medical devices;
+2. Matters concerning the post market surveillance and re-evaluation of medical devices;
+3. Matters concerning medical devices subject to tracking and control;
+4. Matters concerning the classification and designation of classes of medical devices;
+5. Matters concerning the scope, etc. of certification and notification of medical devices to be entrusted;
+6. Other important matters concerning medical devices.
+(2) The Committee shall be comprised of not less than 100 but not more than 200 members, including two chairpersons and two vice chairpersons. In such cases, a majority of the total members shall be those who are not public officials. <Added on Apr. 23, 2019; Jul. 20, 2021>
+(3) The office of chairperson shall be assumed jointly by the Vice Minister of Food and Drug Safety and a private member appointed by the Minister of Food and Drug Safety, and the office of vice chairperson by a public official of the Senior Executive Service in each of the Ministry of Health and Welfare and the Ministry of Food and Drug Safety. <Added on Apr. 23, 2019; Jul. 20, 2021>
+(4) Members of the Committee shall be appointed or commissioned by the Minister of Food and Drug Safety from among those listed in the following subparagraphs, and the Minister of Health and Welfare may recommend a candidate for membership: <Added on Apr. 23, 2019>
+1. A public official of Grade IV or higher who takes charge of duties related to medical devices, or a public official in general service who belongs to the Senior Executive Service;
+2. A person who is recommended by the head of a medical device-related organization, the head of a non-profit, non-governmental organization pursuant to Article 2 of the Assistance for Non-Profit, Non-Governmental Organizations Act, the head of a medical device-related academic society, or the head of a university, college or industrial college under subparagraph 1 or 2 of Article 2 of the Higher Education Act;
+3. A person who has plenty of academic knowledge and experience in relation to medical devices.
+(5) The term of office of a member shall be 2 years; provided, the term of office of a member who is a public official shall be the period during which the member is in his or her post as a public official. <Added on Apr. 23, 2019>
+(6) The Committee may establish a subcommittee that consists of not more than 20 members if necessary to facilitate the operation thereof. <Added on Apr. 23, 2019>
+(7) The chairperson of the Committee and the chairperson of the subcommittee may invite relevant experts with expertise and experience in medical devices to attend the relevant meetings to hear their opinions, if necessary in connection with the deliberations. <Added on Jul. 20, 2021>
+(8) Other matters necessary for organization, operation, etc. of the Committee shall be prescribed by Presidential Decree. <Amended on Apr. 23, 2019; Jul. 20, 2021>
+CHAPTER III MANUFACTURING OF MEDICAL DEVICES
+SECTION 1 Manufacturing Business
+Article 6 (Manufacturing business permission)
+(1) Any person who intend to engage in the business of manufacturing medical devices shall obtain manufacturing business permission from the Minister of Food and Drug Safety; provided, any of the following persons may not obtain manufacturing business permission: <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 19, 2017; Mar. 13, 2018; Dec. 11, 2018; Oct. 22, 2024>
+1. A mental patient under subparagraph 1 of Article 3 of the Act on the Improvement of Mental Health and the Support for Welfare Services for Mental Patients; provided, the same shall not apply where a medical specialist deems that a person is suitable to be a manufacturer;
+2. A person under adult guardianship or under limited guardianship or a person declared bankrupt but not yet reinstated;
+3. A person who is addicted to narcotic drugs, marijuana, or psychotropic drugs;
+4. A person who has been sentenced to imprisonment without labor or heavier punishment for violating this Act and for whom the execution of such sentence has not been completed (including where the execution of such sentence is deemed completed) or exempted;
+4-2. A person who is under suspension of the execution of his or her imprisonment without labor or heavier punishment declared by a court for violating this Act;
+5. A person in whose case one year has not passed since his or her manufacturing business permission was revoked (excluding where his or her manufacturing business permission was revoked on the grounds of any of subparagraphs 1 through 3) for violating this Act.
+(2) A person who has obtained manufacturing business permission under the main clause of paragraph (1) (hereinafter referred to as "manufacturer") shall obtain manufacturing permission or manufacturing certification, or file a manufacturing notification as follows with respect to medical devices he or she intends to manufacture: <Amended on Mar. 23, 2013; Jan. 28, 2015>
+1. For medical devices designated and publicly notified by the Minister of Food and Drug Safety and unlikely to pose any risk to human safety and health even upon occurrence of a failure or malfunction because of marginal potential risk to human health: Manufacturing permission, manufacturing certification, or manufacturing notification, by item category;
+2. For any medical device, other than those falling under subparagraph 1: Manufacturing permission, manufacturing certification, or manufacturing notification, by type of item.
+(3) When applying for manufacturing business permission under the main clause of paragraph (1), the applicant shall concurrently apply for manufacturing permission or manufacturing certification for at least 1 item, or file a manufacturing notification on at least 1 item, under any of the subparagraphs of paragraph (2). <Amended on Jan. 28, 2015>
+(4) A person who intends to obtain manufacturing business permission under paragraph (1) or person who intends to obtain manufacturing permission or manufacturing certification, or file a manufacturing notification under paragraph (2) shall be equipped with necessary facilities and manufacturing and quality management systems before filing an application for such permission or certification or filing such notification as prescribed by Prime Ministerial Decree; provided, this shall not apply in cases prescribed by Prime Ministerial Decree, such as entrusting testing for quality management or manufacturing process to a third person. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(5) A manufacturer who intends to obtain manufacturing permission or manufacturing certification, or to file a manufacturing notification under paragraph (2) shall submit necessary data, such as data on manufacturing and quality management systems, technical documents, and clinical trial data, to the Minister of Food and Drug Safety, as prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(6) If permission for items of manufacture and sale has already been granted or report on manufacture and sale have already been made under Article 31 (2) of the Pharmaceutical Affairs Act for a medical device compounded with, or in combination of a drug or quasi-drug because its main function is equivalent to that of a drug or quasi-drug, manufacturing permission or manufacturing certification shall be deemed granted or a manufacturing notification shall be deemed filed under paragraph (2). <Amended on Jan. 28, 2015>
+(7) Any person who intends to obtain manufacturing business permission under paragraph (1) shall employ a quality manager to conduct affairs provided for in Article 6-2 (1), as prescribed by Prime Ministerial Decree. <Added on Jan. 28, 2014>
+(8) The Minister of Food and Drug Safety shall notify an applicant of whether to grant him or her manufacturing business permission within 25 days from the date of receiving the application for manufacturing business permission under the main clause of paragraph (1). <Added on Dec. 19, 2017>
+(9) If the Minister of Food and Drug Safety fails to notify an applicant of whether to grant him or her manufacturing business permission or whether to extend a period for handling civil petitions under statutes or regulations governing the processing of civil petitions within the period specified in paragraph (8), such permission shall be deemed granted on the day immediately following the day on which the period (if the period for handling civil petitions becomes extended or re-extended under statutes or regulations governing the processing of civil petitions, it refers to the relevant period) ends. <Added on Dec. 19, 2017>
+(10) Upon receipt of a manufacturing notification under paragraph (2), the Minister of Food and Drug Safety shall review the details thereof and accept the manufacturing notification if it complies with this Act. <Added on Feb. 6, 2024>
+(11) Matters necessary for the subjects, procedures, standards, conditions, management, etc. regarding the manufacturing business license under the main clause of paragraph (1) and the manufacturing license, manufacturing certification, or manufacturing notification under paragraph (2) shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2014; Jan. 28, 2015; Dec. 19, 2017; Feb. 6, 2024>
+Article 6-2 (Matters to be observed by quality managers and other relevant matters)
+(1) A quality manager (hereinafter referred to as "quality manager") under Article 6 (7) shall conduct affairs concerning the direction and supervision of employees engaged in manufacturing of medical devices, manufacturing management, quality management, and safety control (including post-market safety control to deal with possible side effects, etc.; hereinafter the same shall apply in this Article).
+(2) A quality manager shall receive regular training on the latest standards and specifications for medical devices, quality management, and safety control at least once a year.
+(3) Where necessary to prevent risk to people's health, the Minister of Food and Drug Safety may order a quality manager to undergo further training in addition to training already being provided regularly under paragraph (2) at least once a year.
+(4) No manufacturer shall allow a person who fails to receive training under paragraph (2) or (3) to engage in the affairs. <Added on Jul. 20, 2021>
+(5) The Minister of Food and Drug Safety may designate and publicly notify an institution or organization that has necessary specialized human resources, facilities, etc. as a training institution in order to effectively provide training under paragraph (2) or (3). <Added on Jul. 20, 2021>
+(6) The training institution designated under paragraph (5) shall observe the matters prescribed by Prime Ministerial Decree, such as issuing training certificates upon conducting training and preparing and maintaining records on training. <Added on Jul. 20, 2021>
+(7) Except as provided in paragraphs (1) through (6), matters necessary for the scope of duties, the content, hours, methods and procedures of training, educational expenses, requirements and procedures for designation of a training institution, operation thereof, etc. shall be prescribed by Prime Ministerial Decree. <Amended on Jul. 20, 2021>
+[This Article Added on Jan. 28, 2014]
+Article 6-3 (Restrictions on manufacturing permission)
+(1) None of the following medical devices is eligible for manufacturing permission, manufacturing certification, nor manufacturing notification:
+1. A medical device which has the same intended use, operating principles, raw materials, etc. as those of any medical device whose permission was revoked under Article 36 (1) and from the date of whose revocation one year has not passed yet;
+2. A medical device containing or made using raw materials recognized by the Minister of Food and Drug Safety as having safety and effectiveness defects, and in direct or indirect contact with the human body;
+3. A medical device designated by the Minister of Food and Drug Safety, which uses or contains raw materials that may infect people with diseases that could pose a risk to the public health, such as bovine spongiform encephalopathy, and is in direct or indirect contact with the human body;
+4. Other medical devices not in compliance with standards for manufacturing permission, manufacturing certification of, or manufacturing notifications on medical devices established and publicly notified by the Minister of Food and Drug safety.
+(2) No medical device that includes any of the following in its name is eligible for manufacturing permission, manufacturing certification, or a manufacturing notification:
+1. A name unsuitable for a medical device, or a name that could be misleading for another product, or an exaggerated name;
+2. A name that expresses indication, efficacy, or effect of a medical device;
+3. Other names not in compliance with standards established and publicly notified by the Minister of Food and Drug Safety, which correspond to subparagraphs 1 and 2.
+[This Article Added on Jan. 28, 2015]
+Article 6-4 (Designation of institutions reviewing technical documents)
+(1) The Minister of Food and Drug Safety may designate a specialized institution for reviewing conformity of technical documents, etc. to be submitted under Article 6 (5) (hereinafter referred to as "institution reviewing technical documents"), which shall be responsible for performing duties concerning review.
+(2) Any entity who intends to be designated as an institution reviewing technical documents shall meet requirements for designation, including specialized human resources, etc. necessary for review and file an application with the Minister of Food and Drug Safety.
+(3) Where an institution reviewing technical documents designated under paragraph (1) reviews technical documents, it shall abide by matters prescribed by Prime Ministerial Decree, such as preparing and issuing a written notice of results of reviewing technical documents and keeping records concerning review of such technical documents.
+(4) Matters necessary for detailed standards, procedures and methods for designation of institutions reviewing technical documents shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Dec. 29, 2015]
+Article 7 (Conditional permission)
+(1) The Minister of Food and Drug Safety may grant manufacturing business permission, manufacturing permission, or manufacturing certification, or receive a manufacturing notification on condition that an applicant or notifier be equipped with facilities and manufacturing and quality management systems required under Article 6 (4) within a specified period. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(2) Matters necessary for granting conditional permission or conditional certification or receiving conditional notification, and relevant matters under (1), shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+Article 8 (Post market surveillance of newly developed medical devices)
+(1) If the Minister of Food and Drug Safety intends to grant manufacturing permission (including permission for change under Article 12 (1)) to any of the following medical devices under Article 6 (2), he or she may, in granting the permission, have the manufacturer examine the safety and effectiveness (hereinafter referred to as "post market surveillance") during a period determined by the Minister of Food and Drug Safety, of not less than 4 years and not more than 7 years after the relevant item category or item is placed on the market; provided, this shall not apply to medical devices prescribed by Prime Ministerial Decree, such as medical devices with low potential risks to the human body: <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 11, 2018; Aug. 17, 2021>
+1. A newly developed medical device that is completely new compared to the item category or item already permitted, certified, or notified, in terms of at least one of the following:
+(a) Operating principle;
+(b) Types or portions of raw materials; provided, this shall apply only to medical devices that come into contact with human bodies;
+(c) Instructions for use, including how and where to apply it;
+(d) Performance or intended use;
+2. An orphan medical device designated by the Minister of Food and Drug Safety as a medical device for a disease with a small number of patients in the Republic of Korea and with a particular utility value;
+3. A medical device equivalent to a newly developed medical device falling under subparagraph 1 (limited to a newly developed medical device for which the post market surveillance has not been completed).
+(2) If necessary to apply the period of post market surveillance differently from the period specified in paragraph (1), considering the characteristics of the relevant medical device, the Minister of Food and Drug Safety may determine a separate period of surveillance after deliberation by the Committee. <Amended on Aug. 17, 2021>
+(3) Manufacturers of medical devices subject to post market surveillance shall prepare a plan for post market surveillance, as prescribed by Prime Ministerial Decree, and obtain approval thereof from the Minister of Food and Drug Safety. The same shall also apply to any changes to the plan for post market surveillance. <Amended on Aug. 17, 2021>
+(4) Manufacturers of medical devices subject to the post market surveillance shall regularly report to the Minister of Food and Drug Safety the data, matters for implementation, etc. collected in the post market surveillance. <Amended on Aug. 17, 2021>
+(5) If the use of the relevant medical device causes or is likely to cause serious risks to the public health, based on a review of the matters reported under paragraph (4), the Minister of Food and Drug Safety shall, even during the post market surveillance under paragraph (1), order a necessary measure such as change of the plan for surveillance or revoke the relevant permission after deliberation by the Committee. <Added on Aug. 17, 2021>
+(6) Matters necessary for the methods, procedures, timing, etc. for the regular reporting under paragraph (4) shall be prescribed by Prime Ministerial Decree. <Added on Aug. 17, 2021>
+[Title Amended on Aug. 17, 2021]
+Article 8-2 (Follow-up measures after post market surveillance of newly developed medical devices)
+(1) A manufacturer of medical devices subject to the post market surveillance shall submit data on usability, cases of side effects, and other data prescribed by Prime Ministerial Decree, based on the surveillance results, to the Minister of Food and Drug Safety within three months from the end of the period of the post market surveillance and shall have them reviewed.
+(2) If the Minister of Food and Drug Safety upon receipt of data submitted under paragraph (1) deems that the relevant medical device fails to secure safety or effectiveness as a result of the review thereof, he or she may issue an order to take necessary measures, such as suspension of distribution, recall, and destruction.
+(3) A manufacturer of medical devices subject to the post market surveillance shall retain data determined by the Minister of Food and Drug Safety, such as data submitted under paragraph (1) and records on side effects of the relevant medical devices collected during the course of the post market surveillance, for two years from the date of submission under paragraph (1).
+(4) Matters necessary for the methods, procedures, timing, etc. for the follow-up measures under paragraphs (1) through (3) shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Aug. 17, 2021]
+Article 9 (Re-evaluation)
+(1) If the Minister of Food and Drug Safety deems it necessary to review the safety and efficacy of a medical device for which manufacturing permission or manufacturing certification has been granted or on which a manufacturing notification has been filed under Article 6 (2), he or she may re-evaluate the medical device, and may issue an order for necessary measures based upon the results of the re-evaluation. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(2) The methods, procedures, and standards for the re-evaluation under paragraph (1), and other relevant matters, shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+Article 10 (Approval of clinical trial plans)
+(1) Any person who intends to conduct a clinical trial with a medical device shall prepare a clinical trial protocol and obtain approval from the Minister of Food and Drug Safety, and shall also apply to any modification of the clinical trial protocol; provided, this shall not apply to clinical trials prescribed by Prime Ministerial Decree, such as where the clinical effects of medical devices in the market are observed or where there is little risk of harm to the subjects of clinical trials. <Amended on Mar. 23, 2013; Feb. 6, 2024>
+(2) A person who intends to manufacture or import an investigational device approved under paragraph (1) shall manufacture it in manufacturing facilities that meet the standards prescribed by Prime Ministerial Decree or import one manufactured in facilities meeting such standards. In such cases, the device may be manufactured or imported without obtaining permission or certification, or filing a notification, notwithstanding Article 6 (2) or 15 (2). <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(3) The Minister of Food and Drug Safety may designate a medical institution equipped with facilities, human resources, and equipment necessary for conducting clinical trials, as a clinical trial institution, from among the medical institutions established under the Medical Service Act. <Amended on Mar. 23, 2013>
+(4) A person who intends to conduct a medical trial under paragraph (1) shall follow the following matters: <Amended on Mar. 23, 2013; Feb. 6, 2024>
+1. Clinical trials shall be conducted at a clinical trial institution designated under paragraph (3); provided, clinical trials prescribed by Prime Ministerial Decree, which require the participation of institutions other than clinical trial institutions in the nature of clinical trials, may be conducted under the control of clinical trial institutions, also by institutions other than clinical trial institutions;
+2. Not select any person admitted into an accommodation facility prescribed by Prime Ministerial Decree, such as a social welfare facility, (hereafter referred to as "inmate" in this subparagraph) as the subject of a clinical trial; provided, an inmate may be selected as the subject of a clinical trial, if it is unavoidable, by the nature of a clinical trial, to select the inmate as the subject of the clinical trial and the standards prescribed by Prime Ministerial Decree are met;
+3. He or she shall explain to the subjects of the details of a clinical trial, details of health damage that may occur to the subjects of the clinical trial during the clinical trial, details of and procedures for compensation therefor, etc., and obtain consent of the subjects of the clinical trial (including consent through an electronic document containing a digital signature under the Digital Signature Act).
+(5) When a clinical trial institution designated under paragraph (3) conducts a clinical trial, it shall prepare and issue a report on the results of the clinical trial, keep records of the test, and comply with other matters prescribed by the Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+(6) If the Minister of Food and Drug Safety deems that a clinical trial prescribed in paragraph (1) causes or is likely to cause any serious risk to the public health and hygiene, and any of the following event or causes occurs, he or she may change or revoke such clinical trial or take other necessary measures: Provided, the same shall not apply in cases prescribed in subparagraph 4 or 5, when a clinical trial does not adversely affect the safety, rights, or welfare of subjects of a clinical trial or effectiveness of a trial, or violations are not committed repetitively or intentionally: <Amended on Mar. 23, 2013; Dec. 29, 2015>
+1. Where any subject of the clinical trial is likely to suffer an unexpected severe disease or to be exposed to injury;
+2. Investigational devices are provided for commercial purposes, other than for the clinical trial;
+3. Where investigational devices are proved ineffective;
+4. Where any of the matters or any change approved under paragraph (1) is violated;
+5. Other violations of the Good Clinical Practice for medical devices as prescribed by Prime Ministerial Decree.
+(7) Except as provided in paragraphs (1) and (6), matters to be included in a clinical trial plan, matters requiring consent from a person subject to a clinical trial, and the timing and method of obtaining such consent, the Good Clinical Practice, and the standards and procedures for the designation of clinical trial institutions, standards for management of clinical trials and other necessary matters shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Dec. 29, 2015>
+Article 10-2 (Designation of institutions conducting non-clinical trials)
+(1) Any institution which intends to conduct non-clinical trials for subjects, other than human, concerning the verification of medical devices and confirmation of their effectiveness (hereinafter referred to as "institution conducting non-clinical trials") shall be designated by the Minister of Food and Drug Safety, and if it intends to revise designated matters, it shall obtain revised designation from the Minister of Food and Drug Safety, as prescribed by Prime Ministerial Decree.
+(2) Any entity that intends to be designated as an institution conducting non-clinical trials under paragraph (1), shall be equipped with facilities, specialized human resources and equipment necessary for non-clinical trials of medical devices, as prescribed by Prime Ministerial Decree.
+(3) Where an institution conducting non-clinical trials conducts non-clinical trials pursuant to paragraph (1), it shall abide by matters prescribed by Prime Ministerial Decree, such as preparing and issuing non-clinical trial reports and keeping records concerning non-clinical trials.
+(4) Except as provided in paragraphs (1) through (3), standards, procedures and methods for the designation of institutions conducting non-clinical trials, the operation and management of such institutions, and other necessary matters shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Dec. 29, 2015]
+Article 11 (Preliminary review of manufacturing permission, notification)
+(1) A person who intends to obtain manufacturing permission or manufacturing certification, or file a manufacturing notification under Article 6 (2) or a person who intends to conduct a clinical trial under Article 10 may request the Minister of Food and Drug Safety to preliminarily examine materials necessary for the manufacturing permission, manufacturing certification, manufacturing notification, or approval of such trial. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(2) Upon receipt of a request for examination made under paragraph (1), the Minister of Food and Drug Safety shall conduct the review and give notice of the results to the applicant. <Amended on Mar. 23, 2013; Apr. 23, 2019>
+(3) The Minister of Food and Drug Safety shall consider the results of the review under paragraph (2) when granting permission or certification, or receiving a notification, under Article 6 (2), or granting permission, etc. under Article 10. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(4) Subject matter and scope of the preliminary review under paragraph (1), the procedure and method thereof, and other relevant matters shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+Article 12 (Permission for change)
+(1) If any change, such as a change in location, occurs in any information regarding permission or certification already granted or a notification already filed under the main clause of Article 6 (1), Article 6 (2), or Article 7 (1), a manufacturer shall obtain permission or certification for change from or file a notification on change to the Minister of Food and Drug Safety. <Amended on Mar. 23, 2013; Jan. 28, 2014; Jan. 28, 2015; Jul. 20, 2021>
+(2) The Minister of Food and Drug Safety shall notify an applicant of whether to grant him or her permission to change manufacturing business information within 15 days after the date of receiving the application for change under paragraph (1). <Amended on Dec. 19, 2017>
+(3) If the Minister of Food and Drug Safety fails to notify an applicant of whether to grant him or her permission to change manufacturing business information or whether to extend a period for handling civil petitions under statutes or regulations governing the processing of civil petitions within the period prescribed in paragraph (2), such permission shall be deemed granted on the day immediately following the day on which the period (if the period for handling civil petitions becomes extended or re-extended under statutes or regulations governing the processing of civil petitions, it refers to the relevant period) ends. <Amended on Dec. 19, 2017>
+(4) Matters necessary for procedures and standards for applying for permission or certification for change, or filing a notification on change under paragraph (1) shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 19, 2017>
+Article 13 (Obligations of manufacturers)
+(1) A manufacturer shall maintain facilities and manufacturing and quality management systems under Article 6 (4), and shall comply with other matters prescribed by Prime Ministerial Decree regarding production control, including self-testing. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(2) A manufacturer shall report to the Minister of Health and Welfare and the Minister of Food and Drug Safety on the results of producing medical devices and other relevant matters, as prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+(3) No manufacturer (including the representative, director or other employees of a corporation, and in cases of entities other than corporations, including the employees thereof) and no person entrusted by a manufacturer with the promotion of distribution of medical devices (including the representative, director or other employees of a corporation, and in cases of entities other than corporations, including the employees thereof) among persons that have filed a notification under Article 18-2 (1) (hereinafter referred to as "medical device sales promoter") shall provide money, articles, convenience, labor, entertainment or other economic benefits (hereinafter referred to as "economic benefits, etc.") to medical personnel or founders of medical institutions (including the representative, director or other employees of a corporation; hereafter the same shall apply in this Article) or persons working for medical institutions or let medical personnel, founders of medical institutions or persons working for medical institutions help medical institutions to acquire economic benefits, etc., for purposes of promoting distribution, such as adopting medical devices, inducing them to use medical devices, or maintaining trade; provided, the same shall not apply to economic benefits, etc. within the scope prescribed by Decree of the Ministry of Health and Welfare after consulting with the Minister of Food and Drug Safety, such as providing samples, sponsoring a symposium, supporting clinical trials, product demonstrations, product discount depending on conditions of price settlement or post market surveillance (hereinafter referred to as "acts of providing samples, etc."). <Amended on Mar. 23, 2013; Dec. 29, 2015; Jul. 20, 2021; Aug. 8, 2023>
+(4) No manufacturer shall entrust any person other than a medical device sales promoter with the affairs of promoting the distribution of medical devices. <Added on Aug. 8, 2023>
+(5) A manufacturer shall not interfere with the duties of the quality manager, and shall not, without good cause, refuse any request made by the quality manager that is necessary for the performance of his or her duties. <Added on Jan. 28, 2014; Aug. 8, 2023>
+[Title Amended on Aug. 8, 2023]
+Article 13-2 (Submission of expense reports on details of provision of economic profits)
+(1) Manufacturers and persons entrusted by a manufacturer with the promotion of distribution of medical devices (hereafter in this Article referred to as "manufacturer, etc.") shall prepare expense reports on details of economic profits, etc. provided to medical personnel, persons who have established medical institutions, or persons working for medical institutions within three months from the expiry of each fiscal year, as prescribed by Decree of the Ministry of Health and Welfare, disclose the reports as prescribed by Decree of the Ministry of Health and Welfare, and shall keep the relevant expense report, related books, and base data for 5 years. <Amended on Jul. 20, 2021; Aug. 8, 2023>
+(2) Where a manufacturer, etc. entrusts a medical device sales promoter with the promotion of distribution or lease of medical devices (including cases where the entrusted affairs of promotion of distribution or lease is re-entrusted to another medical device sales promoter), he or she shall prepare an entrustment contract and keep the relevant entrustment contract and related base data for five years, as prescribed by Decree of the Ministry of Health and Welfare. <Added on Aug. 8, 2023>
+(3) If deemed necessary, the Minister of Health and Welfare may request manufacturers, etc. to submit expense reports, related books, and base data prescribed in paragraph (1), and entrustment contracts and related base data prescribed in paragraph (2). In such cases, manufacturers, etc. shall comply therewith, unless there is good cause. <Amended on Jul. 20, 2021; Aug. 8, 2023>
+(4) The Minister of Health and Welfare shall conduct fact-finding surveys on expense reports of manufacturers, etc. and publish the results thereof, as prescribed by Decree of the Ministry of Health and Welfare. <Added on Jul. 20, 2021; Aug. 8, 2023>
+(5) The Minister of Health and Welfare may entrust related specialized institutions or organizations with affairs related to the disclosure under paragraph (1) and affairs of fact-finding surveys under paragraph (3). <Added on Jul. 20, 2021; Aug. 8, 2023>
+[This Article Added on Dec. 2, 2016]
+Article 14 (Notification of permanent closure, temporary shutdown)
+(1) If a manufacturer falls under any of the following subparagraphs, he or she shall notify the Minister of Food and Drug Safety thereof, as prescribed by Prime Ministerial Decree; provided, this shall not apply if the period of temporary shutdown is less than 1 month or factory operation is resumed after being shut down temporarily for less than 1 month: <Amended on Dec. 11, 2018>
+1. Where he or she intends to close or suspend business;
+2. Where he or she intends to resume business after suspension.
+(2) Upon receipt of a notification on permanent closure or temporary shutdown under paragraph (1) 1, the Minister of Food and Drug Safety shall inform the notification filer whether or not to accept the notification, within 7 days of receipt of such notification. <Added on Dec. 11, 2018>
+(3) If the Minister of Food and Drug Safety fails to inform a notification filer whether or not to accept the notification or to extend the processing period thereof under statutes or regulations governing the processing of civil petitions, within a specified period under paragraph (2), the notification shall be deemed accepted on the day following the end of the period (referring to the extended or re-extended period if the processing period is extended or re-extended under the statutes or regulations governing the processing of civil petitions). <Added on Dec. 11, 2018>
+SECTION 2 Import Business
+Article 15 (Import business permission)
+(1) A person who intends to engage in the business of importing medical devices shall obtain import business permission from the Minister of Food and Drug Safety. <Amended on Mar. 23, 2013>
+(2) A person granted import business permission under paragraph (1) (hereinafter referred to as "importer") shall obtain import permission or import certification, or file an import notification with regard to medical devices that he or she intends to import, according to the following classifications: <Amended on Mar. 23, 2013; Jan. 28, 2015>
+1. For medical devices designated and publicly notified by the Minister of Food and Drug Safety and unlikely to pose any risk to human safety and health even upon occurrence of a failure or malfunction because of marginal potential risk to human health: Import permission, import certification, or import notification, by item category;
+2. For any medical device other than those falling under subparagraph 1: Import permission, import certification, or import notification, by item.
+(3) When applying for an import business permission under paragraph (1), the applicant shall concurrently apply for at least 1 import permission or import certification or file at least 1 import notification under the subparagraphs of paragraph (2). <Amended on Jan. 28, 2015>
+(4) A person who intends to obtain import business permission under paragraph (1) or a person who intends to obtain import permission or import certification or to file an import notification under paragraph (2) shall be equipped with facilities necessary for conducting quality inspections and manufacturing and quality management systems before applying for such permission or certification, or filing such notification, as prescribed by Prime Ministerial Decree; provided, this shall not apply in cases prescribed by Prime Ministerial Decree, such as entrusting quality management testing to a third person. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(5) If permission has already been granted, or a report has already been filed, to import an item under Article 42 (1) of the Pharmaceutical Affairs Act for a medical device compounded with, or in combination of a drug or quasi-drug and a medical device because its main function is equivalent to that of a drug or a quasi-drug, the relevant import permission or import certification shall be deemed already granted or the relevant import notification shall be deemed already filed under paragraph (2). <Amended on Jan. 28, 2015>
+(6) The proviso of Article 6 (1), Article 6 (5) and (7) through (11), 6-2, 6-3, 7 through 9, 11 through 13, 13-2, and 14 shall apply mutatis mutandis to medical devices imported under paragraphs (1) through (5) and to the importers thereof. In such cases, "manufacturing" shall be construed as "import", "manufacturing business permission" as "import business permission", "manufacturing permission" as "import permission", "manufacturing permission" as "import certification", "manufacturing certification" as "import certification", "manufacturing notification" as "import notification", "production management" as "import management", and "importer" as "importer." <Amended on Jan. 28, 2014; Jan. 28, 2015; Dec. 2, 2016; Dec. 19, 2017; Feb. 6, 2024>
+Article 15-2 (Supply of, and provision of information on, medical devices scarce or in urgent need of introduction)
+(1) To expand treatment opportunities for patients with rare or intractable diseases and facilitate the management of such diseases, the Minister of Food and Drug Safety may introduce a medical device falling under any of the following subparagraphs (hereinafter referred to as "medical device scarce or in urgent need of introduction") into the Republic of Korea by means of import, etc. or provide relevant information to patients with rare or intractable diseases:
+1. A medical device used for the purpose of diagnosing or treating any rare disease under subparagraph 1 of Article 2 of the Rare Disease Management Act, for which no substitute exists in the Republic of Korea;
+2. A medical device that is recognized by the Minister of Food and Drug Safety as requiring urgent introduction or stable supply, or a medical device requested by the head of the relevant central administrative agency, for public health.
+(2) The Minister of Food and Drug Safety may entrust a specialized institution or organization concerned with affairs concerning the supply of medical devices scarce or in urgent need of introduction and the provision of relevant information under paragraph (1), and subsidize expenses necessary therefor, as prescribed by Prime Ministerial Decree.
+(3) If a specialized institution or organization concerned, to which the Minister of Food and Drug Safety has entrusted affairs under paragraph (2), imports a medical device scarce or in urgent need of introduction to perform the entrusted affairs, it may import such medical device without permission, certification or notification, notwithstanding Article 15 (2) or (6).
+(4) Except as provided in paragraphs (1) through (3), matters necessary for the methods of supply, and entrustment, of medical devices scarce or in urgent need of introduction shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Dec. 11, 2018]
+SECTION 3 Repair Business
+Article 16 (Notification on repair business)
+(1) A person who intends to engage in the business of repairing medical devices (hereinafter referred to as "repairer") shall file a notification on his or her repair business with the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu, as prescribed by Prime Ministerial Decree; provided, it is unnecessary to file a notification on repair business if a person who has obtained manufacturing permission or manufacturing certification, or has filed a manufacturing notification under Article 6 (2), or who has obtained import permission or import certification, or has filed an import notification under Article 15 (2) repairs a medical device manufactured or imported by his or her own company. <Amended on Mar. 23, 2013; Jan. 28, 2015; Feb. 18, 2020>
+(2) A person who intends to file a notification on his or her repair business under paragraph (1) (including a person who intends to repair medical devices imported by his or her own company under the proviso of that paragraph) shall be equipped with facilities and a quality management system, as prescribed by Prime Ministerial Decree; provided, this shall not apply in cases specified by Prime Ministerial Decree, such as entrusting the testing for quality management to a third person. <Amended on Mar. 23, 2013>
+(3) Items subject to notification to engage in the repair business under paragraph (1), standards for, and terms and conditions of accepting notifications, and other necessary matters shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+(4) The proviso of Article 6 (1), and Article 12, 13 and 14 (1), shall apply mutatis mutandis to reporting under paragraph (1). In such cases, the term "manufacturing" shall be construed as "repair," "manufacturing business permission" as "repair business notification," "production management" as "repair management," and "manufacturer" as "repairer," respectively. <Amended on Dec. 2, 2016; Dec. 11, 2018>
+(5) Regarding a notification on repair business filed under paragraph (1), the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu shall inform the filer thereof whether to accept the notification within 10 days of receipt of such notification, and regarding a notification on permanent closure or temporary shutdown filed under paragraph (4), within 7 days of receipt of such notification. <Added on Dec. 11, 2018; Feb. 18, 2020>
+(6) If the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu fails to inform a notification filer whether or not to accept the notification or to extend the processing period thereof under statutes or regulations governing the processing of civil petitions, within a period fixed under paragraph (5), the notification shall be deemed accepted on the day following the end of the period (referring to the extended or re-extended period if the processing period is extended or re-extended under the statutes or regulations governing the processing of civil petitions). <Added on Dec. 11, 2018; Feb. 18, 2020>
+SECTION 4 Distribution Business and Leasing Business
+Article 17 (Notification of distribution business)
+(1) A person who intends to engage in the business of distributing medical devices (hereinafter referred to as "distributor") or a person who intends to engage in the business of leasing medical devices (hereinafter referred to as "lessor") shall file a notification of his or her distribution business or leasing business with the competent Special Self-Governing City Mayor, Special Self-Governing Province Governor, or the head of a Si/Gun/Gu (the head of a Gu shall refer to the head of an autonomous Gu; hereinafter the same shall apply) having jurisdiction over his or her place of business, separately for each place of business, as prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Dec. 19, 2017>
+(2) A notification under paragraph (1) may be omitted in any of the following cases: <Amended on Mar. 23, 2013>
+1. Where a manufacturer or importer of medical devices distributes or leases medical devices manufactured or imported by him or her, to a medical device handler;
+2. Where a person who has filed his or her distribution business notification under paragraph (1) engages in a leasing business;
+3. Where a person who has established a pharmacy or a drug wholesaler distributes or leases medical devices;
+4. Where a person distributes medical devices for the control of conception or medical devices used for self-diagnosis to be used at places other than medical institutions, prescribed by the Prime Ministerial Decree.
+(3) Article 6 (1) 2, 4, 4, 4-2, 5, 12, and 14 (1) shall apply mutatis mutandis to reporting under paragraph (1). In such cases, "manufacturing" shall be construed as "sales or leasing," "manufacturing business permission" as "reporting on sales business or on leasing business," "manufacturer" as "distributor or lessor," respectively. <Amended on Dec. 11, 2018; Oct. 22, 2024>
+(4) Upon receipt of a notification on distribution business or leasing business under paragraph (1) or upon receipt of a notification on permanent closure or temporary shutdown under paragraph (3), the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu shall inform the notification filer whether or not to accept the notification, within three days of receipt of such notification. <Added on Dec. 11, 2018>
+(5) If the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu fails to inform a notification filer whether or not to accept the notification or to extend the processing period thereof under statutes or regulations governing the processing of civil petitions, within a period fixed under paragraph (4), the notification shall be deemed accepted on the day following the end of the period (referring to the extended or re-extended period if the processing period is extended or re-extended under the statutes or regulations governing the processing of civil petitions). <Added on Dec. 11, 2018>
+(6) If a distributor or lessor reports the closure of business to the head of the competent tax office under Article 8 (8) or (9) of the Value-Added Tax Act or if the head of the competent tax office cancels his or her business registration under Article 8 (8) or (9) of the Value-Added Tax Act, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of the competent Si/Gun/Gu may cancel the reported matters ex officio. <Added on Feb. 6, 2024>
+(7) Where necessary for ex officio cancellation under paragraph (6), a Special Self-Governing City Mayor, a Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may request the head of the competent tax office to provide information on whether a distributor or lessor has closed his or her business. Upon receipt of such request, the head of the competent tax office shall provide information on whether a distributor or lessor has closed his or her business under Article 36 (1) of the Electronic Government Act. <Added on Feb. 6, 2024>
+Article 18 (Matters to be observed by distributors)
+(1) A person qualified to distribute or lease medical devices under this Act shall comply with the method of ensuring quality of medical devices at his or her place of business and other matters concerning the maintenance of order in distribution, as prescribed by Presidential Decree. <Amended on Mar. 23, 2013>
+(2) No distributor or lessor (including the representative, director or other employees of a corporation and in cases of entities other than corporations, including the employees thereof) and no medical device sales promoter entrusted by a distributor or lessor with the promotion of distribution or lease of medical devices (including the representative, director or other employees of a corporation and in cases of entities other than corporations, including the employees thereof) shall provide money, articles, convenience, labor, entertainment or other economic benefits to medical personnel or founders of medical institutions (including the representative, director or other employees of a corporation; hereafter the same shall apply in this Article) or persons working for medical institutions or let medical personnel, founders of medical institutions or persons working for medical institutions help medical institutions to acquire economic benefits, etc., for purposes of promoting distribution or lease, such as adopting medical devices, inducing them to use medical devices, or maintaining trade; provided, the same shall not apply to economic benefits, etc. within the scope prescribed by Decree of the Ministry of Health and Welfare after consulting with the Minister of Food and Drug Safety, such as acts of providing samples, etc. <Amended on Mar. 23, 2013; Dec. 29, 2015; Jul. 20, 2021; Aug. 8, 2023>
+(3) No distributor or lessor shall entrust a person, other than a medical device sales promoter, with the promotion of distribution or lease of medical devices. <Added on Aug. 8, 2023>
+(4) Article 13-2 shall apply mutatis mutandis to the distributor or lessor prescribed in paragraph (2). In such cases, "manufacturer" shall be construed as "distributor or lessor", and "medical device sales promoter entrusted by a manufacturer with the promotion of distribution of medical devices" as "medical device sales promoter entrusted by a distributor or lessor with the promotion of distribution or lease of medical devices". <Added on Dec. 2, 2016, Jul. 20, 2021; Aug. 8, 2023>
+Article 18-2 (Notification of medical device sales promoters)
+(1) A person who intends to be entrusted by a manufacturer, importer, distributor, or lessor with the promotion of distribution or lease and to conduct such affairs (including persons intending to be re-entrusted with the entrusted affairs of promotion of distribution or lease and to conduct such affairs) shall file a notification to a Special Self-Governing City Mayor, a Special Self-Governing Province Governor, or the head of a Si/Gun/Gu, as prescribed by Decree of the Ministry of Health and Welfare. The same shall also apply to changes of important matters prescribed by Decree of the Ministry of Health and Welfare, among the notified matters.
+(2) In any of the following cases, a medical device sales promoter shall file a notification to a Special Self-Governing City Mayor, a Special Self-Governing Province Governor, or the head of a Si/Gun/Gu, as prescribed by Decree of the Ministry of Health and Welfare; provided, this shall not apply where the period of business suspension is less than one month:
+1. Where he or she intends to close or suspend business;
+2. Where he or she intends to resume business after suspension.
+(3) The grounds for disqualification under Article 6 (1) 2 (excluding persons declared bankrupt who have not yet been reinstated), 4, 4-2, and 5 shall apply mutatis mutandis to medical device sales promoters. In such cases, "person who intends to engage in the business of manufacturing medical devices" shall be construed as "medical device sales promoter", and "manufacturing permission" as "acceptance of a notification", respectively. <Amended on Oct. 22, 2024>
+(4) A Special Self-Governing City Mayor, a Special Self-Governing Province Governor, or the head of a Si/Gun/Gu shall notify a person who has filed a notification of whether to accept the notification within three days from the date of receipt of the notification under paragraph (1) or of the notification on closure, suspension, or resumption of business under paragraph (2).
+(5) If a Special Self-Governing City Mayor, a Special Self-Governing Province Governor, or the head of a Si/Gun/Gu fails to notify a person who has filed a notification of whether to accept such notification or of the extension of the processing period under statutes or regulations governing the processing of civil petitions within the period prescribed in paragraph (4), the notification shall be deemed to be accepted on the day following the end day of the relevant period (if the processing period is extended or re-extended under statutes or regulations governing the processing of civil petitions, it refers to the relevant processing period).
+[This Article Added on Aug. 8, 2023]
+[Previous Article 18-2 moved to Article 18-5 <Aug. 8, 2023>]
+Article 18-3 (Education for medical device sales promoters)
+(1) A medical device sales promoter (including the representative, director, or other employees of a corporation, and in cases of entities other than corporations, including the employees thereof; hereafter in this Article the same shall apply) shall receive education on the order of distribution, etc. of medical devices.
+(2) In order to provide education under paragraph (1), the Minister of Health and Welfare may designate a relevant organization or institution as an education institution.
+(3) Matters necessary for the details and methods of education under paragraph (1) and the designation, operation, revocation of designation, etc. of an education institution under paragraph (2) shall be prescribed by Decree of the Ministry of Health and Welfare.
+[This Article Added on Aug. 8, 2023]
+Article 18-4 (Matters to be observed by medical device sales promoters)
+(1) If a medical device sales promoter re-entrusts all or part of the affairs of promotion of distribution or lease to another medical device sales promoter, he or she shall inform in writing (including electronic documents defined in subparagraph 1 of Article 2 of the Framework Act on Electronic Documents and Transactions) such fact to the manufacturer, importer, distributor, or lessor who initially entrusted the relevant affairs, as prescribed by Decree of the Ministry of Health and Welfare.
+(2) A medical device sales promoter shall perform the entrusted affairs for a manufacturer, importer, distributor, or lessor, with the due care of a good manager.
+[This Article Added on Aug. 8, 2023]
+Article 18-5 (Prohibition of opening and distribution)
+No person shall open the container or package of a medical device sealed by the manufacturer or importer of the medical device under Article 25-5 and distribute it.
+[This Article Added on Jul. 20, 2021]
+[Moved from Article 18-2 <Aug. 8, 2023>]
+CHAPTER IV HANDLING OF MEDICAL DEVICES
+SECTION 1 Standards
+Article 19 (Standard specifications)
+As for a medical device deemed by the Minister of Food and Drug Safety as requiring the standards for the quality of the medical device, the Minister of Food and Drug Safety may establish standard specifications for such medical device, including its scope of application, appearance or structure, test specifications, and labeling. <Amended on Mar. 23, 2013>
+SECTION 2 Labeling and Advertisements
+Article 20 (Labeling on containers)
+Manufacturers and importers of medical devices shall label a container or an outer package of a medical device with the following descriptions; provided, this shall not apply to any container or outer package prescribed by Prime Ministerial Decree: <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 29, 2015; Dec. 2, 2016; Dec. 19, 2017>
+1. The trade name and address of the manufacturer or importer;
+2. If imported, the origin of manufacture (the name of the country of manufacture and of the manufacturer);
+3. Permission (certification or notification) number and name (name of a product, item or model). In such cases, the name of a product shall be limited to where there exists a name of a product;
+4. The manufacturing number and the date of manufacturing (the use-by date may be stated in lieu of the date of manufacturing, if the use-by date exists);
+5. Weight or packaging unit;
+6. A label stating "medical device";
+7. A "single-use only" and "do not reuse" label for a single-use medical device;
+8. Unique Device Identifiers on medical devices prescribed by the Minister of Food and Drug Safety, in consultation with the Minister of Health and Welfare;
+9. The fact that package inserts shall be provided in electronic form on a website, and the address of the website that provides the package inserts (limited to where the package inserts are provided on a website in accordance with Article 22 (2)).
+Article 21 (Labeling on outer package)
+If it is impossible to read any description under Article 20, which is written on a container or an outer package of a medical device because it is covered by an outer container or another outer package, the same description shall be also written on the outer container or the other outer package.
+Article 22 (Labeling on package inserts)
+(1) Manufacturers and importers of medical devices shall include the following information in a package insert of a medical device: <Amended on Mar. 23, 2013; Dec. 19, 2017>
+1. The methods and precautions for use;
+2. Instructions for maintenance and inspections, if maintenance and inspections are required;
+3. Matters that the Minister of Food and Drug Safety requires to be described under Article 19;
+4. Other matters prescribed by Prime Ministerial Decree.
+(2) The package inserts under paragraph (1) may be furnished in any of the following forms: <Amended on Dec. 19, 2017>
+1. USB, CD-ROM, or other electronic media;
+2. Printed manual (paper, booklet, etc.);
+3. Websites (limited to medical devices being used mainly at medical institutions prescribed in Article 3 of the Medical Service Act, which are designated by the Minister of Food and Drug Safety).
+Article 23 (Requirements for labeling)
+Descriptions specified in Articles 20 through 22 shall be written at a position more noticeable than any other letter, article, picture, or symbol and shall be written accurately in Korean language with easily comprehensible terms, as prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+Article 23-2 (Provision of information for persons with visual disabilities)
+(1) The Minister of Food and Drug Safety may recommend the following actions to manufacturers and importers of medical devices to facilitate the use of medical devices by persons with visual disabilities and persons with hearing impairment:
+1. Attaching braille, audio and sign language conversion codes, etc. to some of the information written on a medical device;
+2. Adding to a medical device features that enable it to communicate usage information electronically, such as audio guidance or text amplification, or providing software, devices, etc. with the medical device for that purpose.
+(2) The Minister of Food and Drug Safety may develop, educate on, and promote appropriate methods and standards for delivering information, such as audio and video, to increase access to information on medical devices for persons with visual disabilities and persons with hearing impairments.
+(3) The Minister of Food and Drug Safety may provide administrative and technical support to medical device manufacturers and importers who intend to take measures under paragraph (1).
+(4) The Minister of Food and Drug Safety may entrust the development of methods and standards for delivering information, such as audio and video, and education and promotion under paragraph (2) to relevant specialized institutions or organizations.
+(5) Except as provided in paragraphs (1) through (4), details on the scope of targeted medical devices, appropriate methods and standards for delivering information, and methods, etc. of support shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Jun. 13, 2023]
+Article 24 (Prohibition on labeling and advertisements)
+(1) None of the following descriptions shall be indicated or written on a container, outer package, packing material, or package insert of a medical device: <Amended on Jan. 28, 2015>
+1. A false or misleading description;
+2. Any performance, efficacy, or effect not included in the permission or certification granted under Article 6 (2) or the notification filed under Article 15 (2);
+3. A method or period of use that is likely to cause risk to the public health or hygiene.
+(2) No one shall include any of the following in advertising a medical device: <Amended on Mar. 23, 2013; Jan. 28, 2015; Mar. 23, 2021>
+1. A false or exaggerated advertisement about the name, method of manufacturing, performance, efficacy, effect, or mechanism of a medical device;
+2. An advertisement using an article likely to mislead any person to believe that a medical doctor, a dentist, a doctor of Korean medicine, a veterinarian, or any other person guarantees, endorses, officially recognizes, provides guidance for, or acknowledges the performance, efficacy, or effect of a medical device or that any of such persons are using such a medical device;
+3. An advertisement using an article, a photograph, or a symbol that implies the performance, efficacy, or effect of a medical device, or using any other implication;
+4. An advertisement with respect to a medical device, using a document or symbol that implies abortion or that is obscene;
+5. An advertisement about the name of a medical device or the method of manufacturing, performance, efficacy, or effect of a medical device without permission or certification or inconsistent with matters notified under Article 6 (2) or 15 (2); provided, medical devices falling under the proviso to Article 26 (1) can be advertised in accordance with the procedure, method, and permitted extent determined and publicly notified by the Minister of Food and Drug Safety;
+6. Deleted; <Mar. 23, 2021>
+7. An advertisement without the voluntary deliberation under Article 25 (1) or with any content inconsistent with the content reviewed.
+(3) The scope of labeling, descriptions, and advertisements of medical devices under paragraphs (1) and (2), and other relevant matters shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+[Paragraph (2) 6 of this Article was deleted by Act No. 17978 (Mar. 23, 2021) following the decision of unconstitutionality made by the Constitutional Court on Aug. 28, 2020]
+Article 25 (Voluntary deliberation of advertisements)
+(1) If a person who intends to advertise a medical device intends to run an advertisement by using any of the following media, he or she shall undergo deliberation in advance by the institution or organization which has reported with the Minister of Food and Drug Safety under Article 25-2 (1) (hereinafter referred to as "voluntary deliberation agency") on whether such advertisement is in violation of Article 24 (2) and (3):
+1. Television broadcasting and radio broadcasting among broadcasting prescribed in subparagraph 1 of Article 2 of the Broadcasting Act;
+2. General daily newspapers and general weekly newspapers among newspapers prescribed in subparagraph 1 of Article 2 of the Act on the Promotion of Newspapers, online newspapers prescribed in subparagraph 2 of the same Article, and magazines prescribed in subparagraph 2 of the Act on Promotion of Periodicals, including Magazines;
+3. Placards, posters, leaflets and those displayed on transport facilities and transport means (including advertisements displayed inside transport means and advertisements made with images, voices and sound and the combination thereof) among outdoor advertisements prescribed in in subparagraph 1 of Article 2 of the Act on the Management of Outdoor Advertisements and Promotion of Outdoor Advertisement Industry;
+4. Electronic display boards;
+5. Internet media (including applications used by mobile devices) prescribed by Presidential Decree;
+6. Other advertising media prescribed by Presidential Decree in consideration of the nature, influence, etc. of advertising media.
+(2) If a person who has undergone deliberation under paragraph (1) intends to modify the contents of advertisement deliberated, he or she shall undergo the deliberation under paragraph (1); provided, this shall not apply to cases where he or she intends to modify insignificant matters prescribed by Presidential Decree.
+(3) Notwithstanding paragraph (1), any of the following advertisements of medical devices need not undergo deliberation conducted by a voluntary review agency:
+1. An advertisement which only consists of the contents permitted, certified, or notified under Article 6 (2) or 15 (2);
+2. An advertisement of medical devices which are produced only for the purpose of export, which is in a foreign language;
+3. An advertisement which is the same as the contents of an advertisement deliberated under paragraph (1), which is in a foreign language;
+4. An advertisement with the contents prescribed by Presidential Decree, such as an advertisement for a group of experts including medical personnel.
+(4) If a person who has undergone deliberation under paragraph (1) has an objection to any of the results of the deliberation, he or she may file an application for re-deliberation with a voluntary deliberation agency within 30 days from the date on which he or she is notified such results of the deliberation, as prescribed by Presidential Decree.
+(5) A person who has an objection to any of the results of the re-deliberation under paragraph (4) may file an objection with the Minister of Food and Drug Safety within 30 days from the date on which he or she is notified such results of the re-deliberation, as prescribed by Presidential Decree.
+(6) A person who intends to undergo deliberation on an advertisement of medical devices shall pay a fee determined by the voluntary deliberation agency.
+(7) The validity period of deliberation under paragraph (1) shall be three years from the date on which a request for deliberation is approved.
+(8) If a person intends to continue to run an advertisement of medical devices after the validity period under paragraph (7) expires, he or she shall request deliberation on the advertisement of medical devices from the voluntary deliberation agency not later than six months before the expiration of the validity period.
+[This Article Wholly Amended on Mar. 23, 2021]
+Article 25-2 (Organization and operation of voluntary deliberation agency)
+(1) The following institutions or organizations may have an organization, etc. for voluntary deliberation, report it to the Minister of Food and Drug Safety, and conduct deliberation on an advertisement of medical devices, as prescribed by Presidential Decree:
+1. An institution or organization meeting the standards prescribed by Presidential Decree, as a corporation established under the Civil Act or other statutes;
+2. A consumer organization registered under Article 29 of the Framework Act on Consumers that satisfies the standards prescribed by Presidential Decree.
+(2) A voluntary deliberation agency shall prepare the deliberation standards applicable to deliberation under Article 25 (1). If there are two or more voluntary deliberation agencies, the deliberation standards shall be prepared through mutual consultation.
+(3) Article 37 of the Civil Act shall not apply to deliberation on an advertisement of medical devices and business affairs related thereto conducted by a voluntary deliberation agency under Article 25 (1).
+(4) A voluntary deliberation agency may present its opinion on the improvement of system and statutes and regulations regarding an advertisement of medical devices to the Minister of Food and Drug Safety.
+(5) Except as provided in Article 25 and paragraphs (1) through (4) of this Article, matters necessary for the composition, operation and deliberation of a voluntary deliberation agency shall be prescribed by the voluntary deliberation agency.
+(6) A voluntary deliberation agency shall conduct deliberation-related business under Article 25 (1) or paragraph (2) of this Article in a fair and transparent manner under Article 24 (2) and (3).
+[This Article Added on Mar. 23, 2021]
+Article 25-3 (Deliberative Committees for advertisements of medical devices)
+(1) A voluntary deliberation agency shall establish and operate a deliberative committee for an advertisement of medical devices (hereinafter referred to as the "Deliberative Committee") to deliberate on an advertisement of medical devices.
+(2) The Deliberative Committee shall be composed of not fewer than 10 and not more than 20 members, including 1 chairperson and 1 vice chairperson.
+(3) The chairperson of the Deliberative Committee shall appoint members from among the following persons: In such cases, at least each one of the following persons shall be included in the members, and the number of members falling under subparagraph 1 shall not exceed 1/3 of the number of all members:
+1. A person working in the medical device industry or relevant industry;
+2. A physician, dentist, or doctor of Korean medicine under Article 2 of the Medical Service Act recommended by the head of the physicians' association, dentists' association, or the Association of Korean Medicine under Article 28 of that Act;
+3. A person recommended by the head of a consumer organization under subparagraph 3 of Article 2 of the Framework Act on Consumers;
+4. An attorney-at-law registered with the Korean Bar Association under Article 78 of the Attorney-at-Law Act under Article 7 (1) of the same Act and recommended by the President of the Korean Bar Association;
+5. A person recommended by the head of an organization registered under Article 4 of the Assistance for Non-Profit, Non-Governmental Organizations Act whose main purpose is to ensure the safety of medical devices;
+6. Other persons with extensive knowledge of and experience in the advertisement of medical devices.
+(6) Except as provided in paragraphs (1) through (3), matters necessary for the organization and operation of the Deliberative Committee shall be determined by the voluntary deliberation agency.
+[This Article Added on Mar. 23, 2021]
+Article 25-4 (Monitoring advertisements of medical devices)
+A voluntary deliberation agency shall monitor whether an advertisement of medical devices which it has reviewed is in compliance with Article 24 (2) or (3), as prescribed by Prime Ministerial Decree, and submit the results thereof to the Minister of Food and Drug Safety.
+[This Article Added on Mar. 23, 2021]
+Article 25-5 (Sealing)
+If a medical device manufacturer or importer manufactures or imports and distributes a medical device which falls under any of the following subparagraphs and is prescribed by Prime Ministerial Decree, the manufacturer or importer shall seal the container or package of the medical device as prescribed by Prime Ministerial Decree:
+1. Medical devices that are inserted into the human body;
+2. Medical devices that is likely to be contaminated or deteriorated if opened and distributed.
+[This Article Added on Jul. 20, 2021]
+SECTION 3 Handling
+Article 26 (General prohibitions)
+(1) No one shall repair, distribute, lease, provide, or use any unapproved, uncertified, or unnotified medical device as required under Article 6 (2) or 15 (2), nor manufacture, import, repair, store, or display any medical device with intent to distribute, lease, provide, or use such medical device; provided, this shall not apply where a person manufactures, imports, stores, or displays a medical device for the purpose of display in a fair, exhibition, exposition, etc., in accordance with the procedure, method, and so forth prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(2) No one shall manufacture, import, distribute, or lease any of the following medical devices: <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 19, 2017>
+1. A medical device inconsistent with the details approved, certified, or notified under Article 6 (2), 12, or 15 (2) or (6);
+2. A medical device entirely or partially unsanitary or a medical device made of any substance contaminated by pathogenic microbes or any spoiled or decomposed substance;
+3. A medical device that has caused, or is likely to cause, risk to the public health, the destruction, suspension of use, revocation of permission, etc. of which is ordered by the Minister of Food and Drug Safety, the competent Special Self-Governing City Mayor, Special Self-Governing Province Governor, or the head of a Si/Gun/Gu under Articles 34 through 36.
+(3) No repairer of any medical device shall alter the performance, structure, rating, external appearance, dimensions, or any other element of a medical device approved, certified, or notified under Article 6 (2), 12, or 15 (2) or (6) in the course of repairing the medical device; provided, this shall not apply to a minor repair involving a change of the outer appearance of medical devices, as prescribed by Prime Ministerial Decree, without undermining the safety and effectiveness thereof. <Amended on Jan. 28, 2015; Mar. 13, 2018>
+(4) No person shall alter or remodel a medical device inconsistently with the details stated in the permission, certification, or notification granted or filed under Article 6 (2), 12, or 15 (2) or (6) in the course of using the medical device; provided, this shall not apply in any of the following cases: <Amended on Mar. 23, 2013; Jan. 28, 2015>
+1. Where a manufacturer or importer alters or remodels a medical device prescribed by Prime Ministerial Decree, he or she has manufactured or imported at his or her own company, as stated in the permission or certification for change, or notification granted or filed under Article 12 or 15 (6);
+2. Where a person alters or remodels a medical device for his or her own convenience, to the extent not affecting the safety and effectiveness of the medical device.
+(5) No repairer, distributer, or lessor shall repair, distribute, or lease any of the following medical devices, or store or display any such medical device with intent to repair, distribute, or lease: <Amended on Jan. 28, 2015>
+1. A medical device manufactured, imported, or repaired inconsistently with the details stated in the permission, certification, or notification granted or filed under Article 6 (2), Article 12, Article 15 (2) or (6), or Article 16 (1);
+2. A medical device that violates Article 24 (1).
+(6) No founder of a medical institution shall use, for a clinical trial, any medical device not approved for the clinical trial by the Minister of Food and Drug Safety under Article 10. <Amended on Mar. 23, 2013>
+(7) No one shall make any indication on an outer package, packing material, or an accompanying document of any appliance other than a medical device, to mislead any person to believe that the appliance has a performance, efficacy, or effect similar to that of a medical device, or include any such misleading content in any advertisement, or distribute or lease, or store or display, with intent to distribute or lease, an appliance marked or advertised with such misleading content.
+Article 27 (Testing and inspections)
+(1) Before the Minister of Food and Drug Safety grants permission or certification or accepts a notification under Article 6 (2), 12, or 15 (2) or (6), or when he or she issues an order to undergo an inspection under Article 33, he or she may conduct testing or an inspection on the safety, performance, etc. of the relevant medical device. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(2) The Minister of Food and Drug Safety may require a testing and inspection institution of medical devices designated by the Minister of Food and Drug Safety under Article 6 (2) 4 of the Act on Testing and Inspection in the Food and Drug Industry to conduct the testing and inspection under paragraph (1). <Amended on Mar. 23, 2013; Jul. 30, 2013>
+(3) Deleted. <Jul. 30, 2013>
+(4) Deleted. <Jul. 30, 2013>
+(5) Deleted. <Jul. 30, 2013>
+[Title Amended on Jul. 30, 2013]
+Article 28 (Designation of quality management examination agencies)
+(1) The Minister of Food and Drug Safety may examine facilities, and manufacturing and quality management systems to verify: <Amended on Mar. 23, 2013; Jan. 28, 2015>
+1. Whether a person who intends to obtain manufacturing business permission under Article 6 (1), or a person who intends to obtain manufacturing permission or manufacturing certification under Article 6 (2), is equipped with facilities, and manufacturing and quality management systems under the main clause of Article 6 (4);
+2. Whether a manufacturer maintains facilities, and manufacturing and quality management systems, and fulfills his or her obligations concerning production control, as required under Article 13 (1);
+3. Whether a person who intends to obtain import business permission under Article 15 (1), and a person who intends to obtain import permission or import certification, or file an import notification under Article 15 (2) is equipped with facilities, and manufacturing and quality management systems required for a factory for imported medical devices under the main clause of Article 15 (4);
+4. Whether an importer maintains facilities, and manufacturing and quality management systems required for a factory for imported medical devices under Article 13 (1) applied mutatis mutandis under Article 15 (6), and fulfills his or her obligations concerning import management.
+(2) The Minister of Food and Drug Safety may designate an agency to conduct examinations of facilities, and manufacturing and quality management systems under paragraph (1) (hereinafter referred to as "quality management examination agency"). <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(3) An entity who intends to obtain designation as a quality management examination agency under paragraph (2) shall have experts necessary for conducting examination of facilities, and manufacturing and quality management systems. <Amended on Jan. 28, 2015>
+(4) In conducting examination of facilities, and manufacturing and quality management systems, a quality management examination agency designated under paragraph (2) shall observe matters prescribed by Prime Ministerial Decree, such as preparing a quality management examination report and submitting it to the Minister of Food and Drug Safety, and keeping the records on quality examinations. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(5) Except as provided in paragraphs (1) through (4), the requirements for designation of quality management examination agencies, procedures and methods for such designation, and other relevant matters, shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+CHAPTER V CONTROL
+Article 29 (Medical devices subject to tracking and control)
+(1) The Minister of Food and Drug Safety may separately designate and manage medical devices (hereinafter referred to as “medical devices subject to tracking and control”) among those falling under any of the following subparagraphs, if adverse events or defects occurring during use may cause serious harm to the human body and it is necessary to trace their whereabouts: <Amended on Mar. 23, 2013>
+1. A medical device implanted into the human body for at least 1 year;
+2. A life-sustaining or life-supporting medical device used outside a medical institution.
+(2) The Minister of Food and Drug Safety may separately designate and manage certain medical devices subject to tracking and control that require long-term tracking and control due to frequent adverse events or concerns about serious adverse effects after being implanted in the human body (hereinafter referred to as “medical devices subject to long-term tracking and control”). <Added on Jan. 31, 2025>
+(3) Matters necessary for the standards for designation and control of medical devices subject to tracking and control and medical devices subject to long-term tracking and control shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 31, 2025>
+Article 30 (Preparation, preservation of records)
+(1) A manufacturer, importer, distributor, lessor or repairer of medical devices subject to tracking management (hereafter in this Article referred to as "handlers, etc."), the founder of a medical institution that handles medical devices subject to tracking and control, or a doctor, doctor of Korean medicine, dentist, etc. working for such medical institution (hereafter in this Article referred to as "users") shall prepare and keep the records on medical devices subject to tracking and control as classified below and submit such records to the Minister of Food and Drug Safety, as prescribed by Prime Ministerial Decree: <Amended on Dec. 29, 2015>
+1. Handlers: Records concerning manufacture, sale (including purchase), lease or repair of the medical devices subject to tracking and control;
+2. Users: Records that make it possible to track patients using the medical devices subject to tracking and control.
+(2) The Minister of Food and Drug Safety may require a handler or user to submit supplementary data, if deemed necessary to verify the records submitted under paragraph (1). In such cases, the handler or user shall not refuse to comply with the Minister’s order, including an order to submit data, without good cause. <Amended on Dec. 11, 2018>
+(3) The Minister of Food and Drug Safety may collect, analyze, and evaluate real-world data including information on procedures and adverse events, etc. generated in the course of using medical devices subject to long-term tracking and control (hereinafter referred to as “real-world data”) from users engaged in the long-term tracking and control under Article 29 (2), in addition to the records and data under paragraphs (1) and (2). <Added on Jan. 31, 2025>
+(4) Matters necessary for the preparation, retention, etc. of records under paragraph (1) and the methods and procedures for collecting, analyzing, and evaluating real-world data shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 31, 2025>
+Article 31 (Control of side effects)
+(1) If a medical device handler discovers any case or risk of death or occurrence of a serious side effect on human health while in use, he or she shall immediately report such discovery to the Minister of Food and Drug Safety and shall retain the records thereof. In such cases, the Minister of Food and Drug Safety may require the head of the National Institute of Medical Device Safety Information to analyze and evaluate the causal relationship, etc. with the medical device and report the results thereof. <Amended on Mar. 23, 2013; Jul. 20, 2021>
+(2) When a manufacturer, an importer, a repairer, a distributer, or a lessor of a medical device (hereinafter referred to as "manufacturer, etc.") becomes aware that the medical device has caused, or is likely to cause, risk to human health due to its poor quality or other relevant factors, he or she shall recall such medical device or take measures necessary for recall without delay. In such cases, a manufacturer or an importer shall establish a recall plan, considering side effects on human health and other relevant factors, and report the plan to the Minister of Food and Drug Safety in advance, as prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+(3) Upon receipt of a plan for recall of a medical device submitted under the latter part of paragraph (2), the Minister of Food and Drug Safety may order the relevant manufacturer or importer to announce such plan to the public. <Amended on Mar. 23, 2013>
+(4) The Minister of Food and Drug Safety shall notify a founder of a medical institution who has used a medical device which has caused or risks the death of people or a serious side effect on human health as a result a report he or she has received under paragraph (1) or the latter part of paragraph (2), of the side effect, recall plan, etc. of such medical device. <Added on Jan. 28, 2015>
+(5) A founder of a medical institution in receipt of notification under paragraph (4) shall notify patients who have received medical treatment using the relevant medical device, of the side effect of, recall plan for, etc. the medical device, by a making a visit, mail, telephone, e-mail, or fax. In such cases, a founder of a medical institution shall submit materials evidencing that he or she has notified patients, to the Minister of Food and Drug Safety. <Added on Jan. 28, 2015>
+(6) The Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may fully or partially exempt manufacturers, etc. who have conscientiously recalled the relevant medical device or taken measures necessary therefor under paragraph (2), from administrative dispositions issued under Article 36, as prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 19, 2017>
+(7) Procedures for, and details of, reporting under paragraph (1); guidelines and procedures for, and methods of recalls, and matters to be included in recall plans under paragraph (2); methods of making public announcements under paragraph (3); guidelines and procedures for, and methods of giving notifications under paragraph (4); and details of, procedures for, and methods of notification, and procedures for and methods of submitting base data under paragraph (5), and other necessary matters, shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015; Jul. 20, 2021>
+Article 31-2 (Reports on details of supply of medical devices)
+(1) Where manufacturers, importers, distributors and lessors of medical devices supply medical devices to medical institutions, and medical device distributors and lessors, they shall report details of such provision to the Minister of Food and Drug Safety, in consultation with the Minister of Health and Welfare, as prescribed by Prime Ministerial Decree.
+(2) The Minister of Health and Welfare may request the Minister of Food and Drug Safety to submit materials reported under paragraph (1).
+(3) The Minister of Food and Drug Safety may operate a consultative body comprised of employees of relevant institutions, including the Ministry of Health and Welfare, etc., so as to efficiently utilize information on the distribution of medical devices.
+[This Article Added on Dec. 2, 2016]
+Article 31-3 (Establishment of integrated medical device information system)
+(1) The Minister of Food and Drug Safety may establish and operate an electronic data processing system (hereinafter referred to as "integrated medical device information system") so as to efficiently record and manage information on medical devices, ranging from permission, manufacture, import, sale to use thereof.
+(2) Manufacturers, etc. shall register information prescribed by Prime Ministerial Decree, including Unique Device Identifiers on medical devices or information on medical devices, as information necessary for managing medical devices in a systematic and efficient manner, in the integrated medical device information system prescribed in paragraph (1).
+(3) Manufacturers, etc. shall comply with standards prescribed by Prime Ministerial Decree (hereinafter referred to as "standard for management of integrated medical device information) in registering and managing information prescribed in paragraph (2).
+(4) The integrated medical device information system may be utilized by electronically linking with the information system related to medical devices.
+(5) Other matters necessary for establishment, operation and management, etc. of the integrated medical devices information system shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Dec. 2, 2016]
+Article 31-4 (Designation and operation of integrated medical device information center)
+(1) The Minister of Food and Drug Safety may entrust duties concerning collection, investigation, processing, use, or provision of information on medical devices and establishment or operation of the integrated medical device information system prescribed in Article 31-3 to relevant specialized organizations or groups after designating such organizations or groups (hereinafter referred to as "integrated medical device information center), as prescribed by Presidential Decree.
+(2) The head of the integrated medical device information center may request the State, local governments, public institutions, or persons handling medical devices to submit materials or data concerning its duties, only when necessary for performing duties prescribed in paragraph (1), including verifying information reported and submitted. In such cases, any person, in receipt of a request for submitting materials or data, shall comply therewith, in the absence of good cause; and royalties or fees shall be exempt for data provided to the head of the integrated medical device information center.
+(3) The Minister of Food and Drug Safety and the Minister of Health and Welfare may order the head of the integrated medical device information center to report the current status of management of medical devices.
+(4) The Minister of Food and Drug Safety may fully or partially subsidize expenses incurred in operating the integrated medical device information center.
+(5) Matters necessary for operating the integrated medical device information center shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Dec. 2, 2016]
+Article 31-5 (Reporting on detection of foreign substances in medical devices)
+(1) If a medical device handler detects any substance (hereinafter referred to as "foreign substance") other than raw materials normally used in a medical device or its container or package, which is likely to cause harm in the process of use or which is not suitable for use, he or she shall report such detection to the Minister of Food and Drug Safety without delay.
+(2) Upon receipt of a report on the detection of any foreign substance under paragraph (1), the Minister of Food and Drug Safety shall take necessary measures, such as investigations into the cause of inclusion of such foreign substance.
+(3) If necessary to prevent any risk to public health, the Minister of Food and Drug Safety may publish the fact that a foreign substance has been found in a medical device, the results of investigation conducted under paragraph (2), and a plan for taking measures. <Added on Aug. 16, 2023>
+(4) Matters necessary for the standards, subject matters, and procedures for reporting foreign substances under paragraph (1), measures under paragraph (2), and standards, methods, procedures, etc. for the publication under paragraph (3) shall be prescribed by Prime Ministerial Decree. <Amended on Aug. 16, 2023>
+[This Article Added on Dec. 11, 2018]
+CHAPTER VI SUPERVISION
+Article 32 (Reporting, inspection)
+(1) The Minister of Health and Welfare, the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may require handlers of medical devices, institutions reviewing technical documents concerning medical devices, clinical trial institutions, institutions conducting non-clinical trials, quality management examination agencies, medical device sales promoters, or institutions or organizations entrusted under Article 15-2 (2) to file a necessary report or may assign relevant public officials to perform the following acts, if deemed necessary for the risk prevention and quality management of medical devices, the maintenance of order in distribution, or the management and supervision of institutions entrusted with affairs concerning medical devices: <Amended on Mar. 23, 2013; Dec. 29, 2015; Dec. 19, 2017; Dec. 11, 2018; Aug. 8, 2023>
+1. Entering a medical institution handling medical devices, a factory, a warehouse, a store, an office, an institution reviewing technical documents concerning medical devices, a clinical trial institution, an institution conducting non-clinical trials, a quality management examination agency, a medical device sales promoter, an institution or organization entrusted under Article 15-2 (2), or any other place in which medical devices are handled in the course of business to inspect facilities therein, relevant books, documents, or other objects or asking questions to relevant persons;
+2. Collecting medical devices that are suspected to fall under any subparagraph of Article 34 (1), or medical devices necessary for testing or quality inspection in a minimum quantity.
+(2) A public official who intends to access places, conduct inspections, ask questions, or collect devices under paragraph (1) shall carry an identification verifying his or her authority and present it to relevant persons.
+(3) The scope of the authority and duties of the relevant public officials and the identification referred to in paragraphs (1) and (2) and other necessary matters shall be prescribed by Prime Ministerial Decree after consulting with the Minister of Health and Welfare. <Amended on Mar. 23, 2013>
+Article 32-2 (On-site inspection of foreign factories)
+(1) In any of the following cases, the Minister of Food and Drug Safety may visit and inspect (hereafter in this Article referred to as "on-site inspection") a foreign factory through prior consultation with the manufacturer of medical devices, the importer of medical devices, the manager of the foreign factory (referring to a plant located overseas that performs the manufacturing and quality management of medical devices; hereinafter the same shall apply), or the government of the exporting country:
+1. Where the Minister of Food and Drug Safety deems that an on-site inspection is required to prevent risk in a medical device manufactured through overseas commission or imported from abroad (hereafter in this Article referred to as "imported medical device, etc.");
+2. Where the Minister of Food and Drug Safety deems that it is necessary to ascertain the truth of information on the safety and effectiveness of an imported medical device, etc. collected at home and abroad.
+(2) If an on-site inspection under paragraph (1) is refused without justifiable grounds, or a risk is likely to occur in an imported medical device, etc. as a result of an on-site inspection, the Minister of Food and Drug Safety may take necessary measures against the foreign factory concerned, such as the suspension of import of its medical devices, etc.
+(3) If the manufacturer of medical devices, the importer of medical devices, the manager of a foreign factory, or the government of an exporting country identifies any cause of a problem in an imported medical device, etc. the import of which has been suspended under paragraph (2) and suggests improvements, or if such imported medical device, etc. is deemed to have no risk through an on-site inspection, etc., the Minister of Food and Drug Safety may cancel the import suspension measure, etc. under paragraph (2). In such cases, if it is necessary to confirm such improvements, the Minister of Food and Drug Safety may conduct an on-site inspection.
+(4) Matters necessary for on-site inspections, and for import suspension measures, etc. and procedures and methods for cancellation thereof, under paragraphs (1) through (3), shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Dec. 11, 2018]
+Article 33 (Inspection orders)
+If the Minister of Food and Drug Safety (including the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu, if the person is a repairer) deems that a medical device is likely to cause risk to the public health, he or she may order a handler of the medical device to undergo an inspection conducted by an institution conducting non-clinical trials designated under Article 10-2 (1) or a medical device testing and inspection agency designated by the Minister of Food and Drug Safety under Article 6 (2) 4 of the Act on Testing and Inspection in the Food and Drug Industry. <Amended on Mar. 23, 2013; Jul. 30, 2013; Dec. 29, 2015; Feb. 18, 2020>
+Article 34 (Orders for suspension of distribution, recall, destruction, and public announcement)
+(1) The Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may order a manufacturer, etc. to suspend the distribution of or recall the following medical devices, to destroy them or take any other measure in a manner that can prevent any risk to public hygiene, or to announce such fact to the public, depending upon the degree of the risk: <Amended on Mar. 23, 2013; Dec. 19, 2017; Aug. 17, 2021>
+1. A medical device distributed, stored, displayed, manufactured, or imported in violation of Article 26;
+2. A medical device deemed to have caused or are highly likely to cause any risk to the public health through use.
+(2) If a person to whom an order under paragraph (1) was issued fails to comply with the order or if an urgent measure is required for the public health, the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may require relevant public officials to destroy, envelop, or seal the goods at issue or take other necessary measures. In such cases, Article 32 (2) shall apply mutatis mutandis. <Amended on Mar. 23, 2013; Dec. 19, 2017>
+(3) Matters necessary for the guidelines and methods for suspension of distribution, recall, destruction, etc. and the method of public announcement based upon the degree of risk posed by medical devices under paragraph (1) shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013; Aug. 17, 2021>
+[Title Amended on Aug. 17, 2021]
+Article 35 (Orders for suspension of use)
+If the findings of an inspection under Article 33 reveals that a medical device used by a person who has established a medical institution or a veterinary hospital is inappropriate or is likely to fall under any subparagraph of Article 34 (1), the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may order the person to suspend the use of, or repair, the medical device, or take other necessary measures. <Amended on Mar. 23, 2013; Dec. 19, 2017>
+Article 35-2 (Corrective order)
+Where manufacturers, importers, distributors, lessors, or medical device sales promoters fall under any of the following, the Minister of Health and Welfare may order them to correct such violations for a specified period:
+1. Where they fail to prepare or disclose an expense report prescribed in Article 13-2 (1) (including cases applied mutatis mutandis in Article 15 (6) or 18 (4)) or to keep the relevant expense report, related books, and base data;
+2. Where they fail to keep the entrustment contract and related base data under Article 13-2 (2) (including cases applied mutatis mutandis in Article 15 (6) or 18 (4)).
+[This Article Wholly Amended on Aug. 8, 2023]
+Article 36 (Revocation of permission, suspension of business activities, and relevant matters)
+(1) If any of the following events occurs to a manufacturer, etc. or a medical device sales promoter, the relevant permission, certification, approval, or acceptance of notification may be revoked, the place of business may be closed, the manufacturing, import, and distribution of the relevant item category or item may be prohibited, or an order to suspend business activities completely or partially for up to a year may be issued, by the Minister of Food and Drug Safety if the person is a manufacturer or importer of the medical device or a person who is approved for clinical trials under Article 10, and by the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu if the person is a repairer, a distributor, or a lessor of the medical device, or a medical device sales promoter; provided, the relevant permission, certification, approval, or acceptance of notification shall be revoked or the place of business shall be closed, in cases falling under subparagraph 1, 1-2 through 1-4, 22, or 23: <Amended on Mar. 23, 2013; Aug. 13, 2013; Jan. 28, 2015; Dec. 2, 2016; Dec. 19, 2017; Dec. 11, 2018; Feb. 18, 2020; Jul. 20, 2021; Aug. 17, 2021; Aug. 8, 2023; Oct. 22, 2024>
+1. If any of the subparagraphs of Article 6 (1) is applicable [in cases of a distributor, lessor, or medical device sales promoter, limited to cases falling under Article 6 (1) 2 (in cases of a medical device sales promoter, limited to cases of a person under adult guardianship or person under limited guardianship), 4, 4-2, and 5]; provided, this shall not apply if the heir transfers the status of a manufacturer, etc. or a medical devices sales promoter within 6 months under Article 47 (2);
+1-2. Where a manufacturer, etc. obtains permission, permission for change, certification, or certification for change or files a notification or a notification on change under Article 6 (1) or (2), 12 (1) (including cases applied mutatis mutandis under Article 15 (6), 16 (4), or 17 (3)), 15 (1) or (2), 16 (1), 17 (1), or 18-2 (1) by fraud or other improper means;
+1-3. Where a manufacturer, etc. obtains approval or approval for change under Article 10 (1) by fraud or other improper means;
+1-4. Where a manufacturer, etc. obtains renewal under Article 49 (3) by fraud or other improper means;
+2. Where a manufacturer, etc. manufactures or imports a medical device without obtaining permission or certification, or filing a notification, in violation of Article 6 (2) or 15 (2);
+3. Where a manufacturer, etc. fails to be equipped with facilities and manufacturing and quality management systems under the main clauses of Article 6 (4) and Article 15 (4), or facilities and manufacturing and quality management systems under the main clause of Article 16 (2);
+3-2. Where a manufacturer, etc. fails to have a quality manager, in violation of Article 6 (7) (including cases applied mutatis mutandis under Article 15 (6));
+3-3. Where a manufacturer, etc. requires a quality manager who has not received training to perform the duties, in violation of Article 6-2 (4) (including cases applied mutatis mutandis under Article 15 (6));
+4. Where a manufacturer, etc. fails to fulfill any of the conditions imposed under Article 7 (1);
+5. Where a manufacturer, etc. fails to conduct the post market surveillance, in violation of Article 8;
+5-2. Where a manufacturer, etc. fails to obtain approval or approval for change, or fails to observe the plan for surveillance approved or approved for change, in violation of Article 8 (3);
+5-3. Where a manufacturer, etc. fails to file a report regularly or files a report by fraud or other improper means, in violation of Article 8 (4);
+5-4. Where a manufacturer, etc. fails to fulfill the order to take measures under Article 8 (5);
+5-5. Where a manufacturer, etc. fails to secure safety or effectiveness, based on the results of review under Article 8-2;
+5-6. Where a manufacturer, etc. fails to submit data within the deadline or submits data by fraud or other improper means, in violation of Article 8-2 (1);
+5-7. Where a manufacturer, etc. fails to fulfill the order to take measures under Article 8-2 (2);
+5-8. Where a manufacturer, etc. fails to comply with matters concerning the retaining of data, in violation of Article 8-2 (3);
+6. Where a manufacturer, etc. fails to undergo a re-evaluation or take measures required based on the results of a re-evaluation in violation of Article 9, or is found, as a result of a re-evaluation, to have failed to secure safety or effectiveness;
+7. Where a manufacturer, etc. manufactures medical devices in a manufacturing facility not in compliance with standards or imports medical devices manufactured in such a facility, in violation of Article 10 (2);
+8. Where a manufacturer, etc. fails to obtain permission or certification for change or file a notification on change, in violation of Article 12 (1) (including cases to which Article 12 (1) shall apply mutatis mutandis under Article 15 (6), 16 (4), or 17 (3));
+9. Where a manufacturer, etc. fails to comply with any of the matters to be observed in relation to manufacturing, quality management, production management, import management, or repair management, in violation of Article 13 (1) (including cases to which Article 13 (1) shall apply mutatis mutandis under Article 15 (6) or 16 (4));
+9-2. Where a manufacturer, etc. fails to report the results of production or import, etc. of medical devices, in violation of Article 13 (2) (including cases applied mutatis mutandis in Article 15 (6));
+10. Where a manufacturer, etc. provides any economic benefit, etc., in violation of Article 13 (3) (including cases to which Article 13 (3) shall apply mutatis mutandis under Article 15 (6)) or Article 18 (2);
+11. Where a manufacturer, etc. fails to comply with the maintenance of order in distribution and other relevant matters, in violation of Article 18 (1);
+11-2. Where a manufacturer, etc. fails to meet the standards for notification under Article 18-2 (1);
+11-3. Where a manufacturer, etc. requires a person engaged in the promotion of distribution of medical devices who has failed to receive education, to engage in such affairs, in violation of Article 18-3 (1);
+11-4. Where a manufacturer, etc. fails to inform the manufacturer, importer, distributor, or lessor who entrusted the relevant affairs in writing (including electronic documents defined in subparagraph 1 of Article 2 of the Framework Act on Electronic Documents and Transactions) of the fact that all or part of the affairs of promoting the distribution or lease of medical devices has been re-entrusted, in violation of Article 18-4 (1);
+11-5. Where a manufacturer, etc. opens a sealed container or package of a medical device and distributes it, in violation of Article 18-5;
+12. Where a manufacturer, etc. commits a violation in labeling any matters under Articles 20 through 23;
+13. Where a manufacturer, etc. violates Article 24 (1) or (3) in labeling or placing a description in a container, an outer package, packing material, or a package insert of a medical device;
+14. Where a manufacturer, etc. makes an advertisement of a medical device in violation of Article 24 (2) or (3);
+14-2. Where a manufacturer, etc. distributes a medical device without sealing its container or package, in violation of Article 25-5;
+14-3. Where a manufacturer, etc. fails to comply with the matters to be observed under Article 26;
+14-4. Where a manufacturer, etc. fails to prepare, preserve, or submit records or prepares, preserves, or submits false records, in violation of Article 30 (1);
+15. Where a manufacturer, etc. disobeys an order for submission of data, etc. without just cause in violation of Article 30 (2);
+16. Where a manufacturer, etc. fails to report an occurrence of a side effect or fails to retain the records of an occurrence of a side effect, in violation of Article 31 (1);
+17. Where a manufacturer, etc. fails to recall medical devices, fails to take measures necessary for recall or fails to report a recall plan, in violation of Article 31 (2), or fails to comply with an order to publicly announce such a recall plan, in violation of paragraph (3) of said Article;
+17-2. Where a manufacturer, etc. fails to report details of provision of medical devices or falsely reports thereon, in violation of Article 31-2 (1);
+17-3. Where a manufacturer, etc. fails to register information with the integrated medical device information system, in violation of Article 31-3 (2), or fails to comply with the standard for managing integrated medical device information, in violation of Article 31-3 (3);
+18. Where a manufacturer, etc. fails to report the detection of a foreign substance or files a false report thereon, in violation of Article 31-5;
+19. Where a manufacturer, etc. refuses, interferes with, or evades the entry, inspection, inquiry, or collection by a relevant public official under Article 32 (1);
+20. Where a medical device handled by a manufacturer, etc. is found, as a result of an inspection conducted under Article 32 or 33, to have caused, or to be likely to cause, risk to the public health;
+21. Where a manufacturer, etc. fails to comply with any order issued under Article 33, 34, or 35;
+21-2. Where a manufacturer, etc. fails to purchase an insurance policy, etc., in violation of Article 43-6;
+22. Where a manufacturer, etc. manufactures, imports, repairs, sells, or leases a medical device that has caused, or is likely to cause, risk to public health, or a medical device deemed not having the claimed performance, efficacy, or effect;
+23. Where a manufacturer, etc. has no facility or place of business at the location permitted or notified in accordance with this Act;
+24. Where a manufacturer, etc. continues his or her business during a period for which his or her business activities are suspended.
+25. Where a manufacturer, etc. manufactures or imports a medical device, for which the validity period of manufacturing permission, etc. has expired, without having the manufacturing permission, etc. renewed, in violation of Article 49 (3), or fails to fulfill the conditions attached at the time of renewal under paragraph (4) of the same Article.
+(2) Notwithstanding paragraph (1), if the relevant manufacturer or importer is not culpable for the cause in question in the cases falling under paragraph (1) 5-5 and 6 (limited to cases where it is found, as a result of a re-evaluation, to have failed to secure safety or effectiveness) and it is deemed that the purpose of the relevant permission, certification, or notification can be achieved by changing the raw material or structure, etc. of the medical device, an order for such change only may be issued. <Amended on Jan. 28, 2015; Dec. 11, 2018; Aug. 17, 2021>
+(3) If a person fails to comply with an order for change under paragraph (2), the Minister of Food and Drug Safety may also issue any of the administrative dispositions under paragraph (1). <Amended on Mar. 23, 2013>
+(4) In cases falling under paragraph (1) 18, the Minister of Health and Welfare may request the Minister of Food and Drug Safety to issue an order revoking the relevant permission or certification, closing the place of business, prohibiting the manufacture, import, or distribution of the item category or the item, or suspending the business activities. <Amended on Mar. 23, 2013; Jan. 28, 2015>
+(5) The criteria for the administrative dispositions under paragraphs (1) through (3) shall be prescribed by Prime Ministerial Decree. <Added on Mar. 23, 2013>
+[Deleting the part of the case of advertising a medical device in violation of Article 24 (2) 6 in Article 36 (1) 14, which was determined unconstitutional by the Constitutional Court on Aug. 28, 2020 under Act No. 17978 on Mar. 23, 2021]
+Article 37 (Revocation of designation)
+(1) Where any of the following applies to a training institution, an institution reviewing technical documents, clinical testing institution, institution conducting non-clinical trials or quality management examination agency designated under Article 6-2 (5), 6-4 (1), 10 (3), 10-2 (1), or 28 (2), the Minister of Food and Drug Safety may revoke its designation or issue an order suspending its business activities for a specified period not exceeding 6 months; provided, the Minister of Food and Drug Safety must revoke the designation in cases falling under subparagraph 1, 2, or 5: <Amended on Mar. 23, 2013; Jul. 30, 2013; Dec. 29, 2015; Jul. 20, 2021>
+1. Where it has obtained designation by fraud or other improper means;
+2. If it prepares or issues a falsified training certificate, report on results of reviewing technical documents, report on results of a clinical trial or report on a non-clinical trial, or prepares or files a falsified quality management examination report intentionally or by gross negligence;
+3. If it fails to meet any of the requirements for designation under Article 6-2 (5), 6-4 (2), 10 (3), 10-2 (2), or 28 (3);
+4. If it fails to comply with the matters to be observed under Article 6-2 (6), 6-4 (3), 10 (5), 10-2 (3), or 28 (4);
+5. Where it conducts business affairs during a business suspension period.
+(2) An institution whose designation has been revoked under paragraph (1) shall not be re-designated within three years from the date designation is revoked.
+(3) The criteria for the administrative dispositions issued under paragraph (1) shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 23, 2013>
+Article 38 (Imposition of penalty surcharges)
+(1) In cases of requiring an order to suspend business activities under Article 36 (1) or (3), if the disposition to suspend business activities is likely to cause severe inconvenience to users of medical devices or to jeopardize public interest, the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may impose a penalty surcharge not exceeding 1 billion won in lieu of the suspension of business activities, as prescribed by Presidential Decree. <Amended on Mar. 23, 2013; Dec. 19, 2017; Dec. 11, 2018>
+(2) Matters necessary for the types of violations punishable by the imposition of a penalty surcharge under paragraph (1), the amount of a penalty surcharge based upon the severity, etc. of the relevant violation, the method of collection and other relevant matters shall be prescribed by Presidential Decree.
+(3) If necessary for the collection of a penalty surcharge, the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may request the head of a competent tax office in writing stating the following details, to furnish him or her with tax information: <Amended on Mar. 23, 2013; Dec. 19, 2017>
+1. The personal information of a taxpayer;
+2. Purposes of use;
+3. Data about the amount of distribution that serves as the basis for the imposition of the penalty surcharge.
+(4) If a person obligated to pay a penalty surcharge under paragraph (1) fails to pay it by the deadline for payment, the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of the competent Si/Gun/Gu may revoke the imposition of the penalty surcharge under paragraph (1) and then issue a disposition to suspend business activities under Article 36 (1) or (3) or collect the penalty surcharge in the same manner as delinquent national taxes are collected or in accordance with the Act on the Collection of Local Administrative Penalty Charges, as prescribed by Presidential Decree; provided, if it is impossible to issue the disposition to suspend business activities under Article 36 (1) or (3) because of the permanent closure of business, etc. under Article 14, the penalty surcharge shall be collected in the same manner as delinquent national taxes are collected, or in accordance with the Act on the Collection of Local Administrative Penalty Charges. <Amended on Mar. 23, 2013; Aug. 6, 2013; Dec. 19, 2017; Mar. 24, 2020>
+(5) The Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may request any of the following persons to provide the data listed below; in such cases, the person in receipt of such request shall comply with the request in the absence of good cause: <Added on Apr. 1, 2025>
+1. A certified copy of a building register under Article 38 of the Building Act: The Minister of Land, Infrastructure and Transport;
+2. A certified copy of land cadastre under Article 71 of the Act on the Establishment and Management of Spatial Data: The Minister of Land, Infrastructure and Transport;
+3. A certified copy of motor vehicle register under Article 7 of the Motor Vehicle Management Act: The Special Metropolitan City Mayor, Metropolitan City Mayors, Special Self-Governing City Mayors, Do Governors, or Special Self-Governing Province Governor.
+(6) Penalty surcharges collected under paragraphs (1) and (4) shall devolve on the State or a local government to which the competent collecting agency belongs. <Amended on Apr. 1, 2025>
+Article 38-2 (Imposition of penalty surcharges for manufacturing of hazardous medical devices)
+(1) Where a manufacturer or importer of medical devices becomes subject to a disposition for revocation of permission, certification, or acceptance of a notification, a disposition to prohibit the manufacture, import, or distribution of an item category or an item, an order to close a business establishment, an order to suspend all of the business for at least 3 months, or an order to suspend part of the business for at least 6 months as falling under any of the following cases, under Article 36 (1), the Minister of Food and Drug Safety may impose a penalty surcharge not exceeding twice the amount of distributing the relevant item:
+1. Where he or she violates Article 6 (2) or 15 (2);
+2. Where he or she obtains permission, permission for change, certification, or certification for change or files a notification or a notification on change under Article 6 (1) or (2), 12 (1) (including cases applied mutatis mutandis under Article 15 (6)), or 15 (1) or (2) (including cases where it is deemed that the permission or certification is obtained or the notification is filed under Article 6 (6) or 15 (5)) by fraud or other improper means;
+3. Where he or she violates Article 26 (excluding paragraphs (6) and (7));
+4. Where he or she obtains renewal under Article 49 (3) by fraud or other improper means.
+(2) The Minister of Food and Drug Safety shall take into account each of the following matters when imposing a penalty surcharge pursuant to paragraph (1):
+1. Details and the severity of the violation;
+2. The duration and number of the violation;
+3. Size of profits derived from the violation.
+(3) Matters necessary for the standards, procedures, etc. for imposing penalty surcharges prescribed in paragraphs (1) and (2) shall be prescribed by Presidential Decree.
+(4) Where a person required to pay a penalty surcharge prescribed in paragraph (1) fails to pay the penalty surcharge by the payment deadline, the Minister of Food and Drug Safety shall collect an additional charge equivalent to 3/100 per annum of the penalty surcharge in arrears starting from the day following the payment deadline.
+(5) Where a person required to pay a penalty surcharge prescribed in paragraph (1) fails to pay the penalty surcharge by the payment deadline, the Minister of Food and Drug Safety shall demand the payment for a specified period; and where the person fails to pay the penalty surcharge and the additional charge prescribed in paragraph (4) within the specified period, the Minister of Food and Drug Safety shall collect them in the same manner as delinquent national taxes are collected.
+(6) Article 38 (3) and (5) shall apply mutatis mutandis to a request for provision of information and data necessary to impose and collect penalty surcharges under paragraph (1). <Amended on Apr. 1, 2025>
+[This Article Added on Jul. 20, 2021]
+[Previous Article 38-2 moved to Article 38-3 <Jul. 20, 2021>]
+Article 38-3 (Announcement of violations)
+The Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu may announce information related to dispositions, such as details of dispositions imposed on manufacturers, etc. for whom administrative dispositions are determined under Articles 36 through 38 and on institutions under Article 37, and the names of persons subject to dispositions and relevant medical devices, as prescribed by Presidential Decree.
+[This Article Added on Dec. 11, 2018]
+[Moved from Article 38-2 <Jul. 20, 2021>]
+Article 39 (Hearings)
+The Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu shall hold a hearing, if he or she intends to issue any of the following administrative dispositions: <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 19, 2017; Jul. 20, 2021>
+1. Revoke permission, certification, approval, and acceptance of notification, close a place of business, prohibit manufacturing, import, or distribution of an item category or an item, or completely or partially suspend business activities under Article 36;
+2. Revoke a designation under Article 37.
+Article 40 (Medical device surveillance officers)
+(1) The Ministry of Health and Welfare, the Ministry of Food and Drug Safety, the Special Metropolitan City, Metropolitan Cities, the Special Self-Governing City, Dos, the Special Self-Governing Province, and each Si/Gun/Gu (Gu shall mean an autonomous Gu; the same shall apply hereinafter) shall appoint medical device surveillance officers for performance of the relevant public officials' duties under Article 32 (1) and 34 (2). <Amended on Mar. 23, 2013; Dec. 19, 2017>
+(2) Medical device surveillance officers under paragraph (1) shall be appointed by the Minister of Health and Welfare, the Minister of Food and Drug Safety, the Special Metropolitan City Mayor, a Metropolitan City Mayor, the Special Self-Governing City Mayor, a Do Governor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu from among public officials under the jurisdiction of the Ministry of Health and Welfare, the Ministry of Food and Drug Safety, the Special Metropolitan City, a Metropolitan City, the Special Self-Governing City, a Do, the Special Self-Governing Province, or a Si/Gun/Gu. <Amended on Mar. 23, 2013; Dec. 19, 2017>
+(3) Matters necessary for the qualification for medical device surveillance officers under paragraphs (1) and (2), the appointment, and the scope of duties of such surveillance officers shall be prescribed by Prime Ministerial Decree after consultation with the Minister of Health and Welfare. <Amended on Mar. 23, 2013>
+Article 40-2 (Customer medical device surveillance officers)
+(1) The Minister of Food and Drug Safety, Special Metropolitan City Mayor, Metropolitan City Mayor, Do Governor, Special Self-Governing Province Governor, Special Self-Governing City Mayor or the head of a Si/Gun/Gu may appoint persons recommended by the head of the relevant group, from among persons with knowledge on medical devices, persons who have completed a specific level of educational curriculum, members or employees of an association or group related to medical devices, or executives or employees of a consumer group registered under Article 29 of the Framework Act on Consumers as consumer medical device surveillance officers for the safe management of medical devices.
+(2) Medical device surveillance officers among consumers (hereinafter referred to as "consumer medical device surveillance officers") appointed under paragraph (1) shall perform the following duties:
+1. Supporting surveillance, collection or inspection of medical devices, etc. conducted by medical device surveillance officers appointed pursuant to Article 40 (1);
+2. Where medical devices distributed fail to meet standards for indication or labeling or violate provisions prohibiting false or exaggerated advertisement, reporting such fact or providing materials related thereto to the competent administrative agency;
+3. Other matters prescribed by Prime Ministerial Decree in relation to the management of medical devices.
+(3) No consumer medical device surveillance officers shall abuse their authority perform the duties prescribed in subparagraphs of paragraph (2).
+(4) The Minister of Food and Drug Safety, Special Metropolitan City Mayor, Metropolitan City Mayor, Do Governor, Special Self-Governing Province Governor, Special Self-Governing City Mayor or the head of a Si/Gun/Gu who appoints consumer medical device surveillance officers under paragraph (1), shall provide education necessary for performing the duties of consumer medical device surveillance officers.
+(5) The Minister of Food and Drug Safety, Special Metropolitan City Mayor, Metropolitan City Mayor, Do Governor, Special Self-Governing Province Governor, Special Self-Governing City Mayor or the head of a Si/Gun/Gu shall dismiss a consumer medical device surveillance officer where:
+1. The consumer medical device surveillance officer retire from or is dismissed from a recommended group;
+2. The consumer medical device surveillance officer engages in misconduct in relation to any of the duties prescribed in subparagraphs of paragraph (2) or abuses his or her authority;
+3. The consumer medical device surveillance officer becomes unable to perform his or her duties due to a disease or wound, etc.
+(6) If a consumer medical device surveillance officer intends to enter a business office of a distributor or lessor of medical devices on his or her own, to perform the duty prescribed in paragraph (2) 1, the consumer medical device surveillance officer shall obtain prior approval from the Minister of Food and Drug Safety, Special Metropolitan City Mayor, Metropolitan City Mayor, Do Governor, Special Self-Governing Province Governor, Special Self-Governing City Mayor or the head of a Si/Gun/Gu.
+(7) A consumer medical device surveillance officer who enters a business office of a distributor or lessor of medical devices on his or her own upon obtaining prior approval under paragraph (6), shall carry a written approval and identification indicating his or her status and show them to the relevant persons.
+(8) Qualifications for, scope of duties of, or education for consumer medical device surveillance, and other necessary matters shall be prescribed by Prime Ministerial Decree.
+(9) The Minister of Food and Drug Safety may fully or partially subsidize the expenses incurred in operating consumer medical device surveillance officers within budgetary limits.
+[This Article Added on Dec. 29, 2015]
+CHAPTER VII SUPPLEMENTARY PROVISIONS
+Article 41 Deleted. <Apr. 30, 2019>
+Article 42 (Establishment of National Institute of Medical Device Safety Information)
+(1) The National Institute of Medical Device Safety Information (hereinafter referred to the "Information Institute") shall be established to provide comprehensive information and technological assistance regarding trends in newly-developed medical devices in Korea and overseas and clinical information, and to conduct business affairs related to certification of medical devices. <Amended on Jan. 28, 2015; Mar. 13, 2018>
+(2) The Information Institute shall be a corporation. <Amended on Mar. 13, 2018>
+(3) The articles of incorporation of the Information Institute shall state the following: <Added on Dec. 11, 2018>
+1. Purpose;
+2. Name;
+3. Location of the main office;
+4. Matters concerning assets;
+5. Matters concerning executive officers and employees;
+6. Operation of the board of directors;
+7. Scope and details of business, and the execution thereof;
+8. Accounting;
+9. Methods of public announcement;
+10. Revisions to the articles of incorporation;
+11. Other important matters concerning the operation of the Information Institute.
+(4) If the Information Institute intends to revise the articles of incorporation, it shall obtain authorization thereof from the Minister of Food and Drug Safety. <Added on Dec. 11, 2018>
+(5) Except as provided in this Act, the provisions of Civil Act governing incorporated foundations shall apply mutatis mutandis to the Information Institute. <Amended on Mar. 13, 2018; Dec. 11, 2018>
+(6) The operation of the Information Institute and other relevant matters shall be prescribed by Presidential Decree. <Amended on Mar. 13, 2018; Dec. 11, 2018>
+[Title Amended on Mar. 13, 2018]
+Article 43 (Business activities of the information institute)
+(1) The Information Institute shall conduct the following business activities: <Amended on Mar. 23, 2013; Jan. 28, 2015; Mar. 13, 2018>
+1. Provide information and technical support regarding medical devices, including research on international specifications for improving technology for medical devices, and gathering, analysis, and management of information from domestic and overseas sources;
+2. Support clinical trials to commercialize newly developed medical devices;
+3. Training, public relations, and support in regard to information related to the quality management system, such as risk management, and permission, certification, and notification;
+4. Support the international certification of standard specifications for advanced management of medical devices;
+5. Investigation and research to support the formulation of policies related to the safety of medical devices;
+6. Investigation and identification of causal relationships between medical devices and their side effects;
+7. Collection, management, analysis, assessment and provision of various information related to the safety of medical devices (hereinafter referred to as "medical device safety information"), such as information about side effects of medical devices, permission to manufacture medical devices, certification and notification thereof;
+8. Affairs entrusted by the Minister of Food and Drug Safety under Article 44 (2);
+9. Other business activities deemed necessary by the Minister of Food and Drug Safety in relation to provision of information on, and technical support for medical devices.
+(2) The Minister of Food and Drug Safety may subsidize the business activities conducted by the Information Institute pursuant to paragraph (1). <Amended on Mar. 23, 2013; Mar. 13, 2018>
+(3) The Minister of Food and Drug Safety may designate a general hospital under Article 3 (2) 3 (f) of the Medical Service Act as a medical device safety monitoring center to support the business activities pursuant to paragraph (1) 7 conducted by the Information Institute. <Added on Apr. 7, 2020>
+(4) Matters necessary for the designation, scope of business activities, operation, etc. of a medical device safety monitoring center under paragraph (3) shall be prescribed by Prime Ministerial Decree. <Added on Apr. 7, 2020>
+[Title Amended on Mar. 13, 2018]
+Article 43-2 (Revocation of permission for manufacturing medical devices)
+(1) If a medical device permitted, certified, or notified under Article 6 (2) or 15 (2) falls under any of the following, the Minister of Food and Drug Safety may revoke the permission, certification, or acceptance of the notification thereof: <Amended on Jul. 20, 2021>
+1. Where a serious defect is discovered in the quality management or performance of the medical device manufactured or imported after it was permitted, certified, or notified;
+2. Where the medical device has caused or is likely to cause any risk to the public health or is found ineffective.
+(2) Procedures and methods for revocation of certification and notification under paragraph (1), and other relevant matters, shall be prescribed by Prime Ministerial Decree.
+[This Article Added on Jan. 28, 2015]
+[Title Amended on Jul. 20, 2021]
+Article 43-3 (Guidance and supervision of the information institute)
+(1) Where necessary to supervise the Information Institute, the Minister of Food and Drug Safety may require the Information Institute to file a report or submit information concerning its affairs, or to issue other necessary orders, and require subordinate public officials to inspect the books of accounting, documents, etc. of the Information Institute upon entry into its offices. <Amended on Mar. 13, 2018>
+(2) Any public official who inspects the books of accounting, documents, etc. upon gaining access under paragraph (1) shall carry identification indicating his or her authority and present it to interested persons.
+(3) The Minister of Food and Drug Safety shall formulate and implement a guidance and supervision plan each year to verify whether the affairs entrusted under Article 44 (2) are conducted properly, and other relevant matters.
+(4) Other matters necessary for the guidance and supervision of the Information Institute shall be prescribed by Prime Ministerial Decree. <Amended on Mar. 13, 2018>
+[This Article Added on Jan. 28, 2015]
+[Title Amended on Mar. 13, 2018]
+Article 43-4 (Request for materials)
+(1) If deemed necessary to perform business affairs, such as the collection, assessment, etc. of medical device safety information, the head of the Information Institute (hereinafter referred to as "the head of the Information Institute) may request the following institutions or persons to submit materials regarding medical device safety information. In such cases, an institution or a person in receipt of the request to submit materials shall comply therewith, except in extenuating circumstances:
+1. The State or a local government;
+2. A public institution or public organization;
+3. A research institute;
+4. A medical device handler.
+(2) Where the head of the Information Institute requests necessary materials under paragraph (1), he or she may request materials that include personal information, such as sensitive information under Article 23 of the Personal Information Protection Act and personally identifiable information (including resident registration numbers) under Article 24 of the same Act. In such cases, an institution or a person in receipt of such request shall provide the materials after deleting personally identifiable information.
+(3) Notwithstanding paragraph (2), if the Minister of Food and Drug Safety approves that materials possessed by at least two institutions or persons need to be analyzed in an integrated manner, the head of the Information Institute may receive and integrate materials including personally identifiable information. In such cases, upon integration of materials, personally identifiable information shall be deleted without delay not be restored or regenerated.
+(4) Materials provided in accordance with the provisions of paragraphs (1) through (3) shall not be used for purposes other than originally intended.
+(5) The Minister of Food and Drug Safety may regularly inspect whether the head of the Information Institute complies with paragraphs (3) and (4), and may take necessary measures, such as dismissal, if he or she violates such provisions.
+[This Article Added on Mar. 13, 2018]
+Article 43-5 (Investigator of causal relations)
+(1) The head of the Information Institute may appoint or commission investigators (hereinafter referred to as "investigator of causal relations") to investigate and identify causal relationships between medical devices and their side effects, from among its employees or those with expertise and experience in relevant fields, if deemed necessary to perform business activities provided in Article 43 (1) 6.
+(2) When appointing or commissioning an investigator of causal relations, the head of the Information Institute shall report such fact to the Minister of Food and Drug Safety without delay.
+(3) The head of the information institute may require an investigator of causal relations to enter medical institutions, factories, warehouses, stores, and offices which manufacture, store or handle medical devices, and other places where investigation is deemed necessary and to look through relevant books, documents or other articles. In such cases, the investigator of causal relations shall carry an identification or relevant document indicating his or her authority and present such identification or document to interested person(s).
+(4) Matters regarding the qualifications, scope of duties, identifications, etc. of investigators of causal relations under paragraphs (1) and (3) shall be prescribed by Prime Ministerial Decree.
+(5) Except as provided in this Act, the Framework Act on Administrative Investigations shall apply mutatis mutandis to the procedures, methods, etc. of investigations or inquiries under paragraph (3).
+[This Article Added on Mar. 13, 2018]
+Article 43-6 (Purchasing insurance policies)
+(1) Manufacturers or importers of medical devices prescribed by Presidential Decree shall purchase an insurance policy or enter into a mutual aid agreement to compensate for losses sustained by patients due to death or serious side effects, etc. that occurred while using the medical devices.
+(2) The type of an insurance or mutual aid under paragraph (1), subjects to be insured, the insured amount, and other necessary matters shall be prescribed by Presidential Decree.
+[This Article Added on Jul. 20, 2021]
+Article 44 (Delegation and entrustment of authority)
+(1) The Minister of Food and Drug Safety may delegate part of his or her authority bestowed by this Act to the commissioner of a Regional Food and Drug Administration, the Special Metropolitan City Mayor, a Metropolitan City Mayor, the Special Self-Governing City Mayor, a Do Governor, the Special Self-Governing Province Governor, the head of a Si/Gun/Gu, or the head of a public health clinic, as prescribed by Presidential Decree. <Amended on Mar. 23, 2013; Jan. 28, 2015; Dec. 19, 2017>
+(2) The Minister of Food and Drug Safety may entrust the Information Institute with the business affairs regarding the certification or notification of medical devices under this Act, the management of medical devices subject to a long-term tracking and control and the collection, analysis, evaluation, etc. of real-world data, as prescribed by Prime Ministerial Decree. In such cases, the Minister of Food and Drug Safety shall determine and publicly notify guidelines on the subject, scope, etc. of entrusted certification and notification among medical devices which pose little or no potential risk to human body when used after deliberation by the Committee. <Added on Jan. 28, 2015, Mar. 13, 2018, Apr. 23, 2019, Jan. 31, 2025>
+[Title Amended on Jan. 28, 2015]
+Article 44-2 (Legal fiction as public officials in application of penalty provisions)
+Any of the following persons shall be deemed public officials for the purposes of Articles 127 and 129 through 132 of the Criminal Act: <Amended on Mar. 13, 2018; Apr. 7, 2020>
+1. Investigators of causal relations;
+2. Executive officers and employees of institutions reviewing technical documents, who review technical documents under Article 6-4 (1);
+3. Executive officers and employees of quality management examination agencies, who examine facilities and manufacturing and quality management systems under Article 28 (2);
+4. Executive officers and employees of the Information Institute, who engage in the affairs entrusted under Article 44 (2).
+[This Article Added on Jan. 28, 2015]
+Article 45 (Protection of submitted data)
+(1) If a person who has submitted data in accordance with Article 6 through 10, 11, 12, or 15 requests in writing that the submitted data be protected, the Minister of Food and Drug Safety shall not disclose such data; provided, if the Minister deems it necessary to disclose the data for the public interest, such data may be disclosed. <Amended on Mar. 23, 2013>
+(2) A person who inspects or reviews the submitted data under the protection requested in accordance with paragraph (1) shall not disclose the content thereof to the public.
+Article 46 (Special cases on medical devices for animals)
+Among affairs within the jurisdiction of the Minister of Health and Welfare and the Minister of Food and Drug Safety under this Act, affairs related to medical devices exclusively for animals shall fall under the jurisdiction of the Minister of Agriculture, Food and Rural Affairs, and the term "Minister of Health and Welfare" or "Minister of Food and Drug Safety" in the relevant provisions of this Act shall be construed as the "Minister of Agriculture, Food and Rural Affairs" and the term "Prime Ministerial Decree" or "Decree of the Ministry of Health and Welfare" as "Decree of the Ministry of Agriculture, Food and Rural Affairs", respectively. In such cases, when the Minister of Agriculture, Food and Rural Affairs intends to formulate Decree of the Ministry of Agriculture, Food and Rural Affairs, he or she shall consult with the Minister of Health and Welfare or the Minister of Food and Drug Safety in advance.
+[This Article Wholly Amended on Mar. 23, 2013]
+Article 46-2 Deleted. <Mar. 9, 2021>
+Article 47 (Succession to status of manufacturers and relevant matters)
+(1) If a manufacturer, etc. or a medical device sales promoter dies or transfers his or her business, or if a corporate manufacturer, etc. or a medical device sales promoter merges or consolidates with another business, his or her heir, the transferee of the business, or the surviving or resulting corporation following the merger or consolidation shall succeed to the status of a manufacturer, etc. or a medical device sales promoter; provided, this shall not apply where the transferee of the business or the surviving or resulting corporation following the merger or consolidation falls under any of the following subparagraphs: <Amended on Aug. 8, 2023; Oct. 22, 2024>
+1. If a manufacturer, importer, or repairer falls under any subparagraph of Article 6 (1);
+2. A distributor or lessor: Where he or she falls under Article 6 (1) 2, 4, 4-2, or 5.
+3. If a medical device sales promoter falls under Article 6 (1) 2 (limited to a person under adult guardianship or limited guardianship), 4, 4-2, or 5.
+(2) If an heir who succeeds to the status of a manufacturer, etc. or a medical device sales promoter under paragraph (1) falls under any subparagraph of paragraph (1), he or she shall transfer the business to any third person within 6 months from the commencement date of inheritance. <Amended on Aug. 8, 2023>
+(3) If a manufacturer or an importer transfers his or her business related to medical devices approved, certified, or notified under Article 6 (2) or (6) or Article 15 (2) or (5), the manufacturer or importer who acquires the business shall succeed to the status of the manufacturer or importer with respect to the permission or certification for, or notification on, the relevant item category or item. <Amended on Jan. 28, 2015>
+Article 48 (Transfer of effects of administrative sanctions)
+If a person succeeds to the status of a manufacturer, etc. or a medical device sales promoter in accordance with Article 47, the effects of an administrative disposition imposed on the previous manufacturer, etc. or the medical device sales promoter shall be transferred to the transferee or the corporation surviving a merger or newly established as a consequence of a merger and shall remain effective for one year from the day on which the disposition was issued, while if proceedings of an administrative disposition are pending, the proceedings of the administrative sanction may continue against the transferee, the corporation surviving the merger, or the corporation newly established as a consequence of the merger; provided, this shall not apply if a new manufacturer, etc. or a new medical device sales promoter is not aware of such a disposition or a violation when he or she succeeds to the business (excluding the succession to the status by inheritance). <Amended on Aug. 8, 2023>
+Article 49 (Renewal of manufacturing permission, etc.)
+(1) The validity period of manufacturing permission, manufacturing certification, or a manufacturing notification under Article 6 (2) and import permission, import certification, or an import notification under Article 15 (2) (hereinafter referred to as "manufacturing permission, etc.") shall be 5 years from the date on which permission or certification is obtained or a notification is accepted; provided, the validity period shall not apply to medical devices prescribed by Prime Ministerial Decree, such as medical devices which are produced only for the purpose of export.
+(2) Notwithstanding paragraph (1), the validity period of a medical device subject to the post market surveillance under Article 8 shall be 5 years after the review of the relevant medical device ends under Article 8-2. <Amended on Aug. 17, 2021>
+(3) Where a manufacturer or importer intends to continue manufacturing or importing the relevant medical device after the validity period under paragraphs (1) and (2) expires, he or she shall have the manufacturing permission, etc. renewed by the Minister of Food and Drug Safety before the validity period expires.
+(4) If deemed necessary to maintain safety and effectiveness of a medical device subject to renewal under paragraph (3), the Minister of Food and Drug Safety may renew the relevant manufacturing permission, etc. on condition that the details of the initial manufacturing permission, etc. be changed. <Added on Aug. 17, 2021>
+(5) Where any serious problem is deemed to exist in the safety or effectiveness of medical devices, where no manufacturer or importer submits data necessary for the renewal under paragraph (3), or where other similar cases occur, the Minister of Food and Drug Safety need not renew the manufacturing permission, etc. of the relevant medical devices. <Amended on Aug. 17, 2021>
+(6) No manufacturer or importer shall have his or her manufacturing permission, etc. renewed under paragraph (3) for medical devices which have not been manufactured or imported during the validity period under paragraph (1); provided, this shall not apply to medical devices which have not been manufactured or imported due to any unavoidable causes prescribed by Prime Ministerial Decree. <Amended on Aug. 17, 2021>
+(7) Matters necessary for the method of calculating the validity period under paragraphs (1) and (2) and the standards, methods, procedures, etc. for the renewal of manufacturing permission, etc. under paragraphs (3) and (5) shall be prescribed by Prime Ministerial Decree. <Amended on Aug. 17, 2021>
+[This Article Wholly Amended on Apr. 7, 2020]
+Article 50 (Fees)
+Any of the following persons shall pay fees, as prescribed by Ordinance of the Prime Minister: <Amended on Mar. 23, 2013; Jan. 28, 2015; Apr. 7, 2020; Aug. 17, 2021; Feb. 6, 2024>
+1. A person who intends to obtain permission, certification, approval, or designation or file a report under this Act;
+2. A person who intends to modify matters permitted, certified, approved, designated, or reported under this Act;
+3. A person who intends to undergo an examination of technical documents or safety and effectiveness or a review of the results of post market surveillance of a newly developed medical device, etc. under this Act;
+4. A person who intends to undergo a preliminary review under Article 11;
+5. Deleted; <Mar. 23, 2021>
+6. A person who intends to renew his or her manufacturing permission, etc. under Article 49 (3).
+CHAPTER VIII PENALTY PROVISIONS
+Article 51 (Penalty provisions)
+(1) Any of the following persons shall be punished by imprisonment with labor for not more than five years or by a fine not exceeding 50 million won: <Amended on Dec. 2, 2016; Jul. 20, 2021; Aug. 17, 2021>
+1. A person who obtains permission or certification or files a notification under Article 6 (1) or (2), or 15 (1) or (2) by fraud or other improper means;
+1-2. A person who files a report under Article 8 (4) by fraud or other improper means;
+1-3. A person who submits data under Article 8-2 (1) by fraud or other improper means;
+2. A person who violates Article 26 (1);
+3. A person who obtains renewal under Article 49 (3) by fraud or other improper means;
+3-2. A person who manufactures or imports a medical device, for which the validity period of manufacturing permission, etc. has expired, without having the manufacturing permission, etc. renewed, in violation of Article 49 (3).
+(2) Imprisonment with labor and a fine under paragraph (1) may be imposed concurrently.
+Article 52 (Penalty provisions)
+(1) Any of the following persons shall be punished by imprisonment with labor for not more than 3 years or by a fine not exceeding 30 million won: <Amended on Dec. 2, 2016; Mar. 13, 2018; Jul. 20, 2021; Aug. 8, 2023>
+1. A person who violates Article 10 (1), the former part of Article 10 (2), Article 10 (4), Article 12 (1) (including cases to which that paragraph of that Article shall apply mutatis mutandis pursuant to Article 15 (6) or 16 (4)), Article 13 (1) (including cases applied mutatis mutandis in Article 15 (6)), the main clause of Article 16 (1), Article 17 (1), Article 18-2 (1), Article 24 (1) and (2), Article 26 (2) through (7), or Article 45 (2);
+1-2. A person who obtains approval or approval for change under Article 10 (1) by fraud or other improper means;
+1-3. A person who obtains permission for change or certification for change or files a notification of change under Article 12 (1) (including cases applied mutatis mutandis under Article 15 (6), 16 (4), or 17 (3)) or Article 18-2 (1) by fraud or other improper means;
+1-4. A person who provides or causes to acquire economic benefits, etc., in violation of Article 13 (3) (including cases applied mutatis mutandis in Article 15 (6));
+1-5. A person who entrusts a person, other than a medical device sales promoter, with the affairs of promoting the distribution of medical devices, in violation of Article 13 (4) (including cases applied mutatis mutandis in Article 15 (6));
+1-6. A person who files a notification under Article16 (1), 17 (1), or 18-2 (1) by fraud or other improper means;
+1-7. A person who provides or causes to acquire economic benefits, etc., in violation of Article 18 (2);
+1-8. A person who entrusts a person, other than a medical device sales promoter, with the affairs of promoting the distribution or lease of medical devices, in violation of Article 18 (3);
+1-9. A person who is entrusted with and conducts the affairs of promoting the distribution or lease of medical devices without filing a notification, in violation of Article 18-2 (1);
+2. A person who refuses, interferes with, or evade activities conducted by a competent public official to destroy, envelop, or seal a medical device or take any other measures under Article 34 (2).
+(2) Imprisonment with labor and a fine under paragraph (1) may be imposed concurrently.
+[Deleting the part of the case where a medical device is advertised in violation of Article 24 (2) 6 in Article 52 (1) 1, which was determined unconstitutional on Aug. 28, 2020 by the Constitutional Court pursuant to Act No. 17978 on Mar. 23, 2021]
+Article 53 Deleted. <Aug. 8, 2023>
+Article 53-2 (Penalty provisions)
+Any of the following persons shall be punished by imprisonment with labor for not more than 1 year or by a fine not exceeding 10 million won: <Amended on Dec. 2, 2016, Jul. 20, 2021; Aug. 8, 2023>
+1. A person who falsely prepares or issues a report on the results of the clinical trial, a non-clinical trial report, or a quality management examination report under Article 10 (5), 10-2 (3), or 28 (4);
+2. A person who fails to prepare or disclose an expense report, in violation of Article 13-2 (1) (including cases applied mutatis mutandis in Article 15 (6) or 18 (4)), or fails to keep the relevant expense report, related books, and base data;
+3. A person who falsely prepares or discloses an expense report under Article 13-2 (1) (including cases applied mutatis mutandis in Article 15 (6) or 18 (4));
+3-2. A person who fails to keep an entrustment contract and related base data, in violation of Article 13-2 (2);
+4. A person who fails to comply with a request for submission of an expense report, related books, and base data under Article 13-2 (3) (including cases applied mutatis mutandis in Article 15 (6) or 18 (4));
+4-2. A person who fails to inform the manufacturer, importer, distributor, or lessor who entrusted the relevant affairs in writing (including electronic documents defined in subparagraph 1 of Article 2 of the Framework Act on Electronic Documents and Transactions) of the fact that all or part of the affairs of promoting the distribution or lease of medical devices has been re-entrusted, in violation of Article 18-4 (1);
+5. A person who opens a sealed container or package of a medical device and distributes it, in violation of Article 18-5.
+[This Article Added on Dec. 29, 2015]
+Article 54 (Penalty provisions)
+Any of the following persons shall be punished by a fine not exceeding 5 million won: <Amended on Jan. 28, 2015>
+1. A person who violates Article 18 (1), Article 20 through 23, Article 30 (1) and (2), or Article 31 (1) or (5);
+2. A person who refuses, interferes with, or evades a competent public official's entry, collection, closure, or other dispositions under Article 32 (1) or 36 (1) or (2);
+3. A person who violates an order to undergo an inspection, recall, destruction, public announcement, suspension of use, suspension of business activities, and so forth under Article 33, 34 (1), 35, or 36 (1) or (2);
+4. A person who commits a violation under Article 37 (1) 1, 2, or 5.
+Article 54-2 (Penalty provisions)
+(1) A person who violates Article 6 (7) (including cases applied mutatis mutandis in Article 15 (6)), Article 6-2 (1) (including cases applied mutatis mutandis in Article 15 (6)), and Article 13 (5) (including cases applied mutatis mutandis in Article 15 (6)) shall be punished by a fine not exceeding 3 million won. <Amended on Dec. 2, 2016; Aug. 8, 2023>
+(2) Any of the following persons shall be punished by a fine not exceeding 2 million won: <Added on Dec. 2, 2016; Mar. 13, 2018; Jul. 20, 2021>
+1. Deleted; <Jul. 20, 2021>
+2. Deleted; <Jul. 20, 2021>
+3. Deleted; <Jul. 20, 2021>
+4. A person who distributes any medical device without sealing its container or package, in violation of Article 25-5;
+5. A person who refuses, obstructs, or evades an investigation or inquiry by an investigator of causal relations under Article 43-5 (3).
+[This Article Added on Jan. 28, 2014]
+Article 55 (Joint penalty provisions)
+If the representative of a corporation or an agent or employee of, or other person employed by a corporation or an individual commits any violations under Articles 51 through 54 in conducting the business affairs of the corporation or individual, the corporation or individual shall, in addition to punishing the violator accordingly, be subject to a fine under the relevant provisions; provided, this shall not apply where such corporation or individual has not been negligent in giving due attention and supervision concerning the relevant duties to prevent such violations.
+Article 56 (Administrative fines)
+(1) Any of the following persons shall be subject to an administrative fine not exceeding 1 million won: <Amended on Jan. 28, 2014; Jan. 28, 2015; Dec. 2, 2016; Dec. 11, 2018; Apr. 7, 2020; Aug. 8, 2023>
+1. A person who fails to undergo training, in violation of Article 6-2 (2) (including cases applied mutatis mutandis in Article 15 (6)) or (3) (including cases applied mutatis mutandis in Article 15 (6));
+1-2. A person who fails to report the results of production or import, etc. of medical devices, in violation of Article 13 (2) (including cases applied mutatis mutandis in Article 15 (6));
+2. A person who fails to file a notification of business closure or suspension, etc., in violation of Article 14 (including cases applied mutatis mutandis in Article 15 (6), 16 (4), or 17 (3)) or 18-2 (2);
+2-2. A person who fails to receive education on the distribution order, etc. of medical devices, in violation of Article 18-3 (1);
+2-3. A person who fails to report details of provision of medical devices or fraudulently reports such details, in violation of Article 31-2 (1);
+2-4. A person who fails to register information with the integrated medical device information system, in violation of Article 31-3 (2), or who fails to comply with the standard for managing integrated medical device information, in violation of Article 31-3 (3);
+3. A person who fails to report the detection of a foreign substance or files a false report thereon, in violation of Article 31-5;
+4. Deleted. <Aug. 17, 2021>
+(2) Administrative fines under paragraph (1) shall be imposed and collected by the Minister of Food and Drug Safety, the Special Self-Governing City Mayor, the Special Self-Governing Province Governor, or the head of a Si/Gun/Gu, as prescribed by Presidential Decree. <Amended on Mar. 23, 2013; Dec. 19, 2017>
+ADDENDA <Act No. 10564, Apr. 7, 2011>
+Article 1 (Enforcement date)
+This Act shall enter into force six months after the date of its promulgation; provided, the amended provisions of Articles 42 and 43 shall enter into force one year after the date of their promulgation.
+Article 2 (Applicability to manufacturing permission, of medical devices by item category)
+The amended provisions of Article 6 (2) 1 and 15 (2) 1 shall apply to cases subject to manufacturing permission or import permission granted, or manufacturing notification or import notification filed, on or after this Act enters into force.
+Article 3 (Applicability to medical devices compounded with or in combination of drugs or quasi-drugs)
+The amended provisions of Article 6 (6) and 15 (5) shall apply to cases subject to manufacturing permission granted or manufacturing notification filed, or import permission granted or import notification filed, on or after this Act enters into force.
+Article 4 (Applicability to labeling on containers)
+The amended provisions of Article 20 shall apply to medical devices manufactured or imported on or after this Act enters into force.
+Article 5 (Transitional measures concerning clinical testing institutions)
+(1) A clinical testing institution designated under the previous provisions as at the time this Act enters into force shall be deemed a clinical testing institution designated under the amended provisions of Article 10 (3).
+(2) A testing and inspection institution registered under the previous provisions as at the time this Act enters into force shall be deemed a testing and inspection institution designated under the amended provisions of Article 27 (2).
+(3) A quality management examination agency registered under the previous provisions as at the time this Act enters into force shall be deemed a quality management examination agency designated under the amended provisions of Article 28 (2).
+Article 6 (Transitional measures concerning administrative dispositions)
+Notwithstanding the amended provisions of Article 36, administrative dispositions imposed for acts committed before this Act enters into force shall be governed by the previous provisions.
+Article 7 (Transitional measures concerning penalty provisions and administrative fines)
+In applying penalty provisions or imposing an administrative fine for an act committed before this Act enters into force, the previous provisions shall apply.
+Article 8 Omitted.
+Article 9 (Relationship to Other Statutes and Regulations)
+A citation to any provisions of the previous Medical Devices Act by any other statute when this Act enters into force shall be deemed a citation to the corresponding provision of this Act in lieu of the previous provision, if such a corresponding provision exists in this Act.
+ADDENDA <Act No. 11690, Mar. 23, 2013>
+Article 1 (Enforcement date)
+(1) This Act shall enter into force on the date of its promulgation.
+(2) Among the Acts amended in accordance with Article 6 of Addenda, the amended provisions of the Acts promulgated before this Act enters into force but the enforcement dates of which have yet to arrive, shall enter into force on their respective enforcement dates, and the amended provisions of Article 47 (1) of the Pharmaceutical Affairs Act under Article 6 (477) of the Addenda and of Article 18 (1) of the Term: Medical Devices Act under Article 6 (481) of the Addenda shall enter into force on the dates prescribed by the Presidential Decrees concerning the relevant Acts within the scope of one year after this Act enters into force.
+Articles 2 through 7 Omitted.
+ADDENDA <Act No. 11985, Jul. 30, 2013>
+Article 1 (Enforcement date)
+This Act shall enter into force 1 year after the date of its promulgation.
+Articles 2 through 5 Omitted.
+ADDENDA <Act No. 11998, Aug. 6, 2013>
+Article 1 (Enforcement date)
+This Act shall enter into force 1 year after the date of its promulgation.
+Article 2 Omitted.
+Article 3 Omitted.
+ADDENDA <Act No. 12107, Aug. 13, 2013>
+Article 1 (Enforcement date)
+This Act shall enter into force on the date of its promulgation.
+Article 2 (Applicability to suspension of business activities)
+The amended provisions of Article 36 (1) shall also apply to administrative dispositions imposed for violations committed before this Act enters into force.
+ADDENDA <Act No. 12392, Jan. 28, 2014>
+Article 1 (Enforcement date)
+This Act shall enter into force 6 months after the date of its promulgation.
+Article 2 (Applicability to designation of medical device quality manager)
+The amended provisions of Article 6 (7), 13 (4), and 15 (6) shall apply beginning with the first person who applies for manufacturing business permission or import business permission after this Act enters into force.
+Article 3 (Transitional measures concerning designation of quality manager)
+A manufacturer or an importer who obtained permission before this Act enters into force or who obtained permission under the previous provisions without being governed by the amended provisions of Article 6 (7), 13 (4), and 15 (6) after this Act enters into force, shall be in compliance with the aforesaid amended provisions within two years from the date on which this Act enters into force.
+ADDENDA <Act No. 13116, Jan. 28, 2015>
+Article 1 (Enforcement date)
+This Act shall enter into force six months after the date of its promulgation; provided, matters related to manufacturing and quality management systems in the amended provisions of Article 6 (4) and (5), 7 (1), 13 (1), 15 (4), 28 (1) through (4), and 36 (1) shall enter into force one year after the date of their promulgation.
+Article 2 (Applicability to introduction of certification system)
+The amended provisions of Articles 6, 7, 11, 12, and 15 regarding applications for certification and notification and processing of such applications and notifications shall apply beginning with the first person who applies for manufacturing certification, import certification, or amended certification, or files a manufacturing notification, import notification, or amended notification after such amended provisions enter into force.
+Article 3 (Applicability to labeling of single-use medical devices)
+The amended provision of subparagraph 7 of Article 20 shall apply beginning with the first single-use medical device taken out from the factory or bonded area after this Act enters into force.
+Article 4 (Transitional measures concerning processing of applications for certification and notification)
+Where a person who has obtained permission or amended permission for a medical device subject to certification and notification under the amended provisions of Articles 6, 12, and 15, or has filed a notification or amended notification thereon from/to the Minister of Food and Drug Safety pursuant to the previous provisions before the aforesaid amended provisions enter into force, the person shall be deemed to have obtained certification or amended certification, or have filed a notification or amended notification pursuant to this Act.
+Article 5 (Transitional measures concerning application for permission)
+The former provisions shall apply to a person who has filed an application for manufacturing business permission, manufacturing permission, import business permission, import business permission, or import permission, or has filed a manufacturing notification or import notification under the former provisions as at the time this Act enters into force.
+ADDENDA <Act No. 13698, Dec. 29, 2015>
+Article 1 (Enforcement date)
+This Act shall enter into force on the date of its promulgation; provided, the following amended provisions shall enter into force on the dates prescribed in the relevant subparagraphs:
+1. Amended Articles 6-4, 10-2, 32, 33, 37 and 53-2: The date on which one year elapses after the date of its promulgation;
+2. Amended Articles 13 and 18: The date on which three months elapse after the date of its promulgation.
+Article 2 (Applicability to persons who provides economic benefits, etc.)
+The amended Article 13 (3) and 18 (2) shall apply, beginning with the first person who provides economic benefits, etc. after the amended provisions enter into force.
+Article 3 (Applicability to labeling on containers)
+The amended subparagraph 3 of Article 20 shall apply, beginning with a medical device to be first imported or manufactured after this Act enters into force.
+Article 4 (Transitional measures concerning institutions reviewing technical documents)
+Any institution reviewing technical documents designated under the previous provisions as at the time this Act enters into force shall be deemed an institution reviewing technical documents designated under the amended Article 6-4 (1).
+ADDENDA <Act No. 14330, Dec. 2, 2016>
+Article 1 (Enforcement date)
+This Act shall enter into force on the date prescribed by Prime Ministerial Decree within 5 years from the date of its promulgation; provided, the amended provisions of Article 13-2, 15 (6), 18 (3), 35-2 and 54-2 (2) shall enter into force 6 months after the date of its promulgation; and the amended provisions of Article 51 (1), 52 (1) and 53 shall enter into force on the date of its promulgation.
+Article 2 (Preparation for enforcing the Act)
+The Minister of Food and Drug Safety may take measures necessary for establishment and operation, etc. of the system to register information concerning medical devices before this Act enters into force.
+Article 3 (Applicability to submission of expense reports)
+The amended provisions of Article 13-2 shall apply, beginning with the fiscal year following the fiscal year to which the enforcement date of the amended provisions belongs.
+Article 4 (Applicability to submission of expense reports)
+The amended provisions of subparagraph 8 of Article 20 shall apply, beginning with the first medical device manufactured or imported after this Act enters into force.
+Article 5 (Special cases of pilot projects)
+(1) The Minister of Food and Drug Safety may implement pilot projects before this Act enters into force, so as to efficiently promote projects under Article 31-2 and 31-3.
+(2) The Minister of Food and Drug Safety may provide administrative or financial support to pilot projects prescribed in paragraph (1).
+(3) Matters necessary for implementation of pilot projects prescribed in paragraph (1) shall be prescribed by the Minister of Food and Drug Safety.
+ADDENDA <Act No. 15279, Dec. 19, 2017>
+Article 1 (Enforcement date)
+This Act shall enter into force one month after the date of its promulgation; provided, the amended provisions of Article 6 (1) 2 shall enter into force on the date of its promulgation; and the amended provisions of Article 20 and 22 shall enter into force on the date Article 20 of the Medical Devices Act (Act No. 14330) enters into force.
+Article 2 (Applicability to permission and permission for change)
+The amended provisions of Article 6 (8) and (9) (including cases applicable mutatis mutandis pursuant to Article 15 (6)) and Article 12 (2) and (3) (including cases applicable mutatis mutandis pursuant to Article 15 (6)) shall apply, beginning with the first application for permission to engage in the business of manufacturing medical devices and permission to change manufacturing business information or for permission to engage in the business of importing medical devices or permission to change importing business information after this Act enters into force.
+Article 3 (Transitional measures concerning grounds for disqualification of incompetent persons)
+Notwithstanding the amended provisions of Article 6 (1) 2, persons for whom the declaration of incompetence or quasi-incompetence remains in effect under Article 2 of the Addenda to the Civil Act (Act No. 10429) shall be governed by the previous provisions.
+ADDENDA <Act No. 15486, Mar. 13, 2018>
+Article 1 (Enforcement date)
+This Act shall enter into force three months after the date of its promulgation; provided, the amended provisions of Article 6 (1) 1 and 3 shall enter into force on the date of its promulgation; and the proviso to Article 26 (3) and the amended provisions of Article 46-2 and 52 (1) 1 shall enter into force 6 months after the date of its promulgation.
+Article 2 (Transitional measures concerning establishment of the National Institute of Medical Device Safety Information)
+(1) The Medical Device Information and Technology Assistance Center (hereinafter referred to as the "Center") established and being operated under the previous provisions as at the time this Act enters into force shall be deemed the Information Institute established under this Act.
+(2) All of the competent affairs, rights and obligations, and property of the Center shall be succeeded by a universal title simultaneously upon the establishment of the Information Institute.
+(3) The value of the property to be succeeded to the Information Institute under paragraph (2) shall be the book value as of the date immediately preceding the date of succession.
+(4) A register entered in the name of the Center or a title entered in other public records shall be deemed a title of the Information Institute.
+(5) Any act done by or towards the Center prior to the establishment of the Information Institute shall be deemed an act done by or towards the Information Institute.
+Article 3 (Transitional measures concerning executive officers and employees of the information institute)
+(1) The executive officers of the Center as at the time this Act enters into force shall be the executive officers of the Information Institute; provided, their terms of office shall not exceed the remaining terms under the previous provisions.
+(2) The employees of the Center as at the time this Act enters into force shall be the employees of the Information Institute.
+Article 4 (Relationship to other Acts)
+If other statutes have cited the Medical Device Information and Technology Assistance Center as at the time this Act enters into force, they shall be considered to have cited the National Institute of Medical Device Safety Information under this Act in lieu of the previous provisions.
+ADDENDA <Act No. 15945, Dec. 11, 2018>
+Article 1 (Enforcement date)
+This Act shall enter into force on the date of its promulgation; provided, the following amended provisions shall enter into force on the dates prescribed in the relevant subparagraphs:
+1. For the amended provisions of Article 14 (including cases where it applies mutatis mutandis under Article 15 (6), 16 (4) and 17 (3)), 16 and 17, the date on which 1 month elapses after this Act is promulgated;
+2. For the amended provisions of Article 42 (3) through (6), the date on which 3 months elapse after this Act is promulgated;
+3. For the amended provisions of Article 15-2 and 31-5, Article 32 (1) concerning entrusted institutions and organizations under Article 15-2 (2), and Article 30 (2), 32-2, 36 (1), 38 (1), 38-2 and 56 (1) 3 and 4, the date on which 6 months elapse after this Act is promulgated.
+Article 2 (Applicability to notifications of permanent closure, temporary shutdown filed by manufacturers of medical devices)
+The amended provisions of Article 14 (including cases where it applies mutatis mutandis under Article 15 (6), 16 (4) and 17 (3)), 16 and 17 shall apply to a notification on permanent closure or temporary shutdown, or a notification on repair business, distribution business or leasing business, which is filed by a manufacturer of medical devices, etc. after said amended provisions enter into force.
+Article 3 (Applicability to announcement of violations)
+The amended provisions of Article 38-2 shall apply to administrative dispositions that are determined after the said amended provisions enter into force.
+Article 4 (Transitional measures concerning penalty surcharges)
+The previous provisions shall apply to the imposition of penalty surcharges for violations committed before the amended provisions of Article 38 (1) enter into force.
+ADDENDA <Act No. 16402, Apr. 23, 2019>
+Article 1 (Enforcement date)
+This Act shall enter into force 6 months after the date of its promulgation.
+Article 2 (Transitional measures concerning composition of Committee membership)
+(1) If the Committee fails to meet the amended provisions of the latter part of Article 5 (2) as at the time of appointing or commissioning its members after this Act enters into force, it shall commission non-public official members until the requirements under the amended provisions are met.
+(2) The membership composition of the Committee shall be governed by the previous provisions until the amended provisions of the latter part of Article 5 (2) are met, under paragraph (1).
+ADDENDA <Act No. 16405, Dec. 30, 2019>
+Article 1 (Enforcement date)
+This Act shall enter into force 1 year after the date of its promulgation.
+Articles 2 through 4 Omitted.
+ADDENDA <Act No. 17007, Feb. 18, 2020>
+Article 1 (Enforcement date)
+This Act shall enter into force on January 1, 2021. (Proviso Omitted.)
+Article 2 (Preliminary measures to transfer affairs)
+(1) The head of a relevant central administrative agency shall formulate measures necessary to provide required personnel and financial resources necessary for a full-scale transfer of the central administrative authority and business affairs under this Act and shall report the measures to a standing committee of the National Assembly not later than 3 months before the date this Act enters into force.
+(2) The Committee on Autonomous Decentralization under Article 44 of the Special Act on Local Autonomy and Decentralization, and Restructuring of Local Administrative Systems may specialize in investigating and evaluating required personnel and financial resources under paragraph (1).
+Article 3 (General transitional measures concerning administrative dispositions)
+Any disposition or other acts taken or conducted by an administrative agency under the previous provisions as at the time this Act enters into force shall be deemed a disposition or acts taken or conducted by an administrative agency under the provisions of this Act; and any application, report, or other acts filed with or conducted toward an administrative agency under the previous provisions shall be deemed an application, report, or acts filed with or conducted toward an administrative agency under the provisions of this Act.
+Article 4 Omitted.
+ADDENDA <Act No. 17091, Mar. 24, 2020>
+Article 1 (Enforcement date)
+This Act shall enter into force on the date of its promulgation. (Proviso Omitted.)
+Articles 2 through 5 Omitted.
+ADDENDA <Act No. 17248, Apr. 7, 2020>
+Article 1 (Enforcement date)
+This Act shall enter into force 6 months after the date of its promulgation.
+Article 2 (Special cases concerning validity period of manufacturing permission, etc.)
+Notwithstanding the amended provisions of Article 49, the validity period of manufacturing permission, etc. for medical devices for which manufacturing permission, manufacturing certification, import permission, or import certification has been granted, or for which a manufacturing notification or import notification has been reviewed under Article 8 before this Act enters into force and for which a medical device re-examination has been conducted under Article 8 shall end on the date determined and publicly notified by the Minister of Food and Drug Safety within the scope from January 1, 2025 to December 31, 2030. <Amended on Aug. 17, 2021>
+Article 3 (Transitional Measures concerning Amended Provisions of Article 43 (3))
+"Article 3 (2) 3 (f) of the Medical Service Act" in the amended provisions of Article 43 (3) shall be deemed "Article 3 (2) 3 (e) of the Medical Service Act" until March 4, 2021.
+ADDENDA <Act No. 17472, Aug. 11, 2020>
+Article 1 (Enforcement date)
+This Act shall enter into one month after the date of its promulgation; provided, ... the amended provisions of any Act, which is amended under Article 4 of the Addenda and promulgated before this Act enters into force but the enforcement date of which has yet to arrive, shall enter into force on the enforcement date of such Act.
+Articles 2 through 5 Omitted.
+ADDENDA <Act No. 17922, Mar. 9, 2021>
+Article 1 (Enforcement date)
+This Act shall enter into force on the date of its promulgation.
+Articles 2 through 5 Omitted.
+ADDENDA <Act No. 17978, Mar. 23, 2021>
+Article 1 (Enforcement date)
+This Act shall enter into force 3 months after the date of its promulgation.
+Article 2 (Applicability to deliberation on advertisement of medical devices)
+The amended provisions of Articles 25, 25-2, and 25-3 shall begin to apply to the first application for deliberation on an advertisement of medical devices filed after this Act enters into force.
+ADDENDA <Act No. 18319, Jul. 20, 2021>
+Article 1 (Enforcement date)
+This Act shall enter into force six months after the date of its promulgation; provided, the amended provisions of Article 31, Article 36 (1) 1-2 through 1-4, 14-3, and 14-4, and Article 38-3, 39, 43-2, 51 (1), and 52 (1) shall enter into force on the date of its promulgation; the amended provisions of Article 36 (1) 21-2 and 43-6 shall enter into force 1 year after the date of its promulgation; and the part concerning the disclosure of the expense report in the amended provisions of Article 13-2 shall enter into force 2 years after the date of its promulgation.
+Article 2 (Applicability to submission of expense report)
+The amended provisions of Article 13-2 (including cases applied mutatis mutandis in Article 15 (6) or 18 (3)) shall begin to apply from the fiscal year following the fiscal year in which the same amended provisions enter into force falls.
+Article 3 (Applicability to analysis, evaluation, and reporting methods of causal relationship)
+The amended provisions of Article 31 (1) shall begin to apply to matters regarding side effects, etc. reported after the same amended provisions enter into force.
+Article 4 (Applicability to revocation of permission)
+(1) The amended provisions of Article 36 (1) 1-2 through 1-4 shall also apply to cases where a person obtains permission, permission for change, approval, approval for change, certification, certification for change, or renewal or files a notification or a notification of change by fraud or other improper means as at the time the same amended provisions enter into force.
+(2) The amended provisions of Article 36 (1) 14-3 shall begin to apply where a manufacturer, etc. of medical devices fails to comply with the matters to be observed under Article 26 after the same amended provisions enter into force.
+Article 5 (Applicability to Imposition of Penalty Surcharges)
+The amended provisions of Article 38-2 shall begin to apply where a manufacturer or importer of medical devices commits an act falling under any subparagraph of paragraph (1) of the same Article after the same amended provisions enter into force.
+Article 6 (Transitional Measures concerning Designation and Public Notice of Educational Institutions)
+An Institution designated by the Minister of Food and Drug Safety as an educational institution before this Act enters into force shall be deemed designated and publicly notified as an educational institution under the amended provisions of Article 6-2 (5).
+ADDENDA <Act No. 18446, Aug. 17, 2021>
+Article 1 (Enforcement date)
+This Act shall enter into force 6 months after the date of its promulgation; provided, the amended provisions of Article 36 (1) 25, 49 (4) through (7), and 56 (1), and Article 2 of the Addenda to the partially amended Medical Devices Act (Act No. 17248) shall enter into force on the date of its promulgation.
+Article 2 (Applicability to revocation of permission and suspension of business)
+The amended provisions of Article 36 (1) 5-6 shall also apply to cases where a person fails to submit data or submits data by fraud or other improper means before this Act enters into force.
+Article 3 (Applicability to post market surveillance)
+(1) The amended provisions of Article 8 shall begin to apply to applications for manufacturing permission under Article 6 (2) or permission for change under Article 12 (1) filed after this Act enters into force.
+(2) The amended provisions of Article 8-2 shall begin to apply to cases where the post market surveillance ends after this Act enters into force.
+Article 4 Omitted.
+ADDENDA <Presidential Decree No. 19457, Jun. 13, 2023>
+Article 1 (Enforcement date)
+This Act shall enter into force 1 year after the date of its promulgation.
+Article 2 Omitted.
+ADDENDA <Act No. 19608, Aug. 8, 2023>
+Article 1 (Enforcement date)
+This Act shall enter into force 1 year and 6 months after the date of its promulgation.
+Article 2 (Applicability to retention of entrustment contract)
+The amended provisions of Article 13-2 shall begin to apply where the promotion of distribution or lease of medical devices is entrusted after this Act enters into force.
+ADDENDUM <Act No. 19655, Aug. 16, 2023>
+This Act shall enter into force 6 months after the date of its promulgation.
+ADDENDA <Act No. 20220, Feb. 6, 2024>
+Article 1 (Enforcement date)
+This Act shall enter into force 6 months after the date of its promulgation; provided, the amended provisions of Article 17 shall enter into force on the date of its promulgation.
+Article 2 (Applicability to Formulation of Comprehensive Safety Management Plans and Implementation Plans for Safety Management)
+A comprehensive safety management plan and an implementation plan for safety management shall be formulated from the year following the year to which the enforcement date of this Act belongs.
+Article 3 (Applicability to fees)
+The amended provisions of subparagraphs 1 and 2 of Article 50 shall begin to apply to applications for approval of a clinical trial protocol for medical devices or approval of modification thereof under Article 10 (1), applications for designation of a clinical trial institution under Article 10 (3), or applications for designation of an institution conducting non-clinical studies or designation of modification thereof under Article 10-2 (1) after this Act enters into force.
+ADDENDUM <Act No. 20512, Oct. 22, 2024>
+This Act shall enter into force on the date of its promulgation; provided, among the amended provisions of Article 2, the amended provisions of the former part of Article 18-2 (3) of the Medical Devices Act (Act No. 19608), the main clause of Article 36 (1) 1 of that Act, and Article 47 (1) 3 of that Act shall enter into force on February 9, 2025.
+ADDENDUM <Act No. 20753, Jan. 31, 2025>
+This Act shall enter into force 6 months after the date of its promulgation.
+ADDENDUM <Act No. 20888, Apr. 1, 2025>
+This Act shall enter into force on the date of its promulgation.
+Last updated : - -

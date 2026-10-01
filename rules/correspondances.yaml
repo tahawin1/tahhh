@@ -13,6 +13,7 @@
 # est indicative : deux systèmes peuvent classer différemment le même produit.
 #
 # statut : verifie    = repris d'un fichier de règles établi sur le texte indexé
+#          partiel    = texte indexé et confronté ; quelques points restent à vérifier
 #          provisoire = texte officiel pas encore indexé (voir
 #                       scripts/telecharger_textes_pays.sh) : à confronter au texte
 #
@@ -76,24 +77,24 @@ pays:
     equivalence_etrangere: "Dispense d'essai clinique local si FSC d'un pays reconnu (AU, CA, JP, UE, UK, USA)"
   etats_unis:
     nom: "États-Unis"
-    statut: provisoire
+    statut: partiel
     autorite: "FDA (CDRH)"
     texte: "FD&C Act ; 21 CFR 807, 814, 820, 860"
     classes: {A: [I], B: [II], C: [II, III], D: [III]}
     note_classes: "Trois classes : la plupart des dispositifs IIb européens sont en classe II, certains en III."
     preuve_mise_sur_le_marche: "Lettre 510(k) (K…), approbation PMA (P…) ou décision De Novo (DEN…)"
-    certificat_pour_export: "Certificate to Foreign Government (CFG) de la FDA"
+    certificat_pour_export: "Certificate to Foreign Government (CFG) de la FDA (FD&C Act 801(e)(4), à vérifier)"
     systeme_qualite: "21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)"
     equivalence_etrangere: "Aucune : 510(k), PMA ou De Novo obligatoire"
   coree_du_sud:
     nom: "Corée du Sud"
-    statut: provisoire
+    statut: partiel
     autorite: "MFDS"
     texte: "Medical Devices Act, décret et arrêté d'application"
-    classes: {A: ["1"], B: ["2"], C: ["3"], D: ["4"]}
-    preuve_mise_sur_le_marche: "Certificat de notification (grade 1), de certification ou d'autorisation MFDS"
-    certificat_pour_export: "Certificate of Free Sale du MFDS"
-    systeme_qualite: "KGMP (bonnes pratiques de fabrication coréennes)"
+    classes: {A: [I], B: [II], C: [III], D: [IV]}
+    preuve_mise_sur_le_marche: "Notification (classe I), certification (classe II désignée) ou autorisation MFDS (classes II à IV), valable 5 ans"
+    certificat_pour_export: "Certificate of Free Sale du MFDS (absent des textes indexés, à vérifier)"
+    systeme_qualite: "KGMP exigé avant toute autorisation d'import (Medical Devices Act, art. 15 (4))"
     equivalence_etrangere: "À vérifier dans le texte indexé"
   pakistan:
     nom: "Pakistan"

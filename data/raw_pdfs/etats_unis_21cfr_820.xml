@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<DIV5 N="820" TYPE="PART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-820&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 820&amp;quot;}">
+<HEAD>PART 820&#x2014;QUALITY MANAGEMENT SYSTEM REGULATION
+</HEAD>
+<AUTH>
+<HED>Authority:</HED><PSPACE>21 U.S.C. 351, 352, 360, 360c, 360d, 360e, 360h, 360i, 360j, 360l, 371, 374, 381, 383; 42 U.S.C. 216, 262, 263a, 264.
+</PSPACE></AUTH>
+<SOURCE>
+<HED>Source:</HED><PSPACE>89 FR 7523, Feb. 2, 2024, unless otherwise noted.
+</PSPACE></SOURCE>
+<DIV6 N="A" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-820/subpart-A&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 820 Subpart A&amp;quot;}">
+<HEAD>Subpart A&#x2014;General Provisions</HEAD>
+<DIV8 N="820.1" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.1&quot;,&quot;citation&quot;:&quot;21 CFR 820.1&quot;}">
+<HEAD>&#xA7; 820.1 Scope.</HEAD>
+<P>(a) <I>Applicability.</I> Current good manufacturing practice (CGMP) requirements are set forth in this quality management system regulation (QMSR). The requirements in this part govern the methods used in, and the facilities and controls used for, the design, manufacture, packaging, labeling, storage, installation, and servicing of all finished devices intended for human use. The requirements in this part are intended to assure that finished devices will be safe and effective and otherwise in compliance with the Federal Food, Drug, and Cosmetic Act and that the use of other terminology, such as &#x201C;safety and performance,&#x201D; in this part does not change this statutory standard or the requirements of this part. Any manufacturers engaged in the design, manufacture, packaging, labeling, storage, installation, or servicing of a finished device must establish and maintain a quality management system that is appropriate for its specific device(s). Manufacturers subject to this part include, but are not limited to, manufacturers that perform the functions of contract sterilization, installation, relabeling, remanufacturing, repacking, or specification development, as well as initial distributors of foreign entities that perform these functions. If a manufacturer engages in only some operations subject to the requirements in this part, and not in others, that manufacturer need only comply with those requirements applicable to the operations in which it is engaged.</P>
+<P>(1) <I>Finished devices.</I> The provisions of this part shall apply to any finished device, as defined in this part, intended for human use, that is manufactured in any State or Territory of the United States, the District of Columbia, or the Commonwealth of Puerto Rico, or that is imported or offered for import into the United States.</P>
+<P>(2) <I>Components or parts.</I> The provisions of this part do not apply to manufacturers of components or parts of finished devices, but such manufacturers are encouraged to consider provisions of this regulation as appropriate.</P>
+<P>(3) <I>Blood and blood components.</I> The provisions of this part do not apply to manufacturers of blood and blood components used for transfusion or for further manufacturing. Such manufacturers are subject to subchapter F of this chapter.</P>
+<P>(4) <I>HCT/Ps.</I> The provisions of this part apply to manufacturers of human cells, tissues, and cellular and tissue-based products (HCT/Ps), as defined in &#xA7; 1271.3(d) of this chapter, that are devices (subject to premarket review or notification, or exempt from notification, under an application submitted under the device provisions of the Federal Food, Drug, and Cosmetic Act or under a biological product license application under section 351 of the Public Health Service Act). HCT/Ps regulated as devices are also subject to the donor-eligibility requirements set forth in part 1271, subpart C of this chapter and applicable current good tissue practice requirements in part 1271, subpart D of this chapter. In the event of a conflict between applicable regulations in part 1271 and in other parts of this chapter, the regulation specifically applicable to the device in question shall supersede the more general regulation.</P>
+<P>(b) <I>Conflicts with other requirements under the Federal Food, Drug, and Cosmetic Act.</I> The QMSR for devices in this part supplements regulations in other parts of this chapter except where explicitly stated otherwise. To the extent that any applicable requirements in this part conflict with requirements in other parts of this chapter, the requirements specifically applicable to the device in question shall supersede the more generally applicable requirements. Moreover, to the extent that any clauses of ISO 13485 (incorporated by reference, see &#xA7; 820.7) conflict with any provisions of the Federal Food, Drug, and Cosmetic Act and/or its other implementing regulations, the Federal Food, Drug, and Cosmetic Act and/or its other implementing regulations will control.</P>
+<P>(c) <I>Foreign manufacturers.</I> A device that is imported or offered for import into the United States is subject to refusal of admission to the United States under section 801(a) of the Federal Food, Drug, and Cosmetic Act if, among other things, it appears to be adulterated as set forth in the Federal Food, Drug, and Cosmetic Act and its implementing regulations.</P>
+<P>(d) <I>Exemptions or variances.</I> (1) A manufacturer subject to any requirement under section 520(f)(1) of the Federal Food, Drug, and Cosmetic Act, including any requirements under this part, may petition for an exemption or variance from such requirement in accordance with section 520(f)(2) of the Federal Food, Drug, and Cosmetic Act. Petitions for an exemption or variance shall be submitted in accordance with the procedures set forth in &#xA7; 10.30 of this chapter.</P>
+<P>(2) FDA may initiate and grant a variance from any requirement(s) in this part when the Agency determines that such variance is in the best interest of the public health, including that there is a public health need for the device and the device would not likely be made sufficiently available without the variance. Such variance will remain in effect only so long as there remains a public health need for the device and the device would not likely be made sufficiently available without the variance.</P>
+</DIV8>
+
+<DIV8 N="820.3" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.3&quot;,&quot;citation&quot;:&quot;21 CFR 820.3&quot;}">
+<HEAD>&#xA7; 820.3 Definitions.</HEAD>
+<P>The definitions in ISO 13485 and in Clause 3 of ISO 9000 (incorporated by reference, see &#xA7; 820.7) apply to this part, except as specified in paragraph (b) of this section, and do not affect the meaning of similar terms defined in this title.</P>
+<P>(a) The following terms, which are either not used or not defined in ISO 13485 or in Clause 3 of ISO 9000, also apply for the purposes of this part:</P>
+<P><I>Batch</I> or <I>lot</I> means one or more components or finished devices that consist of a single type, model, class, size, composition, or software version that are manufactured under essentially the same conditions and that are intended to have uniform characteristics and quality within specified limits.</P>
+<P><I>Component</I> means any raw material, substance, piece, part, software, firmware, labeling, or assembly that is intended to be included as part of the finished, packaged, and labeled device.</P>
+<P><I>Federal Food, Drug, and Cosmetic Act</I> means the Federal Food, Drug, and Cosmetic Act, 21 U.S.C. 321 <I>et seq.,</I> as amended.</P>
+<P><I>Finished device</I> means any device or accessory to any device that is suitable for use or capable of functioning, whether or not it is packaged, labeled, or sterilized.</P>
+<P><I>Human cell, tissue, or cellular or tissue-based product (HCT/P) regulated as a device</I> means an HCT/P as defined in &#xA7; 1271.3(d) of this chapter that does not meet the criteria in &#xA7; 1271.10(a) of this chapter and that is also regulated as a device.</P>
+<P><I>Remanufacturer</I> means any person who processes, conditions, renovates, repackages, restores, or does any other act to a finished device that significantly changes the finished device's performance or safety specifications, or intended use.</P>
+<P>(b) All definitions in section 201 of the Federal Food, Drug, and Cosmetic Act shall apply to the regulation of quality management systems under this part and shall supersede the correlating terms and definitions in ISO 13485 (<I>e.g.,</I> the definitions of device and labeling in section 201(h) and (m) of the Federal Food, Drug, and Cosmetic Act apply to this part and supersede the definitions for the correlating terms in ISO 13485 (labelling and medical device)). In addition, the following terms and definitions apply to this part and supersede the definitions for the correlating terms in ISO 13485 or ISO 9000:</P>
+<P><I>Implantable medical device</I> shall have the meaning of &#x201C;implant&#x201D; as defined in section 860.3 of this chapter.</P>
+<P><I>Manufacturer</I> means any person who designs, manufactures, fabricates, assembles, or processes a finished device. Manufacturer includes, but is not limited to, those who perform the functions of contract sterilization, installation, relabeling, remanufacturing, repacking, or specification development, and initial distributors of foreign entities performing these functions.</P>
+<P><I>Organization</I> shall have the meaning of &#x201C;manufacturer&#x201D; as defined in this part.</P>
+<P><I>Rework</I> means action taken on a nonconforming product so that it will fulfill the specified requirements in the medical device file (MDF) before it is released for distribution.</P>
+<P><I>Safety and Performance</I> shall have the meaning of &#x201C;safety and effectiveness&#x201D; in Clause 0.1 of ISO 13485. The phrase &#x201C;safety and performance&#x201D; does not relieve a manufacturer from any obligation to implement controls or other measures that provide reasonable assurance of safety and effectiveness.</P>
+<CITA TYPE="N">[89 FR 7523, Feb. 2, 2024; 89 FR 82945, Oct. 15, 2024]
+</CITA>
+</DIV8>
+
+<DIV8 N="820.5" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.5&quot;,&quot;citation&quot;:&quot;21 CFR 820.5&quot;}">
+<HEAD>&#xA7; 820.5 [Reserved]</HEAD>
+</DIV8>
+
+<DIV8 N="820.7" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.7&quot;,&quot;citation&quot;:&quot;21 CFR 820.7&quot;}">
+<HEAD>&#xA7; 820.7 Incorporation by reference.</HEAD>
+<P>Certain material is incorporated by reference into this part with the approval of the Director of the Federal Register under 5 U.S.C. 552(a) and 1 CFR part 51. All approved incorporation by reference (IBR) material is available for inspection at the Food and Drug Administration, and at the National Archives and Records Administration (NARA). Contact FDA at: Dockets Management Staff, 5630 Fishers Lane, Rm. 1061, Rockville, MD 20852; 240-402-7500; <I>https://www.regulations.gov/document/FDA-2013-S-0610-0003.</I> For information on the availability of this material at NARA, visit <I>www.archives.gov/federal-register/cfr/ibr-locations</I> or email <I>fr.inspection@nara.gov.</I> This material may be obtained from the International Organization for Standardization (ISO), BIBC II, Chemin de Blandonnet 8, CP 401, 1214 Vernier, Geneva, Switzerland; +41-22-749-01-11; <I>customerservice@iso.org, https://www.iso.org/store.html.</I></P>
+<P>(a) ISO 9000:2015(E) (&#x201C;ISO 9000&#x201D;), <I>Quality Management systems&#x2014;Fundamentals and vocabulary,</I> Clause 3&#x2014;<I>Terms and definitions,</I> Fourth edition, September 15, 2015. IBR approved for &#xA7; 820.3.</P>
+<P>(b) ISO 13485:2016(E) (&#x201C;ISO 13485&#x201D;), <I>Medical devices&#x2014;Quality management systems&#x2014;Requirements for regulatory purposes,</I> Third edition, March 1, 2016; IBR approved for &#xA7;&#xA7; 820.1, 820.3, 820.10, 820.35, and 820.45.</P>
+</DIV8>
+
+<DIV8 N="820.10" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.10&quot;,&quot;citation&quot;:&quot;21 CFR 820.10&quot;}">
+<HEAD>&#xA7; 820.10 Requirements for a quality management system.</HEAD>
+<P>A manufacturer subject to this part as described by &#xA7; 820.1(a) must:</P>
+<P>(a) <I>Document.</I> Document a quality management system that complies with the applicable requirements of ISO 13485 (incorporated by reference, see &#xA7; 820.7) and other applicable requirements of this part; and</P>
+<P>(b) <I>Applicable regulatory requirements.</I> Comply, as appropriate, with the other applicable regulatory requirements in this title, including, but not limited to the following, to fully comply with the listed ISO 13485 Clause:</P>
+<P>(1) For Clause 7.5.8 in ISO 13485, Identification, the manufacturer must document a system to assign unique device identification to the medical device in accordance with the requirements of part 830 of this chapter.</P>
+<P>(2) For Clause 7.5.9.1 in ISO 13485, Traceability&#x2014;General, the manufacturer must document procedures for traceability in accordance with the requirements of part 821 of this chapter, if applicable.</P>
+<P>(3) For Clause 8.2.3 in ISO 13485, Reporting to regulatory authorities, the manufacturer must notify FDA of complaints that meet the reporting criteria of part 803 of this chapter.</P>
+<P>(4) For Clauses 7.2.3, 8.2.3, and 8.3.3, advisory notices shall be handled in accordance with the requirements of part 806 of this chapter.</P>
+<P>(c) <I>Design and development.</I> Manufacturers of class II, class III, and those class I devices listed in paragraph (c)(1) of this section and table 1 to paragraph (c)(2) of this section must comply with the requirements in Design and Development, Clause 7.3 and its Subclauses in ISO 13485. The class I devices are as follows:</P>
+<P>(1) Devices automated with computer software; and</P>
+<P>(2) The devices listed in the following table:</P>
+<DIV width="100%"><DIV class="gpotbl_div">
+<TABLE border="1" cellpadding="1" cellspacing="1" class="gpo_table" frame="void" width="100%">
+<CAPTION><P class="title">Table 1 to Paragraph (<E T="01">c</E>)(2)</P></CAPTION>
+<THEAD>
+<TR>
+<TH class="center border-top-single border-bottom-single border-right-single">Section</TH>
+<TH class="center border-top-single border-bottom-single">Device</TH>
+</TR>
+</THEAD>
+<TBODY>
+<TR>
+<TD class="left border-right-single">868.6810</TD>
+<TD class="left">Catheter, Tracheobronchial Suction.</TD>
+</TR>
+<TR>
+<TD class="left border-right-single">878.4460</TD>
+<TD class="left">Glove, Non-powdered Surgeon's.</TD>
+</TR>
+<TR>
+<TD class="left border-right-single">880.6760</TD>
+<TD class="left">Restraint, Protective.</TD>
+</TR>
+<TR>
+<TD class="left border-right-single">892.5650</TD>
+<TD class="left">System, Applicator, Radionuclide, Manual.</TD>
+</TR>
+<TR>
+<TD class="left border-bottom-single border-right-single">892.5740</TD>
+<TD class="left border-bottom-single">Source, Radionuclide Teletherapy.</TD>
+</TR>
+</TBODY>
+</TABLE>
+</DIV></DIV>
+<P>(d) <I>Devices that support or sustain life.</I> Manufacturers of devices that support or sustain life, the failure of which to perform when properly used in accordance with instructions for use provided in the labeling can be reasonably expected to result in a significant injury, must comply with the requirements in Traceability for Implantable Devices, Clause 7.5.9.2 in ISO 13485, in addition to all other applicable requirements in this part, as appropriate.</P>
+<P>(e) <I>Enforcement.</I> The failure to comply with any applicable requirement in this part renders a device adulterated under section 501(h) of the Federal Food, Drug, and Cosmetic Act. Such a device, as well as any person responsible for the failure to comply, is subject to regulatory action.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="B" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-820/subpart-B&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 820 Subpart B&amp;quot;}">
+<HEAD>Subpart B&#x2014;Supplemental Provisions</HEAD>
+<DIV8 N="820.20-820.30" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.20-820.30&quot;,&quot;citation&quot;:&quot;21 CFR 820.20-820.30&quot;}">
+<HEAD>&#xA7;&#xA7; 820.20-820.30 [Reserved]</HEAD>
+</DIV8>
+
+<DIV8 N="820.35" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.35&quot;,&quot;citation&quot;:&quot;21 CFR 820.35&quot;}">
+<HEAD>&#xA7; 820.35 Control of records.</HEAD>
+<P>In addition to the requirements of Clause 4.2.5 in ISO 13485 (incorporated by reference, see &#xA7; 820.7), Control of Records, the manufacturer must include the following information in certain records:</P>
+<P>(a) <I>Records of complaints.</I> In addition to Clause 8.2.2 in ISO 13485, Complaint Handling, the manufacturer shall maintain records of the review, evaluation, and investigation for any complaints involving the possible failure of a device, labeling, or packaging to meet any of its specifications. If an investigation has already been performed for a similar complaint, another investigation is not necessary, and the manufacturer shall maintain records documenting justification for not performing such investigation. For complaints that must be reported to FDA under part 803 of this chapter, complaints that a manufacturer determines must be investigated, and complaints that the manufacturer investigated regardless of those requirements, the manufacturer must record the following information:</P>
+<P>(1) The name of the device;</P>
+<P>(2) The date the complaint was received;</P>
+<P>(3) Any unique device identifier (UDI) or universal product code (UPC), and any other device identification(s);</P>
+<P>(4) The name, address, and phone number of the complainant;</P>
+<P>(5) The nature and details of the complaint;</P>
+<P>(6) Any correction or corrective action taken; and</P>
+<P>(7) Any reply to the complainant.</P>
+<P>(b) <I>Records of servicing activities.</I> In adhering to Clause 7.5.4 in ISO 13485, Servicing Activities, the manufacturer must record the following information, at a minimum, for servicing activities:</P>
+<P>(1) The name of the device serviced;</P>
+<P>(2) Any UDI or UPC, and any other device identification(s);</P>
+<P>(3) The date of service;</P>
+<P>(4) The individual(s) who serviced the device;</P>
+<P>(5) The service performed; and</P>
+<P>(6) Any test and inspection data.</P>
+<P>(c) <I>Unique Device Identification.</I> In addition to the requirements of Clauses 7.5.1, 7.5.8, and 7.5.9 in ISO 13485, the UDI must be recorded for each medical device or batch of medical devices.</P>
+<P>(d) <I>Confidentiality.</I> Records deemed confidential by the manufacturer may be marked to aid FDA in determining whether information may be disclosed under the public information regulation in part 20 of this chapter.</P>
+</DIV8>
+
+<DIV8 N="820.40" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.40&quot;,&quot;citation&quot;:&quot;21 CFR 820.40&quot;}">
+<HEAD>&#xA7; 820.40 [Reserved]</HEAD>
+</DIV8>
+
+<DIV8 N="820.45" TYPE="SECTION" hierarchy_metadata="{&quot;path&quot;:&quot;/on/_SUBSTITUTE_DATE_/title-21/section-820.45&quot;,&quot;citation&quot;:&quot;21 CFR 820.45&quot;}">
+<HEAD>&#xA7; 820.45 Device labeling and packaging controls.</HEAD>
+<P>In addition to the requirements of Clause 7.5.1 of ISO 13485 (incorporated by reference, see &#xA7; 820.7), Control of production and service provision, each manufacturer must document and maintain procedures that provide a detailed description of the activities to ensure the integrity, inspection, storage, and operations for labeling and packaging, during the customary conditions of processing, storage, handling, distribution, and, as appropriate, use of the device.</P>
+<P>(a) The manufacturer must ensure labeling and packaging has been examined for accuracy prior to release or storage where applicable, to include the following:</P>
+<P>(1) The correct unique device identifier (UDI) or universal product code (UPC), or any other device identification(s);</P>
+<P>(2) Expiration date;</P>
+<P>(3) Storage instructions;</P>
+<P>(4) Handling instructions; and</P>
+<P>(5) Any additional processing instructions.</P>
+<P>(b) The release of the labeling for use must be documented in accordance with Clause 4.2.5 of ISO 13485.</P>
+<P>(c) The manufacturer must ensure labeling and packaging operations have been established and maintained to prevent mixups, including, but not limited to, inspection of the labeling and packaging before use to assure that all devices have correct labeling and packaging, as specified in the medical device file. Results of such labeling inspection must be documented in accordance with Clause 4.2.5 of ISO 13485.</P>
+</DIV8>
+
+</DIV6>
+<DIV6 N="C-O" TYPE="SUBPART" VOLUME="8" hierarchy_metadata="{&amp;quot;path&amp;quot;:&amp;quot;/on/_SUBSTITUTE_DATE_/title-21/part-820/subpart-C-O&amp;quot;,&amp;quot;citation&amp;quot;:&amp;quot;21 CFR Part 820 Subpart C-O&amp;quot;}">
+<HEAD>Subparts C-O [Reserved]</HEAD>
+</DIV6>
+</DIV5>

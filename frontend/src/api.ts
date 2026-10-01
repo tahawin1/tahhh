@@ -173,7 +173,7 @@ export interface DonneesDispositif {
 export interface PaysCorrespondance {
   id: string
   nom: string
-  statut: 'verifie' | 'provisoire'
+  statut: 'verifie' | 'partiel' | 'provisoire'
   autorite: string
   texte: string
   classes: Record<string, string[]>

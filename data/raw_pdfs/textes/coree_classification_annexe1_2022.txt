@@ -1,0 +1,63 @@
+■ ENFORCEMENT RULE OF THE MEDICAL DEVICES ACT  [Attached Table 1] <Amended on May 1, 2020>
+Standards and Procedures for Medical Device Classification and Designation 
+of Classes (In Relation to Article 2)
+1. Standards for the Classification of Medical Devices
+  A. The Minister of Food and Drug Safety shall classify medical devices into 
+any of the following four classes through deliberation by the Medical 
+Device Committee according to the purpose of use and the degree of 
+potential risk to human body. In such case, if a medical device falls 
+under two or more of the following classes, it shall be classified into the 
+class of the highest risk:
+    1) Class I: Medical devices with little potential risk;
+    2) Class II: Medical devices with low potential risk;
+    3) Class III: Medical devices with moderate potential risk;
+    4) Class IV: Medical devices with high risk.
+  B. The standard for deciding the degree of potential risk of Item A are as 
+follows:
+    1) Duration of contact with human body;
+    2) Degree of invasiveness;
+    3) Whether a device delivers medicine or energy to the patient;
+    4) Whether a device has biological impact on the patient.
+  C. Deleted. <May 1, 2020>
+  D. Deleted. <May 1, 2020>
+  E. Detailed standards for the purpose and use and potential risk under 
+Items A and B shall be determined and publicly notified by the Minister 
+of Food and Drug Safety.
+2. Procedures for Designation of Class
+  The Minister of Food and Drug Safety shall classify medical devices into 
+Section, Division, or Group  according to the classification of the following 
+items. In such case, items classified as Section and Division shall be 
+publicly notified, and items classified as Group shall be publicly notified by 
+assigning classification to each item:
+  A. Section: Classification of medical devices into each instrument/machine, 
+device, or material;
+  B. Division: Classification of each Section into product groups with similar 
+raw material, manufacturing process, and quality control system:
+  C. Group: Classification of each Division into each item where functions are 
+demonstrated independently.
+3. Application for Class Re-Designation and Designation Procedures
+  A. The Minister of Food and Drug Safety may re-designate the class of 
+each item through deliberation by the Medical Device Committee when 
+there is an application for re-designation from the party concerned, etc., 
+or when it is deemed there is a need for such re-designation.
+  B. In cases of re-designation, the degree of potential risk and validity of 
+such re-designation under the following standards shall be examined:
+    1) Whether the description of each item and purpose, use, principle, 
+
+feature, function, etc. of the relevant medical device correspond to 
+similar items;
+    2) Whether safety and performance of each item are fully secured 
+compared to the items already classified to be designated, and 
+managed.
+  C. A person who intends to apply for class re-designation shall submit an 
+application in the Attached Form 54 to the Minister of Food and Drug 
+Safety, along with the following data:
+    1) Data on technical document, etc.;
+    2) Data on comparative analysis of technical characteristics including 
+structure/operational principle, performance, purpose of use, methods of 
+use, etc. with other devices that are similar to medical devices subject 
+to class re-designation.
+  D. Upon receiving an application for class re-designation under the 
+provisions of Item C, The Minister of Food and Drug Safety shall review 
+and decide within 90 days and notify the applicant of the result, and 
+notify the public thereof.

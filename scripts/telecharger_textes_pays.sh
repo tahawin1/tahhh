@@ -47,17 +47,49 @@ else
     nom="etats_unis_21cfr_${part}.xml"
     url="https://www.ecfr.gov/api/versioner/v1/full/${DATE_CFR}/title-21.xml?part=${part}"
     if [ -s "$DEST/$nom" ]; then echo "  = $nom déjà présent"; continue; fi
-    if curl -fsSL --retry 3 -m 300 -A "$UA" -o "$DEST/$nom" "$url"; then
+    if curl -fsSL --compressed --retry 3 -m 300 -A "$UA" -o "$DEST/$nom" "$url"; then  # eCFR exige la compression
       noter "$nom" "$url (édition du $DATE_CFR)"; echo "  ✓ $nom (édition du $DATE_CFR)"
     else rm -f "$DEST/$nom"; ECHECS=$((ECHECS+1)); echo "  ✗ $nom"; fi
   done
 fi
 
-echo "== Corée du Sud : Medical Devices Act (traduction anglaise officielle)"
-pdf coree_medical_devices_act.pdf \
-  "https://importlicensing.wto.org/sites/default/files/members/78/Medical%20Devices%20Act_23.04.2019.pdf"
-echo "  (version la plus récente et décret/arrêté d'application : MFDS https://www.mfds.go.kr/eng/brd/m_40/list.do"
-echo "   ou KLRI https://elaw.klri.re.kr — à déposer sous coree_*.pdf, puis relancer l'indexation)"
+echo "== Corée du Sud : loi (KLRI), arrêté d'application, règlement d'autorisation, GMP (MFDS, traductions officielles)"
+# Loi : traduction anglaise officielle du KLRI, version en vigueur (Act No. 20888 du 1-4-2025)
+if [ -s "$DEST/textes/coree_medical_devices_act_2025.txt" ]; then echo "  = loi coréenne déjà présente"
+else
+  URL_LOI="https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=69923"
+  if curl -fsSL -m 120 -A "$UA" -o "$DEST/coree_medical_devices_act_2025.html" "$URL_LOI"; then
+    $PYTHON - "$DEST" <<'PY'
+import html, re, sys
+from pathlib import Path
+dest = Path(sys.argv[1])
+t = (dest / "coree_medical_devices_act_2025.html").read_text(encoding="utf-8", errors="ignore")
+t = re.sub(r"<script.*?</script>|<style.*?</style>", "", t, flags=re.S)
+t = re.sub(r"<br\s*/?>|</(p|div|li|tr|h\d)>", "\n", t, flags=re.I)
+lignes = [re.sub(r"[ \t\xa0]+", " ", l).strip() for l in html.unescape(re.sub(r"<[^>]+>", "", t)).splitlines()]
+texte = "\n".join(l for l in lignes if l and l != "-->")
+texte = texte[texte.find("MEDICAL DEVICES ACT"):]
+(dest / "textes" / "coree_medical_devices_act_2025.txt").write_text(texte, encoding="utf-8")
+(dest / "coree_medical_devices_act_2025.html").unlink()
+PY
+    printf '| %s | %s | %s | — |\n' textes/coree_medical_devices_act_2025.txt "$URL_LOI" "$(date +%F)" >> "$MANIFESTE"
+    echo "  ✓ loi coréenne (Act No. 20888, 2025)"
+  else ECHECS=$((ECHECS+1)); echo "  ✗ loi coréenne ($URL_LOI)"; fi
+fi
+mfds() {  # nom seq numéro_fichier [fichier dans l'archive]
+  local nom=$1 url="https://www.mfds.go.kr/eng/brd/m_40/down.do?brd_id=eng0011&seq=$2&data_tp=A&file_seq=$3" dans=${4:-}
+  if [ -s "$DEST/$nom" ]; then echo "  = $nom déjà présent"; return; fi
+  local tmp; tmp=$(mktemp)
+  for essai in 1 2 3; do curl -fsSL --http1.1 -m 300 -A "$UA" -o "$tmp" "$url" && break; sleep 4; done
+  if [ -n "$dans" ] && unzip -p "$tmp" "$dans" > "$DEST/$nom" 2>/dev/null && head -c 5 "$DEST/$nom" | grep -q '%PDF'; then :
+  elif [ -z "$dans" ] && head -c 5 "$tmp" | grep -q '%PDF'; then mv "$tmp" "$DEST/$nom"
+  else rm -f "$DEST/$nom"; ECHECS=$((ECHECS+1)); echo "  ✗ $nom ($url)"; rm -f "$tmp"; return; fi
+  rm -f "$tmp"; noter "$nom" "$url"; echo "  ✓ $nom"
+}
+mfds coree_arrete_application_2022.pdf 72634 1 "ENFORCEMENT RULE OF THE MEDICAL DEVICES ACT_Ordinance of the Prime Minister No.1819_20220721.pdf"
+mfds coree_classification_annexe1_2022.pdf 72634 1 "[Attached Table 1] Standards and Procedures for Medical Device Classification and Designation of Classes (In Relation to Article 2).pdf"
+mfds coree_reglement_autorisation_2022.pdf 72633 1 "Regulation on the Permission, Notification, Review, Etc. of Medical Devices(No. 2022-52, July 29, 2022).pdf"
+mfds coree_bpf_gmp_2026.pdf 72638 1
 
 echo "== Pakistan : Medical Devices Rules 2017 (DRAP)"
 pdf pakistan_medical_devices_rules_2017_maj_2022.pdf \

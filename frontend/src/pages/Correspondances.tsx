@@ -98,7 +98,10 @@ export default function Correspondances() {
             </tbody>
           </table>
         </div>
-        <p className="aide"><span className="pastille attention">Provisoire</span> : texte officiel pas encore indexé ; à confronter au texte avant de s'y fier.</p>
+        <p className="aide">
+          <span className="pastille encours">Partiel</span> : texte officiel indexé et confronté, les points restant à vérifier sont signalés.{' '}
+          <span className="pastille attention">Provisoire</span> : texte officiel pas encore indexé ; à confronter au texte avant de s'y fier.
+        </p>
       </section>
 
       <section className="panneau">
@@ -138,6 +141,7 @@ function EntetePays({ id, nom, statut }: { id: string; nom: string; statut?: str
     <span className="entete-pays">
       <span className={`puce-pays ${puce.teinte}`} aria-hidden>{puce.code}</span> {nom}
       {statut === 'provisoire' && <span className="pastille attention">Provisoire</span>}
+      {statut === 'partiel' && <span className="pastille encours" title="Texte indexé ; quelques points restent à vérifier">Partiel</span>}
     </span>
   )
 }

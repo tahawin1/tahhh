@@ -321,7 +321,8 @@ piece_specifique_selon_origine:
     fourni_par: "le MFDS (via le fabricant)"
     source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document coréen : rules/coree_du_sud.yaml (provisoire)"
     remarque: >-
-      Grades coréens 1 à 4, proches des classes I, IIa, IIb, III. Documents
+      Classes coréennes I à IV, proches des classes marocaines I, IIa, IIb, III
+      (attention : la classe IV coréenne correspond à la classe III). Documents
       en coréen : traduction assermentée en français.
     champs_a_extraire: *champs_autorisation
     traduction_requise: true

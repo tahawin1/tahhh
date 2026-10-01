@@ -5,39 +5,43 @@
 #   860 (classification), 801 (étiquetage)
 # Autorité : FDA (Food and Drug Administration) — CDRH
 #
-# STATUT : PROVISOIRE (2026-10-01). Rédigé avant l'indexation des textes
-# officiels (sites bloqués depuis l'environnement de développement) : chaque
-# point est à confronter au texte indexé avant tout usage dans une décision.
+# STATUT : PARTIEL (2026-10-01). Confronté aux textes indexés (21 CFR, édition
+# eCFR du 2026-09-25, data/raw_pdfs/textes/etats_unis_21cfr_*.txt) : chaque
+# point vérifié porte sa référence. Reste à vérifier : le Certificate to
+# Foreign Government (FD&C Act, section 801(e)(4) — loi non indexée).
 #
 # Usage principal dans ce projet : identifier la pièce justificative
 # américaine (autorisation FDA + certificat d'exportation) exigée par le
 # Maroc pour un fournisseur américain (voir rules/maroc.yaml).
 
 pays: etats_unis
-statut: provisoire
+statut: partiel
 date_version: "2026-10-01"
 autorite: "Food and Drug Administration (FDA) — Center for Devices and Radiological Health (CDRH)"
 classification: [I, II, III]
 
+classification_source: "21 CFR 860.3 (c) — trois catégories de contrôle réglementaire (vérifié)"
+
 mise_sur_le_marche_par_classe:
-  I: "la plupart exemptés de 510(k) ; enregistrement de l'établissement et listing (21 CFR 807)"
-  II: "notification préalable 510(k) (équivalence substantielle à un dispositif déjà commercialisé), sauf exemption"
-  III: "autorisation préalable PMA (21 CFR 814) ; De Novo pour un dispositif nouveau à risque faible ou modéré"
+  I: "contrôles généraux ; la plupart exemptés de notification préalable ; enregistrement et listing (21 CFR 807) (vérifié)"
+  II: "contrôles spéciaux ; notification préalable 510(k) (21 CFR 807.81), sauf exemption (vérifié)"
+  III: "autorisation préalable PMA (21 CFR 814.1) ; demande De Novo (21 CFR 860, art. 513(f)(2) FD&C Act) pour un dispositif nouveau à classer en I ou II (vérifié)"
 
 systeme_qualite:
   texte: "21 CFR 820 — Quality Management System Regulation (QMSR)"
-  note: "intègre la norme ISO 13485:2016 par référence (en vigueur depuis le 2 février 2026)"
+  note: "intègre la norme ISO 13485:2016 par référence (21 CFR 820.7 et 820.10, vérifié ; en vigueur depuis le 2 février 2026)"
 
 preuve_mise_sur_le_marche:
   document: "lettre d'autorisation 510(k), approbation PMA ou décision De Novo (numéro K…, P…, DEN…)"
-  certificat_exportation: "Certificate to Foreign Government (CFG) délivré par la FDA (base : FD&C Act, section 801(e)(4))"
+  numero_autorisation: "numéro de l'autorisation (510(k), PMA, De Novo) déclaré au listing (21 CFR 807.28, vérifié)"
+  certificat_exportation: "Certificate to Foreign Government (CFG) délivré par la FDA (FD&C Act, section 801(e)(4) — loi non indexée, à vérifier)"
 
 equivalence_etrangere:
   acceptee: false
   note: "La FDA n'accepte pas d'autorisation étrangère à la place d'un 510(k) ou d'une PMA."
 
 representant_local_requis: true
-representant_local_nom: "US Agent (fabricant étranger, 21 CFR 807.40)"
+representant_local_nom: "United States agent du fabricant étranger (21 CFR 807.3 (s) et 807.40, vérifié)"
 
 contraintes_operationnelles:
   langue_etiquetage: [anglais]
