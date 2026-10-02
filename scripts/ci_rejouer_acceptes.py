@@ -157,6 +157,10 @@ class Rejeu:
 
         # lettre comparée à la lettre acceptée
         lettre_acceptee = acc["fichiers"].get(1)
+        lettre = next(p for p in self.dossier(d["id"])["documents"] if p["code"] == "demande_signee")
+        if lettre["statut"] in ("a_generer", "erreur"):  # pièces exigées non reçues : lancée comme par une personne
+            self.http.post(f"{self.api}/dossiers/{d['id']}/documents/{lettre['id']}/generer", timeout=120,
+                           json={"acteur": ACTEUR}).raise_for_status()
         d = self.attendre(d["id"], lambda x: next(p for p in x["documents"] if p["code"] == "demande_signee")["statut"]
                           not in ("a_generer", "en_file", "en_generation"), "lettre")
         lettre = next(p for p in d["documents"] if p["code"] == "demande_signee")

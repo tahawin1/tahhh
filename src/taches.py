@@ -204,7 +204,10 @@ def enchainer(session, dossier, acteur: str = "système") -> list[str]:
                         f"{doc.nom} — {resultat['bilan']['a_completer']} case(s) à compléter", document_id=doc.id)
             relances.append(doc.code)
     lisibles = [d for d in dossier.documents if d.nature == "a_fournir" and d.champs_a_extraire]
-    tout_lu = lisibles and all(d.extraction_statut == "terminee" for d in lisibles)
+    # une lecture en erreur ne bloque pas la lettre (elle reste à relire et signalée) ; il faut
+    # que chaque document reçu ait été traité et qu'au moins un ait été lu
+    tout_lu = (lisibles and all(d.extraction_statut in ("terminee", "erreur") for d in lisibles)
+               and any(d.extraction_statut == "terminee" for d in lisibles))
     a_lancer = [d for d in dossier.documents if d.nature == "a_rediger" and d.code not in codes_formulaires
                 and d.statut == "a_generer"]
     if tout_lu:

@@ -114,6 +114,11 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                         valeur, piece = trouve
                         r.update(valeur=valeur, provenance="piece", a_verifier=True,
                                  detail=f"Relevé dans le texte de la pièce {piece.numero} ({piece.nom})")
+                elif genre == "references_etiquettes":
+                    if (trouve := _references_etiquettes(dossier.documents)):
+                        valeur, piece = trouve
+                        r.update(valeur=valeur, provenance="piece", a_verifier=True,
+                                 detail=f"Relevé par le code sur les étiquettes (pièce {piece.numero})")
                 elif genre == "transition_2023_607":
                     if (trouve := _transition_2023_607(dossier, une)):
                         valeur, detail = trouve
@@ -126,6 +131,9 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                 elif genre == "defaut":
                     r.update(valeur=reste, provenance="defaut", a_verifier=True,
                              detail="Valeur habituelle (dossier accepté) — à confirmer")
+                if r["valeur"] and d.get("garder"):  # ne garder que le code (« EMDN code P099001- » -> P099001)
+                    m = re.search(d["garder"], r["valeur"])
+                    r["valeur"] = m.group(0) if m else None
                 if r["valeur"]:
                     break
         resultat[ident] = r
@@ -161,6 +169,27 @@ def _textes(documents, code: str):
         if (d.code == code or (code == "piece_specifique" and d.code.startswith("piece_specifique"))) \
                 and getattr(d, "texte_recu", None):
             yield d, d.texte_recu
+
+
+MENTIONS_ETIQUETTE = {"FOR", "INTERNAL", "USE", "ONLY", "LOT", "REF", "STERILE", "CE", "EXTERNAL"}
+REF_ETIQUETTE = re.compile(r"([A-Z][A-Za-z0-9®’'\-+ ]{2,40}?)\s*\(\s*Ref(?:\.|erence)?\s*(?:Code|No\.?)?\s*[:.]?\s*"
+                           r"([A-Z0-9][A-Z0-9/\-.]{2,14})\s*\)")
+
+
+def _references_etiquettes(documents) -> tuple[str, object] | None:
+    """« CEMEX RX (Ref. Code 1200/A) » sur chaque étiquette : « NOM | RÉF »,
+    une ligne par produit, dans l'ordre, sans doublon."""
+    for piece, texte in _textes(documents, "etiquetage"):
+        vus = {}
+        for m in REF_ETIQUETTE.finditer(re.sub(r"\s+", " ", texte)):
+            mots = m.group(1).split()[-4:]  # le nom commercial : les derniers mots avant « (Ref. … »
+            while mots and mots[0].upper() in MENTIONS_ETIQUETTE:
+                mots.pop(0)
+            if mots:
+                vus.setdefault(m.group(2).rstrip(".-"), " ".join(mots))
+        if vus:
+            return "\n".join(f"{nom} | {ref}" for ref, nom in vus.items()), piece
+    return None
 
 
 def _motif(documents, code: str, motif: str) -> tuple[str, object] | None:
@@ -234,6 +263,8 @@ def _plusieurs_produits(resultat: dict) -> None:
     marque = ""
     if nom and nom["valeur"] and nom["provenance"] != "saisie":
         marque = re.split(r"\s*/\s*", nom["valeur"])[0].strip().upper()
+    elif (fabricant := resultat.get("fabricant_nom")) and fabricant["valeur"]:  # marque = nom du fabricant
+        marque = fabricant["valeur"].split()[0].strip(",.").upper()
     lignes = [l.strip() for l in references["valeur"].splitlines() if l.strip()]
     if all(l.count("|") == 2 for l in lignes):
         return  # déjà « MARQUE | NOM | RÉF »
@@ -242,7 +273,9 @@ def _plusieurs_produits(resultat: dict) -> None:
     else:
         produits = [[p.strip(), ""] for p in re.split(r"[,;\n]", references["valeur"]) if p.strip()]
     references["valeur"] = "\n".join(f"{marque} | {p[0]} | {p[1] if len(p) > 1 else ''}" for p in produits)
-    if len(produits) > 1 and marque and "annexe" not in nom["valeur"].lower():
+    if len(produits) > 1 and marque and nom and nom["provenance"] != "saisie" and "annexe" not in (nom["valeur"] or "").lower():
+        if not nom["valeur"]:  # marque tirée du nom du fabricant : à vérifier
+            nom.update(provenance="donnee", a_verifier=True, detail="Marque = nom du fabricant")
         nom["valeur"] = f"{marque} / Voir annexe"
         nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"
 

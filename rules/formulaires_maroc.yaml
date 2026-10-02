@@ -29,7 +29,7 @@
 # na_si_origine : la donnée vaut « NA » pour ces pays d'origine.
 # format : date (la date lue est écrite jj/mm/aaaa) | classe (IIB -> IIb).
 
-version: 2
+version: 3
 date_version: "2026-10-02"
 
 donnees:
@@ -71,7 +71,10 @@ donnees:
     sources: []
   code_classification:
     libelle: "Code GMDN et/ou code de classification (EMDN, Cladimed)"
-    sources: []
+    # code EMDN lu dans la déclaration de conformité (point 1 de la checklist), sinon relevé dans son texte
+    sources: ["piece:declaration_conformite:cl_declaration_de_conformite_0",
+              "motif:declaration_conformite:\\b[A-Z]\\d{6,12}\\b"]
+    garder: "[A-Z]\\d{6,12}"
   designation:
     libelle: "Désignation du dispositif médical"
     sources: ["dossier:produit"]
@@ -207,7 +210,10 @@ donnees:
     libelle: "Liste des références (Nom de marque | Nom commercial | Référence), une ligne par produit"
     type: references
     # les étiquettes donnent exactement les produits déposés, avec leur REF ; le catalogue, toute la gamme
-    sources: ["piece:etiquetage:references", "piece:catalogue:references", "piece:etiquetage:noms_commerciaux"]
+    # « Nom (Ref. Code 1200/A) » relevé par le code sur chaque étiquette (fiable, tous les produits),
+    # sinon la lecture de Mistral
+    sources: ["references_etiquettes", "piece:etiquetage:references", "piece:catalogue:references",
+              "piece:etiquetage:noms_commerciaux"]
   representant_legal:
     libelle: "Représentant légal de l'établissement (signataire)"
     sources: ["profil:representant_legal"]

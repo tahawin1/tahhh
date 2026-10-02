@@ -191,8 +191,9 @@ Réponds uniquement avec l'objet JSON demandé."""
                     "prompt": prompt,
                     "stream": False,
                     "format": _schema(champs),
-                    # ~80 jetons par champ (valeur + citation) : la checklist ajoute jusqu'à 30 points par pièce
-                    "options": {"temperature": 0, "num_ctx": 8192, "num_predict": max(1200, 90 * len(champs))},
+                    # valeur + citation de 200 caractères : jusqu'à ~150 jetons par champ ; trop court, la
+                    # réponse est coupée et le JSON invalide (notice du dossier Ciment osseux, rejeu Jenkins)
+                    "options": {"temperature": 0, "num_ctx": 8192, "num_predict": max(1200, 160 * len(champs))},
                 },
                 timeout=OLLAMA_TIMEOUT,
             )
@@ -243,6 +244,18 @@ def controler(reponse: dict, champs: list[dict], texte: str) -> list[dict]:
     return resultats
 
 
+def _lire_paquet(texte: str, paquet: list[dict], piece: str) -> list[dict]:
+    """Un paquet de champs ; si Mistral rend un JSON coupé ou invalide, le
+    paquet est coupé en deux et relu (jusqu'à un champ par appel)."""
+    try:
+        return controler(interroger_mistral(texte, paquet, piece), paquet, texte)
+    except ExtractionImpossible as e:
+        if "JSON invalide" not in str(e) or len(paquet) == 1:
+            raise
+        moitie = len(paquet) // 2
+        return _lire_paquet(texte, paquet[:moitie], piece) + _lire_paquet(texte, paquet[moitie:], piece)
+
+
 def extraire(chemin: Path, champs: list[dict], piece: str) -> dict:
     """Pipeline complet pour un document reçu. Lève ExtractionImpossible si
     le document est illisible ou si le premier paquet (champs des règles)
@@ -255,7 +268,7 @@ def extraire(chemin: Path, champs: list[dict], piece: str) -> dict:
     paquets = [champs[i:i + CHAMPS_PAR_APPEL] for i in range(0, len(champs), CHAMPS_PAR_APPEL)]
     for rang, paquet in enumerate(paquets):
         try:
-            resultats += controler(interroger_mistral(texte, paquet, piece), paquet, texte)
+            resultats += _lire_paquet(texte, paquet, piece)
         except ExtractionImpossible as e:
             if rang == 0:
                 raise
