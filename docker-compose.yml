@@ -75,6 +75,29 @@ services:
       - "127.0.0.1:4040:4040"  # interface d'inspection ngrok, locale uniquement
     restart: unless-stopped
 
+  # Intégration continue — démarré avec : sudo bash scripts/installer_jenkins.sh
+  # Réseau de l'hôte : joint Ollama (127.0.0.1:11434) et l'API comme le serveur.
+  # Socket Docker de l'hôte : Jenkins lance ses conteneurs de test et reconstruit
+  # l'outil — il a donc les droits de Docker : accès réservé au compte admin.
+  jenkins:
+    profiles: [jenkins]
+    build: deploiement/jenkins
+    container_name: conformite-jenkins
+    network_mode: host
+    user: root
+    environment:
+      JENKINS_OPTS: "--httpPort=${JENKINS_PORT:-8081}"
+      JENKINS_ADMIN_PASSWORD: ${JENKINS_ADMIN_PASSWORD:-}
+      JENKINS_DEPOT: ${JENKINS_DEPOT:-https://github.com/tahawin1/tahhh.git}
+      JENKINS_BRANCHE: ${JENKINS_BRANCHE:-claude/complete-pipeline-setup-ikdsp0}
+    volumes:
+      # même chemin dans Jenkins et sur l'hôte : les « docker run -v $WORKSPACE » du Jenkinsfile fonctionnent
+      - /var/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/conformite:/opt/conformite  # déploiement (étape validée par une personne)
+      - /var/backups/conformite:/var/backups/conformite  # sauvegarde faite avant chaque déploiement
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   qdrant_data:
