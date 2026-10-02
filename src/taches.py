@@ -144,7 +144,8 @@ def executer_extraction(document_id: int) -> None:
             journaliser(
                 session, doc.dossier_id, "système", "lecture_terminee",
                 f"{doc.nom} — {r['verifie']} champ(s) vérifié(s), "
-                f"{r['citation_introuvable'] + r['valeur_hors_citation']} non vérifié(s), {r['absent']} absent(s)",
+                f"{r['citation_introuvable'] + r['valeur_hors_citation']} non vérifié(s), {r['absent']} absent(s)"
+                + (f" — {resultat['incomplet']} : relancer la lecture" if resultat.get("incomplet") else ""),
                 document_id=doc.id,
             )
         session.commit()

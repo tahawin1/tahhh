@@ -121,8 +121,9 @@ def recadrer_sur_modele(texte: str, modele: str) -> tuple[str, int]:
             break
     if dernier is None:
         return "\n".join(lignes).strip(), 0
-    while dernier + 1 < len(lignes) and len(lignes[dernier + 1].split()) <= 5:
-        dernier += 1  # signataire, ligne vide
+    while (dernier + 1 < len(lignes) and len(lignes[dernier + 1].split()) <= 5
+           and not lignes[dernier + 1].rstrip().endswith(":")):
+        dernier += 1  # signataire, ligne vide — pas un titre recopié du prompt (« Consignes strictes : »)
     retirees = [l for l in lignes[dernier + 1:] if l.strip()]
     return "\n".join(lignes[: dernier + 1]).strip(), len(retirees)
 

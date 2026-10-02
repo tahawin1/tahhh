@@ -90,6 +90,10 @@ Pour le dossier complet, veuillez trouver ci-dessous la liste des pièces :
         texte, retirees = recadrer_sur_modele(sortie, self.MODELE)
         self.assertTrue(texte.endswith("M. Représentant Exemple"))
         self.assertEqual(retirees, 2)
+        # essai Jenkins : titre du prompt recopié juste après le pied de page
+        texte, retirees = recadrer_sur_modele(self.SORTIE.split("Pour le dossier")[0] + "Consignes strictes :", self.MODELE)
+        self.assertTrue(texte.endswith("Tel : 05 00 00 00 00"))
+        self.assertEqual(retirees, 1)
 
     def test_date_du_jour_et_ville_du_profil(self):
         import datetime

@@ -174,7 +174,7 @@ class Essai:
                       "AMMPS" in corps or "Agence Marocaine" in corps, corps[:300])
         self.verifier("6 rédaction", "désignation du dispositif reprise", "hanche" in corps.lower(), corps[:300])
         self.verifier("6 rédaction", "pas de préambule ni de consigne recopiée",
-                      not re.search(r"(?im)^\s*(voici|ici, il est important|note\s*:)", corps), corps[:300])
+                      not re.search(r"(?im)^\s*(voici|ici, il est important|note\s*:|consignes|r[eè]gles strictes)", corps), corps[:300])
         self.verifier("6 rédaction", "datée du jour", datetime.date.today().strftime("%d/%m/%Y") in corps
                       or "[À COMPLÉTER" in corps, re.findall(r"le \S+", corps)[:2])
         sources = lettre.get("sources") or []

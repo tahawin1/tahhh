@@ -65,6 +65,7 @@ class TestApi(unittest.TestCase):
         taches._obtenir_generateur = lambda: None
         taches.soumettre = taches.executer_generation  # exécution immédiate
         taches.soumettre_extraction = taches.executer_extraction
+        cls._vrai_extraire = extraction.extraire  # rétabli à la fin : les autres tests lisent pour de vrai
         extraction.extraire = faux_extraire
         cls.client = TestClient(api.app)
         cls.client.__enter__()  # déclenche le lifespan (création des tables)
@@ -72,6 +73,7 @@ class TestApi(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.client.__exit__(None, None, None)
+        extraction.extraire = cls._vrai_extraire
         shutil.rmtree(TMP, ignore_errors=True)
 
     def setUp(self):

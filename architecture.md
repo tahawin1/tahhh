@@ -71,7 +71,7 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 
 | Pays | Texte de référence | Autorité | Fichier YAML |
 |---|---|---|---|
-| Maroc (destination) | Loi 84-12, Décret 2-14-607, Arrêtés 2853-2856 (enregistrement : 2855-15 art. 2) | AMMPS (ex-DMP) — demande adressée à son Directeur général | `rules/maroc.yaml` (v2.6 ; v1 dans `rules/historique/`) |
+| Maroc (destination) | Loi 84-12, Décret 2-14-607, Arrêtés 2853-2856 (enregistrement : 2855-15 art. 2) | AMMPS (ex-DMP) — demande adressée à son Directeur général | `rules/maroc.yaml` (v2.7 ; v1 dans `rules/historique/`) |
 | Chine (origine possible) | Règlement du Conseil d'État n°739 (2021) | NMPA | `rules/chine.yaml` |
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
@@ -383,6 +383,33 @@ supporte déjà.
       Jenkins ; l'image de test n'a pas pu être construite ici (limite Docker Hub
       429, apt bloqué) — `--pull` retiré pour la même raison. Pas encore exécuté
       sur le PC de l'utilisateur.
+- [x] **Pipeline Jenkins « métier » complet** (2026-10-02, demande : chaque étape —
+      lois, checklist, recommandations de Mistral, RAG — exécutée et notée) :
+      - matrice des règles `scripts/ci_regles.py` : 7 origines × 7 classes × 5 situations
+        (245 combinaisons) comparées à `tests/fixtures/matrice_regles.json` ; anomalies
+        (pièce sans `source`, numéro en double, pas de pièce 4, traduction non signalée).
+        A trouvé 2 vrais défauts → **règles Maroc 2.7** (fondement des pièces 4 Chine,
+        Inde, UE, autre ; UE classe I : certificat de libre vente = pièce 4) ;
+      - RAG `scripts/ci_rag.py` : extraits indexés par pays, 10 questions de référence
+        (bon texte du bon pays dans les 3 premiers), synthèses Mistral avec citations
+        vérifiées (≥ 4 pays sur 7) ;
+      - agent de bout en bout `scripts/ci_agent.py` (API de CI éphémère : SQLite,
+        mémoire vide, Qdrant et Ollama du serveur) : règles, classement, lecture des
+        spécimens, checklist (certificat NMPA expiré détecté), formulaires, lettre,
+        ZIP, reprise des documents du même fabricant ;
+      - rejeu des dossiers acceptés `scripts/ci_rejouer_acceptes.py` : classe dans le
+        nom du dossier (« Ciment osseux (IIb) ») ou `classe.txt` ; pièces fournisseur
+        seules déposées ; formulaires comparés à la mémoire apprise (outil 4), lettre
+        comparée à la lettre acceptée ; rapport `dossiers-acceptes.md` ;
+      - Jenkinsfile : qualité IA sous le seuil = INSTABLE, code cassé = ÉCHEC ;
+        déploiement possible si ≥ INSTABLE et confirmé par une personne.
+      **Exécuté ici sur la vraie pile** (Ollama mistral + bge-m3, Qdrant indexé, CPU
+      4 cœurs) : RAG 10/10 sur les pays indexés ; agent 24/29 au 1er passage. Défauts
+      trouvés et corrigés : lecture de 30 champs d'un coup hors délai (15 min) →
+      lecture par paquets de 10 champs (`CHAMPS_PAR_APPEL`, règles d'abord, un paquet
+      de checklist en échec n'efface pas le reste) ; « Consignes strictes : » recopié
+      après le pied de page → recadrage ; `test_api` ne rétablissait pas la vraie
+      lecture (effet de bord entre tests).
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

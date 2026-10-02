@@ -30,6 +30,11 @@ OLLAMA_MODEL = os.environ.get("OLLAMA_MODEL", "mistral")
 OLLAMA_TIMEOUT = int(os.environ.get("OLLAMA_TIMEOUT", "900"))
 LANGUES_OCR_RECUS = os.environ.get("LANGUES_OCR_RECUS", "fra+eng")
 MAX_CARACTERES = 12000  # un certificat tient en 1 à 3 pages
+# Champs demandés à Mistral par appel : 30 champs d'un coup (règles + checklist)
+# dépassaient 15 min sur une machine lente et dégradaient les réponses de
+# Mistral 7B (essai Jenkins du 2026-10-02). Les champs des règles passent en
+# premier ; la checklist suit par paquets.
+CHAMPS_PAR_APPEL = int(os.environ.get("CHAMPS_PAR_APPEL", "10"))
 EXTENSIONS_ACCEPTEES = {".pdf", ".png", ".jpg", ".jpeg"}
 
 # Verdicts du contrôle d'un champ
@@ -239,11 +244,23 @@ def controler(reponse: dict, champs: list[dict], texte: str) -> list[dict]:
 
 
 def extraire(chemin: Path, champs: list[dict], piece: str) -> dict:
-    """Pipeline complet pour un document reçu. Lève ExtractionImpossible."""
+    """Pipeline complet pour un document reçu. Lève ExtractionImpossible si
+    le document est illisible ou si le premier paquet (champs des règles)
+    échoue ; un paquet suivant (points de la checklist) en échec n'efface
+    pas ce qui a été lu : ses champs sont marqués absents et signalés."""
     if not champs:
         raise ExtractionImpossible("Aucun champ à extraire n'est déclaré pour cette pièce dans les règles.")
     texte = lire_document(chemin)
-    resultats = controler(interroger_mistral(texte, champs, piece), champs, texte)
+    resultats, incomplet = [], []
+    paquets = [champs[i:i + CHAMPS_PAR_APPEL] for i in range(0, len(champs), CHAMPS_PAR_APPEL)]
+    for rang, paquet in enumerate(paquets):
+        try:
+            resultats += controler(interroger_mistral(texte, paquet, piece), paquet, texte)
+        except ExtractionImpossible as e:
+            if rang == 0:
+                raise
+            incomplet.append(str(e))
+            resultats += controler({}, paquet, texte)  # absents : rien n'est inventé
     return {
         "champs": resultats,
         "resume": {v: sum(1 for r in resultats if r["verification"] == v)
@@ -251,4 +268,6 @@ def extraire(chemin: Path, champs: list[dict], piece: str) -> dict:
         "caracteres_lus": len(texte),
         "texte": texte,
         "modele": OLLAMA_MODEL,
+        "appels": len(paquets),
+        **({"incomplet": f"{len(incomplet)} paquet(s) de champs non lu(s) : {incomplet[0]}"} if incomplet else {}),
     }

@@ -77,3 +77,46 @@ class TestControle(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestLectureParPaquets(unittest.TestCase):
+    """30 champs d'un coup dépassaient le délai sur une machine lente (essai Jenkins) :
+    lecture par paquets, et un paquet de checklist en échec n'efface pas le reste."""
+
+    def test_paquets_et_echec_partiel(self):
+        import tempfile
+        from unittest import mock
+
+        import extraction
+
+        champs = [{"nom": f"c{i}", "libelle": f"c{i}", "description": "x"} for i in range(25)]
+        appels = []
+
+        def faux_mistral(texte, paquet, piece):
+            appels.append([c["nom"] for c in paquet])
+            if len(appels) == 2:
+                raise extraction.ExtractionImpossible("Mistral n'a pas répondu en 900s.")
+            return {c["nom"]: {"valeur": "Hangzhou", "citation": "Hangzhou Specimen"} for c in paquet}
+
+        with tempfile.NamedTemporaryFile(suffix=".txt") as f, \
+                mock.patch.object(extraction, "lire_document", return_value="Hangzhou Specimen Orthopaedics"), \
+                mock.patch.object(extraction, "interroger_mistral", side_effect=faux_mistral), \
+                mock.patch.object(extraction, "CHAMPS_PAR_APPEL", 10):
+            r = extraction.extraire(Path(f.name), champs, "ISO")
+        self.assertEqual([len(a) for a in appels], [10, 10, 5])
+        self.assertEqual(appels[0][0], "c0")  # champs des règles d'abord
+        self.assertEqual(r["resume"][extraction.VERIFIE], 15)
+        self.assertEqual(r["resume"][extraction.ABSENT], 10)  # paquet en échec : absents, rien d'inventé
+        self.assertIn("1 paquet", r["incomplet"])
+
+    def test_premier_paquet_en_echec_bloquant(self):
+        import tempfile
+        from unittest import mock
+
+        import extraction
+
+        with tempfile.NamedTemporaryFile(suffix=".txt") as f, \
+                mock.patch.object(extraction, "lire_document", return_value="texte"), \
+                mock.patch.object(extraction, "interroger_mistral", side_effect=extraction.ExtractionImpossible("hors délai")):
+            with self.assertRaises(extraction.ExtractionImpossible):
+                extraction.extraire(Path(f.name), [{"nom": "a", "libelle": "a", "description": "x"}], "ISO")
