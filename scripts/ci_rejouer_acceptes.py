@@ -121,7 +121,8 @@ class Rejeu:
                            files=[("fichiers", (n, f.read_bytes(), "application/pdf")) for n, f in fournisseur])
         r.raise_for_status()
         affectations = r.json()["affectations"]
-        non_ranges = [a["fichier"] for a in affectations if a["piece"] is None]
+        # une photo (pièce 9) n'a rien à lire : signalée « à cocher à la main », ce n'est pas une erreur
+        non_ranges = [a["fichier"] for a in affectations if a["piece"] is None and "rien à lire" not in a["raison"]]
         self.noter(nom, f"{len(fournisseur) - len(non_ranges)}/{len(fournisseur)} pièces du fournisseur rangées",
                    None if not non_ranges else f"non rangées : {non_ranges}")
         d = self.attendre(d["id"], lambda x: all(p["extraction_statut"] in (None, "terminee", "erreur")
