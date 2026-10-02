@@ -71,7 +71,7 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 
 | Pays | Texte de référence | Autorité | Fichier YAML |
 |---|---|---|---|
-| Maroc (destination) | Loi 84-12, Décret 2-14-607, Arrêtés 2853-2856 (enregistrement : 2855-15 art. 2) | AMMPS (ex-DMP) — demande adressée à son Directeur général | `rules/maroc.yaml` (v2 ; v1 dans `rules/historique/`) |
+| Maroc (destination) | Loi 84-12, Décret 2-14-607, Arrêtés 2853-2856 (enregistrement : 2855-15 art. 2) | AMMPS (ex-DMP) — demande adressée à son Directeur général | `rules/maroc.yaml` (v2.6 ; v1 dans `rules/historique/`) |
 | Chine (origine possible) | Règlement du Conseil d'État n°739 (2021) | NMPA | `rules/chine.yaml` |
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
@@ -344,6 +344,24 @@ supporte déjà.
       que la fiche acceptée indiquait 31/12/2028 (signalé à l'utilisateur).
       Reste à la charge de l'utilisateur : profil réel (ville Fès, adresse, représentant)
       via l'outil 2 ; références (1200/A…) non lues automatiquement.
+- [x] **Apprentissage sans fine-tuning** (2026-10-02, demande : « qu'il le fasse
+      tout seul avec moins de documents du fournisseur ») :
+      - mémoire des dossiers acceptés (`src/memoire.py`, lancée par l'outil 4 après
+        les modèles) : Mistral lit une fois la fiche signalétique et l'annexe II
+        acceptées ; le code ne garde que les valeurs retrouvées dans le document
+        (`output/memoire/*.json`, jamais versionné) ; un nouveau dossier du MÊME
+        fabricant reprend ces valeurs dans les cases vides (provenance `memoire`,
+        « Dossier accepté », toujours à confirmer) — jamais d'un autre fabricant ;
+      - bibliothèque fournisseur (`src/bibliotheque.py`, `taches.reprendre_documents`) :
+        ISO 13485, certificat CE / autorisation, attestation, catalogue (et la
+        déclaration de l'établissement) d'un dossier précédent du même fabricant et
+        du même pays, lus et non expirés, sont repris d'office (création du dossier,
+        après chaque lecture, ou bouton « Reprendre les documents déjà reçus de ce
+        fabricant ») ; DoC, étiquettes, notice, photos restent propres au produit ;
+        rien n'est validé d'office ; journal `document_repris` ;
+      - règles Maroc 2.6 : étiquettes → produits + REF (prioritaires sur le
+        catalogue pour l'annexe) ; notice → médicament, latex, phtalates, origine
+        animale.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

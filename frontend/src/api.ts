@@ -154,7 +154,7 @@ export interface ApercuProjet {
   paragraphes: { genre: 'titre' | 'puce' | 'texte' | 'ligne'; texte: string }[]
 }
 
-export type Provenance = 'saisie' | 'piece' | 'profil' | 'dossier' | 'donnee' | 'defaut' | 'regle' | 'manquant'
+export type Provenance = 'saisie' | 'piece' | 'profil' | 'dossier' | 'donnee' | 'memoire' | 'defaut' | 'regle' | 'manquant'
 
 /** Une case de la fiche signalétique / de l'annexe II, avec sa provenance */
 export interface DonneeDispositif {
@@ -326,6 +326,9 @@ export const api = {
       method: 'POST', headers: enTetes(), body: donnees,
     })
   },
+  // Bibliothèque fournisseur : documents encore valides déjà reçus du même fabricant
+  reprendreDocuments: (id: number, acteur: string) =>
+    post<DossierDetail>(`/dossiers/${id}/documents-recus/reprendre`, { acteur }),
   deposerGroupe: (id: number, fichiers: File[], acteur: string) => {
     const donnees = new FormData()
     for (const f of fichiers) donnees.append('fichiers', f)

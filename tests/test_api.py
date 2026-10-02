@@ -7,6 +7,7 @@ Mistral, génération exécutée immédiatement au lieu d'une tâche de fond.
 """
 import os
 import shutil
+import uuid
 import sys
 import tempfile
 import unittest
@@ -77,10 +78,11 @@ class TestApi(unittest.TestCase):
         APPELS_GENERATION.clear()
         api.API_KEY = None
 
-    def creer(self, pays="chine", classe="IIB"):
+    def creer(self, pays="chine", classe="IIB", fournisseur=None):
+        # fournisseur distinct par dossier : la bibliothèque fournisseur ne relie pas les tests entre eux
         r = self.client.post("/dossiers", json={
             "pays_origine": pays, "produit": "Prothèse orthopédique de hanche",
-            "classe": classe, "fournisseur": "Fournisseur test", "cree_par": "Testeur"})
+            "classe": classe, "fournisseur": fournisseur or f"Fournisseur{uuid.uuid4().hex[:8]}", "cree_par": "Testeur"})
         self.assertEqual(r.status_code, 201, r.text)
         return r.json()
 
@@ -163,7 +165,7 @@ class TestApi(unittest.TestCase):
         self.client.post(f"/dossiers/{d['id']}/generer", json={"acteur": "Testeur"})
         ctx = CONTEXTES[0]
         self.assertEqual(ctx["classe"], "IIB")
-        self.assertEqual(ctx["fournisseur"], "Fournisseur test")
+        self.assertEqual(ctx["fournisseur"], d["fournisseur"])
         # la liste des pièces transmise à Mistral est exactement celle du moteur de règles
         self.assertEqual(ctx["pieces_du_dossier"], [x["nom"] for x in d["documents"]])
 
@@ -333,6 +335,23 @@ class TestApi(unittest.TestCase):
         self.assertEqual(APPELS_GENERATION, ["demande_signee"])
         self.assertEqual(self.piece(dossier, "demande_signee")["statut"], "a_valider")
         self.assertEqual(self.piece(dossier, "demande_signee")["valide_par"], None)  # rien n'est validé automatiquement
+
+    def test_bibliotheque_fournisseur(self):
+        premier = self.creer(pays="union_europeenne", fournisseur="Exemple Medical")
+        for code in ("iso_13485", "piece_specifique_union_europeenne", "declaration_conformite", "catalogue"):
+            self.deposer(premier, code)
+        # nouveau dossier du même fournisseur : ISO, certificat CE et catalogue repris d'office, pas la DoC
+        second = self.creer(pays="union_europeenne", fournisseur="EXEMPLE MEDICAL S.p.A.")
+        repris = {x["code"] for x in second["documents"] if x["extraction_statut"] == "terminee"}
+        self.assertEqual(repris, {"iso_13485", "piece_specifique_union_europeenne", "catalogue"})
+        self.assertTrue(all(x["statut"] != "valide" for x in second["documents"]))  # rien n'est validé d'office
+        journal = self.client.get(f"/dossiers/{second['id']}").json()["evenements"]
+        self.assertTrue(any(e["action"] == "document_repris" and f"dossier n°{premier['id']}" in e["detail"] for e in journal))
+        # autre fournisseur, ou autre pays d'origine : rien n'est repris
+        autre = self.creer(pays="union_europeenne", fournisseur="Autre Fabricant")
+        self.assertFalse(any(x["extraction_statut"] == "terminee" for x in autre["documents"]))
+        chine = self.creer(pays="chine", fournisseur="Exemple Medical")
+        self.assertFalse(any(x["extraction_statut"] == "terminee" for x in chine["documents"]))
 
     def test_export_du_dossier(self):
         import io

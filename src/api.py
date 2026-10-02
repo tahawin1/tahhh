@@ -536,7 +536,12 @@ def creer_dossier(requete: DossierCreation):
             f"{len(requis)} pièces décidées par le moteur de règles (règles {dossier.regles_version})",
         )
         session.commit()
-        return _detail(dossier)
+        try:  # fournisseur déjà connu : ses documents encore valides sont repris d'office
+            taches.reprendre_documents(session, dossier, requete.cree_par)
+        except Exception as e:
+            log.error("Reprise des documents du fournisseur impossible : %s", e)
+        session.expire_all()
+        return _detail(_charger_dossier(session, dossier.id))
 
 
 @app.get("/dossiers/{dossier_id}", response_model=DossierDetail)
@@ -800,6 +805,21 @@ def _enregistrer_recu(session, doc: Document, contenu: bytes, extension: str, no
     doc.extraction_erreur = None
     doc.texte_recu = None
     journaliser(session, doc.dossier_id, acteur, "document_recu_depose", f"{doc.nom} — {doc.nom_fichier_recu}", document_id=doc.id)
+
+
+@app.post("/dossiers/{dossier_id}/documents-recus/reprendre", response_model=DossierDetail)
+def reprendre_documents_fournisseur(dossier_id: int, action: Acteur):
+    """Bibliothèque fournisseur : reprend les documents encore valides déjà
+    reçus du même fabricant (ISO 13485, certificat CE ou autorisation,
+    attestation, catalogue) et la déclaration de l'établissement. À relire et
+    valider comme une pièce reçue ; rien n'est validé d'office."""
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        n = taches.reprendre_documents(session, dossier, action.acteur)
+        if n:
+            taches.enchainer(session, dossier, action.acteur)
+        session.expire_all()
+        return _detail(_charger_dossier(session, dossier_id))
 
 
 @app.post("/dossiers/{dossier_id}/documents-recus", status_code=202)

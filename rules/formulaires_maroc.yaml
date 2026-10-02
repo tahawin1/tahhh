@@ -105,12 +105,14 @@ donnees:
     sources: ["piece:notice:composition"]
   contient_medicament:
     libelle: "Dispositif contenant un médicament (oui / non ; nature)"
+    sources: ["piece:notice:contient_medicament"]  # mention lue dans la notice ; oui / non à confirmer
     sources: []
   contient_composant_sanguin:
     libelle: "Dispositif contenant un composant sanguin (oui / non ; nature)"
     sources: []
   contient_origine_animale:
     libelle: "Dispositif contenant un produit d'origine animale (oui / non ; nature, origine)"
+    sources: ["piece:notice:contient_origine_animale"]  # mention lue dans la notice ; oui / non à confirmer
     sources: []
   contient_nano:
     libelle: "Dispositif contenant des nano-éléments (oui / non)"
@@ -123,9 +125,11 @@ donnees:
     sources: []
   contient_latex:
     libelle: "Dispositif contenant du latex (oui / non)"
+    sources: ["piece:notice:contient_latex"]  # mention lue dans la notice ; oui / non à confirmer
     sources: []
   contient_phtalates:
     libelle: "Dispositif contenant des phtalates (oui / non)"
+    sources: ["piece:notice:contient_phtalates"]  # mention lue dans la notice ; oui / non à confirmer
     sources: []
   informations_complementaires:
     libelle: "Informations complémentaires"
@@ -202,7 +206,8 @@ donnees:
   references:
     libelle: "Liste des références (Nom de marque | Nom commercial | Référence), une ligne par produit"
     type: references
-    sources: ["piece:catalogue:references", "piece:etiquetage:noms_commerciaux"]
+    # les étiquettes donnent exactement les produits déposés, avec leur REF ; le catalogue, toute la gamme
+    sources: ["piece:etiquetage:references", "piece:catalogue:references", "piece:etiquetage:noms_commerciaux"]
   representant_legal:
     libelle: "Représentant légal de l'établissement (signataire)"
     sources: ["profil:representant_legal"]

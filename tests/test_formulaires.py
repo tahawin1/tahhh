@@ -118,6 +118,13 @@ class TestResolution(unittest.TestCase):
         self.assertEqual(r["nom_marque"]["valeur"], "TECRES / Voir annexe")  # comme le dossier accepté
         self.assertEqual(formulaires._lignes_references(r["references"]["valeur"]),
                          [["TECRES", "Cemex RX", ""], ["TECRES", "Cemex Fast", ""], ["TECRES", "Cemex Isoplastic", ""]])
+        # les étiquettes priment sur le catalogue : produits déposés, avec leur REF
+        d = dossier(lectures={"catalogue": [lu("nom_marque", "Tecres"), lu("references", "Cemex RX, Vancogenx")],
+                              "etiquetage": [lu("references", "CEMEX RX | 1200/A\nCEMEX FAST | 12A3000")]})
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(formulaires._lignes_references(r["references"]["valeur"]),
+                         [["TECRES", "CEMEX RX", "1200/A"], ["TECRES", "CEMEX FAST", "12A3000"]])
+        self.assertEqual(r["nom_marque"]["valeur"], "TECRES / Voir annexe")
 
     def test_toutes_les_lignes_des_formulaires_sont_definies(self):
         regles = formulaires.charger()

@@ -118,7 +118,7 @@ class TestDossierReelAccepte(unittest.TestCase):
         regles = charger_regles("maroc")
         self.assertIn("AMMPS", regles["autorite"])
         self.assertIn("Directeur Général", regles["destinataire_demande"])
-        self.assertEqual(regles["version"], 2.5)
+        self.assertEqual(regles["version"], 2.6)
 
 
 class TestNatureDesPieces(unittest.TestCase):

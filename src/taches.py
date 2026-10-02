@@ -152,6 +152,27 @@ def executer_extraction(document_id: int) -> None:
             enchainer(session, doc.dossier)
 
 
+def reprendre_documents(session, dossier, acteur: str = "système") -> int:
+    """Bibliothèque fournisseur : reprend dans ce dossier les documents encore
+    valides déjà reçus du même fabricant (bibliotheque.py). Journalisé ; rien
+    n'est validé. Retourne le nombre de pièces reprises."""
+    import bibliotheque
+
+    precedents = (session.query(db.Dossier).filter(db.Dossier.id != dossier.id)
+                  .order_by(db.Dossier.id.desc()).limit(100).all())
+    faits = bibliotheque.reprendre(dossier, precedents)
+    for piece, source, a_relire in faits:
+        journaliser(session, dossier.id, acteur, "document_repris",
+                    f"{piece.nom} — repris du dossier n°{source.dossier_id} ({source.nom_fichier_recu})"
+                    + (" ; relu pour les nouveaux points de contrôle" if a_relire else " ; lecture reprise"),
+                    document_id=piece.id)
+    session.commit()
+    for piece, _, a_relire in faits:
+        if a_relire:
+            soumettre_extraction(piece.id)
+    return len(faits)
+
+
 def enchainer(session, dossier, acteur: str = "système") -> list[str]:
     """Agent, étape 4 — enchaînement automatique, sans rien valider ni envoyer :
     1. les formulaires remplis par le code (fiche signalétique, annexe II) sont
@@ -164,6 +185,10 @@ def enchainer(session, dossier, acteur: str = "système") -> list[str]:
     from generate import profil_entreprise
 
     relances = []
+    try:  # dès que le fabricant est connu, ses documents déjà reçus sont repris
+        reprendre_documents(session, dossier, acteur)
+    except Exception as e:  # jamais silencieux, jamais bloquant
+        journaliser(session, dossier.id, acteur, "reprise_echec", f"Bibliothèque fournisseur : {e}")
     codes_formulaires = formulaires.formulaires()
     for doc in dossier.documents:
         if doc.code in codes_formulaires and doc.statut in ("a_generer", "a_valider", "erreur"):

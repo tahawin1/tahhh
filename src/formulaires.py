@@ -117,7 +117,7 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                 elif genre == "transition_2023_607":
                     if (trouve := _transition_2023_607(dossier, une)):
                         valeur, detail = trouve
-                        r.update(valeur=valeur, provenance="regle", a_verifier=True, detail=detail)
+                        r.update(valeur=valeur, provenance="piece", a_verifier=True, detail=detail)
                 elif genre == "donnee" and reste not in pile:
                     autre = une(reste, pile + (ident,))
                     if autre["valeur"]:
@@ -133,8 +133,27 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
 
     for ident in definitions:
         une(ident)
+    _memoire(resultat, dossier)
     _plusieurs_produits(resultat)
     return resultat
+
+
+def _memoire(resultat: dict, dossier) -> None:
+    """Cases encore vides (ou à la valeur habituelle) : reprises du dossier
+    accepté du MÊME fabricant (mémoire apprise par Mistral, voir memoire.py),
+    toujours à confirmer. Une saisie ou une lecture du document reçu prime."""
+    import memoire
+
+    fabricant = resultat.get("fabricant_nom", {}).get("valeur") or getattr(dossier, "fournisseur", None)
+    accepte = memoire.pour(fabricant, dossier.pays_origine, dossier.produit)
+    if not accepte:
+        return
+    for ident, appris in accepte["valeurs"].items():
+        r = resultat.get(ident)
+        if r is None or r["provenance"] not in ("manquant", "defaut"):
+            continue
+        r.update(valeur=appris["valeur"], provenance="memoire", a_verifier=True,
+                 detail=f"Repris du dossier accepté « {accepte['produit']} » (pièce {appris['piece']}) — à confirmer")
 
 
 def _textes(documents, code: str):
@@ -210,13 +229,19 @@ def _plusieurs_produits(resultat: dict) -> None:
     annexe, avec la marque, et « MARQUE / Voir annexe » dans le formulaire,
     comme dans le dossier accepté."""
     references, nom = resultat.get("references"), resultat.get("nom_marque")
-    if not references or not references["valeur"] or "|" in references["valeur"]:
+    if not references or not references["valeur"] or references["provenance"] in ("saisie", "memoire"):
         return
-    produits = [p.strip() for p in re.split(r"[,;\n]", references["valeur"]) if p.strip()]
     marque = ""
     if nom and nom["valeur"] and nom["provenance"] != "saisie":
         marque = re.split(r"\s*/\s*", nom["valeur"])[0].strip().upper()
-    references["valeur"] = "\n".join(f"{marque} | {p} | " for p in produits)
+    lignes = [l.strip() for l in references["valeur"].splitlines() if l.strip()]
+    if all(l.count("|") == 2 for l in lignes):
+        return  # déjà « MARQUE | NOM | RÉF »
+    if any("|" in l for l in lignes):  # « NOM | REF » (étiquettes) : la marque est ajoutée
+        produits = [[p.strip() for p in l.split("|")][:2] for l in lignes]
+    else:
+        produits = [[p.strip(), ""] for p in re.split(r"[,;\n]", references["valeur"]) if p.strip()]
+    references["valeur"] = "\n".join(f"{marque} | {p[0]} | {p[1] if len(p) > 1 else ''}" for p in produits)
     if len(produits) > 1 and marque and "annexe" not in nom["valeur"].lower():
         nom["valeur"] = f"{marque} / Voir annexe"
         nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"

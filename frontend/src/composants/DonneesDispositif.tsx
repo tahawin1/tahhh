@@ -8,6 +8,7 @@ const PROVENANCE: Record<Provenance, { libelle: string; ton: string }> = {
   profil: { libelle: "Profil de l'entreprise", ton: 'neutre' },
   dossier: { libelle: 'Dossier', ton: 'neutre' },
   donnee: { libelle: 'Repris', ton: 'neutre' },
+  memoire: { libelle: 'Dossier accepté', ton: 'attention' },
   defaut: { libelle: 'Valeur habituelle', ton: 'attention' },
   regle: { libelle: 'Sans objet', ton: 'neutre' },
   manquant: { libelle: 'À compléter', ton: 'erreur' },

@@ -67,10 +67,14 @@
 #     loi prévaut, la pièce est gardée (hors numérotation) ;
 #   - numérotation : aucun texte ne fixe les numéros ; ceux du dossier accepté
 #     sont gardés, les pièces nouvelles restent sans numéro (en fin de liste).
+# 2.6 — 2026-10-02 : aucune pièce ajoutée ni retirée ; champs à lire en plus
+#   (essai réel Ciment osseux : cases restées vides) — étiquettes : liste des
+#   produits étiquetés avec leur REF ; notice : médicament, latex, phtalates,
+#   origine animale mentionnés.
 
 pays: maroc
-version: 2.5
-date_version: "2026-10-01"
+version: 2.6
+date_version: "2026-10-02"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
 # IS : classe I stérile ; IM : classe I avec fonction de mesurage (arrêté 2855-15)
@@ -227,6 +231,9 @@ socle_commun:
       - nom: noms_commerciaux
         libelle: "Noms commerciaux et références"
         description: "nom(s) commercial(aux) et référence(s) (REF) imprimés sur les étiquettes"
+      - nom: references
+        libelle: "Produits étiquetés et références"
+        description: "chaque produit étiqueté avec sa référence REF, une ligne par produit au format « NOM COMMERCIAL | REF »"
       - nom: sterilisation
         libelle: "Stérilisation"
         description: "mention STERILE et méthode de stérilisation (oxyde d'éthylène, rayonnement gamma…), si indiquée"
@@ -253,6 +260,18 @@ socle_commun:
       - nom: composition
         libelle: "Composition"
         description: "composants et matériaux du dispositif, y compris tout médicament, produit d'origine animale, latex ou phtalate mentionné"
+      - nom: contient_medicament
+        libelle: "Substance médicamenteuse"
+        description: "substance médicamenteuse contenue dans le dispositif (ex. antibiotique : gentamicine), si mentionnée"
+      - nom: contient_latex
+        libelle: "Latex"
+        description: "mention du latex (contient du latex, ou sans latex / latex free), si indiquée"
+      - nom: contient_phtalates
+        libelle: "Phtalates"
+        description: "mention des phtalates (DEHP), présence ou absence, si indiquée"
+      - nom: contient_origine_animale
+        libelle: "Produit d'origine animale"
+        description: "composant d'origine animale (collagène, gélatine…) et son origine, si mentionné"
       - nom: sterilisation
         libelle: "Stérilisation"
         description: "mention stérile et méthode de stérilisation, si indiquée"

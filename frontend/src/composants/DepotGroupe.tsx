@@ -33,6 +33,27 @@ export default function DepotGroupe({
     }
   }
 
+  const [reprise, setReprise] = useState<string | null>(null)
+
+  async function reprendre() {
+    setEnvoi(true)
+    setErreur(null)
+    setReprise(null)
+    try {
+      const debut = Date.now() - 60_000  // marge d'horloge entre le serveur et le poste
+      const d = await api.reprendreDocuments(dossierId, acteur)
+      const reprises = d.evenements.filter((e) => e.action === 'document_repris' && Date.parse(e.horodatage) >= debut)
+      setReprise(reprises.length
+        ? `${reprises.length} document(s) déjà reçu(s) de ce fabricant repris : à relire et valider comme les autres.`
+        : 'Aucun document réutilisable : pas de dossier précédent du même fabricant, ou documents expirés.')
+      surDossier(d)
+    } catch (e) {
+      setErreur((e as Error).message)
+    } finally {
+      setEnvoi(false)
+    }
+  }
+
   const ranges = affectations?.filter((a) => a.piece != null) ?? []
   const nonRanges = affectations?.filter((a) => a.piece == null) ?? []
 
@@ -66,6 +87,13 @@ export default function DepotGroupe({
           chacun est rangé dans sa pièce, puis lu par l'agent.
         </span>
       </button>
+      <div className="actions">
+        <button type="button" disabled={occupe || envoi} onClick={reprendre}
+          title="ISO 13485, certificat CE ou autorisation, attestation, catalogue : repris d'un dossier précédent du même fabricant s'ils sont encore valides">
+          <Icone nom="suite" taille={16} />Reprendre les documents déjà reçus de ce fabricant
+        </button>
+      </div>
+      {reprise && <p className="message" aria-live="polite">{reprise}</p>}
       {erreur && <p className="message erreur" role="alert">{erreur}</p>}
       {affectations && (
         <div className="affectations" aria-live="polite">
