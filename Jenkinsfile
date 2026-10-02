@@ -59,6 +59,9 @@ pipeline {
         PORT_CI = '8100'
         CLE_CI = "ci-${env.BUILD_NUMBER}-${env.BUILD_ID}"
         RAPPORTS = 'rapports-ci'
+        // premier build (lancé à la création de la tâche) : les paramètres n'existent pas encore
+        // comme variables d'environnement -> valeur par défaut explicite
+        SEUIL = "${params.SEUIL_MISTRAL ?: '0.75'}"
         DOSSIER_SERVEUR = '/opt/conformite'
         OLLAMA_HOTE = 'http://127.0.0.1:11434'
         QDRANT_HOTE = 'http://127.0.0.1:6333'
@@ -130,7 +133,7 @@ pipeline {
                             sh '''
                                 docker run --rm --network host -v "$WORKSPACE":/w -w /w \
                                     -e OLLAMA_BASE_URL="$OLLAMA_HOTE" -e OLLAMA_TIMEOUT=1800 \
-                                    "$IMAGE_CI" python scripts/evaluer_mistral.py --rapport "$RAPPORTS" --seuil "$SEUIL_MISTRAL"
+                                    "$IMAGE_CI" python scripts/evaluer_mistral.py --rapport "$RAPPORTS" --seuil "$SEUIL"
                             '''
                         }
                     }
