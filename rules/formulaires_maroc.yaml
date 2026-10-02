@@ -29,8 +29,8 @@
 # na_si_origine : la donnée vaut « NA » pour ces pays d'origine.
 # format : date (la date lue est écrite jj/mm/aaaa) | classe (IIB -> IIb).
 
-version: 1
-date_version: "2026-10-01"
+version: 2
+date_version: "2026-10-02"
 
 donnees:
   # ---- objet et statut
@@ -133,12 +133,17 @@ donnees:
   # ---- situation juridique dans le pays d'origine
   ce_numero:
     libelle: "Numéro du certificat de marquage CE"
-    sources: ["piece:piece_specifique:numero"]
+    # la référence de la lettre 2023/607 (« EU2023-607/658919 ») n'est pas le n° du certificat :
+    # le n° « CE 641427 » est relevé dans le texte (lettre et certificat le citent)
+    sources: ["piece:piece_specifique:numero", "piece:declaration_conformite:cl_declaration_de_conformite_14",
+              "motif:piece_specifique:\\bCE ?\\d{5,7}\\b"]
+    rejeter: ["2023[-/ ]?607"]
     na_si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
   ce_validite:
     libelle: "Date du certificat CE (valable jusqu'au)"
     format: date
-    sources: ["piece:piece_specifique:date_expiration"]
+    # certificat MDD prolongé par une lettre 2023/607 : date de fin de transition (comme le dossier accepté)
+    sources: ["transition_2023_607", "piece:piece_specifique:date_expiration"]
     na_si_origine: [chine, inde, etats_unis, coree_du_sud, pakistan, autre]
   ce_organisme:
     libelle: "Code de l'organisme notifié"

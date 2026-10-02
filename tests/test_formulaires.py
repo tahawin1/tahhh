@@ -88,6 +88,37 @@ class TestResolution(unittest.TestCase):
         self.assertEqual(r["ce_numero"]["valeur"], "NA")
         self.assertIsNone(r["cvl_numero"]["valeur"])
 
+    def test_reference_2023_607_n_est_pas_le_numero_ce(self):
+        # essai réel : l'agent a lu « EU2023-607/… » (référence de la lettre) comme n° de certificat
+        lettre = ("Notified Body Confirmation Letter Reference: EU2023-607/123456 Regulation (EU) 2023/607\n"
+                  "Exemple Cement manual\nB-UDI 0000000001\nClass IIb implantable non-\nWET\nN/A\n"
+                  "Certificate #1 CE 641427; NB (2797)\nExemple Prep Kit\nB-UDI 0000000002\n"
+                  "Class IIb excluding Class\nIIb implantable non-WET\nN/A\nCertificate #1 CE 641427; NB (2797)\n")
+        d = dossier(lectures={"piece_specifique_union_europeenne": [lu("numero", "EU2023-607/123456")],
+                              "catalogue": [lu("nom_marque", "Exemple"), lu("references", "Exemple Cement manual")]})
+        for p in d.documents:
+            p.texte_recu = lettre if p.code.startswith("piece_specifique") else ""
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["ce_numero"]["valeur"], "CE 641427")  # relevé dans le texte, à vérifier
+        self.assertTrue(r["ce_numero"]["a_verifier"])
+        # fin de transition 2023/607 lue sur la ligne du produit : IIb implantable -> 31/12/2027
+        self.assertIn("31/12/2027", r["ce_validite"]["valeur"])
+        self.assertNotIn("2028", r["ce_validite"]["valeur"])
+        self.assertIn("Exemple Cement manual", r["ce_validite"]["detail"])
+        # produit ambigu (gamme aux deux dates) : les deux dates, à préciser
+        d.documents[[p.code for p in d.documents].index("catalogue")].extraction = {
+            "champs": [lu("nom_marque", "Exemple"), lu("references", "Exemple")]}
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertIn("à préciser", r["ce_validite"]["valeur"])
+
+    def test_plusieurs_produits_en_annexe(self):
+        d = dossier(lectures={"catalogue": [lu("nom_marque", "Tecres"),
+                                            lu("references", "Cemex RX, Cemex Fast, Cemex Isoplastic")]})
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["nom_marque"]["valeur"], "TECRES / Voir annexe")  # comme le dossier accepté
+        self.assertEqual(formulaires._lignes_references(r["references"]["valeur"]),
+                         [["TECRES", "Cemex RX", ""], ["TECRES", "Cemex Fast", ""], ["TECRES", "Cemex Isoplastic", ""]])
+
     def test_toutes_les_lignes_des_formulaires_sont_definies(self):
         regles = formulaires.charger()
         for code, f in regles["formulaires"].items():

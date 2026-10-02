@@ -80,6 +80,44 @@ Pour le dossier complet, veuillez trouver ci-dessous la liste des pièces :
         texte, retirees = recadrer_sur_modele(propre, self.MODELE)
         self.assertEqual((texte, retirees), (propre, 0))
 
+    def test_pied_de_page_absent_consignes_apres_la_signature_retirees(self):
+        # essai réel : sans pied de page, Mistral a recopié ses consignes après la signature
+        from generate import recadrer_sur_modele
+        sortie = ("SOCIETE EXEMPLE SARL\nRabat, le 01/01/2026\nDésignation scientifique : Vis\n"
+                  "Cachet et signature du représentant Légal de l’établissement\nM. Représentant Exemple\n"
+                  "Ici, il est important de remplacer toutes les informations concernant l'ancien dispositif "
+                  "par les données du nouveau dossier.\nLe document doit être écrit en français.")
+        texte, retirees = recadrer_sur_modele(sortie, self.MODELE)
+        self.assertTrue(texte.endswith("M. Représentant Exemple"))
+        self.assertEqual(retirees, 2)
+
+    def test_date_du_jour_et_ville_du_profil(self):
+        import datetime
+        from generate import dater
+        lettre = "SOCIETE EXEMPLE SARL\nCasablanca, le 29/04/2026\nA Monsieur le Directeur Général"
+        self.assertEqual(dater(lettre, "Fès", datetime.date(2026, 10, 2)).splitlines()[1], "Fès, le 02/10/2026")
+        self.assertEqual(dater(lettre, None, datetime.date(2026, 10, 2)).splitlines()[1], "Casablanca, le 02/10/2026")
+
+    def test_profil_accents_repares_et_exemple_ignore(self):
+        from generate import _reparer
+        self.assertEqual(_reparer("repr├®sentant l├®gal"), "représentant légal")
+        self.assertEqual(_reparer("reprÃ©sentant"), "représentant")
+        self.assertEqual(_reparer("Fès"), "Fès")
+
+    def test_profil_valeurs_d_exemple_ignorees(self):
+        import shutil
+        import tempfile
+        from pathlib import Path
+        from unittest import mock
+        import generate
+        with tempfile.TemporaryDirectory() as tmp:
+            shutil.copy(Path(__file__).resolve().parent.parent / "config" / "entreprise.exemple.yaml", tmp)
+            profil = Path(tmp) / "entreprise.yaml"
+            profil.write_text('raison_sociale: "SOCIETE EXEMPLE SARL"\nville: "Ville"\n'
+                              'representant_legal: "Nom du repr├®sentant l├®gal"\n', encoding="utf-8")
+            with mock.patch.object(generate, "PROFIL_ENTREPRISE", profil):
+                self.assertEqual(generate.profil_entreprise(), {"raison_sociale": "SOCIETE EXEMPLE SARL"})
+
     def test_fin_du_modele_introuvable_rien_coupe(self):
         from generate import recadrer_sur_modele
         texte, retirees = recadrer_sur_modele("Lettre sans pied de page\nSignature", self.MODELE)

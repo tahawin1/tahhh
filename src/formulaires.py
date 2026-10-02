@@ -15,6 +15,7 @@ n'est inventée : sans source, la case reste [À COMPLÉTER].
 from __future__ import annotations
 
 import datetime
+import re
 from pathlib import Path
 
 import yaml
@@ -99,12 +100,24 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                 elif genre == "piece":
                     code, _, champ = reste.partition(":")
                     lu = _lu(lectures, code, champ)
+                    if lu and any(re.search(motif, lu["valeur"]) for motif in d.get("rejeter") or []):
+                        lu = None  # ex. référence de la lettre 2023/607 lue à la place du n° de certificat CE
                     if lu:
                         verifie = lu.get("verification") == "verifie"
                         r.update(valeur=_formater(d, lu["valeur"], lu.get("valeur_normalisee")), provenance="piece",
                                  a_verifier=not verifie,
                                  detail=f"Lu dans la pièce {lu['piece']} ({lu['piece_nom']})"
                                         + ("" if verifie else " — non vérifié dans le texte"))
+                elif genre == "motif":
+                    code, _, motif = reste.partition(":")
+                    if (trouve := _motif(dossier.documents, code, motif)):
+                        valeur, piece = trouve
+                        r.update(valeur=valeur, provenance="piece", a_verifier=True,
+                                 detail=f"Relevé dans le texte de la pièce {piece.numero} ({piece.nom})")
+                elif genre == "transition_2023_607":
+                    if (trouve := _transition_2023_607(dossier, une)):
+                        valeur, detail = trouve
+                        r.update(valeur=valeur, provenance="regle", a_verifier=True, detail=detail)
                 elif genre == "donnee" and reste not in pile:
                     autre = une(reste, pile + (ident,))
                     if autre["valeur"]:
@@ -120,7 +133,93 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
 
     for ident in definitions:
         une(ident)
+    _plusieurs_produits(resultat)
     return resultat
+
+
+def _textes(documents, code: str):
+    for d in documents:
+        if (d.code == code or (code == "piece_specifique" and d.code.startswith("piece_specifique"))) \
+                and getattr(d, "texte_recu", None):
+            yield d, d.texte_recu
+
+
+def _motif(documents, code: str, motif: str) -> tuple[str, object] | None:
+    """Valeur la plus fréquente correspondant à `motif` dans le texte reçu
+    (ex. « CE 641427 », répété dans la lettre 2023/607) — relevé par le code."""
+    from collections import Counter
+    for piece, texte in _textes(documents, code):
+        trouves = Counter(re.sub(r"\s+", " ", m.group(0)).strip() for m in re.finditer(motif, texte))
+        if trouves:
+            return trouves.most_common(1)[0][0], piece
+    return None
+
+
+def _transition_2023_607(dossier, une) -> tuple[str, str] | None:
+    """Certificat MDD prolongé par une lettre au titre du Règlement (UE) 2023/607 :
+    date de fin de la période de transition (31/12/2027 pour une classe III ou
+    un IIb implantable hors « WET », 31/12/2028 pour les autres IIb, les IIa et
+    les I), lue sur les lignes de la lettre qui citent le produit et sa classe.
+    Plusieurs dates possibles : les deux sont indiquées, à préciser."""
+    for piece, texte in _textes(dossier.documents, "piece_specifique"):
+        if "2023/607" not in texte:
+            continue
+        noms = {m.lower() for m in re.findall(r"[A-Za-zÀ-ÿ]{4,}", " ".join(
+            filter(None, [une("nom_marque")["valeur"], une("references")["valeur"]])))} - {"voir", "annexe"}
+        classe_dossier = {"IIB": "iib", "IIA": "iia", "III": "iii"}.get((dossier.classe or "").upper(), "i")
+        plat = re.sub(r"\s+", " ", texte)
+        lignes = []
+        for m in re.finditer(r"Class (III|IIb|IIa|I)\b", plat):
+            if plat[max(0, m.start() - 10):m.start()].lower().endswith("excluding "):
+                continue  # « Class IIb excluding Class IIb implantable » : une seule ligne
+            # nom du dispositif : ce qui précède la classe depuis la fin de la ligne précédente du tableau
+            avant = re.split(r"\)|N/A", plat[max(0, m.start() - 90):m.start()])[-1]
+            avant = re.sub(r"B-UDI \S+", "", avant).strip()
+            if m.group(1).lower() != classe_dossier or not any(n in avant.lower() for n in noms):
+                continue
+            classe = plat[m.start():m.start() + 60].split(" N/A")[0].strip()
+            if "excluding" in classe.lower() or m.group(1) in ("IIa", "I"):
+                date = "31/12/2028"
+            elif m.group(1) == "III" or "implantable" in classe.lower():
+                date = "31/12/2027"
+            else:
+                date = "31/12/2028"
+            score = sum(n in avant.lower() for n in noms)
+            lignes.append((score, date, f"{avant} : {classe} → {date}"))
+        meilleur = max((l[0] for l in lignes), default=0)
+        dates = {l[1] for l in lignes if l[0] == meilleur}  # lignes qui citent le plus de mots du produit
+        lignes = [l[2] for l in lignes if l[0] == meilleur]
+        if len(dates) == 1:
+            return (f"jusqu'au {dates.pop()} (période de transition, Règlement (UE) 2023/607)",
+                    f"Lettre 2023/607 (pièce {piece.numero}) — {lignes[0]}")
+        if dates:
+            return ("jusqu'au 31/12/2027 ou 31/12/2028 (période de transition, Règlement (UE) 2023/607) — à préciser",
+                    f"Lettre 2023/607 (pièce {piece.numero}), produits de la gamme aux deux dates — "
+                    + " ; ".join(dict.fromkeys(lignes)))
+        if classe_dossier in ("iia", "i"):
+            return ("jusqu'au 31/12/2028 (période de transition, Règlement (UE) 2023/607)",
+                    f"Règlement (UE) 2023/607, classe {dossier.classe} (lettre en pièce {piece.numero})")
+        return ("jusqu'au 31/12/2027 ou 31/12/2028 (période de transition, Règlement (UE) 2023/607) — à préciser",
+                f"Règlement (UE) 2023/607 : 31/12/2027 pour un IIb implantable ou un III, sinon 31/12/2028 "
+                f"(lettre en pièce {piece.numero})")
+    return None
+
+
+def _plusieurs_produits(resultat: dict) -> None:
+    """Plusieurs produits lus (catalogue, étiquettes) : une ligne par produit en
+    annexe, avec la marque, et « MARQUE / Voir annexe » dans le formulaire,
+    comme dans le dossier accepté."""
+    references, nom = resultat.get("references"), resultat.get("nom_marque")
+    if not references or not references["valeur"] or "|" in references["valeur"]:
+        return
+    produits = [p.strip() for p in re.split(r"[,;\n]", references["valeur"]) if p.strip()]
+    marque = ""
+    if nom and nom["valeur"] and nom["provenance"] != "saisie":
+        marque = re.split(r"\s*/\s*", nom["valeur"])[0].strip().upper()
+    references["valeur"] = "\n".join(f"{marque} | {p} | " for p in produits)
+    if len(produits) > 1 and marque and "annexe" not in nom["valeur"].lower():
+        nom["valeur"] = f"{marque} / Voir annexe"
+        nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"
 
 
 # ---------------------------------------------------------------- DOCX

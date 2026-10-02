@@ -328,6 +328,22 @@ supporte déjà.
       (`src/export.py`, `GET /dossiers/{id}/export`, bouton « Télécharger le
       dossier (ZIP) ») : pièces numérotées « 01-… », bordereau 00 ; marqué
       BROUILLON / « ne pas déposer » tant qu'une pièce n'est pas validée.
+- [x] **Premier essai réel complet** (2026-10-02, PC de l'utilisateur, « Ciment
+      osseux essai » rejoué avec les pièces du dossier accepté) : lecture, formulaires,
+      lettre et ZIP produits. Écarts relevés et corrigés : n° de certificat CE = référence
+      de la lettre 2023/607 (« EU2023-607/… ») → rejeté (`rejeter`), n° « CE nnnnnn »
+      relevé dans le texte (`motif:`) ; date CE = fin de transition 2023/607 lue sur la
+      ligne du produit dans la lettre (`transition_2023_607` ; 2027 si IIb implantable
+      ou III, 2028 sinon ; ambiguïté → les deux, à préciser) ; plusieurs produits →
+      « MARQUE / Voir annexe » + une ligne par produit en annexe ; lettre : date du
+      modèle recopiée → date du jour + ville du profil (`dater`), consignes de Mistral
+      recopiées après la signature (pied de page absent) → recadrage sur la dernière
+      ligne du modèle retrouvée ; profil : accents abîmés réparés (`_reparer`) et
+      valeurs du fichier d'exemple ignorées. **Constat** : la lettre BSI classe le
+      ciment Cemex « IIb implantable non-WET » → transition jusqu'au 31/12/2027, alors
+      que la fiche acceptée indiquait 31/12/2028 (signalé à l'utilisateur).
+      Reste à la charge de l'utilisateur : profil réel (ville Fès, adresse, représentant)
+      via l'outil 2 ; références (1200/A…) non lues automatiquement.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

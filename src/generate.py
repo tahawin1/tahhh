@@ -50,7 +50,33 @@ def profil_entreprise() -> dict:
         return {}
     import yaml
     with open(PROFIL_ENTREPRISE, encoding="utf-8") as f:
-        return {k: str(v).strip() for k, v in (yaml.safe_load(f) or {}).items() if k in LIBELLES_PROFIL and v}
+        brut = {k: _reparer(str(v).strip()) for k, v in (yaml.safe_load(f) or {}).items() if k in LIBELLES_PROFIL and v}
+    # une valeur restée égale à celle du fichier d'exemple (« Nom du représentant légal ») n'est pas une donnée
+    exemple = {}
+    if (fichier_exemple := PROFIL_ENTREPRISE.with_name("entreprise.exemple.yaml")).exists():
+        with open(fichier_exemple, encoding="utf-8") as f:
+            exemple = {k: normaliser_libelle(str(v)) for k, v in (yaml.safe_load(f) or {}).items() if v}
+    return {k: v for k, v in brut.items()
+            if v and normaliser_libelle(v) != exemple.get(k) and not v.lower().startswith("[à compléter")}
+
+
+def normaliser_libelle(texte: str) -> str:
+    return re.sub(r"\s+", " ", texte.strip().lower())
+
+
+def _reparer(texte: str) -> str:
+    """Accents abîmés par une console Windows (UTF-8 relu en CP850 ou CP1252 :
+    « repr├®sentant », « reprÃ©sentant ») : rétablis, sinon texte inchangé."""
+    if not any(c in texte for c in "├Ã"):
+        return texte
+    for codage in ("cp1252", "cp850"):
+        try:
+            repare = texte.encode(codage).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+        if not any(c in repare for c in "├Ã"):
+            return repare
+    return texte
 
 
 # Destinataire des demandes, lu dans les règles (AMMPS depuis la v2) — jamais décidé par le LLM
@@ -76,22 +102,44 @@ def _mots_significatifs(ligne: str) -> set[str]:
 def recadrer_sur_modele(texte: str, modele: str) -> tuple[str, int]:
     """Garde-fou déterministe (le prompt seul ne suffit pas avec Mistral 7B) :
     retire une phrase d'introduction (« Voici la lettre… : ») et tout ce qui
-    suit la dernière ligne du modèle (listes inventées après la signature ou
-    le pied de page). Retourne (texte recadré, nombre de lignes retirées à la fin)."""
+    suit la fin du modèle (listes ou consignes inventées après la signature ou
+    le pied de page). La fin du modèle est la dernière de ses lignes retrouvée
+    dans le texte (le pied de page peut manquer) ; les lignes courtes qui la
+    suivent (nom du signataire) sont gardées. Retourne (texte recadré, nombre
+    de lignes retirées à la fin)."""
     lignes = texte.strip().splitlines()
     while lignes and (not lignes[0].strip() or PREAMBULE.match(lignes[0])):
         lignes.pop(0)
-    fins_modele = [l for l in modele.strip().splitlines() if len(_mots_significatifs(l)) >= 3][-2:]
-    reperes = [_mots_significatifs(l) for l in fins_modele]
+    reperes = [_mots_significatifs(l) for l in modele.strip().splitlines()]
+    reperes = [r for r in reperes if len(r) >= 2]
     dernier = None
-    for i, ligne in enumerate(lignes):
-        mots = _mots_significatifs(ligne)
-        if mots and any(len(mots & r) >= max(3, 0.6 * len(r)) for r in reperes):
-            dernier = i
+    for repere in reversed(reperes[-8:]):  # de la dernière ligne du modèle vers le haut
+        seuil = len(repere) if len(repere) <= 3 else max(3, 0.6 * len(repere))
+        trouves = [i for i, l in enumerate(lignes) if len(_mots_significatifs(l) & repere) >= seuil]
+        if trouves:
+            dernier = trouves[-1]
+            break
     if dernier is None:
         return "\n".join(lignes).strip(), 0
+    while dernier + 1 < len(lignes) and len(lignes[dernier + 1].split()) <= 5:
+        dernier += 1  # signataire, ligne vide
     retirees = [l for l in lignes[dernier + 1:] if l.strip()]
     return "\n".join(lignes[: dernier + 1]).strip(), len(retirees)
+
+
+LIEU_DATE = re.compile(r"^(\s*)([^,\n]{2,40}),\s*le\s+\S+(.*)$", re.I)
+
+
+def dater(texte: str, ville: str | None, jour: datetime.date | None = None) -> str:
+    """Ligne « Ville, le jj/mm/aaaa » : date du jour et ville du profil (Mistral
+    recopie celles du modèle). Seules les premières lignes sont regardées."""
+    jour = jour or datetime.date.today()
+    lignes = texte.splitlines()
+    for i, ligne in enumerate(lignes[:10]):
+        if m := LIEU_DATE.match(ligne):
+            lignes[i] = f"{m.group(1)}{ville or m.group(2).strip()}, le {jour:%d/%m/%Y}"
+            break
+    return "\n".join(lignes)
 
 
 class GenerationImpossible(RuntimeError):
@@ -294,6 +342,7 @@ Consignes strictes :
                 texte, retirees = recadrer_sur_modele(texte, modele["texte"])
                 if retirees:
                     sources[0]["recadrage"] = f"{retirees} ligne(s) ajoutée(s) par Mistral après la fin du modèle, retirée(s)"
+                texte = dater(texte, profil_entreprise().get("ville"))
             return texte, sources
         except requests.exceptions.ConnectionError as e:
             raise GenerationImpossible(
