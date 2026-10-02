@@ -71,9 +71,13 @@
 #   (essai réel Ciment osseux : cases restées vides) — étiquettes : liste des
 #   produits étiquetés avec leur REF ; notice : médicament, latex, phtalates,
 #   origine animale mentionnés.
+# 2.7 — 2026-10-02 : aucune pièce ajoutée ni retirée (matrice de contrôle
+#   Jenkins, scripts/ci_regles.py) — fondement (`source`) ajouté aux pièces 4
+#   Chine, Inde, UE et autre ; UE classe I : le certificat de libre vente porte
+#   le numéro 4 (il remplace le certificat CE, sans organisme notifié).
 
 pays: maroc
-version: 2.6
+version: 2.7
 date_version: "2026-10-02"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
@@ -385,6 +389,7 @@ socle_commun:
         libelle: "Durée de vie"
         description: "durée de vie de l'équipement ou péremption"
   - id: certificat_libre_vente_ue
+    numero: 4  # tient la place du certificat CE : classe I sans organisme notifié
     nom: "Certificat de libre vente délivré par l'autorité compétente de l'État membre (classe I sans organisme notifié)"
     nature: a_fournir
     fourni_par: "l'autorité compétente de l'État membre (via le fabricant ou son mandataire)"
@@ -492,6 +497,7 @@ piece_specifique_selon_origine:
     document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) + certificat de libre vente (FSC)"
     nature: a_fournir
     fourni_par: "la NMPA (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) a) (« autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités compétentes du pays d'origine ») ; Règlement chinois n° 739, art. 13 à 18 (enregistrement NMPA)"
     champs_a_extraire: &champs_autorisation
       - *champs_certificat
       - nom: classe_indiquee
@@ -505,6 +511,7 @@ piece_specifique_selon_origine:
     document: "Autorisation de mise en vente délivrée par la CDSCO + certificat de libre vente (FSC)"
     nature: a_fournir
     fourni_par: "la CDSCO (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) a) (« autorisation de mise en vente (CVL) ou équivalent ») ; Medical Devices Rules 2017 (Inde), règles 34 à 36 (licence CDSCO)"
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true
@@ -514,6 +521,7 @@ piece_specifique_selon_origine:
     document: "Certificat de marquage CE délivré par un organisme notifié (+ lettre de confirmation si certificat MDD expiré)"
     nature: a_fournir
     fourni_par: "l'organisme notifié (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) a) (« certificat de marquage CE ») ; Règlement (UE) 2017/745, art. 52 et 56 ; Règlement (UE) 2023/607 (transition)"
     remarque: >-
       Un certificat CE délivré au titre de la directive 93/42/CEE et expiré
       sur le papier reste valable s'il est accompagné de la lettre de
@@ -576,6 +584,7 @@ piece_specifique_selon_origine:
     document: "Certificat de libre vente visé par l'autorité de tutelle du pays d'origine (ou attestation FDA, ou équivalent)"
     nature: a_fournir
     fourni_par: "l'autorité de tutelle du pays d'origine (via le fabricant)"
+    source: "Arrêté 2855-15, art. 2 (1) a) (« certificat de marquage CE, ou attestation FDA, ou autorisation de mise en vente (CVL) ou équivalent »)"
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
     legalisation_requise: true

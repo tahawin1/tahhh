@@ -211,27 +211,36 @@ Envoyez ensuite à Taha le rapport `C:\ConformiteDM\rapports\mise_a_jour_<date>.
 
 ## Partie E bis — Jenkins (intégration continue)
 
-Jenkins contrôle chaque nouvelle version de l'outil avant qu'elle n'arrive sur
-le serveur. Il vérifie GitHub toutes les 15 minutes, puis enchaîne :
+Jenkins fait passer à l'agent **toutes les étapes du métier**, à chaque nouvelle
+version publiée sur GitHub (vérifié toutes les 15 minutes), et lui donne une note :
 
-1. les tests automatiques (règles, formulaires, API) et l'interface ;
-2. **l'évaluation de Mistral** : Mistral lit 3 documents fictifs (dont un scan)
-   dont les bonnes réponses sont connues. Jenkins mesure l'exactitude (75 %
-   minimum par défaut) et refuse toute valeur fausse que le contrôle des
-   citations aurait laissé passer ;
-3. la construction des images ;
-4. le déploiement, **seulement** si la case « DEPLOYER » est cochée **et**
-   après le clic « Déployer » d'une personne connectée. Une sauvegarde est
-   faite automatiquement avant.
+| Étape Jenkins | Ce qui est vérifié |
+|---|---|
+| Tests et matrice des règles | 7 pays × 7 classes × 5 situations : la liste des pièces ne change jamais sans qu'on l'ait voulu ; chaque pièce cite son article |
+| Lecture par Mistral | 3 documents fictifs (dont un scan) : bonnes valeurs lues, aucune valeur fausse acceptée |
+| RAG et recommandations | le bon texte du bon pays est retrouvé ; les synthèses de Mistral citent le texte mot pour mot |
+| Agent de bout en bout | création du dossier → rangement des fichiers → lecture → checklist (certificat expiré détecté) → fiche et annexe II → lettre → ZIP → reprise des documents du même fabricant |
+| Rejeu des dossiers acceptés | l'agent refait chaque dossier accepté par l'AMMPS **sans le voir** ; sa fiche, son annexe II et sa lettre sont comparées au dossier accepté |
+| Déploiement | seulement si « DEPLOYER » est coché **et** qu'une personne clique « Déployer » |
+
+Vert : tout est bon. Orange : le code est bon mais la qualité de l'IA est sous
+le seuil, ou Ollama était arrêté. Rouge : une règle, un test ou la construction
+est cassé.
+
+**Plus il y a de dossiers acceptés, plus l'évaluation est sérieuse.** Déposez-les
+avec l'outil 3, dans le dossier du pays d'origine, en mettant **la classe entre
+parenthèses dans le nom du dossier** : `Ciment osseux (IIb)`, `Gants d'examen (Is)`.
+Lancez ensuite l'outil 4 : Mistral apprend leurs formulaires, et Jenkins s'en
+sert comme corrigé.
 
 Installation : double-clic sur **11 - Jenkins**. L'outil installe Jenkins,
 affiche le mot de passe du compte `admin` (à garder pour vous, jamais en
 capture d'écran) et ouvre http://localhost:8081. La tâche `conformite-dm`
 existe déjà et lance son premier build dans la minute.
 
-Lancer un contrôle à la main : tâche `conformite-dm` → **Lancer un build avec
-des paramètres**. Les résultats s'affichent dans « Test Result » : tests Python
-et évaluation de Mistral, avec un détail par champ lu.
+Résultats : tâche `conformite-dm` → dernier build → **Test Result** (un contrôle
+par ligne) et **Artefacts** (`dossiers-acceptes.md` : la note de l'agent par
+dossier ; `matrice-regles.md` ; `agent.json` avec la lettre produite).
 
 ## Partie F — Au quotidien
 
