@@ -32,7 +32,7 @@ class TestNouvellesOrigines(unittest.TestCase):
         self.assertIn("piece_specifique_pakistan", [d.id for d in documents_requis_maroc("pakistan", "I")])  # 2.5 : FSC toutes classes
 
     def test_regles_des_pays_provisoires_signalees(self):
-        attendus = {"etats_unis": "partiel", "coree_du_sud": "verifie", "pakistan": "provisoire"}
+        attendus = {"etats_unis": "verifie", "coree_du_sud": "verifie", "pakistan": "provisoire"}
         for pays in NOUVEAUX:
             regles = charger_regles(pays)
             self.assertEqual(regles["statut"], attendus[pays])

@@ -516,7 +516,7 @@ piece_specifique_selon_origine:
     document: "Autorisation FDA (lettre 510(k), approbation PMA ou décision De Novo) + Certificate to Foreign Government (CFG) de la FDA"
     nature: a_fournir
     fourni_par: "la FDA (via le fabricant)"
-    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document américain : rules/etats_unis.yaml (provisoire)"
+    source: "Arrêté 2855-15, art. 2 (1) — certificat de libre vente du pays d'origine ; document américain : rules/etats_unis.yaml (vérifié)"
     remarque: >-
       Classes américaines I à III : la classe II couvre des dispositifs IIa et
       IIb (voir le rapprochement des pays). Le CFG atteste la libre vente aux

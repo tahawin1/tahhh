@@ -17,6 +17,10 @@ echo "=== États-Unis ==="
 for part in 801 803 806 807 812 814 820 830 860 888; do
   indexer "etats_unis_21cfr_${part}.txt" etats_unis reglement "$(version_cfr etats_unis_21cfr_${part}.xml || date +%F)" "21 CFR Part ${part}"
 done
+indexer etats_unis_fdca_801_21usc381.txt etats_unis loi 2024-12-31 "FD&C Act, section 801 (21 U.S.C. 381) — importations et exportations, dont 801(e)(4) : certificats d'exportation (U.S. Code 2024, govinfo)"
+indexer etats_unis_fdca_510_21usc360.txt etats_unis loi 2024-12-31 "FD&C Act, section 510 (21 U.S.C. 360) — enregistrement des établissements, listing, 510(k) (U.S. Code 2024, govinfo)"
+indexer etats_unis_fdca_513_21usc360c.txt etats_unis loi 2024-12-31 "FD&C Act, section 513 (21 U.S.C. 360c) — classification, De Novo 513(f)(2) (U.S. Code 2024, govinfo)"
+indexer etats_unis_fdca_515_21usc360e.txt etats_unis loi 2024-12-31 "FD&C Act, section 515 (21 U.S.C. 360e) — autorisation préalable PMA (U.S. Code 2024, govinfo)"
 echo "=== Corée du Sud ==="
 indexer coree_medical_devices_act_2025.txt coree_du_sud loi 2025-04-01 "Medical Devices Act (Act No. 20888, 1-4-2025, traduction KLRI)"
 indexer coree_decret_application_2025.txt coree_du_sud decret 2025-07-22 "Enforcement Decree of the Medical Devices Act (Presidential Decree No. 35669, 22-7-2025, traduction KLRI)"

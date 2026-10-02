@@ -32,3 +32,14 @@ depuis la traduction anglaise, la loi n° 21263 (2025-12-30, en vigueur le
 fabricant et de l'importateur, certificat valable 3 ans) et créé les art. 28-2
 à 28-4 ; la loi n° 21949 a créé l'art. 32-3 (données douanières). Art. 15
 (importation), 20 à 24 (étiquetage), 31 et 34 : inchangés.
+
+## États-Unis — vérification du 2026-10-02
+
+Les 10 parties du 21 CFR envoyées par l'utilisateur (801, 803, 806, 807, 812,
+814, 820, 830, 860, 888 ; eCFR « last amended 9/25/2026 ») sont identiques aux
+textes déjà indexés (100 % ; 801 : seule manque une note d'incorporation par
+référence). Ajoutés : FD&C Act, sections 510, 513, 515 et 801 (21 U.S.C. 360,
+360c, 360e, 381 ; U.S. Code édition 2024, govinfo.gov) —
+`textes/etats_unis_fdca_*.txt`. Section 801(e)(4) : certificat d'exportation
+délivré par la FDA sur demande de l'exportateur, sous 20 jours (fondement du
+Certificate to Foreign Government).

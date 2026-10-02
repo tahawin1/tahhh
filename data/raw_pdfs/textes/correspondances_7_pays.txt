@@ -28,10 +28,10 @@ Certificat pour l'exportation : Free Sale Certificate (CDSCO / autorité de l'É
 Système qualité : Fifth Schedule des Medical Devices Rules 2017 (aligné ISO 13485)
 Certificats étrangers : Dispense d'essai clinique local si FSC d'un pays reconnu (AU, CA, JP, UE, UK, USA)
 
-États-Unis — autorité FDA (CDRH) — FD&C Act ; 21 CFR 807, 814, 820, 860
+États-Unis — autorité FDA (CDRH) — FD&C Act (sections 510, 513, 515, 801) ; 21 CFR 801, 803, 807, 814, 820, 860
 Classes : niveau A : I ; niveau B : II ; niveau C : II, III ; niveau D : III
 Preuve de mise sur le marché : Lettre 510(k) (K…), approbation PMA (P…) ou décision De Novo (DEN…)
-Certificat pour l'exportation : Certificate to Foreign Government (CFG) de la FDA (FD&C Act 801(e)(4), à vérifier)
+Certificat pour l'exportation : Certificate to Foreign Government (CFG) de la FDA, délivré sous 20 jours (FD&C Act, section 801(e)(4))
 Système qualité : 21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)
 Certificats étrangers : Aucune : 510(k), PMA ou De Novo obligatoire
 
@@ -54,7 +54,7 @@ Thème : règles de classification des dispositifs médicaux selon le risque
   Union européenne : Règlement 2017/745, art. 51 et annexe VIII (22 règles)
   Chine : Règlement 739, art. 6 (classes I à III selon le risque)
   Inde : Medical Devices Rules 2017, règle 4 et First Schedule (classes A à D)
-  États-Unis : 21 CFR 860.3 (c) (classes I à III) ; De Novo : 21 CFR 860, art. 513(f)(2) FD&C Act
+  États-Unis : FD&C Act, section 513 ; 21 CFR 860.3 (c) (classes I à III) ; De Novo : section 513(f)(2)
   Corée du Sud : Medical Devices Act, art. 3 ; Enforcement Rule, annexe 1 (classes I à IV)
   Pakistan : Medical Devices Rules 2017 (classes A à D) — texte à obtenir
 
@@ -63,7 +63,7 @@ Thème : procédure d'autorisation ou d'enregistrement avant mise sur le marché
   Union européenne : Règlement 2017/745, art. 52 (évaluation de la conformité) et annexes IX à XI
   Chine : Règlement 739, art. 13 à 18 (déclaration classe I, enregistrement classes II et III)
   Inde : Medical Devices Rules 2017, règles 34 à 36 (licence d'importation, formulaires MD-14/MD-15)
-  États-Unis : 21 CFR 807.81 (510(k)) ; 21 CFR 814 (PMA) ; 21 CFR 860 (De Novo)
+  États-Unis : FD&C Act, sections 510 (k) et 515 ; 21 CFR 807.81 (510(k)) ; 21 CFR 814 (PMA) ; 21 CFR 860 (De Novo)
   Corée du Sud : Medical Devices Act, art. 15 (autorisation d'importation) ; Enforcement Rule, art. 4 (notification, certification, autorisation selon la classe)
   Pakistan : Loi DRAP 2012, art. 4 (1) (d) (évaluation, inscription ou enregistrement des dispositifs) ; procédure : Rules 2017
 
@@ -72,7 +72,7 @@ Thème : autorisation de mise en vente délivrée par l'autorité du pays d'orig
   Union européenne : Aucune : le règlement 2017/745 n'accepte pas d'autorisation étrangère
   Chine : Règlement 739, art. 15 et 16 : document de l'autorité du pays du fabricant autorisant la vente (sauf dispositif innovant)
   Inde : Medical Devices Rules 2017, règle 36 (3) à (5) : free sale certificate (AU, CA, JP, UE, UK, USA : sans investigation clinique)
-  États-Unis : Aucune : 510(k), PMA ou De Novo obligatoire
+  États-Unis : Aucune : 510(k), PMA ou De Novo obligatoire (FD&C Act, sections 510, 513, 515)
   Corée du Sud : Aucune reconnaissance d'une autorisation étrangère (Medical Devices Act 2026, art. 15 : autorisation, certification ou notification MFDS obligatoire)
   Pakistan : À vérifier dans les Rules 2017
 
@@ -81,7 +81,7 @@ Thème : certificat de libre vente ou certificat pour l'exportation
   Union européenne : Règlement 2017/745, art. 60 (certificat de libre vente délivré par l'État membre)
   Chine : Règlement 739, art. 59 (l'exportateur respecte les exigences du pays importateur) ; certificat de vente : à vérifier
   Inde : Medical Devices Rules 2017, règle 36 (3) (free sale certificate des pays reconnus)
-  États-Unis : Certificate to Foreign Government : FD&C Act, section 801(e)(4) — loi non indexée
+  États-Unis : FD&C Act, section 801(e)(4) (21 U.S.C. 381) : certificat écrit de la FDA à la demande de l'exportateur, sous 20 jours (Certificate to Foreign Government)
   Corée du Sud : Aucun article : certificat délivré par le MFDS sur demande, à demander au fabricant ; l'autorisation MFDS (art. 15 (2)) suffit comme « autorisation de mise en vente » au sens de l'arrêté 2855-15
   Pakistan : À vérifier dans les Rules 2017
 

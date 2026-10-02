@@ -77,13 +77,13 @@ pays:
     equivalence_etrangere: "Dispense d'essai clinique local si FSC d'un pays reconnu (AU, CA, JP, UE, UK, USA)"
   etats_unis:
     nom: "États-Unis"
-    statut: partiel
+    statut: verifie
     autorite: "FDA (CDRH)"
-    texte: "FD&C Act ; 21 CFR 807, 814, 820, 860"
+    texte: "FD&C Act (sections 510, 513, 515, 801) ; 21 CFR 801, 803, 807, 814, 820, 860"
     classes: {A: [I], B: [II], C: [II, III], D: [III]}
     note_classes: "Trois classes : la plupart des dispositifs IIb européens sont en classe II, certains en III. Exemple vérifié : ciment osseux PMMA = classe II (contrôles spéciaux), 21 CFR 888.3027 ; classe IIb au Maroc et en UE."
     preuve_mise_sur_le_marche: "Lettre 510(k) (K…), approbation PMA (P…) ou décision De Novo (DEN…)"
-    certificat_pour_export: "Certificate to Foreign Government (CFG) de la FDA (FD&C Act 801(e)(4), à vérifier)"
+    certificat_pour_export: "Certificate to Foreign Government (CFG) de la FDA, délivré sous 20 jours (FD&C Act, section 801(e)(4))"
     systeme_qualite: "21 CFR 820 (QMSR, intègre ISO 13485:2016 depuis le 2 février 2026)"
     equivalence_etrangere: "Aucune : 510(k), PMA ou De Novo obligatoire"
   coree_du_sud:
@@ -119,7 +119,7 @@ themes:
       union_europeenne: "Règlement 2017/745, art. 51 et annexe VIII (22 règles)"
       chine: "Règlement 739, art. 6 (classes I à III selon le risque)"
       inde: "Medical Devices Rules 2017, règle 4 et First Schedule (classes A à D)"
-      etats_unis: "21 CFR 860.3 (c) (classes I à III) ; De Novo : 21 CFR 860, art. 513(f)(2) FD&C Act"
+      etats_unis: "FD&C Act, section 513 ; 21 CFR 860.3 (c) (classes I à III) ; De Novo : section 513(f)(2)"
       coree_du_sud: "Medical Devices Act, art. 3 ; Enforcement Rule, annexe 1 (classes I à IV)"
       pakistan: "Medical Devices Rules 2017 (classes A à D) — texte à obtenir"
   - id: mise_sur_le_marche
@@ -129,7 +129,7 @@ themes:
       union_europeenne: "Règlement 2017/745, art. 52 (évaluation de la conformité) et annexes IX à XI"
       chine: "Règlement 739, art. 13 à 18 (déclaration classe I, enregistrement classes II et III)"
       inde: "Medical Devices Rules 2017, règles 34 à 36 (licence d'importation, formulaires MD-14/MD-15)"
-      etats_unis: "21 CFR 807.81 (510(k)) ; 21 CFR 814 (PMA) ; 21 CFR 860 (De Novo)"
+      etats_unis: "FD&C Act, sections 510 (k) et 515 ; 21 CFR 807.81 (510(k)) ; 21 CFR 814 (PMA) ; 21 CFR 860 (De Novo)"
       coree_du_sud: "Medical Devices Act, art. 15 (autorisation d'importation) ; Enforcement Rule, art. 4 (notification, certification, autorisation selon la classe)"
       pakistan: "Loi DRAP 2012, art. 4 (1) (d) (évaluation, inscription ou enregistrement des dispositifs) ; procédure : Rules 2017"
   - id: preuve_pays_origine
@@ -139,7 +139,7 @@ themes:
       union_europeenne: "Aucune : le règlement 2017/745 n'accepte pas d'autorisation étrangère"
       chine: "Règlement 739, art. 15 et 16 : document de l'autorité du pays du fabricant autorisant la vente (sauf dispositif innovant)"
       inde: "Medical Devices Rules 2017, règle 36 (3) à (5) : free sale certificate (AU, CA, JP, UE, UK, USA : sans investigation clinique)"
-      etats_unis: "Aucune : 510(k), PMA ou De Novo obligatoire"
+      etats_unis: "Aucune : 510(k), PMA ou De Novo obligatoire (FD&C Act, sections 510, 513, 515)"
       coree_du_sud: "Aucune reconnaissance d'une autorisation étrangère (Medical Devices Act 2026, art. 15 : autorisation, certification ou notification MFDS obligatoire)"
       pakistan: "À vérifier dans les Rules 2017"
   - id: libre_vente
@@ -149,7 +149,7 @@ themes:
       union_europeenne: "Règlement 2017/745, art. 60 (certificat de libre vente délivré par l'État membre)"
       chine: "Règlement 739, art. 59 (l'exportateur respecte les exigences du pays importateur) ; certificat de vente : à vérifier"
       inde: "Medical Devices Rules 2017, règle 36 (3) (free sale certificate des pays reconnus)"
-      etats_unis: "Certificate to Foreign Government : FD&C Act, section 801(e)(4) — loi non indexée"
+      etats_unis: "FD&C Act, section 801(e)(4) (21 U.S.C. 381) : certificat écrit de la FDA à la demande de l'exportateur, sous 20 jours (Certificate to Foreign Government)"
       coree_du_sud: "Aucun article : certificat délivré par le MFDS sur demande, à demander au fabricant ; l'autorisation MFDS (art. 15 (2)) suffit comme « autorisation de mise en vente » au sens de l'arrêté 2855-15"
       pakistan: "À vérifier dans les Rules 2017"
   - id: systeme_qualite

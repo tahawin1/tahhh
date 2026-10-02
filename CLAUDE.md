@@ -75,7 +75,7 @@ toujours la base de règles du pays concerné. Fichiers sources dans
 | Chine (origine possible) | Règlement du Conseil d'État n°739 (2021) | NMPA | `rules/chine.yaml` |
 | Inde (origine possible) | Medical Devices Rules 2017 + amendements | CDSCO | `rules/inde.yaml` |
 | Union européenne (origine possible) | Règlement (UE) 2017/745 (MDR) | Organismes notifiés | `rules/union_europeenne.yaml` |
-| États-Unis (origine possible) | FD&C Act ; 21 CFR 801, 807, 814, 820, 860 | FDA | `rules/etats_unis.yaml` (partiel) |
+| États-Unis (origine possible) | FD&C Act (sections 510, 513, 515, 801) ; 21 CFR 801, 803, 807, 814, 820, 860 | FDA | `rules/etats_unis.yaml` (vérifié) |
 | Corée du Sud (origine possible) | Medical Devices Act (loi n° 21949, 2026) + Enforcement Rule | MFDS | `rules/coree_du_sud.yaml` (vérifié) |
 | Pakistan (origine possible) | Medical Devices Rules 2017 (S.R.O. 32(I)/2018) | DRAP | `rules/pakistan.yaml` (provisoire) |
 
@@ -314,7 +314,12 @@ supporte déjà.
       Pas de reconnaissance d'autorisation étrangère ; certificat de libre vente
       sans article de loi (au Maroc, l'autorisation MFDS suffit comme
       « autorisation de mise en vente » ; le CLV reste exigé par la checklist).
-      Prochaine étape : même vérification pour les États-Unis.
+- [x] États-Unis **vérifiés** (2026-10-02) : les 10 parties du 21 CFR envoyées
+      par l'utilisateur = textes déjà indexés (édition eCFR 2026-09-25) ; ajout
+      du FD&C Act, sections 510, 513, 515, 801 (U.S. Code 2024, govinfo.gov,
+      `etats_unis_fdca_*.txt`) : 801(e)(4) fonde le Certificate to Foreign
+      Government (délivré sous 20 jours). Reste provisoire : Pakistan (PDF DRAP
+      à fournir).
 - [ ] Agent — étape 3 (suite) : lettre et autres projets remplis avec les données extraites
 - [x] Agent — étape 4 (début) : enchaînement automatique (`taches.enchainer`) —
       après chaque lecture réussie ou saisie de données, fiche signalétique et
