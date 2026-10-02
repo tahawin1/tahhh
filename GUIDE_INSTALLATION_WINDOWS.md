@@ -209,6 +209,30 @@ Envoyez ensuite à Taha le rapport `C:\ConformiteDM\rapports\mise_a_jour_<date>.
 
 ---
 
+## Partie E bis — Jenkins (intégration continue)
+
+Jenkins contrôle chaque nouvelle version de l'outil avant qu'elle n'arrive sur
+le serveur. Il vérifie GitHub toutes les 15 minutes, puis enchaîne :
+
+1. les tests automatiques (règles, formulaires, API) et l'interface ;
+2. **l'évaluation de Mistral** : Mistral lit 3 documents fictifs (dont un scan)
+   dont les bonnes réponses sont connues. Jenkins mesure l'exactitude (75 %
+   minimum par défaut) et refuse toute valeur fausse que le contrôle des
+   citations aurait laissé passer ;
+3. la construction des images ;
+4. le déploiement, **seulement** si la case « DEPLOYER » est cochée **et**
+   après le clic « Déployer » d'une personne connectée. Une sauvegarde est
+   faite automatiquement avant.
+
+Installation : double-clic sur **11 - Jenkins**. L'outil installe Jenkins,
+affiche le mot de passe du compte `admin` (à garder pour vous, jamais en
+capture d'écran) et ouvre http://localhost:8081. La tâche `conformite-dm`
+existe déjà et lance son premier build dans la minute.
+
+Lancer un contrôle à la main : tâche `conformite-dm` → **Lancer un build avec
+des paramètres**. Les résultats s'affichent dans « Test Result » : tests Python
+et évaluation de Mistral, avec un détail par champ lu.
+
 ## Partie F — Au quotidien
 
 - **Redémarrage du serveur** : rien à faire. Tout redémarre seul en 2 à 3 minutes (tâche planifiée *ConformiteDM-Demarrage*).

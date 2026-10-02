@@ -52,7 +52,7 @@ pipeline {
             steps {
                 sh '''
                     rm -rf "$RAPPORTS" && mkdir -p "$RAPPORTS"
-                    docker build --pull -t "$IMAGE_CI" .
+                    docker build -t "$IMAGE_CI" .   # image de base en cache : pas de limite Docker Hub
                 '''
             }
         }

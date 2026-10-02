@@ -362,6 +362,27 @@ supporte déjà.
       - règles Maroc 2.6 : étiquettes → produits + REF (prioritaires sur le
         catalogue pour l'annexe) ; notice → médicament, latex, phtalates, origine
         animale.
+- [x] **Pipeline Jenkins** (2026-10-02, demande de l'utilisateur : « travailler
+      avec Mistral et réaliser une pipeline avec Jenkins ») : `Jenkinsfile` (pollSCM
+      15 min ; image de test depuis le Dockerfile ; en parallèle tests Python en
+      JUnit `scripts/ci_tests.py` sur réseau isolé, interface lint + build,
+      syntaxe des scripts ; **évaluation de Mistral** `scripts/evaluer_mistral.py`
+      sur les spécimens fictifs de tests/fixtures (exactitude ≥ seuil, zéro valeur
+      fausse acceptée par le contrôle des citations ; Ollama absent → UNSTABLE,
+      jamais un succès silencieux) ; images de production ; déploiement par
+      `mettre_a_jour.sh` seulement si DEPLOYER coché + `input` humain, avec
+      contrôle que la version déployée = version testée). Jenkins dans Docker
+      (`deploiement/jenkins/` : client Docker, 5 extensions, compte admin et tâche
+      créés par init.groovy.d, assistant désactivé), service `jenkins` de
+      docker-compose (profil jenkins, réseau de l'hôte, socket Docker, même chemin
+      /var/jenkins_home dans Jenkins et sur l'hôte), `scripts/installer_jenkins.sh`,
+      outil Windows « 11 - Jenkins » (mot de passe affiché, jamais dans un rapport).
+      Testé ici : Jenkinsfile validé par Jenkins (pipeline-model-converter),
+      extensions installées, compte admin + refus anonyme (403), tâche créée et
+      premier build lancé d'office, clone GitHub et pilotage de Docker depuis
+      Jenkins ; l'image de test n'a pas pu être construite ici (limite Docker Hub
+      429, apt bloqué) — `--pull` retiré pour la même raison. Pas encore exécuté
+      sur le PC de l'utilisateur.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
