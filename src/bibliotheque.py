@@ -199,8 +199,10 @@ def reprendre(dossier, precedents: list, acceptes: list[dict] | None = None,
         source = trouve["source"]
         lus = {c.get("nom") for c in ((source.extraction or {}) if source else {}).get("champs", [])}
         demandes = {c["nom"] for c in piece.champs_a_extraire or []}
-        a_relire = source is None or not demandes <= lus
-        if a_relire:
+        a_relire = bool(demandes) and (source is None or not demandes <= lus)
+        if not demandes:  # photos, déclaration : rien à lire
+            piece.extraction, piece.texte_recu, piece.extraction_statut = None, None, None
+        elif a_relire:
             piece.extraction, piece.texte_recu, piece.extraction_statut = None, None, "en_file"
         else:
             piece.texte_recu = source.texte_recu

@@ -298,7 +298,7 @@ class TestApi(unittest.TestCase):
         self.assertEqual(r.status_code, 202, r.text)
         affectations = {a["fichier"]: a["piece"] for a in r.json()["affectations"]}
         self.assertEqual(affectations, {"ISO13485.pdf": 5, "DoC for Morocco.pdf": 6, "facture.pdf": None,
-                                        "9-9- Photo.pdf": None})  # photos : rien à lire
+                                        "9-9- Photo.pdf": 9})  # photos : reçues (rien à lire)
         dossier = r.json()["dossier"]
         self.assertEqual(self.piece(dossier, "iso_13485")["extraction_statut"], "terminee")
         doc = self.piece(dossier, "declaration_conformite")
@@ -327,19 +327,51 @@ class TestApi(unittest.TestCase):
         self.assertEqual(journal[0]["action"], "point_verifie")
 
     def test_enchainement_automatique(self):
+        # les deux cas de la direction : même si le fournisseur n'a pas tout envoyé, l'agent prépare
+        # nos papiers dès que les documents reçus sont lus (les pièces manquantes sont réclamées)
         d = self.creer(pays="union_europeenne")
         APPELS_GENERATION.clear()
-        lisibles = [x["code"] for x in d["documents"] if x["lisible_par_agent"]]
-        for code in lisibles[:-1]:
-            self.deposer(d, code)
+        self.deposer(d, "iso_13485")  # seul document reçu
         dossier = self.client.get(f"/dossiers/{d['id']}").json()
         self.assertEqual(self.piece(dossier, "fiche_signaletique")["statut"], "a_valider")  # rempli dès la 1re lecture
-        self.assertEqual(self.piece(dossier, "demande_signee")["statut"], "a_generer")  # pas tout lu : pas de lettre
-        self.deposer(d, lisibles[-1])  # dernier document lu -> la lettre part en rédaction
-        dossier = self.client.get(f"/dossiers/{d['id']}").json()
-        self.assertEqual(APPELS_GENERATION, ["demande_signee"])
+        self.assertEqual(APPELS_GENERATION, ["demande_signee"])  # lettre lancée sans attendre les pièces manquantes
         self.assertEqual(self.piece(dossier, "demande_signee")["statut"], "a_valider")
         self.assertEqual(self.piece(dossier, "demande_signee")["valide_par"], None)  # rien n'est validé automatiquement
+        self.deposer(d, "notice")  # document arrivé plus tard : la lettre déjà rédigée n'est pas relancée
+        self.assertEqual(APPELS_GENERATION, ["demande_signee"])
+
+    def test_bilan_trois_cas(self):
+        # cas « incomplet » : seul l'ISO reçu, rien dans la base
+        d = self.creer(pays="union_europeenne", fournisseur="Fabricant Bilan", produit="Pansement Bilan")
+        self.deposer(d, "iso_13485")
+        b = self.client.get(f"/dossiers/{d['id']}/bilan").json()
+        self.assertEqual(b["cas"], "incomplet")
+        self.assertIn("notice", [l["code"] for l in b["manquants"]])
+        self.assertIn("AMMPS", b["relance"])  # relance prête (jamais envoyée)
+        notre = {l["code"]: l for l in b["notre_part"]}
+        self.assertEqual(notre["demande_signee"]["etat"], "redige")  # nos papiers préparés quand même
+        self.assertEqual(notre["quittance_droits"]["etat"], "a_fournir_par_nous")
+        # cas « complété par l'agent » : même fabricant, même produit, le fournisseur n'envoie que les certificats
+        lisibles = [x["code"] for x in d["documents"] if x["lisible_par_agent"] and x["code"] != "iso_13485"]
+        for code in lisibles:
+            self.deposer(d, code)
+        second = self.creer(pays="union_europeenne", fournisseur="Fabricant Bilan", produit="Pansement Bilan")
+        for code in ("iso_13485", "piece_specifique_union_europeenne"):
+            self.deposer(second, code)
+        b = self.client.get(f"/dossiers/{second['id']}/bilan").json()
+        self.assertIn(b["cas"], ("complete_par_agent", "incomplet"))
+        self.assertTrue(b["complementaires"])  # pièces complémentaires fournies par l'agent
+        self.assertTrue(all(l["par"] == "agent (base)" for l in b["complementaires"]))
+        etiquettes = next(l for l in b["notre_part"] if l["code"] == "etiquetage")
+        self.assertEqual(etiquettes["etat"], "a_signer")  # étiquettes : à signer et cacheter par nous
+        # cas « complet » : le fournisseur envoie tout lui-même
+        troisieme = self.creer(pays="union_europeenne", fournisseur="Fabricant Complet", produit="Seringue Complet")
+        for code in [x["code"] for x in troisieme["documents"] if x["lisible_par_agent"]
+                     and x["code"] not in ("declaration_etablissement",)]:
+            self.deposer(troisieme, code)
+        b = self.client.get(f"/dossiers/{troisieme['id']}/bilan").json()
+        manquants = [l["code"] for l in b["manquants"]]
+        self.assertTrue(all(c in ("echantillon", "echantillon_modele_vente", "facture_proforma") for c in manquants), manquants)
 
     def test_pieces_fournies_par_l_agent_depuis_la_base(self):
         # politique de la direction (rules/bibliotheque.yaml) : le fournisseur n'envoie que ses certificats
@@ -395,7 +427,8 @@ class TestApi(unittest.TestCase):
     def test_depot_refuse(self):
         d = self.creer()
         self.assertEqual(self.deposer(d, "demande_signee").status_code, 409)  # pièce à rédiger
-        self.assertEqual(self.deposer(d, "echantillon").status_code, 409)  # pièce physique, rien à lire
+        self.assertEqual(self.deposer(d, "echantillon").status_code, 202)  # photos : reçues, rien à lire
+        self.assertEqual(self.deposer(d, "echantillon_modele_vente").status_code, 409)  # objet physique, remis au dépôt
         self.assertEqual(self.deposer(d, "iso_13485", nom="virus.exe").status_code, 415)
         iso = self.piece(d, "iso_13485")
         self.client.post(f"/dossiers/{d['id']}/documents/{iso['id']}/valider",

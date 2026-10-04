@@ -108,6 +108,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+PIECES_PHYSIQUES = ("echantillon_modele_vente",)  # objet remis au dépôt, pas un document
+
 PaysOrigine = Literal["chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan", "autre"]
 Classe = Literal["I", "IS", "IM", "IR", "IIA", "IIB", "III"]  # IS : stérile ; IM : mesurage ; IR : réutilisable
 
@@ -537,8 +539,9 @@ def creer_dossier(requete: DossierCreation):
             f"{len(requis)} pièces décidées par le moteur de règles (règles {dossier.regles_version})",
         )
         session.commit()
-        try:  # fournisseur déjà connu : ses documents encore valides sont repris d'office
-            taches.reprendre_documents(session, dossier, requete.cree_par)
+        try:  # fournisseur déjà connu : l'agent fournit d'office les pièces de la base, puis prépare nos papiers
+            if taches.reprendre_documents(session, dossier, requete.cree_par):
+                taches.enchainer(session, dossier, requete.cree_par)
         except Exception as e:
             log.error("Reprise des documents du fournisseur impossible : %s", e)
         session.expire_all()
@@ -654,6 +657,20 @@ def controles_dossier(dossier_id: int):
 
     with db.SessionLocal() as session:
         return controles.evaluer(_charger_dossier(session, dossier_id))
+
+
+@app.get("/dossiers/{dossier_id}/bilan")
+def bilan_dossier(dossier_id: int):
+    """Bilan de l'agent : cas « complet » (le fournisseur a tout envoyé : nos papiers
+    à compléter), « complete_par_agent » (pièces complémentaires fournies depuis
+    la base) ou « incomplet » (pièces encore à réclamer, relance prête) ;
+    pièces du fournisseur et papiers de notre part, avec ce qui reste à faire."""
+    import bilan
+    import controles
+
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        return bilan.calculer(dossier, controles.evaluer(dossier))
 
 
 @app.post("/dossiers/{dossier_id}/controles/humain")
@@ -778,8 +795,8 @@ async def deposer_document_recu(
         doc = _charger_document(session, dossier_id, document_id)
         if doc.nature != "a_fournir":
             raise HTTPException(status_code=409, detail="Seules les pièces à fournir reçoivent un document du fournisseur.")
-        if not _champs_de(doc):
-            raise HTTPException(status_code=409, detail=f"'{doc.nom}' n'a pas de champs à lire déclarés dans les règles.")
+        if doc.code in PIECES_PHYSIQUES:
+            raise HTTPException(status_code=409, detail=f"'{doc.nom}' est un objet physique : à remettre lors du dépôt.")
         if doc.statut == "valide":
             raise HTTPException(status_code=409, detail="Pièce déjà validée : la rejeter avant de déposer un nouveau document.")
         if doc.extraction_statut in ("en_file", "en_cours"):
@@ -787,7 +804,10 @@ async def deposer_document_recu(
 
         _enregistrer_recu(session, doc, contenu, extension, fichier.filename or f"document{extension}", acteur)
         session.commit()
-        taches.soumettre_extraction(doc.id)
+        if doc.extraction_statut == "en_file":  # rien à lire (photos, quittance…) : simplement reçu
+            taches.soumettre_extraction(doc.id)
+        else:
+            taches.enchainer(session, doc.dossier, acteur)
         session.expire_all()
         return _detail(_charger_dossier(session, dossier_id))
 
@@ -802,7 +822,7 @@ def _enregistrer_recu(session, doc: Document, contenu: bytes, extension: str, no
     doc.origine_recu = None  # envoyé par le fournisseur
     doc.recu_le = maintenant()
     doc.champs_a_extraire = _champs_de(doc)
-    doc.extraction_statut = "en_file"
+    doc.extraction_statut = "en_file" if doc.champs_a_extraire else None  # photos, quittance : rien à lire
     doc.extraction = None
     doc.extraction_erreur = None
     doc.texte_recu = None
@@ -857,8 +877,8 @@ async def deposer_documents_groupes(
                 affectations.append({"fichier": nom, "piece": None, "raison": "fichier vide ou de plus de 20 Mo"})
                 continue
             doc, raison = classement.classer(nom, pieces)
-            if doc is not None and not _champs_de(doc):
-                doc, raison = None, f"pièce {doc.numero} ({doc.nom}) : rien à lire, à cocher à la main"
+            if doc is not None and doc.code in PIECES_PHYSIQUES:
+                doc, raison = None, f"{doc.nom} : objet physique, à remettre lors du dépôt"
             elif doc is not None and doc.statut == "valide":
                 doc, raison = None, f"pièce {doc.numero} déjà validée : la rejeter pour remplacer son document"
             elif doc is not None and doc.extraction_statut in ("en_file", "en_cours"):
@@ -877,7 +897,8 @@ async def deposer_documents_groupes(
                         a.update(piece=None, raison=f"lecture du fichier impossible ({type(e).__name__})")
                 continue
             _enregistrer_recu(session, doc, contenu, extension, nom, acteur)
-            a_lire.append(doc.id)
+            if doc.extraction_statut == "en_file":
+                a_lire.append(doc.id)
         session.commit()
         for ident in a_lire:
             taches.soumettre_extraction(ident)

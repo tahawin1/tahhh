@@ -564,3 +564,16 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .point-controle input { margin-top: 0.2rem; width: auto; }
 .point-controle .signe { font-weight: 700; text-align: center; border-radius: 6px; line-height: 1.4; }
 .point-texte small { display: block; overflow-wrap: anywhere; }
+
+/* Bilan de l'agent : les trois cas (fournisseur complet, complété par l'agent, à réclamer) */
+.bilan-agent { margin: 1rem 0; padding: 1rem 1.25rem; border-radius: 12px; border: 1px solid color-mix(in srgb, currentColor 25%, transparent); }
+.bilan-agent > strong { display: block; font-size: 1.05rem; margin: 0.2rem 0 0.3rem; color: inherit; }
+.bilan-agent .surtitre { margin: 0; }
+.colonnes-bilan { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; margin-top: 0.75rem; color: var(--texte, inherit); }
+.colonnes-bilan h3 { display: flex; align-items: center; gap: 0.4rem; font-size: 0.95rem; margin: 0 0 0.4rem; }
+.colonnes-bilan ul { list-style: none; margin: 0; padding: 0; }
+.ligne-bilan { display: grid; grid-template-columns: 2rem 1fr auto; gap: 0.5rem; align-items: center; padding: 0.35rem 0; border-bottom: 1px solid color-mix(in srgb, currentColor 10%, transparent); }
+.ligne-bilan .nom-bilan { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.ligne-bilan .numero-bilan { font-variant-numeric: tabular-nums; opacity: 0.7; text-align: right; }
+.bilan-agent pre.relance { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; padding: 0.75rem; border-radius: 8px; background: color-mix(in srgb, currentColor 6%, transparent); font-family: inherit; }
+.colonnes-bilan > div { background: var(--surface); border: 1px solid var(--bordure); border-radius: 10px; padding: 0.75rem; }

@@ -301,6 +301,29 @@ async function telechargerFichier(chemin: string, nom: string) {
   URL.revokeObjectURL(url)
 }
 
+/** Bilan de l'agent : les trois cas (voir src/bilan.py) */
+export interface LigneBilan {
+  numero: number | null
+  code: string
+  nom: string
+  etat: string
+  par: string
+  a_faire: string
+  origine?: string | null
+  valide: boolean
+}
+export interface Bilan {
+  cas: 'complet' | 'complete_par_agent' | 'incomplet'
+  titre: string
+  fournisseur: LigneBilan[]
+  complementaires: LigneBilan[]
+  manquants: LigneBilan[]
+  notre_part: LigneBilan[]
+  points_humains_a_cocher: number
+  relance: string | null
+  compteurs: { recues: number; fournies_par_agent: number; manquantes: number; a_completer: number }
+}
+
 export const api = {
   sante: () => requete<Sante>('/health', { headers: enTetes() }),
   pays: () => requete<Record<string, { autorite: string; classification: string[] }>>('/pays', { headers: enTetes() }),
@@ -329,6 +352,7 @@ export const api = {
     })
   },
   // Bibliothèque fournisseur : documents encore valides déjà reçus du même fabricant
+  bilan: (id: number) => requete<Bilan>(`/dossiers/${id}/bilan`, { headers: enTetes() }),
   reprendreDocuments: (id: number, acteur: string) =>
     post<DossierDetail>(`/dossiers/${id}/documents-recus/reprendre`, { acteur }),
   deposerGroupe: (id: number, fichiers: File[], acteur: string) => {

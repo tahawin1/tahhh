@@ -8,6 +8,7 @@ import LectureAgent from '../composants/LectureAgent'
 import DepotGroupe from '../composants/DepotGroupe'
 import DonneesDispositif from '../composants/DonneesDispositif'
 import ControlesChecklist from '../composants/ControlesChecklist'
+import BilanAgent from '../composants/BilanAgent'
 import type { Session } from './Connexion'
 
 export default function DetailDossier({ id, session }: { id: number; session: Session }) {
@@ -106,6 +107,9 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
           </div>
         </div>
       </div>
+
+      <BilanAgent dossierId={dossier.id}
+        version={dossier.documents.map((d) => `${d.statut}${d.extraction_statut}${d.nom_fichier_recu}`).join(',')} />
 
       {erreur && <p className="message erreur" role="alert">{erreur}</p>}
 
@@ -272,7 +276,9 @@ function CartePiece({
 
       {erreurFichier && <p className="message erreur">{erreurFichier}</p>}
 
-      {piece.lisible_par_agent && (
+      {/* toute pièce à fournir peut recevoir son document (photos, quittance : simplement reçus, rien à lire) ;
+          l'échantillon est un objet remis au dépôt */}
+      {piece.nature === 'a_fournir' && piece.code !== 'echantillon_modele_vente' && (
         <LectureAgent piece={piece} dossierId={dossierId} acteur={session.nom} occupe={occupe} executer={executer} />
       )}
 

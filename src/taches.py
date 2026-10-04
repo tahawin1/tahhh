@@ -205,18 +205,19 @@ def enchainer(session, dossier, acteur: str = "système") -> list[str]:
             journaliser(session, dossier.id, acteur, "formulaire_mis_a_jour",
                         f"{doc.nom} — {resultat['bilan']['a_completer']} case(s) à compléter", document_id=doc.id)
             relances.append(doc.code)
-    lisibles = [d for d in dossier.documents if d.nature == "a_fournir" and d.champs_a_extraire]
-    # une lecture en erreur ne bloque pas la lettre (elle reste à relire et signalée) ; il faut
-    # que chaque document reçu ait été traité et qu'au moins un ait été lu
-    tout_lu = (lisibles and all(d.extraction_statut in ("terminee", "erreur") for d in lisibles)
-               and any(d.extraction_statut == "terminee" for d in lisibles))
+    # Les deux cas de la direction : que le fournisseur ait tout envoyé ou non, l'agent prépare
+    # nos papiers dès que les documents REÇUS (du fournisseur ou fournis depuis la base) sont lus ;
+    # une pièce manquante ne bloque pas (elle est réclamée) ; une lecture en erreur non plus.
+    recus = [d for d in dossier.documents if d.nature == "a_fournir" and d.champs_a_extraire and d.fichier_recu]
+    tout_lu = (bool(recus) and all(d.extraction_statut in ("terminee", "erreur") for d in recus)
+               and any(d.extraction_statut == "terminee" for d in recus))
     a_lancer = [d for d in dossier.documents if d.nature == "a_rediger" and d.code not in codes_formulaires
                 and d.statut == "a_generer"]
     if tout_lu:
         for doc in a_lancer:
             doc.statut = "en_file"
             journaliser(session, dossier.id, acteur, "generation_demandee",
-                        f"{doc.nom} — lancée automatiquement : tous les documents du fournisseur sont lus", document_id=doc.id)
+                        f"{doc.nom} — lancée automatiquement : documents reçus lus", document_id=doc.id)
             relances.append(doc.code)
     session.commit()
     for doc in a_lancer if tout_lu else []:

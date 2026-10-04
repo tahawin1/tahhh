@@ -9,7 +9,8 @@ exécutée comme par un utilisateur, puis vérifiée.
   4. Checklist   : contrôles de l'entreprise (expiration, classe, papiers à réclamer, relance)
   5. Formulaires : fiche signalétique et annexe II remplies par le code
   6. Rédaction   : lettre de Mistral (RAG : modèle accepté + textes) sans préambule ni invention
-  7. Dépôt       : ZIP numéroté marqué BROUILLON ; rien validé, rien envoyé
+  7. Dépôt       : ZIP numéroté marqué BROUILLON ; rien validé, rien envoyé ; bilan (cas 2 : pièces à réclamer,
+                  nos papiers préparés quand même)
   8. Base       : nouveau dossier du même fabricant -> l'agent fournit le catalogue ; certificats réclamés
 
     python scripts/ci_agent.py --api http://127.0.0.1:8100 --cle CLE --rapport rapports-ci
@@ -209,6 +210,13 @@ class Essai:
                       r.headers.get("content-disposition", ""))
         d = self.get(f"/dossiers/{d['id']}").json()
         self.verifier("7 dépôt", "aucune pièce validée par l'agent", all(p["statut"] != "valide" for p in d["documents"]))
+        b = self.get(f"/dossiers/{d['id']}/bilan").json()
+        notre = {l["code"]: l for l in b["notre_part"]}
+        self.journal["bilan"] = {"cas": b["cas"], "titre": b["titre"], "compteurs": b["compteurs"]}
+        self.verifier("7 dépôt", f"bilan de l'agent : {b['titre']}",
+                      b["cas"] == "incomplet" and bool(b["relance"]) and notre["demande_signee"]["etat"] == "redige"
+                      and notre["fiche_signaletique"]["etat"] == "redige",
+                      json.dumps({"cas": b["cas"], "lettre": notre.get("demande_signee", {}).get("etat")}))
 
     def memoire(self):
         """Politique de la direction : le fournisseur n'envoie que ses certificats ; l'agent

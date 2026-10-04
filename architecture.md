@@ -427,6 +427,19 @@ supporte déjà.
       bouton « Fournir les pièces depuis la base » ; déclenché à la création du
       dossier et après chaque lecture (`taches.enchainer`). La relance ne réclame
       donc plus que les certificats. Scénario Jenkins : étape « 8 base ».
+- [x] **Bilan de l'agent, trois cas** (2026-10-04, `src/bilan.py`, `GET /dossiers/{id}/bilan`,
+      panneau « Bilan » en tête du dossier) : `complet` (le fournisseur a tout envoyé →
+      nos papiers à compléter), `complete_par_agent` (pièces complémentaires fournies
+      depuis la base), `incomplet` (pièces encore absentes : liste + relance prête,
+      jamais envoyée). Dans tous les cas l'agent prépare nos papiers : lettre lancée dès
+      que les documents REÇUS sont lus (une pièce manquante ne bloque plus), fiche et
+      annexe II remplies, enchaînement aussi après les pièces fournies à la création.
+      « Nos papiers » : pièces rédigées (cases [À COMPLÉTER] comptées), déclaration de
+      l'établissement et quittance (à fournir par nous), étiquettes et notice à signer
+      et cacheter. Pièces sans rien à lire (photos, quittance, documentation technique)
+      désormais déposables (reçues, sans lecture) ; échantillon = objet physique, « à
+      remettre au dépôt » (`PIECES_PHYSIQUES`). Vérifié dans Chromium (bureau et mobile,
+      sans débordement) contre l'API locale ; étape 7 du scénario Jenkins.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
