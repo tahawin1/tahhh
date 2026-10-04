@@ -112,6 +112,7 @@ def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
     for d in formulaires_acceptes(racine):
         valeurs = {}
         for numero, chemin in sorted(d["fichiers"].items()):
+            print(f"  … {d['produit']} : Mistral lit la pièce {numero} ({chemin.name}) — 1 à 5 min, patienter", flush=True)
             try:
                 texte = lire_document(chemin)
                 lus = controler(interroger_mistral(texte, champs, "formulaire accepté par l'administration "

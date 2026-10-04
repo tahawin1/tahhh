@@ -18,9 +18,11 @@ if [ -z "$(find data/dossiers_valides -name '*.pdf' 2>/dev/null | head -1)" ]; t
 fi
 # Puis Mistral lit la fiche signalétique et l'annexe II acceptées (mémoire,
 # src/memoire.py) : leurs données servent aux dossiers suivants du même fabricant.
+echo "Modèles de rédaction, puis mémoire : Mistral lit chaque formulaire accepté (quelques minutes"
+echo "par dossier, sans rien afficher pendant la lecture : NE PAS interrompre)."
 if docker ps --format '{{.Names}}' 2>/dev/null | grep -qx conformite-api; then
-  docker exec conformite-api python3 src/modeles.py          # serveur : dans le conteneur de l'API
-  docker exec conformite-api python3 src/memoire.py
+  docker exec conformite-api python3 -u src/modeles.py          # serveur : dans le conteneur de l'API
+  docker exec conformite-api python3 -u src/memoire.py
 else
   PYTHON=python3; [ -x .venv/bin/python ] && PYTHON=.venv/bin/python
   $PYTHON src/modeles.py                                      # développement
