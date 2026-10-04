@@ -10,7 +10,7 @@ exécutée comme par un utilisateur, puis vérifiée.
   5. Formulaires : fiche signalétique et annexe II remplies par le code
   6. Rédaction   : lettre de Mistral (RAG : modèle accepté + textes) sans préambule ni invention
   7. Dépôt       : ZIP numéroté marqué BROUILLON ; rien validé, rien envoyé
-  8. Mémoire     : nouveau dossier du même fabricant -> documents encore valides repris
+  8. Base       : nouveau dossier du même fabricant -> l'agent fournit le catalogue ; certificats réclamés
 
     python scripts/ci_agent.py --api http://127.0.0.1:8100 --cle CLE --rapport rapports-ci
 """
@@ -34,6 +34,20 @@ FIXTURES = RACINE / "tests" / "fixtures"
 ACTEUR = "Jenkins (essai automatique)"
 PRODUIT = "Prothèse totale de hanche SPECIMEN"
 FOURNISSEUR = "Hangzhou Specimen Orthopaedics Co., Ltd."
+
+
+def catalogue_specimen() -> bytes:
+    """Catalogue fictif du fabricant spécimen (généré, aucune donnée réelle)."""
+    import pymupdf
+
+    doc = pymupdf.open()
+    page = doc.new_page()
+    for i, ligne in enumerate(["SPECIMEN - DOCUMENT FICTIF POUR TESTS", "Hangzhou Specimen Orthopaedics Co., Ltd.",
+                               "Product catalogue 2026 - brand SPECIMEN-ORTHO",
+                               "Total hip prosthesis SPECIMEN    REF HSO-THP-01",
+                               "Femoral stem SPECIMEN            REF HSO-FS-02"]):
+        page.insert_text((50, 60 + 20 * i), ligne, fontsize=11)
+    return doc.tobytes()
 
 
 class Essai:
@@ -100,15 +114,18 @@ class Essai:
         fichiers = [("fichiers", ("5-ISO 13485 certificate.pdf", (FIXTURES / "specimen_iso13485_scanne.pdf").read_bytes(),
                                   "application/pdf")),
                     ("fichiers", ("4-NMPA registration certificate.pdf",
-                                  (FIXTURES / "specimen_nmpa_traduction.pdf").read_bytes(), "application/pdf"))]
+                                  (FIXTURES / "specimen_nmpa_traduction.pdf").read_bytes(), "application/pdf")),
+                    ("fichiers", ("14-Catalogue.pdf", catalogue_specimen(), "application/pdf"))]
         r = self.post(f"/dossiers/{d['id']}/documents-recus", files=fichiers, data={"acteur": ACTEUR})
         ranges = {a["fichier"]: a["piece"] for a in r["affectations"]}
-        self.verifier("2 classement", "ISO rangé en pièce 5, NMPA en pièce 4",
-                      ranges.get("5-ISO 13485 certificate.pdf") == 5 and ranges.get("4-NMPA registration certificate.pdf") == 4,
+        self.verifier("2 classement", "ISO rangé en pièce 5, NMPA en pièce 4, catalogue en pièce 14",
+                      ranges.get("5-ISO 13485 certificate.pdf") == 5 and ranges.get("4-NMPA registration certificate.pdf") == 4
+                      and ranges.get("14-Catalogue.pdf") == 14,
                       str(r["affectations"]), debut)
         debut = time.monotonic()
         d = self.attendre(d["id"], lambda x: all(self.piece(x, c)["extraction_statut"] in ("terminee", "erreur")
-                                                  for c in ("iso_13485", "piece_specifique_chine")), "lecture par Mistral")
+                                                  for c in ("iso_13485", "piece_specifique_chine", "catalogue")),
+                          "lecture par Mistral")
         iso, nmpa = self.piece(d, "iso_13485"), self.piece(d, "piece_specifique_chine")
         self.verifier("3 lecture", "les deux documents lus (dont un scan, par OCR)",
                       iso["extraction_statut"] == nmpa["extraction_statut"] == "terminee",
@@ -194,16 +211,23 @@ class Essai:
         self.verifier("7 dépôt", "aucune pièce validée par l'agent", all(p["statut"] != "valide" for p in d["documents"]))
 
     def memoire(self):
+        """Politique de la direction : le fournisseur n'envoie que ses certificats ; l'agent
+        fournit le reste depuis la base (ici : le catalogue du dossier précédent du même fabricant)."""
         debut = time.monotonic()
         d = self.post("/dossiers", json={"pays_origine": "chine", "produit": "Tige fémorale SPECIMEN", "classe": "IIB",
                                          "fournisseur": FOURNISSEUR, "cree_par": ACTEUR})
-        iso = self.piece(d, "iso_13485")
-        self.verifier("8 mémoire", "nouveau dossier du même fabricant : ISO 13485 encore valide repris d'office",
-                      iso["extraction_statut"] == "terminee" and iso["statut"] != "valide",
-                      f"ISO : {iso['extraction_statut']}", debut)
-        nmpa = self.piece(d, "piece_specifique_chine")
-        self.verifier("8 mémoire", "certificat NMPA expiré NON repris", nmpa["extraction_statut"] is None,
-                      f"NMPA : {nmpa['extraction_statut']}")
+        catalogue = self.piece(d, "catalogue")
+        self.verifier("8 base", "nouveau dossier du même fabricant : catalogue fourni par l'agent depuis la base",
+                      catalogue["extraction_statut"] == "terminee" and "base" in (catalogue.get("origine_recu") or "")
+                      and catalogue["statut"] != "valide", f"catalogue : {catalogue['extraction_statut']} "
+                      f"{catalogue.get('origine_recu')}", debut)
+        certificats = [self.piece(d, c)["extraction_statut"] for c in ("iso_13485", "piece_specifique_chine")]
+        self.verifier("8 base", "certificats (ISO, NMPA) jamais repris : toujours envoyés par le fournisseur",
+                      certificats == [None, None], str(certificats))
+        c = self.get(f"/dossiers/{d['id']}/controles").json()
+        non_recus = " ".join(x["nom"] for x in c["a_reclamer"] if "document non reçu" in x["raisons"])
+        self.verifier("8 base", "relance au fournisseur : ISO 13485 réclamé, catalogue non (fourni par l'agent)",
+                      "13485" in non_recus and "Catalogue" not in non_recus, non_recus[:300])
 
     # ------------------------------------------------------------- rapport
     def rapport(self, dossier: Path):

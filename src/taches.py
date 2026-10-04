@@ -154,18 +154,20 @@ def executer_extraction(document_id: int) -> None:
 
 
 def reprendre_documents(session, dossier, acteur: str = "système") -> int:
-    """Bibliothèque fournisseur : reprend dans ce dossier les documents encore
-    valides déjà reçus du même fabricant (bibliotheque.py). Journalisé ; rien
-    n'est validé. Retourne le nombre de pièces reprises."""
+    """L'agent fournit depuis la base les pièces que la politique lui confie
+    (rules/bibliotheque.yaml : tout sauf les certificats) : dossiers déjà
+    traités et dossiers acceptés du même fabricant (et du même produit pour
+    les pièces propres au produit). Journalisé ; rien n'est validé. Retourne
+    le nombre de pièces fournies."""
     import bibliotheque
 
     precedents = (session.query(db.Dossier).filter(db.Dossier.id != dossier.id)
                   .order_by(db.Dossier.id.desc()).limit(100).all())
     faits = bibliotheque.reprendre(dossier, precedents)
-    for piece, source, a_relire in faits:
+    for piece, trouve, a_relire in faits:
         journaliser(session, dossier.id, acteur, "document_repris",
-                    f"{piece.nom} — repris du dossier n°{source.dossier_id} ({source.nom_fichier_recu})"
-                    + (" ; relu pour les nouveaux points de contrôle" if a_relire else " ; lecture reprise"),
+                    f"{piece.nom} — fourni par l'agent depuis la {trouve['origine']} ({trouve['nom']})"
+                    + (" ; lecture par l'agent en cours" if a_relire else " ; lecture reprise"),
                     document_id=piece.id)
     session.commit()
     for piece, _, a_relire in faits:

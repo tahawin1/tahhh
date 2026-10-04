@@ -112,6 +112,8 @@ class Document(Base):
     extraction: Mapped[dict | None] = mapped_column(JSON, nullable=True)
     extraction_erreur: Mapped[str | None] = mapped_column(Text, nullable=True)
     texte_recu: Mapped[str | None] = mapped_column(Text, nullable=True)
+    # d'où vient le document reçu : None = fournisseur ; « base : … » = fourni par l'agent depuis la base
+    origine_recu: Mapped[str | None] = mapped_column(String(300), nullable=True)
 
     dossier: Mapped[Dossier] = relationship(back_populates="documents")
 

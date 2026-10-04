@@ -75,6 +75,8 @@ export interface Piece {
   commentaire: string | null
   lisible_par_agent: boolean
   nom_fichier_recu: string | null
+  /** null : envoyé par le fournisseur ; « base : … » : fourni par l'agent depuis la base */
+  origine_recu?: string | null
   recu_le: string | null
   extraction_statut: 'en_file' | 'en_cours' | 'terminee' | 'erreur' | null
   extraction: Extraction | null

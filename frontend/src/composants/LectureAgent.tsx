@@ -55,7 +55,9 @@ export default function LectureAgent({
           Document reçu : <button className="lien" onClick={() => api.telechargerRecu(dossierId, piece).catch((x: Error) => setErreur(x.message))}>
             {piece.nom_fichier_recu}
           </button>{' '}
-          (déposé le {dateHeure(piece.recu_le)})
+          {piece.origine_recu
+            ? <> — <span className="pastille encours">Fourni par l'agent</span> depuis la {piece.origine_recu}</>
+            : <> (déposé le {dateHeure(piece.recu_le)})</>}
         </p>
       ) : (
         <p className="secondaire">Aucun document reçu pour l'instant.</p>

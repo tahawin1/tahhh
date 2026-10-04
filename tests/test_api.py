@@ -67,6 +67,9 @@ class TestApi(unittest.TestCase):
         taches.soumettre_extraction = taches.executer_extraction
         cls._vrai_extraire = extraction.extraire  # rétabli à la fin : les autres tests lisent pour de vrai
         extraction.extraire = faux_extraire
+        import memoire
+        memoire.RACINE_DEFAUT = TMP / "dossiers_valides_absents"  # jamais les dossiers acceptés réels
+        memoire.DOSSIER_MEMOIRE = TMP / "memoire_absente"
         cls.client = TestClient(api.app)
         cls.client.__enter__()  # déclenche le lifespan (création des tables)
 
@@ -80,10 +83,10 @@ class TestApi(unittest.TestCase):
         APPELS_GENERATION.clear()
         api.API_KEY = None
 
-    def creer(self, pays="chine", classe="IIB", fournisseur=None):
+    def creer(self, pays="chine", classe="IIB", fournisseur=None, produit="Prothèse orthopédique de hanche"):
         # fournisseur distinct par dossier : la bibliothèque fournisseur ne relie pas les tests entre eux
         r = self.client.post("/dossiers", json={
-            "pays_origine": pays, "produit": "Prothèse orthopédique de hanche",
+            "pays_origine": pays, "produit": produit,
             "classe": classe, "fournisseur": fournisseur or f"Fournisseur{uuid.uuid4().hex[:8]}", "cree_par": "Testeur"})
         self.assertEqual(r.status_code, 201, r.text)
         return r.json()
@@ -338,21 +341,30 @@ class TestApi(unittest.TestCase):
         self.assertEqual(self.piece(dossier, "demande_signee")["statut"], "a_valider")
         self.assertEqual(self.piece(dossier, "demande_signee")["valide_par"], None)  # rien n'est validé automatiquement
 
-    def test_bibliotheque_fournisseur(self):
-        premier = self.creer(pays="union_europeenne", fournisseur="Exemple Medical")
-        for code in ("iso_13485", "piece_specifique_union_europeenne", "declaration_conformite", "catalogue"):
+    def test_pieces_fournies_par_l_agent_depuis_la_base(self):
+        # politique de la direction (rules/bibliotheque.yaml) : le fournisseur n'envoie que ses certificats
+        premier = self.creer(pays="union_europeenne", fournisseur="Exemple Medical", produit="Ciment osseux Exemple (IIb)")
+        for code in ("iso_13485", "piece_specifique_union_europeenne", "attestation_fabricant", "declaration_conformite",
+                     "etiquetage", "notice", "catalogue"):
             self.deposer(premier, code)
-        # nouveau dossier du même fournisseur : ISO, certificat CE et catalogue repris d'office, pas la DoC
-        second = self.creer(pays="union_europeenne", fournisseur="EXEMPLE MEDICAL S.p.A.")
-        repris = {x["code"] for x in second["documents"] if x["extraction_statut"] == "terminee"}
-        self.assertEqual(repris, {"iso_13485", "piece_specifique_union_europeenne", "catalogue"})
+        # même fabricant, même produit : l'agent fournit tout sauf les certificats
+        second = self.creer(pays="union_europeenne", fournisseur="EXEMPLE MEDICAL S.p.A.", produit="Ciment osseux Exemple")
+        fournis = {x["code"]: x for x in second["documents"] if x["extraction_statut"] == "terminee"}
+        self.assertEqual(set(fournis), {"attestation_fabricant", "declaration_conformite", "etiquetage", "notice", "catalogue"})
+        self.assertIn(f"dossier n°{premier['id']}", fournis["notice"]["origine_recu"])
+        iso = self.piece(second, "iso_13485")
+        self.assertIsNone(iso["extraction_statut"])  # certificats : toujours du fournisseur
         self.assertTrue(all(x["statut"] != "valide" for x in second["documents"]))  # rien n'est validé d'office
         journal = self.client.get(f"/dossiers/{second['id']}").json()["evenements"]
-        self.assertTrue(any(e["action"] == "document_repris" and f"dossier n°{premier['id']}" in e["detail"] for e in journal))
-        # autre fournisseur, ou autre pays d'origine : rien n'est repris
-        autre = self.creer(pays="union_europeenne", fournisseur="Autre Fabricant")
+        self.assertTrue(any(e["action"] == "document_repris" and "fourni par l'agent" in e["detail"] for e in journal))
+        # même fabricant, autre produit : seulement les pièces du fabricant
+        autre_produit = self.creer(pays="union_europeenne", fournisseur="Exemple Medical", produit="Vis pédiculaire")
+        self.assertEqual({x["code"] for x in autre_produit["documents"] if x["extraction_statut"] == "terminee"},
+                         {"attestation_fabricant", "catalogue"})
+        # autre fabricant, ou autre pays d'origine : rien
+        autre = self.creer(pays="union_europeenne", fournisseur="Autre Fabricant", produit="Ciment osseux Exemple")
         self.assertFalse(any(x["extraction_statut"] == "terminee" for x in autre["documents"]))
-        chine = self.creer(pays="chine", fournisseur="Exemple Medical")
+        chine = self.creer(pays="chine", fournisseur="Exemple Medical", produit="Ciment osseux Exemple")
         self.assertFalse(any(x["extraction_statut"] == "terminee" for x in chine["documents"]))
 
     def test_export_du_dossier(self):

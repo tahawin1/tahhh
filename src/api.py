@@ -185,6 +185,7 @@ class DocumentOut(BaseModel):
     extraction_statut: str | None
     extraction: dict | None
     extraction_erreur: str | None
+    origine_recu: str | None = None
 
 
 class EvenementOut(BaseModel):
@@ -798,6 +799,7 @@ def _enregistrer_recu(session, doc: Document, contenu: bytes, extension: str, no
     chemin.write_bytes(contenu)
     doc.fichier_recu = str(chemin)
     doc.nom_fichier_recu = Path(nom).name[:300]
+    doc.origine_recu = None  # envoyé par le fournisseur
     doc.recu_le = maintenant()
     doc.champs_a_extraire = _champs_de(doc)
     doc.extraction_statut = "en_file"

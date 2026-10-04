@@ -1,0 +1,53 @@
+# Pièces du dossier fournies par l'AGENT depuis la base, ou par le FOURNISSEUR.
+#
+# Décision de la direction (2026-10-04) : le fournisseur envoie, pour chaque
+# dossier, ses CERTIFICATS (certificat CE ou autorisation du pays d'origine,
+# ISO 13485…) ; toutes les autres pièces du fournisseur sont fournies par
+# l'agent à partir de la base : dossiers déjà acceptés par l'AMMPS
+# (data/dossiers_valides) et dossiers déjà traités dans l'outil.
+#
+# Le code décide (jamais l'IA) : même fabricant, et même produit pour les pièces
+# propres au produit. Un document fourni par la base n'est JAMAIS rédigé ni
+# modifié par l'agent : c'est le document réel du fabricant, déjà accepté une
+# fois, relu par Mistral, contrôlé par la checklist (date de validité,
+# cohérence) et validé par une personne comme toute pièce.
+#
+# Une pièce absente de la base reste à réclamer au fournisseur (relance
+# préparée, jamais envoyée sans validation).
+
+version: 1
+date_version: "2026-10-04"
+
+# Toujours envoyés par le fournisseur, à chaque dossier (jamais repris de la base)
+toujours_du_fournisseur:
+  - piece_specifique                  # certificat CE / NMPA / CDSCO / CFG FDA / MFDS / DRAP (+ lettre 2023/607)
+  - certificat_libre_vente_ue         # UE classe I
+  - certificat_evaluation_classe_iii  # UE classe III
+  - iso_13485
+  - facture_proforma                  # propre à chaque commande
+  - echantillon_modele_vente          # objet physique
+  - quittance_droits                  # paiement de chaque dépôt
+
+# Fournies par l'agent depuis la base
+depuis_la_base:
+  # communes à tous les dossiers de l'établissement
+  commun:
+    - declaration_etablissement
+  # valables pour tous les produits d'un même fabricant
+  meme_fabricant:
+    - attestation_fabricant           # autorisation du fabricant (date de validité contrôlée)
+    - catalogue
+    - lettre_de_lien
+  # propres au produit : reprises seulement pour le même produit
+  meme_produit:
+    - declaration_conformite
+    - etiquetage
+    - notice
+    - echantillon                     # photos du dispositif (pièce 9)
+    - documentation_technique
+    - manuel_utilisation
+    - evaluation_clinique
+
+# Même produit : part des mots du nom du produit en commun (nom du dossier,
+# sans la classe), au moins…
+ressemblance_produit: 0.6

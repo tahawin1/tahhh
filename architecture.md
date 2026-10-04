@@ -410,6 +410,23 @@ supporte déjà.
       de checklist en échec n'efface pas le reste) ; « Consignes strictes : » recopié
       après le pied de page → recadrage ; `test_api` ne rétablissait pas la vraie
       lecture (effet de bord entre tests).
+- [x] **Le fournisseur n'envoie que ses certificats** (décision de la direction,
+      2026-10-04, `rules/bibliotheque.yaml`) : certificat CE / autorisation du pays
+      d'origine (+ lettre 2023/607), CLV UE classe I, certificat classe III, ISO 13485
+      (et pro-forma, échantillon, quittance) toujours du fournisseur ; **toutes les
+      autres pièces du fournisseur sont fournies par l'agent depuis la base** :
+      `commun` (déclaration de l'établissement), `meme_fabricant` (attestation,
+      catalogue, lettre de lien), `meme_produit` (DoC, étiquettes, notice, photos,
+      documentation technique, manuel, évaluation clinique ; produit = ≥ 60 % des mots
+      du nom en commun). Sources : dossiers déjà traités (lecture reprise) puis
+      **dossiers acceptés sur disque** (`data/dossiers_valides`, fichiers rattachés
+      par leur numéro, fabricant = mémoire de l'outil 4 ; plusieurs fichiers réunis ;
+      lus par Mistral). Jamais rédigé ni modifié : documents réels du fabricant,
+      contrôlés par la checklist (validité), validés par une personne. Colonne
+      `origine_recu` (« base : … »), pastille « Fourni par l'agent » dans l'interface,
+      bouton « Fournir les pièces depuis la base » ; déclenché à la création du
+      dossier et après chaque lecture (`taches.enchainer`). La relance ne réclame
+      donc plus que les certificats. Scénario Jenkins : étape « 8 base ».
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

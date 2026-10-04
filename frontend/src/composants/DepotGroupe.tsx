@@ -44,8 +44,8 @@ export default function DepotGroupe({
       const d = await api.reprendreDocuments(dossierId, acteur)
       const reprises = d.evenements.filter((e) => e.action === 'document_repris' && Date.parse(e.horodatage) >= debut)
       setReprise(reprises.length
-        ? `${reprises.length} document(s) déjà reçu(s) de ce fabricant repris : à relire et valider comme les autres.`
-        : 'Aucun document réutilisable : pas de dossier précédent du même fabricant, ou documents expirés.')
+        ? `${reprises.length} pièce(s) fournie(s) par l'agent depuis la base : à relire et valider comme les autres.`
+        : 'Rien à fournir depuis la base : pas de dossier accepté ou traité du même fabricant (ou du même produit), ou pièces déjà là.')
       surDossier(d)
     } catch (e) {
       setErreur((e as Error).message)
@@ -89,8 +89,8 @@ export default function DepotGroupe({
       </button>
       <div className="actions">
         <button type="button" disabled={occupe || envoi} onClick={reprendre}
-          title="ISO 13485, certificat CE ou autorisation, attestation, catalogue : repris d'un dossier précédent du même fabricant s'ils sont encore valides">
-          <Icone nom="suite" taille={16} />Reprendre les documents déjà reçus de ce fabricant
+          title="Attestation, déclaration de conformité, étiquettes, notice, photos, catalogue : repris des dossiers acceptés ou traités du même fabricant (et du même produit). Les certificats (CE, ISO…) restent envoyés par le fournisseur.">
+          <Icone nom="suite" taille={16} />Fournir les pièces depuis la base (tout sauf les certificats)
         </button>
       </div>
       {reprise && <p className="message" aria-live="polite">{reprise}</p>}
