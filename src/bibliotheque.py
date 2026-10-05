@@ -126,9 +126,11 @@ def dossiers_acceptes(racine: Path | None = None) -> list[dict]:
             for f in sorted(produit_dir.rglob("*")):
                 if f.is_file() and f.suffix.lower() in (".pdf", ".png", ".jpg", ".jpeg") and (m := NUMERO.match(f.name)):
                     fichiers.setdefault(int(m.group(1)), []).append(f)
-            entree = appris.get((pays_dir.name, produit_dir.name)) or {}
-            trouves.append({"pays": pays_dir.name, "produit": produit_dir.name, "fichiers": fichiers,
-                            "fabricant": fabricant_cle(entree.get("fabricant"))})
+            produit, classe = memoire.produit_et_classe(produit_dir.name)
+            entree = appris.get((pays_dir.name, produit)) or appris.get((pays_dir.name, produit_dir.name)) or {}
+            trouves.append({"pays": pays_dir.name, "produit": produit_dir.name, "classe": classe, "fichiers": fichiers,
+                            "fabricant": fabricant_cle(entree.get("fabricant")),
+                            "fabricant_nom": entree.get("fabricant")})
     return trouves
 
 

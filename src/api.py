@@ -381,6 +381,23 @@ def liste_pays():
     return resultat
 
 
+@app.get("/base/acceptes")
+def base_acceptes(pays_origine: str, classe: str | None = None):
+    """Dossiers acceptés déposés sur le serveur pour ce pays d'origine (ceux de
+    la même classe en premier) : la base dont l'agent s'inspire pour rédiger
+    (modèles) et reprendre les pièces du même fabricant. Noms seulement."""
+    import bibliotheque
+    import memoire
+
+    classe = (classe or "").upper() or None
+    dossiers = [{"produit": memoire.produit_et_classe(a["produit"])[0], "classe": a["classe"], "fabricant": a.get("fabricant_nom"),
+                 "pieces": sorted(a["fichiers"]), "meme_classe": bool(classe) and a["classe"] == classe}
+                for a in bibliotheque.dossiers_acceptes() if a["pays"] == pays_origine]
+    dossiers.sort(key=lambda d: (not d["meme_classe"], d["produit"].lower()))
+    return {"pays_origine": pays_origine, "classe": classe, "total": len(dossiers),
+            "meme_classe": sum(d["meme_classe"] for d in dossiers), "dossiers": dossiers}
+
+
 @app.get("/correspondances")
 def correspondances():
     """Rapprochement des sept réglementations (grille IMDRF A à D) — indicatif, ne décide rien."""

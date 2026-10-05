@@ -35,6 +35,43 @@ class TestReperageDesModeles(unittest.TestCase):
             (16, "certificat_enregistrement_annexe2", "union_europeenne", "Ciment osseux"),
         })  # certificats CE / ISO : émis par des tiers, jamais des modèles de rédaction
 
+    def test_classe_tiree_du_nom_du_dossier(self):
+        with tempfile.TemporaryDirectory() as d:
+            dossier = Path(d) / "chine" / "Seringue (IIb)"
+            dossier.mkdir(parents=True)
+            (dossier / "1-1-Lettre.pdf").write_bytes(b"%PDF")
+            m = fichiers_modeles(Path(d))[0]
+        self.assertEqual((m["produit"], m["classe"]), ("Seringue", "IIB"))
+
+    def test_modele_de_la_meme_classe_d_abord(self):
+        from modeles import modele_pour
+
+        class Point:
+            def __init__(self, payload):
+                self.payload, self.score = payload, 0.9
+
+        class FauxClient:
+            def __init__(self):
+                self.filtres = []
+
+            def collection_exists(self, _):
+                return True
+
+            def query_points(self, _c, query, query_filter, limit, with_payload):
+                cles = {c.key: c.match.value for c in query_filter.must}
+                self.filtres.append(cles)
+                ok = cles.get("classe") in (None, "IIB") and cles.get("pays_origine") in (None, "chine")
+                return type("R", (), {"points": [Point({"produit": "Seringue", **cles})] if ok else []})()
+
+        class FauxEmbedder:
+            def encoder_un(self, _):
+                return [0.0]
+
+        client = FauxClient()
+        m = modele_pour("demande_signee", "chine", "Seringue 5 ml", client, FauxEmbedder(), classe="iib")
+        self.assertEqual(client.filtres[0], {"piece_id": "demande_signee", "pays_origine": "chine", "classe": "IIB"})
+        self.assertEqual(m["classe"], "IIB")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -321,6 +321,7 @@ legend { display: flex; align-items: center; gap: 0.6rem; font: 600 1.02rem/1.2 
 .groupe-pieces.ia { background: var(--accent-doux); }
 .groupe-pieces.ia h3 { color: var(--accent); }
 .groupe-pieces.fournisseur { background: var(--neutre-fond); }
+.groupe-pieces.base { background: transparent; border: 1px dashed var(--accent); }
 .groupe-pieces ul { margin: 0.6rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.45rem; font-size: 0.9rem; }
 .groupe-pieces small { display: block; color: var(--secondaire); font-size: 0.78rem; }
 

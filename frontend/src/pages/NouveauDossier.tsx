@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import { api, type Apercu } from '../api'
+import { api, type Apercu, type BaseAcceptes } from '../api'
 import { PAYS, PAYS_PUCE } from '../libelles'
 import Icone from '../composants/Icone'
 import type { Session } from './Connexion'
@@ -46,6 +46,14 @@ export default function NouveauDossier({ session }: { session: Session }) {
     )
     return () => { actif = false }
   }, [pays, classe, equipement, valeurUsd, distributeur])
+
+  // Dossiers acceptés de ce pays déjà dans la base : l'agent s'en inspire.
+  const [base, setBase] = useState<BaseAcceptes | null>(null)
+  useEffect(() => {
+    let actif = true
+    api.baseAcceptes(pays, classe).then((b) => { if (actif) setBase(b) }, () => { if (actif) setBase(null) })
+    return () => { actif = false }
+  }, [pays, classe])
 
   async function creer(e: FormEvent) {
     e.preventDefault()
@@ -176,6 +184,30 @@ export default function NouveauDossier({ session }: { session: Session }) {
                 </ul>
               </div>
             </>
+          )}
+          {base && (
+            <div className="groupe-pieces base">
+              <h3><Icone nom="ia" taille={18} /> Base de l'agent pour ce pays ({base.total} dossier{base.total > 1 ? 's' : ''} accepté{base.total > 1 ? 's' : ''})</h3>
+              {base.total === 0 ? (
+                <p className="aide">Aucun dossier accepté de ce pays : l'agent rédige d'après les textes officiels seulement.
+                  Déposer les dossiers acceptés avec l'outil 3, puis lancer l'outil 4.</p>
+              ) : (
+                <>
+                  <p className="aide">{base.meme_classe} de la classe {base.classe ?? '—'}. L'agent reprend leur forme pour
+                    les pièces qu'il rédige, et leurs pièces fournisseur pour un même fabricant (sauf certificats) :
+                    tout reste à relire.</p>
+                  <ul>
+                    {base.dossiers.map((d) => (
+                      <li key={`${d.produit}-${d.classe}`}>
+                        {d.produit}{d.classe && ` (${d.classe})`}{d.meme_classe && ' · même classe'}
+                        <small>{d.fabricant ? `Fabricant ${d.fabricant} · ` : 'Fabricant non appris (outil 4) · '}
+                          {d.pieces.length} pièce{d.pieces.length > 1 ? 's' : ''}</small>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
           )}
         </aside>
       </div>

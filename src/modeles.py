@@ -34,6 +34,7 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, FieldCondition, Filter, MatchValue, PointStruct, VectorParams
 
 from embeddings import Embedder
+from memoire import produit_et_classe
 from rule_engine import charger_regles
 
 COLLECTION_MODELES = "modeles_dossiers"
@@ -65,10 +66,12 @@ def fichiers_modeles(racine: Path) -> list[dict]:
                 m = NUMERO_FICHIER.match(fichier.name)
                 if not m or int(m.group(1)) not in table:
                     continue
+                produit, classe = produit_et_classe(produit_dir.name)
                 trouves.append({
                     "fichier": fichier,
                     "pays_origine": pays_dir.name,
-                    "produit": produit_dir.name,
+                    "produit": produit,
+                    "classe": classe,
                     "numero": int(m.group(1)),
                     "piece_id": table[int(m.group(1))],
                 })
@@ -104,6 +107,7 @@ def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, em
                 "numero": m["numero"],
                 "pays_origine": m["pays_origine"],
                 "produit": m["produit"],
+                "classe": m["classe"],
                 "fichier": relatif,
                 "empreinte": hashlib.sha256(m["fichier"].read_bytes()).hexdigest()[:12],
                 "texte": texte[:TEXTE_MAX],
@@ -120,21 +124,24 @@ def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, em
 
 
 def modele_pour(piece_id: str, pays_origine: str, produit: str,
-                client: QdrantClient, embedder: Embedder) -> dict | None:
+                client: QdrantClient, embedder: Embedder, classe: str | None = None) -> dict | None:
     """Le modèle accepté le plus proche pour cette pièce : même pièce
-    obligatoirement, même pays d'origine de préférence, produit le plus
-    ressemblant. None s'il n'y en a pas (la rédaction se fait alors sans modèle)."""
+    obligatoirement ; de préférence même pays d'origine ET même classe, puis
+    même pays, puis même classe ; produit le plus ressemblant. None s'il n'y
+    en a pas (la rédaction se fait alors sans modèle)."""
     try:
         if not client.collection_exists(COLLECTION_MODELES):
             return None
     except Exception:
         return None
     vecteur = embedder.encoder_un(produit)
-    for filtres in (
-        [FieldCondition(key="piece_id", match=MatchValue(value=piece_id)),
-         FieldCondition(key="pays_origine", match=MatchValue(value=pays_origine))],
-        [FieldCondition(key="piece_id", match=MatchValue(value=piece_id))],
-    ):
+    piece = FieldCondition(key="piece_id", match=MatchValue(value=piece_id))
+    pays = FieldCondition(key="pays_origine", match=MatchValue(value=pays_origine))
+    essais = [[piece, pays], [piece]]
+    if classe:
+        meme_classe = FieldCondition(key="classe", match=MatchValue(value=str(classe).upper()))
+        essais = [[piece, pays, meme_classe], [piece, pays], [piece, meme_classe], [piece]]
+    for filtres in essais:
         points = client.query_points(COLLECTION_MODELES, query=vecteur, query_filter=Filter(must=filtres),
                                      limit=1, with_payload=True).points
         if points:

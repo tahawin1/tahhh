@@ -452,6 +452,14 @@ supporte déjà.
       motif corrigé ; build 4 bloqué 18 h (PC arrêté pendant le build) → délais par
       étape (45 min, 2 h, 3 h) et suppression d'une API de test restée d'un build
       interrompu (elle bloquait le port 8100).
+- [x] Builds 6 à 9 (2026-10-05) : synthèses RAG — Mistral désigne le numéro de la
+      phrase, le code recopie la citation (Mistral traduisait les citations) ; lecture
+      Mistral jugée au seuil (valeur manquée = « à relire », pas un échec JUnit) ; rejeu
+      sans dossier ou sans classe affiché « rien contrôlé » (il passait au vert en 1 s).
+- [x] **Base par pays et par classe** (2026-10-05) : classe tirée du nom du dossier
+      accepté (« Seringue (IIb) ») et indexée avec les modèles ; `modele_pour` choisit
+      même pays + même classe, puis même pays, puis même classe ; `GET /base/acceptes`
+      + panneau « Base de l'agent pour ce pays » sur Nouveau dossier (noms seulement).
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

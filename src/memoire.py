@@ -54,6 +54,17 @@ CHAMPS_APPRIS = {
 }
 
 
+CLASSE_DANS_LE_NOM = re.compile(r"\s*[(\[\-–]\s*(?:classe\s*)?(I|Is|Im|Ir|IIa|IIb|III)\s*[)\]]?\s*$", re.I)
+
+
+def produit_et_classe(nom_dossier: str) -> tuple[str, str | None]:
+    """« Ciment osseux (IIb) » -> (« Ciment osseux », « IIB ») ; sans classe : (nom, None)."""
+    m = CLASSE_DANS_LE_NOM.search(nom_dossier)
+    if not m:
+        return nom_dossier.strip(), None
+    return (nom_dossier[:m.start()].strip() or nom_dossier.strip()), m.group(1).upper()
+
+
 def _cle(texte: str) -> str:
     t = unicodedata.normalize("NFKD", texte or "")
     t = "".join(c for c in t if not unicodedata.combining(c)).lower()
@@ -83,7 +94,7 @@ def formulaires_acceptes(racine: Path = RACINE_DEFAUT) -> list[dict]:
                     fichiers.setdefault(int(m.group(1)), f)
             if fichiers:
                 # « Ciment osseux (IIb) » -> « Ciment osseux » : la classe n'est pas le nom du produit
-                produit = re.sub(r"\s*[(\[][^()\[\]]*[)\]]\s*$", "", produit_dir.name).strip() or produit_dir.name
+                produit, _ = produit_et_classe(produit_dir.name)
                 dossiers.append({"pays": pays_dir.name, "produit": produit, "fichiers": fichiers})
     return dossiers
 

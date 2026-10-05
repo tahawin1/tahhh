@@ -324,12 +324,23 @@ export interface Bilan {
   compteurs: { recues: number; fournies_par_agent: number; manquantes: number; a_completer: number }
 }
 
+export interface BaseAcceptes {
+  pays_origine: string
+  classe: string | null
+  total: number
+  meme_classe: number
+  dossiers: { produit: string; classe: string | null; fabricant: string | null; pieces: number[]; meme_classe: boolean }[]
+}
+
 export const api = {
   sante: () => requete<Sante>('/health', { headers: enTetes() }),
   pays: () => requete<Record<string, { autorite: string; classification: string[] }>>('/pays', { headers: enTetes() }),
   apercu: (pays_origine: string, produit: string, classe: string | null, equipement = false,
     valeur_unitaire_usd: number | null = null, fournisseur_distributeur = false) =>
     post<Apercu>('/dossiers/documents-requis', { pays_origine, produit, classe, equipement, valeur_unitaire_usd, fournisseur_distributeur }),
+  baseAcceptes: (pays_origine: string, classe: string | null) =>
+    requete<BaseAcceptes>(`/base/acceptes?pays_origine=${encodeURIComponent(pays_origine)}`
+      + (classe ? `&classe=${encodeURIComponent(classe)}` : ''), { headers: enTetes() }),
   dossiers: () => requete<DossierResume[]>('/dossiers', { headers: enTetes() }),
   dossier: (id: number) => requete<DossierDetail>(`/dossiers/${id}`, { headers: enTetes() }),
   creer: (d: { pays_origine: string; produit: string; classe: string | null; fournisseur: string | null;

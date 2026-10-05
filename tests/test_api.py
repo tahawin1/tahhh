@@ -95,6 +95,22 @@ class TestApi(unittest.TestCase):
     def piece(dossier, code):
         return next(d for d in dossier["documents"] if d["code"] == code)
 
+    def test_base_des_dossiers_acceptes_par_pays_et_classe(self):
+        import memoire
+        racine = TMP / "base_acceptes"
+        for nom in ("Gants (Is)", "Seringue (IIb)", "Sans classe"):
+            (racine / "chine" / nom).mkdir(parents=True, exist_ok=True)
+            (racine / "chine" / nom / "1-1-Lettre.pdf").write_bytes(b"%PDF")
+        (racine / "inde" / "Catheter (IIb)").mkdir(parents=True, exist_ok=True)
+        ancienne, memoire.RACINE_DEFAUT = memoire.RACINE_DEFAUT, racine
+        try:
+            b = self.client.get("/base/acceptes", params={"pays_origine": "chine", "classe": "iib"}).json()
+        finally:
+            memoire.RACINE_DEFAUT = ancienne
+        self.assertEqual((b["total"], b["meme_classe"]), (3, 1))
+        self.assertEqual(b["dossiers"][0], {"produit": "Seringue", "classe": "IIB", "fabricant": None,
+                                            "pieces": [1], "meme_classe": True})  # même classe en premier
+
     def test_creation_fige_la_decision_du_moteur_de_regles(self):
         d = self.creer()
         # règles 2.5, Chine IIb : socle + ISO + NMPA/FSC + échantillon (valeur non saisie) + évaluation clinique
