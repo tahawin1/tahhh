@@ -136,6 +136,7 @@ pipeline {
                 }
                 stage('Lecture par Mistral (spécimens)') {
                     when { environment name: 'PILE_IA', value: 'oui' }
+                    options { timeout(time: 45, unit: 'MINUTES') }
                     steps {
                         catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                             sh '''
@@ -148,6 +149,7 @@ pipeline {
                 }
                 stage('RAG et recommandations') {
                     when { environment name: 'PILE_IA', value: 'oui' }
+                    options { timeout(time: 45, unit: 'MINUTES') }
                     steps {
                         catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                             sh '''
@@ -160,6 +162,7 @@ pipeline {
                 }
                 stage('Agent de bout en bout') {
                     when { environment name: 'PILE_IA', value: 'oui' }
+                    options { timeout(time: 2, unit: 'HOURS') }   // jamais bloqué indéfiniment (PC éteint pendant un build)
                     steps {
                         // API de test : base SQLite jetable, mémoire vide, profil fictif ; Qdrant et Ollama du serveur
                         sh '''
@@ -167,7 +170,8 @@ pipeline {
                             [ -f config/entreprise.yaml ] || printf '%s\\n' 'raison_sociale: "SOCIETE ESSAI CI"' \
                                 'ville: "Rabat"' 'adresse: "1 rue de l Essai, Rabat"' 'representant_legal: "M. Essai"' \
                                 > config/entreprise.yaml
-                            docker rm -f "$API_CI" >/dev/null 2>&1 || true
+                            # API de test d'un build interrompu (PC éteint…) encore là : elle bloquerait le port
+                            docker ps -aq --filter name=conformite-ci-api | xargs -r docker rm -f >/dev/null 2>&1 || true
                             docker run -d --name "$API_CI" --network host -v "$WORKSPACE":/w -w /w \
                                 -e DATABASE_URL="sqlite+pysqlite:////w/$RAPPORTS/agent.db" -e API_KEY="$CLE_CI" \
                                 -e QDRANT_HOST=127.0.0.1 -e OLLAMA_BASE_URL="$OLLAMA_HOTE" -e OLLAMA_TIMEOUT=1800 \
@@ -188,9 +192,10 @@ pipeline {
                     when {
                         allOf {
                             environment name: 'PILE_IA', value: 'oui'
-                            expression { params.REJOUER_ACCEPTES }
+                            expression { params.REJOUER_ACCEPTES != false }
                         }
                     }
+                    options { timeout(time: 3, unit: 'HOURS') }
                     steps {
                         catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                             sh '''

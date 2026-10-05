@@ -39,7 +39,7 @@ QUESTIONS = [
     ("etats_unis", "certification for export of a device to a foreign government", r"FD&C Act|21 CFR"),
     ("etats_unis", "premarket notification 510(k)", r"21 CFR Part 807|FD&C Act, section 510"),
     ("coree_du_sud", "import permit, certification or notification of medical devices", r"Medical Devices Act|의료기기법|Enforcement"),
-    ("pakistan", "registration and enlistment of medical devices", r"DRAP|Medical Devices Rules"),
+    ("pakistan", "registration and enlistment of medical devices", r"DRAP|Drug Regulatory Authority|Medical Devices Rules"),
 ]
 THEMES_MISTRAL = ["preuve_pays_origine", "libre_vente"]
 

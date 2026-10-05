@@ -446,6 +446,12 @@ supporte déjà.
       agent, dossiers acceptés) ; rapport unique `scripts/ci_rapport.py` →
       `rapports-ci/rapport.html` (HTML sans CSS ni script : Jenkins bloque le CSS des
       artefacts) + `resume.txt` repris en description du build.
+- [x] Retour des builds Jenkins 1 à 4 sur le PC (2026-10-05) : lecture Mistral verte
+      (après le correctif du seuil au 1er build) ; RAG toujours rouge → le texte
+      pakistanais s'appelle « Drug Regulatory Authority of Pakistan Act » (pas « DRAP ») :
+      motif corrigé ; build 4 bloqué 18 h (PC arrêté pendant le build) → délais par
+      étape (45 min, 2 h, 3 h) et suppression d'une API de test restée d'un build
+      interrompu (elle bloquait le port 8100).
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
