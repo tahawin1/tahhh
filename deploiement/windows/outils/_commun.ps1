@@ -54,10 +54,14 @@ function Executer-Dans-Ubuntu([string]$Nom, [string]$Commande) {
     # Aucun guillemet double dans la commande transmise : PowerShell 5.1 ne les
     # échappe pas en appelant wsl.exe (chemins sans espace, voir $Racine).
     $bash = "cd /opt/conformite && { $Commande ; } 2>&1 | tee /tmp/rapport_outil.txt; code=`${PIPESTATUS[0]}; " +
-            "sed -r 's/\x1b\[[0-9;]*m//g' /tmp/rapport_outil.txt > '$(Chemin-Linux $fichier)'; exit `$code"
+            "sed -r 's/\x1b\[[0-9;]*m//g' /tmp/rapport_outil.txt > /tmp/rapport_propre.txt; exit `$code"
     # --exec : pas de shell intermédiaire (il remplacerait $code et ${PIPESTATUS[0]} avant bash)
     & wsl.exe -d $Distro -u root --exec bash -lc $bash | Out-Host
     $code = $LASTEXITCODE
+    # le rapport est récupéré par Windows (\\wsl.localhost) : écrire dans /mnt/c
+    # depuis Ubuntu échoue parfois (« Input/output error »)
+    try { Copy-Item -Force "\\wsl.localhost\$Distro\tmp\rapport_propre.txt" $fichier -ErrorAction Stop }
+    catch { Write-Host "Rapport non enregistré dans $Rapports : $($_.Exception.Message)" -ForegroundColor Yellow }
     Write-Host ""
     Write-Host "Rapport enregistré : $fichier"
     return $code
