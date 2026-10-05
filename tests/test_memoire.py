@@ -75,6 +75,21 @@ class TestMemoire(unittest.TestCase):
         self.assertNotIn("duree_validite", entree["valeurs"])  # « 5 ans » n'est pas dans le document
         self.assertEqual(entree["valeurs"]["presentation"]["piece"], 2)
 
+    def test_reponse_coupee_relue_par_moities(self):
+        # Mistral rend un JSON coupé quand on lui demande trop de champs d'un coup :
+        # relu par moitiés, le dossier est quand même appris
+        from extraction import ExtractionImpossible
+
+        def repondre(texte, champs, piece):
+            if len(champs) > 5:
+                raise ExtractionImpossible("Réponse de Mistral illisible (JSON invalide).")
+            return {k: v for k, v in REPONSE.items() if k in {c["nom"] for c in champs}}
+
+        with mock.patch("extraction.interroger_mistral", side_effect=repondre):
+            (entree,) = memoire.apprendre(self.acceptes)
+        self.assertEqual(entree["fabricant"], "EXEMPLE MEDICAL S.P.A.")
+        self.assertIn("references", entree["valeurs"])
+
     def dossier(self, fabricant):
         lectures = {"declaration_conformite": [{"nom": "fabricant", "valeur": fabricant, "valeur_normalisee": fabricant,
                                                 "verification": "verifie"}]}

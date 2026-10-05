@@ -117,7 +117,7 @@ def _retenir(champ: dict, texte: str) -> bool:
 
 def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
     """Fait lire par Mistral les formulaires des dossiers acceptés ; écrit la mémoire."""
-    from extraction import controler, interroger_mistral, lire_document
+    from extraction import CHAMPS_PAR_APPEL, ExtractionImpossible, _lire_paquet, lire_document
 
     DOSSIER_MEMOIRE.mkdir(parents=True, exist_ok=True)
     champs = [{"nom": k, "libelle": v, "description": v} for k, v in CHAMPS_APPRIS.items()]
@@ -128,11 +128,20 @@ def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
             print(f"  … {d['produit']} : Mistral lit la pièce {numero} ({chemin.name}) — 1 à 5 min, patienter", flush=True)
             try:
                 texte = lire_document(chemin)
-                lus = controler(interroger_mistral(texte, champs, "formulaire accepté par l'administration "
-                                                    "(fiche signalétique ou certificat d'enregistrement)"), champs, texte)
             except Exception as e:  # un dossier illisible ne bloque pas les autres
                 print(f"  ✗ {d['produit']} — pièce {numero} : {type(e).__name__}: {e}")
                 continue
+            # par paquets, comme la lecture des documents reçus : une réponse coupée
+            # (JSON invalide) est relue en deux moitiés ; un paquet en échec n'efface
+            # pas ce que les autres ont appris
+            lus = []
+            for i in range(0, len(champs), CHAMPS_PAR_APPEL):
+                paquet = champs[i:i + CHAMPS_PAR_APPEL]
+                try:
+                    lus += _lire_paquet(texte, paquet, "formulaire accepté par l'administration "
+                                        "(fiche signalétique ou certificat d'enregistrement)")
+                except ExtractionImpossible as e:
+                    print(f"  ! {d['produit']} — pièce {numero} : {', '.join(c['nom'] for c in paquet)} non lus ({e})")
             for c in lus:
                 if c["nom"] not in valeurs and _retenir(c, texte):
                     valeurs[c["nom"]] = {"valeur": c["valeur"], "piece": numero, "fichier": chemin.name}
