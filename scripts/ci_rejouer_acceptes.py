@@ -219,6 +219,9 @@ def main() -> int:
     acceptes = dossiers_acceptes(args.acceptes) if args.acceptes.is_dir() else []
     if not acceptes:
         print(f"Aucun dossier accepté dans {args.acceptes} : rien à rejouer.")
+        # signalé dans le rapport : une étape qui n'a rien rejoué n'est pas une réussite
+        rejeu.noter("aucun dossier", "dossiers acceptés", ignore="aucun dossier accepté dans /opt/conformite/data/"
+                    "dossiers_valides (les déposer avec l'outil 3, la classe dans le nom du dossier)")
         rejeu.rapport(args.rapport)
         return 0
     print(f"Rejeu de {len(acceptes)} dossier(s) accepté(s), sans mémoire :")

@@ -37,6 +37,7 @@ def lire_junit(chemin: Path) -> dict | None:
     echecs = [c for c in cas if c.find("failure") is not None or c.find("error") is not None]
     ignores = [c for c in cas if c.find("skipped") is not None]
     return {"total": len(cas), "echecs": len(echecs), "ignores": len(ignores),
+            "motif_ignore": ignores[0].find("skipped").get("message", "") if ignores else "",
             "detail_echecs": [(c.get("name"), (c.find("failure") if c.find("failure") is not None else c.find("error")).get("message", ""))
                               for c in echecs][:15]}
 
@@ -49,6 +50,8 @@ def verdict(r: dict | None, niveau: str, fichier: str) -> tuple[str, str]:
     reussis = r["total"] - r["echecs"] - r["ignores"]
     if r["total"] == 0:
         return ("—", "rien à contrôler")
+    if r["ignores"] == r["total"]:  # rien n'a été contrôlé : pas une réussite
+        return ("—", f"rien contrôlé — {r['motif_ignore']}")
     symbole = "✓" if r["echecs"] == 0 else "✗"
     return (symbole, f"{reussis}/{r['total'] - r['ignores']} réussis" + (f", {r['ignores']} ignoré(s)" if r["ignores"] else ""))
 

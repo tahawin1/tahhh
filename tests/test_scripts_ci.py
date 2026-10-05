@@ -54,6 +54,15 @@ class TestRapport(unittest.TestCase):
         self.assertIn("cassé", page)  # section « À corriger »
         self.assertNotIn("<style", page)  # Jenkins bloque le CSS des artefacts : HTML simple
 
+    def test_etape_sans_rien_a_rejouer_pas_verte(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp)
+            (d / "dossiers-acceptes.xml").write_text('<testsuite><testcase name="x"><skipped message="aucun dossier '
+                                                     'accepté"/></testcase></testsuite>', encoding="utf-8")
+            page, resume = ci_rapport.construire(d, "complet", "9")
+        self.assertIn("rien contrôlé — aucun dossier accepté", page)
+        self.assertNotIn("Dossiers acceptés rejoués ✓", resume)
+
     def test_lecture_mistral_jugee_au_seuil(self):
         # 19/20 justes, une valeur manquée (signalée), aucune fausse acceptée : étape réussie
         detail = [{"specimen": "s.txt", "champ": f"c{i}", "verdict": "juste", "attendu": "a", "lu": "a",
