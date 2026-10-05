@@ -440,6 +440,12 @@ supporte déjà.
       désormais déposables (reçues, sans lecture) ; échantillon = objet physique, « à
       remettre au dépôt » (`PIECES_PHYSIQUES`). Vérifié dans Chromium (bureau et mobile,
       sans débordement) contre l'API locale ; étape 7 du scénario Jenkins.
+- [x] **Jenkins lisible et silencieux** (2026-10-05) : paramètre NIVEAU `rapide`
+      (défaut, pollSCM : code, matrice des règles, interface, sans Mistral) / `complet`
+      (cron nocturne `H 2 * * *` toujours complet, ou à la demande : + Mistral, RAG,
+      agent, dossiers acceptés) ; rapport unique `scripts/ci_rapport.py` →
+      `rapports-ci/rapport.html` (HTML sans CSS ni script : Jenkins bloque le CSS des
+      artefacts) + `resume.txt` repris en description du build.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

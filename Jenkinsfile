@@ -39,12 +39,14 @@ pipeline {
     }
 
     triggers {
-        pollSCM('H/15 * * * *')            // pas de webhook entrant : le serveur reste fermé à Internet
+        pollSCM('H/15 * * * *')            // nouvelle version : contrôle RAPIDE (quelques minutes, sans Mistral)
+        cron('H 2 * * *')                  // chaque nuit vers 2 h : contrôle COMPLET (Mistral, RAG, agent, dossiers acceptés)
     }
 
     parameters {
-        booleanParam(name: 'EVALUER_IA', defaultValue: true,
-                     description: 'Évaluer la pile IA : lecture Mistral, RAG, agent de bout en bout (Ollama et Qdrant du serveur)')
+        choice(name: 'NIVEAU', choices: ['rapide', 'complet'],
+               description: 'rapide : code, règles, interface (2-3 min, sans Mistral, silencieux). '
+                          + 'complet : en plus lecture par Mistral, RAG, agent de bout en bout, dossiers acceptés (30 min à 2 h, le PC chauffe)')
         booleanParam(name: 'REJOUER_ACCEPTES', defaultValue: true,
                      description: 'Rejouer les dossiers acceptés (data/dossiers_valides) et noter l\'agent')
         string(name: 'SEUIL_MISTRAL', defaultValue: '0.75',
@@ -70,6 +72,12 @@ pipeline {
     stages {
         stage('Image de test') {
             steps {
+                script {
+                    // la nuit (déclencheur horaire) : toujours complet ; sinon le niveau choisi (rapide par défaut)
+                    def nuit = currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')
+                    env.NIVEAU = nuit ? 'complet' : (params.NIVEAU ?: 'rapide')
+                    echo "Niveau de contrôle : ${env.NIVEAU}"
+                }
                 sh '''
                     rm -rf "$RAPPORTS" output && mkdir -p "$RAPPORTS"
                     docker build -t "$IMAGE_CI" .   # image de base en cache : pas de limite Docker Hub
@@ -109,7 +117,7 @@ pipeline {
         }
 
         stage('Pile IA') {
-            when { expression { params.EVALUER_IA } }
+            when { expression { env.NIVEAU == 'complet' } }
             stages {
                 stage('Services') {
                     steps {
@@ -237,7 +245,19 @@ pipeline {
     post {
         always {
             junit allowEmptyResults: true, testResults: "${env.RAPPORTS}/*.xml"
-            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.RAPPORTS}/*.md, ${env.RAPPORTS}/*.json, ${env.RAPPORTS}/*.xml, ${env.RAPPORTS}/*.log"
+            // rapport unique : une ligne par étape du métier (rapport.html) + résumé dans la liste des builds
+            sh '''
+                docker run --rm --network none -v "$WORKSPACE":/w -w /w "$IMAGE_CI" \
+                    python scripts/ci_rapport.py --rapports "$RAPPORTS" --niveau "${NIVEAU:-rapide}" --build "$BUILD_NUMBER" \
+                    || echo "rapport non produit" > "$RAPPORTS/resume.txt"
+            '''
+            script {
+                if (fileExists("${env.RAPPORTS}/resume.txt")) {
+                    currentBuild.description = "[${env.NIVEAU ?: 'rapide'}] " + readFile("${env.RAPPORTS}/resume.txt").trim()
+                }
+            }
+            archiveArtifacts allowEmptyArchive: true, artifacts: "${env.RAPPORTS}/rapport.html, ${env.RAPPORTS}/*.md, ${env.RAPPORTS}/*.json, ${env.RAPPORTS}/*.xml, ${env.RAPPORTS}/*.log, ${env.RAPPORTS}/resume.txt"
+            echo "Rapport lisible : Artefacts du build -> rapports-ci/rapport.html"
             sh 'docker image rm "$IMAGE_CI" >/dev/null 2>&1 || true'
         }
         success {

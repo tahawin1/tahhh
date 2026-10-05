@@ -223,6 +223,19 @@ version publiée sur GitHub (vérifié toutes les 15 minutes), et lui donne une 
 | Rejeu des dossiers acceptés | l'agent refait chaque dossier accepté par l'AMMPS **sans le voir** ; sa fiche, son annexe II et sa lettre sont comparées au dossier accepté |
 | Déploiement | seulement si « DEPLOYER » est coché **et** qu'une personne clique « Déployer » |
 
+**Deux niveaux, pour limiter le bruit du PC :**
+- **rapide** (par défaut, à chaque nouvelle version) : code, lois → pièces, interface.
+  2 à 3 minutes, sans Mistral, le PC reste silencieux ;
+- **complet** (chaque nuit vers 2 h si le PC est allumé, ou à la demande : « Lancer
+  un build avec des paramètres » → NIVEAU = complet) : en plus la lecture par Mistral,
+  le RAG, l'agent de bout en bout et les dossiers acceptés. 30 min à 2 h, le PC chauffe.
+
+**Lire le résultat :** dans la liste des builds, chaque build affiche une ligne de
+résumé (ex. « [complet] Code ✓ · Lois → pièces ✓ · Lecture par Mistral ✓ 18/20 · … »).
+Pour le détail : cliquer sur le build → **Artefacts** → `rapports-ci/rapport.html` :
+une ligne par étape du métier, la lettre produite par Mistral, la note des dossiers
+acceptés et la liste de ce qui est à corriger.
+
 Vert : tout est bon. Orange : le code est bon mais la qualité de l'IA est sous
 le seuil, ou Ollama était arrêté. Rouge : une règle, un test ou la construction
 est cassé.

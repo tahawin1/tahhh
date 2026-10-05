@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 import ci_rejouer_acceptes as rejeu  # noqa: E402
+import ci_rapport  # noqa: E402
 import evaluer_mistral  # noqa: E402
 
 
@@ -36,6 +37,21 @@ class TestRejeu(unittest.TestCase):
         self.assertEqual(rejeu.proche("TECRES S.P.A.", "Tecres SpA"), "partiel")
         self.assertEqual(rejeu.proche("Chirurgie orthopédique", "Chirurgie Orthopedique"), "juste")
         self.assertEqual(rejeu.proche("Store below 25°C", "Conservé à l'abri de la chaleur"), "different")
+
+
+class TestRapport(unittest.TestCase):
+    def test_une_ligne_par_etape(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp)
+            (d / "tests-python.xml").write_text('<testsuite><testcase name="a"/><testcase name="b">'
+                                                '<failure message="cassé"/></testcase></testsuite>', encoding="utf-8")
+            (d / "regles.xml").write_text('<testsuite><testcase name="x"/></testsuite>', encoding="utf-8")
+            page, resume = ci_rapport.construire(d, "rapide", "12")
+        self.assertIn("Code ✗ 1/2 réussis", resume)
+        self.assertIn("Lois → pièces ✓ 1/1", resume)
+        self.assertIn("non exécutée (niveau rapide)", page)  # étapes IA : pas lancées en rapide
+        self.assertIn("cassé", page)  # section « À corriger »
+        self.assertNotIn("<style", page)  # Jenkins bloque le CSS des artefacts : HTML simple
 
 
 class TestEvaluationMistral(unittest.TestCase):
