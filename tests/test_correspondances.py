@@ -117,3 +117,14 @@ class TestRapprochementArticles(unittest.TestCase):
         invente = '{"resume": "x", "citation": "le Maroc exige un essai clinique local"}'
         r = correspondances.synthese("preuve_pays_origine", FauxGenerateur(invente))["pays"]
         self.assertFalse(r["maroc"]["verifiee"])
+
+    def test_synthese_citation_recopiee_par_le_code(self):
+        # Mistral désigne la phrase par son numéro : la citation est le texte
+        # officiel tel quel, même si Mistral répond en français.
+        r = correspondances.synthese("preuve_pays_origine",
+                                     FauxGenerateur('{"resume": "Marquage CE ou attestation FDA.", "phrase": 1}'))["pays"]
+        self.assertTrue(r["maroc"]["verifiee"])
+        self.assertIn("attestation FDA", r["maroc"]["citation"])
+        r = correspondances.synthese("preuve_pays_origine",
+                                     FauxGenerateur('{"resume": "x", "phrase": 9}'))["pays"]  # numéro inexistant
+        self.assertFalse(r["maroc"]["verifiee"])

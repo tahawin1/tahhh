@@ -72,24 +72,46 @@ def synthese(theme: str, generateur, k: int = 2) -> dict:
                               "sources": []}
             continue
         texte = "\n\n".join(f"[{e['texte_source']}]\n{e['texte']}" for e in extraits)
+        phrases = decouper_phrases(extraits)
+        numerotees = "\n".join(f"{i}. {p}" for i, p in enumerate(phrases, 1))
         prompt = (f"Question : {comparaison['theme']['question']}.\n"
-                  f"Extraits du texte officiel ({pays}) :\n<<<\n{texte}\n>>>\n"
-                  "Réponds en français, en 2 phrases au plus, UNIQUEMENT d'après ces extraits. "
-                  "Donne aussi une citation recopiée mot pour mot (au plus 200 caractères) des extraits. "
-                  "Si les extraits ne répondent pas, resume = null.")
+                  f"Phrases numérotées du texte officiel ({pays}) :\n<<<\n{numerotees}\n>>>\n"
+                  "Réponds en français, en 2 phrases au plus, UNIQUEMENT d'après ces phrases. "
+                  "Donne le numéro de la phrase qui le prouve le mieux. "
+                  "Si aucune phrase ne répond, resume = null et phrase = null.")
         brut = generateur.interroger_json(prompt, {"type": "object", "properties": {
-            "resume": {"type": ["string", "null"]}, "citation": {"type": ["string", "null"]}},
-            "required": ["resume", "citation"]})
+            "resume": {"type": ["string", "null"]}, "phrase": {"type": ["integer", "null"]},
+            "citation": {"type": ["string", "null"]}},
+            "required": ["resume", "phrase"]})
         try:
             r = json.loads(brut)
         except ValueError:
-            r = {"resume": None, "citation": None}
-        citation = (r.get("citation") or "").strip() or None
+            r = {"resume": None, "phrase": None}
+        # La citation est recopiée par le code depuis la phrase désignée :
+        # Mistral ne peut ni la traduire ni l'inventer.
+        numero = r.get("phrase")
+        if r.get("resume") and isinstance(numero, int) and 1 <= numero <= len(phrases):
+            citation = phrases[numero - 1][:300]
+        else:
+            citation = (r.get("citation") or "").strip() or None
         resultat[pays] = {"resume": r.get("resume"), "citation": citation,
                           "verifiee": bool(citation) and citation_trouvee(citation, texte),
                           "reference": references.get(pays),
                           "sources": [f"{e['texte_source']} (version du {e['date_version']})" for e in extraits]}
     return {"theme": comparaison["theme"], "pays": resultat}
+
+
+def decouper_phrases(extraits: list[dict]) -> list[str]:
+    """Phrases des extraits (fin de phrase ou de ligne), sans les fragments trop courts."""
+    import re
+
+    phrases = []
+    for e in extraits:
+        for morceau in re.split(r"(?<=[.;:。])\s+|\n+", e["texte"]):
+            morceau = " ".join(morceau.split())
+            if len(morceau) >= 25:
+                phrases.append(morceau)
+    return phrases
 
 
 def equivalents(pays: str, classe: str) -> dict[str, list[str]]:
