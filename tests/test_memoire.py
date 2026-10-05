@@ -90,6 +90,20 @@ class TestMemoire(unittest.TestCase):
         self.assertEqual(entree["fabricant"], "EXEMPLE MEDICAL S.P.A.")
         self.assertIn("references", entree["valeurs"])
 
+    def test_champ_illisible_seul_abandonne(self):
+        # les références (longue liste) font échouer Mistral : le fabricant est quand même appris
+        from extraction import ExtractionImpossible
+
+        def repondre(texte, champs, piece):
+            if any(c["nom"] == "references" for c in champs):
+                raise ExtractionImpossible("Réponse de Mistral illisible (JSON invalide).")
+            return {k: v for k, v in REPONSE.items() if k in {c["nom"] for c in champs}}
+
+        with mock.patch("extraction.interroger_mistral", side_effect=repondre):
+            (entree,) = memoire.apprendre(self.acceptes)
+        self.assertEqual(entree["fabricant"], "EXEMPLE MEDICAL S.P.A.")
+        self.assertNotIn("references", entree["valeurs"])
+
     def dossier(self, fabricant):
         lectures = {"declaration_conformite": [{"nom": "fabricant", "valeur": fabricant, "valeur_normalisee": fabricant,
                                                 "verification": "verifie"}]}

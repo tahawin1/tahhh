@@ -115,9 +115,27 @@ def _retenir(champ: dict, texte: str) -> bool:
     return False
 
 
+def _lire_tolerant(texte: str, paquet: list[dict], produit: str, numero: int) -> list[dict]:
+    """Comme extraction._lire_paquet, mais une donnée illisible (ex. une longue
+    liste de références) ne fait pas perdre les autres : la réponse coupée est
+    relue par moitiés, et seul le champ qui échoue seul est abandonné."""
+    from extraction import ExtractionImpossible, controler, interroger_mistral
+
+    try:
+        return controler(interroger_mistral(texte, paquet, "formulaire accepté par l'administration "
+                                             "(fiche signalétique ou certificat d'enregistrement)"), paquet, texte)
+    except ExtractionImpossible as e:
+        if len(paquet) == 1 or "JSON invalide" not in str(e):
+            print(f"  ! {produit} — pièce {numero} : {', '.join(c['nom'] for c in paquet)} non lu(s) ({e})")
+            return []
+        moitie = len(paquet) // 2
+        return (_lire_tolerant(texte, paquet[:moitie], produit, numero)
+                + _lire_tolerant(texte, paquet[moitie:], produit, numero))
+
+
 def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
     """Fait lire par Mistral les formulaires des dossiers acceptés ; écrit la mémoire."""
-    from extraction import CHAMPS_PAR_APPEL, ExtractionImpossible, _lire_paquet, lire_document
+    from extraction import CHAMPS_PAR_APPEL, ExtractionImpossible, lire_document
 
     DOSSIER_MEMOIRE.mkdir(parents=True, exist_ok=True)
     champs = [{"nom": k, "libelle": v, "description": v} for k, v in CHAMPS_APPRIS.items()]
@@ -131,17 +149,12 @@ def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
             except Exception as e:  # un dossier illisible ne bloque pas les autres
                 print(f"  ✗ {d['produit']} — pièce {numero} : {type(e).__name__}: {e}")
                 continue
-            # par paquets, comme la lecture des documents reçus : une réponse coupée
-            # (JSON invalide) est relue en deux moitiés ; un paquet en échec n'efface
-            # pas ce que les autres ont appris
+            # par paquets, comme la lecture des documents reçus ; une réponse coupée
+            # (JSON invalide) est relue par moitiés, jusqu'au champ fautif seul
             lus = []
             for i in range(0, len(champs), CHAMPS_PAR_APPEL):
                 paquet = champs[i:i + CHAMPS_PAR_APPEL]
-                try:
-                    lus += _lire_paquet(texte, paquet, "formulaire accepté par l'administration "
-                                        "(fiche signalétique ou certificat d'enregistrement)")
-                except ExtractionImpossible as e:
-                    print(f"  ! {d['produit']} — pièce {numero} : {', '.join(c['nom'] for c in paquet)} non lus ({e})")
+                lus += _lire_tolerant(texte, paquet, d["produit"], numero)
             for c in lus:
                 if c["nom"] not in valeurs and _retenir(c, texte):
                     valeurs[c["nom"]] = {"valeur": c["valeur"], "piece": numero, "fichier": chemin.name}
