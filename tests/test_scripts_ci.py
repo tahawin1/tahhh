@@ -2,6 +2,7 @@
 Scripts du pipeline Jenkins (scripts/ci_*.py, evaluer_mistral.py) : la partie
 qui ne dépend ni de Mistral ni de Qdrant. Données fictives.
 """
+import json
 import sys
 import tempfile
 import unittest
@@ -52,6 +53,23 @@ class TestRapport(unittest.TestCase):
         self.assertIn("non exécutée (niveau rapide)", page)  # étapes IA : pas lancées en rapide
         self.assertIn("cassé", page)  # section « À corriger »
         self.assertNotIn("<style", page)  # Jenkins bloque le CSS des artefacts : HTML simple
+
+    def test_lecture_mistral_jugee_au_seuil(self):
+        # 19/20 justes, une valeur manquée (signalée), aucune fausse acceptée : étape réussie
+        detail = [{"specimen": "s.txt", "champ": f"c{i}", "verdict": "juste", "attendu": "a", "lu": "a",
+                   "verification": "verifie", "erreur": None, "duree_s": 1} for i in range(19)]
+        detail.append({"specimen": "s.txt", "champ": "date", "verdict": "manquee", "attendu": "2027-03-11",
+                       "lu": None, "verification": "absent", "erreur": None, "duree_s": 1})
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp)
+            evaluer_mistral.junit(detail, d / "evaluation-mistral.xml")
+            (d / "evaluation-mistral.json").write_text(json.dumps(
+                {"modele": "m", "exactitude": 0.95, "seuil": 0.75, "justes": 19, "total": 20, "dangereuses": 0,
+                 "detail": detail}), encoding="utf-8")
+            page, resume = ci_rapport.construire(d, "complet", "8")
+        self.assertIn("Lecture par Mistral ✓ 19/20 justes", resume)
+        self.assertIn("2027-03-11", page)  # la valeur manquée reste visible
+        self.assertNotIn("À corriger", page)
 
 
 class TestEvaluationMistral(unittest.TestCase):

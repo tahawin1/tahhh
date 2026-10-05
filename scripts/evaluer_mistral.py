@@ -111,12 +111,15 @@ def junit(resultats: list[dict], chemin: Path) -> None:
             message = f'{r["verdict"]} : attendu « {r["attendu"]} », lu « {r["lu"]} » ({r["verification"]})'
             if r["erreur"]:
                 message += f' — {r["erreur"]}'
-            cas += f'<failure message="{escape(message, {chr(34): "&quot;"})}"/>'
+            # valeur manquée mais signalée à la relecture : tolérée sous le seuil
+            # d'exactitude ; seule une valeur fausse acceptée est un échec
+            balise = "failure" if r["verdict"] == "dangereuse" else "skipped"
+            cas += f'<{balise} message="{escape(message, {chr(34): "&quot;"})}"/>'
         lignes.append(cas + "</testcase>")
-    echecs = sum(r["verdict"] != "juste" for r in resultats)
+    echecs = sum(r["verdict"] == "dangereuse" for r in resultats)
     chemin.write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<testsuite name="Évaluation Mistral" tests="{len(resultats)}" '
-        f'failures="{echecs}">\n' + "\n".join(lignes) + "\n</testsuite>\n", encoding="utf-8")
+        f'failures="{echecs}" skipped="{sum(r["verdict"] == "manquee" for r in resultats)}">\n' + "\n".join(lignes) + "\n</testsuite>\n", encoding="utf-8")
 
 
 def main() -> int:

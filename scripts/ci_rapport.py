@@ -53,6 +53,17 @@ def verdict(r: dict | None, niveau: str, fichier: str) -> tuple[str, str]:
     return (symbole, f"{reussis}/{r['total'] - r['ignores']} réussis" + (f", {r['ignores']} ignoré(s)" if r["ignores"] else ""))
 
 
+def verdict_mistral(m: dict | None, symbole: str, texte: str) -> tuple[str, str]:
+    """Lecture par Mistral : réussie si l'exactitude atteint le seuil et
+    qu'aucune valeur fausse n'a été acceptée (une valeur manquée est signalée
+    à la relecture, pas acceptée)."""
+    if not m or not m.get("total"):
+        return symbole, texte
+    ok = m["exactitude"] >= m["seuil"] and not m["dangereuses"]
+    return ("✓" if ok else "✗", f"{m['justes']}/{m['total']} justes — {m['exactitude']:.0%} (seuil {m['seuil']:.0%}), "
+                                 f"{m['dangereuses']} fausse(s) acceptée(s)")
+
+
 def charger_json(chemin: Path):
     try:
         return json.loads(chemin.read_text(encoding="utf-8"))
@@ -65,6 +76,8 @@ def construire(rapports: Path, niveau: str, build: str) -> tuple[str, str]:
     for fichier, nom, preuve in ETAPES:
         r = lire_junit(rapports / fichier)
         symbole, texte = verdict(r, niveau, fichier)
+        if fichier == "evaluation-mistral.xml" and r is not None:
+            symbole, texte = verdict_mistral(charger_json(rapports / "evaluation-mistral.json"), symbole, texte)
         lignes.append((nom, preuve, symbole, texte, r))
         if symbole != "—":
             resume.append(f"{nom} {symbole} {texte.split(',')[0]}")
@@ -88,6 +101,11 @@ def construire(rapports: Path, niveau: str, build: str) -> tuple[str, str]:
                      f"<b>{mistral.get('exactitude', 0):.0%}</b> (seuil {mistral.get('seuil', 0):.0%}), "
                      f"{mistral.get('justes')}/{mistral.get('total')} valeurs justes, "
                      f"<b>{mistral.get('dangereuses')}</b> valeur(s) fausse(s) acceptée(s).</p>")
+        manquees = [d for d in mistral.get("detail", []) if d.get("verdict") == "manquee"]
+        if manquees:
+            corps.append("<p>Valeurs manquées (signalées « à relire », jamais acceptées) :</p><ul>" + "".join(
+                f"<li>{h(d['specimen'])} — {h(d['champ'])} : attendu « {h(str(d['attendu']))} », "
+                f"lu « {h(str(d['lu']))} »</li>" for d in manquees) + "</ul>")
     if agent and agent.get("bilan"):
         b = agent["bilan"]
         corps.append(f"<h2>Agent de bout en bout</h2><p>Bilan du dossier d'essai : <b>{h(b.get('titre', ''))}</b></p>")
