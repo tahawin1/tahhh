@@ -179,10 +179,38 @@ def evaluer(dossier, aujourd_hui: datetime.date | None = None) -> dict:
             "relance": _relance(dossier, a_reclamer), "checklist_version": charger()["version"]}
 
 
+# Checklist : « Qu'il soit effectué par ministre de la santé » (certificat de libre vente)
+AUTORITE_SANTE = re.compile(r"ministry of health|minist[eè]re de la sant|health and family welfare|CDSCO|drugs? control|"
+                            r"medical products administration|NMPA|药监|药品监督管理|food and drug|\bFDA\b|MFDS|DRAP|competent authority for "
+                            r"medical devices|autorit[ée] (?:sanitaire|comp[ée]tente)|Bundesinstitut|Ministero della Salute", re.I)
+AUTORITE_COMMERCE = re.compile(r"ministry of commerce|minist[eè]re du commerce|foreign trade|\bDGFT\b|"
+                               r"chamber of commerce|chambre de commerce|CCPIT", re.I)
+SANS_LICENCE = re.compile(r"licensed under the Drugs and Cosmetics Act[^\n]{0,200}?\bNo\b|based on declaration by", re.I | re.S)
+
+
+def _autorite_sante(texte_recu: str) -> dict | None:
+    """Autorité émettrice du certificat de libre vente : santé (conforme à la
+    checklist) ou commerce (non conforme). None si le texte ne permet pas de trancher."""
+    sante, commerce = AUTORITE_SANTE.search(texte_recu), AUTORITE_COMMERCE.search(texte_recu)
+    if commerce and not sante:
+        detail = (f"Délivré par une autorité du commerce (« {commerce.group(0)} »), pas par le ministère de la santé "
+                  "comme l'exige la checklist : demander au fabricant le certificat de l'autorité sanitaire, ou "
+                  "son certificat CE s'il en a un")
+        if SANS_LICENCE.search(texte_recu):
+            detail += " ; le certificat précise en outre qu'il est établi sur déclaration du fabricant / sans licence sanitaire"
+        return {"statut": KO, "detail": detail, "citation": commerce.group(0)}
+    if sante:
+        return {"statut": OK, "detail": f"Autorité sanitaire : « {sante.group(0)} »", "citation": sante.group(0)}
+    return None
+
+
 def _point_lu(e: dict, champ: dict | None, lu: dict, doc: dict, dossier, piece, aujourd_hui) -> dict:
     texte = e["texte"]
     souple = bool(SI_APPLICABLE.search(texte)) or bool(doc.get("optionnel"))
     # contrôles déterministes prioritaires
+    if re.search(r"ministre de la sant", texte, re.I) and piece.texte_recu:
+        if (r := _autorite_sante(piece.texte_recu)) is not None:
+            return r
     if re.search(r"expir|validit|non expir", texte, re.I):
         date = (lu.get("date_expiration") or lu.get("date_fin") or {}).get("valeur_normalisee")
         if date:

@@ -128,3 +128,23 @@ class TestEvaluation(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestAutoriteDuCertificatDeLibreVente(unittest.TestCase):
+    """Checklist : « Qu'il soit effectué par ministre de la santé ». Textes fictifs."""
+
+    def test_autorite_du_commerce_signalee(self):
+        r = controles._autorite_sante("Government of India, Ministry of Commerce and Industry, Directorate General of "
+                                      "Foreign Trade. FREE SALE AND COMMERCE CERTIFICATE. Is the product licensed under "
+                                      "the Drugs and Cosmetics Act for manufacture and sale ... No")
+        self.assertEqual(r["statut"], controles.KO)
+        self.assertIn("sans licence sanitaire", r["detail"])
+
+    def test_autorite_de_sante_reconnue(self):
+        self.assertEqual(controles._autorite_sante("证书编号：京药监械出 2026 号 CERTIFICATE FOR EXPORTATION")["statut"],
+                         controles.OK)
+        self.assertEqual(controles._autorite_sante("Central Drugs Standard Control Organisation (CDSCO)")["statut"],
+                         controles.OK)
+
+    def test_rien_a_trancher(self):
+        self.assertIsNone(controles._autorite_sante("Certificate of free sale. Product: bone drill."))

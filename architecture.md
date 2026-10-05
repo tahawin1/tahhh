@@ -460,6 +460,13 @@ supporte déjà.
       accepté (« Seringue (IIb) ») et indexée avec les modèles ; `modele_pour` choisit
       même pays + même classe, puis même pays, puis même classe ; `GET /base/acceptes`
       + panneau « Base de l'agent pour ce pays » sur Nouveau dossier (noms seulement).
+- [x] **Base des 15 dossiers acceptés** (2026-10-05, sur le PC, jamais sur GitHub) :
+      UE 10, Chine 3, Inde 1 — rangés par pays de la PREUVE (fabricant chinois ou
+      indien marqué CE → `union_europeenne`). Règles 2.8 : remarque pièce 4 Chine/Inde
+      (loi + checklist + majorité CE) ; contrôle checklist « effectué par ministre
+      de la santé » déterministe (`_autorite_sante` : DGFT / chambre de commerce = ✗).
+      Outils Windows : rapport et outils copiés par Windows (`\\wsl.localhost`),
+      `/mnt/c` renvoyait « Input/output error ».
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

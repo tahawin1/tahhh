@@ -75,10 +75,17 @@
 #   Jenkins, scripts/ci_regles.py) — fondement (`source`) ajouté aux pièces 4
 #   Chine, Inde, UE et autre ; UE classe I : le certificat de libre vente porte
 #   le numéro 4 (il remplace le certificat CE, sans organisme notifié).
+# 2.8 — 2026-10-05 : aucune pièce ajoutée ni retirée. Pièce 4 Chine et Inde :
+#   remarque tirée de la loi (arrêté 2855-15 : CVL « ou équivalent » des
+#   autorités compétentes), de la checklist de l'entreprise (libre vente
+#   « effectué par ministre de la santé ») et des 15 dossiers acceptés : la
+#   majorité des fabricants chinois et indiens acceptés l'ont été avec leur
+#   certificat CE (Chine 2/5, Inde 4/5). Contrôle : un certificat de libre vente
+#   délivré par une autorité du commerce (ex. DGFT) est signalé non conforme.
 
 pays: maroc
-version: 2.7
-date_version: "2026-10-02"
+version: 2.8
+date_version: "2026-10-05"
 autorite: "Agence marocaine des médicaments et des produits de santé (AMMPS)"
 destinataire_demande: "Monsieur le Directeur Général de l'Agence Marocaine des Médicaments et des Produits de Santé (AMMPS)"
 # IS : classe I stérile ; IM : classe I avec fonction de mesurage (arrêté 2855-15)
@@ -497,6 +504,14 @@ piece_specifique_selon_origine:
     document: "Autorisation de mise en vente délivrée par la NMPA (ou certificat équivalent chinois) + certificat de libre vente (FSC)"
     nature: a_fournir
     fourni_par: "la NMPA (via le fabricant)"
+    remarque: >-
+      Certificat de libre vente délivré par l'administration de santé chinoise
+      (NMPA ou administration provinciale des produits médicaux, « 药监 »),
+      comme l'exige la checklist (« effectué par ministre de la santé ») ; un
+      certificat d'une chambre de commerce (CCPIT) ne suffit pas. Fabricant
+      chinois marqué CE (2 dossiers acceptés sur 5) : créer le dossier avec
+      « Union européenne » comme pays d'origine — la preuve est alors le
+      certificat CE.
     source: "Arrêté 2855-15, art. 2 (1) a) (« autorisation de mise en vente (CVL) ou équivalent délivrée par les autorités compétentes du pays d'origine ») ; Règlement chinois n° 739, art. 13 à 18 (enregistrement NMPA)"
     champs_a_extraire: &champs_autorisation
       - *champs_certificat
@@ -511,6 +526,14 @@ piece_specifique_selon_origine:
     document: "Autorisation de mise en vente délivrée par la CDSCO + certificat de libre vente (FSC)"
     nature: a_fournir
     fourni_par: "la CDSCO (via le fabricant)"
+    remarque: >-
+      Certificat de libre vente délivré par l'autorité de santé indienne
+      (CDSCO ou autorité de l'État), comme l'exige la checklist (« effectué par
+      ministre de la santé ») ; un certificat de la DGFT (ministère du
+      Commerce, établi sur déclaration du fabricant) a été accepté une fois mais
+      n'est pas conforme à la checklist. Fabricant indien marqué CE (4 dossiers
+      acceptés sur 5) : créer le dossier avec « Union européenne » comme pays
+      d'origine — la preuve est alors le certificat CE.
     source: "Arrêté 2855-15, art. 2 (1) a) (« autorisation de mise en vente (CVL) ou équivalent ») ; Medical Devices Rules 2017 (Inde), règles 34 à 36 (licence CDSCO)"
     champs_a_extraire: *champs_autorisation
     traduction_requise: true
