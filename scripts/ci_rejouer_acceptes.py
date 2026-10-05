@@ -226,8 +226,10 @@ def main() -> int:
         return 0
     print(f"Rejeu de {len(acceptes)} dossier(s) accepté(s), sans mémoire :")
     for acc in acceptes:
-        fichier = args.memoire / mem.fichier_memoire(acc["pays"], acc["dossier"]).name
-        appris = json.loads(fichier.read_text(encoding="utf-8")) if fichier.exists() else None
+        # mémoire apprise avant ou après l'ajout de la classe au nom du dossier
+        fichiers = [args.memoire / mem.fichier_memoire(acc["pays"], nom).name for nom in (acc["produit"], acc["dossier"])]
+        fichier = next((f for f in fichiers if f.exists()), None)
+        appris = json.loads(fichier.read_text(encoding="utf-8")) if fichier else None
         try:
             rejeu.rejouer(acc, appris)
         except Exception as e:  # un dossier en échec n'arrête pas les autres

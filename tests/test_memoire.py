@@ -52,7 +52,7 @@ class TestMemoire(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         racine = Path(self.tmp.name)
         self.acceptes = racine / "dossiers_valides"
-        produit = self.acceptes / "union_europeenne" / "Ciment exemple"
+        produit = self.acceptes / "union_europeenne" / "Ciment exemple (IIb)"  # classe dans le nom : retirée
         produit.mkdir(parents=True)
         pdf(produit / "2-2-fiche signaletique.pdf", FICHE)
         (produit / "1-1-Lettre.pdf").write_bytes(b"")  # la lettre n'est pas lue par la mémoire

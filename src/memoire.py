@@ -82,7 +82,9 @@ def formulaires_acceptes(racine: Path = RACINE_DEFAUT) -> list[dict]:
                 if (m := NUMERO_FICHIER.match(f.name)) and int(m.group(1)) in PIECES_LUES:
                     fichiers.setdefault(int(m.group(1)), f)
             if fichiers:
-                dossiers.append({"pays": pays_dir.name, "produit": produit_dir.name, "fichiers": fichiers})
+                # « Ciment osseux (IIb) » -> « Ciment osseux » : la classe n'est pas le nom du produit
+                produit = re.sub(r"\s*[(\[][^()\[\]]*[)\]]\s*$", "", produit_dir.name).strip() or produit_dir.name
+                dossiers.append({"pays": pays_dir.name, "produit": produit, "fichiers": fichiers})
     return dossiers
 
 
