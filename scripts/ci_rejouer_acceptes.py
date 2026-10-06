@@ -175,9 +175,14 @@ class Rejeu:
             justes = sum(v == "juste" for v in verdicts.values())
             note = justes / len(verdicts)
             bilan.update(formulaire_note=round(note, 2), formulaire=verdicts)
+            detail = " ; ".join(f"{v} : {', '.join(k for k, w in verdicts.items() if w == v)}"
+                                for v in ("partiel", "different", "manquant") if v in verdicts.values())
             self.noter(nom, f"formulaires : {justes}/{len(verdicts)} données identiques au dossier accepté ({note:.0%})",
-                       None if note >= 0.5 else "moins de la moitié des données retrouvées : "
-                       + ", ".join(k for k, v in verdicts.items() if v != "juste"))
+                       None if note >= 0.5 else f"moins de la moitié des données retrouvées — {detail}")
+            for ident, v in verdicts.items():  # ce que l'agent a mis face à ce qui a été accepté
+                if v != "juste":
+                    print(f"      · {ident} [{v}] agent : « {str((produits.get(ident) or {}).get('valeur') or '')[:80]} » "
+                          f"— accepté : « {str(memoire['valeurs'][ident]['valeur'])[:80]} »", flush=True)
         else:
             self.noter(nom, "formulaires comparés au dossier accepté",
                        ignore="pas de mémoire pour ce dossier : lancer l'outil 4 (Mistral lit les formulaires acceptés)")
