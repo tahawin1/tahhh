@@ -28,8 +28,10 @@ import argparse
 import difflib
 import json
 import re
+import signal
 import sys
 import time
+import traceback
 import unicodedata
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -95,7 +97,7 @@ class Rejeu:
         print(f"  {signe} [{dossier}] {nom}" + (f" — {echec or ignore}" if (echec or ignore) else ""))
 
     def dossier(self, ident):
-        r = self.http.get(f"{self.api}/dossiers/{ident}", timeout=60)
+        r = self.http.get(f"{self.api}/dossiers/{ident}", timeout=(10, 60))
         r.raise_for_status()
         return r.json()
 
@@ -257,6 +259,11 @@ def main() -> int:
     import memoire as mem
 
     rejeu = Rejeu(args.api, args.cle, args.delai, args.delai_lecture)
+
+    def trop_long(signum, frame):
+        raise TimeoutError("durée maximale du dossier dépassée")
+
+    signal.signal(signal.SIGALRM, trop_long)
     acceptes = dossiers_acceptes(args.acceptes) if args.acceptes.is_dir() else []
     if not acceptes:
         print(f"Aucun dossier accepté dans {args.acceptes} : rien à rejouer.")
@@ -273,10 +280,17 @@ def main() -> int:
         fichiers = [args.memoire / mem.fichier_memoire(acc["pays"], nom).name for nom in (acc["produit"], acc["dossier"])]
         fichier = next((f for f in fichiers if f.exists()), None)
         appris = json.loads(fichier.read_text(encoding="utf-8")) if fichier else None
+        # garde-fou absolu : quel que soit l'appel bloqué, le dossier est abandonné après sa durée
+        # maximale (lecture + lettre + marge) et l'endroit du blocage est écrit dans le rapport
+        signal.alarm(args.delai_lecture + args.delai + 600)
         try:
             rejeu.rejouer(acc, appris)
         except Exception as e:  # un dossier en échec n'arrête pas les autres
-            rejeu.noter(f"{acc['pays']}/{acc['dossier']}", "rejeu complet", f"{type(e).__name__}: {e}")
+            ou = traceback.extract_tb(e.__traceback__)[-1]
+            rejeu.noter(f"{acc['pays']}/{acc['dossier']}", "rejeu complet",
+                        f"{type(e).__name__}: {e} (à {Path(ou.filename).name}:{ou.lineno}, {ou.name})")
+        finally:
+            signal.alarm(0)
     rejeu.rapport(args.rapport)
     return 1 if any(c[2] for c in rejeu.cas) else 0
 
