@@ -51,8 +51,8 @@ pipeline {
                      description: 'Rejouer les dossiers acceptés (data/dossiers_valides) et noter l\'agent')
         string(name: 'SEUIL_MISTRAL', defaultValue: '0.75',
                description: 'Exactitude minimale de Mistral sur les spécimens (0 à 1)')
-        string(name: 'REJEU_PAR_BUILD', defaultValue: '4',
-               description: 'Dossiers acceptés rejoués par build complet, à tour de rôle (environ 25 min chacun) ; 0 = tous (plusieurs heures)')
+        string(name: 'REJEU_PAR_BUILD', defaultValue: '2',
+               description: 'Dossiers acceptés rejoués par build complet, à tour de rôle (jusqu’à 1 h chacun : lecture bornée à 30 min) ; 0 = tous (une nuit entière)')
         booleanParam(name: 'DEPLOYER', defaultValue: false,
                      description: 'Déployer sur le serveur après les contrôles (une personne devra confirmer)')
     }
@@ -209,7 +209,7 @@ pipeline {
                                     -v "$ACCEPTES":/acceptes:ro -v "$MEMOIRE":/memoire:ro "$IMAGE_CI" \
                                     python scripts/ci_rejouer_acceptes.py --api "http://127.0.0.1:$PORT_CI" --cle "$CLE_CI" \
                                         --acceptes /acceptes --memoire /memoire --rapport "$RAPPORTS" \
-                                        --nombre "${REJEU_PAR_BUILD:-4}" --decalage "$BUILD_NUMBER"
+                                        --nombre "${REJEU_PAR_BUILD:-2}" --decalage "$BUILD_NUMBER"
                             '''
                         }
                     }

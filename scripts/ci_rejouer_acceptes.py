@@ -81,8 +81,8 @@ def dossiers_acceptes(racine: Path) -> list[dict]:
 
 
 class Rejeu:
-    def __init__(self, api: str, cle_api: str, delai: int):
-        self.api, self.delai = api.rstrip("/"), delai
+    def __init__(self, api: str, cle_api: str, delai: int, delai_lecture: int = 1800):
+        self.api, self.delai, self.delai_lecture = api.rstrip("/"), delai, delai_lecture
         self.http = requests.Session()
         self.http.trust_env = False
         self.http.headers["X-API-Key"] = cle_api
@@ -99,13 +99,13 @@ class Rejeu:
         r.raise_for_status()
         return r.json()
 
-    def attendre(self, ident, condition, quoi):
+    def attendre(self, ident, condition, quoi, delai: int | None = None):
         debut = time.monotonic()
-        fin, signe = debut + self.delai, debut
+        fin, signe = debut + (delai or self.delai), debut
         while not condition(d := self.dossier(ident)):
             maintenant = time.monotonic()
             if maintenant > fin:
-                raise TimeoutError(f"{quoi} : toujours en cours après {self.delai} s")
+                raise TimeoutError(f"{quoi} : toujours en cours après {int(maintenant - debut)} s")
             if maintenant - signe >= 300:  # signe de vie toutes les 5 min : où en est l'agent
                 signe = maintenant
                 lus = sum(p["extraction_statut"] == "terminee" for p in d["documents"])
@@ -135,8 +135,14 @@ class Rejeu:
         non_ranges = [a["fichier"] for a in affectations if a["piece"] is None and "rien à lire" not in a["raison"]]
         self.noter(nom, f"{len(fournisseur) - len(non_ranges)}/{len(fournisseur)} pièces du fournisseur rangées",
                    None if not non_ranges else f"non rangées : {non_ranges}")
-        d = self.attendre(d["id"], lambda x: all(p["extraction_statut"] in (None, "terminee", "erreur")
-                                                  for p in x["documents"]), "lecture")
+        # lecture bornée : au-delà, le rejeu continue avec les pièces déjà lues (signalé, pas bloquant)
+        try:
+            d = self.attendre(d["id"], lambda x: all(p["extraction_statut"] in (None, "terminee", "erreur")
+                                                      for p in x["documents"]), "lecture", delai=self.delai_lecture)
+        except TimeoutError as e:
+            d = self.dossier(d["id"])
+            restantes = [p["code"] for p in d["documents"] if p["extraction_statut"] in ("en_file", "en_cours")]
+            self.noter(nom, "lecture dans le temps imparti", ignore=f"{e} ; non lues : {', '.join(restantes)}")
         lus = [p for p in d["documents"] if p["extraction_statut"] == "terminee"]
         erreurs = [p["code"] for p in d["documents"] if p["extraction_statut"] == "erreur"]
         verifies = sum(1 for p in lus for c in p["extraction"]["champs"] if c["verification"] == "verifie")
@@ -241,6 +247,8 @@ def main() -> int:
     parser.add_argument("--memoire", type=Path, default=RACINE / "output" / "memoire")
     parser.add_argument("--rapport", type=Path, default=RACINE / "rapports-ci")
     parser.add_argument("--delai", type=int, default=3600)
+    parser.add_argument("--delai-lecture", type=int, default=1800,
+                        help="temps maximal de lecture d'un dossier (s) ; au-delà, rejeu avec les pièces déjà lues")
     parser.add_argument("--nombre", type=int, default=0,
                         help="dossiers rejoués par build (0 = tous) : environ 25 min par dossier avec Mistral")
     parser.add_argument("--decalage", type=int, default=0,
@@ -248,7 +256,7 @@ def main() -> int:
     args = parser.parse_args()
     import memoire as mem
 
-    rejeu = Rejeu(args.api, args.cle, args.delai)
+    rejeu = Rejeu(args.api, args.cle, args.delai, args.delai_lecture)
     acceptes = dossiers_acceptes(args.acceptes) if args.acceptes.is_dir() else []
     if not acceptes:
         print(f"Aucun dossier accepté dans {args.acceptes} : rien à rejouer.")
