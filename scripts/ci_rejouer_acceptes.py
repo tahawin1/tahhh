@@ -291,6 +291,7 @@ def main() -> int:
                         f"{type(e).__name__}: {e} (à {Path(ou.filename).name}:{ou.lineno}, {ou.name})")
         finally:
             signal.alarm(0)
+        rejeu.rapport(args.rapport)  # rapport mis à jour après chaque dossier : rien n'est perdu si le build est coupé
     rejeu.rapport(args.rapport)
     return 1 if any(c[2] for c in rejeu.cas) else 0
 
