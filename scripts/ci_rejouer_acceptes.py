@@ -100,10 +100,20 @@ class Rejeu:
         return r.json()
 
     def attendre(self, ident, condition, quoi):
-        fin = time.monotonic() + self.delai
+        debut = time.monotonic()
+        fin, signe = debut + self.delai, debut
         while not condition(d := self.dossier(ident)):
-            if time.monotonic() > fin:
+            maintenant = time.monotonic()
+            if maintenant > fin:
                 raise TimeoutError(f"{quoi} : toujours en cours après {self.delai} s")
+            if maintenant - signe >= 300:  # signe de vie toutes les 5 min : où en est l'agent
+                signe = maintenant
+                lus = sum(p["extraction_statut"] == "terminee" for p in d["documents"])
+                en_cours = [p["code"] for p in d["documents"] if p["extraction_statut"] in ("en_file", "en_cours")]
+                redaction = [p["code"] for p in d["documents"] if p["statut"] in ("en_file", "en_generation")]
+                print(f"    … {quoi} depuis {int((maintenant - debut) / 60)} min : {lus} pièce(s) lue(s), "
+                      f"en lecture : {', '.join(en_cours) or '—'} ; en rédaction : {', '.join(redaction) or '—'}",
+                      flush=True)
             time.sleep(15)
         return d
 
