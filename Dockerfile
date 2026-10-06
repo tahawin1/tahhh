@@ -2,6 +2,8 @@
 # Ollama n'est pas dans l'image : il tourne sur l'hôte (accès GPU direct),
 # joint via OLLAMA_BASE_URL (voir docker-compose.yml).
 FROM python:3.11-slim
+# progression affichée en direct (journaux Docker et Jenkins), pas seulement à la fin
+ENV PYTHONUNBUFFERED=1
 
 # Tesseract (OCR des textes scannés) : nécessaire pour scripts/indexer_tout.sh
 RUN apt-get update \
