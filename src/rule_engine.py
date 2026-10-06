@@ -110,15 +110,35 @@ def _condition_dossier(regle: dict, equipement: bool, valeur_usd: float | None,
     return True
 
 
+# Preuve de mise sur le marché présentée pour la pièce 4 (arrêté 2855-15, art. 2
+# (1) a) : « certificat de marquage CE, ou attestation FDA, ou autorisation de mise
+# en vente (CVL) ou équivalent ») : « nationale » = l'autorité du pays du fabricant ;
+# « ce » = le certificat CE d'un organisme notifié, quel que soit le pays du fabricant
+# (ex. fabricant chinois ou indien marqué CE). « auto » = à détecter par l'agent dans
+# la pièce 4 reçue ; tant que rien n'est détecté, la voie nationale s'applique.
+PREUVES = ("auto", "nationale", "ce")
+PAYS_CE = "union_europeenne"
+
+
+def pays_des_regles(pays_origine: str, preuve: str | None) -> str:
+    """Pays dont les règles de la pièce 4 (et des pièces liées à l'origine)
+    s'appliquent : celui du fabricant, ou l'UE quand la preuve est le CE."""
+    return PAYS_CE if preuve == "ce" else pays_origine
+
+
 def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None,
                            equipement: bool = False, valeur_usd: float | None = None,
-                           distributeur: bool = False) -> list[DocumentRequis]:
+                           distributeur: bool = False, preuve: str | None = None) -> list[DocumentRequis]:
     """
     Cas A du projet : dossier destiné au Maroc, produit venant d'un pays
-    étranger (chine / inde / union_europeenne / autre).
+    étranger (chine / inde / union_europeenne / autre). `preuve` = « ce » :
+    fabricant non européen marqué CE — la pièce 4 et les pièces liées à
+    l'origine suivent alors la voie européenne (voir PREUVES).
     """
     regles = charger_regles("maroc")
     documents: list[DocumentRequis] = []
+    pays_fabricant = pays_origine_produit
+    pays_origine_produit = pays_des_regles(pays_origine_produit, preuve)
 
     for doc in regles["socle_commun"]:
         # Comparaison exacte sur la liste YAML `classes_concernees` (le champ
@@ -164,7 +184,10 @@ def documents_requis_maroc(pays_origine_produit: str, classe: str | None = None,
                 fourni_par=piece.get("fourni_par"),
                 champs_a_extraire=_champs(piece, f"piece_specifique_selon_origine.{pays_origine_produit}"),
                 numero=piece.get("numero"),
-                remarque=piece.get("remarque"),
+                remarque=(f"Fabricant {pays_fabricant.replace('_', ' ')} marqué CE : la preuve de mise sur le marché "
+                          "est le certificat CE de l'organisme notifié (voie européenne), et non le certificat de "
+                          "l'autorité du pays. " + (piece.get("remarque") or "")).strip()
+                         if pays_fabricant != pays_origine_produit else piece.get("remarque"),
                 source=piece.get("source"),
             )
         )

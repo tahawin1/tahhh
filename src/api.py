@@ -112,6 +112,7 @@ PIECES_PHYSIQUES = ("echantillon_modele_vente",)  # objet remis au dépôt, pas 
 
 PaysOrigine = Literal["chine", "inde", "union_europeenne", "etats_unis", "coree_du_sud", "pakistan", "autre"]
 Classe = Literal["I", "IS", "IM", "IR", "IIA", "IIB", "III"]  # IS : stérile ; IM : mesurage ; IR : réutilisable
+Preuve = Literal["auto", "nationale", "ce"]  # rule_engine.PREUVES
 
 
 # ---------------------------------------------------------------- schémas
@@ -137,6 +138,8 @@ class DossierRequete(BaseModel):
     equipement: bool = False  # équipement médical : note descriptive, documentation technique, manuel
     valeur_unitaire_usd: float | None = Field(default=None, ge=0, le=10_000_000)  # échantillon / pro-forma
     fournisseur_distributeur: bool = False  # le fournisseur n'est pas le fabricant : lettre de lien
+    # preuve de mise sur le marché : auto = détectée par l'agent dans la pièce 4 reçue
+    preuve: Preuve = "auto"
 
 
 class DossierDocumentsReponse(BaseModel):
@@ -208,6 +211,7 @@ class DossierResume(BaseModel):
     equipement: bool | None = None
     valeur_unitaire_usd: float | None = None
     fournisseur_distributeur: bool | None = None
+    preuve: str | None = None
     cree_par: str
     cree_le: datetime.datetime
     regles_version: str
@@ -271,6 +275,7 @@ def _resume(dossier: Dossier) -> dict:
         "equipement": dossier.equipement,
         "valeur_unitaire_usd": dossier.valeur_unitaire_usd,
         "fournisseur_distributeur": dossier.fournisseur_distributeur,
+        "preuve": dossier.preuve,
         "cree_par": dossier.cree_par,
         "cree_le": dossier.cree_le,
         "regles_version": dossier.regles_version,
@@ -308,8 +313,10 @@ def _champs_regles(pays_origine: str, classe: str | None, empreinte: str) -> dic
     for equipement in (False, True):  # toutes les pièces possibles, quelles que soient les conditions
         for valeur in (0, 10_000):
             for distributeur in (False, True):
-                champs.update({d.id: d.champs_a_extraire for d in documents_requis_maroc(
-                    pays_origine, classe=classe, equipement=equipement, valeur_usd=valeur, distributeur=distributeur)})
+                for preuve in ("nationale", "ce"):  # les deux voies : la pièce 4 porte son propre code
+                    champs.update({d.id: d.champs_a_extraire for d in documents_requis_maroc(
+                        pays_origine, classe=classe, equipement=equipement, valeur_usd=valeur,
+                        distributeur=distributeur, preuve=preuve)})
     return champs
 
 
@@ -381,6 +388,30 @@ def liste_pays():
     return resultat
 
 
+class ChoixPreuve(BaseModel):
+    preuve: Literal["nationale", "ce"]
+    acteur: str = Field(min_length=2, max_length=120)
+
+
+@app.post("/dossiers/{dossier_id}/preuve", response_model=DossierDetail)
+def choisir_preuve(dossier_id: int, choix: ChoixPreuve):
+    """Preuve de mise sur le marché choisie par une personne (corrige au besoin la
+    détection de l'agent) : la pièce 4 et les pièces liées à l'origine sont
+    recalculées par le moteur de règles ; rien de reçu ni de validé n'est perdu."""
+    import preuve
+
+    with db.SessionLocal() as session:
+        dossier = _charger_dossier(session, dossier_id)
+        if dossier.pays_origine == preuve.PAYS_CE:
+            raise HTTPException(status_code=409, detail="Fabricant européen : la preuve est toujours le certificat CE.")
+        a_relire = preuve.changer(session, dossier, choix.preuve, choix.acteur, "choisie par l'utilisateur")
+        session.commit()
+        for document_id in a_relire:
+            taches.soumettre_extraction(document_id)
+        session.refresh(dossier)
+        return _detail(dossier)
+
+
 @app.get("/base/acceptes")
 def base_acceptes(pays_origine: str, classe: str | None = None):
     """Dossiers acceptés déposés sur le serveur pour ce pays d'origine (ceux de
@@ -390,7 +421,8 @@ def base_acceptes(pays_origine: str, classe: str | None = None):
     import memoire
 
     classe = (classe or "").upper() or None
-    dossiers = [{"produit": memoire.produit_et_classe(a["produit"])[0], "classe": a["classe"], "fabricant": a.get("fabricant_nom"),
+    dossiers = [{"produit": memoire.produit_et_classe(a["produit"])[0], "classe": a["classe"], "preuve": a.get("preuve"),
+                 "fabricant": a.get("fabricant_nom"),
                  "pieces": sorted(a["fichiers"]), "meme_classe": bool(classe) and a["classe"] == classe}
                 for a in bibliotheque.dossiers_acceptes() if a["pays"] == pays_origine]
     dossiers.sort(key=lambda d: (not d["meme_classe"], d["produit"].lower()))
@@ -450,7 +482,7 @@ def documents_requis(requete: DossierRequete):
     try:
         documents = documents_requis_maroc(requete.pays_origine, classe=requete.classe, equipement=requete.equipement,
                                            valeur_usd=requete.valeur_unitaire_usd,
-            distributeur=requete.fournisseur_distributeur)
+            distributeur=requete.fournisseur_distributeur, preuve=requete.preuve)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -511,9 +543,10 @@ def creer_dossier(requete: DossierCreation):
     from generate import nouveau_dossier_sortie
 
     try:
+        preuve = None if requete.pays_origine == "union_europeenne" else requete.preuve
         requis = documents_requis_maroc(requete.pays_origine, classe=requete.classe, equipement=requete.equipement,
                                         valeur_usd=requete.valeur_unitaire_usd,
-            distributeur=requete.fournisseur_distributeur)
+            distributeur=requete.fournisseur_distributeur, preuve=preuve)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -526,6 +559,7 @@ def creer_dossier(requete: DossierCreation):
             equipement=requete.equipement,
             valeur_unitaire_usd=requete.valeur_unitaire_usd,
             fournisseur_distributeur=requete.fournisseur_distributeur,
+            preuve=preuve,
             regles_version=empreinte_regles("maroc"),
             dossier_sortie=str(nouveau_dossier_sortie(requete.pays_origine, requete.produit)),
             cree_par=requete.cree_par,

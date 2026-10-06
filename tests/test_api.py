@@ -108,7 +108,7 @@ class TestApi(unittest.TestCase):
         finally:
             memoire.RACINE_DEFAUT = ancienne
         self.assertEqual((b["total"], b["meme_classe"]), (3, 1))
-        self.assertEqual(b["dossiers"][0], {"produit": "Seringue", "classe": "IIB", "fabricant": None,
+        self.assertEqual(b["dossiers"][0], {"produit": "Seringue", "classe": "IIB", "preuve": None, "fabricant": None,
                                             "pieces": [1], "meme_classe": True})  # même classe en premier
 
     def test_creation_fige_la_decision_du_moteur_de_regles(self):
@@ -258,6 +258,40 @@ class TestApi(unittest.TestCase):
         piece = self.piece(d, code)
         return self.client.post(f"/dossiers/{d['id']}/documents/{piece['id']}/document-recu",
                                 data={"acteur": "Testeur"}, files={"fichier": (nom, contenu, "application/pdf")})
+
+    def test_preuve_ce_detectee_pour_un_fabricant_chinois(self):
+        # fabricant chinois marqué CE : l'agent le voit dans la pièce 4 et passe le dossier sur la voie CE
+        d = self.creer(pays="chine", classe="IIA")
+        self.assertEqual(d["preuve"], "auto")
+        r = self.deposer(d, "piece_specifique_chine", nom="4-4- certificat de marquage CE.pdf")
+        self.assertEqual(r.status_code, 202, r.text)
+        d = self.client.get(f"/dossiers/{d['id']}").json()
+        codes = {p["code"] for p in d["documents"]}
+        self.assertEqual(d["preuve"], "ce")
+        self.assertIn("piece_specifique_union_europeenne", codes)
+        self.assertNotIn("piece_specifique_chine", codes)
+        piece4 = self.piece(d, "piece_specifique_union_europeenne")
+        self.assertEqual(piece4["nom_fichier_recu"], "4-4- certificat de marquage CE.pdf")  # le document reçu est gardé
+        self.assertIn("marqué CE", piece4["remarque"])
+        self.assertIn("preuve_modifiee", [e["action"] for e in d["evenements"]])
+        # une personne corrige : retour à la voie nationale, rien de reçu n'est perdu
+        d = self.client.post(f"/dossiers/{d['id']}/preuve", json={"preuve": "nationale", "acteur": "Testeur"}).json()
+        piece4 = self.piece(d, "piece_specifique_chine")
+        self.assertEqual((d["preuve"], piece4["nom_fichier_recu"]), ("nationale", "4-4- certificat de marquage CE.pdf"))
+
+    def test_preuve_nationale_detectee(self):
+        d = self.creer(pays="inde", classe="IIA")
+        self.deposer(d, "piece_specifique_inde", nom="4-4- Free Sale Certificate.pdf")
+        d = self.client.get(f"/dossiers/{d['id']}").json()
+        self.assertEqual(d["preuve"], "nationale")
+        self.assertIn("piece_specifique_inde", {p["code"] for p in d["documents"]})
+
+    def test_preuve_choisie_a_la_creation(self):
+        r = self.client.post("/dossiers/documents-requis", json={"pays_origine": "inde", "produit": "x", "classe": "IIB",
+                                                                 "preuve": "ce"})
+        self.assertIn("piece_specifique_union_europeenne", {p["id"] for p in r.json()["documents"]})
+        self.assertEqual(self.client.post(f"/dossiers/{self.creer(pays='union_europeenne')['id']}/preuve",
+                                          json={"preuve": "nationale", "acteur": "Testeur"}).status_code, 409)
 
     def test_lecture_du_document_recu(self):
         d = self.creer()
@@ -409,11 +443,12 @@ class TestApi(unittest.TestCase):
         autre_produit = self.creer(pays="union_europeenne", fournisseur="Exemple Medical", produit="Vis pédiculaire")
         self.assertEqual({x["code"] for x in autre_produit["documents"] if x["extraction_statut"] == "terminee"},
                          {"attestation_fabricant", "catalogue"})
-        # autre fabricant, ou autre pays d'origine : rien
+        # autre fabricant : rien
         autre = self.creer(pays="union_europeenne", fournisseur="Autre Fabricant", produit="Ciment osseux Exemple")
         self.assertFalse(any(x["extraction_statut"] == "terminee" for x in autre["documents"]))
+        # même fabricant saisi avec un autre pays : ses pièces sont reprises quand même
         chine = self.creer(pays="chine", fournisseur="Exemple Medical", produit="Ciment osseux Exemple")
-        self.assertFalse(any(x["extraction_statut"] == "terminee" for x in chine["documents"]))
+        self.assertTrue(any(x["origine_recu"] for x in chine["documents"]))
 
     def test_export_du_dossier(self):
         import io

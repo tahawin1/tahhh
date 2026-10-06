@@ -171,6 +171,21 @@ class TestCreneauDepot(unittest.TestCase):
         self.assertEqual(prochain_creneau_depot(depuis=datetime.date(2026, 10, 2)), datetime.date(2026, 10, 7))
 
 
+class TestPreuveDeMiseSurLeMarche(unittest.TestCase):
+    """Le pays du fabricant et la preuve (CE ou autorité du pays) sont distincts."""
+
+    def test_fabricant_chinois_marque_ce_suit_la_voie_europeenne(self):
+        ce = {d.id for d in documents_requis_maroc("chine", "IIB", preuve="ce")}
+        self.assertEqual(ce, {d.id for d in documents_requis_maroc("union_europeenne", "IIB")})
+        nationale = {d.id for d in documents_requis_maroc("chine", "IIB")}
+        self.assertEqual(nationale, {d.id for d in documents_requis_maroc("chine", "IIB", preuve="auto")})
+        self.assertIn("piece_specifique_chine", nationale)
+
+    def test_remarque_sur_la_piece_4(self):
+        piece = next(d for d in documents_requis_maroc("inde", "IIA", preuve="ce") if d.numero == 4)
+        self.assertIn("Fabricant inde marqué CE", piece.remarque)
+
+
 if __name__ == "__main__":
     unittest.main()
 

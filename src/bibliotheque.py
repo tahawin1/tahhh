@@ -98,7 +98,9 @@ def _depuis_dossiers(piece, dossier, fabricant: str, precedents: list, aujourd_h
         if autre.id == dossier.id:
             continue
         if p != "commun":
-            if autre.pays_origine != dossier.pays_origine or not fabricant or fabricant_du_dossier(autre) != fabricant:
+            # même fabricant, quel que soit le pays choisi pour le dossier (un fabricant chinois marqué CE
+            # a pu être saisi « Chine » une fois, « Union européenne » une autre)
+            if not fabricant or fabricant_du_dossier(autre) != fabricant:
                 continue
             if p == "meme_produit" and not meme_produit(dossier.produit, autre.produit):
                 continue
@@ -114,6 +116,7 @@ def _depuis_dossiers(piece, dossier, fabricant: str, precedents: list, aujourd_h
 def dossiers_acceptes(racine: Path | None = None) -> list[dict]:
     """Dossiers acceptés sur le serveur : pays, produit, fabricant (mémoire), fichiers par numéro."""
     import memoire
+    import preuve
 
     racine = racine or memoire.RACINE_DEFAUT
     appris = {(e.get("pays"), e.get("produit")): e for e in memoire.charger()}
@@ -129,6 +132,7 @@ def dossiers_acceptes(racine: Path | None = None) -> list[dict]:
             produit, classe = memoire.produit_et_classe(produit_dir.name)
             entree = appris.get((pays_dir.name, produit)) or appris.get((pays_dir.name, produit_dir.name)) or {}
             trouves.append({"pays": pays_dir.name, "produit": produit_dir.name, "classe": classe, "fichiers": fichiers,
+                            "preuve": preuve.preuve_de_fichiers(fichiers.get(4, [])),
                             "fabricant": fabricant_cle(entree.get("fabricant")),
                             "fabricant_nom": entree.get("fabricant")})
     return trouves
@@ -140,7 +144,7 @@ def _depuis_acceptes(piece, dossier, fabricant: str, acceptes: list[dict]):
         return None
     p = portee(piece.code)
     for acc in acceptes:
-        if acc["pays"] != dossier.pays_origine or not fabricant or acc["fabricant"] != fabricant:
+        if not fabricant or acc["fabricant"] != fabricant:
             continue
         if p == "meme_produit" and not meme_produit(dossier.produit, acc["produit"]):
             continue

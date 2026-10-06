@@ -78,6 +78,10 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
     saisies = (saisies if saisies is not None else getattr(dossier, "donnees_dispositif", None)) or {}
     lectures = _lectures(dossier.documents)
     contexte = {"produit": dossier.produit, "classe": dossier.classe or "", "pays_origine": dossier.pays_origine}
+    # fabricant non européen marqué CE : les cases du certificat CE s'appliquent, celles du CVL non
+    from rule_engine import pays_des_regles
+
+    pays_regles = pays_des_regles(dossier.pays_origine, getattr(dossier, "preuve", None))
     resultat: dict[str, dict] = {}
 
     def une(ident: str, pile: tuple = ()) -> dict:
@@ -88,8 +92,9 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
              "valeur": None, "provenance": "manquant", "detail": None, "a_verifier": False}
         if (saisie := (saisies.get(ident) or "").strip()):
             r.update(valeur=saisie, provenance="saisie", detail="Saisi dans le tableau de bord")
-        elif dossier.pays_origine in (d.get("na_si_origine") or []):
-            r.update(valeur="NA", provenance="regle", detail=f"Sans objet pour l'origine {dossier.pays_origine}")
+        elif pays_regles in (d.get("na_si_origine") or []):
+            r.update(valeur="NA", provenance="regle", detail=f"Sans objet pour l'origine {pays_regles}"
+                     + (" (fabricant marqué CE)" if pays_regles != dossier.pays_origine else ""))
         else:
             for source in d.get("sources") or []:
                 genre, _, reste = source.partition(":")

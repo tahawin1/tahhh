@@ -98,6 +98,8 @@ export interface Compteurs {
   rejetes: number
 }
 
+export type Preuve = 'auto' | 'nationale' | 'ce'
+
 export interface DossierResume {
   id: number
   produit: string
@@ -108,6 +110,8 @@ export interface DossierResume {
   equipement?: boolean | null
   valeur_unitaire_usd?: number | null
   fournisseur_distributeur?: boolean | null
+  /** preuve de mise sur le marché : auto (à détecter par l'agent) | nationale | ce ; null = nationale */
+  preuve?: Preuve | null
   cree_par: string
   cree_le: string
   regles_version: string
@@ -329,22 +333,24 @@ export interface BaseAcceptes {
   classe: string | null
   total: number
   meme_classe: number
-  dossiers: { produit: string; classe: string | null; fabricant: string | null; pieces: number[]; meme_classe: boolean }[]
+  dossiers: { produit: string; classe: string | null; preuve: 'ce' | 'nationale' | null; fabricant: string | null; pieces: number[]; meme_classe: boolean }[]
 }
 
 export const api = {
   sante: () => requete<Sante>('/health', { headers: enTetes() }),
   pays: () => requete<Record<string, { autorite: string; classification: string[] }>>('/pays', { headers: enTetes() }),
   apercu: (pays_origine: string, produit: string, classe: string | null, equipement = false,
-    valeur_unitaire_usd: number | null = null, fournisseur_distributeur = false) =>
-    post<Apercu>('/dossiers/documents-requis', { pays_origine, produit, classe, equipement, valeur_unitaire_usd, fournisseur_distributeur }),
+    valeur_unitaire_usd: number | null = null, fournisseur_distributeur = false, preuve: Preuve = 'auto') =>
+    post<Apercu>('/dossiers/documents-requis', { pays_origine, produit, classe, equipement, valeur_unitaire_usd, fournisseur_distributeur, preuve }),
   baseAcceptes: (pays_origine: string, classe: string | null) =>
     requete<BaseAcceptes>(`/base/acceptes?pays_origine=${encodeURIComponent(pays_origine)}`
       + (classe ? `&classe=${encodeURIComponent(classe)}` : ''), { headers: enTetes() }),
   dossiers: () => requete<DossierResume[]>('/dossiers', { headers: enTetes() }),
+  choisirPreuve: (id: number, preuve: 'nationale' | 'ce', acteur: string) =>
+    post<DossierDetail>(`/dossiers/${id}/preuve`, { preuve, acteur }),
   dossier: (id: number) => requete<DossierDetail>(`/dossiers/${id}`, { headers: enTetes() }),
   creer: (d: { pays_origine: string; produit: string; classe: string | null; fournisseur: string | null;
-    equipement: boolean; valeur_unitaire_usd: number | null; fournisseur_distributeur: boolean; cree_par: string }) =>
+    equipement: boolean; valeur_unitaire_usd: number | null; fournisseur_distributeur: boolean; preuve: Preuve; cree_par: string }) =>
     post<DossierDetail>('/dossiers', d),
   genererTout: (id: number, acteur: string) => post<DossierDetail>(`/dossiers/${id}/generer`, { acteur }),
   genererPiece: (id: number, piece: number, acteur: string) =>

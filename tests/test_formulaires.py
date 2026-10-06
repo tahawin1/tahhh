@@ -88,6 +88,15 @@ class TestResolution(unittest.TestCase):
         self.assertEqual(r["ce_numero"]["valeur"], "NA")
         self.assertIsNone(r["cvl_numero"]["valeur"])
 
+    def test_fabricant_chinois_marque_ce(self):
+        # même pays, preuve CE : les cases du certificat CE se remplissent, celles du CVL sont sans objet
+        d = dossier("chine")
+        d.preuve = "ce"
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertNotEqual(r["ce_numero"]["valeur"], "NA")
+        self.assertEqual(r["cvl_numero"]["valeur"], "NA")
+        self.assertIn("marqué CE", r["cvl_numero"]["detail"])
+
     def test_reference_2023_607_n_est_pas_le_numero_ce(self):
         # essai réel : l'agent a lu « EU2023-607/… » (référence de la lettre) comme n° de certificat
         lettre = ("Notified Body Confirmation Letter Reference: EU2023-607/123456 Regulation (EU) 2023/607\n"

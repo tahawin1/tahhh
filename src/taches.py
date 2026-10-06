@@ -76,6 +76,9 @@ def executer_generation(document_id: int) -> None:
                 fournisseur=dossier.fournisseur,
                 pieces_du_dossier=[d.nom for d in dossier.documents],  # figées à la création du dossier
                 donnees=_donnees_connues(dossier),
+                # modèle choisi parmi les dossiers acceptés de même preuve (CE ou autorité du pays)
+                preuve="ce" if dossier.pays_origine == "union_europeenne" else (
+                    dossier.preuve if dossier.preuve in ("ce", "nationale") else None),
             )
         except GenerationImpossible as e:
             doc.statut = "erreur"
@@ -150,7 +153,35 @@ def executer_extraction(document_id: int) -> None:
             )
         session.commit()
         if doc.extraction_statut == "terminee":
+            detecter_preuve(session, doc)
             enchainer(session, doc.dossier)
+
+
+def detecter_preuve(session, doc) -> None:
+    """Pièce 4 lue, preuve encore « à détecter » : le code (pas Mistral) regarde
+    si c'est un certificat CE d'organisme notifié ou un certificat de l'autorité
+    du pays, et adapte les pièces exigées. Journalisé, jamais bloquant."""
+    import preuve
+
+    dossier = doc.dossier
+    if not doc.code.startswith("piece_specifique_") or dossier.preuve != "auto":
+        return
+    try:
+        trouvee = preuve.detecter(doc.texte_recu or "", [doc.nom_fichier_recu or ""])
+        if trouvee == "ce" and dossier.pays_origine != preuve.PAYS_CE:
+            a_relire = preuve.changer(session, dossier, "ce", "système",
+                                      f"certificat CE détecté dans « {doc.nom_fichier_recu} »")
+            session.commit()
+            for document_id in a_relire:
+                soumettre_extraction(document_id)
+        elif trouvee is not None:
+            dossier.preuve = trouvee
+            journaliser(session, dossier.id, "système", "preuve_detectee",
+                        f"Preuve de mise sur le marché : {trouvee} (détectée dans « {doc.nom_fichier_recu} »)")
+            session.commit()
+    except Exception as e:  # jamais silencieux
+        journaliser(session, dossier.id, "système", "preuve_echec", f"Détection de la preuve : {e}")
+        session.commit()
 
 
 def reprendre_documents(session, dossier, acteur: str = "système") -> int:

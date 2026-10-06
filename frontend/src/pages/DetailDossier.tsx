@@ -72,6 +72,18 @@ export default function DetailDossier({ id, session }: { id: number; session: Se
             {dossier.equipement && <span className="etiquette">Équipement médical</span>}
             {dossier.fournisseur_distributeur && <span className="etiquette">Fournisseur distributeur</span>}
             {dossier.valeur_unitaire_usd != null && <span className="etiquette">{dossier.valeur_unitaire_usd} $ / unité</span>}
+            {dossier.pays_origine !== 'union_europeenne' && (
+              <span className="etiquette preuve" title="Preuve de mise sur le marché présentée en pièce 4">
+                {dossier.preuve === 'ce' ? 'Preuve : certificat CE'
+                  : dossier.preuve === 'auto' ? 'Preuve : détectée par l’agent à la lecture de la pièce 4'
+                  : 'Preuve : autorité du pays'}
+                <button type="button" className="lien" disabled={!!action}
+                  onClick={() => executer('preuve', () => api.choisirPreuve(dossier.id,
+                    dossier.preuve === 'ce' ? 'nationale' : 'ce', session.nom))}>
+                  {dossier.preuve === 'ce' ? 'passer à l’autorité du pays' : 'passer au certificat CE'}
+                </button>
+              </span>
+            )}
             <span className="etiquette discrete">Créé le {dateHeure(dossier.cree_le)} par {dossier.cree_par}</span>
             <span className="etiquette discrete" title="Version des règles utilisées">Règles {dossier.regles_version}</span>
           </div>

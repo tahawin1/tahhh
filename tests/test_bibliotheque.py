@@ -75,9 +75,10 @@ class TestDossiersAcceptes(unittest.TestCase):
         d = dossier("Vis pédiculaire", "EXEMPLE MEDICAL", self.sortie)
         self.assertEqual({p.code for p, *_ in bibliotheque.reprendre(d, [])}, {"attestation_fabricant", "catalogue"})
 
-    def test_autre_fabricant_ou_autre_pays_rien(self):
+    def test_autre_fabricant_rien_meme_fabricant_quel_que_soit_le_pays(self):
         self.assertEqual(bibliotheque.reprendre(dossier("Ciment exemple", "Autre SA", self.sortie), []), [])
-        self.assertEqual(bibliotheque.reprendre(dossier("Ciment exemple", "Exemple Medical", self.sortie, "chine"), []), [])
+        # le pays du dossier ne compte pas : c'est le même fabricant (ex. fabricant chinois marqué CE)
+        self.assertTrue(bibliotheque.reprendre(dossier("Ciment exemple", "Exemple Medical", self.sortie, "chine"), []))
 
     def test_politique(self):
         self.assertIsNone(bibliotheque.portee("iso_13485"))

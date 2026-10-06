@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react'
-import { api, type Apercu, type BaseAcceptes } from '../api'
+import { api, type Apercu, type BaseAcceptes, type Preuve } from '../api'
 import { PAYS, PAYS_PUCE } from '../libelles'
 import Icone from '../composants/Icone'
 import type { Session } from './Connexion'
@@ -23,11 +23,21 @@ const ORIGINES = [
   { id: 'autre', autorite: 'Certificat de libre vente' },
 ]
 
+// Preuve de mise sur le marché (pièce 4), distincte du pays du fabricant : un
+// fabricant chinois ou indien marqué CE présente son certificat CE.
+const PREUVES: { id: Preuve; titre: string; aide: string }[] = [
+  { id: 'auto', titre: "L'agent la détecte", aide: 'dans la pièce 4 reçue (recommandé)' },
+  { id: 'nationale', titre: 'Autorité du pays', aide: 'NMPA, CDSCO, FDA, MFDS…' },
+  { id: 'ce', titre: 'Certificat CE', aide: 'fabricant marqué CE' },
+]
+
 export default function NouveauDossier({ session }: { session: Session }) {
   const [produit, setProduit] = useState('')
   const [fournisseur, setFournisseur] = useState('')
   const [pays, setPays] = useState('chine')
   const [classe, setClasse] = useState('IIB')
+  const [preuve, setPreuve] = useState<Preuve>('auto')
+  const fabricantEuropeen = pays === 'union_europeenne'
   const [equipement, setEquipement] = useState(false)
   const [distributeur, setDistributeur] = useState(false)
   const [valeur, setValeur] = useState('')
@@ -40,12 +50,12 @@ export default function NouveauDossier({ session }: { session: Session }) {
   // backend (YAML, déterministe), jamais par le frontend ni par l'IA.
   useEffect(() => {
     let actif = true
-    api.apercu(pays, 'aperçu', classe, equipement, valeurUsd, distributeur).then(
+    api.apercu(pays, 'aperçu', classe, equipement, valeurUsd, distributeur, fabricantEuropeen ? 'auto' : preuve).then(
       (a) => { if (actif) { setApercu(a); setErreur(null) } },
       (e: Error) => { if (actif) { setApercu(null); setErreur(e.message) } },
     )
     return () => { actif = false }
-  }, [pays, classe, equipement, valeurUsd, distributeur])
+  }, [pays, classe, equipement, valeurUsd, distributeur, preuve, fabricantEuropeen])
 
   // Dossiers acceptés de ce pays déjà dans la base : l'agent s'en inspire.
   const [base, setBase] = useState<BaseAcceptes | null>(null)
@@ -68,6 +78,7 @@ export default function NouveauDossier({ session }: { session: Session }) {
         equipement,
         valeur_unitaire_usd: valeurUsd,
         fournisseur_distributeur: distributeur,
+        preuve: fabricantEuropeen ? 'auto' : preuve,
         cree_par: session.nom,
       })
       window.location.hash = `#/dossiers/${d.id}`
@@ -120,6 +131,20 @@ export default function NouveauDossier({ session }: { session: Session }) {
                 )
               })}
             </div>
+            {!fabricantEuropeen && (
+              <div className="preuve-choix">
+                <p className="aide">Preuve de mise sur le marché (pièce 4)</p>
+                <div className="segments" role="radiogroup" aria-label="Preuve de mise sur le marché">
+                  {PREUVES.map((p) => (
+                    <label key={p.id} className={`segment ${preuve === p.id ? 'choisi' : ''}`}>
+                      <input type="radio" name="preuve" value={p.id} checked={preuve === p.id} onChange={() => setPreuve(p.id)} />
+                      <strong>{p.titre}</strong>
+                      <small>{p.aide}</small>
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
           </fieldset>
 
           <fieldset>
@@ -200,6 +225,7 @@ export default function NouveauDossier({ session }: { session: Session }) {
                     {base.dossiers.map((d) => (
                       <li key={`${d.produit}-${d.classe}`}>
                         {d.produit}{d.classe && ` (${d.classe})`}{d.meme_classe && ' · même classe'}
+                        {d.preuve && ` · ${d.preuve === 'ce' ? 'certificat CE' : 'autorité du pays'}`}
                         <small>{d.fabricant ? `Fabricant ${d.fabricant} · ` : 'Fabricant non appris (outil 4) · '}
                           {d.pieces.length} pièce{d.pieces.length > 1 ? 's' : ''}</small>
                       </li>

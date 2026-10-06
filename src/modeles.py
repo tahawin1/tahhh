@@ -58,10 +58,15 @@ def _client(host: str | None = None, port: int | None = None) -> QdrantClient:
 
 def fichiers_modeles(racine: Path) -> list[dict]:
     """Repère, sans rien lire, les fichiers qui serviront de modèles."""
+    import preuve as preuve_mod
+
     trouves = []
     for pays_dir in sorted(p for p in racine.iterdir() if p.is_dir()):
         table = pieces_a_rediger_par_numero()
         for produit_dir in sorted(p for p in pays_dir.iterdir() if p.is_dir()):
+            pieces_4 = [f for f in produit_dir.rglob("*") if f.is_file() and (m := NUMERO_FICHIER.match(f.name))
+                        and int(m.group(1)) == 4]
+            preuve = preuve_mod.preuve_de_fichiers(sorted(pieces_4))
             for fichier in sorted(produit_dir.rglob("*.pdf")):
                 m = NUMERO_FICHIER.match(fichier.name)
                 if not m or int(m.group(1)) not in table:
@@ -72,6 +77,7 @@ def fichiers_modeles(racine: Path) -> list[dict]:
                     "pays_origine": pays_dir.name,
                     "produit": produit,
                     "classe": classe,
+                    "preuve": preuve,
                     "numero": int(m.group(1)),
                     "piece_id": table[int(m.group(1))],
                 })
@@ -108,6 +114,7 @@ def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, em
                 "pays_origine": m["pays_origine"],
                 "produit": m["produit"],
                 "classe": m["classe"],
+                "preuve": m["preuve"],
                 "fichier": relatif,
                 "empreinte": hashlib.sha256(m["fichier"].read_bytes()).hexdigest()[:12],
                 "texte": texte[:TEXTE_MAX],
@@ -124,11 +131,13 @@ def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, em
 
 
 def modele_pour(piece_id: str, pays_origine: str, produit: str,
-                client: QdrantClient, embedder: Embedder, classe: str | None = None) -> dict | None:
+                client: QdrantClient, embedder: Embedder, classe: str | None = None,
+                preuve: str | None = None) -> dict | None:
     """Le modèle accepté le plus proche pour cette pièce : même pièce
-    obligatoirement ; de préférence même pays d'origine ET même classe, puis
-    même pays, puis même classe ; produit le plus ressemblant. None s'il n'y
-    en a pas (la rédaction se fait alors sans modèle)."""
+    obligatoirement ; de préférence même pays du fabricant, même preuve de mise
+    sur le marché (CE ou autorité du pays) et même classe, puis de moins en
+    moins de critères ; produit le plus ressemblant. None s'il n'y en a pas
+    (la rédaction se fait alors sans modèle)."""
     try:
         if not client.collection_exists(COLLECTION_MODELES):
             return None
@@ -137,10 +146,19 @@ def modele_pour(piece_id: str, pays_origine: str, produit: str,
     vecteur = embedder.encoder_un(produit)
     piece = FieldCondition(key="piece_id", match=MatchValue(value=piece_id))
     pays = FieldCondition(key="pays_origine", match=MatchValue(value=pays_origine))
-    essais = [[piece, pays], [piece]]
-    if classe:
-        meme_classe = FieldCondition(key="classe", match=MatchValue(value=str(classe).upper()))
-        essais = [[piece, pays, meme_classe], [piece, pays], [piece, meme_classe], [piece]]
+    meme_classe = FieldCondition(key="classe", match=MatchValue(value=str(classe).upper())) if classe else None
+    meme_preuve = FieldCondition(key="preuve", match=MatchValue(value=preuve)) if preuve in ("ce", "nationale") else None
+    # du plus proche au plus large : même pays + même preuve + même classe, … , même pièce seulement
+    combinaisons = [(pays, meme_preuve, meme_classe), (pays, meme_preuve), (meme_preuve, meme_classe), (meme_preuve,),
+                    (pays, meme_classe), (pays,), (meme_classe,), ()]
+    essais, vus = [], set()
+    for c in combinaisons:
+        if any(f is None for f in c):
+            continue
+        cle = tuple(id(f) for f in c)
+        if cle not in vus:
+            vus.add(cle)
+            essais.append([piece, *c])
     for filtres in essais:
         points = client.query_points(COLLECTION_MODELES, query=vecteur, query_filter=Filter(must=filtres),
                                      limit=1, with_payload=True).points

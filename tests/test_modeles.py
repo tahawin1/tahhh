@@ -43,6 +43,20 @@ class TestReperageDesModeles(unittest.TestCase):
             m = fichiers_modeles(Path(d))[0]
         self.assertEqual((m["produit"], m["classe"]), ("Seringue", "IIB"))
 
+    def test_preuve_tiree_de_la_piece_4(self):
+        # fabricant chinois accepté avec son certificat CE : rangé en Chine, preuve « ce »
+        with tempfile.TemporaryDirectory() as d:
+            dossier = Path(d) / "chine" / "Agrafeuse (IIa)"
+            dossier.mkdir(parents=True)
+            for nom in ("1-1-Lettre.pdf", "4-4- certificat de marquage CE.pdf"):
+                (dossier / nom).write_bytes(b"%PDF")
+            autre = Path(d) / "chine" / "Scie (IIa)"
+            autre.mkdir(parents=True)
+            for nom in ("1-1-Lettre.pdf", "4-4- Free Sale.pdf"):
+                (autre / nom).write_bytes(b"%PDF")
+            preuves = {m["produit"]: m["preuve"] for m in fichiers_modeles(Path(d))}
+        self.assertEqual(preuves, {"Agrafeuse": "ce", "Scie": "nationale"})
+
     def test_modele_de_la_meme_classe_d_abord(self):
         from modeles import modele_pour
 
@@ -71,6 +85,11 @@ class TestReperageDesModeles(unittest.TestCase):
         m = modele_pour("demande_signee", "chine", "Seringue 5 ml", client, FauxEmbedder(), classe="iib")
         self.assertEqual(client.filtres[0], {"piece_id": "demande_signee", "pays_origine": "chine", "classe": "IIB"})
         self.assertEqual(m["classe"], "IIB")
+        # avec la preuve : même pays + même preuve + même classe d'abord
+        client = FauxClient()
+        modele_pour("demande_signee", "chine", "Seringue", client, FauxEmbedder(), classe="IIB", preuve="ce")
+        self.assertEqual(client.filtres[0], {"piece_id": "demande_signee", "pays_origine": "chine", "preuve": "ce",
+                                             "classe": "IIB"})
 
 
 if __name__ == "__main__":

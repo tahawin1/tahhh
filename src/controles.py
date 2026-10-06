@@ -133,7 +133,8 @@ def evaluer(dossier, aujourd_hui: datetime.date | None = None) -> dict:
         v = _valeur(lu, "fabricant", "titulaire")
         if v:
             fabricants[code] = v
-    numero_ce = _valeur(lectures.get(f"piece_specifique_{dossier.pays_origine}", {}), "numero")
+    # pièce 4 : son code suit la preuve (certificat CE ou autorité du pays), pas seulement le pays
+    numero_ce = _valeur(next((lu for code, lu in lectures.items() if code.startswith("piece_specifique_")), {}), "numero")
 
     resultat_docs = []
     for doc in charger()["documents"]:

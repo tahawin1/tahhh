@@ -467,6 +467,15 @@ supporte déjà.
       de la santé » déterministe (`_autorite_sante` : DGFT / chambre de commerce = ✗).
       Outils Windows : rapport et outils copiés par Windows (`\\wsl.localhost`),
       `/mnt/c` renvoyait « Input/output error ».
+- [x] **Pays du fabricant ≠ preuve de mise sur le marché** (2026-10-06) : `Dossier.preuve`
+      (auto | nationale | ce) ; `documents_requis_maroc(preuve="ce")` = voie européenne
+      pour un fabricant non européen marqué CE ; `src/preuve.py` détecte la preuve par le
+      code (texte + nom de la pièce 4, jamais Mistral), bascule le dossier « auto » et
+      recalcule les pièces (rien de reçu ni de validé n'est retiré), journalisé ;
+      `POST /dossiers/{id}/preuve` pour corriger. Base : dossiers acceptés rangés par
+      pays du fabricant, preuve tirée de leur pièce 4 (13/13 justes sur les dossiers
+      réels), modèle choisi par pays + preuve + classe, reprise par fabricant quel que
+      soit le pays saisi ; rejeu Jenkins : contrôle « preuve reconnue seule ».
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

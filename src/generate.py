@@ -183,10 +183,10 @@ class GenerateurDocuments:
         return r.json()["response"]
 
     def modele_pour(self, document: DocumentRequis, pays_origine: str, produit: str,
-                    classe: str | None = None) -> dict | None:
+                    classe: str | None = None, preuve: str | None = None) -> dict | None:
         """Pièce équivalente d'un dossier accepté, ou None (rédaction sans modèle)."""
         from modeles import modele_pour
-        return modele_pour(document.id, pays_origine, produit, self.client, self.embedder, classe=classe)
+        return modele_pour(document.id, pays_origine, produit, self.client, self.embedder, classe=classe, preuve=preuve)
 
     def references_pour_document(self, document: DocumentRequis, pays_destination: str, pays_origine: str) -> list[dict]:
         """
@@ -211,6 +211,7 @@ class GenerateurDocuments:
         fournisseur: str | None = None,
         pieces_du_dossier: list[str] | None = None,
         donnees: dict[str, str] | None = None,
+        preuve: str | None = None,
     ) -> tuple[str, list[dict]]:
         """Appelle Mistral (via Ollama) pour rédiger le contenu d'un document,
         en s'appuyant sur les extraits réglementaires retrouvés par RAG.
@@ -227,7 +228,7 @@ class GenerateurDocuments:
 
         # Avec un modèle accepté, c'est lui qui fixe la forme : les extraits de textes
         # (souvent d'autres procédures) ne sont pas donnés, pour ne rien y recopier.
-        modele = self.modele_pour(document, pays_origine, produit, classe)
+        modele = self.modele_pour(document, pays_origine, produit, classe, preuve)
         references = [] if modele else self.references_pour_document(document, pays_destination, pays_origine)
         contexte = "\n\n".join(
             f"<<< EXTRAIT {i} — {r['texte_source']} (version du {r['date_version']})\n{r['texte'][:800]}\n>>>"
@@ -403,12 +404,13 @@ def generer_document(
     fournisseur: str | None = None,
     pieces_du_dossier: list[str] | None = None,
     donnees: dict[str, str] | None = None,
+    preuve: str | None = None,
 ) -> dict:
     """Rédige UN document à rédiger (RAG + Mistral) et l'enregistre en DOCX.
     Lève GenerationImpossible pour une pièce à fournir ou si Mistral échoue."""
     contenu, sources = generateur.generer_contenu(
         doc, pays_destination="maroc", produit=produit, pays_origine=pays_origine,
-        classe=classe, fournisseur=fournisseur, pieces_du_dossier=pieces_du_dossier, donnees=donnees,
+        classe=classe, fournisseur=fournisseur, pieces_du_dossier=pieces_du_dossier, donnees=donnees, preuve=preuve,
     )
     chemin = generateur.creer_fichier_docx(
         doc.nom, contenu, dossier_sortie / f"{doc.id}.docx".replace(" ", "_"), document=doc, sources=sources

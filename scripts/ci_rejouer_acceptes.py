@@ -136,6 +136,16 @@ class Rejeu:
         bilan = {"dossier": nom, "pays": acc["pays"], "classe": acc["classe"], "pieces_lues": len(lus),
                  "valeurs_verifiees": verifies, "valeurs_trouvees": trouves}
 
+        # preuve de mise sur le marché : l'agent l'a-t-il reconnue seul dans la pièce 4 ?
+        import preuve as preuve_mod
+
+        attendue = preuve_mod.preuve_de_fichiers(acc["fichiers"].get(4, []))
+        if attendue and acc["pays"] != "union_europeenne":
+            trouvee = self.dossier(d["id"])["preuve"]
+            bilan["preuve"] = trouvee
+            self.noter(nom, f"preuve de mise sur le marché reconnue seule : {trouvee} (dossier accepté : {attendue})",
+                       None if trouvee == attendue else "preuve mal reconnue : pièces exigées différentes du dossier accepté")
+
         # formulaires comparés aux données apprises du formulaire accepté
         donnees = self.http.get(f"{self.api}/dossiers/{d['id']}/donnees-dispositif", timeout=60).json()
         produits = {c["id"]: c for s in donnees["sections"] for c in s["champs"]}
