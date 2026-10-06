@@ -133,14 +133,45 @@ def _lire_tolerant(texte: str, paquet: list[dict], produit: str, numero: int) ->
                 + _lire_tolerant(texte, paquet[moitie:], produit, numero))
 
 
-def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
-    """Fait lire par Mistral les formulaires des dossiers acceptés ; écrit la mémoire."""
-    from extraction import CHAMPS_PAR_APPEL, ExtractionImpossible, lire_document
+def empreinte(d: dict) -> str:
+    """Ce qui, s'il change, oblige à relire un dossier accepté : ses formulaires
+    (nom, taille, date) et la liste des données à apprendre."""
+    import hashlib
+
+    parties = sorted(f"{n}:{c.name}:{c.stat().st_size}:{int(c.stat().st_mtime)}" for n, c in d["fichiers"].items())
+    parties.append(",".join(sorted(CHAMPS_APPRIS)))
+    return hashlib.sha256("|".join(parties).encode()).hexdigest()[:16]
+
+
+def apprendre(racine: Path = RACINE_DEFAUT, forcer: bool = False) -> list[dict]:
+    """Fait lire par Mistral les formulaires des dossiers acceptés ; écrit la mémoire.
+    Incrémental : un dossier déjà appris et inchangé n'est pas relu (`forcer` pour
+    tout relire) ; la mémoire d'un dossier retiré ou déplacé est effacée."""
+    from extraction import CHAMPS_PAR_APPEL, lire_document
 
     DOSSIER_MEMOIRE.mkdir(parents=True, exist_ok=True)
     champs = [{"nom": k, "libelle": v, "description": v} for k, v in CHAMPS_APPRIS.items()]
-    appris = []
-    for d in formulaires_acceptes(racine):
+    appris, gardes = [], set()
+    dossiers = formulaires_acceptes(racine)
+    for d in dossiers:
+        fichier = fichier_memoire(d["pays"], d["produit"])
+        gardes.add(fichier.name)
+        trace = empreinte(d)
+        if not forcer and fichier.exists():
+            try:
+                deja = json.loads(fichier.read_text(encoding="utf-8"))
+            except (OSError, ValueError):
+                deja = {}
+            if "empreinte" not in deja and deja.get("valeurs") and fichier.stat().st_mtime > max(
+                    c.stat().st_mtime for c in d["fichiers"].values()):
+                # mémoire apprise avant l'apprentissage incrémental, après la dernière
+                # modification des formulaires : à jour, on note son empreinte
+                deja["empreinte"] = trace
+                fichier.write_text(json.dumps(deja, ensure_ascii=False, indent=1), encoding="utf-8")
+            if deja.get("empreinte") == trace:
+                appris.append(deja)
+                print(f"  = {d['produit']} ({d['pays']}) — inchangé, déjà appris le {deja.get('appris_le')}")
+                continue
         valeurs = {}
         for numero, chemin in sorted(d["fichiers"].items()):
             print(f"  … {d['produit']} : Mistral lit la pièce {numero} ({chemin.name}) — 1 à 5 min, patienter", flush=True)
@@ -163,12 +194,16 @@ def apprendre(racine: Path = RACINE_DEFAUT) -> list[dict]:
             continue
         entree = {"pays": d["pays"], "produit": d["produit"],
                   "fabricant": (valeurs.get("fabricant_nom") or {}).get("valeur"),
-                  "appris_le": datetime.date.today().isoformat(), "valeurs": valeurs}
-        fichier_memoire(d["pays"], d["produit"]).write_text(json.dumps(entree, ensure_ascii=False, indent=1),
-                                                            encoding="utf-8")
+                  "appris_le": datetime.date.today().isoformat(), "empreinte": trace, "valeurs": valeurs}
+        fichier.write_text(json.dumps(entree, ensure_ascii=False, indent=1), encoding="utf-8")
         appris.append(entree)
         print(f"  ✓ {d['produit']} ({d['pays']}) — fabricant {entree['fabricant'] or '?'} — "
               f"{len(valeurs)} donnée(s) apprise(s) : {', '.join(valeurs)}")
+    # dossier retiré ou déplacé (ex. rangé dans un autre pays) : son ancienne mémoire est effacée
+    for ancien in DOSSIER_MEMOIRE.glob("*.json"):
+        if ancien.name not in gardes:
+            ancien.unlink()
+            print(f"  - mémoire retirée : {ancien.stem} (dossier accepté déplacé ou supprimé)")
     return appris
 
 
@@ -202,6 +237,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--racine", type=Path, default=RACINE_DEFAUT)
     parser.add_argument("--liste", action="store_true", help="afficher la mémoire sans rien relire")
+    parser.add_argument("--forcer", action="store_true", help="relire tous les dossiers, même inchangés")
     args = parser.parse_args()
     if args.liste:
         for e in charger():
@@ -212,7 +248,7 @@ def main() -> None:
         print("Aucun formulaire accepté (pièces 2 ou 16) dans", args.racine)
         return
     print(f"Mistral lit les formulaires acceptés ({args.racine}) :")
-    n = len(apprendre(args.racine))
+    n = len(apprendre(args.racine, forcer=args.forcer))
     print(f"{n} dossier(s) accepté(s) appris — mémoire : {DOSSIER_MEMOIRE}")
 
 

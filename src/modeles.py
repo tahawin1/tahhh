@@ -84,18 +84,73 @@ def fichiers_modeles(racine: Path) -> list[dict]:
     return trouves
 
 
-def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, embedder: Embedder | None = None) -> list[dict]:
-    """Lit chaque modèle (texte ou OCR) et l'enregistre dans Qdrant. Relançable :
-    un fichier déjà indexé est remplacé (identifiant stable)."""
+def _deja_indexes(client: QdrantClient, ids: list[str]) -> dict[str, dict]:
+    """{id: payload} des modèles déjà dans Qdrant (vide si la collection n'existe pas)."""
+    try:
+        if not client.collection_exists(COLLECTION_MODELES):
+            return {}
+        points = client.retrieve(COLLECTION_MODELES, ids=ids, with_payload=True, with_vectors=False)
+    except Exception:
+        return {}
+    return {str(p.id): p.payload or {} for p in points}
+
+
+def _retirer_absents(client: QdrantClient, gardes: set[str]) -> int:
+    """Retire les modèles dont le fichier n'est plus dans les dossiers acceptés
+    (dossier déplacé dans un autre pays, renommé ou supprimé)."""
+    from qdrant_client.models import PointIdsList
+
+    try:
+        if not client.collection_exists(COLLECTION_MODELES):
+            return 0
+        absents, offset = [], None
+        while True:
+            points, offset = client.scroll(COLLECTION_MODELES, limit=256, offset=offset, with_payload=False,
+                                           with_vectors=False)
+            absents += [p.id for p in points if str(p.id) not in gardes]
+            if offset is None:
+                break
+        if absents:
+            client.delete(COLLECTION_MODELES, points_selector=PointIdsList(points=absents))
+        return len(absents)
+    except Exception as e:  # jamais bloquant
+        print(f"  ! nettoyage des anciens modèles impossible : {e}")
+        return 0
+
+
+def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, embedder: Embedder | None = None,
+            forcer: bool = False) -> list[dict]:
+    """Lit chaque modèle (texte ou OCR) et l'enregistre dans Qdrant. Incrémental :
+    un fichier déjà indexé et inchangé (même empreinte, même pays, classe et
+    preuve) n'est pas relu (`forcer` pour tout relire) ; les modèles des
+    dossiers retirés ou déplacés sont effacés. Retourne les modèles (re)lus."""
     from extraction import lire_document
 
     client = client or _client()
-    embedder = embedder or Embedder()
     trouves = fichiers_modeles(racine)
     if not trouves:
         return []
-    points = []
     for m in trouves:
+        m["relatif"] = str(m["fichier"].relative_to(racine))
+        m["id"] = str(uuid.uuid5(uuid.NAMESPACE_URL, f"modele:{m['relatif']}"))
+        m["empreinte"] = hashlib.sha256(m["fichier"].read_bytes()).hexdigest()[:12]
+    retires = _retirer_absents(client, {m["id"] for m in trouves})
+    if retires:
+        print(f"  - {retires} ancien(s) modèle(s) retiré(s) (dossier déplacé ou supprimé)")
+    deja = {} if forcer else _deja_indexes(client, [m["id"] for m in trouves])
+    a_lire = []
+    for m in trouves:
+        p = deja.get(m["id"])
+        if p and all(p.get(k) == m[k] for k in ("empreinte", "pays_origine", "produit", "classe", "preuve")):
+            continue
+        a_lire.append(m)
+    if len(a_lire) < len(trouves):
+        print(f"  = {len(trouves) - len(a_lire)} modèle(s) inchangé(s), non relu(s)")
+    if not a_lire:
+        return []
+    embedder = embedder or Embedder()
+    points = []
+    for m in a_lire:
         try:
             texte = lire_document(m["fichier"]).strip()
         except Exception as e:  # un fichier illisible ne bloque pas les autres
@@ -104,9 +159,9 @@ def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, em
         if not texte:
             print(f"  ! {m['fichier'].name} : aucun texte lisible, ignoré")
             continue
-        relatif = str(m["fichier"].relative_to(racine))
+        relatif = m["relatif"]
         points.append(PointStruct(
-            id=str(uuid.uuid5(uuid.NAMESPACE_URL, f"modele:{relatif}")),
+            id=m["id"],
             vector=embedder.encoder_un(f"{m['produit']} — {texte[:1500]}"),
             payload={
                 "piece_id": m["piece_id"],
@@ -116,7 +171,7 @@ def indexer(racine: Path = RACINE_DEFAUT, client: QdrantClient | None = None, em
                 "classe": m["classe"],
                 "preuve": m["preuve"],
                 "fichier": relatif,
-                "empreinte": hashlib.sha256(m["fichier"].read_bytes()).hexdigest()[:12],
+                "empreinte": m["empreinte"],
                 "texte": texte[:TEXTE_MAX],
                 "indexe_le": datetime.date.today().isoformat(),
             },
@@ -170,9 +225,10 @@ def modele_pour(piece_id: str, pays_origine: str, produit: str,
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Indexe les dossiers acceptés comme modèles de rédaction.")
     parser.add_argument("--racine", type=Path, default=RACINE_DEFAUT)
+    parser.add_argument("--forcer", action="store_true", help="relire tous les modèles, même inchangés")
     args = parser.parse_args()
     if not args.racine.is_dir():
         raise SystemExit(f"Dossier introuvable : {args.racine}")
     print(f"Modèles cherchés dans {args.racine}")
-    resultat = indexer(args.racine)
-    print(f"{len(resultat)} modèle(s) indexé(s) dans la collection « {COLLECTION_MODELES} ».")
+    resultat = indexer(args.racine, forcer=args.forcer)
+    print(f"{len(resultat)} modèle(s) nouveau(x) ou modifié(s) indexé(s) dans la collection « {COLLECTION_MODELES} ».")

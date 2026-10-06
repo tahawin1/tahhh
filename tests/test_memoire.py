@@ -104,6 +104,42 @@ class TestMemoire(unittest.TestCase):
         self.assertEqual(entree["fabricant"], "EXEMPLE MEDICAL S.P.A.")
         self.assertNotIn("references", entree["valeurs"])
 
+    def test_incremental_dossier_inchange_non_relu(self):
+        with mock.patch("extraction.interroger_mistral", return_value=REPONSE) as mistral:
+            memoire.apprendre(self.acceptes)
+            appels = mistral.call_count
+            (entree,) = memoire.apprendre(self.acceptes)  # rien n'a changé : pas un appel de plus
+            self.assertEqual(mistral.call_count, appels)
+            self.assertEqual(entree["fabricant"], "EXEMPLE MEDICAL S.P.A.")
+            memoire.apprendre(self.acceptes, forcer=True)
+            self.assertGreater(mistral.call_count, appels)
+
+    def test_memoire_anterieure_adoptee_sans_relecture(self):
+        # mémoire écrite par une version précédente (sans empreinte), après les formulaires : gardée
+        import json
+        with mock.patch("extraction.interroger_mistral", return_value=REPONSE):
+            memoire.apprendre(self.acceptes)
+        fichier = memoire.fichier_memoire("union_europeenne", "Ciment exemple")
+        entree = json.loads(fichier.read_text(encoding="utf-8"))
+        del entree["empreinte"]
+        fichier.write_text(json.dumps(entree), encoding="utf-8")
+        with mock.patch("extraction.interroger_mistral", return_value=REPONSE) as mistral:
+            memoire.apprendre(self.acceptes)
+        self.assertEqual(mistral.call_count, 0)
+        self.assertIn("empreinte", json.loads(fichier.read_text(encoding="utf-8")))
+
+    def test_dossier_deplace_memoire_nettoyee(self):
+        with mock.patch("extraction.interroger_mistral", return_value=REPONSE):
+            memoire.apprendre(self.acceptes)
+            ancien = memoire.fichier_memoire("union_europeenne", "Ciment exemple")
+            self.assertTrue(ancien.exists())
+            (self.acceptes / "chine").mkdir()
+            (self.acceptes / "union_europeenne" / "Ciment exemple (IIb)").rename(
+                self.acceptes / "chine" / "Ciment exemple (IIb)")
+            (entree,) = memoire.apprendre(self.acceptes)
+        self.assertEqual(entree["pays"], "chine")
+        self.assertFalse(ancien.exists())
+
     def dossier(self, fabricant):
         lectures = {"declaration_conformite": [{"nom": "fabricant", "valeur": fabricant, "valeur_normalisee": fabricant,
                                                 "verification": "verifie"}]}

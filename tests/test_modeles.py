@@ -8,6 +8,7 @@ décide quel fichier est le modèle de quelle pièce.
 import sys
 import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
@@ -56,6 +57,57 @@ class TestReperageDesModeles(unittest.TestCase):
                 (autre / nom).write_bytes(b"%PDF")
             preuves = {m["produit"]: m["preuve"] for m in fichiers_modeles(Path(d))}
         self.assertEqual(preuves, {"Agrafeuse": "ce", "Scie": "nationale"})
+
+    def test_indexation_incrementale(self):
+        import modeles
+
+        class Point:
+            def __init__(self, id, payload):
+                self.id, self.payload = id, payload
+
+        class Base:  # Qdrant en mémoire, juste ce qu'utilise l'indexation
+            def __init__(self):
+                self.points = {}
+
+            def collection_exists(self, _):
+                return bool(self.points)
+
+            def create_collection(self, *a, **k):
+                pass
+
+            def upsert(self, _c, points):
+                self.points.update({p.id: p.payload for p in points})
+
+            def retrieve(self, _c, ids, **k):
+                return [Point(i, self.points[i]) for i in ids if i in self.points]
+
+            def scroll(self, _c, **k):
+                return [Point(i, p) for i, p in self.points.items()], None
+
+            def delete(self, _c, points_selector):
+                for i in points_selector.points:
+                    self.points.pop(i, None)
+
+        class Embedder:
+            def encoder_un(self, _):
+                return [0.0, 1.0]
+
+        lus = []
+        with tempfile.TemporaryDirectory() as d, \
+                unittest.mock.patch("extraction.lire_document", side_effect=lambda f: lus.append(f.name) or "texte"):
+            racine = Path(d)
+            dossier = racine / "union_europeenne" / "Agrafeuse (IIa)"
+            dossier.mkdir(parents=True)
+            (dossier / "1-1-Lettre.pdf").write_bytes(b"%PDF")
+            base = Base()
+            self.assertEqual(len(modeles.indexer(racine, base, Embedder())), 1)
+            self.assertEqual(modeles.indexer(racine, base, Embedder()), [])  # inchangé : rien relu
+            self.assertEqual(len(lus), 1)
+            # dossier déplacé dans le pays du fabricant : l'ancien modèle est retiré, le nouveau indexé
+            (racine / "chine").mkdir()
+            dossier.rename(racine / "chine" / "Agrafeuse (IIa)")
+            modeles.indexer(racine, base, Embedder())
+            self.assertEqual([p["pays_origine"] for p in base.points.values()], ["chine"])
 
     def test_modele_de_la_meme_classe_d_abord(self):
         from modeles import modele_pour
