@@ -214,6 +214,15 @@ class Rejeu:
         print("\n".join(tableau))
 
 
+def choisir(acceptes: list[dict], nombre: int, decalage: int) -> list[dict]:
+    """`nombre` dossiers pris à tour de rôle selon le numéro du build : tous les
+    dossiers sont rejoués en quelques nuits sans dépasser la durée d'un build."""
+    if nombre <= 0 or nombre >= len(acceptes):
+        return acceptes
+    debut = ((max(decalage, 1) - 1) * nombre) % len(acceptes)
+    return [acceptes[(debut + i) % len(acceptes)] for i in range(nombre)]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--api", default="http://127.0.0.1:8100")
@@ -222,6 +231,10 @@ def main() -> int:
     parser.add_argument("--memoire", type=Path, default=RACINE / "output" / "memoire")
     parser.add_argument("--rapport", type=Path, default=RACINE / "rapports-ci")
     parser.add_argument("--delai", type=int, default=3600)
+    parser.add_argument("--nombre", type=int, default=0,
+                        help="dossiers rejoués par build (0 = tous) : environ 25 min par dossier avec Mistral")
+    parser.add_argument("--decalage", type=int, default=0,
+                        help="numéro du build : les dossiers sont pris à tour de rôle d'un build à l'autre")
     args = parser.parse_args()
     import memoire as mem
 
@@ -234,7 +247,9 @@ def main() -> int:
                     "dossiers_valides (les déposer avec l'outil 3, la classe dans le nom du dossier)")
         rejeu.rapport(args.rapport)
         return 0
-    print(f"Rejeu de {len(acceptes)} dossier(s) accepté(s), sans mémoire :")
+    acceptes = choisir(acceptes, args.nombre, args.decalage)
+    print(f"Rejeu de {len(acceptes)} dossier(s) accepté(s), sans mémoire : "
+          + ", ".join(f"{a['pays']}/{a['dossier']}" for a in acceptes))
     for acc in acceptes:
         # mémoire apprise avant ou après l'ajout de la classe au nom du dossier
         fichiers = [args.memoire / mem.fichier_memoire(acc["pays"], nom).name for nom in (acc["produit"], acc["dossier"])]

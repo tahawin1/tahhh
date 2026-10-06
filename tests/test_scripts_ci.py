@@ -34,6 +34,16 @@ class TestRejeu(unittest.TestCase):
         self.assertEqual(len(gants["fichiers"][4]), 2)  # NMPA + FSC : même pièce
         self.assertEqual(trouves["Seringue"]["classe"], "IIB")
 
+    def test_dossiers_rejoues_a_tour_de_role(self):
+        tous = [{"dossier": str(i)} for i in range(13)]
+        vus = set()
+        for build in range(1, 5):  # 4 builds de 4 dossiers : les 13 dossiers au moins une fois
+            choix = rejeu.choisir(tous, 4, build)
+            self.assertEqual(len(choix), 4)
+            vus |= {d["dossier"] for d in choix}
+        self.assertEqual(len(vus), 13)
+        self.assertEqual(rejeu.choisir(tous, 0, 7), tous)  # 0 = tous
+
     def test_comparaison_des_valeurs(self):
         self.assertEqual(rejeu.proche("TECRES S.P.A.", "Tecres SpA"), "partiel")
         self.assertEqual(rejeu.proche("Chirurgie orthopédique", "Chirurgie Orthopedique"), "juste")

@@ -35,7 +35,7 @@ pipeline {
         timestamps()
         disableConcurrentBuilds()          // un seul Mistral sur la machine
         buildDiscarder(logRotator(numToKeepStr: '30'))
-        timeout(time: 4, unit: 'HOURS')    // le rejeu des dossiers acceptés est long sans GPU
+        timeout(time: 8, unit: 'HOURS')    // marge si REJEU_PAR_BUILD = 0 (tous les dossiers acceptés)
     }
 
     triggers {
@@ -51,6 +51,8 @@ pipeline {
                      description: 'Rejouer les dossiers acceptés (data/dossiers_valides) et noter l\'agent')
         string(name: 'SEUIL_MISTRAL', defaultValue: '0.75',
                description: 'Exactitude minimale de Mistral sur les spécimens (0 à 1)')
+        string(name: 'REJEU_PAR_BUILD', defaultValue: '4',
+               description: 'Dossiers acceptés rejoués par build complet, à tour de rôle (environ 25 min chacun) ; 0 = tous (plusieurs heures)')
         booleanParam(name: 'DEPLOYER', defaultValue: false,
                      description: 'Déployer sur le serveur après les contrôles (une personne devra confirmer)')
     }
@@ -195,7 +197,7 @@ pipeline {
                             expression { params.REJOUER_ACCEPTES != false }
                         }
                     }
-                    options { timeout(time: 3, unit: 'HOURS') }
+                    options { timeout(time: 7, unit: 'HOURS') }
                     steps {
                         catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
                             sh '''
@@ -206,7 +208,8 @@ pipeline {
                                 docker run --rm --network host -v "$WORKSPACE":/w -w /w \
                                     -v "$ACCEPTES":/acceptes:ro -v "$MEMOIRE":/memoire:ro "$IMAGE_CI" \
                                     python scripts/ci_rejouer_acceptes.py --api "http://127.0.0.1:$PORT_CI" --cle "$CLE_CI" \
-                                        --acceptes /acceptes --memoire /memoire --rapport "$RAPPORTS"
+                                        --acceptes /acceptes --memoire /memoire --rapport "$RAPPORTS" \
+                                        --nombre "${REJEU_PAR_BUILD:-4}" --decalage "$BUILD_NUMBER"
                             '''
                         }
                     }
