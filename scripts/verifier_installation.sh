@@ -44,9 +44,15 @@ if [ "${POINTS:-0}" -ge 596 ]; then ok "textes réglementaires indexés : $POINT
 verifier "bge-m3 répond (recherche)" curl -sf -m 120 http://127.0.0.1:11434/api/embed -d '{"model":"bge-m3","input":"certificat CE"}'
 echo "  … test de rédaction par Mistral (jusqu'à 10 min sur CPU au premier appel : chargement du modèle)"
 DEBUT=$(date +%s)
+# question fermée, réponse déterministe (température 0) : une réponse à côté n'est qu'une alerte,
+# seule l'absence de réponse est une panne
 REPONSE=$(curl -s -m 600 http://127.0.0.1:11434/api/generate \
-  -d '{"model":"mistral","prompt":"Réponds uniquement par le mot : conforme","stream":false,"options":{"num_predict":10}}' || true)
-if grep -qi conforme <<<"$REPONSE"; then ok "Mistral rédige ($(( $(date +%s) - DEBUT )) s)"; else ko "Mistral ne répond pas correctement : ${REPONSE:0:150}"; fi
+  -d '{"model":"mistral","prompt":"Question : quelle est la capitale du Maroc ? Réponds par un seul mot.\nRéponse :","stream":false,"options":{"num_predict":20,"temperature":0}}' || true)
+TEXTE=$(grep -o '"response":"[^"]*"' <<<"$REPONSE" | head -1)
+if grep -qi rabat <<<"$TEXTE"; then ok "Mistral rédige ($(( $(date +%s) - DEBUT )) s)"
+elif [ -n "${TEXTE#\"response\":\"}" ] && [ "$TEXTE" != '"response":""' ]; then
+  alerte "Mistral répond, mais pas la réponse attendue : ${TEXTE:0:120}"
+else ko "Mistral ne répond pas : ${REPONSE:0:150}"; fi
 verifier "API → Mistral depuis le conteneur (host.docker.internal)" docker exec conformite-api python3 -c \
   "import urllib.request; urllib.request.urlopen('http://host.docker.internal:11434/api/version', timeout=10)"
 
