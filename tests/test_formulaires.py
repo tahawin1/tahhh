@@ -101,6 +101,28 @@ class TestResolution(unittest.TestCase):
         self.assertIn("Irradiation", r["sterilisation"]["valeur"])
         self.assertEqual(r["duree_validite"]["valeur"], "3 ans")
 
+    def test_textes_en_francais(self):
+        notice = [lu("indications", "Used to deliver blood"), lu("composition", "Composizione dei cementi ossei CEMEX:"),
+                  lu("conservation", "Store in a cool and dry place. Protect from direct sunlight.")]
+        notice[0]["valeur_fr"] = "Utilisé pour administrer du sang"
+        r = formulaires.resoudre(dossier("inde", lectures={"notice": notice}), PROFIL)
+        self.assertEqual(r["indications"]["valeur"], "Utilisé pour administrer du sang")
+        self.assertTrue(r["indications"]["a_verifier"])
+        self.assertIn("Used to deliver blood", r["indications"]["detail"])  # texte d'origine affiché
+        self.assertEqual(r["conservation"]["valeur"], "Conservé à l’abri de la chaleur et de l’humidité")
+        self.assertIn("Store in a cool", r["conservation"]["detail"])
+        self.assertEqual(r["composition"]["valeur"], "Ciment 2")  # un intitulé n'est pas une composition
+        self.assertTrue(r["composition"]["a_verifier"])
+
+    def test_conservation_relevee_dans_le_texte(self):
+        d = dossier("inde")
+        next(x for x in d.documents if x.code == "notice").texte_recu = (
+            "Sterile set. Heat sealed pouch. Storage: keep in a dry place, away from sunlight.")
+        self.assertEqual(formulaires.resoudre(d, PROFIL)["conservation"]["valeur"],
+                         "Conservé à l’abri de la chaleur et de l’humidité")
+        next(x for x in d.documents if x.code == "notice").texte_recu = "Heat sealed pouch. Do not reuse."
+        self.assertIsNone(formulaires.resoudre(d, PROFIL)["conservation"]["valeur"])
+
     def test_origine_chine_certificat_ce_sans_objet(self):
         r = formulaires.resoudre(dossier("chine"), PROFIL)
         self.assertEqual(r["ce_numero"]["valeur"], "NA")

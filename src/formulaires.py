@@ -109,10 +109,13 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                         lu = None  # ex. référence de la lettre 2023/607 lue à la place du n° de certificat CE
                     if lu:
                         verifie = lu.get("verification") == "verifie"
-                        r.update(valeur=_formater(d, lu["valeur"], lu.get("valeur_normalisee")), provenance="piece",
-                                 a_verifier=not verifie,
+                        traduit = bool(lu.get("valeur_fr"))
+                        r.update(valeur=lu["valeur_fr"] if traduit else _formater(d, lu["valeur"], lu.get("valeur_normalisee")),
+                                 provenance="piece", a_verifier=not verifie or traduit,
                                  detail=f"Lu dans la pièce {lu['piece']} ({lu['piece_nom']})"
-                                        + ("" if verifie else " — non vérifié dans le texte"))
+                                        + ("" if verifie else " — non vérifié dans le texte")
+                                        + (f" — traduit en français par Mistral, texte d'origine : « {lu['valeur'][:200]} »"
+                                           if traduit else ""))
                 elif genre == "motif":
                     code, _, motif = reste.partition(":")
                     if (trouve := _motif(dossier.documents, code, motif)):
@@ -146,6 +149,10 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                     r["valeur"] = m.group(0) if m else None
                 if r["valeur"]:
                     break
+        if d.get("a_confirmer") and r["valeur"] and r["provenance"] != "saisie":
+            r["a_verifier"] = True
+        if (habituelle := d.get("habituelle")) and r["provenance"] in ("piece", "manquant"):
+            _formule_habituelle(r, habituelle, dossier.documents)
         resultat[ident] = r
         return r
 
@@ -156,6 +163,22 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
     return resultat
 
 
+def _formule_habituelle(r: dict, habituelle: dict, documents) -> None:
+    """Formule employée par la majorité des dossiers acceptés (ex. conservation :
+    « Conservé à l’abri de la chaleur et de l’humidité ») quand le texte du
+    fournisseur dit la même chose (« Store in a cool, dry place… ») — à confirmer,
+    le texte du fournisseur restant affiché."""
+    motif = re.compile(habituelle["si"], re.I)
+    source = r["valeur"]
+    if not source and habituelle.get("phrase"):  # rien de lu : une phrase du texte reçu qui parle de stockage
+        phrase = re.compile(habituelle["phrase"], re.I)
+        source = next((p for code in habituelle.get("pieces", ()) for _, texte in _textes(documents, code)
+                       for p in re.split(r"(?<=[.;])\s+|\n", texte) if phrase.search(p) and motif.search(p)), None)
+    if source and motif.search(source):
+        r.update(valeur=habituelle["valeur"], provenance="piece" if r["valeur"] else "regle", a_verifier=True,
+                 detail=f"Formule habituelle des dossiers acceptés ; le fournisseur écrit : « {source.strip()[:200]} »")
+
+
 def _memoire(resultat: dict, dossier) -> None:
     """Cases encore vides (ou à la valeur habituelle) : reprises du dossier
     accepté du MÊME fabricant (mémoire apprise par Mistral, voir memoire.py),
@@ -164,14 +187,22 @@ def _memoire(resultat: dict, dossier) -> None:
 
     fabricant = resultat.get("fabricant_nom", {}).get("valeur") or getattr(dossier, "fournisseur", None)
     accepte = memoire.pour(fabricant, dossier.pays_origine, dossier.produit)
-    if not accepte:
-        return
-    for ident, appris in accepte["valeurs"].items():
-        r = resultat.get(ident)
-        if r is None or r["provenance"] not in ("manquant", "defaut"):
-            continue
-        r.update(valeur=appris["valeur"], provenance="memoire", a_verifier=True,
-                 detail=f"Repris du dossier accepté « {accepte['produit']} » (pièce {appris['piece']}) — à confirmer")
+    if accepte:
+        for ident, appris in accepte["valeurs"].items():
+            r = resultat.get(ident)
+            if r is None or r["provenance"] not in ("manquant", "defaut"):
+                continue
+            r.update(valeur=appris["valeur"], provenance="memoire", a_verifier=True,
+                     detail=f"Repris du dossier accepté « {accepte['produit']} » (pièce {appris['piece']}) — à confirmer")
+    # catégorie et domaine thérapeutique : propres au produit, repris du produit accepté le plus proche
+    if any(resultat.get(i, {}).get("provenance") == "manquant" for i in memoire.CHAMPS_DU_PRODUIT) \
+            and (proche := memoire.pour_produit(dossier.produit)):
+        for ident in memoire.CHAMPS_DU_PRODUIT:
+            r, appris = resultat.get(ident), proche["valeurs"].get(ident)
+            if r is not None and appris and r["provenance"] == "manquant":
+                r.update(valeur=appris["valeur"], provenance="memoire", a_verifier=True,
+                         detail=f"Repris du produit accepté le plus proche « {proche['produit']} » "
+                                f"({proche.get('fabricant') or 'autre fabricant'}) — à confirmer")
 
 
 def _textes(documents, code: str):

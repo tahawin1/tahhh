@@ -59,7 +59,8 @@ def proche(produit: str, accepte: str) -> str:
     a, b = set(cle(produit).split()), set(cle(accepte).split())
     if not a or not b:
         return "different"
-    if cle(accepte) in cle(produit) or cle(produit) in cle(accepte):
+    colle_a, colle_b = cle(produit).replace(" ", ""), cle(accepte).replace(" ", "")  # « 5 ans » = « 5ans »
+    if colle_b in colle_a or colle_a in colle_b:
         return "juste"
     commun = len(a & b) / min(len(a), len(b))
     return "juste" if commun >= 0.8 else "partiel" if commun >= 0.4 else "different"
@@ -183,13 +184,23 @@ class Rejeu:
                        None if note >= 0.5 else f"moins de la moitié des données retrouvées — {detail}")
             # en usage réel, une case vide est reprise d'un AUTRE dossier accepté du même fabricant
             # (formulaires._memoire) : note avec cette mémoire, sans jamais celle du dossier rejoué
+            import memoire as mem
+
             fabricant = (produits.get("fabricant_nom") or {}).get("valeur") or memoire.get("fabricant")
-            if (voisin := memoire_voisine(self.voisins, memoire, fabricant, acc["pays"], acc["produit"])):
-                avec = {i: (proche(voisin["valeurs"][i]["valeur"], memoire["valeurs"][i]["valeur"])
-                            if v == "manquant" and i in voisin["valeurs"] else v) for i, v in verdicts.items()}
+            voisin = memoire_voisine(self.voisins, memoire, fabricant, acc["pays"], acc["produit"])
+            meme_produit = mem.pour_produit(acc["produit"], self.voisins, exclu=memoire)
+            if voisin or meme_produit:
+                avec = dict(verdicts)
+                for i, v in verdicts.items():
+                    reprise = ((voisin or {}).get("valeurs", {}).get(i)
+                               or (meme_produit["valeurs"].get(i) if meme_produit and i in mem.CHAMPS_DU_PRODUIT else None))
+                    if v == "manquant" and reprise:
+                        avec[i] = proche(reprise["valeur"], memoire["valeurs"][i]["valeur"])
                 justes_memoire = sum(v == "juste" for v in avec.values())
                 bilan["formulaire_note_memoire"] = round(justes_memoire / len(avec), 2)
-                self.noter(nom, f"formulaires avec la mémoire du fabricant (« {voisin['produit']} ») : "
+                origine = " ; ".join(filter(None, [voisin and f"fabricant : « {voisin['produit']} »",
+                                                   meme_produit and f"produit proche : « {meme_produit['produit']} »"]))
+                self.noter(nom, f"formulaires avec la mémoire ({origine}) : "
                                 f"{justes_memoire}/{len(avec)} données identiques ({justes_memoire / len(avec):.0%})")
             for ident, v in verdicts.items():  # ce que l'agent a mis face à ce qui a été accepté
                 if v != "juste":

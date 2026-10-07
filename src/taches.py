@@ -177,6 +177,10 @@ def executer_extraction(document_id: int) -> None:
             doc.extraction_erreur = f"Erreur inattendue : {type(e).__name__}: {e}"
             journaliser(session, doc.dossier_id, "système", "lecture_echec", doc.extraction_erreur, document_id=doc.id)
         else:
+            try:  # textes repris dans les formulaires : traduits en français s'il le faut (jamais bloquant)
+                extraction.traduire_champs(resultat["champs"])
+            except Exception:
+                pass
             doc.texte_recu = resultat.pop("texte")
             doc.extraction = resultat
             doc.extraction_statut = "terminee"

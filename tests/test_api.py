@@ -67,6 +67,7 @@ class TestApi(unittest.TestCase):
         taches.soumettre_extraction = taches.executer_extraction
         cls._vrai_extraire = extraction.extraire  # rétabli à la fin : les autres tests lisent pour de vrai
         extraction.extraire = faux_extraire
+        extraction.traduire = lambda texte: None  # jamais Ollama dans les tests
         import memoire
         memoire.RACINE_DEFAUT = TMP / "dossiers_valides_absents"  # jamais les dossiers acceptés réels
         memoire.DOSSIER_MEMOIRE = TMP / "memoire_absente"

@@ -6,10 +6,12 @@ empêche une valeur inventée par l'IA d'être présentée comme vérifiée.
 """
 import sys
 import unittest
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
+import extraction  # noqa: E402
 from extraction import (  # noqa: E402
     ABSENT, CITATION_INTROUVABLE, VALEUR_HORS_CITATION, VERIFIE,
     citation_trouvee, controler, normaliser_date,
@@ -57,6 +59,23 @@ class TestCitations(unittest.TestCase):
 
     def test_refuse_des_mots_pioches_dans_tout_le_document(self):
         self.assertFalse(citation_trouvee("certificate hip valid 2027 specimen", TEXTE))
+
+
+class TestTraduction(unittest.TestCase):
+    def test_seuls_les_textes_etrangers_des_formulaires_sont_traduits(self):
+        self.assertTrue(extraction.est_francais("Conservé à l'abri de la chaleur et de l'humidité"))
+        self.assertFalse(extraction.est_francais("Store in a cool and dry place"))
+        self.assertFalse(extraction.est_francais("I cementi ossei CEMEX sono indicati per la fissazione"))
+        champs = [{"nom": "indications", "valeur": "Used for the fixation of prostheses"},
+                  {"nom": "conservation", "valeur": "Conserver au sec"},
+                  {"nom": "fabricant", "valeur": "Tecres S.p.A. with offices in Italy"}]
+        with mock.patch.object(extraction, "traduire", return_value="Utilisé pour la fixation de prothèses") as t:
+            self.assertEqual(extraction.traduire_champs(champs), 1)
+        t.assert_called_once_with("Used for the fixation of prostheses")
+        self.assertEqual(champs[0]["valeur"], "Used for the fixation of prostheses")  # la lecture vérifiée reste
+        self.assertEqual(champs[0]["valeur_fr"], "Utilisé pour la fixation de prothèses")
+        self.assertNotIn("valeur_fr", champs[1])
+        self.assertNotIn("valeur_fr", champs[2])
 
 
 class TestControle(unittest.TestCase):

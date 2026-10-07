@@ -233,6 +233,27 @@ def pour(fabricant: str | None, pays: str, produit: str) -> dict | None:
     return max(candidats, key=lambda e: (e.get("pays") == pays, len(mots & set(_cle(e.get("produit", "")).split()))))
 
 
+# Mots trop généraux pour rapprocher deux produits
+MOTS_GENERAUX = {"set", "kit", "dispositif", "dispositifs", "medical", "medicaux", "sterile", "steriles", "usage",
+                 "unique", "les", "des", "pour", "avec", "sans", "et", "de", "du", "la", "le", "en", "a"}
+CHAMPS_DU_PRODUIT = ("categorie", "domaine_therapeutique")
+
+
+def mots_du_produit(produit: str) -> set[str]:
+    return {m for m in _cle(produit).split() if len(m) > 2 and m not in MOTS_GENERAUX}
+
+
+def pour_produit(produit: str, entrees: list[dict] | None = None, exclu: dict | None = None) -> dict | None:
+    """Le dossier accepté du produit le plus ressemblant, quel que soit le
+    fabricant (au moins un mot significatif commun, ex. « gants », « ciment ») :
+    la catégorie et le domaine thérapeutique dépendent du produit, pas du fabricant."""
+    mots = mots_du_produit(produit)
+    candidats = [(len(mots & mots_du_produit(e.get("produit", ""))), e) for e in (charger() if entrees is None else entrees)
+                 if e is not exclu and e.get("produit") != (exclu or {}).get("produit")]
+    candidats = [c for c in candidats if c[0] > 0]
+    return max(candidats, key=lambda c: c[0])[1] if candidats else None
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--racine", type=Path, default=RACINE_DEFAUT)

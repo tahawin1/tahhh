@@ -175,6 +175,7 @@ Pour chaque champ ci-dessous, retrouve l'information DANS CE DOCUMENT :
 
 Règles strictes :
 - "valeur" : l'information exactement telle qu'elle est écrite dans le document (même langue, même format de date).
+- Document en plusieurs langues : prends le passage écrit en français s'il existe, sinon celui en anglais.
 - "citation" : le passage du document, recopié mot pour mot (au plus 200 caractères), qui contient cette valeur.
 - Si l'information n'est pas dans le document : "valeur": null et "citation": null. Ne devine jamais, ne complète jamais.
 Réponds uniquement avec l'objet JSON demandé."""
@@ -215,6 +216,53 @@ Réponds uniquement avec l'objet JSON demandé."""
         return json.loads(r.json()["response"])
     except (ValueError, KeyError) as e:
         raise ExtractionImpossible("Réponse de Mistral illisible (JSON invalide).") from e
+
+
+# Textes longs repris dans les formulaires (en français) : traduits s'ils sont
+# écrits dans une autre langue. La valeur lue et sa citation restent celles du
+# document (vérifiées) ; la traduction est rangée à part et toujours « à vérifier ».
+CHAMPS_A_TRADUIRE = {"indications", "presentation", "conservation", "composition"}
+MOTS_FR = {"le", "la", "les", "des", "du", "de", "et", "est", "pour", "dans", "une", "un", "au", "aux", "sur", "par",
+           "avec", "ne", "pas", "ou", "doit", "être", "sont", "conserver", "conservé", "utilisé", "indiqué"}
+MOTS_AUTRES = {"the", "and", "of", "for", "to", "in", "with", "is", "are", "be", "or", "store", "used", "should",
+               "il", "di", "per", "con", "del", "della", "dei", "sono", "che", "nel", "deve", "essere", "der", "die",
+               "und", "el", "los", "las", "para"}
+
+
+def est_francais(texte: str) -> bool:
+    mots = re.findall(r"[a-zàâçéèêëîïôûùüÿœ]+", (texte or "").lower())
+    return sum(m in MOTS_FR for m in mots) >= sum(m in MOTS_AUTRES for m in mots)
+
+
+def traduire(texte: str) -> str | None:
+    """Traduction fidèle en français par Mistral ; None si Ollama ne répond pas
+    (la valeur d'origine reste alors dans le formulaire, à traduire à la main)."""
+    prompt = ("Traduis fidèlement en français le texte suivant, extrait d'un document de dispositif médical. "
+              "N'ajoute rien, ne résume pas, garde les chiffres et les unités. Réponds uniquement par la traduction.\n\n"
+              f"<<<\n{texte[:2000]}\n>>>")
+    session = requests.Session()
+    session.trust_env = False
+    try:
+        r = session.post(f"{OLLAMA_BASE_URL}/api/generate", timeout=OLLAMA_TIMEOUT, json={
+            "model": OLLAMA_MODEL, "prompt": prompt, "stream": False,
+            "options": {"temperature": 0, "num_ctx": 4096, "num_predict": 600}})
+        r.raise_for_status()
+        traduction = (r.json().get("response") or "").strip().strip("<>").strip()
+    except (requests.RequestException, ValueError):
+        return None
+    return traduction or None
+
+
+def traduire_champs(champs: list[dict]) -> int:
+    """Ajoute « valeur_fr » aux textes à reprendre dans les formulaires qui ne
+    sont pas en français. Retourne le nombre de valeurs traduites."""
+    n = 0
+    for c in champs:
+        if c["nom"] in CHAMPS_A_TRADUIRE and c.get("valeur") and not est_francais(c["valeur"]):
+            if (fr := traduire(c["valeur"])):
+                c["valeur_fr"] = fr
+                n += 1
+    return n
 
 
 def controler(reponse: dict, champs: list[dict], texte: str) -> list[dict]:

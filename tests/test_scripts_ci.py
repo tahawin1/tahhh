@@ -53,8 +53,17 @@ class TestRejeu(unittest.TestCase):
                       autre)
         self.assertIsNone(rejeu.memoire_voisine([propre, etranger], propre, "St Marys", "inde", "Gants poudrés"))
 
+    def test_memoire_du_produit_le_plus_proche(self):
+        import memoire
+        gants = {"produit": "Gants chirurgicaux en latex", "fabricant": "A", "valeurs": {}}
+        perfusion = {"produit": "Set de perfusion stérile", "fabricant": "B", "valeurs": {}}
+        self.assertIs(memoire.pour_produit("Gants d'examen en nitrile", [gants, perfusion]), gants)
+        self.assertIsNone(memoire.pour_produit("Set de transfusion sanguine", [gants, perfusion]))  # « set » ne suffit pas
+        self.assertIsNone(memoire.pour_produit("Gants chirurgicaux en latex", [gants], exclu=gants))
+
     def test_comparaison_des_valeurs(self):
-        self.assertEqual(rejeu.proche("TECRES S.P.A.", "Tecres SpA"), "partiel")
+        self.assertEqual(rejeu.proche("5 ans", "5ans"), "juste")
+        self.assertEqual(rejeu.proche("TECRES S.P.A.", "Tecres SpA"), "juste")
         self.assertEqual(rejeu.proche("Chirurgie orthopédique", "Chirurgie Orthopedique"), "juste")
         self.assertEqual(rejeu.proche("Store below 25°C", "Conservé à l'abri de la chaleur"), "different")
 

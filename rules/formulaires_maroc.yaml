@@ -104,11 +104,22 @@ donnees:
   conservation:
     libelle: "Conditions de conservation"
     sources: ["piece:notice:conservation", "piece:etiquetage:conservation"]
+    # formule des dossiers acceptés (gants, set de transfusion, ciment osseux) quand le fournisseur
+    # parle de chaleur, d'humidité, de lieu frais ou sec
+    habituelle:
+      si: "\\b(?:dry|humid\\w*|moist\\w*|heat|cool|sunlight|sec|s[èe]che|humidit[ée]|chaleur|frais|asciutt\\w*|umid\\w*|calore|fresc\\w*)\\b"
+      phrase: "\\b(?:stor\\w*|keep|conserv\\w*)\\b"
+      valeur: "Conservé à l’abri de la chaleur et de l’humidité"
+      pieces: [notice, etiquetage]
   # ---- composition (jamais supposée : toujours confirmée par l'utilisateur)
   composition:
     libelle: "Composition : éléments et matériaux constitutifs du dispositif"
     type: long
-    sources: ["piece:notice:composition"]
+    # un intitulé (« Composizione dei cementi ossei CEMEX: ») n'est pas une composition ; à défaut,
+    # la désignation, comme dans les dossiers acceptés (« Ciment osseux », « Gants chirurgicaux… »)
+    sources: ["piece:notice:composition", "donnee:designation"]
+    rejeter: [":\\s*$"]
+    a_confirmer: true
   contient_medicament:
     libelle: "Dispositif contenant un médicament (oui / non ; nature)"
     sources: ["piece:notice:contient_medicament"]  # mention lue dans la notice ; oui / non à confirmer

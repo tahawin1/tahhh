@@ -159,7 +159,10 @@ class TestMemoire(unittest.TestCase):
         self.assertEqual(r["presentation"]["valeur"], "Saisie à la main")  # la saisie prime
         self.assertIn("OSTEO FAST | 11A2000", r["references"]["valeur"])
         autre = formulaires.resoudre(self.dossier("Autre Fabricant Ltd"), {})
-        self.assertIsNone(autre["domaine_therapeutique"]["valeur"])  # jamais les données d'un autre fabricant
+        self.assertNotIn("OSTEO FAST", autre["references"]["valeur"] or "")  # jamais les données d'un autre fabricant
+        # sauf la catégorie et le domaine thérapeutique, propres au produit (ici un ciment osseux)
+        self.assertEqual(autre["domaine_therapeutique"]["valeur"], "Chirurgie orthopédique")
+        self.assertIn("produit accepté le plus proche", autre["domaine_therapeutique"]["detail"])
 
 
 if __name__ == "__main__":

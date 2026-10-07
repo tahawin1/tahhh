@@ -488,6 +488,17 @@ supporte déjà.
       fabricant, comme en usage réel). Restent : valeurs anglaises à traduire
       (conservation), catégorie et domaine thérapeutique (sans source dans les
       documents du fournisseur : mémoire du fabricant ou saisie).
+- [x] **Rejeu #25 (set de transfusion, ciment osseux)** : lecture complète en 25 min grâce à
+      l'ordre d'utilité. Corrections : valeurs non françaises des formulaires
+      (indications, présentation, conservation, composition) traduites par Mistral dans
+      `valeur_fr` (la lecture vérifiée reste, texte d'origine affiché, toujours à
+      vérifier) et passage français préféré dans un document multilingue ; conservation :
+      formule des dossiers acceptés (« Conservé à l’abri de la chaleur et de
+      l’humidité ») quand le fournisseur parle de chaleur, d'humidité, de lieu sec ;
+      composition : un intitulé est rejeté, à défaut la désignation (comme les dossiers
+      acceptés), à confirmer ; catégorie et domaine thérapeutique repris du produit
+      accepté le plus proche (mot significatif commun), quel que soit le fabricant ;
+      rejeu : « 5 ans » = « 5ans ».
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
