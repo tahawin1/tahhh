@@ -235,7 +235,7 @@ def pour(fabricant: str | None, pays: str, produit: str) -> dict | None:
 
 # Mots trop généraux pour rapprocher deux produits
 MOTS_GENERAUX = {"set", "kit", "dispositif", "dispositifs", "medical", "medicaux", "sterile", "steriles", "usage",
-                 "unique", "les", "des", "pour", "avec", "sans", "et", "de", "du", "la", "le", "en", "a"}
+                 "unique", "jetable", "jetables", "les", "des", "pour", "avec", "sans", "et", "de", "du", "la", "le", "en", "a"}
 CHAMPS_DU_PRODUIT = ("categorie", "domaine_therapeutique")
 
 

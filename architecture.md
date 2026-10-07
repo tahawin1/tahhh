@@ -499,6 +499,14 @@ supporte déjà.
       acceptés), à confirmer ; catégorie et domaine thérapeutique repris du produit
       accepté le plus proche (mot significatif commun), quel que soit le fabricant ;
       rejeu : « 5 ans » = « 5ans ».
+- [x] **Rejeu #27 (agrafeuse, lames de shaver, Chine)** : indications désormais en français.
+      Corrections : durée de validité = durée (dates fabrication → péremption de
+      l'étiquette, « 2024.09.05 à 2027.09.04 » → « 3 ans » ; une date seule rejetée) ;
+      présentation d'un DM stérile à usage unique : « Emballage unitaire stérile/Boite de
+      N unités stériles » (Qty de l'étiquette) ; références sans lot ni quantité, sans
+      doublon ; adresse électronique du fabricant ajoutée au contact ; composition = la
+      désignation, comme la majorité des dossiers acceptés. Question ouverte : pièce 17
+      « déclaration de la société » d'un dossier Chine accepté, absente des règles.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

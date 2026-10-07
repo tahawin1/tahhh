@@ -60,7 +60,41 @@ def _lu(lectures: dict, code: str, champ: str) -> dict | None:
     return None
 
 
+DATE = r"(?:(\d{4})[-./](\d{1,2})[-./](\d{1,2})|(\d{1,2})[-./](\d{1,2})[-./](\d{4}))"
+
+
+def _dates(texte: str) -> list[datetime.date]:
+    trouvees = []
+    for m in re.finditer(DATE, texte or ""):
+        a, mo, j = (m.group(1), m.group(2), m.group(3)) if m.group(1) else (m.group(6), m.group(5), m.group(4))
+        try:
+            trouvees.append(datetime.date(int(a), int(mo), int(j)))
+        except ValueError:
+            continue
+    return trouvees
+
+
+def duree_entre(debut: datetime.date, fin: datetime.date) -> str | None:
+    """2024-09-05 -> 2027-09-04 : « 3 ans » (fabrication -> péremption)."""
+    mois = round((fin - debut).days / 30.44)
+    if mois <= 0:
+        return None
+    return f"{mois // 12} ans" if mois % 12 == 0 else f"{mois} mois"
+
+
+def duree_en_francais(valeur: str) -> str:
+    """« 5 years » -> « 5 ans » ; « 2024.09.05 à 2027.09.04 » -> « 3 ans »."""
+    if (m := re.search(r"\b(\d{1,2})\s*(years?|yrs?|ans?|months?|mois)\b", valeur, re.I)):
+        return f"{int(m.group(1))} {'mois' if m.group(2).lower().startswith('m') else 'ans'}"
+    dates = _dates(valeur)
+    if len(dates) >= 2 and (duree := duree_entre(dates[0], dates[1])):
+        return duree
+    return valeur
+
+
 def _formater(definition: dict, valeur: str, normalisee: str | None = None) -> str:
+    if definition.get("format") == "duree":
+        return duree_en_francais(valeur)
     if definition.get("format") == "classe":
         return CLASSES.get(valeur.upper(), valeur)
     if definition.get("format") == "date" and normalisee:
@@ -158,6 +192,12 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
 
     for ident in definitions:
         une(ident)
+    contact = resultat.get("fabricant_contact")
+    if contact and contact["valeur"] and contact["provenance"] == "piece" and "@" not in contact["valeur"] \
+            and (trouve := _courriel(dossier.documents)):
+        contact["valeur"] += f"\nAdresse électronique : {trouve[0]}"
+        contact["a_verifier"] = True
+        contact["detail"] = (contact["detail"] or "") + f" — adresse électronique relevée dans la pièce {trouve[1].numero}"
     _memoire(resultat, dossier)
     _plusieurs_produits(resultat)
     return resultat
@@ -289,10 +329,51 @@ def _duree_validite(documents) -> tuple[str, object] | None:
                 trouves[f"{int(nombre)} {'mois' if unite.lower().startswith('m') else 'ans'}"] += 1
             if trouves:
                 return trouves.most_common(1)[0][0], piece
+    # étiquette « MFG 2020-11-09 … EXP 2023-11-08 » : durée entre fabrication et péremption
+    for code in ("etiquetage", "notice", "catalogue"):
+        for piece, texte in _textes(documents, code):
+            plat = re.sub(r"\s+", " ", texte)
+            fab = re.search(r"(?:\bMFG\b|\bMFD\b|Mfg\.? ?Date|manufactur\w* date|date of manufacture|production date|"
+                            r"date de fabrication)\s*[:.]?\s*" + DATE, plat, re.I)
+            per = re.search(r"(?:\bEXP\b|expiry date|expiration date|use[- ]by|date de p[ée]remption)\s*[:.]?\s*" + DATE,
+                            plat, re.I)
+            if fab and per and (duree := duree_entre(_dates(fab.group(0))[0], _dates(per.group(0))[0])):
+                return duree, piece
     return None
 
 
-RELEVES = {"sterilisation": _sterilisation, "duree_validite": _duree_validite}
+def _presentation(documents) -> tuple[str, object] | None:
+    """Dispositif stérile à usage unique : « Emballage unitaire stérile », avec
+    la boîte lue sur l'étiquette (« Qty: 10 » -> « /Boite de 10 unités stériles »),
+    comme dans les dossiers acceptés."""
+    if not _sterilisation(documents):
+        return None
+    for code in ("etiquetage", "catalogue", "notice"):
+        for piece, texte in _textes(documents, code):
+            plat = re.sub(r"\s+", " ", texte)
+            if not re.search(r"single[- ]use|disposable|do not re-?use|usage unique|jetable|\(2\)|sterile", plat, re.I):
+                continue
+            m = (re.search(r"\b(?:Qty|Quantity|Quantit[ée])\s*[:.]?\s*(\d{1,4})\b", plat, re.I)
+                 or re.search(r"\b(\d{1,4})\s*(?:pcs|pieces|units|unit[ée]s|pairs|paires)\s*(?:/|per|par)\s*(?:box|bo[iî]te)",
+                              plat, re.I)
+                 or re.search(r"\b(?:box|bo[iî]te) (?:of|de) (\d{1,4})\b", plat, re.I))
+            n = int(m.group(1)) if m else 0
+            return "Emballage unitaire stérile" + (f"/Boite de {n} unités stériles" if n > 1 else ""), piece
+    return None
+
+
+def _courriel(documents) -> tuple[str, object] | None:
+    """Adresse électronique la plus citée dans les documents du fabricant."""
+    from collections import Counter
+    for code in ("declaration_conformite", "etiquetage", "notice", "attestation_fabricant", "catalogue"):
+        for piece, texte in _textes(documents, code):
+            trouves = Counter(m.lower() for m in re.findall(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+", texte))
+            if trouves:
+                return trouves.most_common(1)[0][0], piece
+    return None
+
+
+RELEVES = {"sterilisation": _sterilisation, "duree_validite": _duree_validite, "presentation": _presentation}
 
 
 def _transition_2023_607(dossier, une) -> tuple[str, str] | None:
@@ -357,7 +438,12 @@ def _plusieurs_produits(resultat: dict) -> None:
         marque = re.split(r"\s*/\s*", nom["valeur"])[0].strip().upper()
     elif (fabricant := resultat.get("fabricant_nom")) and fabricant["valeur"]:  # marque = nom du fabricant
         marque = fabricant["valeur"].split()[0].strip(",.").upper()
-    lignes = [l.strip() for l in references["valeur"].splitlines() if l.strip()]
+    # « WZDSS-A-35W [LOT 2409015 Qty:10 » : le lot et la quantité ne sont pas des références
+    propre = re.sub(r"\[?\s*\b(?:LOT|Qty|Quantity)\b\s*[:.]?\s*[\w-]*\]?", "", references["valeur"], flags=re.I)
+    propre = re.sub(r"\bREF\s*[:.]\s*", "", propre)
+    lignes = list(dict.fromkeys(re.sub(r"\s*\|\s*$", "", re.sub(r"\s+", " ", l)).strip()
+                                for l in propre.splitlines() if l.strip()))
+    references["valeur"] = "\n".join(lignes)
     if all(l.count("|") == 2 for l in lignes):
         return  # déjà « MARQUE | NOM | RÉF »
     if any("|" in l for l in lignes):  # « NOM | REF » (étiquettes) : la marque est ajoutée

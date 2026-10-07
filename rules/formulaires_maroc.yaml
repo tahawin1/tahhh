@@ -89,7 +89,8 @@ donnees:
   presentation:
     libelle: "Présentation(s)"
     type: long
-    sources: ["piece:notice:presentation"]
+    # sinon, dispositif stérile à usage unique : « Emballage unitaire stérile/Boite de N unités stériles »
+    sources: ["piece:notice:presentation", "presentation"]
   indications:
     libelle: "Indications"
     type: long
@@ -100,7 +101,11 @@ donnees:
   duree_validite:
     libelle: "Durée de validité (si applicable)"
     # « Shelf life: 5 years » relevé par le code et écrit en français (« 5 ans »), sinon la lecture de Mistral
+    # durée relevée par le code (« Shelf life: 5 years », ou dates de fabrication et de péremption de
+    # l'étiquette), sinon la lecture de Mistral ramenée à une durée ; une date seule n'est pas une durée
     sources: ["duree_validite", "piece:etiquetage:duree_validite", "piece:notice:duree_validite"]
+    format: duree
+    rejeter: ["^\\D*\\d{4}[-./]\\d{1,2}[-./]\\d{1,2}\\D*$", "^\\D*\\d{1,2}[-./]\\d{1,2}[-./]\\d{4}\\D*$"]
   conservation:
     libelle: "Conditions de conservation"
     sources: ["piece:notice:conservation", "piece:etiquetage:conservation"]
@@ -117,7 +122,9 @@ donnees:
     type: long
     # un intitulé (« Composizione dei cementi ossei CEMEX: ») n'est pas une composition ; à défaut,
     # la désignation, comme dans les dossiers acceptés (« Ciment osseux », « Gants chirurgicaux… »)
-    sources: ["piece:notice:composition", "donnee:designation"]
+    # les dossiers acceptés y écrivent la désignation (Ciment osseux, Gants…, Lames et fraises…) :
+    # la majorité l'emporte ; la composition lue dans la notice reste dans la notice
+    sources: ["donnee:designation", "piece:notice:composition"]
     rejeter: [":\\s*$"]
     a_confirmer: true
   contient_medicament:

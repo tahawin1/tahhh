@@ -101,6 +101,25 @@ class TestResolution(unittest.TestCase):
         self.assertIn("Irradiation", r["sterilisation"]["valeur"])
         self.assertEqual(r["duree_validite"]["valeur"], "3 ans")
 
+    def test_etiquette_chinoise_duree_presentation_references_contact(self):
+        d = dossier("chine", lectures={
+            "etiquetage": [lu("duree_validite", "Expiration date: 2023-11-08"),
+                           lu("references", "MICROCURE | WZDSS-A-35W [LOT 2409015 Qty:10 |\n"
+                                            "MICROCURE | WZDSS-A-35W [LOT 2409016 Qty:10 |\nMICROCURE | REF: WZDSS-A-15N")],
+            "declaration_conformite": [lu("contact_fabricant", "Tel: 86-512-62916116")]})
+        etiquette = next(x for x in d.documents if x.code == "etiquetage")
+        etiquette.texte_recu = ("Disposable Skin Stapler STERILE EO Single use. Qty: 10 "
+                                "MFG 2024-09-05 EXP 2027-09-04")
+        next(x for x in d.documents if x.code == "declaration_conformite").texte_recu = "E-mail: info@microcure.com.cn"
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["duree_validite"]["valeur"], "3 ans")  # fabrication -> péremption, pas une date seule
+        self.assertEqual(r["presentation"]["valeur"], "Emballage unitaire stérile/Boite de 10 unités stériles")
+        lignes = r["references"]["valeur"].splitlines()  # lot et quantité retirés, doublons fusionnés
+        self.assertEqual([l.split("|")[-1].strip() for l in lignes], ["WZDSS-A-35W", "WZDSS-A-15N"])
+        self.assertIn("info@microcure.com.cn", r["fabricant_contact"]["valeur"])
+        self.assertEqual(formulaires.duree_en_francais("2024.09.05 ag 2027.09.04"), "3 ans")
+        self.assertEqual(formulaires.duree_en_francais("Shelf life 18 months"), "18 mois")
+
     def test_textes_en_francais(self):
         notice = [lu("indications", "Used to deliver blood"), lu("composition", "Composizione dei cementi ossei CEMEX:"),
                   lu("conservation", "Store in a cool and dry place. Protect from direct sunlight.")]
