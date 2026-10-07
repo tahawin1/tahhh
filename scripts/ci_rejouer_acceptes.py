@@ -13,7 +13,8 @@ puis son résultat est comparé au dossier accepté :
   - lettre : ressemblance avec la lettre acceptée.
 
 L'API de rejeu tourne SANS mémoire (MEMOIRE_DIR vide) : l'agent ne peut pas
-recopier les réponses. Aucune donnée réelle ne sort du serveur : les rapports
+recopier les réponses. Une seconde note, « avec mémoire », reprend les cases
+vides d'un AUTRE dossier accepté du même fabricant, comme en usage réel. Aucune donnée réelle ne sort du serveur : les rapports
 restent dans Jenkins.
 
 Classe du dispositif : dans le nom du dossier produit, ex. « Ciment osseux (IIb) »,
@@ -83,13 +84,14 @@ def dossiers_acceptes(racine: Path) -> list[dict]:
 
 
 class Rejeu:
-    def __init__(self, api: str, cle_api: str, delai: int, delai_lecture: int = 1800):
+    def __init__(self, api: str, cle_api: str, delai: int, delai_lecture: int = 3600):
         self.api, self.delai, self.delai_lecture = api.rstrip("/"), delai, delai_lecture
         self.http = requests.Session()
         self.http.trust_env = False
         self.http.headers["X-API-Key"] = cle_api
         self.cas: list[tuple[str, str, str | None, str | None]] = []  # dossier, contrôle, échec, ignoré
         self.bilans: list[dict] = []
+        self.voisins: list[dict] = []  # mémoire des AUTRES dossiers acceptés (jamais celle du dossier rejoué)
 
     def noter(self, dossier, nom, echec=None, ignore=None):
         self.cas.append((dossier, nom, echec, ignore))
@@ -179,6 +181,16 @@ class Rejeu:
                                 for v in ("partiel", "different", "manquant") if v in verdicts.values())
             self.noter(nom, f"formulaires : {justes}/{len(verdicts)} données identiques au dossier accepté ({note:.0%})",
                        None if note >= 0.5 else f"moins de la moitié des données retrouvées — {detail}")
+            # en usage réel, une case vide est reprise d'un AUTRE dossier accepté du même fabricant
+            # (formulaires._memoire) : note avec cette mémoire, sans jamais celle du dossier rejoué
+            fabricant = (produits.get("fabricant_nom") or {}).get("valeur") or memoire.get("fabricant")
+            if (voisin := memoire_voisine(self.voisins, memoire, fabricant, acc["pays"], acc["produit"])):
+                avec = {i: (proche(voisin["valeurs"][i]["valeur"], memoire["valeurs"][i]["valeur"])
+                            if v == "manquant" and i in voisin["valeurs"] else v) for i, v in verdicts.items()}
+                justes_memoire = sum(v == "juste" for v in avec.values())
+                bilan["formulaire_note_memoire"] = round(justes_memoire / len(avec), 2)
+                self.noter(nom, f"formulaires avec la mémoire du fabricant (« {voisin['produit']} ») : "
+                                f"{justes_memoire}/{len(avec)} données identiques ({justes_memoire / len(avec):.0%})")
             for ident, v in verdicts.items():  # ce que l'agent a mis face à ce qui a été accepté
                 if v != "juste":
                     print(f"      · {ident} [{v}] agent : « {str((produits.get(ident) or {}).get('valeur') or '')[:80]} » "
@@ -227,14 +239,28 @@ class Rejeu:
             f'<?xml version="1.0" encoding="UTF-8"?>\n<testsuite name="Rejeu des dossiers acceptés" tests="{len(lignes)}" '
             f'failures="{echecs}">\n' + "\n".join(lignes) + "\n</testsuite>\n", encoding="utf-8")
         (dossier / "dossiers-acceptes.json").write_text(json.dumps(self.bilans, ensure_ascii=False, indent=1), encoding="utf-8")
-        tableau = ["| Dossier | Classe | Pièces lues | Valeurs vérifiées | Formulaires | Lettre | Cases à compléter |",
-                   "|---|---|---|---|---|---|---|"]
+        tableau = ["| Dossier | Classe | Pièces lues | Valeurs vérifiées | Formulaires | Avec mémoire | Lettre | Cases à compléter |",
+                   "|---|---|---|---|---|---|---|---|"]
         for b in self.bilans:
             tableau.append(f"| {b['dossier']} | {b['classe']} | {b['pieces_lues']} | {b['valeurs_verifiees']}/{b['valeurs_trouvees']} | "
-                           f"{b.get('formulaire_note', '—')} | {b.get('lettre_ressemblance', '—')} | {b['cases_a_completer']} |")
+                           f"{b.get('formulaire_note', '—')} | {b.get('formulaire_note_memoire', '—')} | {b.get('lettre_ressemblance', '—')} | {b['cases_a_completer']} |")
         (dossier / "dossiers-acceptes.md").write_text("# Rejeu des dossiers acceptés\n\n" + "\n".join(tableau) + "\n",
                                                       encoding="utf-8")
         print("\n".join(tableau))
+
+
+def memoire_voisine(memoires: list[dict], propre: dict, fabricant: str | None, pays: str, produit: str) -> dict | None:
+    """Comme memoire.pour, mais parmi les AUTRES dossiers acceptés : le dossier
+    rejoué ne doit jamais se donner ses propres réponses."""
+    import memoire as mem
+
+    cle_fabricant = mem.fabricant_cle(fabricant)
+    candidats = [m for m in memoires if m is not propre and m.get("produit") != propre.get("produit")
+                 and cle_fabricant and mem.fabricant_cle(m.get("fabricant")) == cle_fabricant]
+    if not candidats:
+        return None
+    mots = set(cle(produit).split())
+    return max(candidats, key=lambda m: (m.get("pays") == pays, len(mots & set(cle(m.get("produit", "")).split()))))
 
 
 def choisir(acceptes: list[dict], nombre: int, decalage: int) -> list[dict]:
@@ -254,10 +280,10 @@ def main() -> int:
     parser.add_argument("--memoire", type=Path, default=RACINE / "output" / "memoire")
     parser.add_argument("--rapport", type=Path, default=RACINE / "rapports-ci")
     parser.add_argument("--delai", type=int, default=3600)
-    parser.add_argument("--delai-lecture", type=int, default=1800,
+    parser.add_argument("--delai-lecture", type=int, default=3600,
                         help="temps maximal de lecture d'un dossier (s) ; au-delà, rejeu avec les pièces déjà lues")
     parser.add_argument("--nombre", type=int, default=0,
-                        help="dossiers rejoués par build (0 = tous) : environ 25 min par dossier avec Mistral")
+                        help="dossiers rejoués par build (0 = tous) : environ 1 h par dossier avec Mistral sur un PC portable")
     parser.add_argument("--decalage", type=int, default=0,
                         help="numéro du build : les dossiers sont pris à tour de rôle d'un build à l'autre")
     args = parser.parse_args()
@@ -277,6 +303,12 @@ def main() -> int:
                     "dossiers_valides (les déposer avec l'outil 3, la classe dans le nom du dossier)")
         rejeu.rapport(args.rapport)
         return 0
+    voisins = []
+    for f in sorted(args.memoire.glob("*.json")) if args.memoire.is_dir() else []:
+        try:
+            voisins.append(json.loads(f.read_text(encoding="utf-8")))
+        except (OSError, ValueError):
+            continue
     acceptes = choisir(acceptes, args.nombre, args.decalage)
     print(f"Rejeu de {len(acceptes)} dossier(s) accepté(s), sans mémoire : "
           + ", ".join(f"{a['pays']}/{a['dossier']}" for a in acceptes))
@@ -285,6 +317,7 @@ def main() -> int:
         fichiers = [args.memoire / mem.fichier_memoire(acc["pays"], nom).name for nom in (acc["produit"], acc["dossier"])]
         fichier = next((f for f in fichiers if f.exists()), None)
         appris = json.loads(fichier.read_text(encoding="utf-8")) if fichier else None
+        rejeu.voisins = [v for v in voisins if not appris or v != appris]
         # garde-fou absolu : quel que soit l'appel bloqué, le dossier est abandonné après sa durée
         # maximale (lecture + lettre + marge) et l'endroit du blocage est écrit dans le rapport
         signal.alarm(args.delai_lecture + args.delai + 600)

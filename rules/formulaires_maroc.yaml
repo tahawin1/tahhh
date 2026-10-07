@@ -59,7 +59,9 @@ donnees:
     sources: ["dossier:classe"]
   sterilisation:
     libelle: "DM stérile — méthode de stérilisation"
-    sources: ["piece:etiquetage:sterilisation", "piece:notice:sterilisation"]
+    # méthode relevée par le code (symbole « STERILE EO », « ethylene oxide »…) ; « STERILE » seul est rejeté
+    sources: ["sterilisation", "piece:etiquetage:sterilisation", "piece:notice:sterilisation"]
+    rejeter: ["^(?i:\\W*(?:non[- ])?st[ée]rile\\W*)$"]
   type_dm:
     libelle: "Type de DM"
     type: choix
@@ -97,7 +99,8 @@ donnees:
     sources: []
   duree_validite:
     libelle: "Durée de validité (si applicable)"
-    sources: ["piece:etiquetage:duree_validite", "piece:notice:duree_validite"]
+    # « Shelf life: 5 years » relevé par le code et écrit en français (« 5 ans »), sinon la lecture de Mistral
+    sources: ["duree_validite", "piece:etiquetage:duree_validite", "piece:notice:duree_validite"]
   conservation:
     libelle: "Conditions de conservation"
     sources: ["piece:notice:conservation", "piece:etiquetage:conservation"]

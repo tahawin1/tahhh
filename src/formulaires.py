@@ -124,6 +124,11 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                         valeur, piece = trouve
                         r.update(valeur=valeur, provenance="piece", a_verifier=True,
                                  detail=f"Relevé par le code sur les étiquettes (pièce {piece.numero})")
+                elif genre in RELEVES:
+                    if (trouve := RELEVES[genre](dossier.documents)):
+                        valeur, piece = trouve
+                        r.update(valeur=valeur, provenance="piece", a_verifier=True,
+                                 detail=f"Relevé par le code dans le texte de la pièce {piece.numero} ({piece.nom})")
                 elif genre == "transition_2023_607":
                     if (trouve := _transition_2023_607(dossier, une)):
                         valeur, detail = trouve
@@ -206,6 +211,57 @@ def _motif(documents, code: str, motif: str) -> tuple[str, object] | None:
         if trouves:
             return trouves.most_common(1)[0][0], piece
     return None
+
+
+# Méthode de stérilisation : symboles ISO 15223 (« STERILE EO », « STERILE R »)
+# et mentions du texte. La plus citée l'emporte ; « STERILE » seul ne dit rien.
+METHODES_STERILISATION = (
+    ("Oxyde d'éthylène", re.compile(r"ethylene[ -]?oxide|oxyde d.?[ée]thyl[èe]ne|\bSTERILE\s*[|/-]?\s*E[O0]\b|"
+                                    r"\bEt[O0]\b|\bEO\s+steril", re.I)),
+    ("Irradiation (rayonnement gamma)", re.compile(r"gamma[ -]?(?:ray|irradiat|radiat|steril|rayon)|rayonnement gamma|"
+                                                    r"rayons gamma", re.I)),
+    ("Irradiation", re.compile(r"\bSTERILE\s*[|/-]?\s*R\b|sterili[sz]ed (?:by|using|with) (?:irradiation|radiation)|"
+                               r"st[ée]rilis[ée] par irradiation", re.I)),
+    ("Vapeur d'eau (chaleur humide)", re.compile(r"sterili[sz]ed (?:by|using|with) (?:steam|moist heat)|"
+                                                 r"\bSTERILE\s*[|/-]?\s*(?:STEAM|S)\b|st[ée]rilis[ée] (?:à|par) la vapeur", re.I)),
+    ("Traitement aseptique", re.compile(r"\bSTERILE\s*[|/-]?\s*A\b|aseptic(?:ally)? process", re.I)),
+)
+PIECES_ETIQUETAGE = ("etiquetage", "notice", "catalogue", "declaration_conformite")
+
+
+def _sterilisation(documents) -> tuple[str, object] | None:
+    for code in PIECES_ETIQUETAGE:
+        for piece, texte in _textes(documents, code):
+            comptes = [(len(m.findall(texte)), nom) for nom, m in METHODES_STERILISATION]
+            n, nom = max(comptes)
+            if n:
+                return nom, piece
+    return None
+
+
+DUREE = re.compile(
+    r"(?:shelf[- ]?life|validity|validit[ée]|dur[ée]e de (?:validit[ée]|conservation)|expir\w*|p[ée]remption)"
+    r"[^.\n]{0,40}?\b(\d{1,2})\s*(years?|yrs?|ans?|months?|mois)\b"
+    r"|\b(\d{1,2})\s*(years?|yrs?|ans?|months?|mois)\s*(?:from|after|à compter de|après)\s*(?:the\s*)?"
+    r"(?:date\s*of\s*|la date de\s*)?(?:manufactur|fabrication|production)", re.I)
+
+
+def _duree_validite(documents) -> tuple[str, object] | None:
+    """« Shelf life: 5 years », « 3 years from date of manufacture » -> « 5 ans ».
+    Pas la déclaration de conformité : sa « validity » est celle du certificat."""
+    from collections import Counter
+    for code in ("etiquetage", "notice", "catalogue"):
+        for piece, texte in _textes(documents, code):
+            trouves = Counter()
+            for m in DUREE.finditer(re.sub(r"\s+", " ", texte)):
+                nombre, unite = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
+                trouves[f"{int(nombre)} {'mois' if unite.lower().startswith('m') else 'ans'}"] += 1
+            if trouves:
+                return trouves.most_common(1)[0][0], piece
+    return None
+
+
+RELEVES = {"sterilisation": _sterilisation, "duree_validite": _duree_validite}
 
 
 def _transition_2023_607(dossier, une) -> tuple[str, str] | None:

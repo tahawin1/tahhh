@@ -118,12 +118,13 @@ def construire(rapports: Path, niveau: str, build: str) -> tuple[str, str]:
     if acceptes:
         corps.append("<h2>Dossiers acceptés rejoués</h2><table border='1' cellpadding='6' cellspacing='0'>"
                      "<tr><th>Dossier</th><th>Classe</th><th>Pièces lues</th><th>Valeurs vérifiées</th>"
-                     "<th>Formulaires = dossier accepté</th><th>Lettre ressemblante</th><th>Cases à compléter</th></tr>")
+                     "<th>Formulaires = dossier accepté</th><th>Avec la mémoire du fabricant</th><th>Lettre ressemblante</th><th>Cases à compléter</th></tr>")
         for a in acceptes:
-            note, lettre_r = a.get("formulaire_note"), a.get("lettre_ressemblance")
+            note, lettre_r, avec = a.get("formulaire_note"), a.get("lettre_ressemblance"), a.get("formulaire_note_memoire")
             corps.append(f"<tr><td>{h(a['dossier'])}</td><td>{h(str(a['classe']))}</td><td>{a['pieces_lues']}</td>"
                          f"<td>{a['valeurs_verifiees']}/{a['valeurs_trouvees']}</td>"
                          f"<td>{'—' if note is None else f'{note:.0%}'}</td>"
+                         f"<td>{'—' if avec is None else f'{avec:.0%}'}</td>"
                          f"<td>{'—' if lettre_r is None else f'{lettre_r:.0%}'}</td>"
                          f"<td>{a['cases_a_completer']}</td></tr>")
         corps.append("</table>")

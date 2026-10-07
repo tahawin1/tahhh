@@ -44,6 +44,15 @@ class TestRejeu(unittest.TestCase):
         self.assertEqual(len(vus), 13)
         self.assertEqual(rejeu.choisir(tous, 0, 7), tous)  # 0 = tous
 
+    def test_memoire_d_un_autre_dossier_du_meme_fabricant(self):
+        propre = {"produit": "Gants poudrés", "pays": "inde", "fabricant": "St.Marys Rubbers Pvt. Ltd.", "valeurs": {}}
+        autre = {"produit": "Gants sans poudre", "pays": "inde", "fabricant": "ST MARYS RUBBERS", "valeurs": {}}
+        etranger = {"produit": "Gants poudrés", "pays": "inde", "fabricant": "Autre Fabricant", "valeurs": {}}
+        memoires = [propre, autre, etranger]
+        self.assertIs(rejeu.memoire_voisine(memoires, propre, "ST MARYS RUBBERS PRIVATE LIMITED", "inde", "Gants poudrés"),
+                      autre)
+        self.assertIsNone(rejeu.memoire_voisine([propre, etranger], propre, "St Marys", "inde", "Gants poudrés"))
+
     def test_comparaison_des_valeurs(self):
         self.assertEqual(rejeu.proche("TECRES S.P.A.", "Tecres SpA"), "partiel")
         self.assertEqual(rejeu.proche("Chirurgie orthopédique", "Chirurgie Orthopedique"), "juste")

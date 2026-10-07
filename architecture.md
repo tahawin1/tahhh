@@ -476,6 +476,18 @@ supporte déjà.
       pays du fabricant, preuve tirée de leur pièce 4 (13/13 justes sur les dossiers
       réels), modèle choisi par pays + preuve + classe, reprise par fabricant quel que
       soit le pays saisi ; rejeu Jenkins : contrôle « preuve reconnue seule ».
+- [x] **Rejeu des gants indiens (builds #22/#23, 2026-10-07)** : builds complets en ~1 h 20
+      (rotation 2 dossiers), plus aucun timeout. Constats et corrections :
+      lecture coupée à 30 min avant la notice et les étiquettes → pièces lues par ordre
+      d'utilité (`taches.ORDRE_LECTURE` : pièce 4, étiquettes, notice, catalogue,
+      déclaration, puis ISO…) et budget de lecture du rejeu porté à 1 h ;
+      « STERILE » sans méthode → méthode relevée par le code (symboles ISO 15223
+      « STERILE EO / R / A », « ethylene oxide », « gamma ») ; durée de validité
+      relevée par le code (« Shelf life: 5 years » → « 5 ans ») ; rejeu : seconde note
+      « avec mémoire » (cases vides reprises d'un AUTRE dossier accepté du même
+      fabricant, comme en usage réel). Restent : valeurs anglaises à traduire
+      (conservation), catégorie et domaine thérapeutique (sans source dans les
+      documents du fournisseur : mémoire du fabricant ou saisie).
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

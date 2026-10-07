@@ -83,6 +83,24 @@ class TestResolution(unittest.TestCase):
         r = formulaires.resoudre(dossier(lectures=LECTURES_UE, saisies={"fabricant_nom": "TECRES SpA"}), PROFIL)
         self.assertEqual((r["fabricant_nom"]["valeur"], r["fabricant_nom"]["provenance"]), ("TECRES SpA", "saisie"))
 
+    def test_sterilisation_et_validite_relevees_par_le_code(self):
+        d = dossier("inde", lectures={"etiquetage": [lu("sterilisation", "STERILE")]})
+        etiquette = next(x for x in d.documents if x.code == "etiquetage")
+        etiquette.texte_recu = "SURGICAL GLOVES  STERILE EO  Shelf Life : 5 Years  Sterilized using Ethylene Oxide"
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["sterilisation"]["valeur"], "Oxyde d'éthylène")
+        self.assertEqual(r["duree_validite"]["valeur"], "5 ans")
+        self.assertTrue(r["sterilisation"]["a_verifier"])
+        etiquette.texte_recu = "Gloves. Use before expiry date."  # rien de concluant : « STERILE » seul rejeté
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertIsNone(r["sterilisation"]["valeur"])
+        self.assertIsNone(r["duree_validite"]["valeur"])
+        notice = next(x for x in d.documents if x.code == "notice")
+        notice.texte_recu = "STERILE R. Gamma irradiated. 3 years from the date of manufacture."
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertIn("Irradiation", r["sterilisation"]["valeur"])
+        self.assertEqual(r["duree_validite"]["valeur"], "3 ans")
+
     def test_origine_chine_certificat_ce_sans_objet(self):
         r = formulaires.resoudre(dossier("chine"), PROFIL)
         self.assertEqual(r["ce_numero"]["valeur"], "NA")

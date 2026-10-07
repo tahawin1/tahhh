@@ -12,6 +12,9 @@ parallèle ne va pas plus vite, chacune ralentit les autres.
 """
 from __future__ import annotations
 
+import heapq
+import itertools
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -112,9 +115,43 @@ def _donnees_connues(dossier) -> dict[str, str]:
             if donnees[i]["valeur"] and donnees[i]["provenance"] in ("saisie", "piece")}
 
 
+# Ordre de lecture des documents reçus : d'abord la pièce 4 (elle fixe la preuve
+# CE ou nationale, donc les pièces exigées), puis les pièces qui remplissent les
+# formulaires (étiquettes, notice, catalogue, déclaration) ; les certificats
+# ISO et autres ensuite. Sur un PC lent, les formulaires sont prêts plus tôt.
+ORDRE_LECTURE = ("piece_specifique", "etiquetage", "notice", "catalogue", "declaration_conformite",
+                 "attestation_fabricant")
+_lectures_en_attente: list[tuple[int, int, int]] = []
+_verrou_lectures = threading.Lock()
+_numero_lecture = itertools.count()
+
+
+def rang_lecture(code: str | None) -> int:
+    code = code or ""
+    return next((i for i, debut in enumerate(ORDRE_LECTURE) if code.startswith(debut)), len(ORDRE_LECTURE))
+
+
 def soumettre_extraction(document_id: int) -> None:
-    """Ajoute la lecture d'un document reçu à la file (remplacé dans les tests)."""
-    _executeur.submit(executer_extraction, document_id)
+    """Ajoute la lecture d'un document reçu à la file, par ordre d'utilité
+    (ORDRE_LECTURE) puis d'arrivée (remplacé dans les tests)."""
+    try:
+        with db.SessionLocal() as session:
+            doc = session.get(Document, document_id)
+            rang = rang_lecture(doc.code if doc else None)
+    except Exception:
+        rang = len(ORDRE_LECTURE)
+    with _verrou_lectures:
+        heapq.heappush(_lectures_en_attente, (rang, next(_numero_lecture), document_id))
+    _executeur.submit(_lecture_suivante)
+
+
+def _lecture_suivante() -> None:
+    """Une soumission = une lecture : la plus utile en attente à ce moment."""
+    with _verrou_lectures:
+        if not _lectures_en_attente:
+            return
+        _, _, document_id = heapq.heappop(_lectures_en_attente)
+    executer_extraction(document_id)
 
 
 def executer_extraction(document_id: int) -> None:
