@@ -94,7 +94,7 @@ donnees:
   indications:
     libelle: "Indications"
     type: long
-    sources: ["piece:notice:indications"]
+    sources: ["piece:notice:indications", "piece:manuel_utilisation:usage_prevu"]
   domaine_therapeutique:
     libelle: "Domaine thérapeutique"
     sources: []
@@ -103,7 +103,8 @@ donnees:
     # « Shelf life: 5 years » relevé par le code et écrit en français (« 5 ans »), sinon la lecture de Mistral
     # durée relevée par le code (« Shelf life: 5 years », ou dates de fabrication et de péremption de
     # l'étiquette), sinon la lecture de Mistral ramenée à une durée ; une date seule n'est pas une durée
-    sources: ["duree_validite", "piece:etiquetage:duree_validite", "piece:notice:duree_validite"]
+    sources: ["duree_validite", "piece:etiquetage:duree_validite", "piece:notice:duree_validite",
+              "piece:manuel_utilisation:duree_vie"]
     format: duree
     rejeter: ["^\\D*\\d{4}[-./]\\d{1,2}[-./]\\d{1,2}\\D*$", "^\\D*\\d{1,2}[-./]\\d{1,2}[-./]\\d{4}\\D*$"]
   conservation:

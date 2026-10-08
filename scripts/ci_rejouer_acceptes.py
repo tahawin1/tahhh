@@ -46,6 +46,9 @@ ACTEUR = "Jenkins (rejeu d'un dossier accepté)"
 PIECES_PRODUITES = {1, 2, 16}  # lettre, fiche signalétique, annexe II : produites par l'agent
 CLASSE = re.compile(r"[(\[\-–]\s*(?:classe\s*)?(I|Is|Im|Ir|IIa|IIb|III)\s*[)\]]?\s*$", re.I)
 NUMERO = re.compile(r"^\s*(\d{1,2})\s*[-_. ]")
+NOTE_DESCRIPTIVE = re.compile(r"note[ _-]*descriptive", re.I)
+EQUIPEMENT = re.compile(r"note[ _-]*descriptive|manuel[ _-]*d.?utilisation|documentation[ _-]*technique|user[ _-]*manual",
+                        re.I)
 
 
 def cle(texte: str) -> str:
@@ -127,11 +130,16 @@ class Rejeu:
         if not acc["classe"]:
             self.noter(nom, "classe du dispositif", ignore="classe absente du nom du dossier : le renommer, ex. « Ciment osseux (IIb) »")
             return
+        # équipement médical (note descriptive, manuel, documentation technique dans le dossier accepté) :
+        # pièces propres aux équipements ; la note descriptive est rédigée par l'agent, pas déposée
+        equipement = any(EQUIPEMENT.search(f.name) for fs in acc["fichiers"].values() for f in fs)
         r = self.http.post(f"{self.api}/dossiers", timeout=120, json={
-            "pays_origine": acc["pays"], "produit": acc["produit"], "classe": acc["classe"], "cree_par": ACTEUR})
+            "pays_origine": acc["pays"], "produit": acc["produit"], "classe": acc["classe"], "cree_par": ACTEUR,
+            "equipement": equipement})
         r.raise_for_status()
         d = r.json()
-        fournisseur = [(f.name, f) for n, fs in acc["fichiers"].items() if n not in PIECES_PRODUITES for f in fs]
+        fournisseur = [(f.name, f) for n, fs in acc["fichiers"].items() if n not in PIECES_PRODUITES for f in fs
+                       if not NOTE_DESCRIPTIVE.search(f.name)]
         r = self.http.post(f"{self.api}/dossiers/{d['id']}/documents-recus", timeout=600, data={"acteur": ACTEUR},
                            files=[("fichiers", (n, f.read_bytes(), "application/pdf")) for n, f in fournisseur])
         r.raise_for_status()

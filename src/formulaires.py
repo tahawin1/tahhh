@@ -31,6 +31,10 @@ MENTION_VALIDATION = (
 )
 
 
+SANS_VALEUR = re.compile(r"^\W*(?:pas|non|not)?\s*(?:sp[ée]cifi[ée]e?|specified|indiqu[ée]e?|mentionn[ée]e?|stated|"
+                         r"available|disponible|applicable)\W*$|^\W*(?:n/?a|none|null|inconnu|unknown|aucune?)\W*$", re.I)
+
+
 def charger() -> dict:
     with open(FICHIER, encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -139,6 +143,8 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                 elif genre == "piece":
                     code, _, champ = reste.partition(":")
                     lu = _lu(lectures, code, champ)
+                    if lu and SANS_VALEUR.match(lu["valeur"]):
+                        lu = None  # « Pas spécifié », « N/A » : Mistral n'a rien trouvé
                     if lu and any(re.search(motif, lu["valeur"]) for motif in d.get("rejeter") or []):
                         lu = None  # ex. référence de la lettre 2023/607 lue à la place du n° de certificat CE
                     if lu:
@@ -294,20 +300,26 @@ METHODES_STERILISATION = (
     ("Irradiation", re.compile(r"\bSTERILE\s*[|/-]?\s*R\b|sterili[sz]ed (?:by|using|with) (?:irradiation|radiation)|"
                                r"st[ée]rilis[ée] par irradiation", re.I)),
     ("Vapeur d'eau (chaleur humide)", re.compile(r"sterili[sz]ed (?:by|using|with) (?:steam|moist heat)|"
-                                                 r"\bSTERILE\s*[|/-]?\s*(?:STEAM|S)\b|st[ée]rilis[ée] (?:à|par) la vapeur", re.I)),
+                                                 r"st[ée]rilis[ée] (?:à|par) la vapeur", re.I)),
     ("Traitement aseptique", re.compile(r"\bSTERILE\s*[|/-]?\s*A\b|aseptic(?:ally)? process", re.I)),
 )
 PIECES_ETIQUETAGE = ("etiquetage", "notice", "catalogue", "declaration_conformite")
 
 
 def _sterilisation(documents) -> tuple[str, object] | None:
+    """Méthode la plus citée dans l'ensemble des étiquettes, notice, catalogue et
+    déclaration (une mention isolée dans une pièce ne l'emporte pas)."""
+    comptes, pieces = {}, {}
     for code in PIECES_ETIQUETAGE:
         for piece, texte in _textes(documents, code):
-            comptes = [(len(m.findall(texte)), nom) for nom, m in METHODES_STERILISATION]
-            n, nom = max(comptes)
-            if n:
-                return nom, piece
-    return None
+            for nom, motif in METHODES_STERILISATION:
+                if (n := len(motif.findall(texte))):
+                    comptes[nom] = comptes.get(nom, 0) + n
+                    pieces.setdefault(nom, piece)
+    if not comptes:
+        return None
+    nom = max(comptes, key=comptes.get)
+    return nom, pieces[nom]
 
 
 DUREE = re.compile(
@@ -454,8 +466,13 @@ def _plusieurs_produits(resultat: dict) -> None:
     if len(produits) > 1 and marque and nom and nom["provenance"] != "saisie" and "annexe" not in (nom["valeur"] or "").lower():
         if not nom["valeur"]:  # marque tirée du nom du fabricant : à vérifier
             nom.update(provenance="donnee", a_verifier=True, detail="Marque = nom du fabricant")
-        nom["valeur"] = f"{marque} / Voir annexe"
-        nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"
+        noms = {p[0].strip().lower() for p in produits if p[0].strip()}
+        if len(noms) == 1:  # un seul nom commercial, plusieurs références : « MARQUE / Nom » (dossiers acceptés)
+            nom["valeur"] = f"{marque} / {produits[0][0].strip()}"
+            nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} références : détail en annexe"
+        else:
+            nom["valeur"] = f"{marque} / Voir annexe"
+            nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"
 
 
 # ---------------------------------------------------------------- DOCX

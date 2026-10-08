@@ -120,6 +120,20 @@ class TestResolution(unittest.TestCase):
         self.assertEqual(formulaires.duree_en_francais("2024.09.05 ag 2027.09.04"), "3 ans")
         self.assertEqual(formulaires.duree_en_francais("Shelf life 18 months"), "18 mois")
 
+    def test_methode_la_plus_citee_dans_tout_le_dossier(self):
+        d = dossier("inde", lectures={"etiquetage": [lu("duree_validite", "Pas spécifié")]})
+        next(x for x in d.documents if x.code == "etiquetage").texte_recu = "Can be sterilized by steam."
+        next(x for x in d.documents if x.code == "notice").texte_recu = "STERILE EO. Sterilized using ethylene oxide."
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["sterilisation"]["valeur"], "Oxyde d'éthylène")
+        self.assertIsNone(r["duree_validite"]["valeur"])  # « Pas spécifié » n'est pas une valeur
+
+    def test_un_nom_commercial_plusieurs_references(self):
+        d = dossier("chine", lectures={"catalogue": [lu("nom_marque", "MICROCURE"), lu(
+            "references", "Disposable Skin Stapler | WZDSS-A-35W\nDisposable Skin Stapler | WZDSS-A-15N")]})
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["nom_marque"]["valeur"], "MICROCURE / Disposable Skin Stapler")
+
     def test_textes_en_francais(self):
         notice = [lu("indications", "Used to deliver blood"), lu("composition", "Composizione dei cementi ossei CEMEX:"),
                   lu("conservation", "Store in a cool and dry place. Protect from direct sunlight.")]

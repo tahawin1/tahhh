@@ -507,6 +507,14 @@ supporte déjà.
       doublon ; adresse électronique du fabricant ajoutée au contact ; composition = la
       désignation, comme la majorité des dossiers acceptés. Question ouverte : pièce 17
       « déclaration de la société » d'un dossier Chine accepté, absente des règles.
+- [x] **Rejeu #29 (échographe Chine, gants Inde)** : gants 14 % → 43 % (50 % avec mémoire).
+      Corrections : méthode de stérilisation comptée sur tout le dossier (une mention
+      « steam » isolée ne l'emporte plus sur « STERILE EO ») ; « Pas spécifié », « N/A »
+      rejetés comme valeurs ; « MARQUE / Nom commercial » quand toutes les références
+      portent le même nom (comme les dossiers acceptés), « Voir annexe » sinon ;
+      rejeu : dossier accepté avec note descriptive / manuel → créé en équipement, la
+      note descriptive (rédigée par l'agent) n'est plus déposée ; indications et durée
+      lues aussi dans le manuel d'utilisation.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)
