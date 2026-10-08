@@ -167,6 +167,13 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
                         valeur, piece = trouve
                         r.update(valeur=valeur, provenance="piece", a_verifier=True,
                                  detail=f"Relevé par le code sur les étiquettes (pièce {piece.numero})")
+                elif genre == "par_produit":
+                    regle = next((x for x in d.get("par_produit") or []
+                                  if re.search(x["si"], dossier.produit or "", re.I)), None)
+                    if regle:
+                        r.update(valeur=regle["valeur"], provenance="defaut", a_verifier=True,
+                                 detail=f"Valeur des dossiers acceptés pour ce type de produit (« {dossier.produit} ») "
+                                        "— à confirmer")
                 elif genre in RELEVES:
                     if (trouve := RELEVES[genre](dossier.documents)):
                         valeur, piece = trouve
@@ -198,6 +205,13 @@ def resoudre(dossier, profil: dict, saisies: dict | None = None) -> dict[str, di
 
     for ident in definitions:
         une(ident)
+    code = resultat.get("code_classification")
+    if code and code["provenance"] != "saisie" and definitions["code_classification"].get("organisme_notifie") \
+            and pays_regles == "union_europeenne" and (organisme := _organisme_notifie(dossier.documents, une("ce_organisme"))):
+        code.update(valeur=f"CE {organisme}" + (f" / {code['valeur']}" if code["valeur"] else ""), a_verifier=True,
+                    provenance=code["provenance"] if code["valeur"] else "piece",
+                    detail=f"N° de l'organisme notifié en tête, comme les dossiers acceptés"
+                           + (f" ; {code['detail']}" if code["detail"] else ""))
     contact = resultat.get("fabricant_contact")
     if contact and contact["valeur"] and contact["provenance"] == "piece" and "@" not in contact["valeur"] \
             and (trouve := _courriel(dossier.documents)):
@@ -374,6 +388,19 @@ def _presentation(documents) -> tuple[str, object] | None:
     return None
 
 
+def _organisme_notifie(documents, ce_organisme: dict) -> str | None:
+    """N° à 4 chiffres de l'organisme notifié : lu sur le certificat CE, sinon le
+    « CE 0123 » le plus fréquent des étiquettes, de la déclaration ou de la notice."""
+    from collections import Counter
+    if (m := re.search(r"\b(\d{4})\b", ce_organisme.get("valeur") or "")):
+        return m.group(1)
+    trouves = Counter()
+    for code in ("etiquetage", "declaration_conformite", "notice", "piece_specifique"):
+        for _, texte in _textes(documents, code):
+            trouves.update(re.findall(r"\bCE\s?(\d{4})\b", texte))
+    return trouves.most_common(1)[0][0] if trouves else None
+
+
 def _courriel(documents) -> tuple[str, object] | None:
     """Adresse électronique la plus citée dans les documents du fabricant."""
     from collections import Counter
@@ -438,41 +465,63 @@ def _transition_2023_607(dossier, une) -> tuple[str, str] | None:
     return None
 
 
+SOCIETE = re.compile(r"\b(?:medical|devices?|ltd|limited|pvt|private|co|corp|inc|s\.?p\.?a|gmbh|sarl|technology|"
+                     r"industr\w*|group|company|rubbers?)\b", re.I)
+
+
+def _marque_courte(marque: str, fabricant: str | None) -> str:
+    """« ILIFE MEDICAL DEVICES » (raison sociale) -> « ILIFE » : la marque, comme
+    dans les dossiers acceptés (« iLife / OneFlon® … »)."""
+    mots = marque.split()
+    if len(mots) > 1 and (SOCIETE.search(marque) or (fabricant and marque.lower() in fabricant.lower())):
+        return mots[0].strip(",.")
+    return marque
+
+
 def _plusieurs_produits(resultat: dict) -> None:
-    """Plusieurs produits lus (catalogue, étiquettes) : une ligne par produit en
-    annexe, avec la marque, et « MARQUE / Voir annexe » dans le formulaire,
-    comme dans le dossier accepté."""
+    """Produits lus (catalogue, étiquettes) : une ligne par produit en annexe,
+    avec la marque ; dans le formulaire, « MARQUE / Nom commercial » quand il
+    n'y a qu'un nom commercial, « MARQUE / Voir annexe » sinon, comme dans les
+    dossiers acceptés."""
     references, nom = resultat.get("references"), resultat.get("nom_marque")
     if not references or not references["valeur"] or references["provenance"] in ("saisie", "memoire"):
         return
+    fabricant = (resultat.get("fabricant_nom") or {}).get("valeur")
     marque = ""
     if nom and nom["valeur"] and nom["provenance"] != "saisie":
-        marque = re.split(r"\s*/\s*", nom["valeur"])[0].strip().upper()
-    elif (fabricant := resultat.get("fabricant_nom")) and fabricant["valeur"]:  # marque = nom du fabricant
-        marque = fabricant["valeur"].split()[0].strip(",.").upper()
+        marque = _marque_courte(re.split(r"\s*/\s*", nom["valeur"])[0].strip(), fabricant).upper()
+    elif fabricant:  # marque = nom du fabricant
+        marque = fabricant.split()[0].strip(",.").upper()
     # « WZDSS-A-35W [LOT 2409015 Qty:10 » : le lot et la quantité ne sont pas des références
     propre = re.sub(r"\[?\s*\b(?:LOT|Qty|Quantity)\b\s*[:.]?\s*[\w-]*\]?", "", references["valeur"], flags=re.I)
     propre = re.sub(r"\bREF\s*[:.]\s*", "", propre)
     lignes = list(dict.fromkeys(re.sub(r"\s*\|\s*$", "", re.sub(r"\s+", " ", l)).strip()
                                 for l in propre.splitlines() if l.strip()))
-    references["valeur"] = "\n".join(lignes)
-    if all(l.count("|") == 2 for l in lignes):
-        return  # déjà « MARQUE | NOM | RÉF »
-    if any("|" in l for l in lignes):  # « NOM | REF » (étiquettes) : la marque est ajoutée
-        produits = [[p.strip() for p in l.split("|")][:2] for l in lignes]
+    if lignes and all(l.count("|") == 2 for l in lignes):  # déjà « MARQUE | NOM | RÉF »
+        produits = [[p.strip() for p in l.split("|")][1:] for l in lignes]
+        if marque:
+            lignes = [f"{marque} | {p[0]} | {p[1]}" for p in produits]
+        references["valeur"] = "\n".join(lignes)
     else:
-        produits = [[p.strip(), ""] for p in re.split(r"[,;\n]", references["valeur"]) if p.strip()]
-    references["valeur"] = "\n".join(f"{marque} | {p[0]} | {p[1] if len(p) > 1 else ''}" for p in produits)
-    if len(produits) > 1 and marque and nom and nom["provenance"] != "saisie" and "annexe" not in (nom["valeur"] or "").lower():
-        if not nom["valeur"]:  # marque tirée du nom du fabricant : à vérifier
-            nom.update(provenance="donnee", a_verifier=True, detail="Marque = nom du fabricant")
-        noms = {p[0].strip().lower() for p in produits if p[0].strip()}
-        if len(noms) == 1:  # un seul nom commercial, plusieurs références : « MARQUE / Nom » (dossiers acceptés)
-            nom["valeur"] = f"{marque} / {produits[0][0].strip()}"
-            nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} références : détail en annexe"
+        if any("|" in l for l in lignes):  # « NOM | REF » (étiquettes) : la marque est ajoutée
+            produits = [[p.strip() for p in l.split("|")][:2] for l in lignes]
         else:
-            nom["valeur"] = f"{marque} / Voir annexe"
-            nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"
+            produits = [[p.strip(), ""] for p in re.split(r"[,;\n]", "\n".join(lignes)) if p.strip()]
+        references["valeur"] = "\n".join(f"{marque} | {p[0]} | {p[1] if len(p) > 1 else ''}" for p in produits)
+    if not (produits and marque and nom and nom["provenance"] != "saisie"):
+        return
+    if "annexe" in (nom["valeur"] or "").lower() or "/" in (nom["valeur"] or ""):
+        return
+    if not nom["valeur"]:  # marque tirée du nom du fabricant : à vérifier
+        nom.update(provenance="donnee", a_verifier=True, detail="Marque = nom du fabricant")
+    noms = list(dict.fromkeys(p[0].strip() for p in produits if p[0].strip()))
+    if len(noms) == 1:  # un seul nom commercial : « MARQUE / Nom » (dossiers acceptés)
+        nom["valeur"] = f"{marque} / {noms[0]}"
+        nom["detail"] = (nom["detail"] or "") + (f" — {len(produits)} références : détail en annexe"
+                                                 if len(produits) > 1 else " — nom commercial lu dans les références")
+    elif len(produits) > 1:
+        nom["valeur"] = f"{marque} / Voir annexe"
+        nom["detail"] = (nom["detail"] or "") + f" — {len(produits)} produits : détail en annexe"
 
 
 # ---------------------------------------------------------------- DOCX

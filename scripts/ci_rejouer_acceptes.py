@@ -58,7 +58,11 @@ def cle(texte: str) -> str:
 
 
 def proche(produit: str, accepte: str) -> str:
-    """juste / partiel / different, par recouvrement des mots."""
+    """juste / partiel / different, par recouvrement des mots. « DM stérile »
+    accepté et une méthode de stérilisation précise : juste (plus précis, pas faux)."""
+    if re.fullmatch(r"\W*(?:dm|dispositif)?\s*st[ée]rile\W*", accepte or "", re.I) and \
+            re.search(r"oxyde|irradiation|gamma|vapeur|aseptique", produit or "", re.I):
+        return "juste"
     a, b = set(cle(produit).split()), set(cle(accepte).split())
     if not a or not b:
         return "different"

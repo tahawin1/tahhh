@@ -70,13 +70,23 @@ donnees:
     sources: []
   categorie:
     libelle: "Catégorie du DM"
-    sources: []
+    # aucun document du fournisseur ne la donne : catégorie des dossiers acceptés pour ce type de
+    # produit (désignation), à confirmer ; la mémoire d'un dossier accepté du même fabricant l'emporte
+    sources: ["par_produit"]
+    par_produit:
+      - {si: "gant|masque|blouse|bavette|charlotte|surchaussure|champ op[ée]ratoire", valeur: "Hygiène-protection"}
+      - {si: "transfusion|poche de sang", valeur: "Sang et circulation sanguine"}
+      - {si: "perfusion|seringue|aiguille|cath[ée]ter|pr[ée]l[èe]vement|injection", valeur: "Injection-Prélèvement"}
+      - {si: "[ée]chograph|ultrason|radiolog|imagerie|scanner|\\bIRM\\b", valeur: "Imagerie médicale"}
   code_classification:
     libelle: "Code GMDN et/ou code de classification (EMDN, Cladimed)"
     # code EMDN lu dans la déclaration de conformité (point 1 de la checklist), sinon relevé dans son texte
     sources: ["piece:declaration_conformite:cl_declaration_de_conformite_0",
               "motif:declaration_conformite:\\b[A-Z]\\d{6,12}\\b"]
     garder: "[A-Z]\\d{6,12}"
+    # les dossiers acceptés y écrivent le n° de l'organisme notifié (« CE 0123 ») : il est mis en tête,
+    # suivi du code EMDN lu (« CE 0123 / A03040199 »)
+    organisme_notifie: true
   designation:
     libelle: "Désignation du dispositif médical"
     sources: ["dossier:produit"]
@@ -97,7 +107,14 @@ donnees:
     sources: ["piece:notice:indications", "piece:manuel_utilisation:usage_prevu"]
   domaine_therapeutique:
     libelle: "Domaine thérapeutique"
-    sources: []
+    # domaine des dossiers acceptés pour ce type de produit, à confirmer
+    sources: ["par_produit"]
+    par_produit:
+      - {si: "transfusion", valeur: "Transfusion sanguine"}
+      - {si: "[ée]chograph|ultrason|radiolog|imagerie|scanner|\\bIRM\\b", valeur: "Imagerie médicale"}
+      - {si: "ciment osseux|orthop[ée]d|shaver|arthroscop|proth[èe]se de (?:hanche|genou)", valeur: "Chirurgie orthopédique"}
+      - {si: "agrafeuse cutan|fermeture cutan|suture cutan", valeur: "Chirurgie générale, chirurgie plastique"}
+      - {si: "gants? chirurgic", valeur: "Chirurgie"}
   duree_validite:
     libelle: "Durée de validité (si applicable)"
     # « Shelf life: 5 years » relevé par le code et écrit en français (« 5 ans »), sinon la lecture de Mistral

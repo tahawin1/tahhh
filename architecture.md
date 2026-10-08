@@ -515,6 +515,16 @@ supporte déjà.
       rejeu : dossier accepté avec note descriptive / manuel → créé en équipement, la
       note descriptive (rédigée par l'agent) n'est plus déposée ; indications et durée
       lues aussi dans le manuel d'utilisation.
+- [x] **Rejeu #31 (perfusion, transfusion iLife)** : transfusion 23 % → 46 %, perfusion 42 %.
+      Usages des dossiers acceptés appliqués (règles éditables dans
+      `rules/formulaires_maroc.yaml`, toujours à confirmer) : catégorie et domaine
+      thérapeutique par type de produit (`par_produit`, ex. perfusion →
+      « Injection-Prélèvement », transfusion → « Sang et circulation sanguine » /
+      « Transfusion sanguine ») ; code de classification « CE 0123 / A03040199 » (n° de
+      l'organisme notifié en tête, comme les dossiers acceptés, puis le code EMDN) pour
+      la voie CE ; marque courte (« ILIFE » et non la raison sociale) et « MARQUE / Nom
+      commercial » même pour un seul produit. Rejeu : une méthode de stérilisation face à
+      « DM stérile » accepté compte juste.
 - [ ] Agent — étape 4 (suite) : relances fournisseur préparées automatiquement
       (jamais envoyées sans validation)
 - [ ] Tests sur de vrais documents fournisseurs (en attente de dossiers réels)

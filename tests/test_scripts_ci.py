@@ -63,6 +63,7 @@ class TestRejeu(unittest.TestCase):
 
     def test_comparaison_des_valeurs(self):
         self.assertEqual(rejeu.proche("5 ans", "5ans"), "juste")
+        self.assertEqual(rejeu.proche("Oxyde d'éthylène", "DM stérile"), "juste")  # plus précis, pas faux
         self.assertEqual(rejeu.proche("TECRES S.P.A.", "Tecres SpA"), "juste")
         self.assertEqual(rejeu.proche("Chirurgie orthopédique", "Chirurgie Orthopedique"), "juste")
         self.assertEqual(rejeu.proche("Store below 25°C", "Conservé à l'abri de la chaleur"), "different")

@@ -134,6 +134,26 @@ class TestResolution(unittest.TestCase):
         r = formulaires.resoudre(d, PROFIL)
         self.assertEqual(r["nom_marque"]["valeur"], "MICROCURE / Disposable Skin Stapler")
 
+    def test_usages_des_dossiers_acceptes(self):
+        d = dossier("inde", lectures={
+            "catalogue": [lu("nom_marque", "iLife Medical Devices"),
+                          lu("references", "ILIFE MEDICAL DEVICES | OneFlon Infusion Set | 903.01.02.00")],
+            "declaration_conformite": [lu("fabricant", "iLife Medical Devices Pvt. Ltd."),
+                                       lu("cl_declaration_de_conformite_0", "EMDN A03040199")]})
+        d.produit, d.preuve = "Set de perfusion stérile", "ce"
+        next(x for x in d.documents if x.code == "etiquetage").texte_recu = "STERILE EO  CE 0123  Single use"
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual(r["categorie"]["valeur"], "Injection-Prélèvement")
+        self.assertTrue(r["categorie"]["a_verifier"])
+        self.assertEqual(r["code_classification"]["valeur"], "CE 0123 / A03040199")
+        self.assertEqual(r["nom_marque"]["valeur"], "ILIFE / OneFlon Infusion Set")
+        d.produit = "Set de transfusion sanguine"
+        r = formulaires.resoudre(d, PROFIL)
+        self.assertEqual((r["categorie"]["valeur"], r["domaine_therapeutique"]["valeur"]),
+                         ("Sang et circulation sanguine", "Transfusion sanguine"))
+        d.produit = "Produit inconnu"
+        self.assertIsNone(formulaires.resoudre(d, PROFIL)["categorie"]["valeur"])  # rien d'inventé
+
     def test_textes_en_francais(self):
         notice = [lu("indications", "Used to deliver blood"), lu("composition", "Composizione dei cementi ossei CEMEX:"),
                   lu("conservation", "Store in a cool and dry place. Protect from direct sunlight.")]
